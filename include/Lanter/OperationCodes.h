@@ -2,17 +2,18 @@
 // Created by Владимир Лысенков on 17.06.2020.
 //
 
-#ifndef LAN_4GATELIBRARYCPP_OPERATIONS_H
-#define LAN_4GATELIBRARYCPP_OPERATIONS_H
+#ifndef LAN_4GATELIBRARYCPP_OPERATIONCODES_H
+#define LAN_4GATELIBRARYCPP_OPERATIONCODES_H
 
 namespace Lanter
 {
     /// \brief Список поддерживаемых операций
     enum class OperationCodes
     {
+        NoOperation, ///< Значение-заглушка. Нет кода операции
         //Операции оплаты
         Sale = 1, ///< Оплата
-        MOTO, ///< Mail oreder/Telephone order - оплата заказа через e-mail или телефон
+        MOTO, ///< Mail order/Telephone order - оплата заказа через e-mail или телефон
         QuickPayment, ///< Оплата через систему быстрых платежей ЦБ РФ
         AliPay, ///< Оплата через систему AliPay
 
@@ -27,8 +28,8 @@ namespace Lanter
         VoidPreAuth, ///< Отмена преавторизации
 
         //Операции возврата
-        Refund = 500, ///< Возврат с RRN
-        RefundWithoutRRN, ///< Возврат без RRN
+        Refund = 500, ///< Возврат с m_RRN
+        RefundWithoutRRN, ///< Возврат без m_RRN
         QuickPaymentRefund, ///< Возврат через СБП
         QuickPaymentRefundStatus, ///<  Проверка статуса возврата через СБП
 
@@ -52,7 +53,10 @@ namespace Lanter
         SetCurrentPrinter, ///< Установка текущего устройства печати
         SelfTest, ///< Самопроверка финансового ПО LAN-4Tap
         GetOperationCopy, ///< Получение данных операции по номеру чека
-        DisplayQR ///< Отображение информации в виде QR кода финансовым ПО LAN-4Tap
+        DisplayQR, ///< Отображение информации в виде QR кода финансовым ПО LAN-4Tap
+        //Диапазон операций
+        FirstValue = Sale, ///< Код первой операции данного перечисления
+        LastValue = DisplayQR ///< Код последней операции данного перечисления
     };
 }
-#endif //LAN_4GATELIBRARYCPP_OPERATIONS_H
+#endif //LAN_4GATELIBRARYCPP_OPERATIONCODES_H

@@ -164,5 +164,16 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+#IDE files
 .idea/
+#Clion default building directories
 cmake-build-debug/
+cmake-build-release/
+cmake-build-minsizerel/
+cmake-build-relwithdebinfo/
+#Gtest directory
+tests/lib/
+#manual building directory
+build/
+#Test cache directory
+Testing/

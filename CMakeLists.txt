@@ -62,3 +62,8 @@ file(GLOB_RECURSE INCLUDE_FILES include/*.h)
 file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
 
 add_library(${PROJECT_NAME} ${LIB_BUILD_TYPE} ${JSONCPP_HEADERS} ${JSONCPP_SOURCES} ${INCLUDE_FILES} ${SOURCE_FILES})
+
+if(BUILD_TESTS)
+    enable_testing()
+endif()
+add_subdirectory(tests)
