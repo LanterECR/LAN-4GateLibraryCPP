@@ -4,6 +4,8 @@ project(LAN_4GateLibraryCPP)
 
 set(CMAKE_CXX_STANDARD 11)
 
+option(BUILD_TESTS "Enable unit-testing" OFF)
+
 #проверка типа сборки
 list(LENGTH LIBRARY_TYPE len)
 if(len EQUAL 1)
@@ -55,13 +57,24 @@ else()
     message(FATAL_ERROR "Directory contains JSONCPP amalgamation sources not exists")
 endif()
 
-include_directories(${JSONCPP_INCLUDE_PATH};include)
+include_directories(${JSONCPP_INCLUDE_PATH};include;Impl)
 #поиск всех заголовочников
 file(GLOB_RECURSE INCLUDE_FILES include/*.h)
 #поиск всех исходников
 file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
 
-add_library(${PROJECT_NAME} ${LIB_BUILD_TYPE} ${JSONCPP_HEADERS} ${JSONCPP_SOURCES} ${INCLUDE_FILES} ${SOURCE_FILES})
+#поиск заголовочников имплементации
+file(GLOB_RECURSE IMPL_INCLUDE_FILES Impl/*.h)
+#поиск исходников имплементации
+file(GLOB_RECURSE IMPL_SOURCE_FILES Impl/*.cpp)
+
+
+add_library(${PROJECT_NAME} #название проекта
+            ${LIB_BUILD_TYPE} #тип библиотеки
+            ${JSONCPP_HEADERS} ${JSONCPP_SOURCES} #Amalgamation исходники JSONCpp
+            ${INCLUDE_FILES} ${SOURCE_FILES} #Файлы интерфейсной части
+            ${IMPL_INCLUDE_FILES} ${IMPL_SOURCE_FILES} #Файлы реализации
+           )
 
 if(BUILD_TESTS)
     enable_testing()
