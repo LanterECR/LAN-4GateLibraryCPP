@@ -7,14 +7,13 @@
 #include <exception>
 
 #include "Validators/ValidatorFactory.h"
-#include "Lanter/Utils/RangeChecker.h"
+#include "Lanter/Utils/FieldRangeChecker.h"
+
+using namespace Lanter::Utils;
 
 namespace Lanter
 {
     namespace Request {
-        //вспомогательные функции
-        static const int64_t minimumAmount = 0;
-        static const int64_t maximumAmount = 999999999999;
 
         RequestData::RequestData() {
             initValidator();
@@ -25,9 +24,8 @@ namespace Lanter
         }
 
         void RequestData::setEcrNumber(int16_t ecrNumber) {
-            int16_t minimumValue = 1;
-            int16_t maximumValue = 999;
-            if (Utils::checkValueRange(ecrNumber, minimumValue, maximumValue)) {
+            if (checkEcrNumberRange(ecrNumber))
+            {
                 m_EcrNumber = ecrNumber;
                 m_FieldsSet.insert(RequestFields::EcrNumber);
             }
@@ -38,9 +36,7 @@ namespace Lanter
         }
 
         void RequestData::setEcrMerchantNumber(int16_t ecrMerchantNumber) {
-            int16_t minimumValue = 1;
-            int16_t maximumValue = 999;
-            if (Utils::checkValueRange(ecrMerchantNumber, minimumValue, maximumValue)) {
+            if (checkEcrMerchantNumberRange(ecrMerchantNumber)) {
                 m_EcrMerchantNumber = ecrMerchantNumber;
                 m_FieldsSet.insert(RequestFields::EcrMerchantNumber);
             }
@@ -51,9 +47,8 @@ namespace Lanter
         }
 
         void RequestData::setOperationCode(OperationCodes operationCode) {
-            if (Utils::checkValueRange(static_cast<int64_t>(operationCode),
-                                static_cast<int64_t>(OperationCodes::FirstValue),
-                                static_cast<int64_t>(OperationCodes::LastValue))) {
+            if (checkOperationCodeRange(static_cast<int32_t>(operationCode)))
+            {
                 m_OperationCode = operationCode;
                 m_FieldsSet.insert(RequestFields::OperationCode);
                 initValidator();
@@ -65,7 +60,7 @@ namespace Lanter
         }
 
         void RequestData::setAmount(int64_t amount) {
-            if (Utils::checkValueRange(amount, minimumAmount, maximumAmount)) {
+            if (checkAmountRange(amount)) {
                 m_Amount = amount;
                 m_FieldsSet.insert(RequestFields::Amount);
             }
@@ -76,7 +71,7 @@ namespace Lanter
         }
 
         void RequestData::setPartialAmount(int64_t partialAmount) {
-            if (Utils::checkValueRange(partialAmount, minimumAmount, maximumAmount)) {
+            if (checkAmountRange(partialAmount)) {
                 m_PartialAmount = partialAmount;
                 m_FieldsSet.insert(RequestFields::PartialAmount);
             }
@@ -87,7 +82,7 @@ namespace Lanter
         }
 
         void RequestData::setTipsAmount(int64_t tipsAmount) {
-            if (Utils::checkValueRange(tipsAmount, minimumAmount, maximumAmount)) {
+            if (checkAmountRange(tipsAmount)) {
                 m_TipsAmount = tipsAmount;
                 m_FieldsSet.insert(RequestFields::TipsAmount);
             }
@@ -98,7 +93,7 @@ namespace Lanter
         }
 
         void RequestData::setCashbackAmount(int64_t cashbackAmount) {
-            if (Utils::checkValueRange(cashbackAmount, minimumAmount, maximumAmount)) {
+            if (checkAmountRange(cashbackAmount)) {
                 m_CashbackAmount = cashbackAmount;
                 m_FieldsSet.insert(RequestFields::CashbackAmount);
             }
@@ -109,9 +104,7 @@ namespace Lanter
         }
 
         void RequestData::setCurrencyCode(int16_t currencyCode) {
-            int64_t minimumCurrencyCode = 1;
-            int64_t maximumCurrencyCode = 999;
-            if (Utils::checkValueRange(currencyCode, minimumCurrencyCode, maximumCurrencyCode)) {
+            if (checkCurrencyCodeRange(currencyCode)) {
                 m_CurrencyCode = currencyCode;
                 m_FieldsSet.insert(RequestFields::CurrencyCode);
             }
@@ -122,11 +115,9 @@ namespace Lanter
         }
 
         void RequestData::setRRN(const std::string &RRN) {
-            if (!RRN.empty()) {
+            if (checkRRNRange(RRN)) {
                 m_RRN = RRN;
                 m_FieldsSet.insert(RequestFields::RRN);
-            } else {
-                throw std::invalid_argument("Invalid RRN length");
             }
         }
 
@@ -135,11 +126,9 @@ namespace Lanter
         }
 
         void RequestData::setAuthCode(const std::string &authCode) {
-            if (!authCode.empty()) {
+            if (checkAuthCodeRange(authCode)) {
                 m_AuthCode = authCode;
                 m_FieldsSet.insert(RequestFields::AuthCode);
-            } else {
-                throw std::invalid_argument("Invalid AuthCode length");
             }
         }
 
@@ -148,11 +137,9 @@ namespace Lanter
         }
 
         void RequestData::setReceiptReference(const std::string &receiptReference) {
-            if (!receiptReference.empty()) {
+            if (checkAuthCodeRange(receiptReference)) {
                 m_ReceiptReference = receiptReference;
                 m_FieldsSet.insert(RequestFields::ReceiptReference);
-            } else {
-                throw std::invalid_argument("Invalid ReceiptReference length");
             }
         }
 
@@ -161,11 +148,9 @@ namespace Lanter
         }
 
         void RequestData::setTransactionId(const std::string &transactionId) {
-            if (!transactionId.empty()) {
+            if (checkTransactionIDRange(transactionId)) {
                 m_TransactionID = transactionId;
                 m_FieldsSet.insert(RequestFields::TransactionID);
-            } else {
-                throw std::invalid_argument("Invalid TransactionID length");
             }
         }
 
@@ -174,11 +159,9 @@ namespace Lanter
         }
 
         void RequestData::setCardDataEnc(const std::string &cardDataEnc) {
-            if (!cardDataEnc.empty()) {
+            if (checkCardDataEncRange(cardDataEnc)) {
                 m_CardDataEnc = cardDataEnc;
                 m_FieldsSet.insert(RequestFields::CardDataEnc);
-            } else {
-                throw std::invalid_argument("Invalid CardDataEnc length");
             }
         }
 
@@ -187,11 +170,9 @@ namespace Lanter
         }
 
         void RequestData::setOpenTags(const std::string &openTags) {
-            if (!openTags.empty()) {
+            if (checkOpenTagsRange(openTags)) {
                 m_OpenTags = openTags;
                 m_FieldsSet.insert(RequestFields::OpenTags);
-            } else {
-                throw std::invalid_argument("Invalid OpenTags length");
             }
         }
 
@@ -200,11 +181,9 @@ namespace Lanter
         }
 
         void RequestData::setEncTags(const std::string &encTags) {
-            if (!encTags.empty()) {
+            if (checkEncTagsRange(encTags)) {
                 m_EncTags = encTags;
                 m_FieldsSet.insert(RequestFields::EncTags);
-            } else {
-                throw std::invalid_argument("Invalid EncTags length");
             }
         }
 
@@ -213,11 +192,9 @@ namespace Lanter
         }
 
         void RequestData::setProviderCode(const std::string &providerCode) {
-            if (!providerCode.empty()) {
+            if (checkProviderCodeRange(providerCode)) {
                 m_ProviderCode = providerCode;
                 m_FieldsSet.insert(RequestFields::ProviderCode);
-            } else {
-                throw std::invalid_argument("Invalid ProviderCode length");
             }
         }
 
@@ -226,11 +203,9 @@ namespace Lanter
         }
 
         void RequestData::setAdditionalInfo(const std::string &additionalInfo) {
-            if (!additionalInfo.empty()) {
+            if (checkAdditionalInfoRange(additionalInfo)) {
                 m_AdditionalInfo = additionalInfo;
                 m_FieldsSet.insert(RequestFields::AdditionalInfo);
-            } else {
-                throw std::invalid_argument("Invalid AdditionalInfo length");
             }
         }
 

@@ -4,9 +4,9 @@
 
 #ifndef LAN_4GATELIBRARYCPP_REQUESTFIELDS_H
 #define LAN_4GATELIBRARYCPP_REQUESTFIELDS_H
-namespace Lanter
-{
+namespace Lanter {
     namespace Request {
+        /// \brief Перечисление содержит все поля, используемые для запросов к финансовому ПО LAN-4Tap
         enum class RequestFields {
             EcrNumber, ///< Логический номер кассы, используемый для взаимодействия с LAN-4Tap
             EcrMerchantNumber, ///< Логический номер мерчанта в кассовом ПО
