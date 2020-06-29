@@ -131,11 +131,11 @@ namespace Lanter {
 
             /// Возвращает установленное значение иднетификатора транзакции
             /// \return Строка содержащая значение идентификатора транзакции
-            const std::string &getTransactionId() const override;
+            const std::string &getTransactionID() const override;
 
             /// Устанавливает значение идентификатора тназакции, полученное в ответ на однй из предыдущих операций
             /// \param transactionId Строка, содержащая идентификатор тразакции
-            void setTransactionId(const std::string &transactionId) override;
+            void setTransactionID(const std::string &transactionId) override;
 
             /// Возвращает установленное значение, содержащее зашифрованные данные карты
             /// \return Строка, содержащая зашифрованные данные карты

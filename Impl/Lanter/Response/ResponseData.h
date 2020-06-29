@@ -48,13 +48,13 @@ namespace Lanter {
 
             void setPartialAmount(int64_t partialAmount) override;
 
-            int64_t getAmountAcquirerFee() const override;
+            int64_t getAcquirerFeeAmount() const override;
 
-            void setAmountAcquirerFee(int64_t amountAcquirerFee) override;
+            void setAcquirerFeeAmount(int64_t amountAcquirerFee) override;
 
-            int64_t getAmountTerminalFee() const override;
+            int64_t getTerminalFeeAmount() const override;
 
-            void setAmountTerminalFee(int64_t amountTerminalFee) override;
+            void setTerminalFeeAmount(int64_t amountTerminalFee) override;
 
             int64_t getTipsAmount() const override;
 
@@ -126,7 +126,7 @@ namespace Lanter {
 
             const std::string &getTerminalID() const override;
 
-            void setTerminalId(const std::string &terminalId) override;
+            void setTerminalID(const std::string &terminalId) override;
 
             const std::string &getCardEmvAid() const override;
 

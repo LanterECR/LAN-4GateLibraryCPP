@@ -143,11 +143,11 @@ namespace Lanter
             }
         }
 
-        const std::string &RequestData::getTransactionId() const {
+        const std::string &RequestData::getTransactionID() const {
             return m_TransactionID;
         }
 
-        void RequestData::setTransactionId(const std::string &transactionId) {
+        void RequestData::setTransactionID(const std::string &transactionId) {
             if (checkTransactionIDRange(transactionId)) {
                 m_TransactionID = transactionId;
                 m_FieldsSet.insert(RequestFields::TransactionID);

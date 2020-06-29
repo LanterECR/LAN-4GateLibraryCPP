@@ -69,6 +69,7 @@ namespace Lanter {
             if(checkOperationCodeRange(static_cast<uint32_t>(operationCode))) {
                 m_OperationCode = operationCode;
                 m_FieldsSet.insert(ResponseFields::OperationCode);
+                initValidator();
             }
         }
 
@@ -105,22 +106,22 @@ namespace Lanter {
             }
         }
 
-        int64_t ResponseData::getAmountAcquirerFee() const {
+        int64_t ResponseData::getAcquirerFeeAmount() const {
             return m_AmountAcquirerFee;
         }
 
-        void ResponseData::setAmountAcquirerFee(int64_t amountAcquirerFee) {
+        void ResponseData::setAcquirerFeeAmount(int64_t amountAcquirerFee) {
             if(checkAmountRange(amountAcquirerFee)) {
                 m_AmountAcquirerFee = amountAcquirerFee;
                 m_FieldsSet.insert(ResponseFields::AmountAcquirerFee);
             }
         }
 
-        int64_t ResponseData::getAmountTerminalFee() const {
+        int64_t ResponseData::getTerminalFeeAmount() const {
             return m_AmountTerminalFee;
         }
 
-        void ResponseData::setAmountTerminalFee(int64_t amountTerminalFee) {
+        void ResponseData::setTerminalFeeAmount(int64_t amountTerminalFee) {
             if(checkAmountRange(amountTerminalFee)) {
                 m_AmountTerminalFee = amountTerminalFee;
                 m_FieldsSet.insert(ResponseFields::AmountTerminalFee);
@@ -318,7 +319,7 @@ namespace Lanter {
             return m_TerminalID;
         }
 
-        void ResponseData::setTerminalId(const std::string &terminalId) {
+        void ResponseData::setTerminalID(const std::string &terminalId) {
             if(checkTerminalIDRange(terminalId)) {
                 m_TerminalID = terminalId;
                 m_FieldsSet.insert(ResponseFields::TerminalID);
@@ -409,7 +410,7 @@ namespace Lanter {
         void ResponseData::setMerchantID(const std::string &merchantId) {
             if(checkMerchantIDRange(merchantId)) {
                 m_MerchantID = merchantId;
-                m_FieldsSet.insert(ResponseFields::MerchantId);
+                m_FieldsSet.insert(ResponseFields::MerchantID);
             }
         }
 
@@ -518,6 +519,7 @@ namespace Lanter {
 
         void ResponseData::setSalesArray(const std::vector<std::shared_ptr<IResponseData> > &salesArray) {
             m_SalesArray = salesArray;
+            m_FieldsSet.insert(ResponseFields::SalesArray);
         }
 
         const std::vector<std::shared_ptr<IResponseData> > &ResponseData::getVoidArray() const {
@@ -526,6 +528,7 @@ namespace Lanter {
 
         void ResponseData::setVoidArray(const std::vector<std::shared_ptr<IResponseData> > &voidArray) {
             m_VoidArray = voidArray;
+            m_FieldsSet.insert(ResponseFields::VoidArray);
         }
 
         const std::vector<std::shared_ptr<IResponseData> > &ResponseData::getRefundArray() const {
@@ -534,6 +537,7 @@ namespace Lanter {
 
         void ResponseData::setRefundArray(const std::vector<std::shared_ptr<IResponseData> > &refundArray) {
             m_RefundArray = refundArray;
+            m_FieldsSet.insert(ResponseFields::RefundArray);
         }
 
         void ResponseData::initValidator() {

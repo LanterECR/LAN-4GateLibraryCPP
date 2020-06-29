@@ -5,22 +5,27 @@
 #include "gtest/gtest.h"
 #include "Lanter/Request/RequestDataFactory.h"
 
+#include "Lanter/Utils/Constants.h"
+
 using namespace Lanter;
 using namespace Lanter::Request;
+using namespace Lanter::Utils::Constants;
 
 TEST(RequestDataFactory, CheckFactory) {
-    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::NoOperation, 1), std::invalid_argument);
-    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::NoOperation, 999), std::invalid_argument);
-    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::NoOperation, 0), std::invalid_argument);
-    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::NoOperation, 1000), std::invalid_argument);
-    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::FirstValue, 1000), std::invalid_argument);
-    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::LastValue, 1000), std::invalid_argument);
-    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::FirstValue, 0), std::invalid_argument);
-    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::LastValue, 0), std::invalid_argument);
+    int32_t ecrNumberLessMinimum = MINIMUM_ECR_NUMBER - 1;
+    int32_t ecrNumberGreatMaximum = MAXIMUM_ECR_NUMBER + 1;
+    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::NoOperation, MINIMUM_ECR_NUMBER), std::invalid_argument);
+    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::NoOperation, MAXIMUM_ECR_NUMBER), std::invalid_argument);
+    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::NoOperation, ecrNumberLessMinimum), std::invalid_argument);
+    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::NoOperation, ecrNumberGreatMaximum), std::invalid_argument);
+    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::FirstValue, ecrNumberGreatMaximum), std::invalid_argument);
+    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::LastValue, ecrNumberGreatMaximum), std::invalid_argument);
+    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::FirstValue, ecrNumberLessMinimum), std::invalid_argument);
+    EXPECT_THROW(RequestDataFactory::getRequestData(OperationCodes::LastValue, ecrNumberLessMinimum), std::invalid_argument);
 
-    EXPECT_NO_THROW(RequestDataFactory::getRequestData(OperationCodes::Sale, 1));
-    EXPECT_FALSE(RequestDataFactory::getRequestData(OperationCodes::Sale, 1)->validateMandatoryFields());
+    EXPECT_NO_THROW(RequestDataFactory::getRequestData(OperationCodes::Sale, MINIMUM_ECR_NUMBER));
+    EXPECT_FALSE(RequestDataFactory::getRequestData(OperationCodes::Sale, MINIMUM_ECR_NUMBER)->validateMandatoryFields());
 
-    EXPECT_NO_THROW(RequestDataFactory::getRequestData(OperationCodes::Registration, 1));
-    EXPECT_TRUE(RequestDataFactory::getRequestData(OperationCodes::Registration, 1)->validateMandatoryFields());
+    EXPECT_NO_THROW(RequestDataFactory::getRequestData(OperationCodes::Registration, MINIMUM_ECR_NUMBER));
+    EXPECT_TRUE(RequestDataFactory::getRequestData(OperationCodes::Registration, MINIMUM_ECR_NUMBER)->validateMandatoryFields());
 }

@@ -100,19 +100,19 @@ namespace Lanter {
 
             /// \brief
             /// \return
-            virtual int64_t getAmountAcquirerFee() const = 0;
+            virtual int64_t getAcquirerFeeAmount() const = 0;
 
             /// \brief
             /// \param amountAcquirerFee
-            virtual void setAmountAcquirerFee(int64_t amountAcquirerFee) = 0;
+            virtual void setAcquirerFeeAmount(int64_t amountAcquirerFee) = 0;
 
             /// \brief
             /// \return
-            virtual int64_t getAmountTerminalFee() const = 0;
+            virtual int64_t getTerminalFeeAmount() const = 0;
 
             /// \brief
             /// \param amountTerminalFee
-            virtual void setAmountTerminalFee(int64_t amountTerminalFee) = 0;
+            virtual void setTerminalFeeAmount(int64_t amountTerminalFee) = 0;
 
             /// \brief
             /// \return
@@ -256,7 +256,7 @@ namespace Lanter {
 
             /// \brief
             /// \param terminalId
-            virtual void setTerminalId(const std::string &terminalId) = 0;
+            virtual void setTerminalID(const std::string &terminalId) = 0;
 
             /// \brief
             /// \return

@@ -139,11 +139,11 @@ namespace Lanter {
 
             /// \brief Возвращает установленное значение иднетификатора транзакции
             /// \return Строка содержащая значение идентификатора транзакции
-            virtual const std::string &getTransactionId() const = 0;
+            virtual const std::string &getTransactionID() const = 0;
 
             /// \brief Устанавливает значение идентификатора тназакции, полученное в ответ на однй из предыдущих операций
             /// \param transactionId Строка, содержащая идентификатор тразакции
-            virtual void setTransactionId(const std::string &transactionId) = 0;
+            virtual void setTransactionID(const std::string &transactionId) = 0;
 
             /// \brief Возвращает установленное значение, содержащее зашифрованные данные карты
             /// \return Строка, содержащая зашифрованные данные карты
