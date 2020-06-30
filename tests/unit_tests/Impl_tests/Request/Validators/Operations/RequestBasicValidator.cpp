@@ -6,7 +6,7 @@
 #include "Lanter/Request/Validators/Operations/BasicValidator.h"
 
 using namespace Lanter::Request;
-TEST(FieldsValidator, CheckAppendMandatory) {
+TEST(RequestBasicValidator, CheckAppendMandatory) {
     BasicValidator validator;
 
     EXPECT_FALSE(validator.getMandatoryFields().empty());
@@ -28,7 +28,7 @@ TEST(FieldsValidator, CheckAppendMandatory) {
     EXPECT_NE(validator.getMandatoryFields().find(RequestFields::CurrencyCode), validator.getMandatoryFields().end());
 }
 
-TEST(FieldsValidator, CheckAppendOptional) {
+TEST(RequestBasicValidator, CheckAppendOptional) {
     BasicValidator validator;
 
     EXPECT_TRUE(validator.getOptionalFields().empty());
@@ -48,7 +48,7 @@ TEST(FieldsValidator, CheckAppendOptional) {
     EXPECT_NE(validator.getOptionalFields().find(RequestFields::LastValue), validator.getMandatoryFields().end());
 }
 
-TEST(FieldsValidator, CheckValidateEmptyMandatory) {
+TEST(RequestBasicValidator, CheckValidateEmptyMandatory) {
     BasicValidator validator;
 
     std::set<RequestFields> fields;
@@ -58,7 +58,7 @@ TEST(FieldsValidator, CheckValidateEmptyMandatory) {
     EXPECT_TRUE(validator.validate(fields));
 }
 
-TEST(FieldsValidator, CheckValidateOneMandatory) {
+TEST(RequestBasicValidator, CheckValidateOneMandatory) {
     BasicValidator validator;
     validator.appendMandatoryField(RequestFields::FirstValue);
 
@@ -70,7 +70,7 @@ TEST(FieldsValidator, CheckValidateOneMandatory) {
     EXPECT_TRUE(validator.validate(fields));
 }
 
-TEST(FieldsValidator, CheckValidateAllFields) {
+TEST(RequestBasicValidator, CheckValidateAllFields) {
     BasicValidator validator;
     auto first = (int)RequestFields::FirstValue;
     auto last = (int)RequestFields::LastValue;
@@ -97,7 +97,7 @@ TEST(FieldsValidator, CheckValidateAllFields) {
     EXPECT_TRUE(validator.validate(allFields));
 }
 
-TEST(FieldsValidator, CheckOptional) {
+TEST(RequestBasicValidator, CheckOptional) {
     BasicValidator validator;
     validator.appendOptionalField(RequestFields::FirstValue);
 

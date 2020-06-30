@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class PrintDetailReport : public BasicValidator{
         public:
-            PrintDetailReport();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

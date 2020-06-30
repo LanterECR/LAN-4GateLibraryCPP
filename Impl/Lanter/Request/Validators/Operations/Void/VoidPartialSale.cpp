@@ -2,11 +2,6 @@
 
 namespace Lanter {
     namespace Request {
-
-        VoidPartialSale::VoidPartialSale() {
-            VoidPartialSale::addSpecificFields();
-        }
-
         void VoidPartialSale::addSpecificFields() {
             appendMandatoryField(RequestFields::EcrMerchantNumber);
             appendMandatoryField(RequestFields::ReceiptReference);

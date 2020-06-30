@@ -11,7 +11,7 @@
 #include "Lanter/Response/CardholderAuthMethod.h"
 #include "Lanter/Response/CardInputMethod.h"
 #include "Lanter/Response/Status.h"
-
+#include "Lanter/Notifications/NotificationCodes.h"
 #include "Constants.h"
 
 using namespace Lanter::Utils::Constants;
@@ -374,5 +374,17 @@ namespace Lanter {
             }
             return true;
         }
+
+        bool checkNotificationsRange(int32_t notification) {
+            if(!checkValueRange(notification,
+                                static_cast<int64_t>(Notifications::NotificationCodes::FirstValue),
+                                static_cast<int64_t>(Notifications::NotificationCodes::LastValue)))
+            {
+                throw std::invalid_argument("Invalid notification code");
+            }
+            return true;
+        }
+
+
     }//Utils
 }//Lanter

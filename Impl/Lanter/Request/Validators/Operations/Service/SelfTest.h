@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class SelfTest : public BasicValidator{
         public:
-            SelfTest();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

@@ -16,7 +16,7 @@ namespace Lanter {
             virtual ~IValidator() = default;
 
             virtual void appendMandatoryField(ResponseFields field) = 0;
-
+            
             virtual const std::set <ResponseFields> &getMandatoryFields() const = 0;
 
             virtual void appendOptionalField(ResponseFields field) = 0;

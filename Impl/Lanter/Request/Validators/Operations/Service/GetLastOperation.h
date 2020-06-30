@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class GetLastOperation : public BasicValidator{
         public:
-            GetLastOperation();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

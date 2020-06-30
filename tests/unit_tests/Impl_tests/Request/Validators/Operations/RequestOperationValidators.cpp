@@ -10,7 +10,7 @@ using namespace Lanter;
 using namespace Lanter::Request;
 
 //Refund
-TEST(OperationValidators, CheckRefund) {
+TEST(RequestOperationValidators, CheckRefund) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -37,7 +37,7 @@ TEST(OperationValidators, CheckRefund) {
     }
 }
 
-TEST(OperationValidators, CheckRefundWithoutRRN) {
+TEST(RequestOperationValidators, CheckRefundWithoutRRN) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -63,7 +63,7 @@ TEST(OperationValidators, CheckRefundWithoutRRN) {
 }
 
 //Sales
-TEST(OperationValidators, CheckAliPay) {
+TEST(RequestOperationValidators, CheckAliPay) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -83,7 +83,7 @@ TEST(OperationValidators, CheckAliPay) {
     }
 }
 
-TEST(OperationValidators, CheckFastTrack) {
+TEST(RequestOperationValidators, CheckFastTrack) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -110,7 +110,7 @@ TEST(OperationValidators, CheckFastTrack) {
     }
 }
 
-TEST(OperationValidators, CheckMOTO) {
+TEST(RequestOperationValidators, CheckMOTO) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -130,7 +130,7 @@ TEST(OperationValidators, CheckMOTO) {
     }
 }
 
-TEST(OperationValidators, CheckPreAuth) {
+TEST(RequestOperationValidators, CheckPreAuth) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -157,7 +157,7 @@ TEST(OperationValidators, CheckPreAuth) {
     }
 }
 
-TEST(OperationValidators, CheckQuickPayment) {
+TEST(RequestOperationValidators, CheckQuickPayment) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -177,7 +177,7 @@ TEST(OperationValidators, CheckQuickPayment) {
     }
 }
 
-TEST(OperationValidators, CheckQuickPaymentStatus) {
+TEST(RequestOperationValidators, CheckQuickPaymentStatus) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -204,7 +204,7 @@ TEST(OperationValidators, CheckQuickPaymentStatus) {
     }
 }
 
-TEST(OperationValidators, CheckSale) {
+TEST(RequestOperationValidators, CheckSale) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -224,7 +224,7 @@ TEST(OperationValidators, CheckSale) {
     }
 }
 
-TEST(OperationValidators, CheckSalesCompletion) {
+TEST(RequestOperationValidators, CheckSalesCompletion) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -253,7 +253,7 @@ TEST(OperationValidators, CheckSalesCompletion) {
 }
 
 //Void
-TEST(OperationValidators, CheckVoid) {
+TEST(RequestOperationValidators, CheckVoid) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -277,7 +277,7 @@ TEST(OperationValidators, CheckVoid) {
     }
 }
 
-TEST(OperationValidators, CheckVoidPartialSale) {
+TEST(RequestOperationValidators, CheckVoidPartialSale) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -303,7 +303,7 @@ TEST(OperationValidators, CheckVoidPartialSale) {
     }
 }
 
-TEST(OperationValidators, CheckVoidPreAuth) {
+TEST(RequestOperationValidators, CheckVoidPreAuth) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -330,7 +330,7 @@ TEST(OperationValidators, CheckVoidPreAuth) {
 
 //Service
 
-TEST(OperationValidators, CheckDisplayQR) {
+TEST(RequestOperationValidators, CheckDisplayQR) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -353,7 +353,7 @@ TEST(OperationValidators, CheckDisplayQR) {
     }
 }
 
-TEST(OperationValidators, CheckFinalizeTransaction) {
+TEST(RequestOperationValidators, CheckFinalizeTransaction) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -375,7 +375,7 @@ TEST(OperationValidators, CheckFinalizeTransaction) {
     }
 }
 
-TEST(OperationValidators, CheckGetCurrentPrinter) {
+TEST(RequestOperationValidators, CheckGetCurrentPrinter) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -397,7 +397,7 @@ TEST(OperationValidators, CheckGetCurrentPrinter) {
     }
 }
 
-TEST(OperationValidators, CheckGetLastOperation) {
+TEST(RequestOperationValidators, CheckGetLastOperation) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -419,7 +419,7 @@ TEST(OperationValidators, CheckGetLastOperation) {
     }
 }
 
-TEST(OperationValidators, CheckGetOperationCopy) {
+TEST(RequestOperationValidators, CheckGetOperationCopy) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -443,7 +443,7 @@ TEST(OperationValidators, CheckGetOperationCopy) {
     }
 }
 
-TEST(OperationValidators, CheckInitialization) {
+TEST(RequestOperationValidators, CheckInitialization) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -465,7 +465,7 @@ TEST(OperationValidators, CheckInitialization) {
     }
 }
 
-TEST(OperationValidators, CheckKeyDownload) {
+TEST(RequestOperationValidators, CheckKeyDownload) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -487,7 +487,7 @@ TEST(OperationValidators, CheckKeyDownload) {
     }
 }
 
-TEST(OperationValidators, CheckPrintCommsInfo) {
+TEST(RequestOperationValidators, CheckPrintCommsInfo) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -509,7 +509,7 @@ TEST(OperationValidators, CheckPrintCommsInfo) {
     }
 }
 
-TEST(OperationValidators, CheckPrintDetailReport) {
+TEST(RequestOperationValidators, CheckPrintDetailReport) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -532,7 +532,7 @@ TEST(OperationValidators, CheckPrintDetailReport) {
     }
 }
 
-TEST(OperationValidators, CheckPrintLastReceipt) {
+TEST(RequestOperationValidators, CheckPrintLastReceipt) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -555,7 +555,7 @@ TEST(OperationValidators, CheckPrintLastReceipt) {
     }
 }
 
-TEST(OperationValidators, CheckPrintReceiptCopy) {
+TEST(RequestOperationValidators, CheckPrintReceiptCopy) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -579,7 +579,7 @@ TEST(OperationValidators, CheckPrintReceiptCopy) {
     }
 }
 
-TEST(OperationValidators, CheckPrintSoftInfo) {
+TEST(RequestOperationValidators, CheckPrintSoftInfo) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -601,7 +601,7 @@ TEST(OperationValidators, CheckPrintSoftInfo) {
     }
 }
 
-TEST(OperationValidators, CheckPrintSummaryReport) {
+TEST(RequestOperationValidators, CheckPrintSummaryReport) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -624,7 +624,7 @@ TEST(OperationValidators, CheckPrintSummaryReport) {
     }
 }
 
-TEST(OperationValidators, CheckRegistration) {
+TEST(RequestOperationValidators, CheckRegistration) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -646,7 +646,7 @@ TEST(OperationValidators, CheckRegistration) {
     }
 }
 
-TEST(OperationValidators, CheckSelfTest) {
+TEST(RequestOperationValidators, CheckSelfTest) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -668,7 +668,7 @@ TEST(OperationValidators, CheckSelfTest) {
     }
 }
 
-TEST(OperationValidators, CheckSetCurrentPrinter) {
+TEST(RequestOperationValidators, CheckSetCurrentPrinter) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -691,7 +691,7 @@ TEST(OperationValidators, CheckSetCurrentPrinter) {
     }
 }
 
-TEST(OperationValidators, CheckSettlement) {
+TEST(RequestOperationValidators, CheckSettlement) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -714,7 +714,7 @@ TEST(OperationValidators, CheckSettlement) {
     }
 }
 
-TEST(OperationValidators, CheckTest) {
+TEST(RequestOperationValidators, CheckTest) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -736,7 +736,7 @@ TEST(OperationValidators, CheckTest) {
     }
 }
 
-TEST(OperationValidators, CheckTestCommunication) {
+TEST(RequestOperationValidators, CheckTestCommunication) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);
@@ -758,7 +758,7 @@ TEST(OperationValidators, CheckTestCommunication) {
     }
 }
 
-TEST(OperationValidators, CheckUpdateSW) {
+TEST(RequestOperationValidators, CheckUpdateSW) {
     std::set<RequestFields> fields;
 
     fields.insert(RequestFields::OperationCode);

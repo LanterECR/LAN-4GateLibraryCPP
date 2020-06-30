@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class PrintCommsInfo : public BasicValidator{
         public:
-            PrintCommsInfo();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

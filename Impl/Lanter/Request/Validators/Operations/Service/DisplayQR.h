@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class DisplayQR : public BasicValidator{
         public:
-            DisplayQR();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

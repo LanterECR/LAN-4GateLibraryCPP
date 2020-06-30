@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class GetCurrentPrinter : public BasicValidator{
         public:
-            GetCurrentPrinter();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

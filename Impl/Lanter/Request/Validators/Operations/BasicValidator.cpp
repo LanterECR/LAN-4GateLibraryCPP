@@ -20,6 +20,8 @@ namespace Lanter {
 
             if (Utils::checkValueRange(value, minValue, maxValue)) {
                 m_MandatoryFields.insert(field);
+            } else {
+                throw std::invalid_argument("Invalid field");
             }
         }
 
@@ -34,6 +36,8 @@ namespace Lanter {
 
             if (Utils::checkValueRange(value, minValue, maxValue)) {
                 m_OptionalFields.insert(field);
+            } else {
+                throw std::invalid_argument("Invalid field");
             }
         }
 

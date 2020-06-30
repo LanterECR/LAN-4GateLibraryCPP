@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class Refund : public BasicValidator{
         public:
-            Refund();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

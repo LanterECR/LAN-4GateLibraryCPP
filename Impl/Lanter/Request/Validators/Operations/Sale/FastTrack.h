@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class FastTrack : public BasicValidator{
         public:
-            FastTrack();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

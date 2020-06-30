@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class PrintSoftInfo : public BasicValidator{
         public:
-            PrintSoftInfo();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

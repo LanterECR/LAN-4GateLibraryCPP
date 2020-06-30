@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class AliPay : public BasicValidator{
         public:
-            AliPay();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

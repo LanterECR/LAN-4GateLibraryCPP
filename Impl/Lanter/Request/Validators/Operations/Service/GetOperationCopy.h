@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class GetOperationCopy : public BasicValidator{
         public:
-            GetOperationCopy();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

@@ -52,6 +52,8 @@ namespace Lanter {
         bool checkSalesCountRange(int32_t salesCount);
         bool checkVoidCountRange(int32_t voidCount);
         bool checkRefundCountRange(int32_t refundCount);
+
+        bool checkNotificationsRange(int32_t notification);
     }
 }
 

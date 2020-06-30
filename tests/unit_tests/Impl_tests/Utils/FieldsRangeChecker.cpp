@@ -9,9 +9,11 @@
 #include "Lanter/Response/Status.h"
 #include "Lanter/Response/CardInputMethod.h"
 #include "Lanter/Response/CardholderAuthMethod.h"
+#include "Lanter/Notifications/NotificationCodes.h"
 
 using namespace Lanter;
 using namespace Lanter::Response;
+using namespace Lanter::Notifications;
 using namespace Lanter::Utils;
 using namespace Lanter::Utils::Constants;
 
@@ -628,4 +630,20 @@ TEST(FieldsRangeChecker, CheckRefundCountRange){
 
     EXPECT_TRUE(checkRefundCountRange(MINIMUM_ARRAY_SIZE + 1));
     EXPECT_TRUE(checkRefundCountRange(MAXIMUM_ARRAY_SIZE - 1));
+}
+TEST(FieldsRangeChecker, CheckNotiticationCodes){
+    auto lessMinimum =  (int32_t)NotificationCodes::FirstValue - 1;
+    auto greatMaximum = (int32_t)NotificationCodes::LastValue + 1;
+
+    auto greatMinimum = (int32_t)NotificationCodes::FirstValue + 1;
+    auto lessMaximum = (int32_t)NotificationCodes::LastValue - 1;
+
+    EXPECT_THROW(checkNotificationsRange(lessMinimum), std::invalid_argument);
+    EXPECT_THROW(checkNotificationsRange(greatMaximum), std::invalid_argument);
+
+    EXPECT_TRUE(checkNotificationsRange((int32_t)NotificationCodes::FirstValue));
+    EXPECT_TRUE(checkNotificationsRange((int32_t)NotificationCodes::LastValue));
+
+    EXPECT_TRUE(checkNotificationsRange(greatMinimum));
+    EXPECT_TRUE(checkNotificationsRange(lessMaximum));
 }

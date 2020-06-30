@@ -3,12 +3,6 @@
 
 namespace Lanter {
     namespace Request {
-
-        SalesCompletion::SalesCompletion() {
-            SalesCompletion::addSpecificFields();
-
-        }
-
         void Request::SalesCompletion::addSpecificFields() {
             appendMandatoryField(RequestFields::EcrMerchantNumber);
             appendMandatoryField(RequestFields::Amount);

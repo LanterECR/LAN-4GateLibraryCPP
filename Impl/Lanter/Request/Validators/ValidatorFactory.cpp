@@ -92,10 +92,10 @@ namespace Lanter {
                     validator = std::make_shared<RefundWithoutRRN>();
                     break;
                 case OperationCodes::QuickPaymentRefund:
-                    //validator = std::make_shared<QuickPaymentRefund>();
+                    validator = std::make_shared<QuickPaymentRefund>();
                     break;
                 case OperationCodes::QuickPaymentRefundStatus:
-                    //validator = std::make_shared<QuickPaymentRefundStatus>();
+                    validator = std::make_shared<QuickPaymentRefundStatus>();
                     break;
                 case OperationCodes::Registration:
                     validator = std::make_shared<Registration>();

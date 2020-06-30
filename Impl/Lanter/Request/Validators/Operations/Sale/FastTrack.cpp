@@ -3,11 +3,6 @@
 
 namespace Lanter {
     namespace Request {
-
-        FastTrack::FastTrack() {
-            FastTrack::addSpecificFields();
-        }
-
         void Request::FastTrack::addSpecificFields() {
             appendMandatoryField(RequestFields::EcrMerchantNumber);
             appendMandatoryField(RequestFields::Amount);

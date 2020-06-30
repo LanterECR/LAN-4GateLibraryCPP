@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class Initialization : public BasicValidator{
         public:
-            Initialization();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

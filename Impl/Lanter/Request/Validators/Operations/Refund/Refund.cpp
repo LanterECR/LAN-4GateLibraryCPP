@@ -2,10 +2,6 @@
 
 namespace Lanter {
     namespace Request {
-        Refund::Refund() {
-            Refund::addSpecificFields();
-        }
-
         void Refund::addSpecificFields() {
             appendMandatoryField(RequestFields::EcrMerchantNumber);
             appendMandatoryField(RequestFields::Amount);

@@ -4,5 +4,26 @@
 
 #ifndef LAN_4GATELIBRARYCPP_RESPONSEDATAFACTORY_H
 #define LAN_4GATELIBRARYCPP_RESPONSEDATAFACTORY_H
+#include <memory>
+
+#include "IResponseData.h"
+#include "Lanter/OperationCodes.h"
+
+namespace Lanter {
+    namespace Response {
+        /// \brief Фабричный класс, возвращающий предварительно заполненный обхект IResponseData
+        class ResponseDataFactory {
+        public:
+            /// \brief Возвращает указатель на объект интерфейса IResponseData, предварительно заполненный
+            /// переданными кодом операции и логическим номером кассового ПО
+            /// \param operationCode Код операции из списка OperationCodes
+            /// \sa OperationCodes
+            /// \param ecrNumber Логический номер кассового ПО в диапазоне [1, 999]
+            /// \return Указатель на объект интерфейса IResponseData
+            /// \throws invalid_argument, если operationCode или ecrNumber вне разрешенного диапазона
+            static std::shared_ptr<IResponseData> getResponseData(OperationCodes operationCode, int16_t ecrNumber);
+        };//ResponseDataFactory
+    }//Response
+}//Lanter
 
 #endif //LAN_4GATELIBRARYCPP_RESPONSEDATAFACTORY_H

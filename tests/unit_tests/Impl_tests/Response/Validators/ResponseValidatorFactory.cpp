@@ -1,15 +1,15 @@
 //
-// Created by Владимир Лысенков on 24.06.2020.
+// Created by Владимир Лысенков on 30.06.2020.
 //
 
 #include "gtest/gtest.h"
 
-#include "Lanter/Request/Validators/ValidatorFactory.h"
+#include "Lanter/Response/Validators/ValidatorFactory.h"
 
 using namespace Lanter;
-using namespace Lanter::Request;
+using namespace Lanter::Response;
 
-TEST(ValidatorFactory, CheckValidatorCreation) {
+TEST(ResponseValidatorFactory, CheckValidatorCreation) {
     auto start = (int)OperationCodes::FirstValue;
     auto end = (int)OperationCodes::LastValue;
 

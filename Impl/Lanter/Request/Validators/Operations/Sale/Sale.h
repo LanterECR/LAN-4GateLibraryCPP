@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class Sale : public BasicValidator{
         public:
-            Sale();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

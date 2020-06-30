@@ -11,10 +11,8 @@ namespace Lanter {
     namespace Request {
         class QuickPayment : public BasicValidator{
         public:
-            QuickPayment();
-        protected:
             void addSpecificFields() override;
         };
     }//Request
 }//Lanter
-#endif //LAN_4GATELIBRARYCPP_QUICKPAYMENT_H
+#endif //LAN_4GATELIBRARYCPP_QUICKPAYMENTREFUND_H

@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class PreAuth : public BasicValidator{
         public:
-            PreAuth();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

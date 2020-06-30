@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class PrintLastReceipt : public BasicValidator{
         public:
-            PrintLastReceipt();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

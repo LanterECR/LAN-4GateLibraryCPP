@@ -3,11 +3,6 @@
 
 namespace Lanter {
     namespace Request {
-
-        PreAuth::PreAuth() {
-            PreAuth::addSpecificFields();
-        }
-
         void Request::PreAuth::addSpecificFields() {
             appendMandatoryField(RequestFields::EcrMerchantNumber);
             appendMandatoryField(RequestFields::Amount);

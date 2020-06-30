@@ -2,11 +2,6 @@
 
 namespace Lanter {
     namespace Request {
-
-        GetLastOperation::GetLastOperation() {
-            GetLastOperation::addSpecificFields();
-        }
-
         void GetLastOperation::addSpecificFields() {
 
         }

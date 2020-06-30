@@ -11,8 +11,6 @@ namespace Lanter {
     namespace Request {
         class MOTO : public BasicValidator{
         public:
-            MOTO();
-        protected:
             void addSpecificFields() override;
         };
     }//Request

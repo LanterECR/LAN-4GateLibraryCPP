@@ -5,6 +5,7 @@
 #include "ResponseData.h"
 
 #include "Lanter/Utils/FieldRangeChecker.h"
+#include "Validators/ValidatorFactory.h"
 
 using namespace Lanter::Utils;
 
@@ -541,7 +542,7 @@ namespace Lanter {
         }
 
         void ResponseData::initValidator() {
-
+            m_Validator = ValidatorFactory::getValidator(getOperationCode());
         }
     }
 }
