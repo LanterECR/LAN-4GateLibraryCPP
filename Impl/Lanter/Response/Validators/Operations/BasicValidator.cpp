@@ -2,6 +2,8 @@
 // Created by Владимир Лысенков on 21.06.2020.
 //
 
+#include <stdexcept>
+
 #include "BasicValidator.h"
 
 #include <Lanter/Utils/RangeChecker.h>

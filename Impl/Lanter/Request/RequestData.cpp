@@ -4,7 +4,7 @@
 
 #include "RequestData.h"
 
-#include <exception>
+#include <stdexcept>
 
 #include "Validators/ValidatorFactory.h"
 #include "Lanter/Utils/FieldRangeChecker.h"
