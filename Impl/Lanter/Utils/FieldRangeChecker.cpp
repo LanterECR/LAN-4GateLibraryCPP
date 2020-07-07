@@ -6,14 +6,13 @@
 
 #include "RangeChecker.h"
 
-#include "Lanter/OperationCodes.h"
-
-#include "Lanter/Response/CardholderAuthMethod.h"
-#include "Lanter/Response/CardInputMethod.h"
-#include "Lanter/Response/Status.h"
-#include "Lanter/Notifications/NotificationCodes.h"
+#include "Lanter/Message/Response/CardholderAuthMethod.h"
+#include "Lanter/Message/Response/CardInputMethod.h"
+#include "Lanter/Message/Response/Status.h"
+#include "Lanter/Message/Notifications/NotificationCodes.h"
 #include "Constants.h"
 
+using namespace Lanter::Message;
 using namespace Lanter::Utils::Constants;
 namespace Lanter {
     namespace Utils {
@@ -377,8 +376,8 @@ namespace Lanter {
 
         bool checkNotificationsRange(int32_t notification) {
             if(!checkValueRange(notification,
-                                static_cast<int64_t>(Notifications::NotificationCodes::FirstValue),
-                                static_cast<int64_t>(Notifications::NotificationCodes::LastValue)))
+                                static_cast<int64_t>(Notification::NotificationCodes::FirstValue),
+                                static_cast<int64_t>(Notification::NotificationCodes::LastValue)))
             {
                 throw std::invalid_argument("Invalid notification code");
             }

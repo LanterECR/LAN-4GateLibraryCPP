@@ -3,12 +3,13 @@
 //
 
 #include "gtest/gtest.h"
-#include "Lanter/Request/RequestDataFactory.h"
+#include "Lanter/Message/Request/RequestDataFactory.h"
 
 #include "Lanter/Utils/Constants.h"
 
 using namespace Lanter;
-using namespace Lanter::Request;
+using namespace Lanter::Message;
+using namespace Lanter::Message::Request;
 using namespace Lanter::Utils::Constants;
 
 TEST(RequestDataFactory, CheckFactory) {

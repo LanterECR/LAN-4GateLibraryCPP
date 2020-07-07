@@ -5,15 +5,16 @@
 #include "gtest/gtest.h"
 #include "Lanter/Utils/Constants.h"
 #include "Lanter/Utils/FieldRangeChecker.h"
-#include "Lanter/OperationCodes.h"
-#include "Lanter/Response/Status.h"
-#include "Lanter/Response/CardInputMethod.h"
-#include "Lanter/Response/CardholderAuthMethod.h"
-#include "Lanter/Notifications/NotificationCodes.h"
+#include "Lanter/Message/OperationCodes.h"
+#include "Lanter/Message/Response/Status.h"
+#include "Lanter/Message/Response/CardInputMethod.h"
+#include "Lanter/Message/Response/CardholderAuthMethod.h"
+#include "Lanter/Message/Notifications/NotificationCodes.h"
 
 using namespace Lanter;
-using namespace Lanter::Response;
-using namespace Lanter::Notifications;
+using namespace Lanter::Message;
+using namespace Lanter::Message::Response;
+using namespace Lanter::Message::Notification;
 using namespace Lanter::Utils;
 using namespace Lanter::Utils::Constants;
 
