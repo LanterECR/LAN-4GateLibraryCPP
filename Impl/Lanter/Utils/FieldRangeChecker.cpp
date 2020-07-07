@@ -2,6 +2,8 @@
 // Created by Владимир Лысенков on 26.06.2020.
 //
 
+#include <stdexcept>
+
 #include "FieldRangeChecker.h"
 
 #include "RangeChecker.h"

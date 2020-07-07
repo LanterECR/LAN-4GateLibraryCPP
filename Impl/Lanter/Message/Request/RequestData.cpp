@@ -3,7 +3,6 @@
 //
 
 #include "RequestData.h"
-
 #include "Validators/ValidatorFactory.h"
 #include "Lanter/Utils/FieldRangeChecker.h"
 
