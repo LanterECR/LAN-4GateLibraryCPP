@@ -3,12 +3,13 @@
 //
 
 #include "gtest/gtest.h"
-#include "Lanter/Response/ResponseDataFactory.h"
+#include "Lanter/Message/Response/ResponseDataFactory.h"
 
 #include "Lanter/Utils/Constants.h"
 
 using namespace Lanter;
-using namespace Lanter::Response;
+using namespace Lanter::Message;
+using namespace Lanter::Message::Response;
 using namespace Lanter::Utils::Constants;
 
 TEST(ResponseDataFactory, CheckFactory) {
@@ -30,7 +31,7 @@ TEST(ResponseDataFactory, CheckFactory) {
     EXPECT_FALSE(ResponseDataFactory::getResponseData(OperationCodes::Registration, MINIMUM_ECR_NUMBER)->validateMandatoryFields());
 
     auto response = ResponseDataFactory::getResponseData(OperationCodes::Registration, MINIMUM_ECR_NUMBER);
-    response->setStatus(Lanter::Response::Status::Success);
+    response->setStatus(Status::Success);
 
     EXPECT_TRUE(response->validateMandatoryFields());
 }
