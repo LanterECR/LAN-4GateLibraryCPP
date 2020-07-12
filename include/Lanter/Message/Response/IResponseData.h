@@ -29,6 +29,11 @@ namespace Lanter {
                 /// \sa ResponseFields
                 virtual const std::set<ResponseFields> &getFieldsSet() const = 0;
 
+                /// \brief Проверяет было ли установлено поле
+                /// \param field Поле, которое необходимо проверить
+                /// \return true, если поле было установлено
+                virtual bool isFieldSet(ResponseFields field) const = 0;
+
                 /// \brief Возвращает список обязательных полей для выполненной операции
                 /// \return Список обязательных полей
                 /// \sa ResponseFields
@@ -41,7 +46,7 @@ namespace Lanter {
 
                 /// \brief Проверяет наличие обязательных полей.
                 /// \return true - если все обязательные поля установлены.
-                virtual bool validateMandatoryFields() = 0;
+                virtual bool validateMandatoryFields() const = 0;
 
                 /// \brief Возвращает логический идентификатор кассового ПО
                 /// \return Если поле установлено - логический идентификатор кассового ПО, иначе -1
@@ -181,11 +186,11 @@ namespace Lanter {
 
                 /// \brief
                 /// \return
-                virtual const std::string &getCardPan() const = 0;
+                virtual const std::string &getCardPAN() const = 0;
 
                 /// \brief
                 /// \param cardPan
-                virtual void setCardPan(const std::string &cardPan) = 0;
+                virtual void setCardPAN(const std::string &cardPan) = 0;
 
                 /// \brief
                 /// \return

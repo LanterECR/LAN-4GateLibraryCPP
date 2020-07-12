@@ -2,9 +2,9 @@
 // Created by Владимир Лысенков on 30.06.2020.
 //
 
-#include "Lanter/Message/Notifications/NotificationDataFactory.h"
+#include "Lanter/Message/Notification/NotificationData.h"
 
-#include "Lanter/Message/Notifications/NotificationData.h"
+#include "Lanter/Message/Notification/NotificationDataFactory.h"
 
 namespace Lanter {
     namespace Message {

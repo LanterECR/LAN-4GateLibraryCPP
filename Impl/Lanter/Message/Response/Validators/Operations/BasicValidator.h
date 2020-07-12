@@ -33,6 +33,9 @@ namespace Lanter {
 
                 virtual void addSpecificFields();
 
+            protected:
+                virtual void clearMandatoryFields();
+                virtual void clearOptionalFields();
             private:
                 void addBasicMandatoryFields();
 

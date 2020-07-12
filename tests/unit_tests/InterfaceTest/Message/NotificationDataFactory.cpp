@@ -3,7 +3,7 @@
 //
 
 #include "gtest/gtest.h"
-#include "Lanter/Message/Notifications/NotificationDataFactory.h"
+#include "Lanter/Message/Notification/NotificationDataFactory.h"
 
 #include "Lanter/Utils/Constants.h"
 

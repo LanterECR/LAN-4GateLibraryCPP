@@ -332,21 +332,21 @@ TEST(ResponseData, CheckCardPan) {
 
     //empty value
     std::string emptyValue;
-    EXPECT_THROW(data.setCardPan(emptyValue), std::invalid_argument);
+    EXPECT_THROW(data.setCardPAN(emptyValue), std::invalid_argument);
 
     EXPECT_TRUE(data.getFieldsSet().empty());
-    EXPECT_TRUE(data.getCardPan().empty());
+    EXPECT_TRUE(data.getCardPAN().empty());
 
     std::string oversize(MAXIMUM_CARD_PAN_LENGTH + 1, '0');
-    EXPECT_THROW(data.setCardPan(oversize), std::invalid_argument);
+    EXPECT_THROW(data.setCardPAN(oversize), std::invalid_argument);
 
     std::string minimumSize(MINIMUM_CARD_PAN_LENGTH, '0');
-    EXPECT_NO_THROW(data.setCardPan(minimumSize));
-    EXPECT_STREQ(data.getCardPan().c_str(), minimumSize.c_str());
+    EXPECT_NO_THROW(data.setCardPAN(minimumSize));
+    EXPECT_STREQ(data.getCardPAN().c_str(), minimumSize.c_str());
 
     std::string maximumSize(MAXIMUM_CARD_PAN_LENGTH, '0');
-    EXPECT_NO_THROW(data.setCardPan(maximumSize));
-    EXPECT_STREQ(data.getCardPan().c_str(), maximumSize.c_str());
+    EXPECT_NO_THROW(data.setCardPAN(maximumSize));
+    EXPECT_STREQ(data.getCardPAN().c_str(), maximumSize.c_str());
 
     EXPECT_EQ(data.getFieldsSet().size(), 1);
     EXPECT_NE(data.getFieldsSet().find(ResponseFields::CardPAN), data.getFieldsSet().end());

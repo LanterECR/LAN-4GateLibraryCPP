@@ -25,6 +25,11 @@ namespace Lanter {
                 /// \sa RequestFields
                 virtual const std::set<RequestFields> &getFieldsSet() const = 0;
 
+                /// \brief Проверяет было ли установлено поле
+                /// \param field Поле, которое необходимо проверить
+                /// \return true, если поле было установлено
+                virtual bool isFieldSet(RequestFields field) const = 0;
+
                 /// \brief Возвращает список обязательных полей для выполняемой операции
                 /// \return Список обязательных полей
                 /// \sa RequestFields
@@ -37,7 +42,7 @@ namespace Lanter {
 
                 /// \brief Проверяет наличие обязательных полей.
                 /// \return true - если все обязательные поля установлены.
-                virtual bool validateMandatoryFields() = 0;
+                virtual bool validateMandatoryFields() const = 0;
 
                 /// \brief Возвращает логический идентификатор кассового ПО
                 /// \return Если поле установлено - логический идентификатор кассового ПО, иначе -1

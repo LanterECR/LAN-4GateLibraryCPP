@@ -223,7 +223,7 @@ namespace Lanter
                 return m_EmptyFieldsPlaceholder;
             }
 
-            bool RequestData::validateMandatoryFields() {
+            bool RequestData::validateMandatoryFields() const {
                 if (m_Validator) {
                     return m_Validator->validate(getFieldsSet());
                 }
@@ -234,7 +234,9 @@ namespace Lanter
                 m_Validator = ValidatorFactory::getValidator(getOperationCode());
             }
 
-
+            bool RequestData::isFieldSet(RequestFields field) const {
+                return m_FieldsSet.find(field) != m_FieldsSet.end();
+            }
         }//Request
     }
 }//Lanter

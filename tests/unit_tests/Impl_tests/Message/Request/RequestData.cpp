@@ -11,6 +11,18 @@ using namespace Lanter::Message;
 using namespace Lanter::Message::Request;
 using namespace Lanter::Utils::Constants;
 
+TEST(RequestData, CheckIsFieldSet) {
+    RequestData data;
+
+    EXPECT_FALSE(data.isFieldSet(RequestFields::EcrNumber));
+    EXPECT_FALSE(data.isFieldSet(RequestFields::OperationCode));
+
+    data.setEcrNumber(10);
+    data.setOperationCode(OperationCodes::GetLastOperation);
+
+    EXPECT_TRUE(data.isFieldSet(RequestFields::EcrNumber));
+    EXPECT_TRUE(data.isFieldSet(RequestFields::OperationCode));
+}
 TEST(RequestData, CheckEcrNumber) {
     RequestData data;
     int16_t lessMinimum = MINIMUM_ECR_NUMBER - 1;

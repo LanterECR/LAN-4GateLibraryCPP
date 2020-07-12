@@ -68,6 +68,14 @@ namespace Lanter {
             void BasicValidator::addSpecificFields() {
 
             }
+
+            void BasicValidator::clearMandatoryFields() {
+                m_MandatoryFields.clear();
+            }
+
+            void BasicValidator::clearOptionalFields() {
+                m_OptionalFields.clear();
+            }
         }//Response
     }
 }//Lanter

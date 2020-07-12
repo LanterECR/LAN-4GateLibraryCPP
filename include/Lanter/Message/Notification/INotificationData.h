@@ -19,20 +19,28 @@ namespace Lanter {
                 /// \brief Возвращает код полученного уведомления
                 /// \return Если поле не установлено - NoNotification
                 /// \sa Notifications
-                virtual NotificationCodes getNotificationCode() const = 0;
+                virtual NotificationCodes getCode() const = 0;
 
                 /// \brief Устанавливает код уведомления
                 /// \param notificationCode Код уведомления из перечисления Notification за исключением NoNotification
                 /// \throw invalid_argument, если код уведомления вне диапазона
-                virtual void setNotificationCode(NotificationCodes notificationCode) = 0;
+                virtual void setCode(NotificationCodes notificationCode) = 0;
 
                 /// \brief Возвращает текст уведомления, полученный от финансового ПО LAN-4Tap
                 /// \return Строка, содержащая текст уведомления, если он был передан
-                virtual const std::string &getNotificationMessage() const = 0;
+                virtual const std::string &getMessage() const = 0;
 
                 /// \brief Устанавливает текст уведомления
                 /// \param notificationMessage текст уведомления
-                virtual void setNotificationMessage(const std::string &notificationMessage) = 0;
+                virtual void setMessage(const std::string &notificationMessage) = 0;
+
+                /// \brief Возвращает дополнительные данные уведомления
+                /// \param notificationMessage Дополнительные данные уведомления
+                virtual const std::string & getAdditional() const = 0;
+
+                /// \brief Устанавливает дополнительнные данные уведомления
+                /// \param additional Дополнительные данные уведомления
+                virtual void setAdditional(const std::string & additional) = 0;
             };
         }//Notifications
     }

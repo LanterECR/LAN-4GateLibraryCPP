@@ -24,7 +24,7 @@ namespace Lanter {
                 Status, ///< Статус выполнения операции
                 OriginalOperationStatus, ///< Статус выполнения оригиналной операции
                 TransDateTime, ///< Время выполнения операции на хосте
-                TerminalDateTime,///< Время выполнения операции на терминале
+                TerminalDateTime, ///< Время выполнения операции на терминале
                 CardPAN, ///< Маскированный PAN карты
                 ExpireDate, ///< Срок действия карты
                 CardholderName, ///< Имя держателя карты

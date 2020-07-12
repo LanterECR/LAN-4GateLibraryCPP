@@ -20,11 +20,13 @@ namespace Lanter {
 
                 const std::set<ResponseFields> &getFieldsSet() const override;
 
+                bool isFieldSet(ResponseFields field) const override;
+
                 const std::set<ResponseFields> &getMandatoryFields() const override;
 
                 const std::set<ResponseFields> &getOptionalFields() const override;
 
-                bool validateMandatoryFields() override;
+                bool validateMandatoryFields() const override;
 
                 int16_t getEcrNumber() const override;
 
@@ -90,9 +92,9 @@ namespace Lanter {
 
                 void setTerminalDateTime(const std::string &terminalDateTime) override;
 
-                const std::string &getCardPan() const override;
+                const std::string &getCardPAN() const override;
 
-                void setCardPan(const std::string &cardPan) override;
+                void setCardPAN(const std::string &cardPan) override;
 
                 const std::string &getExpireDate() const override;
 

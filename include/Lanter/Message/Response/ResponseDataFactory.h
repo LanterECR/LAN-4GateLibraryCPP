@@ -19,10 +19,11 @@ namespace Lanter {
                 /// переданными кодом операции и логическим номером кассового ПО
                 /// \param operationCode Код операции из списка OperationCodes
                 /// \sa OperationCodes
-                /// \param ecrNumber Логический номер кассового ПО в диапазоне [1, 999]
+                /// \param ecrNumber Логический номер кассового ПО в диапазоне [1, 999].
+                /// Если установить значение -1, то ecrNumber не будет установлен в IResponseData
                 /// \return Указатель на объект интерфейса IResponseData
                 /// \throws invalid_argument, если operationCode или ecrNumber вне разрешенного диапазона
-                static std::shared_ptr<IResponseData> getResponseData(OperationCodes operationCode, int16_t ecrNumber);
+                static std::shared_ptr<IResponseData> getResponseData(OperationCodes operationCode, int16_t ecrNumber = -1);
             };//ResponseDataFactory
         }//Response
     }

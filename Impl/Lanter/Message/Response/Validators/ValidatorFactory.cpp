@@ -45,6 +45,8 @@
 #include "Lanter/Message/Response/Validators/Operations/Void/VoidPartialSale.h"
 #include "Lanter/Message/Response/Validators/Operations/Void/VoidPreAuth.h"
 
+#include "Lanter/Message/Response/Validators/Operations/InternalServiceOperations/ArrayElement.h"
+
 // TODO Добавить QuickPaymentRefund
 namespace Lanter {
     namespace Message {
@@ -157,6 +159,9 @@ namespace Lanter {
                         break;
                     case OperationCodes::DisplayQR:
                         validator = std::make_shared<DisplayQR>();
+                        break;
+                    case OperationCodes::ArrayElement:
+                        validator = std::make_shared<ArrayElement>();
                         break;
                     default:
                         validator = std::make_shared<BasicValidator>();

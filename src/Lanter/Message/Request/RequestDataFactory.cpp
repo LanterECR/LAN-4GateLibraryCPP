@@ -15,7 +15,9 @@ namespace Lanter {
                 auto data = std::make_shared<RequestData>();
                 if (data) {
                     data->setOperationCode(operationCode);
-                    data->setEcrNumber(ecrNumber);
+                    if(ecrNumber != -1) {
+                        data->setEcrNumber(ecrNumber);
+                    }
                 }
                 return data;
             }

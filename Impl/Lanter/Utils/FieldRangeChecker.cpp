@@ -11,7 +11,7 @@
 #include "Lanter/Message/Response/CardholderAuthMethod.h"
 #include "Lanter/Message/Response/CardInputMethod.h"
 #include "Lanter/Message/Response/Status.h"
-#include "Lanter/Message/Notifications/NotificationCodes.h"
+#include "Lanter/Message/Notification/NotificationCodes.h"
 #include "Constants.h"
 
 using namespace Lanter::Message;

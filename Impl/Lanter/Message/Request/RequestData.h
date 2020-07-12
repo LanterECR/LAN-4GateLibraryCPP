@@ -25,12 +25,14 @@ namespace Lanter {
 
                 const std::set<RequestFields> &getOptionalFields() const override;
 
-                bool validateMandatoryFields() override;
+                bool validateMandatoryFields() const override;
 
                 /// Возвращает список установленных полей
                 /// \return Список установленных полей
                 /// \sa RequestFields
                 const std::set<RequestFields> &getFieldsSet() const override;
+
+                bool isFieldSet(RequestFields field) const override;
 
                 /// Возвращает логический идентификатор кассового ПО
                 /// \return Если поле установлено - логический идентификатор кассового ПО, иначе -1

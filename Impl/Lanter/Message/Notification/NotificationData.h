@@ -5,7 +5,7 @@
 #ifndef LAN_4GATELIBRARYCPP_NOTIFICATIONDATA_H
 #define LAN_4GATELIBRARYCPP_NOTIFICATIONDATA_H
 
-#include "Lanter/Message/Notifications/INotificationData.h"
+#include "Lanter/Message/Notification/INotificationData.h"
 
 namespace Lanter {
     namespace Message {
@@ -15,17 +15,22 @@ namespace Lanter {
             public:
                 virtual ~NotificationData() override = default;
 
-                NotificationCodes getNotificationCode() const override;
+                NotificationCodes getCode() const override;
 
-                void setNotificationCode(NotificationCodes notificationCode) override;
+                void setCode(NotificationCodes notificationCode) override;
 
-                const std::string &getNotificationMessage() const override;
+                const std::string &getMessage() const override;
 
-                void setNotificationMessage(const std::string &notificationMessage) override;
+                void setMessage(const std::string &notificationMessage) override;
+
+                void setAdditional(const std::string &additional) override;
+
+                const std::string &getAdditional() const override;
 
             private:
                 NotificationCodes m_Notification = NotificationCodes::NoNotification;
                 std::string m_NotificationText;
+                std::string m_Additional;
             };
         }//Notifications
     }//Lanter

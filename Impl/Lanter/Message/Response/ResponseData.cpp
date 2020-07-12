@@ -20,6 +20,10 @@ namespace Lanter {
                 return m_FieldsSet;
             }
 
+            bool ResponseData::isFieldSet(ResponseFields field) const {
+                return m_FieldsSet.find(field) != m_FieldsSet.end();
+            }
+
             const std::set<ResponseFields> &ResponseData::getMandatoryFields() const {
                 if (m_Validator) {
                     return m_Validator->getMandatoryFields();
@@ -34,7 +38,7 @@ namespace Lanter {
                 return m_EmptyFieldsPlaceholder;
             }
 
-            bool ResponseData::validateMandatoryFields() {
+            bool ResponseData::validateMandatoryFields() const {
                 if (m_Validator) {
                     return m_Validator->validate(getFieldsSet());
                 }
@@ -218,11 +222,11 @@ namespace Lanter {
                 }
             }
 
-            const std::string &ResponseData::getCardPan() const {
+            const std::string &ResponseData::getCardPAN() const {
                 return m_CardPAN;
             }
 
-            void ResponseData::setCardPan(const std::string &cardPan) {
+            void ResponseData::setCardPAN(const std::string &cardPan) {
                 if (checkCardPANRange(cardPan)) {
                     m_CardPAN = cardPan;
                     m_FieldsSet.insert(ResponseFields::CardPAN);
