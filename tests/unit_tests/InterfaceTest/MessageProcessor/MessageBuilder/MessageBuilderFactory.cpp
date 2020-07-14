@@ -10,5 +10,5 @@ using namespace Lanter;
 using namespace Lanter::MessageProcessor;
 
 TEST(MessageBuilderFactory, TestFactory) {
-    EXPECT_TRUE(MessageBuilderFactory::getMessageBuilder() != nullptr);
+    EXPECT_NE(MessageBuilderFactory::getMessageBuilder(), nullptr);
 }

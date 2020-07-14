@@ -54,7 +54,7 @@ namespace Lanter {
             resultData.clear();
             try {
                 Json::Value root;
-                root[JSONRootFields::getClassField()] = JSONClassFieldValues::getRequestValue();
+                root[JSONRootFields::getClassField()] = JSONClassFieldValues::getResponseValue();
 
                 Json::Value object;
                 JSONResponseBuilder requestBuilder;
@@ -74,7 +74,7 @@ namespace Lanter {
             resultData.clear();
             try {
                 Json::Value root;
-                root[JSONRootFields::getClassField()] = JSONClassFieldValues::getRequestValue();
+                root[JSONRootFields::getClassField()] = JSONClassFieldValues::getNotificationValue();
 
                 Json::Value object;
                 JSONNotificationBuilder requestBuilder;

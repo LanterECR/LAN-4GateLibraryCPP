@@ -7,7 +7,10 @@
 #include <Lanter/Message/Response/ResponseDataFactory.h>
 #include <Lanter/Message/Notification/NotificationDataFactory.h>
 
+#include "Lanter/MessageProcessor/JSONMessageFields.h"
+
 #include "Lanter/MessageProcessor/MessageBuilder/JSONMessageBuilder.h"
+#include "Lanter/Utils/StringConverter.h"
 
 using namespace Lanter;
 using namespace Lanter::Message;
@@ -29,6 +32,12 @@ TEST(JSONMessageBuilder, CheckCreateRequestMessage) {
     EXPECT_TRUE(builder.createMessage(data, message));
 
     EXPECT_FALSE(message.empty());
+
+    std::string stringMsg;
+
+    Utils::StringConverter::convertToString(message, stringMsg);
+
+    EXPECT_NE(stringMsg.find(JSONClassFieldValues::getRequestValue()), std::string::npos);
 }
 
 TEST(JSONMessageBuilder, CheckCreateResponseMessage) {
@@ -71,6 +80,12 @@ TEST(JSONMessageBuilder, CheckCreateResponseMessage) {
     EXPECT_TRUE(builder.createMessage(data, message));
 
     EXPECT_FALSE(message.empty());
+
+    std::string stringMsg;
+
+    Utils::StringConverter::convertToString(message, stringMsg);
+
+    EXPECT_NE(stringMsg.find(JSONClassFieldValues::getResponseValue()), std::string::npos);
 }
 
 TEST(JSONMessageBuilder, CheckCreateNotificationMessage) {
@@ -86,4 +101,10 @@ TEST(JSONMessageBuilder, CheckCreateNotificationMessage) {
     EXPECT_TRUE(builder.createMessage(data, message));
 
     EXPECT_FALSE(message.empty());
+
+    std::string stringMsg;
+
+    Utils::StringConverter::convertToString(message, stringMsg);
+
+    EXPECT_NE(stringMsg.find(JSONClassFieldValues::getNotificationValue()), std::string::npos);
 }

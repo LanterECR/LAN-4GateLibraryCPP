@@ -38,7 +38,7 @@ TEST(StringConverter, CheckConvertToString) {
 }
 
 TEST(StringConverter, CheckConvertStringVectorString) {
-    std::string value = "Test text";
+    std::string value = "Тестовый текст";
 
     std::vector<unsigned char> targetVector;
 
