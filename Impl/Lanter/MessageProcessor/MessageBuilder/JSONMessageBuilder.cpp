@@ -13,10 +13,12 @@
 #include "JSONNotificationBuilder.h"
 
 #include "Lanter/Utils/StringTrimmer.h"
+#include "Lanter/Utils/StringConverter.h"
 
 namespace Lanter {
     namespace MessageProcessor {
-        bool convertToVector(const Json::Value & root, std::vector<unsigned char> & resultData) {
+
+        bool createVector(const Json::Value & root, std::vector<unsigned char> & resultData) {
             //TODO переделать на современный writer
             //Не могу разобраться с настройками StreamWriter
             Json::FastWriter writer;
@@ -24,8 +26,7 @@ namespace Lanter {
             Utils::trim(document);
             resultData.clear();
             //Перемещение строки в вектор. После данной строки document может быть невалидна.
-            std::move(document.begin(), document.end(), std::back_inserter(resultData));
-
+            Utils::StringConverter::convertToVector(document, resultData);
             return !resultData.empty();
         }
         bool JSONMessageBuilder::createMessage(std::shared_ptr<IRequestData> data, std::vector<unsigned char> &resultData) {
@@ -39,7 +40,7 @@ namespace Lanter {
                 JSONRequestBuilder requestBuilder;
                 if(requestBuilder.createObject(*data, object)) {
                     root[JSONRootFields::getObjectField()] = object;
-                    result = convertToVector(root, resultData);
+                    result = createVector(root, resultData);
                 }
             } catch (std::exception & exception) {
                 result = false;
@@ -59,7 +60,7 @@ namespace Lanter {
                 JSONResponseBuilder requestBuilder;
                 if(requestBuilder.createObject(*data, object)) {
                     root[JSONRootFields::getObjectField()] = object;
-                    result = convertToVector(root, resultData);
+                    result = createVector(root, resultData);
                 }
             } catch (std::exception & exception) {
                 result = false;
@@ -79,7 +80,7 @@ namespace Lanter {
                 JSONNotificationBuilder requestBuilder;
                 if(requestBuilder.createObject(*data, object)) {
                     root[JSONRootFields::getObjectField()] = object;
-                    result = convertToVector(root, resultData);
+                    result = createVector(root, resultData);
                 }
             } catch (std::exception & exception) {
                 result = false;
