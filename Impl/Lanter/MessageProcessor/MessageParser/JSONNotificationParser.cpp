@@ -31,12 +31,7 @@ namespace Lanter {
             bool result = false;
             int code;
             if(JSONGetFieldHelper::getFieldInt(object, JSONNotificationFields::getCode(), code)) {
-                try {
-                    data.setCode(static_cast<NotificationCodes>(code));
-                    result = true;
-                } catch (std::exception & e) {
-                    result = false;
-                }
+                result = data.setCode(static_cast<NotificationCodes>(code));
             }
             return result;
         }

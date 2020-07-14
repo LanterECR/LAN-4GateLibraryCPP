@@ -23,8 +23,8 @@ namespace Lanter {
 
                 /// \brief Устанавливает код уведомления
                 /// \param notificationCode Код уведомления из перечисления Notification за исключением NoNotification
-                /// \throw invalid_argument, если код уведомления вне диапазона
-                virtual void setCode(NotificationCodes notificationCode) = 0;
+                /// \return true, если поле успешно установлено
+                virtual bool setCode(NotificationCodes notificationCode) = 0;
 
                 /// \brief Возвращает текст уведомления, полученный от финансового ПО LAN-4Tap
                 /// \return Строка, содержащая текст уведомления, если он был передан
@@ -32,7 +32,8 @@ namespace Lanter {
 
                 /// \brief Устанавливает текст уведомления
                 /// \param notificationMessage текст уведомления
-                virtual void setMessage(const std::string &notificationMessage) = 0;
+                /// \return true, если поле успешно установлено
+                virtual bool setMessage(const std::string &notificationMessage) = 0;
 
                 /// \brief Возвращает дополнительные данные уведомления
                 /// \param notificationMessage Дополнительные данные уведомления
@@ -40,7 +41,8 @@ namespace Lanter {
 
                 /// \brief Устанавливает дополнительнные данные уведомления
                 /// \param additional Дополнительные данные уведомления
-                virtual void setAdditional(const std::string & additional) = 0;
+                /// \return true, если поле успешно установлено
+                virtual bool setAdditional(const std::string & additional) = 0;
             };
         }//Notifications
     }

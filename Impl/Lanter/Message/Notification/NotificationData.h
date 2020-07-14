@@ -17,13 +17,13 @@ namespace Lanter {
 
                 NotificationCodes getCode() const override;
 
-                void setCode(NotificationCodes notificationCode) override;
+                bool setCode(NotificationCodes notificationCode) override;
 
                 const std::string &getMessage() const override;
 
-                void setMessage(const std::string &notificationMessage) override;
+                bool setMessage(const std::string &notificationMessage) override;
 
-                void setAdditional(const std::string &additional) override;
+                bool setAdditional(const std::string &additional) override;
 
                 const std::string &getAdditional() const override;
 

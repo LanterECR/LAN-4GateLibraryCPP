@@ -30,187 +30,187 @@ namespace Lanter {
 
                 int16_t getEcrNumber() const override;
 
-                void setEcrNumber(int16_t ecrNumber) override;
+                bool setEcrNumber(int16_t ecrNumber) override;
 
                 int16_t getEcrMerchantNumber() const override;
 
-                void setEcrMerchantNumber(int16_t ecrMerchantNumber) override;
+                bool setEcrMerchantNumber(int16_t ecrMerchantNumber) override;
 
                 OperationCodes getOperationCode() const override;
 
-                void setOperationCode(OperationCodes operationCode) override;
+                bool setOperationCode(OperationCodes operationCode) override;
 
                 OperationCodes getOriginalOperationCode() const override;
 
-                void setOriginalOperationCode(OperationCodes originalOperationCode) override;
+                bool setOriginalOperationCode(OperationCodes originalOperationCode) override;
 
                 int64_t getTotalAmount() const override;
 
-                void setTotalAmount(int64_t totalAmount) override;
+                bool setTotalAmount(int64_t totalAmount) override;
 
                 int64_t getPartialAmount() const override;
 
-                void setPartialAmount(int64_t partialAmount) override;
+                bool setPartialAmount(int64_t partialAmount) override;
 
                 int64_t getAcquirerFeeAmount() const override;
 
-                void setAcquirerFeeAmount(int64_t amountAcquirerFee) override;
+                bool setAcquirerFeeAmount(int64_t amountAcquirerFee) override;
 
                 int64_t getTerminalFeeAmount() const override;
 
-                void setTerminalFeeAmount(int64_t amountTerminalFee) override;
+                bool setTerminalFeeAmount(int64_t amountTerminalFee) override;
 
                 int64_t getTipsAmount() const override;
 
-                void setTipsAmount(int64_t tipsAmount) override;
+                bool setTipsAmount(int64_t tipsAmount) override;
 
                 int16_t getCurrencyCode() const override;
 
-                void setCurrencyCode(int16_t currencyCode) override;
+                bool setCurrencyCode(int16_t currencyCode) override;
 
                 const std::string &getReceiptReference() const override;
 
-                void setReceiptReference(const std::string &receiptReference) override;
+                bool setReceiptReference(const std::string &receiptReference) override;
 
                 const std::string &getRRN() const override;
 
-                void setRRN(const std::string &rrn) override;
+                bool setRRN(const std::string &rrn) override;
 
                 Response::Status getStatus() const override;
 
-                void setStatus(Response::Status status) override;
+                bool setStatus(Response::Status status) override;
 
                 Response::Status getOriginalOperationStatus() const override;
 
-                void setOriginalOperationStatus(Response::Status originalOperationStatus) override;
+                bool setOriginalOperationStatus(Response::Status originalOperationStatus) override;
 
                 const std::string &getTransDateTime() const override;
 
-                void setTransDateTime(const std::string &transDateTime) override;
+                bool setTransDateTime(const std::string &transDateTime) override;
 
                 const std::string &getTerminalDateTime() const override;
 
-                void setTerminalDateTime(const std::string &terminalDateTime) override;
+                bool setTerminalDateTime(const std::string &terminalDateTime) override;
 
                 const std::string &getCardPAN() const override;
 
-                void setCardPAN(const std::string &cardPan) override;
+                bool setCardPAN(const std::string &cardPan) override;
 
                 const std::string &getExpireDate() const override;
 
-                void setExpireDate(const std::string &expireDate) override;
+                bool setExpireDate(const std::string &expireDate) override;
 
                 const std::string &getCardholderName() const override;
 
-                void setCardholderName(const std::string &cardholderName) override;
+                bool setCardholderName(const std::string &cardholderName) override;
 
                 Response::CardholderAuthMethod getCardholderAuthMethod() const override;
 
-                void setCardholderAuthMethod(Response::CardholderAuthMethod cardholderAuthMethod) override;
+                bool setCardholderAuthMethod(Response::CardholderAuthMethod cardholderAuthMethod) override;
 
                 const std::string &getAuthCode() const override;
 
-                void setAuthCode(const std::string &authCode) override;
+                bool setAuthCode(const std::string &authCode) override;
 
                 const std::string &getResponseCode() const override;
 
-                void setResponseCode(const std::string &responseCode) override;
+                bool setResponseCode(const std::string &responseCode) override;
 
                 const std::string &getResponseText() const override;
 
-                void setResponseText(const std::string &responseText) override;
+                bool setResponseText(const std::string &responseText) override;
 
                 const std::string &getSTAN() const override;
 
-                void setSTAN(const std::string &stan) override;
+                bool setSTAN(const std::string &stan) override;
 
                 const std::string &getTransactionID() const override;
 
-                void setTransactionID(const std::string &transactionId) override;
+                bool setTransactionID(const std::string &transactionId) override;
 
                 const std::string &getTerminalID() const override;
 
-                void setTerminalID(const std::string &terminalId) override;
+                bool setTerminalID(const std::string &terminalId) override;
 
                 const std::string &getCardEmvAid() const override;
 
-                void setCardEmvAid(const std::string &cardEmvAid) override;
+                bool setCardEmvAid(const std::string &cardEmvAid) override;
 
                 const std::string &getCardAppName() const override;
 
-                void setCardAppName(const std::string &cardAppName) override;
+                bool setCardAppName(const std::string &cardAppName) override;
 
                 Response::CardInputMethod getCardInputMethod() const override;
 
-                void setCardInputMethod(Response::CardInputMethod cardInputMethod) override;
+                bool setCardInputMethod(Response::CardInputMethod cardInputMethod) override;
 
                 const std::string &getIssuerName() const override;
 
-                void setIssuerName(const std::string &issuerName) override;
+                bool setIssuerName(const std::string &issuerName) override;
 
                 const std::string &getAdditionalInfo() const override;
 
-                void setAdditionalInfo(const std::string &additionalInfo) override;
+                bool setAdditionalInfo(const std::string &additionalInfo) override;
 
                 const std::string &getCardData() const override;
 
-                void setCardData(const std::string &cardData) override;
+                bool setCardData(const std::string &cardData) override;
 
                 const std::string &getCardDataEnc() const override;
 
-                void setCardDataEnc(const std::string &cardDataEnc) override;
+                bool setCardDataEnc(const std::string &cardDataEnc) override;
 
                 const std::string &getMerchantID() const override;
 
-                void setMerchantID(const std::string &merchantId) override;
+                bool setMerchantID(const std::string &merchantId) override;
 
                 const std::string &getTVR() const override;
 
-                void setTVR(const std::string &tvr) override;
+                bool setTVR(const std::string &tvr) override;
 
                 const std::string &getTSI() const override;
 
-                void setTSI(const std::string &tsi) override;
+                bool setTSI(const std::string &tsi) override;
 
                 const std::string &getTC() const override;
 
-                void setTC(const std::string &tc) override;
+                bool setTC(const std::string &tc) override;
 
                 const std::string &getCID() const override;
 
-                void setCID(const std::string &cid) override;
+                bool setCID(const std::string &cid) override;
 
                 const std::string &getKVR() const override;
 
-                void setKVR(const std::string &kvr) override;
+                bool setKVR(const std::string &kvr) override;
 
                 const std::string &getCDAResult() const override;
 
-                void setCDAResult(const std::string &cdaResult) override;
+                bool setCDAResult(const std::string &cdaResult) override;
 
                 int32_t getSalesCount() const override;
 
-                void setSalesCount(int32_t salesCount) override;
+                bool setSalesCount(int32_t salesCount) override;
 
                 int32_t getVoidCount() const override;
 
-                void setVoidCount(int32_t voidCount) override;
+                bool setVoidCount(int32_t voidCount) override;
 
                 int32_t getRefundCount() const override;
 
-                void setRefundCount(int32_t refundCount) override;
+                bool setRefundCount(int32_t refundCount) override;
 
                 const std::vector<std::shared_ptr<IResponseData> > &getSalesArray() const override;
 
-                void setSalesArray(const std::vector<std::shared_ptr<IResponseData> > &salesArray) override;
+                bool setSalesArray(const std::vector<std::shared_ptr<IResponseData> > &salesArray) override;
 
                 const std::vector<std::shared_ptr<IResponseData> > &getVoidArray() const override;
 
-                void setVoidArray(const std::vector<std::shared_ptr<IResponseData> > &voidArray) override;
+                bool setVoidArray(const std::vector<std::shared_ptr<IResponseData> > &voidArray) override;
 
                 const std::vector<std::shared_ptr<IResponseData> > &getRefundArray() const override;
 
-                void setRefundArray(const std::vector<std::shared_ptr<IResponseData> > &refundArray) override;
+                bool setRefundArray(const std::vector<std::shared_ptr<IResponseData> > &refundArray) override;
 
             private:
                 void initValidator();

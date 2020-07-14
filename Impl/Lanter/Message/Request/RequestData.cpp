@@ -21,188 +21,239 @@ namespace Lanter
                 return m_EcrNumber;
             }
 
-            void RequestData::setEcrNumber(int16_t ecrNumber) {
+            bool RequestData::setEcrNumber(int16_t ecrNumber) {
+                bool result = false;
                 if (checkEcrNumberRange(ecrNumber)) {
                     m_EcrNumber = ecrNumber;
                     m_FieldsSet.insert(RequestFields::EcrNumber);
+                    result = true;
                 }
+                return result;
             }
 
             int16_t RequestData::getEcrMerchantNumber() const {
                 return m_EcrMerchantNumber;
             }
 
-            void RequestData::setEcrMerchantNumber(int16_t ecrMerchantNumber) {
+            bool RequestData::setEcrMerchantNumber(int16_t ecrMerchantNumber) {
+                bool result = false;
                 if (checkEcrMerchantNumberRange(ecrMerchantNumber)) {
                     m_EcrMerchantNumber = ecrMerchantNumber;
                     m_FieldsSet.insert(RequestFields::EcrMerchantNumber);
+                    result = true;
                 }
+                return result;
             }
 
             OperationCodes RequestData::getOperationCode() const {
                 return m_OperationCode;
             }
 
-            void RequestData::setOperationCode(OperationCodes operationCode) {
+            bool RequestData::setOperationCode(OperationCodes operationCode) {
+                bool result = false;
                 if (checkOperationCodeRange(static_cast<int32_t>(operationCode))) {
                     m_OperationCode = operationCode;
                     m_FieldsSet.insert(RequestFields::OperationCode);
                     initValidator();
+                    result = true;
                 }
+                return result;
             }
 
             int64_t RequestData::getAmount() const {
                 return m_Amount;
             }
 
-            void RequestData::setAmount(int64_t amount) {
+            bool RequestData::setAmount(int64_t amount) {
+                bool result = false;
                 if (checkAmountRange(amount)) {
                     m_Amount = amount;
                     m_FieldsSet.insert(RequestFields::Amount);
+                    result = true;
                 }
+                return result;
             }
 
             int64_t RequestData::getPartialAmount() const {
                 return m_PartialAmount;
             }
 
-            void RequestData::setPartialAmount(int64_t partialAmount) {
+            bool RequestData::setPartialAmount(int64_t partialAmount) {
+                bool result = false;
                 if (checkAmountRange(partialAmount)) {
                     m_PartialAmount = partialAmount;
                     m_FieldsSet.insert(RequestFields::PartialAmount);
+                    result = true;
                 }
+                return result;
             }
 
             int64_t RequestData::getTipsAmount() const {
                 return m_TipsAmount;
             }
 
-            void RequestData::setTipsAmount(int64_t tipsAmount) {
+            bool RequestData::setTipsAmount(int64_t tipsAmount) {
+                bool result = false;
                 if (checkAmountRange(tipsAmount)) {
                     m_TipsAmount = tipsAmount;
                     m_FieldsSet.insert(RequestFields::TipsAmount);
+                    result = true;
                 }
+                return result;
             }
 
             int64_t RequestData::getCashbackAmount() const {
                 return m_CashbackAmount;
             }
 
-            void RequestData::setCashbackAmount(int64_t cashbackAmount) {
+            bool RequestData::setCashbackAmount(int64_t cashbackAmount) {
+                bool result = false;
                 if (checkAmountRange(cashbackAmount)) {
                     m_CashbackAmount = cashbackAmount;
                     m_FieldsSet.insert(RequestFields::CashbackAmount);
+                    result = true;
                 }
+                return result;
             }
 
             int16_t RequestData::getCurrencyCode() const {
                 return m_CurrencyCode;
             }
 
-            void RequestData::setCurrencyCode(int16_t currencyCode) {
+            bool RequestData::setCurrencyCode(int16_t currencyCode) {
+                bool result = false;
                 if (checkCurrencyCodeRange(currencyCode)) {
                     m_CurrencyCode = currencyCode;
                     m_FieldsSet.insert(RequestFields::CurrencyCode);
+                    result = true;
                 }
+                return result;
             }
 
             const std::string &RequestData::getRRN() const {
                 return m_RRN;
             }
 
-            void RequestData::setRRN(const std::string &RRN) {
+            bool RequestData::setRRN(const std::string &RRN) {
+                bool result = false;
                 if (checkRRNRange(RRN)) {
                     m_RRN = RRN;
                     m_FieldsSet.insert(RequestFields::RRN);
+                    result = true;
                 }
+                return result;
             }
 
             const std::string &RequestData::getAuthCode() const {
                 return m_AuthCode;
             }
 
-            void RequestData::setAuthCode(const std::string &authCode) {
+            bool RequestData::setAuthCode(const std::string &authCode) {
+                bool result = false;
                 if (checkAuthCodeRange(authCode)) {
                     m_AuthCode = authCode;
                     m_FieldsSet.insert(RequestFields::AuthCode);
+                    result = true;
                 }
+                return result;
             }
 
             const std::string &RequestData::getReceiptReference() const {
                 return m_ReceiptReference;
             }
 
-            void RequestData::setReceiptReference(const std::string &receiptReference) {
+            bool RequestData::setReceiptReference(const std::string &receiptReference) {
+                bool result = false;
                 if (checkAuthCodeRange(receiptReference)) {
                     m_ReceiptReference = receiptReference;
                     m_FieldsSet.insert(RequestFields::ReceiptReference);
+                    result = true;
                 }
+                return result;
             }
 
             const std::string &RequestData::getTransactionID() const {
                 return m_TransactionID;
             }
 
-            void RequestData::setTransactionID(const std::string &transactionId) {
+            bool RequestData::setTransactionID(const std::string &transactionId) {
+                bool result = false;
                 if (checkTransactionIDRange(transactionId)) {
                     m_TransactionID = transactionId;
                     m_FieldsSet.insert(RequestFields::TransactionID);
+                    result = true;
                 }
+                return result;
             }
 
             const std::string &RequestData::getCardDataEnc() const {
                 return m_CardDataEnc;
             }
 
-            void RequestData::setCardDataEnc(const std::string &cardDataEnc) {
+            bool RequestData::setCardDataEnc(const std::string &cardDataEnc) {
+                bool result = false;
                 if (checkCardDataEncRange(cardDataEnc)) {
                     m_CardDataEnc = cardDataEnc;
                     m_FieldsSet.insert(RequestFields::CardDataEnc);
+                    result = true;
                 }
+                return result;
             }
 
             const std::string &RequestData::getOpenTags() const {
                 return m_OpenTags;
             }
 
-            void RequestData::setOpenTags(const std::string &openTags) {
+            bool RequestData::setOpenTags(const std::string &openTags) {
+                bool result = false;
                 if (checkOpenTagsRange(openTags)) {
                     m_OpenTags = openTags;
                     m_FieldsSet.insert(RequestFields::OpenTags);
+                    result = true;
                 }
+                return result;
             }
 
             const std::string &RequestData::getEncTags() const {
                 return m_EncTags;
             }
 
-            void RequestData::setEncTags(const std::string &encTags) {
+            bool RequestData::setEncTags(const std::string &encTags) {
+                bool result = false;
                 if (checkEncTagsRange(encTags)) {
                     m_EncTags = encTags;
                     m_FieldsSet.insert(RequestFields::EncTags);
+                    result = true;
                 }
+                return result;
             }
 
             const std::string &RequestData::getProviderCode() const {
                 return m_ProviderCode;
             }
 
-            void RequestData::setProviderCode(const std::string &providerCode) {
+            bool RequestData::setProviderCode(const std::string &providerCode) {
+                bool result = false;
                 if (checkProviderCodeRange(providerCode)) {
                     m_ProviderCode = providerCode;
                     m_FieldsSet.insert(RequestFields::ProviderCode);
+                    result = true;
                 }
+                return result;
             }
 
             const std::string &RequestData::getAdditionalInfo() const {
                 return m_AdditionalInfo;
             }
 
-            void RequestData::setAdditionalInfo(const std::string &additionalInfo) {
+            bool RequestData::setAdditionalInfo(const std::string &additionalInfo) {
+                bool result = false;
                 if (checkAdditionalInfoRange(additionalInfo)) {
                     m_AdditionalInfo = additionalInfo;
                     m_FieldsSet.insert(RequestFields::AdditionalInfo);
+                    result = true;
                 }
+                return result;
             }
 
             const std::set<RequestFields> &RequestData::getFieldsSet() const {

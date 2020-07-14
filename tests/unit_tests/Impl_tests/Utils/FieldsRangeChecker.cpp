@@ -22,8 +22,8 @@ TEST(FieldsRangeChecker, CheckEcrNumberRange){
     int64_t lessMinimum = MINIMUM_ECR_NUMBER - 1;
     int64_t greatMaximum = MAXIMUM_ECR_NUMBER + 1;
 
-    EXPECT_THROW(checkEcrNumberRange(lessMinimum), std::invalid_argument);
-    EXPECT_THROW(checkEcrNumberRange(greatMaximum), std::invalid_argument);
+    EXPECT_FALSE(checkEcrNumberRange(lessMinimum));
+    EXPECT_FALSE(checkEcrNumberRange(greatMaximum));
 
     EXPECT_TRUE(checkEcrNumberRange(MINIMUM_ECR_NUMBER));
     EXPECT_TRUE(checkEcrNumberRange(MAXIMUM_ECR_NUMBER));
@@ -35,8 +35,8 @@ TEST(FieldsRangeChecker, CheckEcrMerchantNumberRange){
     int64_t lessMinimum = MINIMUM_ECR_MERCHANT_NUMBER - 1;
     int64_t greatMaximum = MAXIMUM_ECR_MERCHANT_NUMBER + 1;
 
-    EXPECT_THROW(checkEcrMerchantNumberRange(lessMinimum), std::invalid_argument);
-    EXPECT_THROW(checkEcrMerchantNumberRange(greatMaximum), std::invalid_argument);
+    EXPECT_FALSE(checkEcrMerchantNumberRange(lessMinimum));
+    EXPECT_FALSE(checkEcrMerchantNumberRange(greatMaximum));
 
     EXPECT_TRUE(checkEcrMerchantNumberRange(MINIMUM_ECR_NUMBER));
     EXPECT_TRUE(checkEcrMerchantNumberRange(MAXIMUM_ECR_NUMBER));
@@ -51,8 +51,8 @@ TEST(FieldsRangeChecker, CheckOperationCodeRange){
     auto greatMinimum = (int32_t)OperationCodes::FirstValue + 1;
     auto lessMaximum = (int32_t)OperationCodes::LastValue - 1;
 
-    EXPECT_THROW(checkOperationCodeRange(lessMinimum), std::invalid_argument);
-    EXPECT_THROW(checkOperationCodeRange(greatMaximum), std::invalid_argument);
+    EXPECT_FALSE(checkOperationCodeRange(lessMinimum));
+    EXPECT_FALSE(checkOperationCodeRange(greatMaximum));
 
     EXPECT_TRUE(checkOperationCodeRange((int32_t)OperationCodes::FirstValue));
     EXPECT_TRUE(checkOperationCodeRange((int32_t)OperationCodes::LastValue));
@@ -64,8 +64,8 @@ TEST(FieldsRangeChecker, CheckAmountRange){
     int64_t lessMinimum = MINIMUM_AMOUNT - 1;
     int64_t greatMaximum = MAXIMUM_AMOUNT + 1;
 
-    EXPECT_THROW(checkAmountRange(lessMinimum), std::invalid_argument);
-    EXPECT_THROW(checkAmountRange(greatMaximum), std::invalid_argument);
+    EXPECT_FALSE(checkAmountRange(lessMinimum));
+    EXPECT_FALSE(checkAmountRange(greatMaximum));
 
     EXPECT_TRUE(checkAmountRange(MINIMUM_AMOUNT));
     EXPECT_TRUE(checkAmountRange(MAXIMUM_AMOUNT));
@@ -77,8 +77,8 @@ TEST(FieldsRangeChecker, CheckCurrencyCodeRange){
     int64_t lessMinimum = MINIMUM_CURRENCY_CODE - 1;
     int64_t greatMaximum = MAXIMUM_CURRENCY_CODE + 1;
 
-    EXPECT_THROW(checkCurrencyCodeRange(lessMinimum), std::invalid_argument);
-    EXPECT_THROW(checkCurrencyCodeRange(greatMaximum), std::invalid_argument);
+    EXPECT_FALSE(checkCurrencyCodeRange(lessMinimum));
+    EXPECT_FALSE(checkCurrencyCodeRange(greatMaximum));
 
     EXPECT_TRUE(checkCurrencyCodeRange(MINIMUM_CURRENCY_CODE));
     EXPECT_TRUE(checkCurrencyCodeRange(MAXIMUM_CURRENCY_CODE));
@@ -89,11 +89,11 @@ TEST(FieldsRangeChecker, CheckCurrencyCodeRange){
 TEST(FieldsRangeChecker, CheckRRNRange){
     std::string empty;
 
-    EXPECT_THROW(checkRRNRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkRRNRange(empty));
 
     std::string overSize(MAXIMUM_RRN_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkRRNRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkRRNRange(overSize));
 
     std::string minimumSize(MINIMUM_RRN_LENGTH, 'R');
 
@@ -106,11 +106,11 @@ TEST(FieldsRangeChecker, CheckRRNRange){
 TEST(FieldsRangeChecker, CheckAuthCodeRange){
     std::string empty;
 
-    EXPECT_THROW(checkAuthCodeRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkAuthCodeRange(empty));
 
     std::string overSize(MAXIMUM_AUTH_CODE_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkAuthCodeRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkAuthCodeRange(overSize));
 
     std::string minimumSize(MINIMUM_AUTH_CODE_LENGTH, 'R');
 
@@ -123,11 +123,11 @@ TEST(FieldsRangeChecker, CheckAuthCodeRange){
 TEST(FieldsRangeChecker, CheckReceiptReferenceRange){
     std::string empty;
 
-    EXPECT_THROW(checkReceiptReferenceRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkReceiptReferenceRange(empty));
 
     std::string overSize(MAXIMUM_RECEIPT_REFERENCE_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkReceiptReferenceRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkReceiptReferenceRange(overSize));
 
     std::string minimumSize(MINIMUM_RECEIPT_REFERENCE_LENGTH, 'R');
 
@@ -140,11 +140,11 @@ TEST(FieldsRangeChecker, CheckReceiptReferenceRange){
 TEST(FieldsRangeChecker, CheckTransactionIDRange){
     std::string empty;
 
-    EXPECT_THROW(checkTransactionIDRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkTransactionIDRange(empty));
 
     std::string overSize(MAXIMUM_TRANSACTION_DATETIME_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkTransactionIDRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkTransactionIDRange(overSize));
 
     std::string minimumSize(MINIMUM_TRANSACTION_DATETIME_LENGTH, 'R');
 
@@ -158,7 +158,7 @@ TEST(FieldsRangeChecker, CheckTransactionIDRange){
 TEST(FieldsRangeChecker, CheckCardDataEncRange){
     std::string empty;
 
-    EXPECT_THROW(checkCardDataRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkCardDataRange(empty));
 
     size_t len = 512;
     std::string notEmpty(len, 'R');
@@ -169,7 +169,7 @@ TEST(FieldsRangeChecker, CheckCardDataEncRange){
 TEST(FieldsRangeChecker, CheckOpenTagsRange){
     std::string empty;
 
-    EXPECT_THROW(checkOpenTagsRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkOpenTagsRange(empty));
 
     size_t len = 512;
     std::string notEmpty(len, 'R');
@@ -179,7 +179,7 @@ TEST(FieldsRangeChecker, CheckOpenTagsRange){
 TEST(FieldsRangeChecker, CheckEncTagsRange){
     std::string empty;
 
-    EXPECT_THROW(checkEncTagsRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkEncTagsRange(empty));
 
     size_t len = 512;
     std::string notEmpty(len, 'R');
@@ -189,11 +189,11 @@ TEST(FieldsRangeChecker, CheckEncTagsRange){
 TEST(FieldsRangeChecker, CheckProviderCodeRange){
     std::string empty;
 
-    EXPECT_THROW(checkProviderCodeRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkProviderCodeRange(empty));
 
     std::string overSize(MAXIMUM_PROVIDER_CODE_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkProviderCodeRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkProviderCodeRange(overSize));
 
     std::string minimumSize(MINIMUM_PROVIDER_CODE_LENGTH, 'R');
 
@@ -206,7 +206,7 @@ TEST(FieldsRangeChecker, CheckProviderCodeRange){
 TEST(FieldsRangeChecker, CheckAdditionalInfoRange){
     std::string empty;
 
-    EXPECT_THROW(checkAdditionalInfoRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkAdditionalInfoRange(empty));
 
     size_t len = 512;
     std::string notEmpty(len, 'R');
@@ -220,8 +220,8 @@ TEST(FieldsRangeChecker, CheckStatusRange){
     auto greatMinimum = (int32_t)Status::FirstValue + 1;
     auto lessMaximum = (int32_t)Status::LastValue - 1;
 
-    EXPECT_THROW(checkStatusRange(lessMinimum), std::invalid_argument);
-    EXPECT_THROW(checkStatusRange(greatMaximum), std::invalid_argument);
+    EXPECT_FALSE(checkStatusRange(lessMinimum));
+    EXPECT_FALSE(checkStatusRange(greatMaximum));
 
     EXPECT_TRUE(checkStatusRange((int32_t)Status::FirstValue));
     EXPECT_TRUE(checkStatusRange((int32_t)Status::LastValue));
@@ -232,11 +232,11 @@ TEST(FieldsRangeChecker, CheckStatusRange){
 TEST(FieldsRangeChecker, CheckTransDateTimeRange){
     std::string empty;
 
-    EXPECT_THROW(checkTransDateTimeRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkTransDateTimeRange(empty));
 
     std::string overSize(MAXIMUM_TRANSACTION_DATETIME_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkTransDateTimeRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkTransDateTimeRange(overSize));
 
     std::string minimumSize(MINIMUM_TRANSACTION_DATETIME_LENGTH, 'R');
 
@@ -249,11 +249,11 @@ TEST(FieldsRangeChecker, CheckTransDateTimeRange){
 TEST(FieldsRangeChecker, CheckTerminalDateTimeRange){
     std::string empty;
 
-    EXPECT_THROW(checkTerminalDateTimeRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkTerminalDateTimeRange(empty));
 
     std::string overSize(MAXIMUM_TERMINAL_DATETIME_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkTerminalDateTimeRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkTerminalDateTimeRange(overSize));
 
     std::string minimumSize(MINIMUM_TERMINAL_DATETIME_LENGTH, 'R');
 
@@ -266,11 +266,11 @@ TEST(FieldsRangeChecker, CheckTerminalDateTimeRange){
 TEST(FieldsRangeChecker, CheckCardPANRange){
     std::string empty;
 
-    EXPECT_THROW(checkCardPANRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkCardPANRange(empty));
 
     std::string overSize(MAXIMUM_CARD_PAN_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkCardPANRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkCardPANRange(overSize));
 
     std::string minimumSize(MINIMUM_CARD_PAN_LENGTH, 'R');
 
@@ -283,11 +283,11 @@ TEST(FieldsRangeChecker, CheckCardPANRange){
 TEST(FieldsRangeChecker, CheckExpireDateRange){
     std::string empty;
 
-    EXPECT_THROW(checkExpireDateRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkExpireDateRange(empty));
 
     std::string overSize(MAXIMUM_EXPIRE_DATE_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkExpireDateRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkExpireDateRange(overSize));
 
     std::string minimumSize(MINIMUM_EXPIRE_DATE_LENGTH, 'R');
 
@@ -300,11 +300,11 @@ TEST(FieldsRangeChecker, CheckExpireDateRange){
 TEST(FieldsRangeChecker, CheckCardholderNameRange){
     std::string empty;
 
-    EXPECT_THROW(checkCardholderNameRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkCardholderNameRange(empty));
 
     std::string overSize(MAXIMUM_CARDHOLDER_NAME_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkCardholderNameRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkCardholderNameRange(overSize));
 
     std::string minimumSize(MINIMUM_CARDHOLDER_NAME_LENGTH, 'R');
 
@@ -321,8 +321,8 @@ TEST(FieldsRangeChecker, CheckCardholderAuthMethodRange){
     auto greatMinimum = (int32_t)CardholderAuthMethod::FirstValue + 1;
     auto lessMaximum = (int32_t)CardholderAuthMethod::LastValue - 1;
 
-    EXPECT_THROW(checkCardholderAuthMethodRange(lessMinimum), std::invalid_argument);
-    EXPECT_THROW(checkCardholderAuthMethodRange(greatMaximum), std::invalid_argument);
+    EXPECT_FALSE(checkCardholderAuthMethodRange(lessMinimum));
+    EXPECT_FALSE(checkCardholderAuthMethodRange(greatMaximum));
 
     EXPECT_TRUE(checkCardholderAuthMethodRange((int32_t)CardholderAuthMethod::FirstValue));
     EXPECT_TRUE(checkCardholderAuthMethodRange((int32_t)CardholderAuthMethod::LastValue));
@@ -333,11 +333,11 @@ TEST(FieldsRangeChecker, CheckCardholderAuthMethodRange){
 TEST(FieldsRangeChecker, CheckResponseCodeRange){
     std::string empty;
 
-    EXPECT_THROW(checkResponseCodeRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkResponseCodeRange(empty));
 
     std::string overSize(MAXIMUM_RESPONSE_CODE_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkResponseCodeRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkResponseCodeRange(overSize));
 
     std::string minimumSize(MINIMUM_RESPONSE_CODE_LENGTH, 'R');
 
@@ -350,11 +350,11 @@ TEST(FieldsRangeChecker, CheckResponseCodeRange){
 TEST(FieldsRangeChecker, CheckResponseTextRange){
     std::string empty;
 
-    EXPECT_THROW(checkResponseTextRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkResponseTextRange(empty));
 
     std::string overSize(MAXIMUM_RESPONSE_TEXT_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkResponseTextRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkResponseTextRange(overSize));
 
     std::string minimumSize(MINIMUM_RESPONSE_TEXT_LENGTH, 'R');
 
@@ -367,11 +367,11 @@ TEST(FieldsRangeChecker, CheckResponseTextRange){
 TEST(FieldsRangeChecker, CheckSTANRange){
     std::string empty;
 
-    EXPECT_THROW(checkSTANRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkSTANRange(empty));
 
     std::string overSize(MAXIMUM_STAN_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkSTANRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkSTANRange(overSize));
 
     std::string minimumSize(MINIMUM_STAN_LENGTH, 'R');
 
@@ -384,11 +384,11 @@ TEST(FieldsRangeChecker, CheckSTANRange){
 TEST(FieldsRangeChecker, CheckTerminalIDRange){
     std::string empty;
 
-    EXPECT_THROW(checkTerminalIDRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkTerminalIDRange(empty));
 
     std::string overSize(MAXIMUM_TERMINAL_ID_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkTerminalIDRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkTerminalIDRange(overSize));
 
     std::string minimumSize(MINIMUM_TERMINAL_ID_LENGTH, 'R');
 
@@ -401,11 +401,11 @@ TEST(FieldsRangeChecker, CheckTerminalIDRange){
 TEST(FieldsRangeChecker, CheckCardEmvAidRange){
     std::string empty;
 
-    EXPECT_THROW(checkCardEmvAidRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkCardEmvAidRange(empty));
 
     std::string overSize(MAXIMUM_EMV_AID_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkCardEmvAidRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkCardEmvAidRange(overSize));
 
     std::string minimumSize(MINIMUM_EMV_AID_LENGTH, 'R');
 
@@ -418,11 +418,11 @@ TEST(FieldsRangeChecker, CheckCardEmvAidRange){
 TEST(FieldsRangeChecker, CheckCardAppNameRange){
     std::string empty;
 
-    EXPECT_THROW(checkCardAppNameRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkCardAppNameRange(empty));
 
     std::string overSize(MAXIMUM_CARD_APP_NAME_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkCardAppNameRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkCardAppNameRange(overSize));
 
     std::string minimumSize(MINIMUM_CARD_APP_NAME_LENGTH, 'R');
 
@@ -439,8 +439,8 @@ TEST(FieldsRangeChecker, CheckCardInputMethodRange){
     auto greatMinimum = (int32_t)CardInputMethod::FirstValue + 1;
     auto lessMaximum = (int32_t)CardInputMethod::LastValue - 1;
 
-    EXPECT_THROW(checkCardInputMethodRange(lessMinimum), std::invalid_argument);
-    EXPECT_THROW(checkCardInputMethodRange(greatMaximum), std::invalid_argument);
+    EXPECT_FALSE(checkCardInputMethodRange(lessMinimum));
+    EXPECT_FALSE(checkCardInputMethodRange(greatMaximum));
 
     EXPECT_TRUE(checkCardInputMethodRange((int32_t)CardInputMethod::FirstValue));
     EXPECT_TRUE(checkCardInputMethodRange((int32_t)CardInputMethod::LastValue));
@@ -451,11 +451,11 @@ TEST(FieldsRangeChecker, CheckCardInputMethodRange){
 TEST(FieldsRangeChecker, CheckIssuerNameRange){
     std::string empty;
 
-    EXPECT_THROW(checkIssuerNameRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkIssuerNameRange(empty));
 
     std::string overSize(MAXIMUM_ISSUER_NAME_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkIssuerNameRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkIssuerNameRange(overSize));
 
     std::string minimumSize(MINIMUM_ISSUER_NAME_LENGTH, 'R');
 
@@ -468,7 +468,7 @@ TEST(FieldsRangeChecker, CheckIssuerNameRange){
 TEST(FieldsRangeChecker, CheckCardDataRange){
     std::string empty;
 
-    EXPECT_THROW(checkCardDataRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkCardDataRange(empty));
 
     std::string notEmpty( 512, 'R');
 
@@ -477,11 +477,11 @@ TEST(FieldsRangeChecker, CheckCardDataRange){
 TEST(FieldsRangeChecker, CheckMerchantIDRange){
     std::string empty;
 
-    EXPECT_THROW(checkMerchantIDRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkMerchantIDRange(empty));
 
     std::string overSize(MAXIMUM_MERCHANT_ID_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkMerchantIDRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkMerchantIDRange(overSize));
 
     std::string minimumSize(MINIMUM_MERCHANT_ID_LENGTH, 'R');
 
@@ -494,11 +494,11 @@ TEST(FieldsRangeChecker, CheckMerchantIDRange){
 TEST(FieldsRangeChecker, CheckTVRRange){
     std::string empty;
 
-    EXPECT_THROW(checkTVRRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkTVRRange(empty));
 
     std::string overSize(MAXIMUM_TVR_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkTVRRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkTVRRange(overSize));
 
     std::string minimumSize(MINIMUM_TVR_LENGTH, 'R');
 
@@ -511,11 +511,11 @@ TEST(FieldsRangeChecker, CheckTVRRange){
 TEST(FieldsRangeChecker, CheckTSIRange){
     std::string empty;
 
-    EXPECT_THROW(checkTSIRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkTSIRange(empty));
 
     std::string overSize(MAXIMUM_TSI_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkTSIRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkTSIRange(overSize));
 
     std::string minimumSize(MINIMUM_TSI_LENGTH, 'R');
 
@@ -528,11 +528,11 @@ TEST(FieldsRangeChecker, CheckTSIRange){
 TEST(FieldsRangeChecker, CheckTCRange){
     std::string empty;
 
-    EXPECT_THROW(checkTCRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkTCRange(empty));
 
     std::string overSize(MAXIMUM_TC_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkTCRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkTCRange(overSize));
 
     std::string minimumSize(MINIMUM_TC_LENGTH, 'R');
 
@@ -545,11 +545,11 @@ TEST(FieldsRangeChecker, CheckTCRange){
 TEST(FieldsRangeChecker, CheckCIDRange){
     std::string empty;
 
-    EXPECT_THROW(checkTCRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkTCRange(empty));
 
     std::string overSize(MAXIMUM_TC_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkTCRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkTCRange(overSize));
 
     std::string minimumSize(MINIMUM_TC_LENGTH, 'R');
 
@@ -562,11 +562,11 @@ TEST(FieldsRangeChecker, CheckCIDRange){
 TEST(FieldsRangeChecker, CheckKVRRange){
     std::string empty;
 
-    EXPECT_THROW(checkKVRRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkKVRRange(empty));
 
     std::string overSize(MAXIMUM_KVR_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkKVRRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkKVRRange(overSize));
 
     std::string minimumSize(MINIMUM_KVR_LENGTH, 'R');
 
@@ -579,11 +579,11 @@ TEST(FieldsRangeChecker, CheckKVRRange){
 TEST(FieldsRangeChecker, CheckCDAResultRange){
     std::string empty;
 
-    EXPECT_THROW(checkCDAResultRange(empty), std::invalid_argument);
+    EXPECT_FALSE(checkCDAResultRange(empty));
 
     std::string overSize(MAXIMUM_CDARESULT_LENGTH + 1, 'R');
 
-    EXPECT_THROW(checkCDAResultRange(overSize), std::invalid_argument);
+    EXPECT_FALSE(checkCDAResultRange(overSize));
 
     std::string minimumSize(MINIMUM_CDARESULT_LENGTH, 'R');
 
@@ -597,8 +597,8 @@ TEST(FieldsRangeChecker, CheckSalesCountRange){
     int64_t lessMinimum = MINIMUM_ARRAY_SIZE - 1;
     int64_t greatMaximum = MAXIMUM_ARRAY_SIZE + 1;
 
-    EXPECT_THROW(checkSalesCountRange(lessMinimum), std::invalid_argument);
-    EXPECT_THROW(checkSalesCountRange(greatMaximum), std::invalid_argument);
+    EXPECT_FALSE(checkSalesCountRange(lessMinimum));
+    EXPECT_FALSE(checkSalesCountRange(greatMaximum));
 
     EXPECT_TRUE(checkSalesCountRange(MINIMUM_ARRAY_SIZE));
     EXPECT_TRUE(checkSalesCountRange(MAXIMUM_ARRAY_SIZE));
@@ -610,8 +610,8 @@ TEST(FieldsRangeChecker, CheckVoidCountRange){
     int64_t lessMinimum = MINIMUM_ARRAY_SIZE - 1;
     int64_t greatMaximum = MAXIMUM_ARRAY_SIZE + 1;
 
-    EXPECT_THROW(checkVoidCountRange(lessMinimum), std::invalid_argument);
-    EXPECT_THROW(checkVoidCountRange(greatMaximum), std::invalid_argument);
+    EXPECT_FALSE(checkVoidCountRange(lessMinimum));
+    EXPECT_FALSE(checkVoidCountRange(greatMaximum));
 
     EXPECT_TRUE(checkVoidCountRange(MINIMUM_ARRAY_SIZE));
     EXPECT_TRUE(checkVoidCountRange(MAXIMUM_ARRAY_SIZE));
@@ -623,8 +623,8 @@ TEST(FieldsRangeChecker, CheckRefundCountRange){
     int64_t lessMinimum = MINIMUM_ARRAY_SIZE - 1;
     int64_t greatMaximum = MAXIMUM_ARRAY_SIZE + 1;
 
-    EXPECT_THROW(checkRefundCountRange(lessMinimum), std::invalid_argument);
-    EXPECT_THROW(checkRefundCountRange(greatMaximum), std::invalid_argument);
+    EXPECT_FALSE(checkRefundCountRange(lessMinimum));
+    EXPECT_FALSE(checkRefundCountRange(greatMaximum));
 
     EXPECT_TRUE(checkRefundCountRange(MINIMUM_ARRAY_SIZE));
     EXPECT_TRUE(checkRefundCountRange(MAXIMUM_ARRAY_SIZE));
@@ -639,8 +639,8 @@ TEST(FieldsRangeChecker, CheckNotiticationCodes){
     auto greatMinimum = (int32_t)NotificationCodes::FirstValue + 1;
     auto lessMaximum = (int32_t)NotificationCodes::LastValue - 1;
 
-    EXPECT_THROW(checkNotificationsRange(lessMinimum), std::invalid_argument);
-    EXPECT_THROW(checkNotificationsRange(greatMaximum), std::invalid_argument);
+    EXPECT_FALSE(checkNotificationsRange(lessMinimum));
+    EXPECT_FALSE(checkNotificationsRange(greatMaximum));
 
     EXPECT_TRUE(checkNotificationsRange((int32_t)NotificationCodes::FirstValue));
     EXPECT_TRUE(checkNotificationsRange((int32_t)NotificationCodes::LastValue));

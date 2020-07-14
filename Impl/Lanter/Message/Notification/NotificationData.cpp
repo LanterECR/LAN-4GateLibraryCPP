@@ -14,26 +14,39 @@ namespace Lanter {
                 return m_Notification;
             }
 
-            void NotificationData::setCode(NotificationCodes notificationCode) {
+            bool NotificationData::setCode(NotificationCodes notificationCode) {
+                bool result = false;
                 if (Utils::checkNotificationsRange(static_cast<int32_t>(notificationCode))) {
                     m_Notification = notificationCode;
+                    result = true;
                 }
+                return result;
             }
 
             const std::string &NotificationData::getMessage() const {
                 return m_NotificationText;
             }
 
-            void NotificationData::setMessage(const std::string &notificationMessage) {
-                m_NotificationText = notificationMessage;
-            }
-
-            void NotificationData::setAdditional(const std::string &additional) {
-                m_Additional = additional;
+            bool NotificationData::setMessage(const std::string &notificationMessage) {
+                bool result = false;
+                if(!notificationMessage.empty()) {
+                    m_NotificationText = notificationMessage;
+                    result = true;
+                }
+                return result;
             }
 
             const std::string &NotificationData::getAdditional() const {
                 return m_Additional;
+            }
+
+            bool NotificationData::setAdditional(const std::string &additional) {
+                bool result = false;
+                if(!additional.empty()) {
+                    m_Additional = additional;
+                    result = true;
+                }
+                return result;
             }
 
         }//Notifications

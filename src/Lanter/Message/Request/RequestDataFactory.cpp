@@ -13,10 +13,14 @@ namespace Lanter {
             std::shared_ptr<IRequestData>
             RequestDataFactory::getRequestData(OperationCodes operationCode, int16_t ecrNumber) {
                 auto data = std::make_shared<RequestData>();
+                bool result = false;
                 if (data) {
-                    data->setOperationCode(operationCode);
+                    result = data->setOperationCode(operationCode);
                     if(ecrNumber != -1) {
-                        data->setEcrNumber(ecrNumber);
+                        result = result && data->setEcrNumber(ecrNumber);
+                    }
+                    if(!result) {
+                        data.reset();
                     }
                 }
                 return data;

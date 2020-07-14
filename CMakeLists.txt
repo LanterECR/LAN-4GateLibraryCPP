@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.10)
 
-project(LAN_4GateLibraryCPP)
+project(LAN_4GateLib)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -77,6 +77,17 @@ add_library(${PROJECT_NAME} #название проекта
            )
 
 if(BUILD_TESTS)
+    option(INSTALL_GTEST OFF) #отключение установки GTest
     enable_testing()
+    add_subdirectory(tests)
 endif()
-add_subdirectory(tests)
+
+if(INSTALL_PATH)
+    get_filename_component(ABSOLUTE_PATH ${INSTALL_PATH} ABSOLUTE)
+    set(CMAKE_INSTALL_PREFIX ${ABSOLUTE_PATH})
+else()
+    set(CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_BINARY_DIR}/install/${PROJECT_NAME})
+endif()
+
+INSTALL(TARGETS ${PROJECT_NAME} DESTINATION lib)
+INSTALL(DIRECTORY include/Lanter DESTINATION include)

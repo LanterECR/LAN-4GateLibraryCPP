@@ -54,8 +54,8 @@ namespace Lanter {
 
                 /// \brief Устанавливает лоический иденитфикатор кассового ПО
                 /// \param ecrNumber Логический идентификатор кассового ПО в диапазоне [1, 999]
-                /// \throws invalid_argument, если значение вне разрешенного диапазона
-                virtual void setEcrNumber(int16_t ecrNumber) = 0;
+                /// \return true, если поле успешно установлено
+                virtual bool setEcrNumber(int16_t ecrNumber) = 0;
 
                 /// \brief Возвращает логический идентификатор мерчанта в кассовом ПО
                 /// \return Если поле установлено - логический идентификатор мерчанта в кассовом ПО, иначе -1
@@ -63,8 +63,8 @@ namespace Lanter {
 
                 /// \brief Устанавливает лоический иденитфикатор мерчанта в кассовом ПО
                 /// \param ecrNumber Логический идентификатор мерчанта в кассовом в диапазоне [1, 999]
-                /// \throws invalid_argument, если значение вне разрешенного диапазона
-                virtual void setEcrMerchantNumber(int16_t ecrMerchantNumber) = 0;
+                /// \return true, если поле успешно установлено
+                virtual bool setEcrMerchantNumber(int16_t ecrMerchantNumber) = 0;
 
                 /// \brief Возвращает код выполненной операции
                 /// \return Если поле установлено, возвращает код операции. Иначе NoOperation
@@ -74,8 +74,8 @@ namespace Lanter {
                 /// \brief Устанавливает код выполнямой операции
                 /// \param operationCode Значение из перечислений OperationCodes, за исключением NoOperation
                 /// \sa OperationCodes
-                /// \throws invalid_argument, если передается недопустимый код операции
-                virtual void setOperationCode(OperationCodes operationCode) = 0;
+                /// \return true, если поле успешно установлено
+                virtual bool setOperationCode(OperationCodes operationCode) = 0;
 
                 /// \brief Возвращает код оригинальной операции
                 /// \return Если поле установлено, возвращает код оригинальной операции. Иначе NoOperation
@@ -85,8 +85,8 @@ namespace Lanter {
                 /// \brief Устанавливает код оригинальной операции
                 /// \param operationCode Значение из перечислений OperationCodes, за исключением NoOperation
                 /// \sa OperationCodes
-                /// \throws invalid_argument, если передается недопустимый код операции
-                virtual void setOriginalOperationCode(OperationCodes originalOperationCode) = 0;
+                /// \return true, если поле успешно установлено
+                virtual bool setOriginalOperationCode(OperationCodes originalOperationCode) = 0;
 
                 /// \brief Возвращает общую суммы выполненной.
                 /// \return Если поле установлено - значение суммы операции в диапазоне [0, 999999999999]. Иначе -1.
@@ -94,7 +94,7 @@ namespace Lanter {
 
                 /// \brief Устанавливает сумму в минимальных единицах валюты (копейки для рублей)
                 /// \param totalAmount Значение суммы в диапазоне [0, 999999999999]
-                virtual void setTotalAmount(int64_t totalAmount) = 0;
+                virtual bool setTotalAmount(int64_t totalAmount) = 0;
 
                 /// \brief Возвращает частичную сумму операции в минимальных единицах валюты (копейки для рублей)
                 /// \return Если поле установлено - значение суммы операции в диапазоне [0, 999999999999]. Иначе -1.
@@ -102,7 +102,7 @@ namespace Lanter {
 
                 /// \brief Устанавливает частичную сумму в минимальных единицах валюты (копейки для рублей)
                 /// \param partialAmount Значение суммы в диапазоне [0, 999999999999]
-                virtual void setPartialAmount(int64_t partialAmount) = 0;
+                virtual bool setPartialAmount(int64_t partialAmount) = 0;
 
                 /// \brief
                 /// \return
@@ -110,7 +110,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param amountAcquirerFee
-                virtual void setAcquirerFeeAmount(int64_t amountAcquirerFee) = 0;
+                virtual bool setAcquirerFeeAmount(int64_t amountAcquirerFee) = 0;
 
                 /// \brief
                 /// \return
@@ -118,7 +118,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param amountTerminalFee
-                virtual void setTerminalFeeAmount(int64_t amountTerminalFee) = 0;
+                virtual bool setTerminalFeeAmount(int64_t amountTerminalFee) = 0;
 
                 /// \brief
                 /// \return
@@ -126,7 +126,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param tipsAmount
-                virtual void setTipsAmount(int64_t tipsAmount) = 0;
+                virtual bool setTipsAmount(int64_t tipsAmount) = 0;
 
                 /// \brief
                 /// \return
@@ -134,7 +134,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param currencyCode
-                virtual void setCurrencyCode(int16_t currencyCode) = 0;
+                virtual bool setCurrencyCode(int16_t currencyCode) = 0;
 
                 /// \brief
                 /// \return
@@ -142,7 +142,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param receiptReference
-                virtual void setReceiptReference(const std::string &receiptReference) = 0;
+                virtual bool setReceiptReference(const std::string &receiptReference) = 0;
 
                 /// \brief
                 /// \return
@@ -150,7 +150,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param rrn
-                virtual void setRRN(const std::string &rrn) = 0;
+                virtual bool setRRN(const std::string &rrn) = 0;
 
                 /// \brief
                 /// \return
@@ -158,7 +158,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param status
-                virtual void setStatus(Status status) = 0;
+                virtual bool setStatus(Status status) = 0;
 
                 /// \brief
                 /// \return
@@ -166,7 +166,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param originalOperationStatus
-                virtual void setOriginalOperationStatus(Status originalOperationStatus) = 0;
+                virtual bool setOriginalOperationStatus(Status originalOperationStatus) = 0;
 
                 /// \brief
                 /// \return
@@ -174,7 +174,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param transDateTime
-                virtual void setTransDateTime(const std::string &transDateTime) = 0;
+                virtual bool setTransDateTime(const std::string &transDateTime) = 0;
 
                 /// \brief
                 /// \return
@@ -182,7 +182,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param terminalDateTime
-                virtual void setTerminalDateTime(const std::string &terminalDateTime) = 0;
+                virtual bool setTerminalDateTime(const std::string &terminalDateTime) = 0;
 
                 /// \brief
                 /// \return
@@ -190,7 +190,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param cardPan
-                virtual void setCardPAN(const std::string &cardPan) = 0;
+                virtual bool setCardPAN(const std::string &cardPan) = 0;
 
                 /// \brief
                 /// \return
@@ -198,7 +198,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param expireDate
-                virtual void setExpireDate(const std::string &expireDate) = 0;
+                virtual bool setExpireDate(const std::string &expireDate) = 0;
 
                 /// \brief
                 /// \return
@@ -206,7 +206,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param cardholderName
-                virtual void setCardholderName(const std::string &cardholderName) = 0;
+                virtual bool setCardholderName(const std::string &cardholderName) = 0;
 
                 /// \brief
                 /// \return
@@ -214,7 +214,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param cardholderAuthMethod
-                virtual void setCardholderAuthMethod(CardholderAuthMethod cardholderAuthMethod) = 0;
+                virtual bool setCardholderAuthMethod(CardholderAuthMethod cardholderAuthMethod) = 0;
 
                 /// \brief
                 /// \return
@@ -222,7 +222,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param authCode
-                virtual void setAuthCode(const std::string &authCode) = 0;
+                virtual bool setAuthCode(const std::string &authCode) = 0;
 
                 /// \brief
                 /// \return
@@ -230,7 +230,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param responseCode
-                virtual void setResponseCode(const std::string &responseCode) = 0;
+                virtual bool setResponseCode(const std::string &responseCode) = 0;
 
                 /// \brief
                 /// \return
@@ -238,7 +238,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param responseText
-                virtual void setResponseText(const std::string &responseText) = 0;
+                virtual bool setResponseText(const std::string &responseText) = 0;
 
                 /// \brief
                 /// \return
@@ -246,7 +246,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param stan
-                virtual void setSTAN(const std::string &stan) = 0;
+                virtual bool setSTAN(const std::string &stan) = 0;
 
                 /// \brief
                 /// \return
@@ -254,7 +254,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param transactionId
-                virtual void setTransactionID(const std::string &transactionId) = 0;
+                virtual bool setTransactionID(const std::string &transactionId) = 0;
 
                 /// \brief
                 /// \return
@@ -262,7 +262,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param terminalId
-                virtual void setTerminalID(const std::string &terminalId) = 0;
+                virtual bool setTerminalID(const std::string &terminalId) = 0;
 
                 /// \brief
                 /// \return
@@ -270,7 +270,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param cardEmvAid
-                virtual void setCardEmvAid(const std::string &cardEmvAid) = 0;
+                virtual bool setCardEmvAid(const std::string &cardEmvAid) = 0;
 
                 /// \brief
                 /// \return
@@ -278,7 +278,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param cardAppName
-                virtual void setCardAppName(const std::string &cardAppName) = 0;
+                virtual bool setCardAppName(const std::string &cardAppName) = 0;
 
                 /// \brief
                 /// \return
@@ -286,7 +286,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param cardInputMethod
-                virtual void setCardInputMethod(Response::CardInputMethod cardInputMethod) = 0;
+                virtual bool setCardInputMethod(Response::CardInputMethod cardInputMethod) = 0;
 
                 /// \brief
                 /// \return
@@ -294,7 +294,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param issuerName
-                virtual void setIssuerName(const std::string &issuerName) = 0;
+                virtual bool setIssuerName(const std::string &issuerName) = 0;
 
                 /// \brief
                 /// \return
@@ -302,7 +302,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param additionalInfo
-                virtual void setAdditionalInfo(const std::string &additionalInfo) = 0;
+                virtual bool setAdditionalInfo(const std::string &additionalInfo) = 0;
 
                 /// \brief
                 /// \return
@@ -310,7 +310,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param cardData
-                virtual void setCardData(const std::string &cardData) = 0;
+                virtual bool setCardData(const std::string &cardData) = 0;
 
                 /// \brief
                 /// \return
@@ -318,7 +318,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param cardDataEnc
-                virtual void setCardDataEnc(const std::string &cardDataEnc) = 0;
+                virtual bool setCardDataEnc(const std::string &cardDataEnc) = 0;
 
                 /// \brief
                 /// \return
@@ -326,7 +326,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param merchantId
-                virtual void setMerchantID(const std::string &merchantId) = 0;
+                virtual bool setMerchantID(const std::string &merchantId) = 0;
 
                 /// \brief
                 /// \return
@@ -334,7 +334,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param tvr
-                virtual void setTVR(const std::string &tvr) = 0;
+                virtual bool setTVR(const std::string &tvr) = 0;
 
                 /// \brief
                 /// \return
@@ -342,7 +342,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param tsi
-                virtual void setTSI(const std::string &tsi) = 0;
+                virtual bool setTSI(const std::string &tsi) = 0;
 
                 /// \brief
                 /// \return
@@ -350,7 +350,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param tc
-                virtual void setTC(const std::string &tc) = 0;
+                virtual bool setTC(const std::string &tc) = 0;
 
                 /// \brief
                 /// \return
@@ -358,7 +358,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param cid
-                virtual void setCID(const std::string &cid) = 0;
+                virtual bool setCID(const std::string &cid) = 0;
 
                 /// \brief
                 /// \return
@@ -366,7 +366,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param kvr
-                virtual void setKVR(const std::string &kvr) = 0;
+                virtual bool setKVR(const std::string &kvr) = 0;
 
                 /// \brief
                 /// \return
@@ -374,7 +374,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param cdaResult
-                virtual void setCDAResult(const std::string &cdaResult) = 0;
+                virtual bool setCDAResult(const std::string &cdaResult) = 0;
 
                 /// \brief
                 /// \return
@@ -382,7 +382,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param salesCount
-                virtual void setSalesCount(int32_t salesCount) = 0;
+                virtual bool setSalesCount(int32_t salesCount) = 0;
 
                 /// \brief
                 /// \return
@@ -390,7 +390,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param voidCount
-                virtual void setVoidCount(int32_t voidCount) = 0;
+                virtual bool setVoidCount(int32_t voidCount) = 0;
 
                 /// \brief
                 /// \return
@@ -398,7 +398,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param refundCount
-                virtual void setRefundCount(int32_t refundCount) = 0;
+                virtual bool setRefundCount(int32_t refundCount) = 0;
 
                 /// \brief
                 /// \return
@@ -406,7 +406,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param salesArray
-                virtual void setSalesArray(const std::vector<std::shared_ptr<IResponseData> > &salesArray) = 0;
+                virtual bool setSalesArray(const std::vector<std::shared_ptr<IResponseData> > &salesArray) = 0;
 
                 /// \brief
                 /// \return
@@ -414,7 +414,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param voidArray
-                virtual void setVoidArray(const std::vector<std::shared_ptr<IResponseData> > &voidArray) = 0;
+                virtual bool setVoidArray(const std::vector<std::shared_ptr<IResponseData> > &voidArray) = 0;
 
                 /// \brief
                 /// \return
@@ -422,7 +422,7 @@ namespace Lanter {
 
                 /// \brief
                 /// \param refundArray
-                virtual void setRefundArray(const std::vector<std::shared_ptr<IResponseData> > &refundArray) = 0;
+                virtual bool setRefundArray(const std::vector<std::shared_ptr<IResponseData> > &refundArray) = 0;
             };
         }//Response
     }
