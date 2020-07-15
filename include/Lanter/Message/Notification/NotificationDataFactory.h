@@ -8,11 +8,12 @@
 #include <memory>
 
 #include "INotificationData.h"
+#include "Lanter/Utils/VisibilityMacroses.h"
 
 namespace Lanter {
     namespace Message {
         namespace Notification {
-            class NotificationDataFactory {
+            class LANTER_VISIBILITY NotificationDataFactory {
             public:
                 static std::shared_ptr<INotificationData> getNotificationData();
             };

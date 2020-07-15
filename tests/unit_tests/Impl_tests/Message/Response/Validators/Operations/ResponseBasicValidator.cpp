@@ -46,8 +46,8 @@ TEST(ResponseBasicValidator, CheckAppendOptional) {
     EXPECT_FALSE(validator.getOptionalFields().empty());
     EXPECT_EQ(validator.getOptionalFields().size(), 2);
 
-    EXPECT_NE(validator.getOptionalFields().find(ResponseFields::FirstValue), validator.getMandatoryFields().end());
-    EXPECT_NE(validator.getOptionalFields().find(ResponseFields::LastValue), validator.getMandatoryFields().end());
+    EXPECT_NE(validator.getOptionalFields().find(ResponseFields::FirstValue), validator.getOptionalFields().end());
+    EXPECT_NE(validator.getOptionalFields().find(ResponseFields::LastValue), validator.getOptionalFields().end());
 }
 
 TEST(ResponseBasicValidator, CheckValidateEmptyMandatory) {

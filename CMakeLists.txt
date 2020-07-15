@@ -20,6 +20,7 @@ else()
     set(LIB_BUILD_TYPE SHARED)
 endif()
 
+
 #поиск Python 3.4+
 find_package (Python3 COMPONENTS Interpreter)
 if(NOT Python3_FOUND OR NOT Python3_Interpreter_FOUND)
@@ -75,9 +76,13 @@ add_library(${PROJECT_NAME} #название проекта
             ${INCLUDE_FILES} ${SOURCE_FILES} #Файлы интерфейсной части
             ${IMPL_INCLUDE_FILES} ${IMPL_SOURCE_FILES} #Файлы реализации
            )
+if(${LIB_BUILD_TYPE} STREQUAL SHARED)
+    target_compile_definitions(${PROJECT_NAME} PUBLIC LANTER_BUILD_SHARED)
+endif()
 
 if(BUILD_TESTS)
-    option(INSTALL_GTEST OFF) #отключение установки GTest
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    option(INSTALL_GTEST OFF)
     enable_testing()
     add_subdirectory(tests)
 endif()

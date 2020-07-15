@@ -42,7 +42,7 @@ namespace Lanter {
                     root[JSONRootFields::getObjectField()] = object;
                     result = createVector(root, resultData);
                 }
-            } catch (std::exception & exception) {
+            } catch (std::exception &) {
                 result = false;
             }
 
@@ -62,7 +62,7 @@ namespace Lanter {
                     root[JSONRootFields::getObjectField()] = object;
                     result = createVector(root, resultData);
                 }
-            } catch (std::exception & exception) {
+            } catch (std::exception &) {
                 result = false;
             }
 
@@ -82,7 +82,7 @@ namespace Lanter {
                     root[JSONRootFields::getObjectField()] = object;
                     result = createVector(root, resultData);
                 }
-            } catch (std::exception & exception) {
+            } catch (std::exception &) {
                 result = false;
             }
 

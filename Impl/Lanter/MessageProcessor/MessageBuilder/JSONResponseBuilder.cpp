@@ -21,7 +21,7 @@ namespace Lanter {
             bool result = false;
             try {
                 result = addFields(responseData, object);
-            } catch (std::exception & exception) { }
+            } catch (std::exception &) { }
             return result;
         }
 

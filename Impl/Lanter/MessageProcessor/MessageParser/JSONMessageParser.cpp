@@ -75,7 +75,7 @@ namespace Lanter {
                 std::stringstream ss(message);
                 ss >> root;
                 result = !root.empty();
-            } catch (std::exception & e) {
+            } catch (std::exception &) {
                 result = false;
             }
             return result;

@@ -8,11 +8,12 @@
 #include <memory>
 
 #include "IMessageParser.h"
+#include "Lanter/Utils/VisibilityMacroses.h"
 
 namespace Lanter {
     namespace MessageProcessor {
         /// \brief Фабричный класс, возвращающий текущий парсер сообщений
-        class MessageParserFactory {
+        class LANTER_VISIBILITY MessageParserFactory {
         public:
             /// \brief Возвращает указатель на созданный объект парсера
             /// \return nullptr, если не удалось создать парсер

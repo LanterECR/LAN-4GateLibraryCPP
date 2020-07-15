@@ -11,12 +11,13 @@
 
 #include "RequestFields.h"
 #include "Lanter/Message/OperationCodes.h"
+#include "Lanter/Utils/VisibilityMacroses.h"
 
 namespace Lanter {
     namespace Message {
         namespace Request {
             ///\brief Базовый класс-контейнер для отправки запросов финансовому ПО LAN-4Tap
-            class IRequestData {
+            class LANTER_VISIBILITY IRequestData {
             public:
                 virtual ~IRequestData() = default;
 

@@ -13,6 +13,7 @@
 #include "Lanter/Message/Request/IRequestData.h"
 #include "Lanter/Message/Response/IResponseData.h"
 #include "Lanter/Message/Notification/INotificationData.h"
+#include "Lanter/Utils/VisibilityMacroses.h"
 
 using namespace Lanter::Message;
 using namespace Lanter::Message::Request;
@@ -22,7 +23,7 @@ using namespace Lanter::Message::Notification;
 namespace Lanter {
     namespace MessageProcessor {
         /// \brief Парсер сообщений
-        class IMessageParser {
+        class LANTER_VISIBILITY IMessageParser {
         public:
             /// \brief Разбирает полученное сообщение и возвращает тип
             /// \param data Сообщение для разбора

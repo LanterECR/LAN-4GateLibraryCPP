@@ -8,11 +8,12 @@
 #include <memory>
 
 #include "IMessageBuilder.h"
+#include "Lanter/Utils/VisibilityMacroses.h"
 
 namespace Lanter {
     namespace MessageProcessor {
         /// \brief Фабричный класс, возвращающий текущий сборщик сообщений
-        class MessageBuilderFactory {
+        class LANTER_VISIBILITY MessageBuilderFactory {
         public:
             /// \brief Возвращает указатель на созданный объект сборщика
             /// \return nullptr, если не удалось создать сборщик

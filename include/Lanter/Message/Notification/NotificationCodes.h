@@ -4,6 +4,7 @@
 
 #ifndef LAN_4GATELIBRARYCPP_NOTIFICATIONCODES_H
 #define LAN_4GATELIBRARYCPP_NOTIFICATIONCODES_H
+
 namespace Lanter {
     namespace Message {
         namespace Notification {

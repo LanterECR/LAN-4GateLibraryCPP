@@ -16,11 +16,13 @@
 #include "CardholderAuthMethod.h"
 #include "CardInputMethod.h"
 #include "Status.h"
+#include "Lanter/Utils/VisibilityMacroses.h"
+
 
 namespace Lanter {
     namespace Message {
         namespace Response {
-            class IResponseData {
+            class LANTER_VISIBILITY IResponseData {
             public:
                 virtual ~IResponseData() = default;
 

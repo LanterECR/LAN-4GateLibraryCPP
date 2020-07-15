@@ -8,12 +8,13 @@
 
 #include "IResponseData.h"
 #include "Lanter/Message/OperationCodes.h"
+#include "Lanter/Utils/VisibilityMacroses.h"
 
 namespace Lanter {
     namespace Message {
         namespace Response {
             /// \brief Фабричный класс, возвращающий предварительно заполненный обхект IResponseData
-            class ResponseDataFactory {
+            class LANTER_VISIBILITY ResponseDataFactory {
             public:
                 /// \brief Возвращает указатель на объект интерфейса IResponseData, предварительно заполненный
                 /// переданными кодом операции и логическим номером кассового ПО

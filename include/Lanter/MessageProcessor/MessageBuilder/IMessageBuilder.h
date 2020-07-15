@@ -11,6 +11,7 @@
 #include "Lanter/Message/Request/IRequestData.h"
 #include "Lanter/Message/Response/IResponseData.h"
 #include "Lanter/Message/Notification/INotificationData.h"
+#include "Lanter/Utils/VisibilityMacroses.h"
 
 namespace Lanter {
     using namespace Message;
@@ -20,7 +21,7 @@ namespace Lanter {
 
     namespace MessageProcessor {
         /// \brief Интерфейс сборщика сообщений на основе заполненных контейнеров
-        class IMessageBuilder {
+        class LANTER_VISIBILITY IMessageBuilder {
         public:
             virtual ~IMessageBuilder() = default;
             /// \brief Создает сообщение на основе контейнера IRequestData

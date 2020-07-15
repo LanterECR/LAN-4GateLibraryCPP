@@ -1,7 +1,15 @@
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 
-file(GLOB_RECURSE TESTS_SOURCES *.cpp)
+if(NOT ${LIB_BUILD_TYPE} STREQUAL SHARED)
+    file(GLOB_RECURSE IMPL_SOURCES Impl_tests/*.cpp)
+endif()
+
+file(GLOB_RECURSE INTERFACE_SOURCES InterfaceTest/*.cpp)
+
+set(TESTS_SOURCES ${INTERFACE_SOURCES})
+
+list(APPEND TEST_SOURCES ${IMPL_SOURCES})
 
 foreach(TEST_SOURCE ${TESTS_SOURCES})
     get_filename_component(TEST_NAME ${TEST_SOURCE} NAME_WE)

@@ -9,12 +9,13 @@
 
 #include "IRequestData.h"
 #include "Lanter/Message/OperationCodes.h"
+#include "Lanter/Utils/VisibilityMacroses.h"
 
 namespace Lanter {
     namespace Message {
         namespace Request {
             /// \brief Фабричный класс, возвращающий предварительно заполненный обхект IRequestData
-            class RequestDataFactory {
+            class LANTER_VISIBILITY RequestDataFactory {
             public:
                 /// \brief Возвращает указатель на объект интерфейса IRequestData, предварительно заполненный
                 /// переданными кодом операции и логическим номером кассового ПО

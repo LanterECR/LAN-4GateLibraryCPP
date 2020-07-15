@@ -17,14 +17,15 @@ using namespace Lanter::Utils;
 TEST(JSONMessageParser, CheckReadMessage) {
     std::string junkValue = "JUNK";
 
-    std::string jsonValue = "{\"field\":\"value\"}";
+    std::string jsonValue = R"({"field":"value"})";
 
     Json::Value root;
 
     EXPECT_FALSE(JSONMessageParser::readMessage(junkValue, root));
     EXPECT_TRUE(JSONMessageParser::readMessage(jsonValue, root));
 
-    EXPECT_NE(std::find(root.getMemberNames().begin(), root.getMemberNames().end(), "field"), root.getMemberNames().end());
+    auto members = root.getMemberNames();
+    EXPECT_NE(std::find(members.begin(), members.end(), "field"), members.end());
 
     EXPECT_TRUE(root["field"].isString());
 
