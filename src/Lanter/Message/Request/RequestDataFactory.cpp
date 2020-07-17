@@ -14,8 +14,9 @@ namespace Lanter {
             RequestDataFactory::getRequestData(OperationCodes operationCode, int16_t ecrNumber) {
                 auto data = std::make_shared<RequestData>();
                 bool result = false;
+                bool isNoOperation = operationCode == OperationCodes::NoOperation;
                 if (data) {
-                    result = data->setOperationCode(operationCode);
+                    result = data->setOperationCode(operationCode) || isNoOperation;
                     if(ecrNumber != -1) {
                         result = result && data->setEcrNumber(ecrNumber);
                     }

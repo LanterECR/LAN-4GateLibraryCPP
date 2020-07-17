@@ -15,12 +15,20 @@ using namespace Lanter::Utils::Constants;
 TEST(RequestDataFactory, CheckFactory) {
     int32_t ecrNumberLessMinimum = MINIMUM_ECR_NUMBER - 1;
     int32_t ecrNumberGreatMaximum = MAXIMUM_ECR_NUMBER + 1;
-    EXPECT_EQ(RequestDataFactory::getRequestData(OperationCodes::NoOperation, MINIMUM_ECR_NUMBER), nullptr);
-    EXPECT_EQ(RequestDataFactory::getRequestData(OperationCodes::NoOperation, MAXIMUM_ECR_NUMBER), nullptr);
+
+    auto lessNoOperation = (OperationCodes)((int)OperationCodes::NoOperation - 1);
+    EXPECT_NE(RequestDataFactory::getRequestData(OperationCodes::NoOperation, MINIMUM_ECR_NUMBER), nullptr);
+    EXPECT_NE(RequestDataFactory::getRequestData(OperationCodes::NoOperation, MAXIMUM_ECR_NUMBER), nullptr);
+
+    EXPECT_EQ(RequestDataFactory::getRequestData(lessNoOperation, MINIMUM_ECR_NUMBER), nullptr);
+    EXPECT_EQ(RequestDataFactory::getRequestData(lessNoOperation, MAXIMUM_ECR_NUMBER), nullptr);
+
     EXPECT_EQ(RequestDataFactory::getRequestData(OperationCodes::NoOperation, ecrNumberLessMinimum), nullptr);
     EXPECT_EQ(RequestDataFactory::getRequestData(OperationCodes::NoOperation, ecrNumberGreatMaximum), nullptr);
+
     EXPECT_EQ(RequestDataFactory::getRequestData(OperationCodes::FirstValue, ecrNumberGreatMaximum), nullptr);
     EXPECT_EQ(RequestDataFactory::getRequestData(OperationCodes::LastValue, ecrNumberGreatMaximum), nullptr);
+
     EXPECT_EQ(RequestDataFactory::getRequestData(OperationCodes::FirstValue, ecrNumberLessMinimum), nullptr);
     EXPECT_EQ(RequestDataFactory::getRequestData(OperationCodes::LastValue, ecrNumberLessMinimum), nullptr);
 

@@ -7,14 +7,25 @@
 
 #include "JSONGetFieldHelper.h"
 #include "Lanter/MessageProcessor/JSONMessageFields.h"
-
+#include "Lanter/Message/Request/RequestDataFactory.h"
 
 namespace Lanter {
     namespace MessageProcessor {
         using namespace std::placeholders;
 
+        JSONRequestParser::JSONRequestParser() {
+            initFunctionsMap();
+        }
+
         std::shared_ptr<IRequestData> JSONRequestParser::parseData(const Json::Value &object) {
-            return std::shared_ptr<IRequestData>();
+            std::shared_ptr<IRequestData> result = RequestDataFactory::getRequestData();
+
+            if(result) {
+                if(!getFields(object, *result)) {
+                    result.reset();
+                }
+            }
+            return result;
         }
 
         const std::map<RequestFields, std::function<bool(const Json::Value&,IRequestData&)> > &
@@ -50,36 +61,36 @@ namespace Lanter {
         }
 
         bool JSONRequestParser::getFieldAmount(const Json::Value &object, IRequestData &requestData) {
-            int amount;
+            int64_t amount;
 
-            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getAmount(), amount);
+            bool exists = JSONGetFieldHelper::getFieldInt64(object, JSONRequestFields::getAmount(), amount);
             bool result = exists && requestData.setAmount(amount);
 
             return result;
         }
 
         bool JSONRequestParser::getFieldPartialAmount(const Json::Value &object, IRequestData &requestData) {
-            int partialAmount;
+            int64_t partialAmount;
 
-            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getPartialAmount(), partialAmount);
+            bool exists = JSONGetFieldHelper::getFieldInt64(object, JSONRequestFields::getPartialAmount(), partialAmount);
             bool result = exists && requestData.setPartialAmount(partialAmount);
 
             return result;
         }
 
         bool JSONRequestParser::getFieldTipsAmount(const Json::Value &object, IRequestData &requestData) {
-            int tipsAmount;
+            int64_t tipsAmount;
 
-            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getTipsAmount(), tipsAmount);
+            bool exists = JSONGetFieldHelper::getFieldInt64(object, JSONRequestFields::getTipsAmount(), tipsAmount);
             bool result = exists && requestData.setTipsAmount(tipsAmount);
 
             return result;
         }
 
         bool JSONRequestParser::getFieldCashbackAmount(const Json::Value &object, IRequestData &requestData) {
-            int cashbackAmount;
+            int64_t cashbackAmount;
 
-            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getCashbackAmount(), cashbackAmount);
+            bool exists = JSONGetFieldHelper::getFieldInt64(object, JSONRequestFields::getCashbackAmount(), cashbackAmount);
             bool result = exists && requestData.setCashbackAmount(cashbackAmount);
 
             return result;
@@ -197,7 +208,18 @@ namespace Lanter {
         }
 
         bool JSONRequestParser::getFields(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            if(getFieldOperationCode(object, requestData)) {
+                for(auto field : requestData.getMandatoryFields()) {
+                    auto function = m_ExtractFunctions.at(field);
+                    function(object, requestData);
+                }
+
+                for(auto field : requestData.getOptionalFields()) {
+                    auto function = m_ExtractFunctions.at(field);
+                    function( object, requestData);
+                }
+            }
+            return requestData.validateMandatoryFields();
         }
     }
 }

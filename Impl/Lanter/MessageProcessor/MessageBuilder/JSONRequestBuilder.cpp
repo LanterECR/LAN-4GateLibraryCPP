@@ -18,11 +18,7 @@ namespace Lanter {
         }
 
         bool JSONRequestBuilder::createObject(const IRequestData &requestData, Json::Value &object) {
-            bool result = false;
-            try {
-                result = addFields(requestData, object);
-            } catch (std::exception & exception) { }
-            return result;
+            return addFields(requestData, object);
         }
 
         const std::map<RequestFields, std::function<bool(const IRequestData &, Json::Value &)>> &

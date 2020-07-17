@@ -12,6 +12,15 @@ using namespace Lanter;
 using namespace Lanter::Message;
 using namespace Lanter::MessageProcessor;
 
+TEST(JSONRequestParser, CheckInitMap) {
+    JSONRequestParser parser;
+
+    EXPECT_FALSE(parser.getFunctions().empty());
+
+    auto count = (size_t)RequestFields::LastValue - (size_t)RequestFields::FirstValue +1;
+
+    EXPECT_EQ(count, parser.getFunctions().size());
+}
 TEST(JSONRequestParser, CheckGetFieldEcrNumber) {
     JSONRequestParser parser;
 
@@ -94,7 +103,7 @@ TEST(JSONRequestParser, CheckGetFieldAmount) {
 
     auto badValueLess = -1;
     auto badValueGreat = 1000000000000;
-    auto goodValue = 1;
+    auto goodValue = 999999999999;
 
     RequestData data;
 
@@ -120,7 +129,7 @@ TEST(JSONRequestParser, CheckGetFieldPartialAmount) {
 
     auto badValueLess = -1;
     auto badValueGreat = 1000000000000;
-    auto goodValue = 1;
+    auto goodValue = 999999999999;
 
     RequestData data;
 
@@ -145,7 +154,7 @@ TEST(JSONRequestParser, CheckGetFieldTipsAmount) {
 
     auto badValueLess = -1;
     auto badValueGreat = 1000000000000;
-    auto goodValue = 1;
+    auto goodValue = 999999999999;
 
     RequestData data;
 
@@ -170,7 +179,7 @@ TEST(JSONRequestParser, CheckGetFieldCashbackAmount) {
 
     auto badValueLess = -1;
     auto badValueGreat = 1000000000000;
-    auto goodValue = 1;
+    auto goodValue = 999999999999;
 
     RequestData data;
 
@@ -394,4 +403,54 @@ TEST(JSONRequestParser, CheckGetFieldAdditionalInfo) {
 
     EXPECT_STREQ(data.getAdditionalInfo().c_str(), goodValue);
 
+}
+
+TEST(JSONRequestParser, CheckParseData) {
+    JSONRequestParser parser;
+
+    Json::Value object;
+
+    auto operationCode = OperationCodes::Sale;
+    auto ecrNumber = 1;
+    auto ecrMerchantNumber = 2;
+    auto amount = 999999999999;
+    auto currencyCode = 643;
+
+    auto openTags = "sjofhgdfijughnd";
+
+    EXPECT_EQ(parser.parseData(object), nullptr);
+
+    object[JSONRequestFields::getOpenTags()] = openTags;
+
+    EXPECT_EQ(parser.parseData(object), nullptr);
+
+    object[JSONRequestFields::getOperationCode()] = (int)operationCode;
+
+    EXPECT_EQ(parser.parseData(object), nullptr);
+
+    object[JSONRequestFields::getEcrNumber()] = ecrNumber;
+
+    EXPECT_EQ(parser.parseData(object), nullptr);
+
+    object[JSONRequestFields::getEcrMerchantNumber()] = ecrMerchantNumber;
+
+    EXPECT_EQ(parser.parseData(object), nullptr);
+
+    object[JSONRequestFields::getAmount()] = amount;
+
+    EXPECT_EQ(parser.parseData(object), nullptr);
+
+    object[JSONRequestFields::getCurrencyCode()] = currencyCode;
+
+    auto data = parser.parseData(object);
+
+    EXPECT_NE(data, nullptr);
+
+    EXPECT_EQ(data->getOperationCode(), operationCode);
+    EXPECT_EQ(data->getEcrNumber(), ecrNumber);
+    EXPECT_EQ(data->getEcrMerchantNumber(), ecrMerchantNumber);
+    EXPECT_EQ(data->getAmount(), amount);
+    EXPECT_EQ(data->getCurrencyCode(), currencyCode);
+
+    EXPECT_EQ(data->getFieldsSet().find(RequestFields::OpenTags), data->getFieldsSet().end());
 }

@@ -52,9 +52,11 @@ namespace Lanter
             bool RequestData::setOperationCode(OperationCodes operationCode) {
                 bool result = false;
                 if (checkOperationCodeRange(static_cast<int32_t>(operationCode))) {
-                    m_OperationCode = operationCode;
-                    m_FieldsSet.insert(RequestFields::OperationCode);
-                    initValidator();
+                    if (m_OperationCode != operationCode) {
+                        m_OperationCode = operationCode;
+                        m_FieldsSet.insert(RequestFields::OperationCode);
+                        initValidator();
+                    }
                     result = true;
                 }
                 return result;

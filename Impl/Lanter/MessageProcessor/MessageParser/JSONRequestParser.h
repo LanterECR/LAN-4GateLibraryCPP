@@ -18,6 +18,7 @@ namespace Lanter {
         using namespace Message::Request;
         class JSONRequestParser {
         public:
+            JSONRequestParser();
             std::shared_ptr<IRequestData> parseData(const Json::Value & object);
 
             const std::map<RequestFields, std::function<bool(const Json::Value&,IRequestData&)> > & getFunctions() const;

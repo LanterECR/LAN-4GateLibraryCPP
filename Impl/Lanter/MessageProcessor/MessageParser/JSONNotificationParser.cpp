@@ -5,9 +5,8 @@
 #include "JSONNotificationParser.h"
 
 #include "Lanter/MessageProcessor/JSONMessageFields.h"
-#include "Lanter/MessageProcessor/JSONFieldExists.h"
 
-#include "Lanter/Message/Notification/NotificationData.h"
+#include "Lanter/Message/Notification/NotificationDataFactory.h"
 
 #include "JSONGetFieldHelper.h"
 
@@ -15,15 +14,15 @@ namespace Lanter {
     namespace MessageProcessor {
 
         std::shared_ptr<INotificationData> JSONNotificationParser::parseData(const Json::Value &object) {
-            std::shared_ptr<INotificationData> result = std::make_shared<NotificationData>();
-
-            if(getCode(object, *result)) {
-                getAdditional(object, *result);
-                getMessage(object, *result);
-            } else {
-                result.reset();
+            std::shared_ptr<INotificationData> result = NotificationDataFactory::getNotificationData();
+            if(result) {
+                if (getCode(object, *result)) {
+                    getAdditional(object, *result);
+                    getMessage(object, *result);
+                } else {
+                    result.reset();
+                }
             }
-
             return result;
         }
 

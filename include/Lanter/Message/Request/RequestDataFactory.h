@@ -20,12 +20,13 @@ namespace Lanter {
                 /// \brief Возвращает указатель на объект интерфейса IRequestData, предварительно заполненный
                 /// переданными кодом операции и логическим номером кассового ПО
                 /// \param operationCode Код операции из списка OperationCodes
-                /// \sa OperationCodes
+                /// Значение NoOperation не будет передано в IRequestData
+                /// \sa Lanter::Message::OperationCodes
                 /// \param ecrNumber Логический номер кассового ПО в диапазоне [1, 999]
-                /// Если установить значение -1, то ecrNumber не будет установлен в IRequestData
+                /// Значение -1 не будет установлено в IRequestData
                 /// \return Указатель на объект интерфейса IRequestData
                 /// \throws invalid_argument, если operationCode или ecrNumber вне разрешенного диапазона
-                static std::shared_ptr<IRequestData> getRequestData(OperationCodes operationCode, int16_t ecrNumber = -1);
+                static std::shared_ptr<IRequestData> getRequestData(OperationCodes operationCode = OperationCodes::NoOperation, int16_t ecrNumber = -1);
             };//RequestDataFactory
         }//Request
     }
