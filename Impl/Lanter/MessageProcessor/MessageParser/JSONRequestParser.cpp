@@ -6,6 +6,8 @@
 #include "JSONRequestParser.h"
 
 #include "JSONGetFieldHelper.h"
+#include "Lanter/MessageProcessor/JSONMessageFields.h"
+
 
 namespace Lanter {
     namespace MessageProcessor {
@@ -21,74 +23,160 @@ namespace Lanter {
         }
 
         bool JSONRequestParser::getFieldEcrNumber(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            int ecrNumber;
+
+            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getEcrNumber(), ecrNumber);
+            bool result = exists && requestData.setEcrNumber(ecrNumber);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldEcrMerchantNumber(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            int ecrMerchantNumber;
+
+            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getEcrMerchantNumber(), ecrMerchantNumber);
+            bool result = exists && requestData.setEcrMerchantNumber(ecrMerchantNumber);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldOperationCode(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            int operationCode;
+
+            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getOperationCode(), operationCode);
+            bool result = exists && requestData.setOperationCode(static_cast<OperationCodes>(operationCode));
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldAmount(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            int amount;
+
+            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getAmount(), amount);
+            bool result = exists && requestData.setAmount(amount);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldPartialAmount(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            int partialAmount;
+
+            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getPartialAmount(), partialAmount);
+            bool result = exists && requestData.setPartialAmount(partialAmount);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldTipsAmount(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            int tipsAmount;
+
+            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getTipsAmount(), tipsAmount);
+            bool result = exists && requestData.setTipsAmount(tipsAmount);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldCashbackAmount(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            int cashbackAmount;
+
+            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getCashbackAmount(), cashbackAmount);
+            bool result = exists && requestData.setCashbackAmount(cashbackAmount);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldCurrencyCode(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            int currencyCode;
+
+            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getCurrencyCode(), currencyCode);
+            bool result = exists && requestData.setCurrencyCode(currencyCode);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldRRN(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            std::string RRN;
+
+            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getRRN(), RRN);
+            bool result = exists && requestData.setRRN(RRN);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldAuthCode(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            std::string authCode;
+
+            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getAuthCode(), authCode);
+            bool result = exists && requestData.setAuthCode(authCode);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldReceiptReference(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            std::string receiptReference;
+
+            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getReceiptReference(), receiptReference);
+            bool result = exists && requestData.setReceiptReference(receiptReference);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldTransactionID(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            std::string transactionID;
+
+            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getTransactionID(), transactionID);
+            bool result = exists && requestData.setTransactionID(transactionID);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldCardDataEnc(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            std::string cardDataEnc;
+
+            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getCardDataEnc(), cardDataEnc);
+            bool result = exists && requestData.setCardDataEnc(cardDataEnc);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldOpenTags(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            std::string openTags;
+
+            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getOpenTags(), openTags);
+            bool result = exists && requestData.setOpenTags(openTags);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldEncTags(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            std::string encTags;
+
+            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getEncTags(), encTags);
+            bool result = exists && requestData.setEncTags(encTags);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldProviderCode(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            std::string providerCode;
+
+            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getProviderCode(), providerCode);
+            bool result = exists && requestData.setProviderCode(providerCode);
+
+            return result;
         }
 
         bool JSONRequestParser::getFieldAdditionalInfo(const Json::Value &object, IRequestData &requestData) {
-            return false;
+            std::string additionalInfo;
+
+            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getAdditionalInfo(), additionalInfo);
+            bool result = exists && requestData.setAdditionalInfo(additionalInfo);
+
+            return result;
         }
 
         void JSONRequestParser::initFunctionsMap() {
+
             m_ExtractFunctions[RequestFields::EcrNumber] = std::bind(&JSONRequestParser::getFieldEcrNumber, this, _1, _2);
             m_ExtractFunctions[RequestFields::EcrMerchantNumber] = std::bind(&JSONRequestParser::getFieldEcrMerchantNumber, this, _1, _2);
             m_ExtractFunctions[RequestFields::OperationCode] = std::bind(&JSONRequestParser::getFieldOperationCode, this, _1, _2);
