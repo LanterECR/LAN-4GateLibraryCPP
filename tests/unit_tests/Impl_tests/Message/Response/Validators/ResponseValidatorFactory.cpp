@@ -11,10 +11,10 @@ using namespace Lanter::Message;
 using namespace Lanter::Message::Response;
 
 TEST(ResponseValidatorFactory, CheckValidatorCreation) {
-    auto start = (int)OperationCodes::FirstValue;
-    auto end = (int)OperationCodes::LastValue;
+    auto start = (int)OperationCode::FirstValue;
+    auto end = (int)OperationCode::LastValue;
 
     for(int i = start; i <= end; i++) {
-        EXPECT_TRUE(ValidatorFactory::getValidator((OperationCodes)i) != nullptr);
+        EXPECT_TRUE(ValidatorFactory::getValidator((OperationCode)i) != nullptr);
     }
 }

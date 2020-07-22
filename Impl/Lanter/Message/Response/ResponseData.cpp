@@ -73,11 +73,11 @@ namespace Lanter {
                 return result;
             }
 
-            OperationCodes ResponseData::getOperationCode() const {
+            OperationCode ResponseData::getOperationCode() const {
                 return m_OperationCode;
             }
 
-            bool ResponseData::setOperationCode(OperationCodes operationCode) {
+            bool ResponseData::setOperationCode(OperationCode operationCode) {
                 bool result = false;
                 if (checkOperationCodeRange(static_cast<uint32_t>(operationCode))) {
                     m_OperationCode = operationCode;
@@ -88,11 +88,11 @@ namespace Lanter {
                 return result;
             }
 
-            OperationCodes ResponseData::getOriginalOperationCode() const {
+            OperationCode ResponseData::getOriginalOperationCode() const {
                 return m_OriginalOperationCode;
             }
 
-            bool ResponseData::setOriginalOperationCode(OperationCodes originalOperationCode) {
+            bool ResponseData::setOriginalOperationCode(OperationCode originalOperationCode) {
                 bool result = false;
                 if (checkOperationCodeRange(static_cast<uint32_t>(originalOperationCode))) {
                     m_OriginalOperationCode = originalOperationCode;
@@ -692,6 +692,435 @@ namespace Lanter {
 
             void ResponseData::initValidator() {
                 m_Validator = ValidatorFactory::getValidator(getOperationCode());
+            }
+
+            void ResponseData::deinitValidator() {
+                m_Validator.reset();
+            }
+
+            bool ResponseData::resetField(ResponseFields field) {
+                bool result = false;
+
+                switch (field) {
+
+                    case ResponseFields::EcrNumber:
+                        result = resetEcrNumber();
+                        break;
+                    case ResponseFields::EcrMerchantNumber:
+                        result = resetEcrMerchantNumber();
+                        break;
+                    case ResponseFields::OperationCode:
+                        result = resetOperationCode();
+                        break;
+                    case ResponseFields::OriginalOperationCode:
+                        result = resetOriginalOperationCode();
+                        break;
+                    case ResponseFields::TotalAmount:
+                        result = resetTotalAmount();
+                        break;
+                    case ResponseFields::PartialAmount:
+                        result = resetPartialAmount();
+                        break;
+                    case ResponseFields::AcquirerFeeAmount:
+                        result = resetAcquirerFeeAmount();
+                        break;
+                    case ResponseFields::TerminalFeeAmount:
+                        result = resetTerminalFeeAmount();
+                        break;
+                    case ResponseFields::TipsAmount:
+                        result = resetTipsAmount();
+                        break;
+                    case ResponseFields::CurrencyCode:
+                        result = resetCurrencyCode();
+                        break;
+                    case ResponseFields::ReceiptReference:
+                        result = resetReceiptReference();
+                        break;
+                    case ResponseFields::RRN:
+                        result = resetRRN();
+                        break;
+                    case ResponseFields::Status:
+                        result = resetStatus();
+                        break;
+                    case ResponseFields::OriginalOperationStatus:
+                        result = resetOriginalOperationStatus();
+                        break;
+                    case ResponseFields::TransDateTime:
+                        result = resetTransDateTime();
+                        break;
+                    case ResponseFields::TerminalDateTime:
+                        result = resetTerminalDateTime();
+                        break;
+                    case ResponseFields::CardPAN:
+                        result = resetCardPAN();
+                        break;
+                    case ResponseFields::ExpireDate:
+                        result = resetExpireDate();
+                        break;
+                    case ResponseFields::CardholderName:
+                        result = resetCardholderName();
+                        break;
+                    case ResponseFields::CardholderAuthMethod:
+                        result = resetCardholderAuthMethod();
+                        break;
+                    case ResponseFields::AuthCode:
+                        result = resetAuthCode();
+                        break;
+                    case ResponseFields::ResponseCode:
+                        result = resetResponseCode();
+                        break;
+                    case ResponseFields::ResponseText:
+                        result = resetResponseText();
+                        break;
+                    case ResponseFields::STAN:
+                        result = resetSTAN();
+                        break;
+                    case ResponseFields::TransactionID:
+                        result = resetTransactionID();
+                        break;
+                    case ResponseFields::TerminalID:
+                        result = resetTerminalID();
+                        break;
+                    case ResponseFields::CardEmvAid:
+                        result = resetCardEmvAid();
+                        break;
+                    case ResponseFields::CardAppName:
+                        result = resetCardAppName();
+                        break;
+                    case ResponseFields::CardInputMethod:
+                        result = resetCardInputMethod();
+                        break;
+                    case ResponseFields::IssuerName:
+                        result = resetIssuerName();
+                        break;
+                    case ResponseFields::AdditionalInfo:
+                        result = resetAdditionalInfo();
+                        break;
+                    case ResponseFields::CardData:
+                        result = resetCardData();
+                        break;
+                    case ResponseFields::CardDataEnc:
+                        result = resetCardDataEnc();
+                        break;
+                    case ResponseFields::MerchantID:
+                        result = resetMerchantID();
+                        break;
+                    case ResponseFields::TVR:
+                        result = resetTVR();
+                        break;
+                    case ResponseFields::TSI:
+                        result = resetTSI();
+                        break;
+                    case ResponseFields::TC:
+                        result = resetTC();
+                        break;
+                    case ResponseFields::CID:
+                        result = resetCID();
+                        break;
+                    case ResponseFields::KVR:
+                        result = resetKVR();
+                        break;
+                    case ResponseFields::CDAResult:
+                        result = resetCDAResult();
+                        break;
+                    case ResponseFields::SalesCount:
+                        result = resetSalesCount();
+                        break;
+                    case ResponseFields::VoidCount:
+                        result = resetVoidCount();
+                        break;
+                    case ResponseFields::RefundCount:
+                        result = resetRefundCount();
+                        break;
+                    case ResponseFields::SalesArray:
+                        result = resetSalesArray();
+                        break;
+                    case ResponseFields::VoidArray:
+                        result = resetVoidArray();
+                        break;
+                    case ResponseFields::RefundArray:
+                        result = resetRefundArray();
+                        break;
+                }
+
+                return result;
+            }
+
+            bool ResponseData::resetEcrNumber() {
+                m_EcrNumber = -1;
+                m_FieldsSet.erase(ResponseFields::EcrNumber);
+                return !isFieldSet(ResponseFields::EcrNumber);
+            }
+
+            bool ResponseData::resetEcrMerchantNumber() {
+                m_EcrMerchantNumber = -1;
+                m_FieldsSet.erase(ResponseFields::EcrMerchantNumber);
+                return !isFieldSet(ResponseFields::EcrMerchantNumber);
+            }
+
+            bool ResponseData::resetOperationCode() {
+                m_OperationCode = OperationCode::NoOperation;
+                m_FieldsSet.erase(ResponseFields::OperationCode);
+                deinitValidator();
+                return !isFieldSet(ResponseFields::OperationCode);
+            }
+
+            bool ResponseData::resetOriginalOperationCode() {
+                m_OriginalOperationCode = OperationCode::NoOperation;
+                m_FieldsSet.erase(ResponseFields::OriginalOperationCode);
+                return !isFieldSet(ResponseFields::OriginalOperationCode);
+            }
+
+            bool ResponseData::resetTotalAmount() {
+                m_TotalAmount = -1;
+                m_FieldsSet.erase(ResponseFields::TotalAmount);
+                return !isFieldSet(ResponseFields::TotalAmount);
+            }
+
+            bool ResponseData::resetPartialAmount() {
+                m_PartialAmount = -1;
+                m_FieldsSet.erase(ResponseFields::PartialAmount);
+                return !isFieldSet(ResponseFields::PartialAmount);
+            }
+
+            bool ResponseData::resetAcquirerFeeAmount() {
+                m_AcquirerFeeAmount = -1;
+                m_FieldsSet.erase(ResponseFields::AcquirerFeeAmount);
+                return !isFieldSet(ResponseFields::AcquirerFeeAmount);
+            }
+
+            bool ResponseData::resetTerminalFeeAmount() {
+                m_TerminalFeeAmount = -1;
+                m_FieldsSet.erase(ResponseFields::TerminalFeeAmount);
+                return !isFieldSet(ResponseFields::TerminalFeeAmount);
+            }
+
+            bool ResponseData::resetTipsAmount() {
+                m_TipsAmount = -1;
+                m_FieldsSet.erase(ResponseFields::TipsAmount);
+                return !isFieldSet(ResponseFields::TipsAmount);
+            }
+
+            bool ResponseData::resetCurrencyCode() {
+                m_CurrencyCode = -1;
+                m_FieldsSet.erase(ResponseFields::CurrencyCode);
+                return !isFieldSet(ResponseFields::CurrencyCode);
+            }
+
+            bool ResponseData::resetReceiptReference() {
+                m_ReceiptReference.clear();
+                m_FieldsSet.erase(ResponseFields::ReceiptReference);
+                return !isFieldSet(ResponseFields::ReceiptReference);
+            }
+
+            bool ResponseData::resetRRN() {
+                m_RRN.clear();
+                m_FieldsSet.erase(ResponseFields::RRN);
+                return !isFieldSet(ResponseFields::RRN);
+            }
+
+            bool ResponseData::resetStatus() {
+                m_Status = Status::NoStatus;
+                m_FieldsSet.erase(ResponseFields::Status);
+                return !isFieldSet(ResponseFields::Status);
+            }
+
+            bool ResponseData::resetOriginalOperationStatus() {
+                m_OriginalOperationStatus = Status::NoStatus;
+                m_FieldsSet.erase(ResponseFields::OriginalOperationStatus);
+                return !isFieldSet(ResponseFields::OriginalOperationStatus);
+            }
+
+            bool ResponseData::resetTransDateTime() {
+                m_TransDateTime.clear();
+                m_FieldsSet.erase(ResponseFields::TransDateTime);
+                return !isFieldSet(ResponseFields::TransDateTime);
+            }
+
+            bool ResponseData::resetTerminalDateTime() {
+                m_TerminalDateTime.clear();
+                m_FieldsSet.erase(ResponseFields::TerminalDateTime);
+                return !isFieldSet(ResponseFields::TerminalDateTime);
+            }
+
+            bool ResponseData::resetCardPAN() {
+                m_CardPAN.clear();
+                m_FieldsSet.erase(ResponseFields::CardPAN);
+                return !isFieldSet(ResponseFields::CardPAN);
+            }
+
+            bool ResponseData::resetExpireDate() {
+                m_ExpireDate.clear();
+                m_FieldsSet.erase(ResponseFields::ExpireDate);
+                return !isFieldSet(ResponseFields::ExpireDate);
+            }
+
+            bool ResponseData::resetCardholderName() {
+                m_CardholderName.clear();
+                m_FieldsSet.erase(ResponseFields::CardholderName);
+                return !isFieldSet(ResponseFields::CardholderName);
+            }
+
+            bool ResponseData::resetCardholderAuthMethod() {
+                m_CardholderAuthMethod = CardholderAuthMethod::NoMethod;
+                m_FieldsSet.erase(ResponseFields::CardholderAuthMethod);
+                return !isFieldSet(ResponseFields::CardholderAuthMethod);
+            }
+
+            bool ResponseData::resetAuthCode() {
+                m_AuthCode.clear();
+                m_FieldsSet.erase(ResponseFields::AuthCode);
+                return !isFieldSet(ResponseFields::AuthCode);
+            }
+
+            bool ResponseData::resetResponseCode() {
+                m_ResponseCode.clear();
+                m_FieldsSet.erase(ResponseFields::ResponseCode);
+                return !isFieldSet(ResponseFields::ResponseCode);
+            }
+
+            bool ResponseData::resetResponseText() {
+                m_ResponseText.clear();
+                m_FieldsSet.erase(ResponseFields::ResponseText);
+                return !isFieldSet(ResponseFields::ResponseText);
+            }
+
+            bool ResponseData::resetSTAN() {
+                m_STAN.clear();
+                m_FieldsSet.erase(ResponseFields::STAN);
+                return !isFieldSet(ResponseFields::STAN);
+            }
+
+            bool ResponseData::resetTransactionID() {
+                m_TransactionID.clear();
+                m_FieldsSet.erase(ResponseFields::TransactionID);
+                return !isFieldSet(ResponseFields::TransactionID);
+            }
+
+            bool ResponseData::resetTerminalID() {
+                m_TerminalID.clear();
+                m_FieldsSet.erase(ResponseFields::TerminalID);
+                return !isFieldSet(ResponseFields::TerminalID);
+            }
+
+            bool ResponseData::resetCardEmvAid() {
+                m_CardEmvAid.clear();
+                m_FieldsSet.erase(ResponseFields::CardEmvAid);
+                return !isFieldSet(ResponseFields::CardEmvAid);
+            }
+
+            bool ResponseData::resetCardAppName() {
+                m_CardAppName.clear();
+                m_FieldsSet.erase(ResponseFields::CardAppName);
+                return !isFieldSet(ResponseFields::CardAppName);
+            }
+
+            bool ResponseData::resetCardInputMethod() {
+                m_CardInputMethod = CardInputMethod::NoMethod;
+                m_FieldsSet.erase(ResponseFields::CardInputMethod);
+                return !isFieldSet(ResponseFields::CardInputMethod);
+            }
+
+            bool ResponseData::resetIssuerName() {
+                m_IssuerName.clear();
+                m_FieldsSet.erase(ResponseFields::IssuerName);
+                return !isFieldSet(ResponseFields::IssuerName);
+            }
+
+            bool ResponseData::resetAdditionalInfo() {
+                m_AdditionalInfo.clear();
+                m_FieldsSet.erase(ResponseFields::AdditionalInfo);
+                return !isFieldSet(ResponseFields::AdditionalInfo);
+            }
+
+            bool ResponseData::resetCardData() {
+                m_CardData.clear();
+                m_FieldsSet.erase(ResponseFields::CardData);
+                return !isFieldSet(ResponseFields::CardData);
+            }
+
+            bool ResponseData::resetCardDataEnc() {
+                m_CardDataEnc.clear();
+                m_FieldsSet.erase(ResponseFields::CardDataEnc);
+                return !isFieldSet(ResponseFields::CardDataEnc);
+            }
+
+            bool ResponseData::resetMerchantID() {
+                m_MerchantID.clear();
+                m_FieldsSet.erase(ResponseFields::MerchantID);
+                return !isFieldSet(ResponseFields::MerchantID);
+            }
+
+            bool ResponseData::resetTVR() {
+                m_TVR.clear();
+                m_FieldsSet.erase(ResponseFields::TVR);
+                return !isFieldSet(ResponseFields::TVR);
+            }
+
+            bool ResponseData::resetTSI() {
+                m_TSI.clear();
+                m_FieldsSet.erase(ResponseFields::TSI);
+                return !isFieldSet(ResponseFields::TSI);
+            }
+
+            bool ResponseData::resetTC() {
+                m_TC.clear();
+                m_FieldsSet.erase(ResponseFields::TC);
+                return !isFieldSet(ResponseFields::TC);
+            }
+
+            bool ResponseData::resetCID() {
+                m_CID.clear();
+                m_FieldsSet.erase(ResponseFields::CID);
+                return !isFieldSet(ResponseFields::CID);
+            }
+
+            bool ResponseData::resetKVR() {
+                m_KVR.clear();
+                m_FieldsSet.erase(ResponseFields::KVR);
+                return !isFieldSet(ResponseFields::KVR);
+            }
+
+            bool ResponseData::resetCDAResult() {
+                m_CDAResult.clear();
+                m_FieldsSet.erase(ResponseFields::CDAResult);
+                return !isFieldSet(ResponseFields::CDAResult);
+            }
+
+            bool ResponseData::resetSalesCount() {
+                m_SalesCount = -1;
+                m_FieldsSet.erase(ResponseFields::SalesCount);
+                return !isFieldSet(ResponseFields::SalesCount);
+            }
+
+            bool ResponseData::resetVoidCount() {
+                m_VoidCount = -1;
+                m_FieldsSet.erase(ResponseFields::VoidCount);
+                return !isFieldSet(ResponseFields::VoidCount);
+            }
+
+            bool ResponseData::resetRefundCount() {
+                m_RefundCount = -1;
+                m_FieldsSet.erase(ResponseFields::RefundCount);
+                return !isFieldSet(ResponseFields::RefundCount);
+            }
+
+            bool ResponseData::resetSalesArray() {
+                m_SalesArray.clear();
+                m_FieldsSet.erase(ResponseFields::SalesArray);
+                return !isFieldSet(ResponseFields::SalesArray);
+            }
+
+            bool ResponseData::resetVoidArray() {
+                m_VoidArray.clear();
+                m_FieldsSet.erase(ResponseFields::VoidArray);
+                return !isFieldSet(ResponseFields::VoidArray);
+            }
+
+            bool ResponseData::resetRefundArray() {
+                m_RefundArray.clear();
+                m_FieldsSet.erase(ResponseFields::RefundArray);
+                return !isFieldSet(ResponseFields::RefundArray);
             }
         }
     }

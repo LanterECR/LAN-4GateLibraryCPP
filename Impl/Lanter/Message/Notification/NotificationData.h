@@ -13,23 +13,29 @@ namespace Lanter {
             /// \brief Базовый класс-контейнер для получения уведомлений от финансового ПО LAN-4Tap
             class NotificationData : public INotificationData {
             public:
-                virtual ~NotificationData() override = default;
+                ~NotificationData() override = default;
 
-                NotificationCodes getCode() const override;
+                NotificationCode getCode() const override;
 
-                bool setCode(NotificationCodes notificationCode) override;
+                bool setCode(NotificationCode notificationCode) override;
 
                 const std::string &getMessage() const override;
 
+                bool resetCode() override;
+
                 bool setMessage(const std::string &notificationMessage) override;
+
+                bool resetMessage() override;
 
                 bool setAdditional(const std::string &additional) override;
 
                 const std::string &getAdditional() const override;
 
+                bool resetAdditional() override;
+
             private:
-                NotificationCodes m_Notification = NotificationCodes::NoNotification;
-                std::string m_NotificationText;
+                NotificationCode m_Code = NotificationCode::NoNotification;
+                std::string m_Message;
                 std::string m_Additional;
             };
         }//Notifications

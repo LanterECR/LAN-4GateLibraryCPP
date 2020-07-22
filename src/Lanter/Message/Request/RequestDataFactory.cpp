@@ -11,10 +11,10 @@ namespace Lanter {
         namespace Request {
 
             std::shared_ptr<IRequestData>
-            RequestDataFactory::getRequestData(OperationCodes operationCode, int16_t ecrNumber) {
+            RequestDataFactory::getRequestData(OperationCode operationCode, int16_t ecrNumber) {
                 auto data = std::make_shared<RequestData>();
                 bool result = false;
-                bool isNoOperation = operationCode == OperationCodes::NoOperation;
+                bool isNoOperation = operationCode == OperationCode::NoOperation;
                 if (data) {
                     result = data->setOperationCode(operationCode) || isNoOperation;
                     if(ecrNumber != -1) {

@@ -75,9 +75,9 @@ TEST(JSONRequestParser, CheckGetFieldEcrMerchantNumber) {
 TEST(JSONRequestParser, CheckGetFieldOperationCode) {
     JSONRequestParser parser;
 
-    auto badValueLess = (int) OperationCodes::FirstValue - 1;
-    auto badValueGreat = (int) OperationCodes::LastValue + 1;
-    auto goodValue = (int)OperationCodes::FirstValue;
+    auto badValueLess = (int) OperationCode::FirstValue - 1;
+    auto badValueGreat = (int) OperationCode::LastValue + 1;
+    auto goodValue = (int)OperationCode::FirstValue;
 
     RequestData data;
 
@@ -101,9 +101,9 @@ TEST(JSONRequestParser, CheckGetFieldOperationCode) {
 TEST(JSONRequestParser, CheckGetFieldAmount) {
     JSONRequestParser parser;
 
-    auto badValueLess = -1;
-    auto badValueGreat = 1000000000000;
-    auto goodValue = 999999999999;
+    int64_t badValueLess = -1;
+    int64_t badValueGreat = 1000000000000;
+    int64_t goodValue = 999999999999;
 
     RequestData data;
 
@@ -127,9 +127,9 @@ TEST(JSONRequestParser, CheckGetFieldAmount) {
 TEST(JSONRequestParser, CheckGetFieldPartialAmount) {
     JSONRequestParser parser;
 
-    auto badValueLess = -1;
-    auto badValueGreat = 1000000000000;
-    auto goodValue = 999999999999;
+    int64_t badValueLess = -1;
+    int64_t badValueGreat = 1000000000000;
+    int64_t goodValue = 999999999999;
 
     RequestData data;
 
@@ -152,9 +152,9 @@ TEST(JSONRequestParser, CheckGetFieldPartialAmount) {
 TEST(JSONRequestParser, CheckGetFieldTipsAmount) {
     JSONRequestParser parser;
 
-    auto badValueLess = -1;
-    auto badValueGreat = 1000000000000;
-    auto goodValue = 999999999999;
+    int64_t badValueLess = -1;
+    int64_t badValueGreat = 1000000000000;
+    int64_t goodValue = 999999999999;
 
     RequestData data;
 
@@ -177,9 +177,9 @@ TEST(JSONRequestParser, CheckGetFieldTipsAmount) {
 TEST(JSONRequestParser, CheckGetFieldCashbackAmount) {
     JSONRequestParser parser;
 
-    auto badValueLess = -1;
-    auto badValueGreat = 1000000000000;
-    auto goodValue = 999999999999;
+    int64_t badValueLess = -1;
+    int64_t badValueGreat = 1000000000000;
+    int64_t goodValue = 999999999999;
 
     RequestData data;
 
@@ -410,10 +410,10 @@ TEST(JSONRequestParser, CheckParseData) {
 
     Json::Value object;
 
-    auto operationCode = OperationCodes::Sale;
+    auto operationCode = OperationCode::Sale;
     auto ecrNumber = 1;
     auto ecrMerchantNumber = 2;
-    auto amount = 999999999999;
+    int64_t amount = 999999999999;
     auto currencyCode = 643;
 
     auto openTags = "sjofhgdfijughnd";

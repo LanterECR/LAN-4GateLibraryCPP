@@ -24,7 +24,7 @@ TEST(JSONMessageBuilder, CheckCreateRequestMessage) {
 
     JSONMessageBuilder builder;
 
-    auto data = RequestDataFactory::getRequestData(OperationCodes::Sale, 1);
+    auto data = RequestDataFactory::getRequestData(OperationCode::Sale, 1);
     data->setEcrMerchantNumber(1);
     data->setAmount(100);
     data->setCurrencyCode(643);
@@ -45,7 +45,7 @@ TEST(JSONMessageBuilder, CheckCreateResponseMessage) {
 
     JSONMessageBuilder builder;
 
-    auto data = ResponseDataFactory::getResponseData(OperationCodes::Sale, 1);
+    auto data = ResponseDataFactory::getResponseData(OperationCode::Sale, 1);
 
     data->setStatus(Lanter::Message::Response::Status::Success);
     data->setEcrMerchantNumber(1);
@@ -94,7 +94,7 @@ TEST(JSONMessageBuilder, CheckCreateNotificationMessage) {
     JSONMessageBuilder builder;
 
     auto data = NotificationDataFactory::getNotificationData();
-    data->setCode(Lanter::Message::Notification::NotificationCodes::InsertCard);
+    data->setCode(Lanter::Message::Notification::NotificationCode::InsertCard);
     data->setAdditional("123");
     data->setMessage("123");
 

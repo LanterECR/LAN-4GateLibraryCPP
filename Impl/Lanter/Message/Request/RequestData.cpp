@@ -45,11 +45,11 @@ namespace Lanter
                 return result;
             }
 
-            OperationCodes RequestData::getOperationCode() const {
+            OperationCode RequestData::getOperationCode() const {
                 return m_OperationCode;
             }
 
-            bool RequestData::setOperationCode(OperationCodes operationCode) {
+            bool RequestData::setOperationCode(OperationCode operationCode) {
                 bool result = false;
                 if (checkOperationCodeRange(static_cast<int32_t>(operationCode))) {
                     if (m_OperationCode != operationCode) {
@@ -289,6 +289,171 @@ namespace Lanter
 
             bool RequestData::isFieldSet(RequestFields field) const {
                 return m_FieldsSet.find(field) != m_FieldsSet.end();
+            }
+
+            bool RequestData::resetField(RequestFields field) {
+                bool result = false;
+                switch (field) {
+                    case RequestFields::EcrNumber:
+                        result = resetEcrNumber();
+                        break;
+                    case RequestFields::EcrMerchantNumber:
+                        result = resetEcrMerchantNumber();
+                        break;
+                    case RequestFields::OperationCode:
+                        result = resetOperationCode();
+                        break;
+                    case RequestFields::Amount:
+                        result = resetAmount();
+                        break;
+                    case RequestFields::PartialAmount:
+                        result = resetPartialAmount();
+                        break;
+                    case RequestFields::TipsAmount:
+                        result = resetTipsAmount();
+                        break;
+                    case RequestFields::CashbackAmount:
+                        result = resetCashbackAmount();
+                        break;
+                    case RequestFields::CurrencyCode:
+                        result = resetCurrencyCode();
+                        break;
+                    case RequestFields::RRN:
+                        result = resetRRN();
+                        break;
+                    case RequestFields::AuthCode:
+                        result = resetAuthCode();
+                        break;
+                    case RequestFields::ReceiptReference:
+                        result = resetReceiptReference();
+                        break;
+                    case RequestFields::TransactionID:
+                        result = resetTransactionID();
+                        break;
+                    case RequestFields::CardDataEnc:
+                        result = resetCardDataEnc();
+                        break;
+                    case RequestFields::OpenTags:
+                        result = resetOpenTags();
+                        break;
+                    case RequestFields::EncTags:
+                        result = resetEncTags();
+                        break;
+                    case RequestFields::ProviderCode:
+                        result = resetProviderCode();
+                        break;
+                    case RequestFields::AdditionalInfo:
+                        result = resetAdditionalInfo();
+                        break;
+                }
+                return result;
+            }
+
+            bool RequestData::resetEcrNumber() {
+                m_EcrNumber = -1;
+                m_FieldsSet.erase(RequestFields::EcrNumber);
+                return !isFieldSet(RequestFields::EcrNumber);
+            }
+
+            bool RequestData::resetEcrMerchantNumber() {
+                m_EcrMerchantNumber = -1;
+                m_FieldsSet.erase(RequestFields::EcrMerchantNumber);
+                return !isFieldSet(RequestFields::EcrMerchantNumber);
+            }
+
+            bool RequestData::resetOperationCode() {
+                m_OperationCode = OperationCode::NoOperation;
+                m_FieldsSet.erase(RequestFields::OperationCode);
+                deinitValidator();
+                return !isFieldSet(RequestFields::OperationCode);
+            }
+
+            bool RequestData::resetAmount() {
+                m_Amount = -1;
+                m_FieldsSet.erase(RequestFields::Amount);
+                return !isFieldSet(RequestFields::Amount);
+            }
+
+            bool RequestData::resetPartialAmount() {
+                m_PartialAmount = -1;
+                m_FieldsSet.erase(RequestFields::PartialAmount);
+                return !isFieldSet(RequestFields::PartialAmount);
+            }
+
+            bool RequestData::resetTipsAmount() {
+                m_TipsAmount = -1;
+                m_FieldsSet.erase(RequestFields::TipsAmount);
+                return !isFieldSet(RequestFields::TipsAmount);
+            }
+
+            bool RequestData::resetCashbackAmount() {
+                m_CashbackAmount = -1;
+                m_FieldsSet.erase(RequestFields::CashbackAmount);
+                return !isFieldSet(RequestFields::CashbackAmount);
+            }
+
+            bool RequestData::resetCurrencyCode() {
+                m_CurrencyCode = -1;
+                m_FieldsSet.erase(RequestFields::CurrencyCode);
+                return !isFieldSet(RequestFields::CurrencyCode);
+            }
+
+            bool RequestData::resetRRN() {
+                m_RRN.clear();
+                m_FieldsSet.erase(RequestFields::RRN);
+                return !isFieldSet(RequestFields::RRN);
+            }
+
+            bool RequestData::resetAuthCode() {
+                m_AuthCode.clear();
+                m_FieldsSet.erase(RequestFields::AuthCode);
+                return !isFieldSet(RequestFields::AuthCode);
+            }
+
+            bool RequestData::resetReceiptReference() {
+                m_ReceiptReference.clear();
+                m_FieldsSet.erase(RequestFields::ReceiptReference);
+                return !isFieldSet(RequestFields::ReceiptReference);
+            }
+
+            bool RequestData::resetTransactionID() {
+                m_TransactionID.clear();
+                m_FieldsSet.erase(RequestFields::TransactionID);
+                return !isFieldSet(RequestFields::TransactionID);
+            }
+
+            bool RequestData::resetCardDataEnc() {
+                m_CardDataEnc.clear();
+                m_FieldsSet.erase(RequestFields::CardDataEnc);
+                return !isFieldSet(RequestFields::CardDataEnc);
+            }
+
+            bool RequestData::resetOpenTags() {
+                m_OpenTags.clear();
+                m_FieldsSet.erase(RequestFields::OpenTags);
+                return !isFieldSet(RequestFields::OpenTags);
+            }
+
+            bool RequestData::resetEncTags() {
+                m_EncTags.clear();
+                m_FieldsSet.erase(RequestFields::EncTags);
+                return !isFieldSet(RequestFields::EncTags);
+            }
+
+            bool RequestData::resetProviderCode() {
+                m_ProviderCode.clear();
+                m_FieldsSet.erase(RequestFields::ProviderCode);
+                return !isFieldSet(RequestFields::ProviderCode);
+            }
+
+            bool RequestData::resetAdditionalInfo() {
+                m_AdditionalInfo.clear();
+                m_FieldsSet.erase(RequestFields::AdditionalInfo);
+                return !isFieldSet(RequestFields::AdditionalInfo);
+            }
+
+            void RequestData::deinitValidator() {
+                m_Validator.reset();
             }
         }//Request
     }

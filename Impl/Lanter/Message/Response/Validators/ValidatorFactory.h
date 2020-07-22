@@ -9,14 +9,14 @@
 
 #include "IValidator.h"
 
-#include "Lanter/Message/OperationCodes.h"
+#include "Lanter/Message/OperationCode.h"
 
 namespace Lanter {
     namespace Message {
         namespace Response {
             class ValidatorFactory {
             public:
-                static std::shared_ptr<IValidator> getValidator(OperationCodes operationCode);
+                static std::shared_ptr<IValidator> getValidator(OperationCode operationCode);
             };
         }//Response
     }

@@ -10,30 +10,40 @@ namespace Lanter {
     namespace Message {
         namespace Notification {
 
-            NotificationCodes NotificationData::getCode() const {
-                return m_Notification;
+            NotificationCode NotificationData::getCode() const {
+                return m_Code;
             }
 
-            bool NotificationData::setCode(NotificationCodes notificationCode) {
+            bool NotificationData::setCode(NotificationCode notificationCode) {
                 bool result = false;
                 if (Utils::checkNotificationsRange(static_cast<int32_t>(notificationCode))) {
-                    m_Notification = notificationCode;
+                    m_Code = notificationCode;
                     result = true;
                 }
                 return result;
             }
 
+            bool NotificationData::resetCode() {
+                m_Code = NotificationCode::NoNotification;
+                return m_Code == NotificationCode::NoNotification;
+            }
+
             const std::string &NotificationData::getMessage() const {
-                return m_NotificationText;
+                return m_Message;
             }
 
             bool NotificationData::setMessage(const std::string &notificationMessage) {
                 bool result = false;
                 if(!notificationMessage.empty()) {
-                    m_NotificationText = notificationMessage;
+                    m_Message = notificationMessage;
                     result = true;
                 }
                 return result;
+            }
+
+            bool NotificationData::resetMessage() {
+                m_Message.clear();
+                return m_Message.empty();
             }
 
             const std::string &NotificationData::getAdditional() const {
@@ -47,6 +57,11 @@ namespace Lanter {
                     result = true;
                 }
                 return result;
+            }
+
+            bool NotificationData::resetAdditional() {
+                m_Additional.clear();
+                return m_Additional.empty();
             }
 
         }//Notifications

@@ -10,7 +10,7 @@ namespace Lanter {
         namespace Response {
 
             std::shared_ptr<IResponseData>
-            ResponseDataFactory::getResponseData(OperationCodes operationCode, int16_t ecrNumber) {
+            ResponseDataFactory::getResponseData(OperationCode operationCode, int16_t ecrNumber) {
                 auto data = std::make_shared<ResponseData>();
                 bool result = false;
                 if (data) {

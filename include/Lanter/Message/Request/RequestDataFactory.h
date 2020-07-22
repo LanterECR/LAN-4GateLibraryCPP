@@ -8,7 +8,7 @@
 #include <memory>
 
 #include "IRequestData.h"
-#include "Lanter/Message/OperationCodes.h"
+#include "Lanter/Message/OperationCode.h"
 #include "Lanter/Utils/VisibilityMacroses.h"
 
 namespace Lanter {
@@ -26,7 +26,7 @@ namespace Lanter {
                 /// Значение -1 не будет установлено в IRequestData
                 /// \return Указатель на объект интерфейса IRequestData
                 /// \throws invalid_argument, если operationCode или ecrNumber вне разрешенного диапазона
-                static std::shared_ptr<IRequestData> getRequestData(OperationCodes operationCode = OperationCodes::NoOperation, int16_t ecrNumber = -1);
+                static std::shared_ptr<IRequestData> getRequestData(OperationCode operationCode = OperationCode::NoOperation, int16_t ecrNumber = -1);
             };//RequestDataFactory
         }//Request
     }

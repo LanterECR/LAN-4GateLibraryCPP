@@ -36,13 +36,13 @@ namespace Lanter {
 
                 bool setEcrMerchantNumber(int16_t ecrMerchantNumber) override;
 
-                OperationCodes getOperationCode() const override;
+                OperationCode getOperationCode() const override;
 
-                bool setOperationCode(OperationCodes operationCode) override;
+                bool setOperationCode(OperationCode operationCode) override;
 
-                OperationCodes getOriginalOperationCode() const override;
+                OperationCode getOriginalOperationCode() const override;
 
-                bool setOriginalOperationCode(OperationCodes originalOperationCode) override;
+                bool setOriginalOperationCode(OperationCode originalOperationCode) override;
 
                 int64_t getTotalAmount() const override;
 
@@ -212,8 +212,103 @@ namespace Lanter {
 
                 bool setRefundArray(const std::vector<std::shared_ptr<IResponseData> > &refundArray) override;
 
+                bool resetField(ResponseFields field) override;
+
+                bool resetEcrNumber() override;
+
+                bool resetEcrMerchantNumber() override;
+
+                bool resetOperationCode() override;
+
+                bool resetOriginalOperationCode() override;
+
+                bool resetTotalAmount() override;
+
+                bool resetPartialAmount() override;
+
+                bool resetAcquirerFeeAmount() override;
+
+                bool resetTerminalFeeAmount() override;
+
+                bool resetTipsAmount() override;
+
+                bool resetCurrencyCode() override;
+
+                bool resetReceiptReference() override;
+
+                bool resetRRN() override;
+
+                bool resetStatus() override;
+
+                bool resetOriginalOperationStatus() override;
+
+                bool resetTransDateTime() override;
+
+                bool resetTerminalDateTime() override;
+
+                bool resetCardPAN() override;
+
+                bool resetExpireDate() override;
+
+                bool resetCardholderName() override;
+
+                bool resetCardholderAuthMethod() override;
+
+                bool resetAuthCode() override;
+
+                bool resetResponseCode() override;
+
+                bool resetResponseText() override;
+
+                bool resetSTAN() override;
+
+                bool resetTransactionID() override;
+
+                bool resetTerminalID() override;
+
+                bool resetCardEmvAid() override;
+
+                bool resetCardAppName() override;
+
+                bool resetCardInputMethod() override;
+
+                bool resetIssuerName() override;
+
+                bool resetAdditionalInfo() override;
+
+                bool resetCardData() override;
+
+                bool resetCardDataEnc() override;
+
+                bool resetMerchantID() override;
+
+                bool resetTVR() override;
+
+                bool resetTSI() override;
+
+                bool resetTC() override;
+
+                bool resetCID() override;
+
+                bool resetKVR() override;
+
+                bool resetCDAResult() override;
+
+                bool resetSalesCount() override;
+
+                bool resetVoidCount() override;
+
+                bool resetRefundCount() override;
+
+                bool resetSalesArray() override;
+
+                bool resetVoidArray() override;
+
+                bool resetRefundArray() override;
+
             private:
                 void initValidator();
+                void deinitValidator();
 
                 std::set<ResponseFields> m_FieldsSet; ///< Список установленных полей
 
@@ -222,8 +317,8 @@ namespace Lanter {
                 int16_t m_EcrNumber = -1;
                 int16_t m_EcrMerchantNumber = -1;
 
-                OperationCodes m_OperationCode = OperationCodes::NoOperation;
-                OperationCodes m_OriginalOperationCode = OperationCodes::NoOperation;
+                OperationCode m_OperationCode = OperationCode::NoOperation;
+                OperationCode m_OriginalOperationCode = OperationCode::NoOperation;
 
                 int64_t m_TotalAmount = -1;
                 int64_t m_PartialAmount = -1;

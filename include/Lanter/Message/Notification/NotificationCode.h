@@ -9,7 +9,7 @@ namespace Lanter {
     namespace Message {
         namespace Notification {
             /// \brief Список поддерживаемых уведомлений
-            enum class NotificationCodes {
+            enum class NotificationCode {
                 NoNotification, ///<
                 ReversalUploadingError, ///<
                 IncorrectVoidAmount, ///<

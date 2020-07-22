@@ -52,119 +52,121 @@ namespace Lanter {
     namespace Message {
         namespace Response {
 
-            std::shared_ptr<IValidator> ValidatorFactory::getValidator(OperationCodes operationCode) {
+            std::shared_ptr<IValidator> ValidatorFactory::getValidator(OperationCode operationCode) {
                 std::shared_ptr<BasicValidator> validator;
                 switch (operationCode) {
-                    case OperationCodes::Sale:
+                    case OperationCode::Sale:
                         validator = std::make_shared<Sale>();
                         break;
-                    case OperationCodes::MOTO:
+                    case OperationCode::MOTO:
                         validator = std::make_shared<MOTO>();
                         break;
-                    case OperationCodes::QuickPayment:
+                    case OperationCode::QuickPayment:
                         validator = std::make_shared<QuickPayment>();
                         break;
-                    case OperationCodes::AliPay:
+                    case OperationCode::AliPay:
                         validator = std::make_shared<AliPay>();
                         break;
-                    case OperationCodes::PreAuth:
+                    case OperationCode::PreAuth:
                         validator = std::make_shared<PreAuth>();
                         break;
-                    case OperationCodes::SalesCompletion:
+                    case OperationCode::SalesCompletion:
                         validator = std::make_shared<SalesCompletion>();
                         break;
-                    case OperationCodes::QuickPaymentStatus:
+                    case OperationCode::QuickPaymentStatus:
                         validator = std::make_shared<QuickPaymentStatus>();
                         break;
-                    case OperationCodes::FastTrack:
+                    case OperationCode::FastTrack:
                         validator = std::make_shared<FastTrack>();
                         break;
-                    case OperationCodes::Void:
+                    case OperationCode::Void:
                         validator = std::make_shared<Void>();
                         break;
-                    case OperationCodes::VoidPartialSale:
+                    case OperationCode::VoidPartialSale:
                         validator = std::make_shared<VoidPartialSale>();
                         break;
-                    case OperationCodes::VoidPreAuth:
+                    case OperationCode::VoidPreAuth:
                         validator = std::make_shared<VoidPreAuth>();
                         break;
-                    case OperationCodes::Refund:
+                    case OperationCode::Refund:
                         validator = std::make_shared<Refund>();
                         break;
-                    case OperationCodes::RefundWithoutRRN:
+                    case OperationCode::RefundWithoutRRN:
                         validator = std::make_shared<RefundWithoutRRN>();
                         break;
-                    case OperationCodes::QuickPaymentRefund:
+                    case OperationCode::QuickPaymentRefund:
                         validator = std::make_shared<QuickPaymentRefund>();
                         break;
-                    case OperationCodes::QuickPaymentRefundStatus:
+                    case OperationCode::QuickPaymentRefundStatus:
                         validator = std::make_shared<QuickPaymentRefundStatus>();
                         break;
-                    case OperationCodes::Registration:
+                    case OperationCode::Registration:
                         validator = std::make_shared<Registration>();
                         break;
-                    case OperationCodes::TestCommunication:
+                    case OperationCode::TestCommunication:
                         validator = std::make_shared<TestCommunication>();
                         break;
-                    case OperationCodes::Test:
+                    case OperationCode::Test:
                         validator = std::make_shared<Test>();
                         break;
-                    case OperationCodes::PrintLastReceipt:
+                    case OperationCode::PrintLastReceipt:
                         validator = std::make_shared<PrintLastReceipt>();
                         break;
-                    case OperationCodes::GetLastOperation:
+                    case OperationCode::GetLastOperation:
                         validator = std::make_shared<GetLastOperation>();
                         break;
-                    case OperationCodes::PrintReceiptCopy:
+                    case OperationCode::PrintReceiptCopy:
                         validator = std::make_shared<PrintReceiptCopy>();
                         break;
-                    case OperationCodes::PrintDetailReport:
+                    case OperationCode::PrintDetailReport:
                         validator = std::make_shared<PrintDetailReport>();
                         break;
-                    case OperationCodes::PrintSummaryReport:
+                    case OperationCode::PrintSummaryReport:
                         validator = std::make_shared<PrintSummaryReport>();
                         break;
-                    case OperationCodes::Settlement:
+                    case OperationCode::Settlement:
                         validator = std::make_shared<Settlement>();
                         break;
-                    case OperationCodes::KeyDownload:
+                    case OperationCode::KeyDownload:
                         validator = std::make_shared<KeyDownload>();
                         break;
-                    case OperationCodes::Initialization:
+                    case OperationCode::Initialization:
                         validator = std::make_shared<Initialization>();
                         break;
-                    case OperationCodes::UpdateSW:
+                    case OperationCode::UpdateSW:
                         validator = std::make_shared<UpdateSW>();
                         break;
-                    case OperationCodes::PrintCommsInfo:
+                    case OperationCode::PrintCommsInfo:
                         validator = std::make_shared<PrintCommsInfo>();
                         break;
-                    case OperationCodes::PrintSoftInfo:
+                    case OperationCode::PrintSoftInfo:
                         validator = std::make_shared<PrintSoftInfo>();
                         break;
-                    case OperationCodes::FinalizeTransaction:
+                    case OperationCode::FinalizeTransaction:
                         validator = std::make_shared<FinalizeTransaction>();
                         break;
-                    case OperationCodes::GetCurrentPrinter:
+                    case OperationCode::GetCurrentPrinter:
                         validator = std::make_shared<GetCurrentPrinter>();
                         break;
-                    case OperationCodes::SetCurrentPrinter:
+                    case OperationCode::SetCurrentPrinter:
                         validator = std::make_shared<SetCurrentPrinter>();
                         break;
-                    case OperationCodes::SelfTest:
+                    case OperationCode::SelfTest:
                         validator = std::make_shared<SelfTest>();
                         break;
-                    case OperationCodes::GetOperationCopy:
+                    case OperationCode::GetOperationCopy:
                         validator = std::make_shared<GetOperationCopy>();
                         break;
-                    case OperationCodes::DisplayQR:
+                    case OperationCode::DisplayQR:
                         validator = std::make_shared<DisplayQR>();
                         break;
-                    case OperationCodes::ArrayElement:
+                    case OperationCode::ArrayElement:
                         validator = std::make_shared<ArrayElement>();
                         break;
                     default:
                         validator = std::make_shared<BasicValidator>();
+                        break;
+                    case OperationCode::NoOperation:
                         break;
                 }
                 if (validator) {

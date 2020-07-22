@@ -76,7 +76,7 @@ TEST(JSONResponseBuilder, CheckAddFieldOperationCode) {
 
     ResponseData data;
 
-    data.setOperationCode(OperationCodes::FirstValue);
+    data.setOperationCode(OperationCode::FirstValue);
 
     Json::Value directObject;
 
@@ -98,7 +98,7 @@ TEST(JSONResponseBuilder, CheckAddFieldOriginalOperationCode) {
 
     ResponseData data;
 
-    data.setOriginalOperationCode(OperationCodes::FirstValue);
+    data.setOriginalOperationCode(OperationCode::FirstValue);
 
     Json::Value directObject;
 
@@ -979,7 +979,7 @@ TEST(JSONResponseBuilder, CheckAddFieldSalesArray) {
     ResponseData data;
 
     std::vector<std::shared_ptr<IResponseData> > array;
-    auto arrayElement = ResponseDataFactory::getResponseData(Lanter::Message::OperationCodes::ArrayElement);
+    auto arrayElement = ResponseDataFactory::getResponseData(Lanter::Message::OperationCode::ArrayElement);
 
     arrayElement->setTotalAmount(100);
     arrayElement->setCurrencyCode(643);
@@ -1094,7 +1094,7 @@ TEST(JSONResponseBuilder, CheckAddFieldVoidArray) {
     ResponseData data;
 
     std::vector<std::shared_ptr<IResponseData> > array;
-    auto arrayElement = ResponseDataFactory::getResponseData(Lanter::Message::OperationCodes::ArrayElement);
+    auto arrayElement = ResponseDataFactory::getResponseData(Lanter::Message::OperationCode::ArrayElement);
 
     arrayElement->setTotalAmount(100);
     arrayElement->setCurrencyCode(643);
@@ -1208,7 +1208,7 @@ TEST(JSONResponseBuilder, CheckAddFieldRefundArray) {
     ResponseData data;
 
     std::vector<std::shared_ptr<IResponseData> > array;
-    auto arrayElement = ResponseDataFactory::getResponseData(Lanter::Message::OperationCodes::ArrayElement);
+    auto arrayElement = ResponseDataFactory::getResponseData(Lanter::Message::OperationCode::ArrayElement);
 
     arrayElement->setTotalAmount(100);
     arrayElement->setCurrencyCode(643);
@@ -1319,7 +1319,7 @@ TEST(JSONResponseBuilder, CheckAddFieldRefundArray) {
 TEST(JSONResponseBuilder, CheckCreateObject) {
     JSONResponseBuilder builder;
 
-    auto data = ResponseDataFactory::getResponseData(OperationCodes::PrintDetailReport, 1);
+    auto data = ResponseDataFactory::getResponseData(OperationCode::PrintDetailReport, 1);
 
     data->setTotalAmount(100);
     data->setCurrencyCode(643);
@@ -1332,7 +1332,7 @@ TEST(JSONResponseBuilder, CheckCreateObject) {
     data->setStatus(Status::Success);
 
     std::vector<std::shared_ptr<IResponseData> > array;
-    auto arrayElement = ResponseDataFactory::getResponseData(Lanter::Message::OperationCodes::ArrayElement);
+    auto arrayElement = ResponseDataFactory::getResponseData(Lanter::Message::OperationCode::ArrayElement);
 
     arrayElement->setTotalAmount(100);
     arrayElement->setCurrencyCode(643);

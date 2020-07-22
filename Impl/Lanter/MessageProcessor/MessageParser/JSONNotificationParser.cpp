@@ -29,8 +29,8 @@ namespace Lanter {
         bool JSONNotificationParser::getCode(const Json::Value &object, INotificationData &data) {
             bool result = false;
             int code;
-            if(JSONGetFieldHelper::getFieldInt(object, JSONNotificationFields::getCode(), code)) {
-                result = data.setCode(static_cast<NotificationCodes>(code));
+            if(JSONGetFieldHelper::getField(object, JSONNotificationFields::getCode(), code)) {
+                result = data.setCode(static_cast<NotificationCode>(code));
             }
             return result;
         }
@@ -38,7 +38,7 @@ namespace Lanter {
         bool JSONNotificationParser::getAdditional(const Json::Value &object, INotificationData &data) {
             bool result = false;
             std::string additional;
-            if(JSONGetFieldHelper::getFieldString(object, JSONNotificationFields::getAdditional(), additional)) {
+            if(JSONGetFieldHelper::getField(object, JSONNotificationFields::getAdditional(), additional)) {
                 if(!additional.empty()) {
                     data.setAdditional(additional);
                     result = true;
@@ -50,7 +50,7 @@ namespace Lanter {
         bool JSONNotificationParser::getMessage(const Json::Value &object, INotificationData &data) {
             bool result = false;
             std::string message;
-            if(JSONGetFieldHelper::getFieldString(object, JSONNotificationFields::getMessage(), message)) {
+            if(JSONGetFieldHelper::getField(object, JSONNotificationFields::getMessage(), message)) {
                 if(!message.empty()) {
                     data.setMessage(message);
                     result = true;

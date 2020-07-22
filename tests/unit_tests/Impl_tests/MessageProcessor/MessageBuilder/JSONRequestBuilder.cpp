@@ -67,7 +67,7 @@ TEST(JSONRequestBuilder, CheckAddFieldOperationCode) {
     JSONRequestBuilder builder;
 
     RequestData data;
-    data.setOperationCode(OperationCodes::FirstValue);
+    data.setOperationCode(OperationCode::FirstValue);
 
     Json::Value directObject;
     EXPECT_TRUE(builder.addFieldOperationCode(data, directObject));
@@ -331,7 +331,7 @@ TEST(JSONRequestBuilder, CheckCreateObject) {
     JSONRequestBuilder builder;
     Json::Value object;
 
-    auto data = RequestDataFactory::getRequestData(Lanter::Message::OperationCodes::Sale, 1);
+    auto data = RequestDataFactory::getRequestData(Lanter::Message::OperationCode::Sale, 1);
 
     EXPECT_FALSE(builder.createObject(*data, object));
 

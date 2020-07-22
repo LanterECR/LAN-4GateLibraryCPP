@@ -5,11 +5,11 @@
 #include "gtest/gtest.h"
 #include "Lanter/Utils/Constants.h"
 #include "Lanter/Utils/FieldRangeChecker.h"
-#include "Lanter/Message/OperationCodes.h"
+#include "Lanter/Message/OperationCode.h"
 #include "Lanter/Message/Response/Status.h"
 #include "Lanter/Message/Response/CardInputMethod.h"
 #include "Lanter/Message/Response/CardholderAuthMethod.h"
-#include "Lanter/Message/Notification/NotificationCodes.h"
+#include "Lanter/Message/Notification/NotificationCode.h"
 
 using namespace Lanter;
 using namespace Lanter::Message;
@@ -45,17 +45,17 @@ TEST(FieldsRangeChecker, CheckEcrMerchantNumberRange){
     EXPECT_TRUE(checkEcrMerchantNumberRange(MAXIMUM_ECR_NUMBER - 1));
 }
 TEST(FieldsRangeChecker, CheckOperationCodeRange){
-    auto lessMinimum =  (int32_t)OperationCodes::FirstValue - 1;
-    auto greatMaximum = (int32_t)OperationCodes::LastValue + 1;
+    auto lessMinimum =  (int32_t)OperationCode::FirstValue - 1;
+    auto greatMaximum = (int32_t)OperationCode::LastValue + 1;
 
-    auto greatMinimum = (int32_t)OperationCodes::FirstValue + 1;
-    auto lessMaximum = (int32_t)OperationCodes::LastValue - 1;
+    auto greatMinimum = (int32_t)OperationCode::FirstValue + 1;
+    auto lessMaximum = (int32_t)OperationCode::LastValue - 1;
 
     EXPECT_FALSE(checkOperationCodeRange(lessMinimum));
     EXPECT_FALSE(checkOperationCodeRange(greatMaximum));
 
-    EXPECT_TRUE(checkOperationCodeRange((int32_t)OperationCodes::FirstValue));
-    EXPECT_TRUE(checkOperationCodeRange((int32_t)OperationCodes::LastValue));
+    EXPECT_TRUE(checkOperationCodeRange((int32_t)OperationCode::FirstValue));
+    EXPECT_TRUE(checkOperationCodeRange((int32_t)OperationCode::LastValue));
 
     EXPECT_TRUE(checkOperationCodeRange(greatMinimum));
     EXPECT_TRUE(checkOperationCodeRange(lessMaximum));
@@ -403,15 +403,15 @@ TEST(FieldsRangeChecker, CheckCardEmvAidRange){
 
     EXPECT_FALSE(checkCardEmvAidRange(empty));
 
-    std::string overSize(MAXIMUM_EMV_AID_LENGTH + 1, 'R');
+    std::string overSize(MAXIMUM_CARD_EMV_AID_LENGTH + 1, 'R');
 
     EXPECT_FALSE(checkCardEmvAidRange(overSize));
 
-    std::string minimumSize(MINIMUM_EMV_AID_LENGTH, 'R');
+    std::string minimumSize(MINIMUM_CARD_EMV_AID_LENGTH, 'R');
 
     EXPECT_TRUE(checkCardEmvAidRange(minimumSize));
 
-    std::string maximumSize(MAXIMUM_EMV_AID_LENGTH, 'R');
+    std::string maximumSize(MAXIMUM_CARD_EMV_AID_LENGTH, 'R');
 
     EXPECT_TRUE(checkCardEmvAidRange(maximumSize));
 }

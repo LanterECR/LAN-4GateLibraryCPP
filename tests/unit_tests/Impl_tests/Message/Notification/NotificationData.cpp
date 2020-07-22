@@ -12,15 +12,52 @@ using namespace Lanter::Message::Notification;
 
 TEST(NotificationData, CheckNotiticationData) {
     NotificationData data;
-    auto lessMinimum = (NotificationCodes)((int)NotificationCodes::FirstValue - 1);
-    auto greatMaximum = (NotificationCodes)((int)NotificationCodes::LastValue + 1);
+    auto lessMinimum = (NotificationCode)((int)NotificationCode::FirstValue - 1);
+    auto greatMaximum = (NotificationCode)((int)NotificationCode::LastValue + 1);
     EXPECT_FALSE(data.setCode(lessMinimum));
     EXPECT_FALSE(data.setCode(greatMaximum));
 
-    EXPECT_EQ(data.getCode(), NotificationCodes::NoNotification);
+    EXPECT_EQ(data.getCode(), NotificationCode::NoNotification);
 
-    EXPECT_TRUE(data.setCode(NotificationCodes::FirstValue));
-    EXPECT_EQ(data.getCode(), NotificationCodes::FirstValue);
-    EXPECT_TRUE(data.setCode(NotificationCodes::LastValue));
-    EXPECT_EQ(data.getCode(), NotificationCodes::LastValue);
+    EXPECT_TRUE(data.setCode(NotificationCode::FirstValue));
+    EXPECT_EQ(data.getCode(), NotificationCode::FirstValue);
+    EXPECT_TRUE(data.setCode(NotificationCode::LastValue));
+    EXPECT_EQ(data.getCode(), NotificationCode::LastValue);
+}
+
+TEST(NotificationData, CheckUnsetCode) {
+    NotificationData data;
+    EXPECT_EQ((int)data.getCode(), (int)NotificationCode::NoNotification);
+
+    EXPECT_TRUE(data.setCode(Lanter::Message::Notification::NotificationCode::FirstValue));
+    EXPECT_EQ((int)data.getCode(), (int)NotificationCode::FirstValue);
+
+    EXPECT_TRUE(data.unsetCode());
+    EXPECT_EQ((int)data.getCode(), (int)NotificationCode::NoNotification);
+}
+
+TEST(NotificationData, CheckUnsetMessage) {
+    NotificationData data;
+    std::string message = "Сообщение";
+
+    EXPECT_TRUE(data.getMessage().empty());
+
+    EXPECT_TRUE(data.setMessage(message));
+    EXPECT_STREQ(data.getMessage().c_str(), message.c_str());
+
+    EXPECT_TRUE(data.unsetMessage());
+    EXPECT_TRUE(data.getMessage().empty());
+}
+
+TEST(NotificationData, CheckUnsetAdditional) {
+    NotificationData data;
+    std::string additional = "Дополнительно";
+
+    EXPECT_TRUE(data.getAdditional().empty());
+
+    EXPECT_TRUE(data.setAdditional(additional));
+    EXPECT_STREQ(data.getAdditional().c_str(), additional.c_str());
+
+    EXPECT_TRUE(data.unsetAdditional());
+    EXPECT_TRUE(data.getAdditional().empty());
 }

@@ -8,7 +8,7 @@
 #include <string>
 #include <cstdint>
 
-#include "Lanter/Message/OperationCodes.h"
+#include "Lanter/Message/OperationCode.h"
 
 namespace Lanter {
     namespace Utils {

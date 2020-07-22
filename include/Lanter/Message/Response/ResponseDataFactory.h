@@ -7,7 +7,7 @@
 #include <memory>
 
 #include "IResponseData.h"
-#include "Lanter/Message/OperationCodes.h"
+#include "Lanter/Message/OperationCode.h"
 #include "Lanter/Utils/VisibilityMacroses.h"
 
 namespace Lanter {
@@ -24,7 +24,7 @@ namespace Lanter {
                 /// Если установить значение -1, то ecrNumber не будет установлен в IResponseData
                 /// \return Указатель на объект интерфейса IResponseData
                 /// \throws invalid_argument, если operationCode или ecrNumber вне разрешенного диапазона
-                static std::shared_ptr<IResponseData> getResponseData(OperationCodes operationCode, int16_t ecrNumber = -1);
+                static std::shared_ptr<IResponseData> getResponseData(OperationCode operationCode, int16_t ecrNumber = -1);
             };//ResponseDataFactory
         }//Response
     }

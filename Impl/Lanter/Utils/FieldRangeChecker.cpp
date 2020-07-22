@@ -11,7 +11,7 @@
 #include "Lanter/Message/Response/CardholderAuthMethod.h"
 #include "Lanter/Message/Response/CardInputMethod.h"
 #include "Lanter/Message/Response/Status.h"
-#include "Lanter/Message/Notification/NotificationCodes.h"
+#include "Lanter/Message/Notification/NotificationCode.h"
 #include "Constants.h"
 
 using namespace Lanter::Message;
@@ -29,8 +29,8 @@ namespace Lanter {
 
         bool checkOperationCodeRange(int32_t operationCode) {
             return checkValueRange(operationCode,
-                                static_cast<int64_t>(OperationCodes::FirstValue),
-                                static_cast<int64_t>(OperationCodes::LastValue));
+                                static_cast<int64_t>(OperationCode::FirstValue),
+                                static_cast<int64_t>(OperationCode::LastValue));
         }
 
         bool checkAmountRange(int64_t amount) {
@@ -125,7 +125,7 @@ namespace Lanter {
         }
 
         bool checkCardEmvAidRange(const std::string &emvAID) {
-            return checkValueRange(emvAID.size(), MINIMUM_EMV_AID_LENGTH, MAXIMUM_EMV_AID_LENGTH);
+            return checkValueRange(emvAID.size(), MINIMUM_CARD_EMV_AID_LENGTH, MAXIMUM_CARD_EMV_AID_LENGTH);
         }
 
         bool checkCardAppNameRange(const std::string &cardAppName) {
@@ -188,8 +188,8 @@ namespace Lanter {
 
         bool checkNotificationsRange(int32_t notification) {
             return checkValueRange(notification,
-                                static_cast<int64_t>(Notification::NotificationCodes::FirstValue),
-                                static_cast<int64_t>(Notification::NotificationCodes::LastValue));
+                                static_cast<int64_t>(Notification::NotificationCode::FirstValue),
+                                static_cast<int64_t>(Notification::NotificationCode::LastValue));
 
         }
     }//Utils

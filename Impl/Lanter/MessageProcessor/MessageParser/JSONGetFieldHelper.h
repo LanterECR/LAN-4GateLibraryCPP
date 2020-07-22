@@ -14,10 +14,10 @@ namespace Lanter {
     namespace MessageProcessor {
         class JSONGetFieldHelper {
         public:
-            static bool getFieldInt(const Json::Value & object, const std::string & fieldName, int & value);
-            static bool getFieldInt64(const Json::Value & object, const std::string & fieldName, int64_t & value);
-            static bool getFieldString(const Json::Value & object, const std::string & fieldName, std::string & value);
-            static bool getFieldObject(const Json::Value & object, const std::string & fieldName, Json::Value & value);
+            static bool getField(const Json::Value & object, const std::string & fieldName, int & value);
+            static bool getField(const Json::Value & object, const std::string & fieldName, int64_t & value);
+            static bool getField(const Json::Value & object, const std::string & fieldName, std::string & value);
+            static bool getField(const Json::Value & object, const std::string & fieldName, Json::Value & value);
         };
     }
 }

@@ -20,7 +20,7 @@ using namespace Lanter::MessageProcessor;
 
 TEST(TestBuilderParser, CheckRequest) {
     auto inputObject = RequestDataFactory::getRequestData();
-    inputObject->setOperationCode(Lanter::Message::OperationCodes::Sale);
+    inputObject->setOperationCode(Lanter::Message::OperationCode::Sale);
     inputObject->setAmount(MAXIMUM_AMOUNT);
     inputObject->setCurrencyCode(MAXIMUM_CURRENCY_CODE);
     inputObject->setEcrNumber(MAXIMUM_ECR_NUMBER);
@@ -49,7 +49,7 @@ TEST(TestBuilderParser, CheckRequest) {
 
 TEST(TestBuilderParser, CheckNotification) {
     auto inputObject = NotificationDataFactory::getNotificationData();
-    inputObject->setCode(Lanter::Message::Notification::NotificationCodes::FirstValue);
+    inputObject->setCode(Lanter::Message::Notification::NotificationCode::FirstValue);
     inputObject->setMessage("Сообщение");
     inputObject->setAdditional("Дополнительно");
 

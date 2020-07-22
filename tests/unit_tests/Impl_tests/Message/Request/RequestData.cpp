@@ -17,11 +17,18 @@ TEST(RequestData, CheckIsFieldSet) {
     EXPECT_FALSE(data.isFieldSet(RequestFields::EcrNumber));
     EXPECT_FALSE(data.isFieldSet(RequestFields::OperationCode));
 
-    data.setEcrNumber(10);
-    data.setOperationCode(OperationCodes::GetLastOperation);
+    EXPECT_TRUE(data.setEcrNumber(10));
+    EXPECT_TRUE(data.setOperationCode(OperationCode::GetLastOperation));
 
     EXPECT_TRUE(data.isFieldSet(RequestFields::EcrNumber));
     EXPECT_TRUE(data.isFieldSet(RequestFields::OperationCode));
+
+    for(int i = 0; i < 3; i++) {
+        EXPECT_TRUE(data.resetField(RequestFields::EcrNumber));
+        EXPECT_TRUE(data.resetField(RequestFields::OperationCode));
+    }
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }
 TEST(RequestData, CheckEcrNumber) {
     RequestData data;
@@ -42,6 +49,10 @@ TEST(RequestData, CheckEcrNumber) {
     EXPECT_EQ(data.getFieldsSet().size(), 1);
     EXPECT_EQ(data.getEcrNumber(), MAXIMUM_ECR_NUMBER);
     EXPECT_NE(data.getFieldsSet().find(RequestFields::EcrNumber), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetEcrNumber());
+    EXPECT_EQ(data.getEcrNumber(), -1);
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
 TEST(RequestData, ChechEcrMerchantNumber) {
@@ -64,28 +75,36 @@ TEST(RequestData, ChechEcrMerchantNumber) {
     EXPECT_EQ(data.getFieldsSet().size(), 1);
     EXPECT_EQ(data.getEcrMerchantNumber(), MAXIMUM_ECR_MERCHANT_NUMBER);
     EXPECT_NE(data.getFieldsSet().find(RequestFields::EcrMerchantNumber), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetEcrMerchantNumber());
+    EXPECT_EQ(data.getEcrMerchantNumber(), -1);
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
 TEST(RequestData, CheckOperationCode) {
     RequestData data;
 
-    auto greatMaximum = (OperationCodes)((int)(OperationCodes::LastValue) + 1);
-    EXPECT_FALSE(data.setOperationCode(OperationCodes::NoOperation));
+    auto greatMaximum = (OperationCode)((int)(OperationCode::LastValue) + 1);
+    EXPECT_FALSE(data.setOperationCode(OperationCode::NoOperation));
     EXPECT_EQ(data.getFieldsSet().size(), 0);
     EXPECT_FALSE(data.setOperationCode(greatMaximum));
     EXPECT_EQ(data.getFieldsSet().size(), 0);
 
-    EXPECT_EQ(data.getOperationCode(), OperationCodes::NoOperation);
+    EXPECT_EQ(data.getOperationCode(), OperationCode::NoOperation);
 
-    EXPECT_TRUE(data.setOperationCode(OperationCodes::FirstValue));
+    EXPECT_TRUE(data.setOperationCode(OperationCode::FirstValue));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getOperationCode(), OperationCodes::FirstValue);
+    EXPECT_EQ(data.getOperationCode(), OperationCode::FirstValue);
 
-    EXPECT_TRUE(data.setOperationCode(OperationCodes::LastValue));
+    EXPECT_TRUE(data.setOperationCode(OperationCode::LastValue));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getOperationCode(), OperationCodes::LastValue);
+    EXPECT_EQ(data.getOperationCode(), OperationCode::LastValue);
 
     EXPECT_NE(data.getFieldsSet().find(RequestFields::OperationCode), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetOperationCode());
+    EXPECT_EQ(data.getOperationCode(), OperationCode::NoOperation);
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
 TEST(RequestData, CheckAllAmounts) {
@@ -142,6 +161,19 @@ TEST(RequestData, CheckAllAmounts) {
     EXPECT_EQ(data.getCashbackAmount(), MAXIMUM_AMOUNT);
     EXPECT_NE(data.getFieldsSet().find(RequestFields::CashbackAmount), data.getFieldsSet().end());
 
+    EXPECT_TRUE(data.resetAmount());
+    EXPECT_EQ(data.getAmount(), -1);
+
+    EXPECT_TRUE(data.resetPartialAmount());
+    EXPECT_EQ(data.getPartialAmount(), -1);
+
+    EXPECT_TRUE(data.resetTipsAmount());
+    EXPECT_EQ(data.getTipsAmount(), -1);
+
+    EXPECT_TRUE(data.resetCashbackAmount());
+    EXPECT_EQ(data.getCashbackAmount(), -1);
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
 TEST(RequestData, CheckCurrencyCode) {
@@ -164,6 +196,10 @@ TEST(RequestData, CheckCurrencyCode) {
     EXPECT_EQ(data.getFieldsSet().size(), 1);
     EXPECT_EQ(data.getCurrencyCode(), MAXIMUM_CURRENCY_CODE);
     EXPECT_NE(data.getFieldsSet().find(RequestFields::CurrencyCode), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetCurrencyCode());
+    EXPECT_EQ(data.getCurrencyCode(), -1);
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
 TEST(RequestData, CheckRRN) {
@@ -189,6 +225,10 @@ TEST(RequestData, CheckRRN) {
 
     EXPECT_EQ(data.getFieldsSet().size(), 1);
     EXPECT_NE(data.getFieldsSet().find(RequestFields::RRN), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetRRN());
+    EXPECT_TRUE(data.getRRN().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
 TEST(RequestData, CheckAuthCode) {
@@ -214,6 +254,10 @@ TEST(RequestData, CheckAuthCode) {
 
     EXPECT_EQ(data.getFieldsSet().size(), 1);
     EXPECT_NE(data.getFieldsSet().find(RequestFields::AuthCode), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetAuthCode());
+    EXPECT_TRUE(data.getAuthCode().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
 TEST(RequestData, CheckReceiptReference) {
@@ -239,6 +283,10 @@ TEST(RequestData, CheckReceiptReference) {
 
     EXPECT_EQ(data.getFieldsSet().size(), 1);
     EXPECT_NE(data.getFieldsSet().find(RequestFields::ReceiptReference), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetReceiptReference());
+    EXPECT_TRUE(data.getReceiptReference().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
 TEST(RequestData, CheckTransactionID) {
@@ -264,6 +312,10 @@ TEST(RequestData, CheckTransactionID) {
 
     EXPECT_EQ(data.getFieldsSet().size(), 1);
     EXPECT_NE(data.getFieldsSet().find(RequestFields::TransactionID), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetTransactionID());
+    EXPECT_TRUE(data.getTransactionID().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
 TEST(RequestData, CheckCardDataEnc) {
@@ -282,6 +334,10 @@ TEST(RequestData, CheckCardDataEnc) {
 
     EXPECT_EQ(data.getFieldsSet().size(), 1);
     EXPECT_NE(data.getFieldsSet().find(RequestFields::CardDataEnc), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetCardDataEnc());
+    EXPECT_TRUE(data.getCardDataEnc().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
 TEST(RequestData, CheckOpenTags) {
@@ -300,6 +356,10 @@ TEST(RequestData, CheckOpenTags) {
 
     EXPECT_EQ(data.getFieldsSet().size(), 1);
     EXPECT_NE(data.getFieldsSet().find(RequestFields::OpenTags), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetOpenTags());
+    EXPECT_TRUE(data.getOpenTags().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
 TEST(RequestData, CheckEncTags) {
@@ -318,6 +378,10 @@ TEST(RequestData, CheckEncTags) {
 
     EXPECT_EQ(data.getFieldsSet().size(), 1);
     EXPECT_NE(data.getFieldsSet().find(RequestFields::EncTags), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetEncTags());
+    EXPECT_TRUE(data.getEncTags().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
 TEST(RequestData, CheckProviderCode) {
@@ -343,6 +407,10 @@ TEST(RequestData, CheckProviderCode) {
 
     EXPECT_EQ(data.getFieldsSet().size(), 1);
     EXPECT_NE(data.getFieldsSet().find(RequestFields::ProviderCode), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetProviderCode());
+    EXPECT_TRUE(data.getProviderCode().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
 TEST(RequestData, CheckAdditionalInfo) {
@@ -361,4 +429,11 @@ TEST(RequestData, CheckAdditionalInfo) {
 
     EXPECT_EQ(data.getFieldsSet().size(), 1);
     EXPECT_NE(data.getFieldsSet().find(RequestFields::AdditionalInfo), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetAdditionalInfo());
+    EXPECT_TRUE(data.getAdditionalInfo().empty());
+
+    EXPECT_TRUE(data.resetAdditionalInfo());
+    EXPECT_TRUE(data.getAdditionalInfo().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
 }

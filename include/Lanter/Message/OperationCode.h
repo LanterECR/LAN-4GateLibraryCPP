@@ -9,7 +9,7 @@ namespace Lanter
 {
     namespace Message {
         /// \brief Список поддерживаемых операций
-        enum class OperationCodes {
+        enum class OperationCode {
             NoOperation, ///< Значение-заглушка. Нет кода операции
             //Операции оплаты
             Sale = 1, ///< Оплата

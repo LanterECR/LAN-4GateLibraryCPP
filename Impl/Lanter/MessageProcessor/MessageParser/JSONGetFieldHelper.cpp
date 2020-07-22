@@ -9,7 +9,7 @@
 namespace Lanter {
     namespace MessageProcessor {
 
-        bool JSONGetFieldHelper::getFieldInt(const Json::Value &object, const std::string &fieldName, int &value) {
+        bool JSONGetFieldHelper::getField(const Json::Value &object, const std::string &fieldName, int &value) {
             bool result = fieldExists(object, fieldName) && object[fieldName].isInt();
             if(result) {
                 value = object[fieldName].asInt();
@@ -17,7 +17,7 @@ namespace Lanter {
             return result;
         }
 
-        bool JSONGetFieldHelper::getFieldInt64(const Json::Value &object, const std::string &fieldName, int64_t &value) {
+        bool JSONGetFieldHelper::getField(const Json::Value &object, const std::string &fieldName, int64_t &value) {
             bool result = fieldExists(object, fieldName) && object[fieldName].isInt64();
             if(result) {
                 value = object[fieldName].asInt64();
@@ -25,7 +25,7 @@ namespace Lanter {
             return result;
         }
 
-        bool JSONGetFieldHelper::getFieldString(const Json::Value &object, const std::string &fieldName, std::string &value) {
+        bool JSONGetFieldHelper::getField(const Json::Value &object, const std::string &fieldName, std::string &value) {
             bool result = fieldExists(object, fieldName) && object[fieldName].isString();
             if(result) {
                 value = object[fieldName].asString();
@@ -33,7 +33,7 @@ namespace Lanter {
             return result;
         }
 
-        bool JSONGetFieldHelper::getFieldObject(const Json::Value &object, const std::string &fieldName, Json::Value &value) {
+        bool JSONGetFieldHelper::getField(const Json::Value &object, const std::string &fieldName, Json::Value &value) {
             bool result = fieldExists(object, fieldName) && object[fieldName].isObject();
             if(result) {
                 value = object[fieldName];

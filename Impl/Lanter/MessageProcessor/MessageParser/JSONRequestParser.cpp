@@ -36,7 +36,7 @@ namespace Lanter {
         bool JSONRequestParser::getFieldEcrNumber(const Json::Value &object, IRequestData &requestData) {
             int ecrNumber;
 
-            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getEcrNumber(), ecrNumber);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getEcrNumber(), ecrNumber);
             bool result = exists && requestData.setEcrNumber(ecrNumber);
 
             return result;
@@ -45,7 +45,8 @@ namespace Lanter {
         bool JSONRequestParser::getFieldEcrMerchantNumber(const Json::Value &object, IRequestData &requestData) {
             int ecrMerchantNumber;
 
-            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getEcrMerchantNumber(), ecrMerchantNumber);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getEcrMerchantNumber(),
+                                                       ecrMerchantNumber);
             bool result = exists && requestData.setEcrMerchantNumber(ecrMerchantNumber);
 
             return result;
@@ -54,8 +55,8 @@ namespace Lanter {
         bool JSONRequestParser::getFieldOperationCode(const Json::Value &object, IRequestData &requestData) {
             int operationCode;
 
-            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getOperationCode(), operationCode);
-            bool result = exists && requestData.setOperationCode(static_cast<OperationCodes>(operationCode));
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getOperationCode(), operationCode);
+            bool result = exists && requestData.setOperationCode(static_cast<OperationCode>(operationCode));
 
             return result;
         }
@@ -63,7 +64,7 @@ namespace Lanter {
         bool JSONRequestParser::getFieldAmount(const Json::Value &object, IRequestData &requestData) {
             int64_t amount;
 
-            bool exists = JSONGetFieldHelper::getFieldInt64(object, JSONRequestFields::getAmount(), amount);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getAmount(), amount);
             bool result = exists && requestData.setAmount(amount);
 
             return result;
@@ -72,7 +73,7 @@ namespace Lanter {
         bool JSONRequestParser::getFieldPartialAmount(const Json::Value &object, IRequestData &requestData) {
             int64_t partialAmount;
 
-            bool exists = JSONGetFieldHelper::getFieldInt64(object, JSONRequestFields::getPartialAmount(), partialAmount);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getPartialAmount(), partialAmount);
             bool result = exists && requestData.setPartialAmount(partialAmount);
 
             return result;
@@ -81,7 +82,7 @@ namespace Lanter {
         bool JSONRequestParser::getFieldTipsAmount(const Json::Value &object, IRequestData &requestData) {
             int64_t tipsAmount;
 
-            bool exists = JSONGetFieldHelper::getFieldInt64(object, JSONRequestFields::getTipsAmount(), tipsAmount);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getTipsAmount(), tipsAmount);
             bool result = exists && requestData.setTipsAmount(tipsAmount);
 
             return result;
@@ -90,7 +91,7 @@ namespace Lanter {
         bool JSONRequestParser::getFieldCashbackAmount(const Json::Value &object, IRequestData &requestData) {
             int64_t cashbackAmount;
 
-            bool exists = JSONGetFieldHelper::getFieldInt64(object, JSONRequestFields::getCashbackAmount(), cashbackAmount);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getCashbackAmount(), cashbackAmount);
             bool result = exists && requestData.setCashbackAmount(cashbackAmount);
 
             return result;
@@ -99,17 +100,17 @@ namespace Lanter {
         bool JSONRequestParser::getFieldCurrencyCode(const Json::Value &object, IRequestData &requestData) {
             int currencyCode;
 
-            bool exists = JSONGetFieldHelper::getFieldInt(object, JSONRequestFields::getCurrencyCode(), currencyCode);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getCurrencyCode(), currencyCode);
             bool result = exists && requestData.setCurrencyCode(currencyCode);
 
             return result;
         }
 
         bool JSONRequestParser::getFieldRRN(const Json::Value &object, IRequestData &requestData) {
-            std::string RRN;
+            std::string rrn;
 
-            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getRRN(), RRN);
-            bool result = exists && requestData.setRRN(RRN);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getRRN(), rrn);
+            bool result = exists && requestData.setRRN(rrn);
 
             return result;
         }
@@ -117,7 +118,7 @@ namespace Lanter {
         bool JSONRequestParser::getFieldAuthCode(const Json::Value &object, IRequestData &requestData) {
             std::string authCode;
 
-            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getAuthCode(), authCode);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getAuthCode(), authCode);
             bool result = exists && requestData.setAuthCode(authCode);
 
             return result;
@@ -126,7 +127,8 @@ namespace Lanter {
         bool JSONRequestParser::getFieldReceiptReference(const Json::Value &object, IRequestData &requestData) {
             std::string receiptReference;
 
-            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getReceiptReference(), receiptReference);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getReceiptReference(),
+                                                       receiptReference);
             bool result = exists && requestData.setReceiptReference(receiptReference);
 
             return result;
@@ -135,7 +137,7 @@ namespace Lanter {
         bool JSONRequestParser::getFieldTransactionID(const Json::Value &object, IRequestData &requestData) {
             std::string transactionID;
 
-            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getTransactionID(), transactionID);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getTransactionID(), transactionID);
             bool result = exists && requestData.setTransactionID(transactionID);
 
             return result;
@@ -144,7 +146,7 @@ namespace Lanter {
         bool JSONRequestParser::getFieldCardDataEnc(const Json::Value &object, IRequestData &requestData) {
             std::string cardDataEnc;
 
-            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getCardDataEnc(), cardDataEnc);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getCardDataEnc(), cardDataEnc);
             bool result = exists && requestData.setCardDataEnc(cardDataEnc);
 
             return result;
@@ -153,7 +155,7 @@ namespace Lanter {
         bool JSONRequestParser::getFieldOpenTags(const Json::Value &object, IRequestData &requestData) {
             std::string openTags;
 
-            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getOpenTags(), openTags);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getOpenTags(), openTags);
             bool result = exists && requestData.setOpenTags(openTags);
 
             return result;
@@ -162,7 +164,7 @@ namespace Lanter {
         bool JSONRequestParser::getFieldEncTags(const Json::Value &object, IRequestData &requestData) {
             std::string encTags;
 
-            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getEncTags(), encTags);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getEncTags(), encTags);
             bool result = exists && requestData.setEncTags(encTags);
 
             return result;
@@ -171,7 +173,7 @@ namespace Lanter {
         bool JSONRequestParser::getFieldProviderCode(const Json::Value &object, IRequestData &requestData) {
             std::string providerCode;
 
-            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getProviderCode(), providerCode);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getProviderCode(), providerCode);
             bool result = exists && requestData.setProviderCode(providerCode);
 
             return result;
@@ -180,7 +182,7 @@ namespace Lanter {
         bool JSONRequestParser::getFieldAdditionalInfo(const Json::Value &object, IRequestData &requestData) {
             std::string additionalInfo;
 
-            bool exists = JSONGetFieldHelper::getFieldString(object, JSONRequestFields::getAdditionalInfo(), additionalInfo);
+            bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getAdditionalInfo(), additionalInfo);
             bool result = exists && requestData.setAdditionalInfo(additionalInfo);
 
             return result;

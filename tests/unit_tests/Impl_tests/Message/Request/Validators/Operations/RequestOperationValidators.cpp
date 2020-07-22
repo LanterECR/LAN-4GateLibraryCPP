@@ -22,7 +22,7 @@ TEST(RequestOperationValidators, CheckRefund) {
     fields.insert(RequestFields::RRN);
     fields.insert(RequestFields::TransactionID);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::Refund);
+    auto validator = ValidatorFactory::getValidator(OperationCode::Refund);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -47,7 +47,7 @@ TEST(RequestOperationValidators, CheckRefundWithoutRRN) {
     fields.insert(RequestFields::Amount);
     fields.insert(RequestFields::CurrencyCode);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::RefundWithoutRRN);
+    auto validator = ValidatorFactory::getValidator(OperationCode::RefundWithoutRRN);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -73,7 +73,7 @@ TEST(RequestOperationValidators, CheckAliPay) {
     fields.insert(RequestFields::Amount);
     fields.insert(RequestFields::CurrencyCode);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::AliPay);
+    auto validator = ValidatorFactory::getValidator(OperationCode::AliPay);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -95,7 +95,7 @@ TEST(RequestOperationValidators, CheckFastTrack) {
     fields.insert(RequestFields::EncTags);
     fields.insert(RequestFields::OpenTags);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::FastTrack);
+    auto validator = ValidatorFactory::getValidator(OperationCode::FastTrack);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -120,7 +120,7 @@ TEST(RequestOperationValidators, CheckMOTO) {
     fields.insert(RequestFields::Amount);
     fields.insert(RequestFields::CurrencyCode);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::MOTO);
+    auto validator = ValidatorFactory::getValidator(OperationCode::MOTO);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -142,7 +142,7 @@ TEST(RequestOperationValidators, CheckPreAuth) {
     fields.insert(RequestFields::TransactionID);
     fields.insert(RequestFields::CardDataEnc);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::PreAuth);
+    auto validator = ValidatorFactory::getValidator(OperationCode::PreAuth);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -167,7 +167,7 @@ TEST(RequestOperationValidators, CheckQuickPayment) {
     fields.insert(RequestFields::Amount);
     fields.insert(RequestFields::CurrencyCode);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::QuickPayment);
+    auto validator = ValidatorFactory::getValidator(OperationCode::QuickPayment);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -189,7 +189,7 @@ TEST(RequestOperationValidators, CheckQuickPaymentStatus) {
     fields.insert(RequestFields::TransactionID);
     fields.insert(RequestFields::ReceiptReference);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::QuickPaymentStatus);
+    auto validator = ValidatorFactory::getValidator(OperationCode::QuickPaymentStatus);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -214,7 +214,7 @@ TEST(RequestOperationValidators, CheckSale) {
     fields.insert(RequestFields::Amount);
     fields.insert(RequestFields::CurrencyCode);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::Sale);
+    auto validator = ValidatorFactory::getValidator(OperationCode::Sale);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -237,7 +237,7 @@ TEST(RequestOperationValidators, CheckSalesCompletion) {
     fields.insert(RequestFields::AuthCode);
     fields.insert(RequestFields::TransactionID);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::SalesCompletion);
+    auto validator = ValidatorFactory::getValidator(OperationCode::SalesCompletion);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -262,7 +262,7 @@ TEST(RequestOperationValidators, CheckVoid) {
     fields.insert(RequestFields::EcrMerchantNumber);
     fields.insert(RequestFields::ReceiptReference);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::Void);
+    auto validator = ValidatorFactory::getValidator(OperationCode::Void);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -288,7 +288,7 @@ TEST(RequestOperationValidators, CheckVoidPartialSale) {
     fields.insert(RequestFields::CurrencyCode);
     fields.insert(RequestFields::ReceiptReference);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::VoidPartialSale);
+    auto validator = ValidatorFactory::getValidator(OperationCode::VoidPartialSale);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -313,7 +313,7 @@ TEST(RequestOperationValidators, CheckVoidPreAuth) {
     fields.insert(RequestFields::CardDataEnc);
     fields.insert(RequestFields::TransactionID);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::VoidPreAuth);
+    auto validator = ValidatorFactory::getValidator(OperationCode::VoidPreAuth);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -338,7 +338,7 @@ TEST(RequestOperationValidators, CheckDisplayQR) {
     fields.insert(RequestFields::EcrNumber);
     fields.insert(RequestFields::AdditionalInfo);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::DisplayQR);
+    auto validator = ValidatorFactory::getValidator(OperationCode::DisplayQR);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -360,7 +360,7 @@ TEST(RequestOperationValidators, CheckFinalizeTransaction) {
     fields.insert(RequestFields::OperationCode);
     fields.insert(RequestFields::EcrNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::FinalizeTransaction);
+    auto validator = ValidatorFactory::getValidator(OperationCode::FinalizeTransaction);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -382,7 +382,7 @@ TEST(RequestOperationValidators, CheckGetCurrentPrinter) {
     fields.insert(RequestFields::OperationCode);
     fields.insert(RequestFields::EcrNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::GetCurrentPrinter);
+    auto validator = ValidatorFactory::getValidator(OperationCode::GetCurrentPrinter);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -404,7 +404,7 @@ TEST(RequestOperationValidators, CheckGetLastOperation) {
     fields.insert(RequestFields::OperationCode);
     fields.insert(RequestFields::EcrNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::GetLastOperation);
+    auto validator = ValidatorFactory::getValidator(OperationCode::GetLastOperation);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -428,7 +428,7 @@ TEST(RequestOperationValidators, CheckGetOperationCopy) {
     fields.insert(RequestFields::EcrMerchantNumber);
     fields.insert(RequestFields::ReceiptReference);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::GetOperationCopy);
+    auto validator = ValidatorFactory::getValidator(OperationCode::GetOperationCopy);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -450,7 +450,7 @@ TEST(RequestOperationValidators, CheckInitialization) {
     fields.insert(RequestFields::OperationCode);
     fields.insert(RequestFields::EcrNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::Initialization);
+    auto validator = ValidatorFactory::getValidator(OperationCode::Initialization);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -472,7 +472,7 @@ TEST(RequestOperationValidators, CheckKeyDownload) {
     fields.insert(RequestFields::OperationCode);
     fields.insert(RequestFields::EcrNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::KeyDownload);
+    auto validator = ValidatorFactory::getValidator(OperationCode::KeyDownload);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -494,7 +494,7 @@ TEST(RequestOperationValidators, CheckPrintCommsInfo) {
     fields.insert(RequestFields::OperationCode);
     fields.insert(RequestFields::EcrNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::PrintCommsInfo);
+    auto validator = ValidatorFactory::getValidator(OperationCode::PrintCommsInfo);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -517,7 +517,7 @@ TEST(RequestOperationValidators, CheckPrintDetailReport) {
     fields.insert(RequestFields::EcrNumber);
     fields.insert(RequestFields::EcrMerchantNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::PrintDetailReport);
+    auto validator = ValidatorFactory::getValidator(OperationCode::PrintDetailReport);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -540,7 +540,7 @@ TEST(RequestOperationValidators, CheckPrintLastReceipt) {
     fields.insert(RequestFields::EcrNumber);
     fields.insert(RequestFields::EcrMerchantNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::PrintLastReceipt);
+    auto validator = ValidatorFactory::getValidator(OperationCode::PrintLastReceipt);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -564,7 +564,7 @@ TEST(RequestOperationValidators, CheckPrintReceiptCopy) {
     fields.insert(RequestFields::EcrMerchantNumber);
     fields.insert(RequestFields::ReceiptReference);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::PrintReceiptCopy);
+    auto validator = ValidatorFactory::getValidator(OperationCode::PrintReceiptCopy);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -586,7 +586,7 @@ TEST(RequestOperationValidators, CheckPrintSoftInfo) {
     fields.insert(RequestFields::OperationCode);
     fields.insert(RequestFields::EcrNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::PrintSoftInfo);
+    auto validator = ValidatorFactory::getValidator(OperationCode::PrintSoftInfo);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -609,7 +609,7 @@ TEST(RequestOperationValidators, CheckPrintSummaryReport) {
     fields.insert(RequestFields::EcrNumber);
     fields.insert(RequestFields::EcrMerchantNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::PrintSummaryReport);
+    auto validator = ValidatorFactory::getValidator(OperationCode::PrintSummaryReport);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -631,7 +631,7 @@ TEST(RequestOperationValidators, CheckRegistration) {
     fields.insert(RequestFields::OperationCode);
     fields.insert(RequestFields::EcrNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::Registration);
+    auto validator = ValidatorFactory::getValidator(OperationCode::Registration);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -653,7 +653,7 @@ TEST(RequestOperationValidators, CheckSelfTest) {
     fields.insert(RequestFields::OperationCode);
     fields.insert(RequestFields::EcrNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::SelfTest);
+    auto validator = ValidatorFactory::getValidator(OperationCode::SelfTest);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -676,7 +676,7 @@ TEST(RequestOperationValidators, CheckSetCurrentPrinter) {
     fields.insert(RequestFields::EcrNumber);
     fields.insert(RequestFields::AdditionalInfo);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::SetCurrentPrinter);
+    auto validator = ValidatorFactory::getValidator(OperationCode::SetCurrentPrinter);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -699,7 +699,7 @@ TEST(RequestOperationValidators, CheckSettlement) {
     fields.insert(RequestFields::EcrNumber);
     fields.insert(RequestFields::EcrMerchantNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::Settlement);
+    auto validator = ValidatorFactory::getValidator(OperationCode::Settlement);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -721,7 +721,7 @@ TEST(RequestOperationValidators, CheckTest) {
     fields.insert(RequestFields::OperationCode);
     fields.insert(RequestFields::EcrNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::Test);
+    auto validator = ValidatorFactory::getValidator(OperationCode::Test);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -743,7 +743,7 @@ TEST(RequestOperationValidators, CheckTestCommunication) {
     fields.insert(RequestFields::OperationCode);
     fields.insert(RequestFields::EcrNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::TestCommunication);
+    auto validator = ValidatorFactory::getValidator(OperationCode::TestCommunication);
 
     EXPECT_TRUE(validator->validate(fields));
 
@@ -765,7 +765,7 @@ TEST(RequestOperationValidators, CheckUpdateSW) {
     fields.insert(RequestFields::OperationCode);
     fields.insert(RequestFields::EcrNumber);
 
-    auto validator = ValidatorFactory::getValidator(OperationCodes::UpdateSW);
+    auto validator = ValidatorFactory::getValidator(OperationCode::UpdateSW);
 
     EXPECT_TRUE(validator->validate(fields));
 

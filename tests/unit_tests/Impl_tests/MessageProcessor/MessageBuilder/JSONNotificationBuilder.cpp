@@ -26,7 +26,7 @@ TEST(JSONNOtificationBuilder, CheckAddCode) {
 
     EXPECT_FALSE(JSONNotificationBuilder::addCode(data, object));
 
-    data.setCode(NotificationCodes::FirstValue);
+    data.setCode(NotificationCode::FirstValue);
 
     EXPECT_TRUE(JSONNotificationBuilder::addCode(data, object));
     EXPECT_TRUE(fieldExists(object, JSONNotificationFields::getCode()));
@@ -68,7 +68,7 @@ TEST(JSONNOtificationBuilder, CheckCreateObject) {
 
     EXPECT_FALSE(builder.createObject(*data, object));
 
-    data->setCode(NotificationCodes::FirstValue);
+    data->setCode(NotificationCode::FirstValue);
     data->setAdditional("123");
     data->setMessage("123");
 

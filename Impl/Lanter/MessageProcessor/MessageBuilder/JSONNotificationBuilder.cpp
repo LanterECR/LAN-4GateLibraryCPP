@@ -21,7 +21,7 @@ namespace Lanter {
 
         bool
         JSONNotificationBuilder::addCode(const INotificationData &notificationData, Json::Value &object) {
-            if(notificationData.getCode() != NotificationCodes::NoNotification) {
+            if(notificationData.getCode() != NotificationCode::NoNotification) {
                 AddFieldsHelper::addField(object, JSONNotificationFields::getCode(),
                                           static_cast<int>(notificationData.getCode()));
             }

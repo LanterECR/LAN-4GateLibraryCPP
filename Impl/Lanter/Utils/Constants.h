@@ -64,8 +64,8 @@ namespace Lanter {
             static const uint16_t MINIMUM_TERMINAL_ID_LENGTH = 1;
             static const uint16_t MAXIMUM_TERMINAL_ID_LENGTH = 8192;
 
-            static const uint16_t MINIMUM_EMV_AID_LENGTH = 1;
-            static const uint16_t MAXIMUM_EMV_AID_LENGTH = 8192;
+            static const uint16_t MINIMUM_CARD_EMV_AID_LENGTH = 1;
+            static const uint16_t MAXIMUM_CARD_EMV_AID_LENGTH = 8192;
 
             static const uint16_t MINIMUM_CARD_APP_NAME_LENGTH = 1;
             static const uint16_t MAXIMUM_CARD_APP_NAME_LENGTH = 8192;
