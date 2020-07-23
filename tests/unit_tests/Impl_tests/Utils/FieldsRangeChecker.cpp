@@ -633,17 +633,17 @@ TEST(FieldsRangeChecker, CheckRefundCountRange){
     EXPECT_TRUE(checkRefundCountRange(MAXIMUM_ARRAY_SIZE - 1));
 }
 TEST(FieldsRangeChecker, CheckNotiticationCodes){
-    auto lessMinimum =  (int32_t)NotificationCodes::FirstValue - 1;
-    auto greatMaximum = (int32_t)NotificationCodes::LastValue + 1;
+    auto lessMinimum =  (int32_t)NotificationCode::FirstValue - 1;
+    auto greatMaximum = (int32_t)NotificationCode::LastValue + 1;
 
-    auto greatMinimum = (int32_t)NotificationCodes::FirstValue + 1;
-    auto lessMaximum = (int32_t)NotificationCodes::LastValue - 1;
+    auto greatMinimum = (int32_t)NotificationCode::FirstValue + 1;
+    auto lessMaximum = (int32_t)NotificationCode::LastValue - 1;
 
     EXPECT_FALSE(checkNotificationsRange(lessMinimum));
     EXPECT_FALSE(checkNotificationsRange(greatMaximum));
 
-    EXPECT_TRUE(checkNotificationsRange((int32_t)NotificationCodes::FirstValue));
-    EXPECT_TRUE(checkNotificationsRange((int32_t)NotificationCodes::LastValue));
+    EXPECT_TRUE(checkNotificationsRange((int32_t)NotificationCode::FirstValue));
+    EXPECT_TRUE(checkNotificationsRange((int32_t)NotificationCode::LastValue));
 
     EXPECT_TRUE(checkNotificationsRange(greatMinimum));
     EXPECT_TRUE(checkNotificationsRange(lessMaximum));

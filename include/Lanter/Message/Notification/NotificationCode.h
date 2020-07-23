@@ -2,8 +2,8 @@
 // Created by Владимир Лысенков on 30.06.2020.
 //
 
-#ifndef LAN_4GATELIBRARYCPP_NOTIFICATIONCODES_H
-#define LAN_4GATELIBRARYCPP_NOTIFICATIONCODES_H
+#ifndef LAN_4GATELIBRARYCPP_NotificationCode_H
+#define LAN_4GATELIBRARYCPP_NotificationCode_H
 
 namespace Lanter {
     namespace Message {
@@ -70,4 +70,4 @@ namespace Lanter {
         }
     }
 }//Lanter
-#endif //LAN_4GATELIBRARYCPP_NOTIFICATIONCODES_H
+#endif //LAN_4GATELIBRARYCPP_NotificationCode_H

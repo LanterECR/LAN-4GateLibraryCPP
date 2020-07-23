@@ -271,10 +271,10 @@ namespace Lanter {
             return fieldExists(object, JSONResponseFields::getCDAResult());
         }
         bool JSONResponseBuilder::addFieldSalesCount(const IResponseData &responseData, Json::Value &object) {
-            if(responseData.isFieldSet(ResponseFields::SalesCount)) {
-                AddFieldsHelper::addField(object, JSONResponseFields::getSalesCount(), responseData.getSalesCount());
+            if(responseData.isFieldSet(ResponseFields::SaleCount)) {
+                AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), responseData.getSalesCount());
             }
-            return fieldExists(object, JSONResponseFields::getSalesCount());
+            return fieldExists(object, JSONResponseFields::getSaleCount());
         }
         bool JSONResponseBuilder::addFieldVoidCount(const IResponseData &responseData, Json::Value &object) {
             if(responseData.isFieldSet(ResponseFields::VoidCount)) {
@@ -289,18 +289,18 @@ namespace Lanter {
             return fieldExists(object, JSONResponseFields::getRefundCount());
         }
         bool JSONResponseBuilder::addFieldSalesArray(const IResponseData &responseData, Json::Value &object) {
-            if(responseData.isFieldSet(ResponseFields::SalesArray)) {
+            if(responseData.isFieldSet(ResponseFields::SaleArray)) {
                 Json::Value array;
-                for(const auto& arrayResponseData : responseData.getSalesArray()) {
+                for(const auto& arrayResponseData : responseData.getSaleArray()) {
                     Json::Value arrayElement;
                     if(!createObject(*arrayResponseData, arrayElement)) {
                         return false;
                     }
                     AddFieldsHelper::addArrayElement(array, arrayElement);
                 } //for
-                AddFieldsHelper::addField(object, JSONResponseFields::getSalesArray(), array);
+                AddFieldsHelper::addField(object, JSONResponseFields::getSaleArray(), array);
             }
-            return fieldExists(object, JSONResponseFields::getSalesArray());
+            return fieldExists(object, JSONResponseFields::getSaleArray());
         }
         bool JSONResponseBuilder::addFieldVoidArray(const IResponseData &responseData, Json::Value &object) {
             if(responseData.isFieldSet(ResponseFields::VoidArray)) {
@@ -395,10 +395,10 @@ namespace Lanter {
             m_InsertFunctions[ResponseFields::CID] = std::bind(&JSONResponseBuilder::addFieldCID,this,  _1, _2);
             m_InsertFunctions[ResponseFields::KVR] = std::bind(&JSONResponseBuilder::addFieldKVR,this,  _1, _2);
             m_InsertFunctions[ResponseFields::CDAResult] = std::bind(&JSONResponseBuilder::addFieldCDAResult,this,  _1, _2);
-            m_InsertFunctions[ResponseFields::SalesCount] = std::bind(&JSONResponseBuilder::addFieldSalesCount,this,  _1, _2);
+            m_InsertFunctions[ResponseFields::SaleCount] = std::bind(&JSONResponseBuilder::addFieldSalesCount, this, _1, _2);
             m_InsertFunctions[ResponseFields::VoidCount] = std::bind(&JSONResponseBuilder::addFieldVoidCount,this,  _1, _2);
             m_InsertFunctions[ResponseFields::RefundCount] = std::bind(&JSONResponseBuilder::addFieldRefundCount,this,  _1, _2);
-            m_InsertFunctions[ResponseFields::SalesArray] = std::bind(&JSONResponseBuilder::addFieldSalesArray,this,  _1, _2);
+            m_InsertFunctions[ResponseFields::SaleArray] = std::bind(&JSONResponseBuilder::addFieldSalesArray, this, _1, _2);
             m_InsertFunctions[ResponseFields::VoidArray] = std::bind(&JSONResponseBuilder::addFieldVoidArray,this,  _1, _2);
             m_InsertFunctions[ResponseFields::RefundArray] = std::bind(&JSONResponseBuilder::addFieldRefundArray,this,  _1, _2);
         }

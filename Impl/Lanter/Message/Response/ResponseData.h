@@ -200,7 +200,7 @@ namespace Lanter {
 
                 bool setRefundCount(int32_t refundCount) override;
 
-                const std::vector<std::shared_ptr<IResponseData> > &getSalesArray() const override;
+                const std::vector<std::shared_ptr<IResponseData> > &getSaleArray() const override;
 
                 bool setSalesArray(const std::vector<std::shared_ptr<IResponseData> > &salesArray) override;
 

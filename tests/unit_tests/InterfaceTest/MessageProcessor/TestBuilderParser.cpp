@@ -4,6 +4,7 @@
 
 #include "gtest/gtest.h"
 
+#include "Lanter/Message/Response/ResponseDataFactory.h"
 #include "Lanter/Message/Request/RequestDataFactory.h"
 #include "Lanter/Message/Notification/NotificationDataFactory.h"
 #include "Lanter/MessageProcessor/MessageBuilder/MessageBuilderFactory.h"
@@ -47,6 +48,86 @@ TEST(TestBuilderParser, CheckRequest) {
     EXPECT_EQ(inputObject->getEcrMerchantNumber(), outputObject->getEcrMerchantNumber());
 }
 
+TEST(TestBuilderParser, CheckResponse) {
+    auto inputObject = ResponseDataFactory::getResponseData();
+    inputObject->setOperationCode(Lanter::Message::OperationCode::Sale);
+    inputObject->setEcrNumber(MAXIMUM_ECR_NUMBER);
+    inputObject->setStatus(Lanter::Message::Response::Status::Success);
+    inputObject->setEcrMerchantNumber(MAXIMUM_ECR_MERCHANT_NUMBER);
+    inputObject->setTotalAmount(MAXIMUM_AMOUNT);
+    inputObject->setCurrencyCode(MAXIMUM_CURRENCY_CODE);
+    inputObject->setRRN("Значение");
+    inputObject->setReceiptReference("Значение");
+    inputObject->setTransactionID("Значение");
+    inputObject->setAuthCode("Значение");
+    inputObject->setResponseCode("Значение");
+    inputObject->setResponseText("Значение");
+    inputObject->setTerminalID("Значение");
+    inputObject->setMerchantID("Значение");
+    inputObject->setTransDateTime("Значение");
+    inputObject->setTerminalDateTime("Значение");
+    inputObject->setIssuerName("Значение");
+    inputObject->setCardInputMethod(Lanter::Message::Response::CardInputMethod::TerminalManualEntry);
+    inputObject->setCardPAN("Значение");
+    inputObject->setExpireDate("Значение");
+    inputObject->setCardAppName("Значение");
+    inputObject->setCardEmvAid("Значение");
+    inputObject->setCardDataEnc("Значение");
+    inputObject->setTVR("Значение");
+    inputObject->setTSI("Значение");
+    inputObject->setTC("Значение");
+    inputObject->setCID("Значение");
+    inputObject->setKVR("Значение");
+    inputObject->setCDAResult("Значение");
+    inputObject->setCardholderName("Значение");
+    inputObject->setCardholderAuthMethod(Lanter::Message::Response::CardholderAuthMethod::PaperSignatureVerification);
+
+    std::vector<unsigned char> serializedData;
+
+    auto builder = MessageBuilderFactory::getMessageBuilder();
+    auto parser = MessageParserFactory::getMessageParser();
+
+    EXPECT_TRUE(builder->createMessage(inputObject, serializedData));
+    EXPECT_FALSE(serializedData.empty());
+
+    EXPECT_EQ(parser->parseMessage(serializedData), MessageType::Response);
+    EXPECT_EQ(parser->responseCount(), 1);
+
+    auto outputObject = parser->getNextResponseData();
+    EXPECT_NE(outputObject, nullptr);
+
+    EXPECT_EQ(inputObject->getEcrNumber(), outputObject->getEcrNumber());
+    EXPECT_EQ(inputObject->getOperationCode(), outputObject->getOperationCode());
+    EXPECT_EQ(inputObject->getStatus(), outputObject->getStatus());
+    EXPECT_EQ(inputObject->getEcrMerchantNumber(), outputObject->getEcrMerchantNumber());
+    EXPECT_EQ(inputObject->getTotalAmount(), outputObject->getTotalAmount());
+    EXPECT_EQ(inputObject->getCurrencyCode(), outputObject->getCurrencyCode());
+    EXPECT_STREQ(inputObject->getRRN().c_str(), outputObject->getRRN().c_str());
+    EXPECT_STREQ(inputObject->getReceiptReference().c_str(), outputObject->getReceiptReference().c_str());
+    EXPECT_STREQ(inputObject->getTransactionID().c_str(), outputObject->getTransactionID().c_str());
+    EXPECT_STREQ(inputObject->getAuthCode().c_str(), outputObject->getAuthCode().c_str());
+    EXPECT_STREQ(inputObject->getResponseCode().c_str(), outputObject->getResponseCode().c_str());
+    EXPECT_STREQ(inputObject->getResponseText().c_str(), outputObject->getResponseText().c_str());
+    EXPECT_STREQ(inputObject->getTerminalID().c_str(), outputObject->getTerminalID().c_str());
+    EXPECT_STREQ(inputObject->getMerchantID().c_str(), outputObject->getMerchantID().c_str());
+    EXPECT_STREQ(inputObject->getTransDateTime().c_str(), outputObject->getTransDateTime().c_str());
+    EXPECT_STREQ(inputObject->getTerminalDateTime().c_str(), outputObject->getTerminalDateTime().c_str());
+    EXPECT_STREQ(inputObject->getIssuerName().c_str(), outputObject->getIssuerName().c_str());
+    EXPECT_EQ(inputObject->getCardInputMethod(), outputObject->getCardInputMethod());
+    EXPECT_STREQ(inputObject->getCardPAN().c_str(), outputObject->getCardPAN().c_str());
+    EXPECT_STREQ(inputObject->getExpireDate().c_str(), outputObject->getExpireDate().c_str());
+    EXPECT_STREQ(inputObject->getCardAppName().c_str(), outputObject->getCardAppName().c_str());
+    EXPECT_STREQ(inputObject->getCardEmvAid().c_str(), outputObject->getCardEmvAid().c_str());
+    EXPECT_STREQ(inputObject->getCardDataEnc().c_str(), outputObject->getCardDataEnc().c_str());
+    EXPECT_STREQ(inputObject->getTVR().c_str(), outputObject->getTVR().c_str());
+    EXPECT_STREQ(inputObject->getTSI().c_str(), outputObject->getTSI().c_str());
+    EXPECT_STREQ(inputObject->getTC().c_str(), outputObject->getTC().c_str());
+    EXPECT_STREQ(inputObject->getCID().c_str(), outputObject->getCID().c_str());
+    EXPECT_STREQ(inputObject->getKVR().c_str(), outputObject->getKVR().c_str());
+    EXPECT_STREQ(inputObject->getCDAResult().c_str(), outputObject->getCDAResult().c_str());
+    EXPECT_STREQ(inputObject->getCardholderName().c_str(), outputObject->getCardholderName().c_str());
+    EXPECT_EQ(inputObject->getCardholderAuthMethod(), outputObject->getCardholderAuthMethod());
+}
 TEST(TestBuilderParser, CheckNotification) {
     auto inputObject = NotificationDataFactory::getNotificationData();
     inputObject->setCode(Lanter::Message::Notification::NotificationCode::FirstValue);

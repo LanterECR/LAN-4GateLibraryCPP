@@ -34,6 +34,7 @@ namespace Lanter {
             static bool readMessage(const std::string & message, Json::Value & root);
         private:
             bool createRequest(const Json::Value & object);
+            bool createResponse(const Json::Value & object);
             bool createNotification(const Json::Value & object);
             std::queue<std::shared_ptr<IRequestData> > m_Requests;
             std::queue<std::shared_ptr<IResponseData> > m_Responses;

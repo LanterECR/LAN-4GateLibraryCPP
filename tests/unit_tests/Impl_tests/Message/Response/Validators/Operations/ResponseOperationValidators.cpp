@@ -810,10 +810,10 @@ TEST(ResponseOperationValidators, CheckPrintDetailReport) {
     fields.insert(ResponseFields::TerminalID);
     fields.insert(ResponseFields::MerchantID);
     fields.insert(ResponseFields::TerminalDateTime);
-    fields.insert(ResponseFields::SalesCount);
+    fields.insert(ResponseFields::SaleCount);
     fields.insert(ResponseFields::VoidCount);
     fields.insert(ResponseFields::RefundCount);
-    fields.insert(ResponseFields::SalesArray);
+    fields.insert(ResponseFields::SaleArray);
     fields.insert(ResponseFields::VoidArray);
     fields.insert(ResponseFields::RefundArray);
     auto validator = ValidatorFactory::getValidator(OperationCode::PrintDetailReport);

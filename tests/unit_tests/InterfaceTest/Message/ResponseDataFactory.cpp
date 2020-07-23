@@ -15,12 +15,20 @@ using namespace Lanter::Utils::Constants;
 TEST(ResponseDataFactory, CheckFactory) {
     int32_t ecrNumberLessMinimum = MINIMUM_ECR_NUMBER - 1;
     int32_t ecrNumberGreatMaximum = MAXIMUM_ECR_NUMBER + 1;
-    EXPECT_EQ(ResponseDataFactory::getResponseData(OperationCode::NoOperation, MINIMUM_ECR_NUMBER), nullptr);
-    EXPECT_EQ(ResponseDataFactory::getResponseData(OperationCode::NoOperation, MAXIMUM_ECR_NUMBER), nullptr);
+
+    auto lessNoOperation = (OperationCode)((int)OperationCode::NoOperation - 1);
+    EXPECT_NE(ResponseDataFactory::getResponseData(OperationCode::NoOperation, MINIMUM_ECR_NUMBER), nullptr);
+    EXPECT_NE(ResponseDataFactory::getResponseData(OperationCode::NoOperation, MAXIMUM_ECR_NUMBER), nullptr);
+
+    EXPECT_EQ(ResponseDataFactory::getResponseData(lessNoOperation, MINIMUM_ECR_NUMBER), nullptr);
+    EXPECT_EQ(ResponseDataFactory::getResponseData(lessNoOperation, MAXIMUM_ECR_NUMBER), nullptr);
+
     EXPECT_EQ(ResponseDataFactory::getResponseData(OperationCode::NoOperation, ecrNumberLessMinimum), nullptr);
     EXPECT_EQ(ResponseDataFactory::getResponseData(OperationCode::NoOperation, ecrNumberGreatMaximum), nullptr);
+
     EXPECT_EQ(ResponseDataFactory::getResponseData(OperationCode::FirstValue, ecrNumberGreatMaximum), nullptr);
     EXPECT_EQ(ResponseDataFactory::getResponseData(OperationCode::LastValue, ecrNumberGreatMaximum), nullptr);
+
     EXPECT_EQ(ResponseDataFactory::getResponseData(OperationCode::FirstValue, ecrNumberLessMinimum), nullptr);
     EXPECT_EQ(ResponseDataFactory::getResponseData(OperationCode::LastValue, ecrNumberLessMinimum), nullptr);
 
@@ -29,7 +37,7 @@ TEST(ResponseDataFactory, CheckFactory) {
 
     EXPECT_NE(ResponseDataFactory::getResponseData(OperationCode::Registration, MINIMUM_ECR_NUMBER), nullptr);
     EXPECT_FALSE(ResponseDataFactory::getResponseData(OperationCode::Registration, MINIMUM_ECR_NUMBER)->validateMandatoryFields());
-
+    
     auto response = ResponseDataFactory::getResponseData(OperationCode::Registration, MINIMUM_ECR_NUMBER);
     response->setStatus(Status::Success);
 

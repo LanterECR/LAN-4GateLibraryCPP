@@ -12,6 +12,7 @@
 #include "Lanter/MessageProcessor/JSONMessageFields.h"
 
 #include "JSONRequestParser.h"
+#include "JSONResponseParser.h"
 #include "JSONNotificationParser.h"
 
 namespace Lanter {
@@ -95,6 +96,9 @@ namespace Lanter {
                     }
                     break;
                 case MessageType::Response:
+                    if(!createResponse(object)) {
+                        result = MessageType::Error;
+                    }
                     break;
                 case MessageType::Notification:
                     if(!createNotification(object)) {
@@ -116,6 +120,17 @@ namespace Lanter {
             bool result = request != nullptr;
             if(result) {
                 m_Requests.push(request);
+            }
+            return result;
+        }
+
+        bool JSONMessageParser::createResponse(const Json::Value &object) {
+            JSONResponseParser parser;
+
+            auto request = parser.parseData(object);
+            bool result = request != nullptr;
+            if(result) {
+                m_Responses.push(request);
             }
             return result;
         }

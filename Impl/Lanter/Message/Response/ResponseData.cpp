@@ -79,10 +79,12 @@ namespace Lanter {
 
             bool ResponseData::setOperationCode(OperationCode operationCode) {
                 bool result = false;
-                if (checkOperationCodeRange(static_cast<uint32_t>(operationCode))) {
-                    m_OperationCode = operationCode;
-                    m_FieldsSet.insert(ResponseFields::OperationCode);
-                    initValidator();
+                if (checkOperationCodeRange(static_cast<int32_t>(operationCode))) {
+                    if (m_OperationCode != operationCode) {
+                        m_OperationCode = operationCode;
+                        m_FieldsSet.insert(ResponseFields::OperationCode);
+                        initValidator();
+                    }
                     result = true;
                 }
                 return result;
@@ -614,7 +616,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkSalesCountRange(salesCount)) {
                     m_SalesCount = salesCount;
-                    m_FieldsSet.insert(ResponseFields::SalesCount);
+                    m_FieldsSet.insert(ResponseFields::SaleCount);
                     result = true;
                 }
                 return result;
@@ -648,7 +650,7 @@ namespace Lanter {
                 return result;
             }
 
-            const std::vector<std::shared_ptr<IResponseData> > &ResponseData::getSalesArray() const {
+            const std::vector<std::shared_ptr<IResponseData> > &ResponseData::getSaleArray() const {
                 return m_SalesArray;
             }
 
@@ -656,7 +658,7 @@ namespace Lanter {
                 bool result = false;
                 if(!salesArray.empty()) {
                     m_SalesArray = salesArray;
-                    m_FieldsSet.insert(ResponseFields::SalesArray);
+                    m_FieldsSet.insert(ResponseFields::SaleArray);
                     result = true;
                 }
                 return result;
@@ -823,7 +825,7 @@ namespace Lanter {
                     case ResponseFields::CDAResult:
                         result = resetCDAResult();
                         break;
-                    case ResponseFields::SalesCount:
+                    case ResponseFields::SaleCount:
                         result = resetSalesCount();
                         break;
                     case ResponseFields::VoidCount:
@@ -832,7 +834,7 @@ namespace Lanter {
                     case ResponseFields::RefundCount:
                         result = resetRefundCount();
                         break;
-                    case ResponseFields::SalesArray:
+                    case ResponseFields::SaleArray:
                         result = resetSalesArray();
                         break;
                     case ResponseFields::VoidArray:
@@ -1089,8 +1091,8 @@ namespace Lanter {
 
             bool ResponseData::resetSalesCount() {
                 m_SalesCount = -1;
-                m_FieldsSet.erase(ResponseFields::SalesCount);
-                return !isFieldSet(ResponseFields::SalesCount);
+                m_FieldsSet.erase(ResponseFields::SaleCount);
+                return !isFieldSet(ResponseFields::SaleCount);
             }
 
             bool ResponseData::resetVoidCount() {
@@ -1107,8 +1109,8 @@ namespace Lanter {
 
             bool ResponseData::resetSalesArray() {
                 m_SalesArray.clear();
-                m_FieldsSet.erase(ResponseFields::SalesArray);
-                return !isFieldSet(ResponseFields::SalesArray);
+                m_FieldsSet.erase(ResponseFields::SaleArray);
+                return !isFieldSet(ResponseFields::SaleArray);
             }
 
             bool ResponseData::resetVoidArray() {

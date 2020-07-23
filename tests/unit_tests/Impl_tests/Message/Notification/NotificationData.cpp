@@ -32,7 +32,7 @@ TEST(NotificationData, CheckUnsetCode) {
     EXPECT_TRUE(data.setCode(Lanter::Message::Notification::NotificationCode::FirstValue));
     EXPECT_EQ((int)data.getCode(), (int)NotificationCode::FirstValue);
 
-    EXPECT_TRUE(data.unsetCode());
+    EXPECT_TRUE(data.resetCode());
     EXPECT_EQ((int)data.getCode(), (int)NotificationCode::NoNotification);
 }
 
@@ -45,7 +45,7 @@ TEST(NotificationData, CheckUnsetMessage) {
     EXPECT_TRUE(data.setMessage(message));
     EXPECT_STREQ(data.getMessage().c_str(), message.c_str());
 
-    EXPECT_TRUE(data.unsetMessage());
+    EXPECT_TRUE(data.resetMessage());
     EXPECT_TRUE(data.getMessage().empty());
 }
 
@@ -58,6 +58,6 @@ TEST(NotificationData, CheckUnsetAdditional) {
     EXPECT_TRUE(data.setAdditional(additional));
     EXPECT_STREQ(data.getAdditional().c_str(), additional.c_str());
 
-    EXPECT_TRUE(data.unsetAdditional());
+    EXPECT_TRUE(data.resetAdditional());
     EXPECT_TRUE(data.getAdditional().empty());
 }

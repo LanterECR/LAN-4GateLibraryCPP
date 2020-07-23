@@ -569,7 +569,7 @@ namespace Lanter {
             return JSONResponseFields::CDAResult;
         }
 
-        const std::string &JSONResponseFields::getSalesCount() {
+        const std::string &JSONResponseFields::getSaleCount() {
             if(JSONResponseFields::SalesCount.empty()) {
                 JSONResponseFields::SalesCount = "SalesCount";
             }
@@ -590,7 +590,7 @@ namespace Lanter {
             return JSONResponseFields::RefundCount;
         }
 
-        const std::string &JSONResponseFields::getSalesArray() {
+        const std::string &JSONResponseFields::getSaleArray() {
             if(JSONResponseFields::SalesArray.empty()) {
                 JSONResponseFields::SalesArray = "SalesArray";
             }

@@ -416,7 +416,7 @@ TEST(JSONRequestParser, CheckParseData) {
     int64_t amount = 999999999999;
     auto currencyCode = 643;
 
-    auto openTags = "sjofhgdfijughnd";
+    auto openTags = "Значение";
 
     EXPECT_EQ(parser.parseData(object), nullptr);
 

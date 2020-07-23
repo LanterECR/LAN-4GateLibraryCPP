@@ -634,7 +634,7 @@ namespace Lanter {
 
                 /// \brief Возвращает массив, содержащий краткую информацию по операциям продажи
                 /// \return std::vector, содержащий указатели std::shared_ptr на IResponseData
-                virtual const std::vector<std::shared_ptr<IResponseData> > &getSalesArray() const = 0;
+                virtual const std::vector<std::shared_ptr<IResponseData> > &getSaleArray() const = 0;
 
                 /// \brief Устанавливает массив, содержащий краткую информацию по операциям продажи
                 /// \param salesArray std::vector, содержащий указатели std::shared_ptr на IResponseData

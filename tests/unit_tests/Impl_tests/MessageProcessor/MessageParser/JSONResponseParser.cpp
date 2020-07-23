@@ -12,6 +12,8 @@
 #include "Lanter/MessageProcessor/MessageBuilder/JSONAddFieldHelper.h"
 #include "Lanter/MessageProcessor/JSONMessageFields.h"
 
+#include "Lanter/Message/Response/ResponseDataFactory.h"
+
 using namespace Lanter;
 using namespace Lanter::Message;
 using namespace Lanter::Message::Response;
@@ -989,18 +991,18 @@ TEST(JSONResponseParser, CheckGetSalesCount) {
     EXPECT_FALSE(parser.getFieldSalesCount(object, data));
 
     auto lessMinimum = MINIMUM_ARRAY_SIZE - 1;
-    AddFieldsHelper::addField(object, JSONResponseFields::getSalesCount(), lessMinimum);
+    AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), lessMinimum);
     EXPECT_FALSE(parser.getFieldSalesCount(object, data));
 
     auto greatMaximum = MAXIMUM_ARRAY_SIZE + 1;
-    AddFieldsHelper::addField(object, JSONResponseFields::getSalesCount(), greatMaximum);
+    AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), greatMaximum);
     EXPECT_FALSE(parser.getFieldSalesCount(object, data));
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getSalesCount(), MINIMUM_ARRAY_SIZE);
+    AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), MINIMUM_ARRAY_SIZE);
     EXPECT_TRUE(parser.getFieldSalesCount(object, data));
     EXPECT_EQ(data.getSalesCount(), MINIMUM_ARRAY_SIZE);
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getSalesCount(), MAXIMUM_ARRAY_SIZE);
+    AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), MAXIMUM_ARRAY_SIZE);
     EXPECT_TRUE(parser.getFieldSalesCount(object, data));
     EXPECT_EQ(data.getSalesCount(), MAXIMUM_ARRAY_SIZE);
 }
@@ -1054,49 +1056,184 @@ TEST(JSONResponseParser, CheckGetRefundCount) {
     EXPECT_TRUE(parser.getFieldRefundCount(object, data));
     EXPECT_EQ(data.getRefundCount(), MAXIMUM_ARRAY_SIZE);
 }
-/*
+
 TEST(JSONResponseParser, CheckGetSalesArray) {
     JSONResponseParser parser;
 
     Json::Value object;
-
     ResponseData data;
 
-    EXPECT_FALSE(parser.getFieldSalesArray(object, data));
+    EXPECT_FALSE(parser.getFieldSaleArray(object, data));
 
-    auto value;
+    Json::Value array;
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getSalesArray(), value);
-    EXPECT_TRUE(parser.getFieldSalesArray(object, data));
-    EXPECT_EQ(data.getSalesArray(), value);
+    Json::Value element;
+    AddFieldsHelper::addField(element, JSONResponseFields::getTotalAmount(), MAXIMUM_AMOUNT);
+    AddFieldsHelper::addField(element, JSONResponseFields::getCurrencyCode(),MAXIMUM_CURRENCY_CODE);
+    AddFieldsHelper::addField(element, JSONResponseFields::getRRN(), std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getReceiptReference(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getResponseCode(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getTransactionID(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getTransDateTime(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getIssuerName(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getCardPAN(),std::string("Значение"));
+
+    AddFieldsHelper::addArrayElement(array, element);
+    AddFieldsHelper::addArrayElement(array, element);
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getSaleArray(), array);
+
+    EXPECT_TRUE(parser.getFieldSaleArray(object, data));
+
+    EXPECT_EQ(array.size(), data.getSaleArray().size());
+
+    for(auto i : data.getSaleArray()) {
+        EXPECT_FALSE(i->isFieldSet(Lanter::Message::Response::ResponseFields::OperationCode));
+    }
 }
+
 TEST(JSONResponseParser, CheckGetVoidArray) {
     JSONResponseParser parser;
 
     Json::Value object;
-
     ResponseData data;
 
     EXPECT_FALSE(parser.getFieldVoidArray(object, data));
 
-    auto value;
+    Json::Value array;
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getVoidArray(), value);
+    Json::Value element;
+    AddFieldsHelper::addField(element, JSONResponseFields::getTotalAmount(), MAXIMUM_AMOUNT);
+    AddFieldsHelper::addField(element, JSONResponseFields::getCurrencyCode(),MAXIMUM_CURRENCY_CODE);
+    AddFieldsHelper::addField(element, JSONResponseFields::getRRN(), std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getReceiptReference(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getResponseCode(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getTransactionID(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getTransDateTime(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getIssuerName(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getCardPAN(),std::string("Значение"));
+
+    AddFieldsHelper::addArrayElement(array, element);
+    AddFieldsHelper::addArrayElement(array, element);
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getVoidArray(), array);
+
     EXPECT_TRUE(parser.getFieldVoidArray(object, data));
-    EXPECT_EQ(data.getVoidArray(), value);
+
+    EXPECT_EQ(array.size(), data.getVoidArray().size());
+
+    for(auto i : data.getVoidArray()) {
+        EXPECT_FALSE(i->isFieldSet(Lanter::Message::Response::ResponseFields::OperationCode));
+    }
 }
 TEST(JSONResponseParser, CheckGetRefundArray) {
     JSONResponseParser parser;
 
     Json::Value object;
-
     ResponseData data;
 
     EXPECT_FALSE(parser.getFieldRefundArray(object, data));
 
-    auto value;
+    Json::Value array;
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getRefundArray(), value);
+    Json::Value element;
+    AddFieldsHelper::addField(element, JSONResponseFields::getTotalAmount(), MAXIMUM_AMOUNT);
+    AddFieldsHelper::addField(element, JSONResponseFields::getCurrencyCode(),MAXIMUM_CURRENCY_CODE);
+    AddFieldsHelper::addField(element, JSONResponseFields::getRRN(), std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getReceiptReference(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getResponseCode(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getTransactionID(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getTransDateTime(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getIssuerName(),std::string("Значение"));
+    AddFieldsHelper::addField(element, JSONResponseFields::getCardPAN(),std::string("Значение"));
+
+    AddFieldsHelper::addArrayElement(array, element);
+    AddFieldsHelper::addArrayElement(array, element);
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getRefundArray(), array);
+
     EXPECT_TRUE(parser.getFieldRefundArray(object, data));
-    EXPECT_EQ(data.getRefundArray(), value);
-}*/
+
+    EXPECT_EQ(array.size(), data.getRefundArray().size());
+
+    for(auto i : data.getRefundArray()) {
+        EXPECT_FALSE(i->isFieldSet(Lanter::Message::Response::ResponseFields::OperationCode));
+    }
+}
+
+TEST(JSONResponseParser, CheckParseData) {
+    JSONResponseParser parser;
+
+    Json::Value object;
+
+    EXPECT_EQ(parser.parseData(object), nullptr);
+
+    auto operationCode = OperationCode::PrintDetailReport;
+    auto ecrNumber = MAXIMUM_ECR_NUMBER;
+    auto status = Status::Success;
+    int64_t totalAmount = MAXIMUM_AMOUNT;
+    auto currencyCode = MAXIMUM_CURRENCY_CODE;
+
+    std::string terminalID = "Значение";
+    std::string merchantID = "Значение";
+    std::string terminalDateTime = "Значение";
+    std::string rrn = "Значение";
+    std::string receiptReference = "Значение";
+    std::string responseCode = "Значение";
+    std::string transactionID = "Значение";
+    std::string issuerName = "Значение";
+    std::string transactionDateTime = "Значение";
+    std::string cardPan = "Значение";
+    int saleCount = 2;
+    int voidCount = 2;
+    int refundCount = 2;
+
+    Json::Value array;
+
+    Json::Value element;
+    AddFieldsHelper::addField(element, JSONResponseFields::getTotalAmount(), MAXIMUM_AMOUNT);
+    AddFieldsHelper::addField(element, JSONResponseFields::getCurrencyCode(),MAXIMUM_CURRENCY_CODE);
+    AddFieldsHelper::addField(element, JSONResponseFields::getRRN(), rrn);
+    AddFieldsHelper::addField(element, JSONResponseFields::getReceiptReference(), rrn);
+    AddFieldsHelper::addField(element, JSONResponseFields::getResponseCode(), responseCode);
+    AddFieldsHelper::addField(element, JSONResponseFields::getTransactionID(), transactionID);
+    AddFieldsHelper::addField(element, JSONResponseFields::getTransDateTime(), transactionDateTime);
+    AddFieldsHelper::addField(element, JSONResponseFields::getIssuerName(), issuerName);
+    AddFieldsHelper::addField(element, JSONResponseFields::getCardPAN(), cardPan);
+
+    AddFieldsHelper::addArrayElement(array, element);
+    AddFieldsHelper::addArrayElement(array, element);
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getSaleArray(), array);
+    AddFieldsHelper::addField(object, JSONResponseFields::getVoidArray(), array);
+    AddFieldsHelper::addField(object, JSONResponseFields::getRefundArray(), array);
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getOperationCode(), (int)operationCode);
+    AddFieldsHelper::addField(object, JSONResponseFields::getEcrNumber(), ecrNumber);
+    AddFieldsHelper::addField(object, JSONResponseFields::getTotalAmount(), totalAmount);
+    AddFieldsHelper::addField(object, JSONResponseFields::getCurrencyCode(), currencyCode);
+    AddFieldsHelper::addField(object, JSONResponseFields::getTerminalID(), terminalID);
+    AddFieldsHelper::addField(object, JSONResponseFields::getMerchantID(), merchantID);
+    AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), saleCount);
+    AddFieldsHelper::addField(object, JSONResponseFields::getVoidCount(), voidCount);
+    AddFieldsHelper::addField(object, JSONResponseFields::getRefundCount(), refundCount);
+    AddFieldsHelper::addField(object, JSONResponseFields::getSaleArray(), array);
+    AddFieldsHelper::addField(object, JSONResponseFields::getVoidArray(), array);
+    AddFieldsHelper::addField(object, JSONResponseFields::getRefundArray(), array);
+
+    EXPECT_EQ(parser.parseData(object), nullptr);
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getStatus(), (int)status);
+    auto data = parser.parseData(object);
+
+
+    EXPECT_NE(data, nullptr);
+
+    /*EXPECT_EQ(data->getOperationCode(), operationCode);
+    EXPECT_EQ(data->getEcrNumber(), ecrNumber);
+    EXPECT_EQ(data->getCurrencyCode(), currencyCode);
+    EXPECT_EQ(data->getEcrMerchantNumber(), ecrMerchantNumber);
+    EXPECT_EQ(data->getAmount(), amount);
+
+    EXPECT_EQ(data->getFieldsSet().find(ResponseFields::OpenTags), data->getFieldsSet().end());*/
+}

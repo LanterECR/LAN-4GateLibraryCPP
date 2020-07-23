@@ -34,7 +34,7 @@ namespace Lanter {
         }
 
         bool JSONGetFieldHelper::getField(const Json::Value &object, const std::string &fieldName, Json::Value &value) {
-            bool result = fieldExists(object, fieldName) && object[fieldName].isObject();
+            bool result = fieldExists(object, fieldName) && (object[fieldName].isObject() || object[fieldName].isArray());
             if(result) {
                 value = object[fieldName];
             }

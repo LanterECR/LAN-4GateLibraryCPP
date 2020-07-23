@@ -12,9 +12,12 @@ namespace Lanter {
             std::shared_ptr<IResponseData>
             ResponseDataFactory::getResponseData(OperationCode operationCode, int16_t ecrNumber) {
                 auto data = std::make_shared<ResponseData>();
-                bool result = false;
+
+                bool result;
+
+                bool isNoOperation = operationCode == OperationCode::NoOperation;
                 if (data) {
-                    result = data->setOperationCode(operationCode);
+                    result = data->setOperationCode(operationCode) || isNoOperation;
                     if(ecrNumber != -1) {
                         result = result && data->setEcrNumber(ecrNumber);
                     }

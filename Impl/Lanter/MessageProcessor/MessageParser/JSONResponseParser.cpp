@@ -6,7 +6,7 @@
 
 #include "JSONGetFieldHelper.h"
 #include "Lanter/MessageProcessor/JSONMessageFields.h"
-#include "Lanter/Message/Request/RequestDataFactory.h"
+#include "Lanter/Message/Response/ResponseDataFactory.h"
 
 namespace Lanter {
     namespace MessageProcessor {
@@ -16,7 +16,14 @@ namespace Lanter {
         }
 
         std::shared_ptr<IResponseData> JSONResponseParser::parseData(const Json::Value &object) {
-            return std::shared_ptr<IResponseData>();
+            std::shared_ptr<IResponseData> result = ResponseDataFactory::getResponseData();
+
+            if(result) {
+                if(!getFields(object, *result)) {
+                    result.reset();
+                }
+            }
+            return result;
         }
 
         const std::map<ResponseFields, std::function<bool(const Json::Value &, IResponseData &)> > &
@@ -24,382 +31,430 @@ namespace Lanter {
             return m_ExtractFunctions;
         }
 
-        bool JSONResponseParser::getFieldEcrNumber(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldEcrNumber(const Json::Value & object, IResponseData & responseData) {
             int ecrNumber;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getEcrNumber(), ecrNumber);
-            bool result = exists && requestData.setEcrNumber(ecrNumber);
+            bool result = exists && responseData.setEcrNumber(ecrNumber);
 
             return result;
         }
-        bool JSONResponseParser::getFieldEcrMerchantNumber(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldEcrMerchantNumber(const Json::Value & object, IResponseData & responseData) {
             int ecrMerchantNumber;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getEcrMerchantNumber(),
                                                        ecrMerchantNumber);
-            bool result = exists && requestData.setEcrMerchantNumber(ecrMerchantNumber);
+            bool result = exists && responseData.setEcrMerchantNumber(ecrMerchantNumber);
 
             return result;
         }
-        bool JSONResponseParser::getFieldOperationCode(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldOperationCode(const Json::Value & object, IResponseData & responseData) {
             int operationCode;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getOperationCode(), operationCode);
-            bool result = exists && requestData.setOperationCode(static_cast<OperationCode>(operationCode));
+            bool result = exists && responseData.setOperationCode(static_cast<OperationCode>(operationCode));
 
             return result;
         }
-        bool JSONResponseParser::getFieldOriginalOperationCode(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldOriginalOperationCode(const Json::Value & object, IResponseData & responseData) {
             int originalOperationCode;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getOriginalOperationCode(),
                                                        originalOperationCode);
-            bool result = exists && requestData.setOriginalOperationCode(static_cast<OperationCode>(originalOperationCode));
+            bool result = exists && responseData.setOriginalOperationCode(static_cast<OperationCode>(originalOperationCode));
 
             return result;
         }
-        bool JSONResponseParser::getFieldTotalAmount(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldTotalAmount(const Json::Value & object, IResponseData & responseData) {
             int64_t totalAmount;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTotalAmount(), totalAmount);
-            bool result = exists && requestData.setTotalAmount(totalAmount);
+            bool result = exists && responseData.setTotalAmount(totalAmount);
 
             return result;
         }
-        bool JSONResponseParser::getFieldPartialAmount(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldPartialAmount(const Json::Value & object, IResponseData & responseData) {
             int64_t partialAmount;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getPartialAmount(), partialAmount);
-            bool result = exists && requestData.setPartialAmount(partialAmount);
+            bool result = exists && responseData.setPartialAmount(partialAmount);
 
             return result;
         }
-        bool JSONResponseParser::getFieldAcquirerFeeAmount(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldAcquirerFeeAmount(const Json::Value & object, IResponseData & responseData) {
             int64_t acquirerFeeAmount;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getAcquirerFeeAmount(),
                                                        acquirerFeeAmount);
-            bool result = exists && requestData.setAcquirerFeeAmount(acquirerFeeAmount);
+            bool result = exists && responseData.setAcquirerFeeAmount(acquirerFeeAmount);
 
             return result;
         }
-        bool JSONResponseParser::getFieldTerminalFeeAmount(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldTerminalFeeAmount(const Json::Value & object, IResponseData & responseData) {
             int64_t terminalFeeAmount;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTerminalFeeAmount(),
                                                        terminalFeeAmount);
-            bool result = exists && requestData.setTerminalFeeAmount(terminalFeeAmount);
+            bool result = exists && responseData.setTerminalFeeAmount(terminalFeeAmount);
 
             return result;
         }
-        bool JSONResponseParser::getFieldTipsAmount(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldTipsAmount(const Json::Value & object, IResponseData & responseData) {
             int64_t tipsAmount;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTipsAmount(), tipsAmount);
-            bool result = exists && requestData.setTipsAmount(tipsAmount);
+            bool result = exists && responseData.setTipsAmount(tipsAmount);
 
             return result;
         }
-        bool JSONResponseParser::getFieldCurrencyCode(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldCurrencyCode(const Json::Value & object, IResponseData & responseData) {
             int currencyCode;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCurrencyCode(), currencyCode);
-            bool result = exists && requestData.setCurrencyCode(currencyCode);
+            bool result = exists && responseData.setCurrencyCode(currencyCode);
 
             return result;
         }
-        bool JSONResponseParser::getFieldReceiptReference(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldReceiptReference(const Json::Value & object, IResponseData & responseData) {
             std::string receiptReference;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getReceiptReference(),
                                                        receiptReference);
-            bool result = exists && requestData.setReceiptReference(receiptReference);
+            bool result = exists && responseData.setReceiptReference(receiptReference);
 
             return result;
         }
-        bool JSONResponseParser::getFieldRRN(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldRRN(const Json::Value & object, IResponseData & responseData) {
             std::string rrn;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getRRN(), rrn);
-            bool result = exists && requestData.setRRN(rrn);
+            bool result = exists && responseData.setRRN(rrn);
 
             return result;
         }
-        bool JSONResponseParser::getFieldStatus(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldStatus(const Json::Value & object, IResponseData & responseData) {
             int status;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getStatus(), status);
-            bool result = exists && requestData.setStatus(static_cast<Status>(status));
+            bool result = exists && responseData.setStatus(static_cast<Status>(status));
 
             return result;
         }
-        bool JSONResponseParser::getFieldOriginalOperationStatus(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldOriginalOperationStatus(const Json::Value & object, IResponseData & responseData) {
             int originalOperationStatus;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getOriginalOperationStatus(),
                                                        originalOperationStatus);
-            bool result = exists && requestData.setOriginalOperationStatus(static_cast<Status>(originalOperationStatus));
+            bool result = exists && responseData.setOriginalOperationStatus(static_cast<Status>(originalOperationStatus));
 
             return result;
         }
-        bool JSONResponseParser::getFieldTransDateTime(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldTransDateTime(const Json::Value & object, IResponseData & responseData) {
             std::string transDateTime;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTransDateTime(), transDateTime);
-            bool result = exists && requestData.setTransDateTime(transDateTime);
+            bool result = exists && responseData.setTransDateTime(transDateTime);
 
             return result;
         }
-        bool JSONResponseParser::getFieldTerminalDateTime(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldTerminalDateTime(const Json::Value & object, IResponseData & responseData) {
             std::string terminalDateTime;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTerminalDateTime(),
                                                        terminalDateTime);
-            bool result = exists && requestData.setTerminalDateTime(terminalDateTime);
+            bool result = exists && responseData.setTerminalDateTime(terminalDateTime);
 
             return result;
         }
-        bool JSONResponseParser::getFieldCardPAN(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldCardPAN(const Json::Value & object, IResponseData & responseData) {
             std::string cardPAN;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCardPAN(), cardPAN);
-            bool result = exists && requestData.setCardPAN(cardPAN);
+            bool result = exists && responseData.setCardPAN(cardPAN);
 
             return result;
         }
-        bool JSONResponseParser::getFieldExpireDate(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldExpireDate(const Json::Value & object, IResponseData & responseData) {
             std::string expireDate;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getExpireDate(), expireDate);
-            bool result = exists && requestData.setExpireDate(expireDate);
+            bool result = exists && responseData.setExpireDate(expireDate);
 
             return result;
         }
-        bool JSONResponseParser::getFieldCardholderName(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldCardholderName(const Json::Value & object, IResponseData & responseData) {
             std::string cardholderName;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCardholderName(), cardholderName);
-            bool result = exists && requestData.setCardholderName(cardholderName);
+            bool result = exists && responseData.setCardholderName(cardholderName);
 
             return result;
         }
-        bool JSONResponseParser::getFieldCardholderAuthMethod(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldCardholderAuthMethod(const Json::Value & object, IResponseData & responseData) {
             int cardholderAuthMethod;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCardholderAuthMethod(),
                                                        cardholderAuthMethod);
-            bool result = exists && requestData.setCardholderAuthMethod(static_cast<CardholderAuthMethod>(cardholderAuthMethod));
+            bool result = exists && responseData.setCardholderAuthMethod(static_cast<CardholderAuthMethod>(cardholderAuthMethod));
 
             return result;
         }
-        bool JSONResponseParser::getFieldAuthCode(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldAuthCode(const Json::Value & object, IResponseData & responseData) {
             std::string authCode;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getAuthCode(), authCode);
-            bool result = exists && requestData.setAuthCode(authCode);
+            bool result = exists && responseData.setAuthCode(authCode);
 
             return result;
         }
-        bool JSONResponseParser::getFieldResponseCode(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldResponseCode(const Json::Value & object, IResponseData & responseData) {
             std::string responseCode;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getResponseCode(), responseCode);
-            bool result = exists && requestData.setResponseCode(responseCode);
+            bool result = exists && responseData.setResponseCode(responseCode);
 
             return result;
         }
-        bool JSONResponseParser::getFieldResponseText(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldResponseText(const Json::Value & object, IResponseData & responseData) {
             std::string responseText;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getResponseText(), responseText);
-            bool result = exists && requestData.setResponseText(responseText);
+            bool result = exists && responseData.setResponseText(responseText);
 
             return result;
         }
-        bool JSONResponseParser::getFieldSTAN(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldSTAN(const Json::Value & object, IResponseData & responseData) {
             std::string STAN;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getSTAN(), STAN);
-            bool result = exists && requestData.setSTAN(STAN);
+            bool result = exists && responseData.setSTAN(STAN);
 
             return result;
         }
-        bool JSONResponseParser::getFieldTransactionID(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldTransactionID(const Json::Value & object, IResponseData & responseData) {
             std::string transactionID;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTransactionID(), transactionID);
-            bool result = exists && requestData.setTransactionID(transactionID);
+            bool result = exists && responseData.setTransactionID(transactionID);
 
             return result;
         }
-        bool JSONResponseParser::getFieldTerminalID(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldTerminalID(const Json::Value & object, IResponseData & responseData) {
             std::string terminalID;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTerminalID(), terminalID);
-            bool result = exists && requestData.setTerminalID(terminalID);
+            bool result = exists && responseData.setTerminalID(terminalID);
 
             return result;
         }
-        bool JSONResponseParser::getFieldCardEmvAid(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldCardEmvAid(const Json::Value & object, IResponseData & responseData) {
             std::string cardEmvAid;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCardEmvAid(), cardEmvAid);
-            bool result = exists && requestData.setCardEmvAid(cardEmvAid);
+            bool result = exists && responseData.setCardEmvAid(cardEmvAid);
 
             return result;
         }
-        bool JSONResponseParser::getFieldCardAppName(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldCardAppName(const Json::Value & object, IResponseData & responseData) {
             std::string cardAppName;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCardAppName(), cardAppName);
-            bool result = exists && requestData.setCardAppName(cardAppName);
+            bool result = exists && responseData.setCardAppName(cardAppName);
 
             return result;
         }
-        bool JSONResponseParser::getFieldCardInputMethod(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldCardInputMethod(const Json::Value & object, IResponseData & responseData) {
             int cardInputMethod;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCardInputMethod(),
                                                        cardInputMethod);
-            bool result = exists && requestData.setCardInputMethod(static_cast<CardInputMethod>(cardInputMethod));
+            bool result = exists && responseData.setCardInputMethod(static_cast<CardInputMethod>(cardInputMethod));
 
             return result;
         }
-        bool JSONResponseParser::getFieldIssuerName(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldIssuerName(const Json::Value & object, IResponseData & responseData) {
             std::string issuerName;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getIssuerName(), issuerName);
-            bool result = exists && requestData.setIssuerName(issuerName);
+            bool result = exists && responseData.setIssuerName(issuerName);
 
             return result;
         }
-        bool JSONResponseParser::getFieldAdditionalInfo(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldAdditionalInfo(const Json::Value & object, IResponseData & responseData) {
             std::string additionalInfo;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getAdditionalInfo(), additionalInfo);
-            bool result = exists && requestData.setAdditionalInfo(additionalInfo);
+            bool result = exists && responseData.setAdditionalInfo(additionalInfo);
 
             return result;
         }
-        bool JSONResponseParser::getFieldCardData(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldCardData(const Json::Value & object, IResponseData & responseData) {
             std::string cardData;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCardData(), cardData);
-            bool result = exists && requestData.setCardData(cardData);
+            bool result = exists && responseData.setCardData(cardData);
 
             return result;
         }
-        bool JSONResponseParser::getFieldCardDataEnc(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldCardDataEnc(const Json::Value & object, IResponseData & responseData) {
             std::string cardDataEnc;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCardDataEnc(), cardDataEnc);
-            bool result = exists && requestData.setCardDataEnc(cardDataEnc);
+            bool result = exists && responseData.setCardDataEnc(cardDataEnc);
 
             return result;
         }
-        bool JSONResponseParser::getFieldMerchantID(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldMerchantID(const Json::Value & object, IResponseData & responseData) {
             std::string merchantId;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getMerchantID(), merchantId);
-            bool result = exists && requestData.setMerchantID(merchantId);
+            bool result = exists && responseData.setMerchantID(merchantId);
 
             return result;
         }
-        bool JSONResponseParser::getFieldTVR(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldTVR(const Json::Value & object, IResponseData & responseData) {
             std::string TVR;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTVR(), TVR);
-            bool result = exists && requestData.setTVR(TVR);
+            bool result = exists && responseData.setTVR(TVR);
 
             return result;
         }
-        bool JSONResponseParser::getFieldTSI(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldTSI(const Json::Value & object, IResponseData & responseData) {
             std::string TSI;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTSI(), TSI);
-            bool result = exists && requestData.setTSI(TSI);
+            bool result = exists && responseData.setTSI(TSI);
 
             return result;
         }
-        bool JSONResponseParser::getFieldTC(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldTC(const Json::Value & object, IResponseData & responseData) {
             std::string TC;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTC(), TC);
-            bool result = exists && requestData.setTC(TC);
+            bool result = exists && responseData.setTC(TC);
 
             return result;
         }
-        bool JSONResponseParser::getFieldCID(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldCID(const Json::Value & object, IResponseData & responseData) {
             std::string CID;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCID(), CID);
-            bool result = exists && requestData.setCID(CID);
+            bool result = exists && responseData.setCID(CID);
 
             return result;
         }
-        bool JSONResponseParser::getFieldKVR(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldKVR(const Json::Value & object, IResponseData & responseData) {
             std::string KVR;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getKVR(), KVR);
-            bool result = exists && requestData.setKVR(KVR);
+            bool result = exists && responseData.setKVR(KVR);
 
             return result;
         }
-        bool JSONResponseParser::getFieldCDAResult(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldCDAResult(const Json::Value & object, IResponseData & responseData) {
             std::string CDAResult;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCDAResult(), CDAResult);
-            bool result = exists && requestData.setCDAResult(CDAResult);
+            bool result = exists && responseData.setCDAResult(CDAResult);
 
             return result;
         }
-        bool JSONResponseParser::getFieldSalesCount(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldSalesCount(const Json::Value & object, IResponseData & responseData) {
             int salesCount;
 
-            bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getSalesCount(), salesCount);
-            bool result = exists && requestData.setSalesCount(salesCount);
+            bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getSaleCount(), salesCount);
+            bool result = exists && responseData.setSalesCount(salesCount);
 
             return result;
         }
-        bool JSONResponseParser::getFieldVoidCount(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldVoidCount(const Json::Value & object, IResponseData & responseData) {
             int voidCount;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getVoidCount(), voidCount);
-            bool result = exists && requestData.setVoidCount(voidCount);
+            bool result = exists && responseData.setVoidCount(voidCount);
 
             return result;
         }
-        bool JSONResponseParser::getFieldRefundCount(const Json::Value & object, IResponseData & requestData) {
+        bool JSONResponseParser::getFieldRefundCount(const Json::Value & object, IResponseData & responseData) {
             int refundCount;
 
             bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getRefundCount(), refundCount);
-            bool result = exists && requestData.setRefundCount(refundCount);
+            bool result = exists && responseData.setRefundCount(refundCount);
 
             return result;
         }
-        bool JSONResponseParser::getFieldSalesArray(const Json::Value & object, IResponseData & requestData) {
-            /*Json::Value SalesArray;
+        bool JSONResponseParser::getFieldSaleArray(const Json::Value & object, IResponseData & responseData) {
+            bool result = false;
 
-            bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getSalesArray(), SalesArray);
-            bool result = exists && requestData.setSalesArray(SalesArray);*/
+            Json::Value salesArray;
 
-            return false;
+            std::vector<std::shared_ptr<IResponseData> > sales;
+            if(JSONGetFieldHelper::getField(object, JSONResponseFields::getSaleArray(), salesArray)) {
+                if(salesArray.isArray()) {
+                    for(auto & i : salesArray) {
+                        auto sale = ResponseDataFactory::getResponseData(OperationCode::ArrayElement);
+                        if(sale && getFields(i, *sale)) {
+                            sale->resetOperationCode();
+                            sales.push_back(sale);
+                        }
+                    } //for
+
+                    result = salesArray.size() == sales.size();
+                    if(result) {
+                        responseData.setSalesArray(sales);
+                    }
+                }
+            }
+            return result;
         }
-        bool JSONResponseParser::getFieldVoidArray(const Json::Value & object, IResponseData & requestData) {
-            /*int VoidArray;
+        bool JSONResponseParser::getFieldVoidArray(const Json::Value & object, IResponseData & responseData) {
+            bool result = false;
 
-            bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getVoidArray(), VoidArray);
-            bool result = exists && requestData.setVoidArray(VoidArray);*/
+            Json::Value voidArray;
 
-            return false;
+            std::vector<std::shared_ptr<IResponseData> > voids;
+            if(JSONGetFieldHelper::getField(object, JSONResponseFields::getVoidArray(), voidArray)) {
+                if(voidArray.isArray()) {
+                    for(auto & i : voidArray) {
+                        auto sale = ResponseDataFactory::getResponseData(OperationCode::ArrayElement);
+                        if(sale && getFields(i, *sale)) {
+                            sale->resetOperationCode();
+                            voids.push_back(sale);
+                        }
+                    } //for
+
+                    result = voidArray.size() == voids.size();
+                    if(result) {
+                        responseData.setVoidArray(voids);
+                    }
+                }
+            }
+            return result;
         }
-        bool JSONResponseParser::getFieldRefundArray(const Json::Value & object, IResponseData & requestData) {
-            /*int RefundArray;
+        bool JSONResponseParser::getFieldRefundArray(const Json::Value & object, IResponseData & responseData) {
+            bool result = false;
 
-            bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getRefundArray(), RefundArray);
-            bool result = exists && requestData.setRefundArray(RefundArray);*/
+            Json::Value refundArray;
 
-            return false;
+            std::vector<std::shared_ptr<IResponseData> > refunds;
+            if(JSONGetFieldHelper::getField(object, JSONResponseFields::getRefundArray(), refundArray)) {
+                if(refundArray.isArray()) {
+                    for(auto & i : refundArray) {
+                        auto sale = ResponseDataFactory::getResponseData(OperationCode::ArrayElement);
+                        if(sale && getFields(i, *sale)) {
+                            sale->resetOperationCode();
+                            refunds.push_back(sale);
+                        }
+                    } //for
+
+                    result = refundArray.size() == refunds.size();
+                    if(result) {
+                        responseData.setRefundArray(refunds);
+                    }
+                }
+            }
+            return result;
         }
 
         void JSONResponseParser::initFunctionsMap() {
@@ -443,16 +498,27 @@ namespace Lanter {
             m_ExtractFunctions[ResponseFields::CID] = std::bind(&JSONResponseParser::getFieldCID, this, _1, _2);
             m_ExtractFunctions[ResponseFields::KVR] = std::bind(&JSONResponseParser::getFieldKVR, this, _1, _2);
             m_ExtractFunctions[ResponseFields::CDAResult] = std::bind(&JSONResponseParser::getFieldCDAResult, this, _1, _2);
-            m_ExtractFunctions[ResponseFields::SalesCount] = std::bind(&JSONResponseParser::getFieldSalesCount, this, _1, _2);
+            m_ExtractFunctions[ResponseFields::SaleCount] = std::bind(&JSONResponseParser::getFieldSalesCount, this, _1, _2);
             m_ExtractFunctions[ResponseFields::VoidCount] = std::bind(&JSONResponseParser::getFieldVoidCount, this, _1, _2);
             m_ExtractFunctions[ResponseFields::RefundCount] = std::bind(&JSONResponseParser::getFieldRefundCount, this, _1, _2);
-            m_ExtractFunctions[ResponseFields::SalesArray] = std::bind(&JSONResponseParser::getFieldSalesArray, this, _1, _2);
+            m_ExtractFunctions[ResponseFields::SaleArray] = std::bind(&JSONResponseParser::getFieldSaleArray, this, _1, _2);
             m_ExtractFunctions[ResponseFields::VoidArray] = std::bind(&JSONResponseParser::getFieldVoidArray, this, _1, _2);
             m_ExtractFunctions[ResponseFields::RefundArray] = std::bind(&JSONResponseParser::getFieldRefundArray, this, _1, _2);
         }
 
-        bool JSONResponseParser::getFields(const Json::Value &object, IResponseData &requestData) {
-            return false;
+        bool JSONResponseParser::getFields(const Json::Value &object, IResponseData &responseData) {
+            if(responseData.isFieldSet(ResponseFields::OperationCode) || getFieldOperationCode(object, responseData)) {
+                for(auto field : responseData.getMandatoryFields()) {
+                    auto function = m_ExtractFunctions.at(field);
+                    function(object, responseData);
+                }
+
+                for(auto field : responseData.getOptionalFields()) {
+                    auto function = m_ExtractFunctions.at(field);
+                    function(object, responseData);
+                }
+            }
+            return responseData.validateMandatoryFields();
         }
     }
 }

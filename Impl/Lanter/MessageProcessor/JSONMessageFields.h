@@ -184,13 +184,13 @@ namespace Lanter {
 
             static const std::string &getCDAResult();
 
-            static const std::string &getSalesCount();
+            static const std::string &getSaleCount();
 
             static const std::string &getVoidCount();
 
             static const std::string &getRefundCount();
 
-            static const std::string &getSalesArray();
+            static const std::string &getSaleArray();
 
             static const std::string &getVoidArray();
 
