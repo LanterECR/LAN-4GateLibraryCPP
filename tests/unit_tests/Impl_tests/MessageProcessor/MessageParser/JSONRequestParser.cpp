@@ -4,20 +4,21 @@
 
 #include "gtest/gtest.h"
 
-#include "Lanter/MessageProcessor/MessageParser/JSONRequestParser.h"
+#include "Lanter/MessageProcessor/Parser/JSONRequestParser.h"
 #include "Lanter/MessageProcessor/JSONMessageFields.h"
 #include "Lanter/Message/Request/RequestData.h"
 
 using namespace Lanter;
 using namespace Lanter::Message;
 using namespace Lanter::MessageProcessor;
+using namespace Lanter::MessageProcessor::Parser;
 
 TEST(JSONRequestParser, CheckInitMap) {
     JSONRequestParser parser;
 
     EXPECT_FALSE(parser.getFunctions().empty());
 
-    auto count = (size_t)RequestFields::LastValue - (size_t)RequestFields::FirstValue +1;
+    auto count = (size_t)RequestField::LastValue - (size_t)RequestField::FirstValue +1;
 
     EXPECT_EQ(count, parser.getFunctions().size());
 }
@@ -452,5 +453,5 @@ TEST(JSONRequestParser, CheckParseData) {
     EXPECT_EQ(data->getAmount(), amount);
     EXPECT_EQ(data->getCurrencyCode(), currencyCode);
 
-    EXPECT_EQ(data->getFieldsSet().find(RequestFields::OpenTags), data->getFieldsSet().end());
+    EXPECT_EQ(data->getFieldsSet().find(RequestField::OpenTags), data->getFieldsSet().end());
 }

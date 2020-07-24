@@ -4,7 +4,7 @@ namespace Lanter {
     namespace Message {
         namespace Request {
             void PrintLastReceipt::addSpecificFields() {
-                appendMandatoryField(RequestFields::EcrMerchantNumber);
+                appendMandatoryField(RequestField::EcrMerchantNumber);
             }
         }
     }

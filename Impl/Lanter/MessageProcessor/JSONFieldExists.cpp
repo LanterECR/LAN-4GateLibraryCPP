@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 08.07.2020.
-//
-
 #include "JSONFieldExists.h"
 
 namespace Lanter {

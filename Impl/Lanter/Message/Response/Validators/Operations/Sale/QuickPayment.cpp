@@ -5,21 +5,21 @@ namespace Lanter {
     namespace Message {
         namespace Response {
             void Response::QuickPayment::addSpecificFields() {
-                appendOptionalField(ResponseFields::EcrMerchantNumber);
-                appendOptionalField(ResponseFields::TotalAmount);
-                appendOptionalField(ResponseFields::AcquirerFeeAmount);
-                appendOptionalField(ResponseFields::TerminalFeeAmount);
-                appendOptionalField(ResponseFields::CurrencyCode);
-                appendOptionalField(ResponseFields::RRN);
-                appendOptionalField(ResponseFields::ReceiptReference);
-                appendOptionalField(ResponseFields::TransactionID);
-                appendOptionalField(ResponseFields::AuthCode);
-                appendOptionalField(ResponseFields::ResponseCode);
-                appendOptionalField(ResponseFields::ResponseText);
-                appendOptionalField(ResponseFields::TerminalID);
-                appendOptionalField(ResponseFields::MerchantID);
-                appendOptionalField(ResponseFields::TransDateTime);
-                appendOptionalField(ResponseFields::TerminalDateTime);
+                appendOptionalField(ResponseField::EcrMerchantNumber);
+                appendOptionalField(ResponseField::TotalAmount);
+                appendOptionalField(ResponseField::AcquirerFeeAmount);
+                appendOptionalField(ResponseField::TerminalFeeAmount);
+                appendOptionalField(ResponseField::CurrencyCode);
+                appendOptionalField(ResponseField::RRN);
+                appendOptionalField(ResponseField::ReceiptReference);
+                appendOptionalField(ResponseField::TransactionID);
+                appendOptionalField(ResponseField::AuthCode);
+                appendOptionalField(ResponseField::ResponseCode);
+                appendOptionalField(ResponseField::ResponseText);
+                appendOptionalField(ResponseField::TerminalID);
+                appendOptionalField(ResponseField::MerchantID);
+                appendOptionalField(ResponseField::TransDateTime);
+                appendOptionalField(ResponseField::TerminalDateTime);
             }
         }
     }

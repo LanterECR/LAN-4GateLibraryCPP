@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 24.06.2020.
-//
-
 #include "ValidatorFactory.h"
 
 #include "Lanter/Message/Response/Validators/Operations/BasicValidator.h"

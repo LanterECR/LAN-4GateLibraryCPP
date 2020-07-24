@@ -5,34 +5,34 @@ namespace Lanter {
     namespace Message {
         namespace Response {
             void Response::SalesCompletion::addSpecificFields() {
-                appendOptionalField(ResponseFields::EcrMerchantNumber);
-                appendOptionalField(ResponseFields::TotalAmount);
-                appendOptionalField(ResponseFields::CurrencyCode);
-                appendOptionalField(ResponseFields::RRN);
-                appendOptionalField(ResponseFields::ReceiptReference);
-                appendOptionalField(ResponseFields::TransactionID);
-                appendOptionalField(ResponseFields::AuthCode);
-                appendOptionalField(ResponseFields::ResponseCode);
-                appendOptionalField(ResponseFields::ResponseText);
-                appendOptionalField(ResponseFields::TerminalID);
-                appendOptionalField(ResponseFields::MerchantID);
-                appendOptionalField(ResponseFields::TransDateTime);
-                appendOptionalField(ResponseFields::TerminalDateTime);
-                appendOptionalField(ResponseFields::IssuerName);
-                appendOptionalField(ResponseFields::CardInputMethod);
-                appendOptionalField(ResponseFields::CardPAN);
-                appendOptionalField(ResponseFields::ExpireDate);
-                appendOptionalField(ResponseFields::CardAppName);
-                appendOptionalField(ResponseFields::CardEmvAid);
-                appendOptionalField(ResponseFields::CardDataEnc);
-                appendOptionalField(ResponseFields::TVR);
-                appendOptionalField(ResponseFields::TSI);
-                appendOptionalField(ResponseFields::TC);
-                appendOptionalField(ResponseFields::CID);
-                appendOptionalField(ResponseFields::KVR);
-                appendOptionalField(ResponseFields::CDAResult);
-                appendOptionalField(ResponseFields::CardholderName);
-                appendOptionalField(ResponseFields::CardholderAuthMethod);
+                appendOptionalField(ResponseField::EcrMerchantNumber);
+                appendOptionalField(ResponseField::TotalAmount);
+                appendOptionalField(ResponseField::CurrencyCode);
+                appendOptionalField(ResponseField::RRN);
+                appendOptionalField(ResponseField::ReceiptReference);
+                appendOptionalField(ResponseField::TransactionID);
+                appendOptionalField(ResponseField::AuthCode);
+                appendOptionalField(ResponseField::ResponseCode);
+                appendOptionalField(ResponseField::ResponseText);
+                appendOptionalField(ResponseField::TerminalID);
+                appendOptionalField(ResponseField::MerchantID);
+                appendOptionalField(ResponseField::TransDateTime);
+                appendOptionalField(ResponseField::TerminalDateTime);
+                appendOptionalField(ResponseField::IssuerName);
+                appendOptionalField(ResponseField::CardInputMethod);
+                appendOptionalField(ResponseField::CardPAN);
+                appendOptionalField(ResponseField::ExpireDate);
+                appendOptionalField(ResponseField::CardAppName);
+                appendOptionalField(ResponseField::CardEmvAid);
+                appendOptionalField(ResponseField::CardDataEnc);
+                appendOptionalField(ResponseField::TVR);
+                appendOptionalField(ResponseField::TSI);
+                appendOptionalField(ResponseField::TC);
+                appendOptionalField(ResponseField::CID);
+                appendOptionalField(ResponseField::KVR);
+                appendOptionalField(ResponseField::CDAResult);
+                appendOptionalField(ResponseField::CardholderName);
+                appendOptionalField(ResponseField::CardholderAuthMethod);
             }
         }
     }

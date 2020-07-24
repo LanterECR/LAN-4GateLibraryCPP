@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 08.07.2020.
-//
-
 #include "gtest/gtest.h"
 
 #include "Lanter/MessageProcessor/JSONFieldExists.h"

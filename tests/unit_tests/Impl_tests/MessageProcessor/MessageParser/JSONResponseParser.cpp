@@ -1,23 +1,19 @@
-//
-// Created by Владимир Лысенков on 21.07.2020.
-//
-
 #include "gtest/gtest.h"
 
 #include "Lanter/Utils/Constants.h"
 
 #include "Lanter/Message/Response/ResponseData.h"
-#include "Lanter/MessageProcessor/MessageParser/JSONResponseParser.h"
+#include "Lanter/MessageProcessor/Parser/JSONResponseParser.h"
 
-#include "Lanter/MessageProcessor/MessageBuilder/JSONAddFieldHelper.h"
+#include "Lanter/MessageProcessor/Builder/JSONAddFieldHelper.h"
 #include "Lanter/MessageProcessor/JSONMessageFields.h"
-
-#include "Lanter/Message/Response/ResponseDataFactory.h"
 
 using namespace Lanter;
 using namespace Lanter::Message;
 using namespace Lanter::Message::Response;
 using namespace Lanter::MessageProcessor;
+using namespace Lanter::MessageProcessor::Parser;
+using namespace Lanter::MessageProcessor::Builder;
 using namespace Lanter::Utils;
 using namespace Lanter::Utils::Constants;
 
@@ -26,7 +22,7 @@ TEST(JSONResponseParser, CheckInitMap) {
 
     EXPECT_FALSE(parser.getFunctions().empty());
 
-    auto count = (size_t)ResponseFields::LastValue - (size_t)ResponseFields::FirstValue +1;
+    auto count = (size_t)ResponseField::LastValue - (size_t)ResponseField::FirstValue +1;
 
     EXPECT_EQ(count, parser.getFunctions().size());
 }
@@ -1088,7 +1084,7 @@ TEST(JSONResponseParser, CheckGetSalesArray) {
     EXPECT_EQ(array.size(), data.getSaleArray().size());
 
     for(auto i : data.getSaleArray()) {
-        EXPECT_FALSE(i->isFieldSet(Lanter::Message::Response::ResponseFields::OperationCode));
+        EXPECT_FALSE(i->isFieldSet(Lanter::Message::Response::ResponseField::OperationCode));
     }
 }
 
@@ -1123,7 +1119,7 @@ TEST(JSONResponseParser, CheckGetVoidArray) {
     EXPECT_EQ(array.size(), data.getVoidArray().size());
 
     for(auto i : data.getVoidArray()) {
-        EXPECT_FALSE(i->isFieldSet(Lanter::Message::Response::ResponseFields::OperationCode));
+        EXPECT_FALSE(i->isFieldSet(Lanter::Message::Response::ResponseField::OperationCode));
     }
 }
 TEST(JSONResponseParser, CheckGetRefundArray) {
@@ -1157,7 +1153,7 @@ TEST(JSONResponseParser, CheckGetRefundArray) {
     EXPECT_EQ(array.size(), data.getRefundArray().size());
 
     for(auto i : data.getRefundArray()) {
-        EXPECT_FALSE(i->isFieldSet(Lanter::Message::Response::ResponseFields::OperationCode));
+        EXPECT_FALSE(i->isFieldSet(Lanter::Message::Response::ResponseField::OperationCode));
     }
 }
 
@@ -1235,5 +1231,5 @@ TEST(JSONResponseParser, CheckParseData) {
     EXPECT_EQ(data->getEcrMerchantNumber(), ecrMerchantNumber);
     EXPECT_EQ(data->getAmount(), amount);
 
-    EXPECT_EQ(data->getFieldsSet().find(ResponseFields::OpenTags), data->getFieldsSet().end());*/
+    EXPECT_EQ(data->getFieldsSet().find(ResponseField::OpenTags), data->getFieldsSet().end());*/
 }

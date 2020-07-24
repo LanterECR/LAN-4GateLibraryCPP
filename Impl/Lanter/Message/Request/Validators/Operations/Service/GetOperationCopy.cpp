@@ -4,8 +4,8 @@ namespace Lanter {
     namespace Message {
         namespace Request {
             void GetOperationCopy::addSpecificFields() {
-                appendMandatoryField(RequestFields::EcrMerchantNumber);
-                appendMandatoryField(RequestFields::ReceiptReference);
+                appendMandatoryField(RequestField::EcrMerchantNumber);
+                appendMandatoryField(RequestField::ReceiptReference);
             }
         }
     }

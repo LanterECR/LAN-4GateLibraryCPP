@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 30.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_INOTIFICATIONDATA_H
 #define LAN_4GATELIBRARYCPP_INOTIFICATIONDATA_H
 
@@ -37,16 +33,16 @@ namespace Lanter {
                 virtual const std::string &getMessage() const = 0;
 
                 /// \brief Устанавливает текст уведомления
-                /// \param notificationMessage текст уведомления
+                /// \param message текст уведомления
                 /// \return true, если поле успешно установлено
-                virtual bool setMessage(const std::string &notificationMessage) = 0;
+                virtual bool setMessage(const std::string &message) = 0;
 
                 /// \brief Очищает сообщение уведомления
                 /// \return true, если сообщение успешно очищено
                 virtual bool resetMessage() = 0;
 
                 /// \brief Возвращает дополнительные данные уведомления
-                /// \param notificationMessage Дополнительные данные уведомления
+                /// \return Дополнительные данные уведомления
                 virtual const std::string & getAdditional() const = 0;
 
                 /// \brief Устанавливает дополнительнные данные уведомления

@@ -1,10 +1,6 @@
-//
-// Created by Владимир Лысенков on 10.07.2020.
-//
-
 #include "gtest/gtest.h"
 
-#include "Lanter/MessageProcessor/MessageBuilder/JSONRequestBuilder.h"
+#include "Lanter/MessageProcessor/Builder/JSONRequestBuilder.h"
 
 #include "Lanter/MessageProcessor/JSONMessageFields.h"
 
@@ -16,13 +12,14 @@
 
 using namespace Lanter;
 using namespace Lanter::MessageProcessor;
+using namespace Lanter::MessageProcessor::Builder;
 
 TEST(JSONRequestBuilder, CheckFunctionInit) {
     JSONRequestBuilder builder;
 
     EXPECT_FALSE(builder.getFunctions().empty());
 
-    int fieldsCount = (int)RequestFields::LastValue - (int)RequestFields::FirstValue + 1;
+    int fieldsCount = (int)RequestField::LastValue - (int)RequestField::FirstValue + 1;
 
     EXPECT_EQ(builder.getFunctions().size(), fieldsCount);
 }
@@ -39,7 +36,7 @@ TEST(JSONRequestBuilder, CheckAddFieldEcrNumber) {
     EXPECT_EQ(data.getEcrNumber(), directObject[JSONRequestFields::getEcrNumber()].asInt());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::EcrNumber);
+    auto function = builder.getFunctions().at(RequestField::EcrNumber);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getEcrNumber()));
     EXPECT_EQ(data.getEcrNumber(), listObject[JSONRequestFields::getEcrNumber()].asInt());
@@ -57,7 +54,7 @@ TEST(JSONRequestBuilder, CheckAddFieldEcrMerchantNumber) {
     EXPECT_EQ(data.getEcrMerchantNumber(), directObject[JSONRequestFields::getEcrMerchantNumber()].asInt());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::EcrMerchantNumber);
+    auto function = builder.getFunctions().at(RequestField::EcrMerchantNumber);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getEcrMerchantNumber()));
     EXPECT_EQ(data.getEcrMerchantNumber(), listObject[JSONRequestFields::getEcrMerchantNumber()].asInt());
@@ -75,7 +72,7 @@ TEST(JSONRequestBuilder, CheckAddFieldOperationCode) {
     EXPECT_EQ((int)data.getOperationCode(), directObject[JSONRequestFields::getOperationCode()].asInt());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::OperationCode);
+    auto function = builder.getFunctions().at(RequestField::OperationCode);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getOperationCode()));
     EXPECT_EQ((int)data.getOperationCode(), listObject[JSONRequestFields::getOperationCode()].asInt());
@@ -93,7 +90,7 @@ TEST(JSONRequestBuilder, CheckAddFieldAmount) {
     EXPECT_EQ(data.getAmount(), directObject[JSONRequestFields::getAmount()].asInt64());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::Amount);
+    auto function = builder.getFunctions().at(RequestField::Amount);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getAmount()));
     EXPECT_EQ(data.getAmount(), listObject[JSONRequestFields::getAmount()].asInt64());
@@ -111,7 +108,7 @@ TEST(JSONRequestBuilder, CheckAddFieldPartialAmount) {
     EXPECT_EQ(data.getPartialAmount(), directObject[JSONRequestFields::getPartialAmount()].asInt64());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::PartialAmount);
+    auto function = builder.getFunctions().at(RequestField::PartialAmount);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getPartialAmount()));
     EXPECT_EQ(data.getPartialAmount(), listObject[JSONRequestFields::getPartialAmount()].asInt64());
@@ -129,7 +126,7 @@ TEST(JSONRequestBuilder, CheckAddFieldTipsAmount) {
     EXPECT_EQ(data.getTipsAmount(), directObject[JSONRequestFields::getTipsAmount()].asInt64());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::TipsAmount);
+    auto function = builder.getFunctions().at(RequestField::TipsAmount);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getTipsAmount()));
     EXPECT_EQ(data.getTipsAmount(), listObject[JSONRequestFields::getTipsAmount()].asInt64());
@@ -147,7 +144,7 @@ TEST(JSONRequestBuilder, CheckAddFieldCashbackAmount) {
     EXPECT_EQ(data.getCashbackAmount(), directObject[JSONRequestFields::getCashbackAmount()].asInt64());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::CashbackAmount);
+    auto function = builder.getFunctions().at(RequestField::CashbackAmount);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getCashbackAmount()));
     EXPECT_EQ(data.getCashbackAmount(), listObject[JSONRequestFields::getCashbackAmount()].asInt64());
@@ -165,7 +162,7 @@ TEST(JSONRequestBuilder, CheckAddFieldCurrencyCode) {
     EXPECT_EQ(data.getCurrencyCode(), directObject[JSONRequestFields::getCurrencyCode()].asInt());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::CurrencyCode);
+    auto function = builder.getFunctions().at(RequestField::CurrencyCode);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getCurrencyCode()));
     EXPECT_EQ(data.getCurrencyCode(), listObject[JSONRequestFields::getCurrencyCode()].asInt());
@@ -183,7 +180,7 @@ TEST(JSONRequestBuilder, CheckAddFieldRRN) {
     EXPECT_STREQ(data.getRRN().c_str(), directObject[JSONRequestFields::getRRN()].asString().c_str());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::RRN);
+    auto function = builder.getFunctions().at(RequestField::RRN);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getRRN()));
     EXPECT_STREQ(data.getRRN().c_str(), listObject[JSONRequestFields::getRRN()].asString().c_str());
@@ -201,7 +198,7 @@ TEST(JSONRequestBuilder, CheckAddFieldAuthCode) {
     EXPECT_STREQ(data.getAuthCode().c_str(), directObject[JSONRequestFields::getAuthCode()].asString().c_str());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::AuthCode);
+    auto function = builder.getFunctions().at(RequestField::AuthCode);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getAuthCode()));
     EXPECT_STREQ(data.getAuthCode().c_str(), listObject[JSONRequestFields::getAuthCode()].asString().c_str());
@@ -219,7 +216,7 @@ TEST(JSONRequestBuilder, CheckAddFieldReceiptReference) {
     EXPECT_STREQ(data.getReceiptReference().c_str(), directObject[JSONRequestFields::getReceiptReference()].asString().c_str());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::ReceiptReference);
+    auto function = builder.getFunctions().at(RequestField::ReceiptReference);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getReceiptReference()));
     EXPECT_STREQ(data.getReceiptReference().c_str(), listObject[JSONRequestFields::getReceiptReference()].asString().c_str());
@@ -236,7 +233,7 @@ TEST(JSONRequestBuilder, CheckAddFieldTransactionID) {
     EXPECT_STREQ(data.getTransactionID().c_str(), directObject[JSONRequestFields::getTransactionID()].asString().c_str());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::TransactionID);
+    auto function = builder.getFunctions().at(RequestField::TransactionID);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getTransactionID()));
     EXPECT_STREQ(data.getTransactionID().c_str(), listObject[JSONRequestFields::getTransactionID()].asString().c_str());
@@ -253,7 +250,7 @@ TEST(JSONRequestBuilder, CheckAddFieldCardDataEnc) {
     EXPECT_STREQ(data.getCardDataEnc().c_str(), directObject[JSONRequestFields::getCardDataEnc()].asString().c_str());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::CardDataEnc);
+    auto function = builder.getFunctions().at(RequestField::CardDataEnc);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getCardDataEnc()));
     EXPECT_STREQ(data.getCardDataEnc().c_str(), listObject[JSONRequestFields::getCardDataEnc()].asString().c_str());
@@ -270,7 +267,7 @@ TEST(JSONRequestBuilder, CheckAddFieldOpenTags) {
     EXPECT_STREQ(data.getOpenTags().c_str(), directObject[JSONRequestFields::getOpenTags()].asString().c_str());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::OpenTags);
+    auto function = builder.getFunctions().at(RequestField::OpenTags);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getOpenTags()));
     EXPECT_STREQ(data.getOpenTags().c_str(), listObject[JSONRequestFields::getOpenTags()].asString().c_str());
@@ -287,7 +284,7 @@ TEST(JSONRequestBuilder, CheckAddFieldEncTags) {
     EXPECT_STREQ(data.getOpenTags().c_str(), directObject[JSONRequestFields::getOpenTags()].asString().c_str());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::OpenTags);
+    auto function = builder.getFunctions().at(RequestField::OpenTags);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getOpenTags()));
     EXPECT_STREQ(data.getOpenTags().c_str(), listObject[JSONRequestFields::getOpenTags()].asString().c_str());
@@ -304,7 +301,7 @@ TEST(JSONRequestBuilder, CheckAddFieldProviderCode) {
     EXPECT_STREQ(data.getProviderCode().c_str(), directObject[JSONRequestFields::getProviderCode()].asString().c_str());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::ProviderCode);
+    auto function = builder.getFunctions().at(RequestField::ProviderCode);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getProviderCode()));
     EXPECT_STREQ(data.getProviderCode().c_str(), listObject[JSONRequestFields::getProviderCode()].asString().c_str());
@@ -321,7 +318,7 @@ TEST(JSONRequestBuilder, CheckAddFieldAdditionalInfo) {
     EXPECT_STREQ(data.getAdditionalInfo().c_str(), directObject[JSONRequestFields::getAdditionalInfo()].asString().c_str());
 
     Json::Value listObject;
-    auto function = builder.getFunctions().at(RequestFields::AdditionalInfo);
+    auto function = builder.getFunctions().at(RequestField::AdditionalInfo);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getAdditionalInfo()));
     EXPECT_STREQ(data.getAdditionalInfo().c_str(), listObject[JSONRequestFields::getAdditionalInfo()].asString().c_str());

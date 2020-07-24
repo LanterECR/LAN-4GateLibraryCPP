@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 25.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_CONSTANTS_H
 #define LAN_4GATELIBRARYCPP_CONSTANTS_H
 

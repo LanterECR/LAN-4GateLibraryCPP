@@ -1,13 +1,9 @@
-//
-// Created by Владимир Лысенков on 24.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_IVALIDATOR_H
 #define LAN_4GATELIBRARYCPP_IVALIDATOR_H
 
 #include <set>
 
-#include "Lanter/Message/Request/RequestFields.h"
+#include "Lanter/Message/Request/RequestField.h"
 
 namespace Lanter {
     namespace Message {
@@ -16,15 +12,15 @@ namespace Lanter {
             public:
                 virtual ~IValidator() = default;
 
-                virtual void appendMandatoryField(RequestFields field) = 0;
+                virtual void appendMandatoryField(RequestField field) = 0;
 
-                virtual const std::set<RequestFields> &getMandatoryFields() const = 0;
+                virtual const std::set<RequestField> &getMandatoryFields() const = 0;
 
-                virtual void appendOptionalField(RequestFields field) = 0;
+                virtual void appendOptionalField(RequestField field) = 0;
 
-                virtual const std::set<RequestFields> &getOptionalFields() const = 0;
+                virtual const std::set<RequestField> &getOptionalFields() const = 0;
 
-                virtual bool validate(const std::set<RequestFields> &fields) = 0;
+                virtual bool validate(const std::set<RequestField> &fields) = 0;
             };
         }
     }

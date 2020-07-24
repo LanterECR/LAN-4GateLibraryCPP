@@ -5,12 +5,12 @@ namespace Lanter {
     namespace Message {
         namespace Request {
             void Request::PreAuth::addSpecificFields() {
-                appendMandatoryField(RequestFields::EcrMerchantNumber);
-                appendMandatoryField(RequestFields::Amount);
-                appendMandatoryField(RequestFields::CurrencyCode);
-                appendMandatoryField(RequestFields::TransactionID);
+                appendMandatoryField(RequestField::EcrMerchantNumber);
+                appendMandatoryField(RequestField::Amount);
+                appendMandatoryField(RequestField::CurrencyCode);
+                appendMandatoryField(RequestField::TransactionID);
 
-                appendOptionalField(RequestFields::CardDataEnc);
+                appendOptionalField(RequestField::CardDataEnc);
             }
         }
     }

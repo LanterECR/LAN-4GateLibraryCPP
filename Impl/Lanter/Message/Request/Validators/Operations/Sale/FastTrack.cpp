@@ -5,12 +5,12 @@ namespace Lanter {
     namespace Message {
         namespace Request {
             void Request::FastTrack::addSpecificFields() {
-                appendMandatoryField(RequestFields::EcrMerchantNumber);
-                appendMandatoryField(RequestFields::Amount);
-                appendMandatoryField(RequestFields::CurrencyCode);
+                appendMandatoryField(RequestField::EcrMerchantNumber);
+                appendMandatoryField(RequestField::Amount);
+                appendMandatoryField(RequestField::CurrencyCode);
 
-                appendOptionalField(RequestFields::EncTags);
-                appendOptionalField(RequestFields::OpenTags);
+                appendOptionalField(RequestField::EncTags);
+                appendOptionalField(RequestField::OpenTags);
             }
         }
     }

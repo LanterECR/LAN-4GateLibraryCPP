@@ -1,12 +1,8 @@
-//
-// Created by Владимир Лысенков on 11.07.2020.
-//
-
 #include "gtest/gtest.h"
 
 #include "Lanter/Message/Notification/NotificationDataFactory.h"
 
-#include "Lanter/MessageProcessor/MessageBuilder/JSONNotificationBuilder.h"
+#include "Lanter/MessageProcessor/Builder/JSONNotificationBuilder.h"
 
 #include "Lanter/Message/Notification/NotificationData.h"
 
@@ -18,6 +14,7 @@ using namespace Lanter;
 using namespace Lanter::Notification;
 using namespace Lanter::Message;
 using namespace Lanter::MessageProcessor;
+using namespace Lanter::MessageProcessor::Builder;
 
 TEST(JSONNOtificationBuilder, CheckAddCode) {
     NotificationData data;

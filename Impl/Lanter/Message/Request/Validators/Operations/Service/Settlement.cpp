@@ -5,7 +5,7 @@ namespace Lanter {
         namespace Request {
 
             void Request::Settlement::addSpecificFields() {
-                appendMandatoryField(RequestFields::EcrMerchantNumber);
+                appendMandatoryField(RequestField::EcrMerchantNumber);
             }
         }
     }

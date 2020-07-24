@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 24.06.2020.
-//
-
 #include "Lanter/Message/Response/ResponseDataFactory.h"
 #include "Lanter/Message/Response/ResponseData.h"
 

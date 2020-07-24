@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 30.06.2020.
-//
-
 #include "gtest/gtest.h"
 
 #include "Lanter/Message/Response/Validators/ValidatorFactory.h"
@@ -12,40 +8,40 @@ using namespace Lanter::Message::Response;
 
 //Refund
 TEST(ResponseOperationValidators, CheckRefund) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
-    fields.insert(ResponseFields::EcrMerchantNumber);
-    fields.insert(ResponseFields::TotalAmount);
-    fields.insert(ResponseFields::CurrencyCode);
-    fields.insert(ResponseFields::RRN);
-    fields.insert(ResponseFields::ReceiptReference);
-    fields.insert(ResponseFields::TransactionID);
-    fields.insert(ResponseFields::AuthCode);
-    fields.insert(ResponseFields::ResponseCode);
-    fields.insert(ResponseFields::ResponseText);
-    fields.insert(ResponseFields::TerminalID);
-    fields.insert(ResponseFields::MerchantID);
-    fields.insert(ResponseFields::TransDateTime);
-    fields.insert(ResponseFields::TerminalDateTime);
-    fields.insert(ResponseFields::IssuerName);
-    fields.insert(ResponseFields::CardInputMethod);
-    fields.insert(ResponseFields::CardPAN);
-    fields.insert(ResponseFields::ExpireDate);
-    fields.insert(ResponseFields::CardAppName);
-    fields.insert(ResponseFields::CardEmvAid);
-    fields.insert(ResponseFields::CardDataEnc);
-    fields.insert(ResponseFields::TVR);
-    fields.insert(ResponseFields::TSI);
-    fields.insert(ResponseFields::TC);
-    fields.insert(ResponseFields::CID);
-    fields.insert(ResponseFields::KVR);
-    fields.insert(ResponseFields::CDAResult);
-    fields.insert(ResponseFields::CardholderName);
-    fields.insert(ResponseFields::CardholderAuthMethod);
+    fields.insert(ResponseField::EcrMerchantNumber);
+    fields.insert(ResponseField::TotalAmount);
+    fields.insert(ResponseField::CurrencyCode);
+    fields.insert(ResponseField::RRN);
+    fields.insert(ResponseField::ReceiptReference);
+    fields.insert(ResponseField::TransactionID);
+    fields.insert(ResponseField::AuthCode);
+    fields.insert(ResponseField::ResponseCode);
+    fields.insert(ResponseField::ResponseText);
+    fields.insert(ResponseField::TerminalID);
+    fields.insert(ResponseField::MerchantID);
+    fields.insert(ResponseField::TransDateTime);
+    fields.insert(ResponseField::TerminalDateTime);
+    fields.insert(ResponseField::IssuerName);
+    fields.insert(ResponseField::CardInputMethod);
+    fields.insert(ResponseField::CardPAN);
+    fields.insert(ResponseField::ExpireDate);
+    fields.insert(ResponseField::CardAppName);
+    fields.insert(ResponseField::CardEmvAid);
+    fields.insert(ResponseField::CardDataEnc);
+    fields.insert(ResponseField::TVR);
+    fields.insert(ResponseField::TSI);
+    fields.insert(ResponseField::TC);
+    fields.insert(ResponseField::CID);
+    fields.insert(ResponseField::KVR);
+    fields.insert(ResponseField::CDAResult);
+    fields.insert(ResponseField::CardholderName);
+    fields.insert(ResponseField::CardholderAuthMethod);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Refund);
 
@@ -54,7 +50,7 @@ TEST(ResponseOperationValidators, CheckRefund) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -64,40 +60,40 @@ TEST(ResponseOperationValidators, CheckRefund) {
 }
 
 TEST(ResponseOperationValidators, CheckRefundWithoutRRN) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
-    fields.insert(ResponseFields::EcrMerchantNumber);
-    fields.insert(ResponseFields::TotalAmount);
-    fields.insert(ResponseFields::CurrencyCode);
-    fields.insert(ResponseFields::RRN);
-    fields.insert(ResponseFields::ReceiptReference);
-    fields.insert(ResponseFields::TransactionID);
-    fields.insert(ResponseFields::AuthCode);
-    fields.insert(ResponseFields::ResponseCode);
-    fields.insert(ResponseFields::ResponseText);
-    fields.insert(ResponseFields::TerminalID);
-    fields.insert(ResponseFields::MerchantID);
-    fields.insert(ResponseFields::TransDateTime);
-    fields.insert(ResponseFields::TerminalDateTime);
-    fields.insert(ResponseFields::IssuerName);
-    fields.insert(ResponseFields::CardInputMethod);
-    fields.insert(ResponseFields::CardPAN);
-    fields.insert(ResponseFields::ExpireDate);
-    fields.insert(ResponseFields::CardAppName);
-    fields.insert(ResponseFields::CardEmvAid);
-    fields.insert(ResponseFields::CardDataEnc);
-    fields.insert(ResponseFields::TVR);
-    fields.insert(ResponseFields::TSI);
-    fields.insert(ResponseFields::TC);
-    fields.insert(ResponseFields::CID);
-    fields.insert(ResponseFields::KVR);
-    fields.insert(ResponseFields::CDAResult);
-    fields.insert(ResponseFields::CardholderName);
-    fields.insert(ResponseFields::CardholderAuthMethod);
+    fields.insert(ResponseField::EcrMerchantNumber);
+    fields.insert(ResponseField::TotalAmount);
+    fields.insert(ResponseField::CurrencyCode);
+    fields.insert(ResponseField::RRN);
+    fields.insert(ResponseField::ReceiptReference);
+    fields.insert(ResponseField::TransactionID);
+    fields.insert(ResponseField::AuthCode);
+    fields.insert(ResponseField::ResponseCode);
+    fields.insert(ResponseField::ResponseText);
+    fields.insert(ResponseField::TerminalID);
+    fields.insert(ResponseField::MerchantID);
+    fields.insert(ResponseField::TransDateTime);
+    fields.insert(ResponseField::TerminalDateTime);
+    fields.insert(ResponseField::IssuerName);
+    fields.insert(ResponseField::CardInputMethod);
+    fields.insert(ResponseField::CardPAN);
+    fields.insert(ResponseField::ExpireDate);
+    fields.insert(ResponseField::CardAppName);
+    fields.insert(ResponseField::CardEmvAid);
+    fields.insert(ResponseField::CardDataEnc);
+    fields.insert(ResponseField::TVR);
+    fields.insert(ResponseField::TSI);
+    fields.insert(ResponseField::TC);
+    fields.insert(ResponseField::CID);
+    fields.insert(ResponseField::KVR);
+    fields.insert(ResponseField::CDAResult);
+    fields.insert(ResponseField::CardholderName);
+    fields.insert(ResponseField::CardholderAuthMethod);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::RefundWithoutRRN);
 
@@ -106,7 +102,7 @@ TEST(ResponseOperationValidators, CheckRefundWithoutRRN) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -117,26 +113,26 @@ TEST(ResponseOperationValidators, CheckRefundWithoutRRN) {
 
 //Sales
 TEST(ResponseOperationValidators, CheckAliPay) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
-    fields.insert(ResponseFields::EcrMerchantNumber);
-    fields.insert(ResponseFields::TotalAmount);
-    fields.insert(ResponseFields::AcquirerFeeAmount);
-    fields.insert(ResponseFields::TerminalFeeAmount);
-    fields.insert(ResponseFields::CurrencyCode);
-    fields.insert(ResponseFields::RRN);
-    fields.insert(ResponseFields::ReceiptReference);
-    fields.insert(ResponseFields::TransactionID);
-    fields.insert(ResponseFields::AuthCode);
-    fields.insert(ResponseFields::ResponseCode);
-    fields.insert(ResponseFields::ResponseText);
-    fields.insert(ResponseFields::TerminalID);
-    fields.insert(ResponseFields::MerchantID);
-    fields.insert(ResponseFields::TransDateTime);
-    fields.insert(ResponseFields::TerminalDateTime);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+    fields.insert(ResponseField::EcrMerchantNumber);
+    fields.insert(ResponseField::TotalAmount);
+    fields.insert(ResponseField::AcquirerFeeAmount);
+    fields.insert(ResponseField::TerminalFeeAmount);
+    fields.insert(ResponseField::CurrencyCode);
+    fields.insert(ResponseField::RRN);
+    fields.insert(ResponseField::ReceiptReference);
+    fields.insert(ResponseField::TransactionID);
+    fields.insert(ResponseField::AuthCode);
+    fields.insert(ResponseField::ResponseCode);
+    fields.insert(ResponseField::ResponseText);
+    fields.insert(ResponseField::TerminalID);
+    fields.insert(ResponseField::MerchantID);
+    fields.insert(ResponseField::TransDateTime);
+    fields.insert(ResponseField::TerminalDateTime);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::AliPay);
 
@@ -145,7 +141,7 @@ TEST(ResponseOperationValidators, CheckAliPay) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -155,29 +151,29 @@ TEST(ResponseOperationValidators, CheckAliPay) {
 }
 
 TEST(ResponseOperationValidators, CheckFastTrack) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
-    fields.insert(ResponseFields::EcrMerchantNumber);
-    fields.insert(ResponseFields::TotalAmount);
-    fields.insert(ResponseFields::TerminalFeeAmount);
-    fields.insert(ResponseFields::CurrencyCode);
-    fields.insert(ResponseFields::ReceiptReference);
-    fields.insert(ResponseFields::TerminalID);
-    fields.insert(ResponseFields::MerchantID);
-    fields.insert(ResponseFields::TerminalDateTime);
-    fields.insert(ResponseFields::IssuerName);
-    fields.insert(ResponseFields::CardInputMethod);
-    fields.insert(ResponseFields::CardPAN);
-    fields.insert(ResponseFields::ExpireDate);
-    fields.insert(ResponseFields::CardAppName);
-    fields.insert(ResponseFields::CardEmvAid);
-    fields.insert(ResponseFields::CardData);
-    fields.insert(ResponseFields::CardDataEnc);
-    fields.insert(ResponseFields::CardholderName);
-    fields.insert(ResponseFields::CardholderAuthMethod);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+    fields.insert(ResponseField::EcrMerchantNumber);
+    fields.insert(ResponseField::TotalAmount);
+    fields.insert(ResponseField::TerminalFeeAmount);
+    fields.insert(ResponseField::CurrencyCode);
+    fields.insert(ResponseField::ReceiptReference);
+    fields.insert(ResponseField::TerminalID);
+    fields.insert(ResponseField::MerchantID);
+    fields.insert(ResponseField::TerminalDateTime);
+    fields.insert(ResponseField::IssuerName);
+    fields.insert(ResponseField::CardInputMethod);
+    fields.insert(ResponseField::CardPAN);
+    fields.insert(ResponseField::ExpireDate);
+    fields.insert(ResponseField::CardAppName);
+    fields.insert(ResponseField::CardEmvAid);
+    fields.insert(ResponseField::CardData);
+    fields.insert(ResponseField::CardDataEnc);
+    fields.insert(ResponseField::CardholderName);
+    fields.insert(ResponseField::CardholderAuthMethod);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::FastTrack);
 
@@ -186,7 +182,7 @@ TEST(ResponseOperationValidators, CheckFastTrack) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -196,33 +192,33 @@ TEST(ResponseOperationValidators, CheckFastTrack) {
 }
 
 TEST(ResponseOperationValidators, CheckMOTO) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
-    fields.insert(ResponseFields::EcrMerchantNumber);
-    fields.insert(ResponseFields::TotalAmount);
-    fields.insert(ResponseFields::CurrencyCode);
-    fields.insert(ResponseFields::RRN);
-    fields.insert(ResponseFields::ReceiptReference);
-    fields.insert(ResponseFields::TransactionID);
-    fields.insert(ResponseFields::AuthCode);
-    fields.insert(ResponseFields::ResponseCode);
-    fields.insert(ResponseFields::ResponseText);
-    fields.insert(ResponseFields::TerminalID);
-    fields.insert(ResponseFields::MerchantID);
-    fields.insert(ResponseFields::TransDateTime);
-    fields.insert(ResponseFields::TerminalDateTime);
-    fields.insert(ResponseFields::IssuerName);
-    fields.insert(ResponseFields::CardInputMethod);
-    fields.insert(ResponseFields::CardPAN);
-    fields.insert(ResponseFields::ExpireDate);
-    fields.insert(ResponseFields::CardAppName);
-    fields.insert(ResponseFields::CardEmvAid);
-    fields.insert(ResponseFields::CardDataEnc);
-    fields.insert(ResponseFields::CardholderName);
-    fields.insert(ResponseFields::CardholderAuthMethod);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+    fields.insert(ResponseField::EcrMerchantNumber);
+    fields.insert(ResponseField::TotalAmount);
+    fields.insert(ResponseField::CurrencyCode);
+    fields.insert(ResponseField::RRN);
+    fields.insert(ResponseField::ReceiptReference);
+    fields.insert(ResponseField::TransactionID);
+    fields.insert(ResponseField::AuthCode);
+    fields.insert(ResponseField::ResponseCode);
+    fields.insert(ResponseField::ResponseText);
+    fields.insert(ResponseField::TerminalID);
+    fields.insert(ResponseField::MerchantID);
+    fields.insert(ResponseField::TransDateTime);
+    fields.insert(ResponseField::TerminalDateTime);
+    fields.insert(ResponseField::IssuerName);
+    fields.insert(ResponseField::CardInputMethod);
+    fields.insert(ResponseField::CardPAN);
+    fields.insert(ResponseField::ExpireDate);
+    fields.insert(ResponseField::CardAppName);
+    fields.insert(ResponseField::CardEmvAid);
+    fields.insert(ResponseField::CardDataEnc);
+    fields.insert(ResponseField::CardholderName);
+    fields.insert(ResponseField::CardholderAuthMethod);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::MOTO);
 
@@ -231,7 +227,7 @@ TEST(ResponseOperationValidators, CheckMOTO) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -241,39 +237,39 @@ TEST(ResponseOperationValidators, CheckMOTO) {
 }
 
 TEST(ResponseOperationValidators, CheckPreAuth) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
-    fields.insert(ResponseFields::EcrMerchantNumber);
-    fields.insert(ResponseFields::TotalAmount);
-    fields.insert(ResponseFields::CurrencyCode);
-    fields.insert(ResponseFields::RRN);
-    fields.insert(ResponseFields::ReceiptReference);
-    fields.insert(ResponseFields::TransactionID);
-    fields.insert(ResponseFields::AuthCode);
-    fields.insert(ResponseFields::ResponseCode);
-    fields.insert(ResponseFields::ResponseText);
-    fields.insert(ResponseFields::TerminalID);
-    fields.insert(ResponseFields::MerchantID);
-    fields.insert(ResponseFields::TransDateTime);
-    fields.insert(ResponseFields::TerminalDateTime);
-    fields.insert(ResponseFields::IssuerName);
-    fields.insert(ResponseFields::CardInputMethod);
-    fields.insert(ResponseFields::CardPAN);
-    fields.insert(ResponseFields::ExpireDate);
-    fields.insert(ResponseFields::CardAppName);
-    fields.insert(ResponseFields::CardEmvAid);
-    fields.insert(ResponseFields::CardDataEnc);
-    fields.insert(ResponseFields::TVR);
-    fields.insert(ResponseFields::TSI);
-    fields.insert(ResponseFields::TC);
-    fields.insert(ResponseFields::CID);
-    fields.insert(ResponseFields::KVR);
-    fields.insert(ResponseFields::CDAResult);
-    fields.insert(ResponseFields::CardholderName);
-    fields.insert(ResponseFields::CardholderAuthMethod);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+    fields.insert(ResponseField::EcrMerchantNumber);
+    fields.insert(ResponseField::TotalAmount);
+    fields.insert(ResponseField::CurrencyCode);
+    fields.insert(ResponseField::RRN);
+    fields.insert(ResponseField::ReceiptReference);
+    fields.insert(ResponseField::TransactionID);
+    fields.insert(ResponseField::AuthCode);
+    fields.insert(ResponseField::ResponseCode);
+    fields.insert(ResponseField::ResponseText);
+    fields.insert(ResponseField::TerminalID);
+    fields.insert(ResponseField::MerchantID);
+    fields.insert(ResponseField::TransDateTime);
+    fields.insert(ResponseField::TerminalDateTime);
+    fields.insert(ResponseField::IssuerName);
+    fields.insert(ResponseField::CardInputMethod);
+    fields.insert(ResponseField::CardPAN);
+    fields.insert(ResponseField::ExpireDate);
+    fields.insert(ResponseField::CardAppName);
+    fields.insert(ResponseField::CardEmvAid);
+    fields.insert(ResponseField::CardDataEnc);
+    fields.insert(ResponseField::TVR);
+    fields.insert(ResponseField::TSI);
+    fields.insert(ResponseField::TC);
+    fields.insert(ResponseField::CID);
+    fields.insert(ResponseField::KVR);
+    fields.insert(ResponseField::CDAResult);
+    fields.insert(ResponseField::CardholderName);
+    fields.insert(ResponseField::CardholderAuthMethod);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::PreAuth);
 
@@ -282,7 +278,7 @@ TEST(ResponseOperationValidators, CheckPreAuth) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -292,26 +288,26 @@ TEST(ResponseOperationValidators, CheckPreAuth) {
 }
 
 TEST(ResponseOperationValidators, CheckQuickPayment) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
-    fields.insert(ResponseFields::EcrMerchantNumber);
-    fields.insert(ResponseFields::TotalAmount);
-    fields.insert(ResponseFields::AcquirerFeeAmount);
-    fields.insert(ResponseFields::TerminalFeeAmount);
-    fields.insert(ResponseFields::CurrencyCode);
-    fields.insert(ResponseFields::RRN);
-    fields.insert(ResponseFields::ReceiptReference);
-    fields.insert(ResponseFields::TransactionID);
-    fields.insert(ResponseFields::AuthCode);
-    fields.insert(ResponseFields::ResponseCode);
-    fields.insert(ResponseFields::ResponseText);
-    fields.insert(ResponseFields::TerminalID);
-    fields.insert(ResponseFields::MerchantID);
-    fields.insert(ResponseFields::TransDateTime);
-    fields.insert(ResponseFields::TerminalDateTime);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+    fields.insert(ResponseField::EcrMerchantNumber);
+    fields.insert(ResponseField::TotalAmount);
+    fields.insert(ResponseField::AcquirerFeeAmount);
+    fields.insert(ResponseField::TerminalFeeAmount);
+    fields.insert(ResponseField::CurrencyCode);
+    fields.insert(ResponseField::RRN);
+    fields.insert(ResponseField::ReceiptReference);
+    fields.insert(ResponseField::TransactionID);
+    fields.insert(ResponseField::AuthCode);
+    fields.insert(ResponseField::ResponseCode);
+    fields.insert(ResponseField::ResponseText);
+    fields.insert(ResponseField::TerminalID);
+    fields.insert(ResponseField::MerchantID);
+    fields.insert(ResponseField::TransDateTime);
+    fields.insert(ResponseField::TerminalDateTime);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::QuickPayment);
 
@@ -320,7 +316,7 @@ TEST(ResponseOperationValidators, CheckQuickPayment) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -330,11 +326,11 @@ TEST(ResponseOperationValidators, CheckQuickPayment) {
 }
 
 TEST(ResponseOperationValidators, CheckQuickPaymentStatus) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::QuickPaymentStatus);
 
@@ -343,7 +339,7 @@ TEST(ResponseOperationValidators, CheckQuickPaymentStatus) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     //EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -353,39 +349,39 @@ TEST(ResponseOperationValidators, CheckQuickPaymentStatus) {
 }
 
 TEST(ResponseOperationValidators, CheckSale) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
-    fields.insert(ResponseFields::EcrMerchantNumber);
-    fields.insert(ResponseFields::TotalAmount);
-    fields.insert(ResponseFields::CurrencyCode);
-    fields.insert(ResponseFields::RRN);
-    fields.insert(ResponseFields::ReceiptReference);
-    fields.insert(ResponseFields::TransactionID);
-    fields.insert(ResponseFields::AuthCode);
-    fields.insert(ResponseFields::ResponseCode);
-    fields.insert(ResponseFields::ResponseText);
-    fields.insert(ResponseFields::TerminalID);
-    fields.insert(ResponseFields::MerchantID);
-    fields.insert(ResponseFields::TransDateTime);
-    fields.insert(ResponseFields::TerminalDateTime);
-    fields.insert(ResponseFields::IssuerName);
-    fields.insert(ResponseFields::CardInputMethod);
-    fields.insert(ResponseFields::CardPAN);
-    fields.insert(ResponseFields::ExpireDate);
-    fields.insert(ResponseFields::CardAppName);
-    fields.insert(ResponseFields::CardEmvAid);
-    fields.insert(ResponseFields::CardDataEnc);
-    fields.insert(ResponseFields::TVR);
-    fields.insert(ResponseFields::TSI);
-    fields.insert(ResponseFields::TC);
-    fields.insert(ResponseFields::CID);
-    fields.insert(ResponseFields::KVR);
-    fields.insert(ResponseFields::CDAResult);
-    fields.insert(ResponseFields::CardholderName);
-    fields.insert(ResponseFields::CardholderAuthMethod);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+    fields.insert(ResponseField::EcrMerchantNumber);
+    fields.insert(ResponseField::TotalAmount);
+    fields.insert(ResponseField::CurrencyCode);
+    fields.insert(ResponseField::RRN);
+    fields.insert(ResponseField::ReceiptReference);
+    fields.insert(ResponseField::TransactionID);
+    fields.insert(ResponseField::AuthCode);
+    fields.insert(ResponseField::ResponseCode);
+    fields.insert(ResponseField::ResponseText);
+    fields.insert(ResponseField::TerminalID);
+    fields.insert(ResponseField::MerchantID);
+    fields.insert(ResponseField::TransDateTime);
+    fields.insert(ResponseField::TerminalDateTime);
+    fields.insert(ResponseField::IssuerName);
+    fields.insert(ResponseField::CardInputMethod);
+    fields.insert(ResponseField::CardPAN);
+    fields.insert(ResponseField::ExpireDate);
+    fields.insert(ResponseField::CardAppName);
+    fields.insert(ResponseField::CardEmvAid);
+    fields.insert(ResponseField::CardDataEnc);
+    fields.insert(ResponseField::TVR);
+    fields.insert(ResponseField::TSI);
+    fields.insert(ResponseField::TC);
+    fields.insert(ResponseField::CID);
+    fields.insert(ResponseField::KVR);
+    fields.insert(ResponseField::CDAResult);
+    fields.insert(ResponseField::CardholderName);
+    fields.insert(ResponseField::CardholderAuthMethod);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Sale);
 
@@ -394,7 +390,7 @@ TEST(ResponseOperationValidators, CheckSale) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -404,39 +400,39 @@ TEST(ResponseOperationValidators, CheckSale) {
 }
 
 TEST(ResponseOperationValidators, CheckSalesCompletion) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
-    fields.insert(ResponseFields::EcrMerchantNumber);
-    fields.insert(ResponseFields::TotalAmount);
-    fields.insert(ResponseFields::CurrencyCode);
-    fields.insert(ResponseFields::RRN);
-    fields.insert(ResponseFields::ReceiptReference);
-    fields.insert(ResponseFields::TransactionID);
-    fields.insert(ResponseFields::AuthCode);
-    fields.insert(ResponseFields::ResponseCode);
-    fields.insert(ResponseFields::ResponseText);
-    fields.insert(ResponseFields::TerminalID);
-    fields.insert(ResponseFields::MerchantID);
-    fields.insert(ResponseFields::TransDateTime);
-    fields.insert(ResponseFields::TerminalDateTime);
-    fields.insert(ResponseFields::IssuerName);
-    fields.insert(ResponseFields::CardInputMethod);
-    fields.insert(ResponseFields::CardPAN);
-    fields.insert(ResponseFields::ExpireDate);
-    fields.insert(ResponseFields::CardAppName);
-    fields.insert(ResponseFields::CardEmvAid);
-    fields.insert(ResponseFields::CardDataEnc);
-    fields.insert(ResponseFields::TVR);
-    fields.insert(ResponseFields::TSI);
-    fields.insert(ResponseFields::TC);
-    fields.insert(ResponseFields::CID);
-    fields.insert(ResponseFields::KVR);
-    fields.insert(ResponseFields::CDAResult);
-    fields.insert(ResponseFields::CardholderName);
-    fields.insert(ResponseFields::CardholderAuthMethod);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+    fields.insert(ResponseField::EcrMerchantNumber);
+    fields.insert(ResponseField::TotalAmount);
+    fields.insert(ResponseField::CurrencyCode);
+    fields.insert(ResponseField::RRN);
+    fields.insert(ResponseField::ReceiptReference);
+    fields.insert(ResponseField::TransactionID);
+    fields.insert(ResponseField::AuthCode);
+    fields.insert(ResponseField::ResponseCode);
+    fields.insert(ResponseField::ResponseText);
+    fields.insert(ResponseField::TerminalID);
+    fields.insert(ResponseField::MerchantID);
+    fields.insert(ResponseField::TransDateTime);
+    fields.insert(ResponseField::TerminalDateTime);
+    fields.insert(ResponseField::IssuerName);
+    fields.insert(ResponseField::CardInputMethod);
+    fields.insert(ResponseField::CardPAN);
+    fields.insert(ResponseField::ExpireDate);
+    fields.insert(ResponseField::CardAppName);
+    fields.insert(ResponseField::CardEmvAid);
+    fields.insert(ResponseField::CardDataEnc);
+    fields.insert(ResponseField::TVR);
+    fields.insert(ResponseField::TSI);
+    fields.insert(ResponseField::TC);
+    fields.insert(ResponseField::CID);
+    fields.insert(ResponseField::KVR);
+    fields.insert(ResponseField::CDAResult);
+    fields.insert(ResponseField::CardholderName);
+    fields.insert(ResponseField::CardholderAuthMethod);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::SalesCompletion);
 
@@ -445,7 +441,7 @@ TEST(ResponseOperationValidators, CheckSalesCompletion) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -456,39 +452,39 @@ TEST(ResponseOperationValidators, CheckSalesCompletion) {
 
 //Void
 TEST(ResponseOperationValidators, CheckVoid) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
-    fields.insert(ResponseFields::EcrMerchantNumber);
-    fields.insert(ResponseFields::TotalAmount);
-    fields.insert(ResponseFields::CurrencyCode);
-    fields.insert(ResponseFields::RRN);
-    fields.insert(ResponseFields::ReceiptReference);
-    fields.insert(ResponseFields::TransactionID);
-    fields.insert(ResponseFields::AuthCode);
-    fields.insert(ResponseFields::ResponseCode);
-    fields.insert(ResponseFields::ResponseText);
-    fields.insert(ResponseFields::TerminalID);
-    fields.insert(ResponseFields::MerchantID);
-    fields.insert(ResponseFields::TransDateTime);
-    fields.insert(ResponseFields::TerminalDateTime);
-    fields.insert(ResponseFields::IssuerName);
-    fields.insert(ResponseFields::CardInputMethod);
-    fields.insert(ResponseFields::CardPAN);
-    fields.insert(ResponseFields::ExpireDate);
-    fields.insert(ResponseFields::CardAppName);
-    fields.insert(ResponseFields::CardEmvAid);
-    fields.insert(ResponseFields::CardDataEnc);
-    fields.insert(ResponseFields::TVR);
-    fields.insert(ResponseFields::TSI);
-    fields.insert(ResponseFields::TC);
-    fields.insert(ResponseFields::CID);
-    fields.insert(ResponseFields::KVR);
-    fields.insert(ResponseFields::CDAResult);
-    fields.insert(ResponseFields::CardholderName);
-    fields.insert(ResponseFields::CardholderAuthMethod);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+    fields.insert(ResponseField::EcrMerchantNumber);
+    fields.insert(ResponseField::TotalAmount);
+    fields.insert(ResponseField::CurrencyCode);
+    fields.insert(ResponseField::RRN);
+    fields.insert(ResponseField::ReceiptReference);
+    fields.insert(ResponseField::TransactionID);
+    fields.insert(ResponseField::AuthCode);
+    fields.insert(ResponseField::ResponseCode);
+    fields.insert(ResponseField::ResponseText);
+    fields.insert(ResponseField::TerminalID);
+    fields.insert(ResponseField::MerchantID);
+    fields.insert(ResponseField::TransDateTime);
+    fields.insert(ResponseField::TerminalDateTime);
+    fields.insert(ResponseField::IssuerName);
+    fields.insert(ResponseField::CardInputMethod);
+    fields.insert(ResponseField::CardPAN);
+    fields.insert(ResponseField::ExpireDate);
+    fields.insert(ResponseField::CardAppName);
+    fields.insert(ResponseField::CardEmvAid);
+    fields.insert(ResponseField::CardDataEnc);
+    fields.insert(ResponseField::TVR);
+    fields.insert(ResponseField::TSI);
+    fields.insert(ResponseField::TC);
+    fields.insert(ResponseField::CID);
+    fields.insert(ResponseField::KVR);
+    fields.insert(ResponseField::CDAResult);
+    fields.insert(ResponseField::CardholderName);
+    fields.insert(ResponseField::CardholderAuthMethod);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Void);
 
@@ -497,7 +493,7 @@ TEST(ResponseOperationValidators, CheckVoid) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -507,40 +503,40 @@ TEST(ResponseOperationValidators, CheckVoid) {
 }
 
 TEST(ResponseOperationValidators, CheckVoidPartialSale) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
-    fields.insert(ResponseFields::EcrMerchantNumber);
-    fields.insert(ResponseFields::TotalAmount);
-    fields.insert(ResponseFields::PartialAmount);
-    fields.insert(ResponseFields::CurrencyCode);
-    fields.insert(ResponseFields::RRN);
-    fields.insert(ResponseFields::ReceiptReference);
-    fields.insert(ResponseFields::TransactionID);
-    fields.insert(ResponseFields::AuthCode);
-    fields.insert(ResponseFields::ResponseCode);
-    fields.insert(ResponseFields::ResponseText);
-    fields.insert(ResponseFields::TerminalID);
-    fields.insert(ResponseFields::MerchantID);
-    fields.insert(ResponseFields::TransDateTime);
-    fields.insert(ResponseFields::TerminalDateTime);
-    fields.insert(ResponseFields::IssuerName);
-    fields.insert(ResponseFields::CardInputMethod);
-    fields.insert(ResponseFields::CardPAN);
-    fields.insert(ResponseFields::ExpireDate);
-    fields.insert(ResponseFields::CardAppName);
-    fields.insert(ResponseFields::CardEmvAid);
-    fields.insert(ResponseFields::CardDataEnc);
-    fields.insert(ResponseFields::TVR);
-    fields.insert(ResponseFields::TSI);
-    fields.insert(ResponseFields::TC);
-    fields.insert(ResponseFields::CID);
-    fields.insert(ResponseFields::KVR);
-    fields.insert(ResponseFields::CDAResult);
-    fields.insert(ResponseFields::CardholderName);
-    fields.insert(ResponseFields::CardholderAuthMethod);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+    fields.insert(ResponseField::EcrMerchantNumber);
+    fields.insert(ResponseField::TotalAmount);
+    fields.insert(ResponseField::PartialAmount);
+    fields.insert(ResponseField::CurrencyCode);
+    fields.insert(ResponseField::RRN);
+    fields.insert(ResponseField::ReceiptReference);
+    fields.insert(ResponseField::TransactionID);
+    fields.insert(ResponseField::AuthCode);
+    fields.insert(ResponseField::ResponseCode);
+    fields.insert(ResponseField::ResponseText);
+    fields.insert(ResponseField::TerminalID);
+    fields.insert(ResponseField::MerchantID);
+    fields.insert(ResponseField::TransDateTime);
+    fields.insert(ResponseField::TerminalDateTime);
+    fields.insert(ResponseField::IssuerName);
+    fields.insert(ResponseField::CardInputMethod);
+    fields.insert(ResponseField::CardPAN);
+    fields.insert(ResponseField::ExpireDate);
+    fields.insert(ResponseField::CardAppName);
+    fields.insert(ResponseField::CardEmvAid);
+    fields.insert(ResponseField::CardDataEnc);
+    fields.insert(ResponseField::TVR);
+    fields.insert(ResponseField::TSI);
+    fields.insert(ResponseField::TC);
+    fields.insert(ResponseField::CID);
+    fields.insert(ResponseField::KVR);
+    fields.insert(ResponseField::CDAResult);
+    fields.insert(ResponseField::CardholderName);
+    fields.insert(ResponseField::CardholderAuthMethod);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::VoidPartialSale);
 
@@ -549,7 +545,7 @@ TEST(ResponseOperationValidators, CheckVoidPartialSale) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -559,40 +555,40 @@ TEST(ResponseOperationValidators, CheckVoidPartialSale) {
 }
 
 TEST(ResponseOperationValidators, CheckVoidPreAuth) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
-    fields.insert(ResponseFields::EcrMerchantNumber);
-    fields.insert(ResponseFields::TotalAmount);
-    fields.insert(ResponseFields::PartialAmount);
-    fields.insert(ResponseFields::CurrencyCode);
-    fields.insert(ResponseFields::RRN);
-    fields.insert(ResponseFields::ReceiptReference);
-    fields.insert(ResponseFields::TransactionID);
-    fields.insert(ResponseFields::AuthCode);
-    fields.insert(ResponseFields::ResponseCode);
-    fields.insert(ResponseFields::ResponseText);
-    fields.insert(ResponseFields::TerminalID);
-    fields.insert(ResponseFields::MerchantID);
-    fields.insert(ResponseFields::TransDateTime);
-    fields.insert(ResponseFields::TerminalDateTime);
-    fields.insert(ResponseFields::IssuerName);
-    fields.insert(ResponseFields::CardInputMethod);
-    fields.insert(ResponseFields::CardPAN);
-    fields.insert(ResponseFields::ExpireDate);
-    fields.insert(ResponseFields::CardAppName);
-    fields.insert(ResponseFields::CardEmvAid);
-    fields.insert(ResponseFields::CardDataEnc);
-    fields.insert(ResponseFields::TVR);
-    fields.insert(ResponseFields::TSI);
-    fields.insert(ResponseFields::TC);
-    fields.insert(ResponseFields::CID);
-    fields.insert(ResponseFields::KVR);
-    fields.insert(ResponseFields::CDAResult);
-    fields.insert(ResponseFields::CardholderName);
-    fields.insert(ResponseFields::CardholderAuthMethod);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+    fields.insert(ResponseField::EcrMerchantNumber);
+    fields.insert(ResponseField::TotalAmount);
+    fields.insert(ResponseField::PartialAmount);
+    fields.insert(ResponseField::CurrencyCode);
+    fields.insert(ResponseField::RRN);
+    fields.insert(ResponseField::ReceiptReference);
+    fields.insert(ResponseField::TransactionID);
+    fields.insert(ResponseField::AuthCode);
+    fields.insert(ResponseField::ResponseCode);
+    fields.insert(ResponseField::ResponseText);
+    fields.insert(ResponseField::TerminalID);
+    fields.insert(ResponseField::MerchantID);
+    fields.insert(ResponseField::TransDateTime);
+    fields.insert(ResponseField::TerminalDateTime);
+    fields.insert(ResponseField::IssuerName);
+    fields.insert(ResponseField::CardInputMethod);
+    fields.insert(ResponseField::CardPAN);
+    fields.insert(ResponseField::ExpireDate);
+    fields.insert(ResponseField::CardAppName);
+    fields.insert(ResponseField::CardEmvAid);
+    fields.insert(ResponseField::CardDataEnc);
+    fields.insert(ResponseField::TVR);
+    fields.insert(ResponseField::TSI);
+    fields.insert(ResponseField::TC);
+    fields.insert(ResponseField::CID);
+    fields.insert(ResponseField::KVR);
+    fields.insert(ResponseField::CDAResult);
+    fields.insert(ResponseField::CardholderName);
+    fields.insert(ResponseField::CardholderAuthMethod);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::VoidPreAuth);
 
@@ -601,7 +597,7 @@ TEST(ResponseOperationValidators, CheckVoidPreAuth) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -613,11 +609,11 @@ TEST(ResponseOperationValidators, CheckVoidPreAuth) {
 //Service
 
 TEST(ResponseOperationValidators, CheckDisplayQR) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::DisplayQR);
 
@@ -626,7 +622,7 @@ TEST(ResponseOperationValidators, CheckDisplayQR) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -636,11 +632,11 @@ TEST(ResponseOperationValidators, CheckDisplayQR) {
 }
 
 TEST(ResponseOperationValidators, CheckFinalizeTransaction) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::FinalizeTransaction);
 
@@ -649,7 +645,7 @@ TEST(ResponseOperationValidators, CheckFinalizeTransaction) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -659,12 +655,12 @@ TEST(ResponseOperationValidators, CheckFinalizeTransaction) {
 }
 
 TEST(ResponseOperationValidators, CheckGetCurrentPrinter) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
-    fields.insert(ResponseFields::AdditionalInfo);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+    fields.insert(ResponseField::AdditionalInfo);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::GetCurrentPrinter);
 
@@ -673,7 +669,7 @@ TEST(ResponseOperationValidators, CheckGetCurrentPrinter) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -683,11 +679,11 @@ TEST(ResponseOperationValidators, CheckGetCurrentPrinter) {
 }
 
 TEST(ResponseOperationValidators, CheckGetLastOperation) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::GetLastOperation);
 
@@ -696,7 +692,7 @@ TEST(ResponseOperationValidators, CheckGetLastOperation) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -706,13 +702,13 @@ TEST(ResponseOperationValidators, CheckGetLastOperation) {
 }
 
 TEST(ResponseOperationValidators, CheckGetOperationCopy) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
-    fields.insert(ResponseFields::EcrMerchantNumber);
-    fields.insert(ResponseFields::ReceiptReference);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+    fields.insert(ResponseField::EcrMerchantNumber);
+    fields.insert(ResponseField::ReceiptReference);
     auto validator = ValidatorFactory::getValidator(OperationCode::GetOperationCopy);
 
     EXPECT_TRUE(validator->validate(fields));
@@ -720,7 +716,7 @@ TEST(ResponseOperationValidators, CheckGetOperationCopy) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -730,11 +726,11 @@ TEST(ResponseOperationValidators, CheckGetOperationCopy) {
 }
 
 TEST(ResponseOperationValidators, CheckInitialization) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Initialization);
 
@@ -743,7 +739,7 @@ TEST(ResponseOperationValidators, CheckInitialization) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -753,11 +749,11 @@ TEST(ResponseOperationValidators, CheckInitialization) {
 }
 
 TEST(ResponseOperationValidators, CheckKeyDownload) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::KeyDownload);
 
@@ -766,7 +762,7 @@ TEST(ResponseOperationValidators, CheckKeyDownload) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -776,12 +772,12 @@ TEST(ResponseOperationValidators, CheckKeyDownload) {
 }
 
 TEST(ResponseOperationValidators, CheckPrintCommsInfo) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
-    fields.insert(ResponseFields::AdditionalInfo);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+    fields.insert(ResponseField::AdditionalInfo);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::PrintCommsInfo);
 
@@ -790,7 +786,7 @@ TEST(ResponseOperationValidators, CheckPrintCommsInfo) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -800,22 +796,22 @@ TEST(ResponseOperationValidators, CheckPrintCommsInfo) {
 }
 
 TEST(ResponseOperationValidators, CheckPrintDetailReport) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
-    fields.insert(ResponseFields::TotalAmount);
-    fields.insert(ResponseFields::CurrencyCode);
-    fields.insert(ResponseFields::TerminalID);
-    fields.insert(ResponseFields::MerchantID);
-    fields.insert(ResponseFields::TerminalDateTime);
-    fields.insert(ResponseFields::SaleCount);
-    fields.insert(ResponseFields::VoidCount);
-    fields.insert(ResponseFields::RefundCount);
-    fields.insert(ResponseFields::SaleArray);
-    fields.insert(ResponseFields::VoidArray);
-    fields.insert(ResponseFields::RefundArray);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+    fields.insert(ResponseField::TotalAmount);
+    fields.insert(ResponseField::CurrencyCode);
+    fields.insert(ResponseField::TerminalID);
+    fields.insert(ResponseField::MerchantID);
+    fields.insert(ResponseField::TerminalDateTime);
+    fields.insert(ResponseField::SaleCount);
+    fields.insert(ResponseField::VoidCount);
+    fields.insert(ResponseField::RefundCount);
+    fields.insert(ResponseField::SaleArray);
+    fields.insert(ResponseField::VoidArray);
+    fields.insert(ResponseField::RefundArray);
     auto validator = ValidatorFactory::getValidator(OperationCode::PrintDetailReport);
 
     EXPECT_TRUE(validator->validate(fields));
@@ -823,7 +819,7 @@ TEST(ResponseOperationValidators, CheckPrintDetailReport) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -833,11 +829,11 @@ TEST(ResponseOperationValidators, CheckPrintDetailReport) {
 }
 
 TEST(ResponseOperationValidators, CheckPrintLastReceipt) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::PrintLastReceipt);
 
@@ -846,7 +842,7 @@ TEST(ResponseOperationValidators, CheckPrintLastReceipt) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -856,11 +852,11 @@ TEST(ResponseOperationValidators, CheckPrintLastReceipt) {
 }
 
 TEST(ResponseOperationValidators, CheckPrintReceiptCopy) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::PrintReceiptCopy);
 
@@ -869,7 +865,7 @@ TEST(ResponseOperationValidators, CheckPrintReceiptCopy) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -879,11 +875,11 @@ TEST(ResponseOperationValidators, CheckPrintReceiptCopy) {
 }
 
 TEST(ResponseOperationValidators, CheckPrintSoftInfo) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::PrintSoftInfo);
 
@@ -892,7 +888,7 @@ TEST(ResponseOperationValidators, CheckPrintSoftInfo) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -902,11 +898,11 @@ TEST(ResponseOperationValidators, CheckPrintSoftInfo) {
 }
 
 TEST(ResponseOperationValidators, CheckPrintSummaryReport) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::PrintSummaryReport);
 
@@ -915,7 +911,7 @@ TEST(ResponseOperationValidators, CheckPrintSummaryReport) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -925,11 +921,11 @@ TEST(ResponseOperationValidators, CheckPrintSummaryReport) {
 }
 
 TEST(ResponseOperationValidators, CheckRegistration) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Registration);
 
@@ -938,7 +934,7 @@ TEST(ResponseOperationValidators, CheckRegistration) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -948,11 +944,11 @@ TEST(ResponseOperationValidators, CheckRegistration) {
 }
 
 TEST(ResponseOperationValidators, CheckSelfTest) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::SelfTest);
 
@@ -961,7 +957,7 @@ TEST(ResponseOperationValidators, CheckSelfTest) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -971,11 +967,11 @@ TEST(ResponseOperationValidators, CheckSelfTest) {
 }
 
 TEST(ResponseOperationValidators, CheckSetCurrentPrinter) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::SetCurrentPrinter);
 
@@ -984,7 +980,7 @@ TEST(ResponseOperationValidators, CheckSetCurrentPrinter) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -994,12 +990,12 @@ TEST(ResponseOperationValidators, CheckSetCurrentPrinter) {
 }
 
 TEST(ResponseOperationValidators, CheckSettlement) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::EcrMerchantNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::EcrMerchantNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Settlement);
 
@@ -1008,7 +1004,7 @@ TEST(ResponseOperationValidators, CheckSettlement) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -1018,11 +1014,11 @@ TEST(ResponseOperationValidators, CheckSettlement) {
 }
 
 TEST(ResponseOperationValidators, CheckTest) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Test);
 
@@ -1031,7 +1027,7 @@ TEST(ResponseOperationValidators, CheckTest) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -1041,11 +1037,11 @@ TEST(ResponseOperationValidators, CheckTest) {
 }
 
 TEST(ResponseOperationValidators, CheckTestCommunication) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::TestCommunication);
 
@@ -1054,7 +1050,7 @@ TEST(ResponseOperationValidators, CheckTestCommunication) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -1064,11 +1060,11 @@ TEST(ResponseOperationValidators, CheckTestCommunication) {
 }
 
 TEST(ResponseOperationValidators, CheckUpdateSW) {
-    std::set<ResponseFields> fields;
+    std::set<ResponseField> fields;
 
-    fields.insert(ResponseFields::OperationCode);
-    fields.insert(ResponseFields::EcrNumber);
-    fields.insert(ResponseFields::Status);
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::UpdateSW);
 
@@ -1077,7 +1073,7 @@ TEST(ResponseOperationValidators, CheckUpdateSW) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<ResponseFields> allFields;
+    std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 

@@ -17,7 +17,7 @@ elseif(len GREATER 1)
     message(FATAL_ERROR "Wrong arguments count for LIBRARY_TYPE variable")
 else()
     message(WARNING "LIBRARY_TYPE variable does not set. Uses default value - SHARED")
-    set(LIB_BUILD_TYPE SHARED)
+    set(LIB_BUILD_TYPE SHARED include/Lanter/Utils/DoxygenMainpage.h)
 endif()
 
 

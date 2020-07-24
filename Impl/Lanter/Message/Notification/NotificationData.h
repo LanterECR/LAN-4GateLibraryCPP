@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 30.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_NOTIFICATIONDATA_H
 #define LAN_4GATELIBRARYCPP_NOTIFICATIONDATA_H
 

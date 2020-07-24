@@ -1,13 +1,9 @@
-//
-// Created by Владимир Лысенков on 24.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_CARDINPUTMETHOD_H
 #define LAN_4GATELIBRARYCPP_CARDINPUTMETHOD_H
 namespace Lanter {
     namespace Message {
         namespace Response {
-            /// \brief Список возможных значений поля CardInputMethod в ответе финансового ПО LAN-4Tap
+            /// \brief Список возможных значений поля ResponseField::CardInputMethod в ответе финансового ПО LAN-4Tap
             enum class CardInputMethod {
                 NoMethod,
                 TerminalManualEntry = 1, ///< Данные карты введены вручную в финансовом ПО LAN-4Tap
@@ -19,8 +15,8 @@ namespace Lanter {
                 ContactlessMagStripMode, ///< Использован бексонтактный интерфейс в режиме эмуляции магнитной полосы
                 ContactlessChipMode, ///< Использован бесконтактный интерфейс в режиме эмуляции чипа
                 //Диапазон значений
-                FirstValue = TerminalManualEntry, ///< Ссылка на первое поле в enum
-                LastValue = ContactlessChipMode ///< Ссылка на последнее поле в enum
+                FirstValue = TerminalManualEntry, ///< Ссылка на первый элемент перечисления
+                LastValue = ContactlessChipMode ///< Ссылка на последний элемент перечисления
             };
         }
     }

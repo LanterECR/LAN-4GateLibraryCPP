@@ -1,10 +1,6 @@
-//
-// Created by Владимир Лысенков on 14.07.2020.
-//
-
 #include "gtest/gtest.h"
 
-#include "Lanter/MessageProcessor/MessageParser/JSONNotificationParser.h"
+#include "Lanter/MessageProcessor/Parser/JSONNotificationParser.h"
 
 #include "Lanter/Message/Notification/NotificationData.h"
 
@@ -14,6 +10,7 @@ using namespace Lanter;
 using namespace Lanter::Message;
 using namespace Lanter::Message::Notification;
 using namespace Lanter::MessageProcessor;
+using namespace Lanter::MessageProcessor::Parser;
 
 TEST(JSONNotificationParser, CheckGetCode) {
     NotificationData data;

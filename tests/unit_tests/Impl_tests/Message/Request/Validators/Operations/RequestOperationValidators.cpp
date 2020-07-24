@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 24.06.2020.
-//
-
 #include "gtest/gtest.h"
 
 #include "Lanter/Message/Request/Validators/ValidatorFactory.h"
@@ -12,15 +8,15 @@ using namespace Lanter::Message::Request;
 
 //Refund
 TEST(RequestOperationValidators, CheckRefund) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::Amount);
-    fields.insert(RequestFields::CurrencyCode);
-    fields.insert(RequestFields::RRN);
-    fields.insert(RequestFields::TransactionID);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::Amount);
+    fields.insert(RequestField::CurrencyCode);
+    fields.insert(RequestField::RRN);
+    fields.insert(RequestField::TransactionID);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Refund);
 
@@ -29,7 +25,7 @@ TEST(RequestOperationValidators, CheckRefund) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -39,13 +35,13 @@ TEST(RequestOperationValidators, CheckRefund) {
 }
 
 TEST(RequestOperationValidators, CheckRefundWithoutRRN) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::Amount);
-    fields.insert(RequestFields::CurrencyCode);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::Amount);
+    fields.insert(RequestField::CurrencyCode);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::RefundWithoutRRN);
 
@@ -54,7 +50,7 @@ TEST(RequestOperationValidators, CheckRefundWithoutRRN) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -65,13 +61,13 @@ TEST(RequestOperationValidators, CheckRefundWithoutRRN) {
 
 //Sales
 TEST(RequestOperationValidators, CheckAliPay) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::Amount);
-    fields.insert(RequestFields::CurrencyCode);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::Amount);
+    fields.insert(RequestField::CurrencyCode);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::AliPay);
 
@@ -85,15 +81,15 @@ TEST(RequestOperationValidators, CheckAliPay) {
 }
 
 TEST(RequestOperationValidators, CheckFastTrack) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::Amount);
-    fields.insert(RequestFields::CurrencyCode);
-    fields.insert(RequestFields::EncTags);
-    fields.insert(RequestFields::OpenTags);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::Amount);
+    fields.insert(RequestField::CurrencyCode);
+    fields.insert(RequestField::EncTags);
+    fields.insert(RequestField::OpenTags);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::FastTrack);
 
@@ -102,7 +98,7 @@ TEST(RequestOperationValidators, CheckFastTrack) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -112,13 +108,13 @@ TEST(RequestOperationValidators, CheckFastTrack) {
 }
 
 TEST(RequestOperationValidators, CheckMOTO) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::Amount);
-    fields.insert(RequestFields::CurrencyCode);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::Amount);
+    fields.insert(RequestField::CurrencyCode);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::MOTO);
 
@@ -132,15 +128,15 @@ TEST(RequestOperationValidators, CheckMOTO) {
 }
 
 TEST(RequestOperationValidators, CheckPreAuth) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::Amount);
-    fields.insert(RequestFields::CurrencyCode);
-    fields.insert(RequestFields::TransactionID);
-    fields.insert(RequestFields::CardDataEnc);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::Amount);
+    fields.insert(RequestField::CurrencyCode);
+    fields.insert(RequestField::TransactionID);
+    fields.insert(RequestField::CardDataEnc);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::PreAuth);
 
@@ -149,7 +145,7 @@ TEST(RequestOperationValidators, CheckPreAuth) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -159,13 +155,13 @@ TEST(RequestOperationValidators, CheckPreAuth) {
 }
 
 TEST(RequestOperationValidators, CheckQuickPayment) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::Amount);
-    fields.insert(RequestFields::CurrencyCode);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::Amount);
+    fields.insert(RequestField::CurrencyCode);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::QuickPayment);
 
@@ -179,15 +175,15 @@ TEST(RequestOperationValidators, CheckQuickPayment) {
 }
 
 TEST(RequestOperationValidators, CheckQuickPaymentStatus) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::RRN);
-    fields.insert(RequestFields::AuthCode);
-    fields.insert(RequestFields::TransactionID);
-    fields.insert(RequestFields::ReceiptReference);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::RRN);
+    fields.insert(RequestField::AuthCode);
+    fields.insert(RequestField::TransactionID);
+    fields.insert(RequestField::ReceiptReference);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::QuickPaymentStatus);
 
@@ -196,7 +192,7 @@ TEST(RequestOperationValidators, CheckQuickPaymentStatus) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -206,13 +202,13 @@ TEST(RequestOperationValidators, CheckQuickPaymentStatus) {
 }
 
 TEST(RequestOperationValidators, CheckSale) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::Amount);
-    fields.insert(RequestFields::CurrencyCode);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::Amount);
+    fields.insert(RequestField::CurrencyCode);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Sale);
 
@@ -226,16 +222,16 @@ TEST(RequestOperationValidators, CheckSale) {
 }
 
 TEST(RequestOperationValidators, CheckSalesCompletion) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::Amount);
-    fields.insert(RequestFields::CurrencyCode);
-    fields.insert(RequestFields::RRN);
-    fields.insert(RequestFields::AuthCode);
-    fields.insert(RequestFields::TransactionID);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::Amount);
+    fields.insert(RequestField::CurrencyCode);
+    fields.insert(RequestField::RRN);
+    fields.insert(RequestField::AuthCode);
+    fields.insert(RequestField::TransactionID);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::SalesCompletion);
 
@@ -244,7 +240,7 @@ TEST(RequestOperationValidators, CheckSalesCompletion) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -255,12 +251,12 @@ TEST(RequestOperationValidators, CheckSalesCompletion) {
 
 //Void
 TEST(RequestOperationValidators, CheckVoid) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::ReceiptReference);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::ReceiptReference);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Void);
 
@@ -269,7 +265,7 @@ TEST(RequestOperationValidators, CheckVoid) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -279,14 +275,14 @@ TEST(RequestOperationValidators, CheckVoid) {
 }
 
 TEST(RequestOperationValidators, CheckVoidPartialSale) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::PartialAmount);
-    fields.insert(RequestFields::CurrencyCode);
-    fields.insert(RequestFields::ReceiptReference);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::PartialAmount);
+    fields.insert(RequestField::CurrencyCode);
+    fields.insert(RequestField::ReceiptReference);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::VoidPartialSale);
 
@@ -295,7 +291,7 @@ TEST(RequestOperationValidators, CheckVoidPartialSale) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -305,13 +301,13 @@ TEST(RequestOperationValidators, CheckVoidPartialSale) {
 }
 
 TEST(RequestOperationValidators, CheckVoidPreAuth) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::CardDataEnc);
-    fields.insert(RequestFields::TransactionID);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::CardDataEnc);
+    fields.insert(RequestField::TransactionID);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::VoidPreAuth);
 
@@ -320,7 +316,7 @@ TEST(RequestOperationValidators, CheckVoidPreAuth) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -332,11 +328,11 @@ TEST(RequestOperationValidators, CheckVoidPreAuth) {
 //Service
 
 TEST(RequestOperationValidators, CheckDisplayQR) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::AdditionalInfo);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::AdditionalInfo);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::DisplayQR);
 
@@ -345,7 +341,7 @@ TEST(RequestOperationValidators, CheckDisplayQR) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_FALSE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -355,10 +351,10 @@ TEST(RequestOperationValidators, CheckDisplayQR) {
 }
 
 TEST(RequestOperationValidators, CheckFinalizeTransaction) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::FinalizeTransaction);
 
@@ -367,7 +363,7 @@ TEST(RequestOperationValidators, CheckFinalizeTransaction) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -377,10 +373,10 @@ TEST(RequestOperationValidators, CheckFinalizeTransaction) {
 }
 
 TEST(RequestOperationValidators, CheckGetCurrentPrinter) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::GetCurrentPrinter);
 
@@ -389,7 +385,7 @@ TEST(RequestOperationValidators, CheckGetCurrentPrinter) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -399,10 +395,10 @@ TEST(RequestOperationValidators, CheckGetCurrentPrinter) {
 }
 
 TEST(RequestOperationValidators, CheckGetLastOperation) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::GetLastOperation);
 
@@ -411,7 +407,7 @@ TEST(RequestOperationValidators, CheckGetLastOperation) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -421,12 +417,12 @@ TEST(RequestOperationValidators, CheckGetLastOperation) {
 }
 
 TEST(RequestOperationValidators, CheckGetOperationCopy) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::ReceiptReference);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::ReceiptReference);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::GetOperationCopy);
 
@@ -435,7 +431,7 @@ TEST(RequestOperationValidators, CheckGetOperationCopy) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -445,10 +441,10 @@ TEST(RequestOperationValidators, CheckGetOperationCopy) {
 }
 
 TEST(RequestOperationValidators, CheckInitialization) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Initialization);
 
@@ -457,7 +453,7 @@ TEST(RequestOperationValidators, CheckInitialization) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -467,10 +463,10 @@ TEST(RequestOperationValidators, CheckInitialization) {
 }
 
 TEST(RequestOperationValidators, CheckKeyDownload) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::KeyDownload);
 
@@ -479,7 +475,7 @@ TEST(RequestOperationValidators, CheckKeyDownload) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -489,10 +485,10 @@ TEST(RequestOperationValidators, CheckKeyDownload) {
 }
 
 TEST(RequestOperationValidators, CheckPrintCommsInfo) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::PrintCommsInfo);
 
@@ -501,7 +497,7 @@ TEST(RequestOperationValidators, CheckPrintCommsInfo) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -511,11 +507,11 @@ TEST(RequestOperationValidators, CheckPrintCommsInfo) {
 }
 
 TEST(RequestOperationValidators, CheckPrintDetailReport) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::PrintDetailReport);
 
@@ -524,7 +520,7 @@ TEST(RequestOperationValidators, CheckPrintDetailReport) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -534,11 +530,11 @@ TEST(RequestOperationValidators, CheckPrintDetailReport) {
 }
 
 TEST(RequestOperationValidators, CheckPrintLastReceipt) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::PrintLastReceipt);
 
@@ -547,7 +543,7 @@ TEST(RequestOperationValidators, CheckPrintLastReceipt) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -557,12 +553,12 @@ TEST(RequestOperationValidators, CheckPrintLastReceipt) {
 }
 
 TEST(RequestOperationValidators, CheckPrintReceiptCopy) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
-    fields.insert(RequestFields::ReceiptReference);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::ReceiptReference);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::PrintReceiptCopy);
 
@@ -571,7 +567,7 @@ TEST(RequestOperationValidators, CheckPrintReceiptCopy) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -581,10 +577,10 @@ TEST(RequestOperationValidators, CheckPrintReceiptCopy) {
 }
 
 TEST(RequestOperationValidators, CheckPrintSoftInfo) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::PrintSoftInfo);
 
@@ -593,7 +589,7 @@ TEST(RequestOperationValidators, CheckPrintSoftInfo) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -603,11 +599,11 @@ TEST(RequestOperationValidators, CheckPrintSoftInfo) {
 }
 
 TEST(RequestOperationValidators, CheckPrintSummaryReport) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::PrintSummaryReport);
 
@@ -616,7 +612,7 @@ TEST(RequestOperationValidators, CheckPrintSummaryReport) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -626,10 +622,10 @@ TEST(RequestOperationValidators, CheckPrintSummaryReport) {
 }
 
 TEST(RequestOperationValidators, CheckRegistration) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Registration);
 
@@ -638,7 +634,7 @@ TEST(RequestOperationValidators, CheckRegistration) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -648,10 +644,10 @@ TEST(RequestOperationValidators, CheckRegistration) {
 }
 
 TEST(RequestOperationValidators, CheckSelfTest) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::SelfTest);
 
@@ -660,7 +656,7 @@ TEST(RequestOperationValidators, CheckSelfTest) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -670,11 +666,11 @@ TEST(RequestOperationValidators, CheckSelfTest) {
 }
 
 TEST(RequestOperationValidators, CheckSetCurrentPrinter) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::AdditionalInfo);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::AdditionalInfo);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::SetCurrentPrinter);
 
@@ -683,7 +679,7 @@ TEST(RequestOperationValidators, CheckSetCurrentPrinter) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -693,11 +689,11 @@ TEST(RequestOperationValidators, CheckSetCurrentPrinter) {
 }
 
 TEST(RequestOperationValidators, CheckSettlement) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
-    fields.insert(RequestFields::EcrMerchantNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Settlement);
 
@@ -706,7 +702,7 @@ TEST(RequestOperationValidators, CheckSettlement) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -716,10 +712,10 @@ TEST(RequestOperationValidators, CheckSettlement) {
 }
 
 TEST(RequestOperationValidators, CheckTest) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Test);
 
@@ -728,7 +724,7 @@ TEST(RequestOperationValidators, CheckTest) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -738,10 +734,10 @@ TEST(RequestOperationValidators, CheckTest) {
 }
 
 TEST(RequestOperationValidators, CheckTestCommunication) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::TestCommunication);
 
@@ -750,7 +746,7 @@ TEST(RequestOperationValidators, CheckTestCommunication) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
@@ -760,10 +756,10 @@ TEST(RequestOperationValidators, CheckTestCommunication) {
 }
 
 TEST(RequestOperationValidators, CheckUpdateSW) {
-    std::set<RequestFields> fields;
+    std::set<RequestField> fields;
 
-    fields.insert(RequestFields::OperationCode);
-    fields.insert(RequestFields::EcrNumber);
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::UpdateSW);
 
@@ -772,7 +768,7 @@ TEST(RequestOperationValidators, CheckUpdateSW) {
     EXPECT_FALSE(validator->getMandatoryFields().empty());
     EXPECT_TRUE(validator->getOptionalFields().empty());
 
-    std::set<RequestFields> allFields;
+    std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
     allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 

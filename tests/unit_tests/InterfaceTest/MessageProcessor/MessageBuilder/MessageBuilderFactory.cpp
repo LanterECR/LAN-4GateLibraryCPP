@@ -1,13 +1,10 @@
-//
-// Created by Владимир Лысенков on 07.07.2020.
-//
-
 #include "gtest/gtest.h"
 
-#include "Lanter/MessageProcessor/MessageBuilder/MessageBuilderFactory.h"
+#include "Lanter/MessageProcessor/Builder/MessageBuilderFactory.h"
 
 using namespace Lanter;
 using namespace Lanter::MessageProcessor;
+using namespace Lanter::MessageProcessor::Builder;
 
 TEST(MessageBuilderFactory, TestFactory) {
     EXPECT_NE(MessageBuilderFactory::getMessageBuilder(), nullptr);

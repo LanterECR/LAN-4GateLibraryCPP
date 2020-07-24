@@ -4,7 +4,7 @@ namespace Lanter {
     namespace Message {
         namespace Request {
             void SetCurrentPrinter::addSpecificFields() {
-                appendMandatoryField(RequestFields::AdditionalInfo);
+                appendMandatoryField(RequestField::AdditionalInfo);
             }
         }
     }

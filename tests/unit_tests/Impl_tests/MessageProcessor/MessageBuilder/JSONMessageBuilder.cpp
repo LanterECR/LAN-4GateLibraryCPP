@@ -9,7 +9,7 @@
 
 #include "Lanter/MessageProcessor/JSONMessageFields.h"
 
-#include "Lanter/MessageProcessor/MessageBuilder/JSONMessageBuilder.h"
+#include "Lanter/MessageProcessor/Builder/JSONMessageBuilder.h"
 #include "Lanter/Utils/StringConverter.h"
 
 using namespace Lanter;
@@ -18,6 +18,7 @@ using namespace Lanter::Message::Request;
 using namespace Lanter::Message::Response;
 using namespace Lanter::Message::Notification;
 using namespace Lanter::MessageProcessor;
+using namespace Lanter::MessageProcessor::Builder;
 
 TEST(JSONMessageBuilder, CheckCreateRequestMessage) {
     std::vector<unsigned char> message;

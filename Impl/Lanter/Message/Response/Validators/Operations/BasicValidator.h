@@ -1,13 +1,9 @@
-//
-// Created by Владимир Лысенков on 21.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_BASICVALIDATOR_H
 #define LAN_4GATELIBRARYCPP_BASICVALIDATOR_H
 
 #include <set>
 
-#include "Lanter/Message/Response/ResponseFields.h"
+#include "Lanter/Message/Response/ResponseField.h"
 
 #include "Lanter/Message/Response/Validators/IValidator.h"
 
@@ -20,16 +16,16 @@ namespace Lanter {
 
                 ~BasicValidator() override = default;
 
-                void appendMandatoryField(ResponseFields field) override;
+                void appendMandatoryField(ResponseField field) override;
 
-                const std::set<ResponseFields> &getMandatoryFields() const override;
+                const std::set<ResponseField> &getMandatoryFields() const override;
 
-                void appendOptionalField(ResponseFields field) override;
+                void appendOptionalField(ResponseField field) override;
 
-                const std::set<ResponseFields> &getOptionalFields() const override;
+                const std::set<ResponseField> &getOptionalFields() const override;
 
 
-                bool validate(const std::set<ResponseFields> &fields) override;
+                bool validate(const std::set<ResponseField> &fields) override;
 
                 virtual void addSpecificFields();
 
@@ -39,8 +35,8 @@ namespace Lanter {
             private:
                 void addBasicMandatoryFields();
 
-                std::set<ResponseFields> m_MandatoryFields;
-                std::set<ResponseFields> m_OptionalFields;
+                std::set<ResponseField> m_MandatoryFields;
+                std::set<ResponseField> m_OptionalFields;
             };
         }//Response
     }

@@ -1,10 +1,6 @@
-//
-// Created by Владимир Лысенков on 12.07.2020.
-//
-
 #include "gtest/gtest.h"
 
-#include "Lanter/MessageProcessor/MessageBuilder/JSONResponseBuilder.h"
+#include "Lanter/MessageProcessor/Builder/JSONResponseBuilder.h"
 
 #include "Lanter/MessageProcessor/JSONMessageFields.h"
 
@@ -16,13 +12,14 @@
 
 using namespace Lanter;
 using namespace Lanter::MessageProcessor;
+using namespace Lanter::MessageProcessor::Builder;
 
 TEST(JSONRequestBuilder, CheckFunctionInit) {
     JSONResponseBuilder builder;
 
     EXPECT_FALSE(builder.getFunctions().empty());
 
-    int fieldsCount = (int)ResponseFields::LastValue - (int)ResponseFields::FirstValue + 1;
+    int fieldsCount = (int)ResponseField::LastValue - (int)ResponseField::FirstValue + 1;
 
     EXPECT_EQ(builder.getFunctions().size(), fieldsCount);
 }
@@ -42,7 +39,7 @@ TEST(JSONResponseBuilder, CheckAddFieldEcrNumber) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::EcrNumber);
+    auto function = builder.getFunctions().at(ResponseField::EcrNumber);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getEcrNumber()));
@@ -64,7 +61,7 @@ TEST(JSONResponseBuilder, CheckAddFieldEcrMerchantNumber) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::EcrMerchantNumber);
+    auto function = builder.getFunctions().at(ResponseField::EcrMerchantNumber);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getEcrMerchantNumber()));
@@ -86,7 +83,7 @@ TEST(JSONResponseBuilder, CheckAddFieldOperationCode) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::OperationCode);
+    auto function = builder.getFunctions().at(ResponseField::OperationCode);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getOperationCode()));
@@ -108,7 +105,7 @@ TEST(JSONResponseBuilder, CheckAddFieldOriginalOperationCode) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::OriginalOperationCode);
+    auto function = builder.getFunctions().at(ResponseField::OriginalOperationCode);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getOriginalOperationCode()));
@@ -130,7 +127,7 @@ TEST(JSONResponseBuilder, CheckAddFieldTotalAmount) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::TotalAmount);
+    auto function = builder.getFunctions().at(ResponseField::TotalAmount);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getTotalAmount()));
@@ -152,7 +149,7 @@ TEST(JSONResponseBuilder, CheckAddFieldPartialAmount) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::PartialAmount);
+    auto function = builder.getFunctions().at(ResponseField::PartialAmount);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getPartialAmount()));
@@ -174,7 +171,7 @@ TEST(JSONResponseBuilder, CheckAddFieldAcquirerFeeAmount) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::AcquirerFeeAmount);
+    auto function = builder.getFunctions().at(ResponseField::AcquirerFeeAmount);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getAcquirerFeeAmount()));
@@ -196,7 +193,7 @@ TEST(JSONResponseBuilder, CheckAddFieldTerminalFeeAmount) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::TerminalFeeAmount);
+    auto function = builder.getFunctions().at(ResponseField::TerminalFeeAmount);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getTerminalFeeAmount()));
@@ -218,7 +215,7 @@ TEST(JSONResponseBuilder, CheckAddFieldTipsAmount) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::TipsAmount);
+    auto function = builder.getFunctions().at(ResponseField::TipsAmount);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getTipsAmount()));
@@ -240,7 +237,7 @@ TEST(JSONResponseBuilder, CheckAddFieldCurrencyCode) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::CurrencyCode);
+    auto function = builder.getFunctions().at(ResponseField::CurrencyCode);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getCurrencyCode()));
@@ -262,7 +259,7 @@ TEST(JSONResponseBuilder, CheckAddFieldReceiptReference) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::ReceiptReference);
+    auto function = builder.getFunctions().at(ResponseField::ReceiptReference);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getReceiptReference()));
@@ -284,7 +281,7 @@ TEST(JSONResponseBuilder, CheckAddFieldRRN) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::RRN);
+    auto function = builder.getFunctions().at(ResponseField::RRN);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getRRN()));
@@ -306,7 +303,7 @@ TEST(JSONResponseBuilder, CheckAddFieldStatus) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::Status);
+    auto function = builder.getFunctions().at(ResponseField::Status);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getStatus()));
@@ -328,7 +325,7 @@ TEST(JSONResponseBuilder, CheckAddFieldOriginalOperationStatus) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::OriginalOperationStatus);
+    auto function = builder.getFunctions().at(ResponseField::OriginalOperationStatus);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getOriginalOperationStatus()));
@@ -350,7 +347,7 @@ TEST(JSONResponseBuilder, CheckAddFieldTransDateTime) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::TransDateTime);
+    auto function = builder.getFunctions().at(ResponseField::TransDateTime);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getTransDateTime()));
@@ -372,7 +369,7 @@ TEST(JSONResponseBuilder, CheckAddFieldTerminalDateTime) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::TerminalDateTime);
+    auto function = builder.getFunctions().at(ResponseField::TerminalDateTime);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getTerminalDateTime()));
@@ -394,7 +391,7 @@ TEST(JSONResponseBuilder, CheckAddFieldCardPAN) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::CardPAN);
+    auto function = builder.getFunctions().at(ResponseField::CardPAN);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getCardPAN()));
@@ -416,7 +413,7 @@ TEST(JSONResponseBuilder, CheckAddFieldExpireDate) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::ExpireDate);
+    auto function = builder.getFunctions().at(ResponseField::ExpireDate);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getExpireDate()));
@@ -438,7 +435,7 @@ TEST(JSONResponseBuilder, CheckAddFieldCardholderName) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::CardholderName);
+    auto function = builder.getFunctions().at(ResponseField::CardholderName);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getCardholderName()));
@@ -460,7 +457,7 @@ TEST(JSONResponseBuilder, CheckAddFieldCardholderAuthMethod) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::CardholderAuthMethod);
+    auto function = builder.getFunctions().at(ResponseField::CardholderAuthMethod);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getCardholderAuthMethod()));
@@ -482,7 +479,7 @@ TEST(JSONResponseBuilder, CheckAddFieldAuthCode) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::AuthCode);
+    auto function = builder.getFunctions().at(ResponseField::AuthCode);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getAuthCode()));
@@ -504,7 +501,7 @@ TEST(JSONResponseBuilder, CheckAddFieldResponseCode) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::ResponseCode);
+    auto function = builder.getFunctions().at(ResponseField::ResponseCode);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getResponseCode()));
@@ -526,7 +523,7 @@ TEST(JSONResponseBuilder, CheckAddFieldResponseText) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::ResponseText);
+    auto function = builder.getFunctions().at(ResponseField::ResponseText);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getResponseText()));
@@ -548,7 +545,7 @@ TEST(JSONResponseBuilder, CheckAddFieldSTAN) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::STAN);
+    auto function = builder.getFunctions().at(ResponseField::STAN);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getSTAN()));
@@ -570,7 +567,7 @@ TEST(JSONResponseBuilder, CheckAddFieldTransactionID) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::TransactionID);
+    auto function = builder.getFunctions().at(ResponseField::TransactionID);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getTransactionID()));
@@ -592,7 +589,7 @@ TEST(JSONResponseBuilder, CheckAddFieldTerminalID) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::TerminalID);
+    auto function = builder.getFunctions().at(ResponseField::TerminalID);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getTerminalID()));
@@ -614,7 +611,7 @@ TEST(JSONResponseBuilder, CheckAddFieldCardEmvAid) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::CardEmvAid);
+    auto function = builder.getFunctions().at(ResponseField::CardEmvAid);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getCardEmvAid()));
@@ -636,7 +633,7 @@ TEST(JSONResponseBuilder, CheckAddFieldCardAppName) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::CardAppName);
+    auto function = builder.getFunctions().at(ResponseField::CardAppName);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getCardAppName()));
@@ -658,7 +655,7 @@ TEST(JSONResponseBuilder, CheckAddFieldCardInputMethod) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::CardInputMethod);
+    auto function = builder.getFunctions().at(ResponseField::CardInputMethod);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getCardInputMethod()));
@@ -680,7 +677,7 @@ TEST(JSONResponseBuilder, CheckAddFieldIssuerName) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::IssuerName);
+    auto function = builder.getFunctions().at(ResponseField::IssuerName);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getIssuerName()));
@@ -702,7 +699,7 @@ TEST(JSONResponseBuilder, CheckAddFieldAdditionalInfo) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::AdditionalInfo);
+    auto function = builder.getFunctions().at(ResponseField::AdditionalInfo);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getAdditionalInfo()));
@@ -724,7 +721,7 @@ TEST(JSONResponseBuilder, CheckAddFieldCardData) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::CardData);
+    auto function = builder.getFunctions().at(ResponseField::CardData);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getCardData()));
@@ -746,7 +743,7 @@ TEST(JSONResponseBuilder, CheckAddFieldCardDataEnc) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::CardDataEnc);
+    auto function = builder.getFunctions().at(ResponseField::CardDataEnc);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getCardDataEnc()));
@@ -768,7 +765,7 @@ TEST(JSONResponseBuilder, CheckAddFieldMerchantID) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::MerchantID);
+    auto function = builder.getFunctions().at(ResponseField::MerchantID);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getMerchantID()));
@@ -790,7 +787,7 @@ TEST(JSONResponseBuilder, CheckAddFieldTVR) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::TVR);
+    auto function = builder.getFunctions().at(ResponseField::TVR);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getTVR()));
@@ -812,7 +809,7 @@ TEST(JSONResponseBuilder, CheckAddFieldTSI) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::TSI);
+    auto function = builder.getFunctions().at(ResponseField::TSI);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getTSI()));
@@ -834,7 +831,7 @@ TEST(JSONResponseBuilder, CheckAddFieldTC) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::TC);
+    auto function = builder.getFunctions().at(ResponseField::TC);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getTC()));
@@ -856,7 +853,7 @@ TEST(JSONResponseBuilder, CheckAddFieldCID) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::CID);
+    auto function = builder.getFunctions().at(ResponseField::CID);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getCID()));
@@ -878,7 +875,7 @@ TEST(JSONResponseBuilder, CheckAddFieldKVR) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::KVR);
+    auto function = builder.getFunctions().at(ResponseField::KVR);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getKVR()));
@@ -900,7 +897,7 @@ TEST(JSONResponseBuilder, CheckAddFieldCDAResult) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::CDAResult);
+    auto function = builder.getFunctions().at(ResponseField::CDAResult);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getCDAResult()));
@@ -922,7 +919,7 @@ TEST(JSONResponseBuilder, CheckAddFieldSalesCount) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::SaleCount);
+    auto function = builder.getFunctions().at(ResponseField::SaleCount);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getSaleCount()));
@@ -944,7 +941,7 @@ TEST(JSONResponseBuilder, CheckAddFieldVoidCount) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::VoidCount);
+    auto function = builder.getFunctions().at(ResponseField::VoidCount);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getVoidCount()));
@@ -966,7 +963,7 @@ TEST(JSONResponseBuilder, CheckAddFieldRefundCount) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::RefundCount);
+    auto function = builder.getFunctions().at(ResponseField::RefundCount);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getRefundCount()));
@@ -1043,7 +1040,7 @@ TEST(JSONResponseBuilder, CheckAddFieldSalesArray) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::SaleArray);
+    auto function = builder.getFunctions().at(ResponseField::SaleArray);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getSaleArray()));
@@ -1158,7 +1155,7 @@ TEST(JSONResponseBuilder, CheckAddFieldVoidArray) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::VoidArray);
+    auto function = builder.getFunctions().at(ResponseField::VoidArray);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getVoidArray()));
@@ -1272,7 +1269,7 @@ TEST(JSONResponseBuilder, CheckAddFieldRefundArray) {
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseFields::RefundArray);
+    auto function = builder.getFunctions().at(ResponseField::RefundArray);
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getRefundArray()));

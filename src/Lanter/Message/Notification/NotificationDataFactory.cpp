@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 30.06.2020.
-//
-
 #include "Lanter/Message/Notification/NotificationData.h"
 
 #include "Lanter/Message/Notification/NotificationDataFactory.h"

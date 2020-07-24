@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 08.07.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_MESSAGEFIELDS_H
 #define LAN_4GATELIBRARYCPP_MESSAGEFIELDS_H
 

@@ -4,7 +4,7 @@ namespace Lanter {
     namespace Message {
         namespace Response {
             void PrintCommsInfo::addSpecificFields() {
-                appendOptionalField(ResponseFields::AdditionalInfo);
+                appendOptionalField(ResponseField::AdditionalInfo);
             }
         }
     }

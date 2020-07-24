@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 24.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_IREQUESTDATA_H
 #define LAN_4GATELIBRARYCPP_IREQUESTDATA_H
 
@@ -9,7 +5,7 @@
 #include <set>
 #include <cstdint>
 
-#include "RequestFields.h"
+#include "RequestField.h"
 #include "Lanter/Message/OperationCode.h"
 #include "Lanter/Utils/VisibilityMacroses.h"
 
@@ -23,28 +19,28 @@ namespace Lanter {
 
                 /// \brief Возвращает список установленных полей
                 /// \return Список установленных полей
-                /// \sa RequestFields
-                virtual const std::set<RequestFields> &getFieldsSet() const = 0;
+                /// \sa RequestField
+                virtual const std::set<RequestField> &getFieldsSet() const = 0;
 
                 /// \brief Проверяет было ли установлено поле
                 /// \param field Поле, которое необходимо проверить
                 /// \return true, если поле было установлено
-                virtual bool isFieldSet(RequestFields field) const = 0;
+                virtual bool isFieldSet(RequestField field) const = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля и удаляет из списка установленных полей
                 /// \param field Поле, которое необходимо удалить
                 /// \return true, если поле успешно удалено
-                virtual bool resetField(RequestFields field) = 0;
+                virtual bool resetField(RequestField field) = 0;
 
                 /// \brief Возвращает список обязательных полей для выполняемой операции
                 /// \return Список обязательных полей
-                /// \sa RequestFields
-                virtual const std::set<RequestFields> &getMandatoryFields() const = 0;
+                /// \sa RequestField
+                virtual const std::set<RequestField> &getMandatoryFields() const = 0;
 
                 /// \brief Возвращает список опциональных полей для выполняемой операции
                 /// \return Список опциональных полей
-                /// \sa RequestFields
-                virtual const std::set<RequestFields> &getOptionalFields() const = 0;
+                /// \sa RequestField
+                virtual const std::set<RequestField> &getOptionalFields() const = 0;
 
                 /// \brief Проверяет наличие обязательных полей.
                 /// \return true - если все обязательные поля установлены.
@@ -69,7 +65,7 @@ namespace Lanter {
                 virtual int16_t getEcrMerchantNumber() const = 0;
 
                 /// \brief Устанавливает лоический иденитфикатор мерчанта в кассовом ПО
-                /// \param ecrNumber Логический идентификатор мерчанта в кассовом в диапазоне [1, 999] 
+                /// \param ecrMerchantNumber Логический идентификатор мерчанта в кассовом в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
                 virtual bool setEcrMerchantNumber(int16_t ecrMerchantNumber) = 0;
 
@@ -81,11 +77,11 @@ namespace Lanter {
 
                 /// \brief Возвращает код выполняемой операции
                 /// \return Если поле установлено, возвращает код операции. Иначе NoOperation
-                /// \sa OperationCodes
+                /// \sa OperationCode
                 virtual OperationCode getOperationCode() const = 0;
 
                 /// \brief Устанавливает код выполнямой операции
-                /// \param operationCode Значение из перечислений OperationCodes, за исключением NoOperation
+                /// \param operationCode Значение из перечислений OperationCode, за исключением NoOperation
                 /// \return true, если поле успешно установлено
                 virtual bool setOperationCode(OperationCode operationCode) = 0;
 
@@ -127,7 +123,7 @@ namespace Lanter {
                 virtual int64_t getTipsAmount() const = 0;
 
                 /// \brief Устанавливает сумму чаевых в минимальных единицах валюты (копейки для рублей)
-                /// \param partialAmount Значение суммы чаевых операции в диапазоне [0, 999999999999]
+                /// \param tipsAmount Значение суммы чаевых операции в диапазоне [0, 999999999999]
                 /// \return true, если поле успешно установлено
                 virtual bool setTipsAmount(int64_t tipsAmount) = 0;
 
@@ -141,7 +137,7 @@ namespace Lanter {
                 virtual int64_t getCashbackAmount() const = 0;
 
                 /// \brief Устанавливает сумму кэшбека в минимальных единицах валюты (копейки для рублей)
-                /// \param partialAmount Значение суммы кэшбека операции в диапазоне [0, 999999999999]
+                /// \param cashbackAmount Значение суммы кэшбека операции в диапазоне [0, 999999999999]
                 /// \return true, если поле успешно установлено
                 virtual bool setCashbackAmount(int64_t cashbackAmount) = 0;
 

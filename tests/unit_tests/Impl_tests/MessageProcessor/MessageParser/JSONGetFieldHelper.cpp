@@ -1,13 +1,10 @@
-//
-// Created by Владимир Лысенков on 14.07.2020.
-//
-
 #include "gtest/gtest.h"
 
-#include "Lanter/MessageProcessor/MessageParser/JSONGetFieldHelper.h"
+#include "Lanter/MessageProcessor/Parser/JSONGetFieldHelper.h"
 
 using namespace Lanter;
 using namespace Lanter::MessageProcessor;
+using namespace Lanter::MessageProcessor::Parser;
 
 TEST(JSONGetFieldHelper, CheckGetInt) {
     Json::Value object;

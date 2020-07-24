@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 20.06.2020.
-//
-
 #include "RequestData.h"
 #include "Validators/ValidatorFactory.h"
 #include "Lanter/Utils/FieldRangeChecker.h"
@@ -25,7 +21,7 @@ namespace Lanter
                 bool result = false;
                 if (checkEcrNumberRange(ecrNumber)) {
                     m_EcrNumber = ecrNumber;
-                    m_FieldsSet.insert(RequestFields::EcrNumber);
+                    m_FieldsSet.insert(RequestField::EcrNumber);
                     result = true;
                 }
                 return result;
@@ -39,7 +35,7 @@ namespace Lanter
                 bool result = false;
                 if (checkEcrMerchantNumberRange(ecrMerchantNumber)) {
                     m_EcrMerchantNumber = ecrMerchantNumber;
-                    m_FieldsSet.insert(RequestFields::EcrMerchantNumber);
+                    m_FieldsSet.insert(RequestField::EcrMerchantNumber);
                     result = true;
                 }
                 return result;
@@ -54,7 +50,7 @@ namespace Lanter
                 if (checkOperationCodeRange(static_cast<int32_t>(operationCode))) {
                     if (m_OperationCode != operationCode) {
                         m_OperationCode = operationCode;
-                        m_FieldsSet.insert(RequestFields::OperationCode);
+                        m_FieldsSet.insert(RequestField::OperationCode);
                         initValidator();
                     }
                     result = true;
@@ -70,7 +66,7 @@ namespace Lanter
                 bool result = false;
                 if (checkAmountRange(amount)) {
                     m_Amount = amount;
-                    m_FieldsSet.insert(RequestFields::Amount);
+                    m_FieldsSet.insert(RequestField::Amount);
                     result = true;
                 }
                 return result;
@@ -84,7 +80,7 @@ namespace Lanter
                 bool result = false;
                 if (checkAmountRange(partialAmount)) {
                     m_PartialAmount = partialAmount;
-                    m_FieldsSet.insert(RequestFields::PartialAmount);
+                    m_FieldsSet.insert(RequestField::PartialAmount);
                     result = true;
                 }
                 return result;
@@ -98,7 +94,7 @@ namespace Lanter
                 bool result = false;
                 if (checkAmountRange(tipsAmount)) {
                     m_TipsAmount = tipsAmount;
-                    m_FieldsSet.insert(RequestFields::TipsAmount);
+                    m_FieldsSet.insert(RequestField::TipsAmount);
                     result = true;
                 }
                 return result;
@@ -112,7 +108,7 @@ namespace Lanter
                 bool result = false;
                 if (checkAmountRange(cashbackAmount)) {
                     m_CashbackAmount = cashbackAmount;
-                    m_FieldsSet.insert(RequestFields::CashbackAmount);
+                    m_FieldsSet.insert(RequestField::CashbackAmount);
                     result = true;
                 }
                 return result;
@@ -126,7 +122,7 @@ namespace Lanter
                 bool result = false;
                 if (checkCurrencyCodeRange(currencyCode)) {
                     m_CurrencyCode = currencyCode;
-                    m_FieldsSet.insert(RequestFields::CurrencyCode);
+                    m_FieldsSet.insert(RequestField::CurrencyCode);
                     result = true;
                 }
                 return result;
@@ -140,7 +136,7 @@ namespace Lanter
                 bool result = false;
                 if (checkRRNRange(RRN)) {
                     m_RRN = RRN;
-                    m_FieldsSet.insert(RequestFields::RRN);
+                    m_FieldsSet.insert(RequestField::RRN);
                     result = true;
                 }
                 return result;
@@ -154,7 +150,7 @@ namespace Lanter
                 bool result = false;
                 if (checkAuthCodeRange(authCode)) {
                     m_AuthCode = authCode;
-                    m_FieldsSet.insert(RequestFields::AuthCode);
+                    m_FieldsSet.insert(RequestField::AuthCode);
                     result = true;
                 }
                 return result;
@@ -168,7 +164,7 @@ namespace Lanter
                 bool result = false;
                 if (checkAuthCodeRange(receiptReference)) {
                     m_ReceiptReference = receiptReference;
-                    m_FieldsSet.insert(RequestFields::ReceiptReference);
+                    m_FieldsSet.insert(RequestField::ReceiptReference);
                     result = true;
                 }
                 return result;
@@ -182,7 +178,7 @@ namespace Lanter
                 bool result = false;
                 if (checkTransactionIDRange(transactionId)) {
                     m_TransactionID = transactionId;
-                    m_FieldsSet.insert(RequestFields::TransactionID);
+                    m_FieldsSet.insert(RequestField::TransactionID);
                     result = true;
                 }
                 return result;
@@ -196,7 +192,7 @@ namespace Lanter
                 bool result = false;
                 if (checkCardDataEncRange(cardDataEnc)) {
                     m_CardDataEnc = cardDataEnc;
-                    m_FieldsSet.insert(RequestFields::CardDataEnc);
+                    m_FieldsSet.insert(RequestField::CardDataEnc);
                     result = true;
                 }
                 return result;
@@ -210,7 +206,7 @@ namespace Lanter
                 bool result = false;
                 if (checkOpenTagsRange(openTags)) {
                     m_OpenTags = openTags;
-                    m_FieldsSet.insert(RequestFields::OpenTags);
+                    m_FieldsSet.insert(RequestField::OpenTags);
                     result = true;
                 }
                 return result;
@@ -224,7 +220,7 @@ namespace Lanter
                 bool result = false;
                 if (checkEncTagsRange(encTags)) {
                     m_EncTags = encTags;
-                    m_FieldsSet.insert(RequestFields::EncTags);
+                    m_FieldsSet.insert(RequestField::EncTags);
                     result = true;
                 }
                 return result;
@@ -238,7 +234,7 @@ namespace Lanter
                 bool result = false;
                 if (checkProviderCodeRange(providerCode)) {
                     m_ProviderCode = providerCode;
-                    m_FieldsSet.insert(RequestFields::ProviderCode);
+                    m_FieldsSet.insert(RequestField::ProviderCode);
                     result = true;
                 }
                 return result;
@@ -252,24 +248,24 @@ namespace Lanter
                 bool result = false;
                 if (checkAdditionalInfoRange(additionalInfo)) {
                     m_AdditionalInfo = additionalInfo;
-                    m_FieldsSet.insert(RequestFields::AdditionalInfo);
+                    m_FieldsSet.insert(RequestField::AdditionalInfo);
                     result = true;
                 }
                 return result;
             }
 
-            const std::set<RequestFields> &RequestData::getFieldsSet() const {
+            const std::set<RequestField> &RequestData::getFieldsSet() const {
                 return m_FieldsSet;
             }
 
-            const std::set<RequestFields> &RequestData::getMandatoryFields() const {
+            const std::set<RequestField> &RequestData::getMandatoryFields() const {
                 if (m_Validator) {
                     return m_Validator->getMandatoryFields();
                 }
                 return m_EmptyFieldsPlaceholder;
             }
 
-            const std::set<RequestFields> &RequestData::getOptionalFields() const {
+            const std::set<RequestField> &RequestData::getOptionalFields() const {
                 if (m_Validator) {
                     return m_Validator->getOptionalFields();
                 }
@@ -287,62 +283,62 @@ namespace Lanter
                 m_Validator = ValidatorFactory::getValidator(getOperationCode());
             }
 
-            bool RequestData::isFieldSet(RequestFields field) const {
+            bool RequestData::isFieldSet(RequestField field) const {
                 return m_FieldsSet.find(field) != m_FieldsSet.end();
             }
 
-            bool RequestData::resetField(RequestFields field) {
+            bool RequestData::resetField(RequestField field) {
                 bool result = false;
                 switch (field) {
-                    case RequestFields::EcrNumber:
+                    case RequestField::EcrNumber:
                         result = resetEcrNumber();
                         break;
-                    case RequestFields::EcrMerchantNumber:
+                    case RequestField::EcrMerchantNumber:
                         result = resetEcrMerchantNumber();
                         break;
-                    case RequestFields::OperationCode:
+                    case RequestField::OperationCode:
                         result = resetOperationCode();
                         break;
-                    case RequestFields::Amount:
+                    case RequestField::Amount:
                         result = resetAmount();
                         break;
-                    case RequestFields::PartialAmount:
+                    case RequestField::PartialAmount:
                         result = resetPartialAmount();
                         break;
-                    case RequestFields::TipsAmount:
+                    case RequestField::TipsAmount:
                         result = resetTipsAmount();
                         break;
-                    case RequestFields::CashbackAmount:
+                    case RequestField::CashbackAmount:
                         result = resetCashbackAmount();
                         break;
-                    case RequestFields::CurrencyCode:
+                    case RequestField::CurrencyCode:
                         result = resetCurrencyCode();
                         break;
-                    case RequestFields::RRN:
+                    case RequestField::RRN:
                         result = resetRRN();
                         break;
-                    case RequestFields::AuthCode:
+                    case RequestField::AuthCode:
                         result = resetAuthCode();
                         break;
-                    case RequestFields::ReceiptReference:
+                    case RequestField::ReceiptReference:
                         result = resetReceiptReference();
                         break;
-                    case RequestFields::TransactionID:
+                    case RequestField::TransactionID:
                         result = resetTransactionID();
                         break;
-                    case RequestFields::CardDataEnc:
+                    case RequestField::CardDataEnc:
                         result = resetCardDataEnc();
                         break;
-                    case RequestFields::OpenTags:
+                    case RequestField::OpenTags:
                         result = resetOpenTags();
                         break;
-                    case RequestFields::EncTags:
+                    case RequestField::EncTags:
                         result = resetEncTags();
                         break;
-                    case RequestFields::ProviderCode:
+                    case RequestField::ProviderCode:
                         result = resetProviderCode();
                         break;
-                    case RequestFields::AdditionalInfo:
+                    case RequestField::AdditionalInfo:
                         result = resetAdditionalInfo();
                         break;
                 }
@@ -351,105 +347,105 @@ namespace Lanter
 
             bool RequestData::resetEcrNumber() {
                 m_EcrNumber = -1;
-                m_FieldsSet.erase(RequestFields::EcrNumber);
-                return !isFieldSet(RequestFields::EcrNumber);
+                m_FieldsSet.erase(RequestField::EcrNumber);
+                return !isFieldSet(RequestField::EcrNumber);
             }
 
             bool RequestData::resetEcrMerchantNumber() {
                 m_EcrMerchantNumber = -1;
-                m_FieldsSet.erase(RequestFields::EcrMerchantNumber);
-                return !isFieldSet(RequestFields::EcrMerchantNumber);
+                m_FieldsSet.erase(RequestField::EcrMerchantNumber);
+                return !isFieldSet(RequestField::EcrMerchantNumber);
             }
 
             bool RequestData::resetOperationCode() {
                 m_OperationCode = OperationCode::NoOperation;
-                m_FieldsSet.erase(RequestFields::OperationCode);
+                m_FieldsSet.erase(RequestField::OperationCode);
                 deinitValidator();
-                return !isFieldSet(RequestFields::OperationCode);
+                return !isFieldSet(RequestField::OperationCode);
             }
 
             bool RequestData::resetAmount() {
                 m_Amount = -1;
-                m_FieldsSet.erase(RequestFields::Amount);
-                return !isFieldSet(RequestFields::Amount);
+                m_FieldsSet.erase(RequestField::Amount);
+                return !isFieldSet(RequestField::Amount);
             }
 
             bool RequestData::resetPartialAmount() {
                 m_PartialAmount = -1;
-                m_FieldsSet.erase(RequestFields::PartialAmount);
-                return !isFieldSet(RequestFields::PartialAmount);
+                m_FieldsSet.erase(RequestField::PartialAmount);
+                return !isFieldSet(RequestField::PartialAmount);
             }
 
             bool RequestData::resetTipsAmount() {
                 m_TipsAmount = -1;
-                m_FieldsSet.erase(RequestFields::TipsAmount);
-                return !isFieldSet(RequestFields::TipsAmount);
+                m_FieldsSet.erase(RequestField::TipsAmount);
+                return !isFieldSet(RequestField::TipsAmount);
             }
 
             bool RequestData::resetCashbackAmount() {
                 m_CashbackAmount = -1;
-                m_FieldsSet.erase(RequestFields::CashbackAmount);
-                return !isFieldSet(RequestFields::CashbackAmount);
+                m_FieldsSet.erase(RequestField::CashbackAmount);
+                return !isFieldSet(RequestField::CashbackAmount);
             }
 
             bool RequestData::resetCurrencyCode() {
                 m_CurrencyCode = -1;
-                m_FieldsSet.erase(RequestFields::CurrencyCode);
-                return !isFieldSet(RequestFields::CurrencyCode);
+                m_FieldsSet.erase(RequestField::CurrencyCode);
+                return !isFieldSet(RequestField::CurrencyCode);
             }
 
             bool RequestData::resetRRN() {
                 m_RRN.clear();
-                m_FieldsSet.erase(RequestFields::RRN);
-                return !isFieldSet(RequestFields::RRN);
+                m_FieldsSet.erase(RequestField::RRN);
+                return !isFieldSet(RequestField::RRN);
             }
 
             bool RequestData::resetAuthCode() {
                 m_AuthCode.clear();
-                m_FieldsSet.erase(RequestFields::AuthCode);
-                return !isFieldSet(RequestFields::AuthCode);
+                m_FieldsSet.erase(RequestField::AuthCode);
+                return !isFieldSet(RequestField::AuthCode);
             }
 
             bool RequestData::resetReceiptReference() {
                 m_ReceiptReference.clear();
-                m_FieldsSet.erase(RequestFields::ReceiptReference);
-                return !isFieldSet(RequestFields::ReceiptReference);
+                m_FieldsSet.erase(RequestField::ReceiptReference);
+                return !isFieldSet(RequestField::ReceiptReference);
             }
 
             bool RequestData::resetTransactionID() {
                 m_TransactionID.clear();
-                m_FieldsSet.erase(RequestFields::TransactionID);
-                return !isFieldSet(RequestFields::TransactionID);
+                m_FieldsSet.erase(RequestField::TransactionID);
+                return !isFieldSet(RequestField::TransactionID);
             }
 
             bool RequestData::resetCardDataEnc() {
                 m_CardDataEnc.clear();
-                m_FieldsSet.erase(RequestFields::CardDataEnc);
-                return !isFieldSet(RequestFields::CardDataEnc);
+                m_FieldsSet.erase(RequestField::CardDataEnc);
+                return !isFieldSet(RequestField::CardDataEnc);
             }
 
             bool RequestData::resetOpenTags() {
                 m_OpenTags.clear();
-                m_FieldsSet.erase(RequestFields::OpenTags);
-                return !isFieldSet(RequestFields::OpenTags);
+                m_FieldsSet.erase(RequestField::OpenTags);
+                return !isFieldSet(RequestField::OpenTags);
             }
 
             bool RequestData::resetEncTags() {
                 m_EncTags.clear();
-                m_FieldsSet.erase(RequestFields::EncTags);
-                return !isFieldSet(RequestFields::EncTags);
+                m_FieldsSet.erase(RequestField::EncTags);
+                return !isFieldSet(RequestField::EncTags);
             }
 
             bool RequestData::resetProviderCode() {
                 m_ProviderCode.clear();
-                m_FieldsSet.erase(RequestFields::ProviderCode);
-                return !isFieldSet(RequestFields::ProviderCode);
+                m_FieldsSet.erase(RequestField::ProviderCode);
+                return !isFieldSet(RequestField::ProviderCode);
             }
 
             bool RequestData::resetAdditionalInfo() {
                 m_AdditionalInfo.clear();
-                m_FieldsSet.erase(RequestFields::AdditionalInfo);
-                return !isFieldSet(RequestFields::AdditionalInfo);
+                m_FieldsSet.erase(RequestField::AdditionalInfo);
+                return !isFieldSet(RequestField::AdditionalInfo);
             }
 
             void RequestData::deinitValidator() {

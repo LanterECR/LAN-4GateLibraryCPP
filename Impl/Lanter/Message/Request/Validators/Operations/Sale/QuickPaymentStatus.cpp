@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 24.06.2020.
-//
-
 #include "QuickPaymentStatus.h"
 
 namespace Lanter {
@@ -9,12 +5,12 @@ namespace Lanter {
         namespace Request {
 
             void QuickPaymentStatus::addSpecificFields() {
-                appendMandatoryField(RequestFields::EcrMerchantNumber);
+                appendMandatoryField(RequestField::EcrMerchantNumber);
 
-                appendOptionalField(RequestFields::RRN);
-                appendOptionalField(RequestFields::AuthCode);
-                appendOptionalField(RequestFields::TransactionID);
-                appendOptionalField(RequestFields::ReceiptReference);
+                appendOptionalField(RequestField::RRN);
+                appendOptionalField(RequestField::AuthCode);
+                appendOptionalField(RequestField::TransactionID);
+                appendOptionalField(RequestField::ReceiptReference);
             }
         }
     }

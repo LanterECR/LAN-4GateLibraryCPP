@@ -1,13 +1,9 @@
-//
-// Created by Владимир Лысенков on 24.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_STATUS_H
 #define LAN_4GATELIBRARYCPP_STATUS_H
 namespace Lanter {
     namespace Message {
         namespace Response {
-            /// \brief Список возможных значений поля Status в ответе финансового ПО LAN-4Tap
+            /// \brief Список возможных значений поля ResponseField::Status в ответе финансового ПО LAN-4Tap
             enum class Status {
                 NoStatus,
                 Success = 1, ///< Операция успешно выполнена
@@ -23,8 +19,8 @@ namespace Lanter {
                 CanceledByTerminal, ///< Выполнение операции отменено в финансовом ПО LAN-4Tap
                 FastTrackKeyError,///< Ошибка ключей шифрования для операции FastTrack
                 //Диапазон значений
-                FirstValue = Success, ///< Ссылка на первое поле в enum
-                LastValue = FastTrackKeyError ///< Ссылка на последнее поле в enum
+                FirstValue = Success, ///< Ссылка на первый элемент перечисления
+                LastValue = FastTrackKeyError ///< Ссылка на последний элемент перечисления
             };
         } //Response
     }

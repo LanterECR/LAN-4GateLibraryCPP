@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 30.06.2020.
-//
-
 #include "NotificationData.h"
 
 #include "Lanter/Utils/FieldRangeChecker.h"

@@ -1,12 +1,8 @@
-//
-// Created by Владимир Лысенков on 17.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_OPERATIONCODES_H
 #define LAN_4GATELIBRARYCPP_OPERATIONCODES_H
 
-namespace Lanter
-{
+
+namespace Lanter {
     namespace Message {
         /// \brief Список поддерживаемых операций
         enum class OperationCode {
@@ -58,8 +54,8 @@ namespace Lanter
             //Отдельный тип операции для представления массивов операции DetailReport
             ArrayElement = 1000, ///< Фиктивный код операции для создания элементов массива
             //Диапазон операций
-            FirstValue = Sale, ///< Код первой операции данного перечисления
-            LastValue = ArrayElement ///< Код последней операции данного перечисления
+            FirstValue = Sale, ///< Ссылка на первый элемент перечисления
+            LastValue = ArrayElement ///< Ссылка на последний элемент перечисления
         };
     }
 }

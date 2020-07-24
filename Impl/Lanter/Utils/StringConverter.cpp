@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 13.07.2020.
-//
-
 #include "StringConverter.h"
 
 namespace Lanter {

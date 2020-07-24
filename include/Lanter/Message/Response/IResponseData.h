@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 24.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_IRESPONSEDATA_H
 #define LAN_4GATELIBRARYCPP_IRESPONSEDATA_H
 
@@ -12,7 +8,7 @@
 #include <memory>
 
 #include "Lanter/Message/OperationCode.h"
-#include "ResponseFields.h"
+#include "ResponseField.h"
 #include "CardholderAuthMethod.h"
 #include "CardInputMethod.h"
 #include "Status.h"
@@ -22,34 +18,35 @@
 namespace Lanter {
     namespace Message {
         namespace Response {
+            ///\brief Базовый класс-контейнер для получения уведомлений от финансового ПО LAN-4Tap
             class LANTER_VISIBILITY IResponseData {
             public:
                 virtual ~IResponseData() = default;
 
                 /// \brief Возвращает список установленных полей
                 /// \return Список установленных полей
-                /// \sa ResponseFields
-                virtual const std::set<ResponseFields> &getFieldsSet() const = 0;
+                /// \sa ResponseField
+                virtual const std::set<ResponseField> &getFieldsSet() const = 0;
 
                 /// \brief Проверяет было ли установлено поле
                 /// \param field Поле, которое необходимо проверить
                 /// \return true, если поле было установлено
-                virtual bool isFieldSet(ResponseFields field) const = 0;
+                virtual bool isFieldSet(ResponseField field) const = 0;
 
                 // \brief Устанавливает значение по умолчанию для поля и удаляет из списка установленных полей
                 /// \param field Поле, которое необходимо удалить
                 /// \return true, если поле успешно удалено
-                virtual bool resetField(ResponseFields field) = 0;
+                virtual bool resetField(ResponseField field) = 0;
 
                 /// \brief Возвращает список обязательных полей для выполненной операции
                 /// \return Список обязательных полей
-                /// \sa ResponseFields
-                virtual const std::set<ResponseFields> &getMandatoryFields() const = 0;
+                /// \sa ResponseField
+                virtual const std::set<ResponseField> &getMandatoryFields() const = 0;
 
                 /// \brief Возвращает список опциональных полей для выполненной операции
                 /// \return Список опциональных полей
-                /// \sa ResponseFields
-                virtual const std::set<ResponseFields> &getOptionalFields() const = 0;
+                /// \sa ResponseField
+                virtual const std::set<ResponseField> &getOptionalFields() const = 0;
 
                 /// \brief Проверяет наличие обязательных полей.
                 /// \return true - если все обязательные поля установлены.
@@ -74,7 +71,7 @@ namespace Lanter {
                 virtual int16_t getEcrMerchantNumber() const = 0;
 
                 /// \brief Устанавливает лоический иденитфикатор мерчанта в кассовом ПО
-                /// \param ecrNumber Логический идентификатор мерчанта в кассовом в диапазоне [1, 999]
+                /// \param ecrMerchantNumber Логический идентификатор мерчанта в кассовом в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
                 virtual bool setEcrMerchantNumber(int16_t ecrMerchantNumber) = 0;
 
@@ -85,12 +82,12 @@ namespace Lanter {
 
                 /// \brief Возвращает код выполненной операции
                 /// \return Если поле установлено, возвращает код операции. Иначе NoOperation
-                /// \sa OperationCodes
+                /// \sa OperationCode
                 virtual OperationCode getOperationCode() const = 0;
 
                 /// \brief Устанавливает код выполнямой операции
-                /// \param operationCode Значение из перечислений OperationCodes, за исключением NoOperation
-                /// \sa OperationCodes
+                /// \param operationCode Значение из перечислений OperationCode, за исключением NoOperation
+                /// \sa OperationCode
                 /// \return true, если поле успешно установлено
                 virtual bool setOperationCode(OperationCode operationCode) = 0;
 
@@ -101,12 +98,12 @@ namespace Lanter {
 
                 /// \brief Возвращает код оригинальной операции
                 /// \return Если поле установлено, возвращает код оригинальной операции. Иначе NoOperation
-                /// \sa OperationCodes
+                /// \see OperationCode
                 virtual OperationCode getOriginalOperationCode() const = 0;
 
                 /// \brief Устанавливает код оригинальной операции
-                /// \param operationCode Значение из перечислений OperationCodes, за исключением NoOperation
-                /// \sa OperationCodes
+                /// \param originalOperationCode Значение из перечислений OperationCode, за исключением NoOperation
+                /// \see OperationCode
                 /// \return true, если поле успешно установлено
                 virtual bool setOriginalOperationCode(OperationCode originalOperationCode) = 0;
 

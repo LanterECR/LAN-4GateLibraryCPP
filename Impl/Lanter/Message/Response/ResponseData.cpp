@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 25.06.2020.
-//
-
 #include "ResponseData.h"
 
 #include "Lanter/Utils/FieldRangeChecker.h"
@@ -16,22 +12,22 @@ namespace Lanter {
                 initValidator();
             }
 
-            const std::set<ResponseFields> &ResponseData::getFieldsSet() const {
+            const std::set<ResponseField> &ResponseData::getFieldsSet() const {
                 return m_FieldsSet;
             }
 
-            bool ResponseData::isFieldSet(ResponseFields field) const {
+            bool ResponseData::isFieldSet(ResponseField field) const {
                 return m_FieldsSet.find(field) != m_FieldsSet.end();
             }
 
-            const std::set<ResponseFields> &ResponseData::getMandatoryFields() const {
+            const std::set<ResponseField> &ResponseData::getMandatoryFields() const {
                 if (m_Validator) {
                     return m_Validator->getMandatoryFields();
                 }
                 return m_EmptyFieldsPlaceholder;
             }
 
-            const std::set<ResponseFields> &ResponseData::getOptionalFields() const {
+            const std::set<ResponseField> &ResponseData::getOptionalFields() const {
                 if (m_Validator) {
                     return m_Validator->getOptionalFields();
                 }
@@ -53,7 +49,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkEcrNumberRange(ecrNumber)) {
                     m_EcrNumber = ecrNumber;
-                    m_FieldsSet.insert(ResponseFields::EcrNumber);
+                    m_FieldsSet.insert(ResponseField::EcrNumber);
                     result = true;
                 }
                 return result;
@@ -67,7 +63,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkEcrMerchantNumberRange(ecrMerchantNumber)) {
                     m_EcrMerchantNumber = ecrMerchantNumber;
-                    m_FieldsSet.insert(ResponseFields::EcrMerchantNumber);
+                    m_FieldsSet.insert(ResponseField::EcrMerchantNumber);
                     result = true;
                 }
                 return result;
@@ -82,7 +78,7 @@ namespace Lanter {
                 if (checkOperationCodeRange(static_cast<int32_t>(operationCode))) {
                     if (m_OperationCode != operationCode) {
                         m_OperationCode = operationCode;
-                        m_FieldsSet.insert(ResponseFields::OperationCode);
+                        m_FieldsSet.insert(ResponseField::OperationCode);
                         initValidator();
                     }
                     result = true;
@@ -98,7 +94,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkOperationCodeRange(static_cast<uint32_t>(originalOperationCode))) {
                     m_OriginalOperationCode = originalOperationCode;
-                    m_FieldsSet.insert(ResponseFields::OriginalOperationCode);
+                    m_FieldsSet.insert(ResponseField::OriginalOperationCode);
                     result = true;
                 }
                 return result;
@@ -112,7 +108,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkAmountRange(totalAmount)) {
                     m_TotalAmount = totalAmount;
-                    m_FieldsSet.insert(ResponseFields::TotalAmount);
+                    m_FieldsSet.insert(ResponseField::TotalAmount);
                     result = true;
                 }
                 return result;
@@ -126,7 +122,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkAmountRange(partialAmount)) {
                     m_PartialAmount = partialAmount;
-                    m_FieldsSet.insert(ResponseFields::PartialAmount);
+                    m_FieldsSet.insert(ResponseField::PartialAmount);
                     result = true;
                 }
                 return result;
@@ -140,7 +136,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkAmountRange(amountAcquirerFee)) {
                     m_AcquirerFeeAmount = amountAcquirerFee;
-                    m_FieldsSet.insert(ResponseFields::AcquirerFeeAmount);
+                    m_FieldsSet.insert(ResponseField::AcquirerFeeAmount);
                     result = true;
                 }
                 return result;
@@ -154,7 +150,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkAmountRange(amountTerminalFee)) {
                     m_TerminalFeeAmount = amountTerminalFee;
-                    m_FieldsSet.insert(ResponseFields::TerminalFeeAmount);
+                    m_FieldsSet.insert(ResponseField::TerminalFeeAmount);
                     result = true;
                 }
                 return result;
@@ -168,7 +164,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkAmountRange(tipsAmount)) {
                     m_TipsAmount = tipsAmount;
-                    m_FieldsSet.insert(ResponseFields::TipsAmount);
+                    m_FieldsSet.insert(ResponseField::TipsAmount);
                     result = true;
                 }
                 return result;
@@ -182,7 +178,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkCurrencyCodeRange(currencyCode)) {
                     m_CurrencyCode = currencyCode;
-                    m_FieldsSet.insert(ResponseFields::CurrencyCode);
+                    m_FieldsSet.insert(ResponseField::CurrencyCode);
                     result = true;
                 }
                 return result;
@@ -196,7 +192,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkReceiptReferenceRange(receiptReference)) {
                     m_ReceiptReference = receiptReference;
-                    m_FieldsSet.insert(ResponseFields::ReceiptReference);
+                    m_FieldsSet.insert(ResponseField::ReceiptReference);
                     result = true;
                 }
                 return result;
@@ -210,7 +206,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkRRNRange(rrn)) {
                     m_RRN = rrn;
-                    m_FieldsSet.insert(ResponseFields::RRN);
+                    m_FieldsSet.insert(ResponseField::RRN);
                     result = true;
                 }
                 return result;
@@ -224,7 +220,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkStatusRange(static_cast<int32_t>(status))) {
                     m_Status = status;
-                    m_FieldsSet.insert(ResponseFields::Status);
+                    m_FieldsSet.insert(ResponseField::Status);
                     result = true;
                 }
                 return result;
@@ -238,7 +234,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkStatusRange(static_cast<int32_t>(originalOperationStatus))) {
                     m_OriginalOperationStatus = originalOperationStatus;
-                    m_FieldsSet.insert(ResponseFields::OriginalOperationStatus);
+                    m_FieldsSet.insert(ResponseField::OriginalOperationStatus);
                     result = true;
                 }
                 return result;
@@ -252,7 +248,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkTransDateTimeRange(transDateTime)) {
                     m_TransDateTime = transDateTime;
-                    m_FieldsSet.insert(ResponseFields::TransDateTime);
+                    m_FieldsSet.insert(ResponseField::TransDateTime);
                     result = true;
                 }
                 return result;
@@ -266,7 +262,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkTerminalDateTimeRange(terminalDateTime)) {
                     m_TerminalDateTime = terminalDateTime;
-                    m_FieldsSet.insert(ResponseFields::TerminalDateTime);
+                    m_FieldsSet.insert(ResponseField::TerminalDateTime);
                     result = true;
                 }
                 return result;
@@ -280,7 +276,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkCardPANRange(cardPan)) {
                     m_CardPAN = cardPan;
-                    m_FieldsSet.insert(ResponseFields::CardPAN);
+                    m_FieldsSet.insert(ResponseField::CardPAN);
                     result = true;
                 }
                 return result;
@@ -294,7 +290,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkExpireDateRange(expireDate)) {
                     m_ExpireDate = expireDate;
-                    m_FieldsSet.insert(ResponseFields::ExpireDate);
+                    m_FieldsSet.insert(ResponseField::ExpireDate);
                     result = true;
                 }
                 return result;
@@ -308,7 +304,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkCardholderNameRange(cardholderName)) {
                     m_CardholderName = cardholderName;
-                    m_FieldsSet.insert(ResponseFields::CardholderName);
+                    m_FieldsSet.insert(ResponseField::CardholderName);
                     result = true;
                 }
                 return result;
@@ -322,7 +318,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkCardholderAuthMethodRange(static_cast<int32_t>(cardholderAuthMethod))) {
                     m_CardholderAuthMethod = cardholderAuthMethod;
-                    m_FieldsSet.insert(ResponseFields::CardholderAuthMethod);
+                    m_FieldsSet.insert(ResponseField::CardholderAuthMethod);
                     result = true;
                 }
                 return result;
@@ -336,7 +332,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkAuthCodeRange(authCode)) {
                     m_AuthCode = authCode;
-                    m_FieldsSet.insert(ResponseFields::AuthCode);
+                    m_FieldsSet.insert(ResponseField::AuthCode);
                     result = true;
                 }
                 return result;
@@ -350,7 +346,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkResponseCodeRange(responseCode)) {
                     m_ResponseCode = responseCode;
-                    m_FieldsSet.insert(ResponseFields::ResponseCode);
+                    m_FieldsSet.insert(ResponseField::ResponseCode);
                     result = true;
                 }
                 return result;
@@ -364,7 +360,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkResponseTextRange(responseText)) {
                     m_ResponseText = responseText;
-                    m_FieldsSet.insert(ResponseFields::ResponseText);
+                    m_FieldsSet.insert(ResponseField::ResponseText);
                     result = true;
                 }
                 return result;
@@ -378,7 +374,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkSTANRange(stan)) {
                     m_STAN = stan;
-                    m_FieldsSet.insert(ResponseFields::STAN);
+                    m_FieldsSet.insert(ResponseField::STAN);
                     result = true;
                 }
                 return result;
@@ -392,7 +388,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkTransactionIDRange(transactionId)) {
                     m_TransactionID = transactionId;
-                    m_FieldsSet.insert(ResponseFields::TransactionID);
+                    m_FieldsSet.insert(ResponseField::TransactionID);
                     result = true;
                 }
                 return result;
@@ -406,7 +402,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkTerminalIDRange(terminalId)) {
                     m_TerminalID = terminalId;
-                    m_FieldsSet.insert(ResponseFields::TerminalID);
+                    m_FieldsSet.insert(ResponseField::TerminalID);
                     result = true;
                 }
                 return result;
@@ -420,7 +416,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkCardEmvAidRange(cardEmvAid)) {
                     m_CardEmvAid = cardEmvAid;
-                    m_FieldsSet.insert(ResponseFields::CardEmvAid);
+                    m_FieldsSet.insert(ResponseField::CardEmvAid);
                     result = true;
                 }
                 return result;
@@ -434,7 +430,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkCardAppNameRange(cardAppName)) {
                     m_CardAppName = cardAppName;
-                    m_FieldsSet.insert(ResponseFields::CardAppName);
+                    m_FieldsSet.insert(ResponseField::CardAppName);
                     result = true;
                 }
                 return result;
@@ -448,7 +444,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkCardInputMethodRange(static_cast<uint32_t>(cardInputMethod))) {
                     m_CardInputMethod = cardInputMethod;
-                    m_FieldsSet.insert(ResponseFields::CardInputMethod);
+                    m_FieldsSet.insert(ResponseField::CardInputMethod);
                     result = true;
                 }
                 return result;
@@ -462,7 +458,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkIssuerNameRange(issuerName)) {
                     m_IssuerName = issuerName;
-                    m_FieldsSet.insert(ResponseFields::IssuerName);
+                    m_FieldsSet.insert(ResponseField::IssuerName);
                     result = true;
                 }
                 return result;
@@ -476,7 +472,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkAdditionalInfoRange(additionalInfo)) {
                     m_AdditionalInfo = additionalInfo;
-                    m_FieldsSet.insert(ResponseFields::AdditionalInfo);
+                    m_FieldsSet.insert(ResponseField::AdditionalInfo);
                     result = true;
                 }
                 return result;
@@ -490,7 +486,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkCardDataRange(cardData)) {
                     m_CardData = cardData;
-                    m_FieldsSet.insert(ResponseFields::CardData);
+                    m_FieldsSet.insert(ResponseField::CardData);
                     result = true;
                 }
                 return result;
@@ -504,7 +500,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkCardDataEncRange(cardDataEnc)) {
                     m_CardDataEnc = cardDataEnc;
-                    m_FieldsSet.insert(ResponseFields::CardDataEnc);
+                    m_FieldsSet.insert(ResponseField::CardDataEnc);
                     result = true;
                 }
                 return result;
@@ -518,7 +514,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkMerchantIDRange(merchantId)) {
                     m_MerchantID = merchantId;
-                    m_FieldsSet.insert(ResponseFields::MerchantID);
+                    m_FieldsSet.insert(ResponseField::MerchantID);
                     result = true;
                 }
                 return result;
@@ -532,7 +528,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkTVRRange(tvr)) {
                     m_TVR = tvr;
-                    m_FieldsSet.insert(ResponseFields::TVR);
+                    m_FieldsSet.insert(ResponseField::TVR);
                     result = true;
                 }
                 return result;
@@ -546,7 +542,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkTSIRange(tsi)) {
                     m_TSI = tsi;
-                    m_FieldsSet.insert(ResponseFields::TSI);
+                    m_FieldsSet.insert(ResponseField::TSI);
                     result = true;
                 }
                 return result;
@@ -560,7 +556,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkTCRange(tc)) {
                     m_TC = tc;
-                    m_FieldsSet.insert(ResponseFields::TC);
+                    m_FieldsSet.insert(ResponseField::TC);
                     result = true;
                 }
                 return result;
@@ -574,7 +570,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkCIDRange(cid)) {
                     m_CID = cid;
-                    m_FieldsSet.insert(ResponseFields::CID);
+                    m_FieldsSet.insert(ResponseField::CID);
                     result = true;
                 }
                 return result;
@@ -588,7 +584,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkKVRRange(kvr)) {
                     m_KVR = kvr;
-                    m_FieldsSet.insert(ResponseFields::KVR);
+                    m_FieldsSet.insert(ResponseField::KVR);
                     result = true;
                 }
                 return result;
@@ -602,7 +598,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkCDAResultRange(cdaResult)) {
                     m_CDAResult = cdaResult;
-                    m_FieldsSet.insert(ResponseFields::CDAResult);
+                    m_FieldsSet.insert(ResponseField::CDAResult);
                     result = true;
                 }
                 return result;
@@ -616,7 +612,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkSalesCountRange(salesCount)) {
                     m_SalesCount = salesCount;
-                    m_FieldsSet.insert(ResponseFields::SaleCount);
+                    m_FieldsSet.insert(ResponseField::SaleCount);
                     result = true;
                 }
                 return result;
@@ -630,7 +626,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkVoidCountRange(voidCount)) {
                     m_VoidCount = voidCount;
-                    m_FieldsSet.insert(ResponseFields::VoidCount);
+                    m_FieldsSet.insert(ResponseField::VoidCount);
                     result = true;
                 }
                 return result;
@@ -644,7 +640,7 @@ namespace Lanter {
                 bool result = false;
                 if (checkRefundCountRange(refundCount)) {
                     m_RefundCount = refundCount;
-                    m_FieldsSet.insert(ResponseFields::RefundCount);
+                    m_FieldsSet.insert(ResponseField::RefundCount);
                     result = true;
                 }
                 return result;
@@ -658,7 +654,7 @@ namespace Lanter {
                 bool result = false;
                 if(!salesArray.empty()) {
                     m_SalesArray = salesArray;
-                    m_FieldsSet.insert(ResponseFields::SaleArray);
+                    m_FieldsSet.insert(ResponseField::SaleArray);
                     result = true;
                 }
                 return result;
@@ -672,7 +668,7 @@ namespace Lanter {
                 bool result = false;
                 if(!voidArray.empty()) {
                     m_VoidArray = voidArray;
-                    m_FieldsSet.insert(ResponseFields::VoidArray);
+                    m_FieldsSet.insert(ResponseField::VoidArray);
                     result = true;
                 }
                 return result;
@@ -686,7 +682,7 @@ namespace Lanter {
                 bool result = false;
                 if(!refundArray.empty()) {
                     m_RefundArray = refundArray;
-                    m_FieldsSet.insert(ResponseFields::RefundArray);
+                    m_FieldsSet.insert(ResponseField::RefundArray);
                     result = true;
                 }
                 return result;
@@ -700,147 +696,147 @@ namespace Lanter {
                 m_Validator.reset();
             }
 
-            bool ResponseData::resetField(ResponseFields field) {
+            bool ResponseData::resetField(ResponseField field) {
                 bool result = false;
 
                 switch (field) {
 
-                    case ResponseFields::EcrNumber:
+                    case ResponseField::EcrNumber:
                         result = resetEcrNumber();
                         break;
-                    case ResponseFields::EcrMerchantNumber:
+                    case ResponseField::EcrMerchantNumber:
                         result = resetEcrMerchantNumber();
                         break;
-                    case ResponseFields::OperationCode:
+                    case ResponseField::OperationCode:
                         result = resetOperationCode();
                         break;
-                    case ResponseFields::OriginalOperationCode:
+                    case ResponseField::OriginalOperationCode:
                         result = resetOriginalOperationCode();
                         break;
-                    case ResponseFields::TotalAmount:
+                    case ResponseField::TotalAmount:
                         result = resetTotalAmount();
                         break;
-                    case ResponseFields::PartialAmount:
+                    case ResponseField::PartialAmount:
                         result = resetPartialAmount();
                         break;
-                    case ResponseFields::AcquirerFeeAmount:
+                    case ResponseField::AcquirerFeeAmount:
                         result = resetAcquirerFeeAmount();
                         break;
-                    case ResponseFields::TerminalFeeAmount:
+                    case ResponseField::TerminalFeeAmount:
                         result = resetTerminalFeeAmount();
                         break;
-                    case ResponseFields::TipsAmount:
+                    case ResponseField::TipsAmount:
                         result = resetTipsAmount();
                         break;
-                    case ResponseFields::CurrencyCode:
+                    case ResponseField::CurrencyCode:
                         result = resetCurrencyCode();
                         break;
-                    case ResponseFields::ReceiptReference:
+                    case ResponseField::ReceiptReference:
                         result = resetReceiptReference();
                         break;
-                    case ResponseFields::RRN:
+                    case ResponseField::RRN:
                         result = resetRRN();
                         break;
-                    case ResponseFields::Status:
+                    case ResponseField::Status:
                         result = resetStatus();
                         break;
-                    case ResponseFields::OriginalOperationStatus:
+                    case ResponseField::OriginalOperationStatus:
                         result = resetOriginalOperationStatus();
                         break;
-                    case ResponseFields::TransDateTime:
+                    case ResponseField::TransDateTime:
                         result = resetTransDateTime();
                         break;
-                    case ResponseFields::TerminalDateTime:
+                    case ResponseField::TerminalDateTime:
                         result = resetTerminalDateTime();
                         break;
-                    case ResponseFields::CardPAN:
+                    case ResponseField::CardPAN:
                         result = resetCardPAN();
                         break;
-                    case ResponseFields::ExpireDate:
+                    case ResponseField::ExpireDate:
                         result = resetExpireDate();
                         break;
-                    case ResponseFields::CardholderName:
+                    case ResponseField::CardholderName:
                         result = resetCardholderName();
                         break;
-                    case ResponseFields::CardholderAuthMethod:
+                    case ResponseField::CardholderAuthMethod:
                         result = resetCardholderAuthMethod();
                         break;
-                    case ResponseFields::AuthCode:
+                    case ResponseField::AuthCode:
                         result = resetAuthCode();
                         break;
-                    case ResponseFields::ResponseCode:
+                    case ResponseField::ResponseCode:
                         result = resetResponseCode();
                         break;
-                    case ResponseFields::ResponseText:
+                    case ResponseField::ResponseText:
                         result = resetResponseText();
                         break;
-                    case ResponseFields::STAN:
+                    case ResponseField::STAN:
                         result = resetSTAN();
                         break;
-                    case ResponseFields::TransactionID:
+                    case ResponseField::TransactionID:
                         result = resetTransactionID();
                         break;
-                    case ResponseFields::TerminalID:
+                    case ResponseField::TerminalID:
                         result = resetTerminalID();
                         break;
-                    case ResponseFields::CardEmvAid:
+                    case ResponseField::CardEmvAid:
                         result = resetCardEmvAid();
                         break;
-                    case ResponseFields::CardAppName:
+                    case ResponseField::CardAppName:
                         result = resetCardAppName();
                         break;
-                    case ResponseFields::CardInputMethod:
+                    case ResponseField::CardInputMethod:
                         result = resetCardInputMethod();
                         break;
-                    case ResponseFields::IssuerName:
+                    case ResponseField::IssuerName:
                         result = resetIssuerName();
                         break;
-                    case ResponseFields::AdditionalInfo:
+                    case ResponseField::AdditionalInfo:
                         result = resetAdditionalInfo();
                         break;
-                    case ResponseFields::CardData:
+                    case ResponseField::CardData:
                         result = resetCardData();
                         break;
-                    case ResponseFields::CardDataEnc:
+                    case ResponseField::CardDataEnc:
                         result = resetCardDataEnc();
                         break;
-                    case ResponseFields::MerchantID:
+                    case ResponseField::MerchantID:
                         result = resetMerchantID();
                         break;
-                    case ResponseFields::TVR:
+                    case ResponseField::TVR:
                         result = resetTVR();
                         break;
-                    case ResponseFields::TSI:
+                    case ResponseField::TSI:
                         result = resetTSI();
                         break;
-                    case ResponseFields::TC:
+                    case ResponseField::TC:
                         result = resetTC();
                         break;
-                    case ResponseFields::CID:
+                    case ResponseField::CID:
                         result = resetCID();
                         break;
-                    case ResponseFields::KVR:
+                    case ResponseField::KVR:
                         result = resetKVR();
                         break;
-                    case ResponseFields::CDAResult:
+                    case ResponseField::CDAResult:
                         result = resetCDAResult();
                         break;
-                    case ResponseFields::SaleCount:
+                    case ResponseField::SaleCount:
                         result = resetSalesCount();
                         break;
-                    case ResponseFields::VoidCount:
+                    case ResponseField::VoidCount:
                         result = resetVoidCount();
                         break;
-                    case ResponseFields::RefundCount:
+                    case ResponseField::RefundCount:
                         result = resetRefundCount();
                         break;
-                    case ResponseFields::SaleArray:
+                    case ResponseField::SaleArray:
                         result = resetSalesArray();
                         break;
-                    case ResponseFields::VoidArray:
+                    case ResponseField::VoidArray:
                         result = resetVoidArray();
                         break;
-                    case ResponseFields::RefundArray:
+                    case ResponseField::RefundArray:
                         result = resetRefundArray();
                         break;
                 }
@@ -850,279 +846,279 @@ namespace Lanter {
 
             bool ResponseData::resetEcrNumber() {
                 m_EcrNumber = -1;
-                m_FieldsSet.erase(ResponseFields::EcrNumber);
-                return !isFieldSet(ResponseFields::EcrNumber);
+                m_FieldsSet.erase(ResponseField::EcrNumber);
+                return !isFieldSet(ResponseField::EcrNumber);
             }
 
             bool ResponseData::resetEcrMerchantNumber() {
                 m_EcrMerchantNumber = -1;
-                m_FieldsSet.erase(ResponseFields::EcrMerchantNumber);
-                return !isFieldSet(ResponseFields::EcrMerchantNumber);
+                m_FieldsSet.erase(ResponseField::EcrMerchantNumber);
+                return !isFieldSet(ResponseField::EcrMerchantNumber);
             }
 
             bool ResponseData::resetOperationCode() {
                 m_OperationCode = OperationCode::NoOperation;
-                m_FieldsSet.erase(ResponseFields::OperationCode);
+                m_FieldsSet.erase(ResponseField::OperationCode);
                 deinitValidator();
-                return !isFieldSet(ResponseFields::OperationCode);
+                return !isFieldSet(ResponseField::OperationCode);
             }
 
             bool ResponseData::resetOriginalOperationCode() {
                 m_OriginalOperationCode = OperationCode::NoOperation;
-                m_FieldsSet.erase(ResponseFields::OriginalOperationCode);
-                return !isFieldSet(ResponseFields::OriginalOperationCode);
+                m_FieldsSet.erase(ResponseField::OriginalOperationCode);
+                return !isFieldSet(ResponseField::OriginalOperationCode);
             }
 
             bool ResponseData::resetTotalAmount() {
                 m_TotalAmount = -1;
-                m_FieldsSet.erase(ResponseFields::TotalAmount);
-                return !isFieldSet(ResponseFields::TotalAmount);
+                m_FieldsSet.erase(ResponseField::TotalAmount);
+                return !isFieldSet(ResponseField::TotalAmount);
             }
 
             bool ResponseData::resetPartialAmount() {
                 m_PartialAmount = -1;
-                m_FieldsSet.erase(ResponseFields::PartialAmount);
-                return !isFieldSet(ResponseFields::PartialAmount);
+                m_FieldsSet.erase(ResponseField::PartialAmount);
+                return !isFieldSet(ResponseField::PartialAmount);
             }
 
             bool ResponseData::resetAcquirerFeeAmount() {
                 m_AcquirerFeeAmount = -1;
-                m_FieldsSet.erase(ResponseFields::AcquirerFeeAmount);
-                return !isFieldSet(ResponseFields::AcquirerFeeAmount);
+                m_FieldsSet.erase(ResponseField::AcquirerFeeAmount);
+                return !isFieldSet(ResponseField::AcquirerFeeAmount);
             }
 
             bool ResponseData::resetTerminalFeeAmount() {
                 m_TerminalFeeAmount = -1;
-                m_FieldsSet.erase(ResponseFields::TerminalFeeAmount);
-                return !isFieldSet(ResponseFields::TerminalFeeAmount);
+                m_FieldsSet.erase(ResponseField::TerminalFeeAmount);
+                return !isFieldSet(ResponseField::TerminalFeeAmount);
             }
 
             bool ResponseData::resetTipsAmount() {
                 m_TipsAmount = -1;
-                m_FieldsSet.erase(ResponseFields::TipsAmount);
-                return !isFieldSet(ResponseFields::TipsAmount);
+                m_FieldsSet.erase(ResponseField::TipsAmount);
+                return !isFieldSet(ResponseField::TipsAmount);
             }
 
             bool ResponseData::resetCurrencyCode() {
                 m_CurrencyCode = -1;
-                m_FieldsSet.erase(ResponseFields::CurrencyCode);
-                return !isFieldSet(ResponseFields::CurrencyCode);
+                m_FieldsSet.erase(ResponseField::CurrencyCode);
+                return !isFieldSet(ResponseField::CurrencyCode);
             }
 
             bool ResponseData::resetReceiptReference() {
                 m_ReceiptReference.clear();
-                m_FieldsSet.erase(ResponseFields::ReceiptReference);
-                return !isFieldSet(ResponseFields::ReceiptReference);
+                m_FieldsSet.erase(ResponseField::ReceiptReference);
+                return !isFieldSet(ResponseField::ReceiptReference);
             }
 
             bool ResponseData::resetRRN() {
                 m_RRN.clear();
-                m_FieldsSet.erase(ResponseFields::RRN);
-                return !isFieldSet(ResponseFields::RRN);
+                m_FieldsSet.erase(ResponseField::RRN);
+                return !isFieldSet(ResponseField::RRN);
             }
 
             bool ResponseData::resetStatus() {
                 m_Status = Status::NoStatus;
-                m_FieldsSet.erase(ResponseFields::Status);
-                return !isFieldSet(ResponseFields::Status);
+                m_FieldsSet.erase(ResponseField::Status);
+                return !isFieldSet(ResponseField::Status);
             }
 
             bool ResponseData::resetOriginalOperationStatus() {
                 m_OriginalOperationStatus = Status::NoStatus;
-                m_FieldsSet.erase(ResponseFields::OriginalOperationStatus);
-                return !isFieldSet(ResponseFields::OriginalOperationStatus);
+                m_FieldsSet.erase(ResponseField::OriginalOperationStatus);
+                return !isFieldSet(ResponseField::OriginalOperationStatus);
             }
 
             bool ResponseData::resetTransDateTime() {
                 m_TransDateTime.clear();
-                m_FieldsSet.erase(ResponseFields::TransDateTime);
-                return !isFieldSet(ResponseFields::TransDateTime);
+                m_FieldsSet.erase(ResponseField::TransDateTime);
+                return !isFieldSet(ResponseField::TransDateTime);
             }
 
             bool ResponseData::resetTerminalDateTime() {
                 m_TerminalDateTime.clear();
-                m_FieldsSet.erase(ResponseFields::TerminalDateTime);
-                return !isFieldSet(ResponseFields::TerminalDateTime);
+                m_FieldsSet.erase(ResponseField::TerminalDateTime);
+                return !isFieldSet(ResponseField::TerminalDateTime);
             }
 
             bool ResponseData::resetCardPAN() {
                 m_CardPAN.clear();
-                m_FieldsSet.erase(ResponseFields::CardPAN);
-                return !isFieldSet(ResponseFields::CardPAN);
+                m_FieldsSet.erase(ResponseField::CardPAN);
+                return !isFieldSet(ResponseField::CardPAN);
             }
 
             bool ResponseData::resetExpireDate() {
                 m_ExpireDate.clear();
-                m_FieldsSet.erase(ResponseFields::ExpireDate);
-                return !isFieldSet(ResponseFields::ExpireDate);
+                m_FieldsSet.erase(ResponseField::ExpireDate);
+                return !isFieldSet(ResponseField::ExpireDate);
             }
 
             bool ResponseData::resetCardholderName() {
                 m_CardholderName.clear();
-                m_FieldsSet.erase(ResponseFields::CardholderName);
-                return !isFieldSet(ResponseFields::CardholderName);
+                m_FieldsSet.erase(ResponseField::CardholderName);
+                return !isFieldSet(ResponseField::CardholderName);
             }
 
             bool ResponseData::resetCardholderAuthMethod() {
                 m_CardholderAuthMethod = CardholderAuthMethod::NoMethod;
-                m_FieldsSet.erase(ResponseFields::CardholderAuthMethod);
-                return !isFieldSet(ResponseFields::CardholderAuthMethod);
+                m_FieldsSet.erase(ResponseField::CardholderAuthMethod);
+                return !isFieldSet(ResponseField::CardholderAuthMethod);
             }
 
             bool ResponseData::resetAuthCode() {
                 m_AuthCode.clear();
-                m_FieldsSet.erase(ResponseFields::AuthCode);
-                return !isFieldSet(ResponseFields::AuthCode);
+                m_FieldsSet.erase(ResponseField::AuthCode);
+                return !isFieldSet(ResponseField::AuthCode);
             }
 
             bool ResponseData::resetResponseCode() {
                 m_ResponseCode.clear();
-                m_FieldsSet.erase(ResponseFields::ResponseCode);
-                return !isFieldSet(ResponseFields::ResponseCode);
+                m_FieldsSet.erase(ResponseField::ResponseCode);
+                return !isFieldSet(ResponseField::ResponseCode);
             }
 
             bool ResponseData::resetResponseText() {
                 m_ResponseText.clear();
-                m_FieldsSet.erase(ResponseFields::ResponseText);
-                return !isFieldSet(ResponseFields::ResponseText);
+                m_FieldsSet.erase(ResponseField::ResponseText);
+                return !isFieldSet(ResponseField::ResponseText);
             }
 
             bool ResponseData::resetSTAN() {
                 m_STAN.clear();
-                m_FieldsSet.erase(ResponseFields::STAN);
-                return !isFieldSet(ResponseFields::STAN);
+                m_FieldsSet.erase(ResponseField::STAN);
+                return !isFieldSet(ResponseField::STAN);
             }
 
             bool ResponseData::resetTransactionID() {
                 m_TransactionID.clear();
-                m_FieldsSet.erase(ResponseFields::TransactionID);
-                return !isFieldSet(ResponseFields::TransactionID);
+                m_FieldsSet.erase(ResponseField::TransactionID);
+                return !isFieldSet(ResponseField::TransactionID);
             }
 
             bool ResponseData::resetTerminalID() {
                 m_TerminalID.clear();
-                m_FieldsSet.erase(ResponseFields::TerminalID);
-                return !isFieldSet(ResponseFields::TerminalID);
+                m_FieldsSet.erase(ResponseField::TerminalID);
+                return !isFieldSet(ResponseField::TerminalID);
             }
 
             bool ResponseData::resetCardEmvAid() {
                 m_CardEmvAid.clear();
-                m_FieldsSet.erase(ResponseFields::CardEmvAid);
-                return !isFieldSet(ResponseFields::CardEmvAid);
+                m_FieldsSet.erase(ResponseField::CardEmvAid);
+                return !isFieldSet(ResponseField::CardEmvAid);
             }
 
             bool ResponseData::resetCardAppName() {
                 m_CardAppName.clear();
-                m_FieldsSet.erase(ResponseFields::CardAppName);
-                return !isFieldSet(ResponseFields::CardAppName);
+                m_FieldsSet.erase(ResponseField::CardAppName);
+                return !isFieldSet(ResponseField::CardAppName);
             }
 
             bool ResponseData::resetCardInputMethod() {
                 m_CardInputMethod = CardInputMethod::NoMethod;
-                m_FieldsSet.erase(ResponseFields::CardInputMethod);
-                return !isFieldSet(ResponseFields::CardInputMethod);
+                m_FieldsSet.erase(ResponseField::CardInputMethod);
+                return !isFieldSet(ResponseField::CardInputMethod);
             }
 
             bool ResponseData::resetIssuerName() {
                 m_IssuerName.clear();
-                m_FieldsSet.erase(ResponseFields::IssuerName);
-                return !isFieldSet(ResponseFields::IssuerName);
+                m_FieldsSet.erase(ResponseField::IssuerName);
+                return !isFieldSet(ResponseField::IssuerName);
             }
 
             bool ResponseData::resetAdditionalInfo() {
                 m_AdditionalInfo.clear();
-                m_FieldsSet.erase(ResponseFields::AdditionalInfo);
-                return !isFieldSet(ResponseFields::AdditionalInfo);
+                m_FieldsSet.erase(ResponseField::AdditionalInfo);
+                return !isFieldSet(ResponseField::AdditionalInfo);
             }
 
             bool ResponseData::resetCardData() {
                 m_CardData.clear();
-                m_FieldsSet.erase(ResponseFields::CardData);
-                return !isFieldSet(ResponseFields::CardData);
+                m_FieldsSet.erase(ResponseField::CardData);
+                return !isFieldSet(ResponseField::CardData);
             }
 
             bool ResponseData::resetCardDataEnc() {
                 m_CardDataEnc.clear();
-                m_FieldsSet.erase(ResponseFields::CardDataEnc);
-                return !isFieldSet(ResponseFields::CardDataEnc);
+                m_FieldsSet.erase(ResponseField::CardDataEnc);
+                return !isFieldSet(ResponseField::CardDataEnc);
             }
 
             bool ResponseData::resetMerchantID() {
                 m_MerchantID.clear();
-                m_FieldsSet.erase(ResponseFields::MerchantID);
-                return !isFieldSet(ResponseFields::MerchantID);
+                m_FieldsSet.erase(ResponseField::MerchantID);
+                return !isFieldSet(ResponseField::MerchantID);
             }
 
             bool ResponseData::resetTVR() {
                 m_TVR.clear();
-                m_FieldsSet.erase(ResponseFields::TVR);
-                return !isFieldSet(ResponseFields::TVR);
+                m_FieldsSet.erase(ResponseField::TVR);
+                return !isFieldSet(ResponseField::TVR);
             }
 
             bool ResponseData::resetTSI() {
                 m_TSI.clear();
-                m_FieldsSet.erase(ResponseFields::TSI);
-                return !isFieldSet(ResponseFields::TSI);
+                m_FieldsSet.erase(ResponseField::TSI);
+                return !isFieldSet(ResponseField::TSI);
             }
 
             bool ResponseData::resetTC() {
                 m_TC.clear();
-                m_FieldsSet.erase(ResponseFields::TC);
-                return !isFieldSet(ResponseFields::TC);
+                m_FieldsSet.erase(ResponseField::TC);
+                return !isFieldSet(ResponseField::TC);
             }
 
             bool ResponseData::resetCID() {
                 m_CID.clear();
-                m_FieldsSet.erase(ResponseFields::CID);
-                return !isFieldSet(ResponseFields::CID);
+                m_FieldsSet.erase(ResponseField::CID);
+                return !isFieldSet(ResponseField::CID);
             }
 
             bool ResponseData::resetKVR() {
                 m_KVR.clear();
-                m_FieldsSet.erase(ResponseFields::KVR);
-                return !isFieldSet(ResponseFields::KVR);
+                m_FieldsSet.erase(ResponseField::KVR);
+                return !isFieldSet(ResponseField::KVR);
             }
 
             bool ResponseData::resetCDAResult() {
                 m_CDAResult.clear();
-                m_FieldsSet.erase(ResponseFields::CDAResult);
-                return !isFieldSet(ResponseFields::CDAResult);
+                m_FieldsSet.erase(ResponseField::CDAResult);
+                return !isFieldSet(ResponseField::CDAResult);
             }
 
             bool ResponseData::resetSalesCount() {
                 m_SalesCount = -1;
-                m_FieldsSet.erase(ResponseFields::SaleCount);
-                return !isFieldSet(ResponseFields::SaleCount);
+                m_FieldsSet.erase(ResponseField::SaleCount);
+                return !isFieldSet(ResponseField::SaleCount);
             }
 
             bool ResponseData::resetVoidCount() {
                 m_VoidCount = -1;
-                m_FieldsSet.erase(ResponseFields::VoidCount);
-                return !isFieldSet(ResponseFields::VoidCount);
+                m_FieldsSet.erase(ResponseField::VoidCount);
+                return !isFieldSet(ResponseField::VoidCount);
             }
 
             bool ResponseData::resetRefundCount() {
                 m_RefundCount = -1;
-                m_FieldsSet.erase(ResponseFields::RefundCount);
-                return !isFieldSet(ResponseFields::RefundCount);
+                m_FieldsSet.erase(ResponseField::RefundCount);
+                return !isFieldSet(ResponseField::RefundCount);
             }
 
             bool ResponseData::resetSalesArray() {
                 m_SalesArray.clear();
-                m_FieldsSet.erase(ResponseFields::SaleArray);
-                return !isFieldSet(ResponseFields::SaleArray);
+                m_FieldsSet.erase(ResponseField::SaleArray);
+                return !isFieldSet(ResponseField::SaleArray);
             }
 
             bool ResponseData::resetVoidArray() {
                 m_VoidArray.clear();
-                m_FieldsSet.erase(ResponseFields::VoidArray);
-                return !isFieldSet(ResponseFields::VoidArray);
+                m_FieldsSet.erase(ResponseField::VoidArray);
+                return !isFieldSet(ResponseField::VoidArray);
             }
 
             bool ResponseData::resetRefundArray() {
                 m_RefundArray.clear();
-                m_FieldsSet.erase(ResponseFields::RefundArray);
-                return !isFieldSet(ResponseFields::RefundArray);
+                m_FieldsSet.erase(ResponseField::RefundArray);
+                return !isFieldSet(ResponseField::RefundArray);
             }
         }
     }

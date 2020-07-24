@@ -1,13 +1,9 @@
-//
-// Created by Владимир Лысенков on 25.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_CARDHOLDERAUTHMETHOD_H
 #define LAN_4GATELIBRARYCPP_CARDHOLDERAUTHMETHOD_H
 namespace Lanter {
     namespace Message {
         namespace Response {
-            /// \brief Список возможных значений поля CardholderAuthMethod в ответе финансового ПО LAN-4Tap
+            /// \brief Список возможных значений поля ResponseField::CardholderAuthMethod в ответе финансового ПО LAN-4Tap
             enum class CardholderAuthMethod {
                 NoMethod = -1,
                 NoVerification, ///< Операция не требует подтверждения
@@ -15,8 +11,8 @@ namespace Lanter {
                 PaperSignatureVerification, ///< Необходимо получить подпись клиента на чеке и проверить ее
                 ClientDeviceVerification, ///< Клиент выполнил проверку на своем устройстве
                 //Диапазоны значений
-                FirstValue = NoVerification,
-                LastValue = ClientDeviceVerification
+                FirstValue = NoVerification, ///< Ссылка на первый элемент перечисления
+                LastValue = ClientDeviceVerification ///< Ссылка на последний элемент перечисления
             };
         }
     }

@@ -1,15 +1,12 @@
-//
-// Created by Владимир Лысенков on 13.07.2020.
-//
-
 #include "gtest/gtest.h"
 
-#include "Lanter/MessageProcessor/MessageParser/JSONRootFieldsChecker.h"
+#include "Lanter/MessageProcessor/Parser/JSONRootFieldsChecker.h"
 
 #include "Lanter/MessageProcessor/JSONMessageFields.h"
 
 using namespace Lanter;
 using namespace Lanter::MessageProcessor;
+using namespace Lanter::MessageProcessor::Parser;
 
 TEST(JSONRootFieldsChecker, CheckEmpty) {
     Json::Value root;

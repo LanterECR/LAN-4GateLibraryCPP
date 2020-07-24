@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 24.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_RESPONSEDATAFACTORY_H
 #define LAN_4GATELIBRARYCPP_RESPONSEDATAFACTORY_H
 #include <memory>
@@ -13,17 +9,16 @@
 namespace Lanter {
     namespace Message {
         namespace Response {
-            /// \brief Фабричный класс, возвращающий предварительно заполненный обхект IResponseData
+            /// \brief Фабричный класс, возвращающий предварительно заполненный объект IResponseData
             class LANTER_VISIBILITY ResponseDataFactory {
             public:
                 /// \brief Возвращает указатель на объект интерфейса IResponseData, предварительно заполненный
                 /// переданными кодом операции и логическим номером кассового ПО
-                /// \param operationCode Код операции из списка OperationCodes
-                /// \sa OperationCodes
+                /// \param operationCode Код операции из списка OperationCode. Значение NoOperation не будет передано объекту
+                /// \sa OperationCode
                 /// \param ecrNumber Логический номер кассового ПО в диапазоне [1, 999].
                 /// Если установить значение -1, то ecrNumber не будет установлен в IResponseData
                 /// \return Указатель на объект интерфейса IResponseData
-                /// \throws invalid_argument, если operationCode или ecrNumber вне разрешенного диапазона
                 static std::shared_ptr<IResponseData> getResponseData(OperationCode operationCode = OperationCode::NoOperation, int16_t ecrNumber = -1);
             };//ResponseDataFactory
         }//Response

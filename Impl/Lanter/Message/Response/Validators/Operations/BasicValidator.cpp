@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 21.06.2020.
-//
-
 #include <stdexcept>
 
 #include "BasicValidator.h"
@@ -16,10 +12,10 @@ namespace Lanter {
                 addBasicMandatoryFields();
             }
 
-            void BasicValidator::appendMandatoryField(ResponseFields field) {
+            void BasicValidator::appendMandatoryField(ResponseField field) {
                 auto value = static_cast<int64_t>(field);
-                auto minValue = static_cast<int64_t>(ResponseFields::FirstValue);
-                auto maxValue = static_cast<int64_t>(ResponseFields::LastValue);
+                auto minValue = static_cast<int64_t>(ResponseField::FirstValue);
+                auto maxValue = static_cast<int64_t>(ResponseField::LastValue);
 
                 if (Utils::checkValueRange(value, minValue, maxValue)) {
                     m_MandatoryFields.insert(field);
@@ -28,14 +24,14 @@ namespace Lanter {
                 }
             }
 
-            const std::set<ResponseFields> &BasicValidator::getMandatoryFields() const {
+            const std::set<ResponseField> &BasicValidator::getMandatoryFields() const {
                 return m_MandatoryFields;
             }
 
-            void BasicValidator::appendOptionalField(ResponseFields field) {
+            void BasicValidator::appendOptionalField(ResponseField field) {
                 auto value = static_cast<int64_t>(field);
-                auto minValue = static_cast<int64_t>(ResponseFields::FirstValue);
-                auto maxValue = static_cast<int64_t>(ResponseFields::LastValue);
+                auto minValue = static_cast<int64_t>(ResponseField::FirstValue);
+                auto maxValue = static_cast<int64_t>(ResponseField::LastValue);
 
                 if (Utils::checkValueRange(value, minValue, maxValue)) {
                     m_OptionalFields.insert(field);
@@ -44,11 +40,11 @@ namespace Lanter {
                 }
             }
 
-            const std::set<ResponseFields> &BasicValidator::getOptionalFields() const {
+            const std::set<ResponseField> &BasicValidator::getOptionalFields() const {
                 return m_OptionalFields;
             }
 
-            bool BasicValidator::validate(const std::set<ResponseFields> &fields) {
+            bool BasicValidator::validate(const std::set<ResponseField> &fields) {
                 for (auto field : m_MandatoryFields) {
                     auto iterator = fields.find(field);
                     if (iterator == fields.end()) {
@@ -60,9 +56,9 @@ namespace Lanter {
 
 
             void BasicValidator::addBasicMandatoryFields() {
-                appendMandatoryField(ResponseFields::EcrNumber);
-                appendMandatoryField(ResponseFields::OperationCode);
-                appendMandatoryField(ResponseFields::Status);
+                appendMandatoryField(ResponseField::EcrNumber);
+                appendMandatoryField(ResponseField::OperationCode);
+                appendMandatoryField(ResponseField::Status);
             }
 
             void BasicValidator::addSpecificFields() {

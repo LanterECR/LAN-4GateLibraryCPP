@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 12.07.2020.
-//
-
 #include "ArrayElement.h"
 
 namespace Lanter {
@@ -12,15 +8,15 @@ namespace Lanter {
                 clearMandatoryFields();
                 clearOptionalFields();
 
-                appendOptionalField(ResponseFields::TotalAmount);
-                appendOptionalField(ResponseFields::CurrencyCode);
-                appendOptionalField(ResponseFields::RRN);
-                appendOptionalField(ResponseFields::ReceiptReference);
-                appendOptionalField(ResponseFields::ResponseCode);
-                appendOptionalField(ResponseFields::TransactionID);
-                appendOptionalField(ResponseFields::TransDateTime);
-                appendOptionalField(ResponseFields::IssuerName);
-                appendOptionalField(ResponseFields::CardPAN);
+                appendOptionalField(ResponseField::TotalAmount);
+                appendOptionalField(ResponseField::CurrencyCode);
+                appendOptionalField(ResponseField::RRN);
+                appendOptionalField(ResponseField::ReceiptReference);
+                appendOptionalField(ResponseField::ResponseCode);
+                appendOptionalField(ResponseField::TransactionID);
+                appendOptionalField(ResponseField::TransDateTime);
+                appendOptionalField(ResponseField::IssuerName);
+                appendOptionalField(ResponseField::CardPAN);
             }
         }
     }

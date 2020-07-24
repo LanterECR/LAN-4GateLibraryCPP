@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 19.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_REQUESTDATA_H
 #define LAN_4GATELIBRARYCPP_REQUESTDATA_H
 
@@ -21,17 +17,17 @@ namespace Lanter {
 
                 ~RequestData() override = default;
 
-                const std::set<RequestFields> &getMandatoryFields() const override;
+                const std::set<RequestField> &getMandatoryFields() const override;
 
-                const std::set<RequestFields> &getOptionalFields() const override;
+                const std::set<RequestField> &getOptionalFields() const override;
 
                 bool validateMandatoryFields() const override;
 
-                const std::set<RequestFields> &getFieldsSet() const override;
+                const std::set<RequestField> &getFieldsSet() const override;
 
-                bool isFieldSet(RequestFields field) const override;
+                bool isFieldSet(RequestField field) const override;
 
-                bool resetField(RequestFields field) override;
+                bool resetField(RequestField field) override;
 
                 int16_t getEcrNumber() const override;
 
@@ -139,7 +135,7 @@ namespace Lanter {
                 void initValidator();
                 void deinitValidator();
 
-                std::set<RequestFields> m_FieldsSet; ///< Список установленных полей
+                std::set<RequestField> m_FieldsSet; ///< Список установленных полей
 
                 std::shared_ptr<IValidator> m_Validator; ///< Валидатор полей операции
 
@@ -161,7 +157,7 @@ namespace Lanter {
                 std::string m_ProviderCode; ///< Код вендора платежа
                 std::string m_AdditionalInfo; ///< Дополнительные данные операции
 
-                std::set<RequestFields> m_EmptyFieldsPlaceholder; ///< Пустая коллекция для полей при отсутствии валидатора
+                std::set<RequestField> m_EmptyFieldsPlaceholder; ///< Пустая коллекция для полей при отсутствии валидатора
             };//RequestData
         }//Request
     }

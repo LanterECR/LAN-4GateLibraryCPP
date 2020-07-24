@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 24.06.2020.
-//
-
 #include "gtest/gtest.h"
 #include "Lanter/Message/Request/RequestDataFactory.h"
 

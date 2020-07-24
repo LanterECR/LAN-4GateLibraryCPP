@@ -1,11 +1,7 @@
-//
-// Created by Владимир Лысенков on 13.07.2020.
-//
-
 #include "gtest/gtest.h"
 
-#include "Lanter/MessageProcessor/MessageBuilder/JSONAddFieldHelper.h"
-#include "Lanter/MessageProcessor/MessageParser/JSONMessageParser.h"
+#include "Lanter/MessageProcessor/Builder/JSONAddFieldHelper.h"
+#include "Lanter/MessageProcessor/Parser/JSONMessageParser.h"
 #include "Lanter/MessageProcessor/JSONMessageFields.h"
 
 #include "Lanter/Utils/Constants.h"
@@ -16,6 +12,8 @@ using namespace Lanter;
 using namespace Lanter::MessageProcessor;
 using namespace Lanter::Utils;
 using namespace Lanter::Utils::Constants;
+using namespace Lanter::MessageProcessor::Parser;
+using namespace Lanter::MessageProcessor::Builder;
 
 TEST(JSONMessageParser, CheckReadMessage) {
     std::string junkValue = "JUNK";
@@ -78,13 +76,13 @@ TEST(JSONMessageParser, CheckRequest) {
     EXPECT_EQ(parser.parseMessage(data), MessageType::Request);
     EXPECT_EQ(parser.requestCount(), 2);
 
-    EXPECT_NE(parser.getNextRequestData(), nullptr);
+    EXPECT_NE(parser.nextRequestData(), nullptr);
     EXPECT_EQ(parser.requestCount(), 1);
 
-    EXPECT_NE(parser.getNextRequestData(), nullptr);
+    EXPECT_NE(parser.nextRequestData(), nullptr);
     EXPECT_EQ(parser.requestCount(), 0);
 
-    EXPECT_EQ(parser.getNextRequestData(), nullptr);
+    EXPECT_EQ(parser.nextRequestData(), nullptr);
     EXPECT_EQ(parser.requestCount(), 0);
 }
 
@@ -152,13 +150,13 @@ TEST(JSONMessageParser, CheckResponse) {
     EXPECT_EQ(parser.parseMessage(data), MessageType::Response);
     EXPECT_EQ(parser.responseCount(), 2);
 
-    EXPECT_NE(parser.getNextResponseData(), nullptr);
+    EXPECT_NE(parser.nextResponseData(), nullptr);
     EXPECT_EQ(parser.responseCount(), 1);
 
-    EXPECT_NE(parser.getNextResponseData(), nullptr);
+    EXPECT_NE(parser.nextResponseData(), nullptr);
     EXPECT_EQ(parser.responseCount(), 0);
 
-    EXPECT_EQ(parser.getNextResponseData(), nullptr);
+    EXPECT_EQ(parser.nextResponseData(), nullptr);
     EXPECT_EQ(parser.responseCount(), 0);
 }
 
@@ -192,12 +190,12 @@ TEST(JSONMessageParser, CheckNotification) {
 
 
 
-    EXPECT_NE(parser.getNextNotificationData(), nullptr);
+    EXPECT_NE(parser.nextNotificationData(), nullptr);
     EXPECT_EQ(parser.notificationCount(), 1);
 
-    EXPECT_NE(parser.getNextNotificationData(), nullptr);
+    EXPECT_NE(parser.nextNotificationData(), nullptr);
     EXPECT_EQ(parser.notificationCount(), 0);
 
-    EXPECT_EQ(parser.getNextNotificationData(), nullptr);
+    EXPECT_EQ(parser.nextNotificationData(), nullptr);
     EXPECT_EQ(parser.notificationCount(), 0);
 }

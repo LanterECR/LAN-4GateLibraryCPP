@@ -1,13 +1,9 @@
-//
-// Created by Владимир Лысенков on 21.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_BASICVALIDATOR_H
 #define LAN_4GATELIBRARYCPP_BASICVALIDATOR_H
 
 #include <set>
 
-#include "Lanter/Message/Request/RequestFields.h"
+#include "Lanter/Message/Request/RequestField.h"
 
 #include "Lanter/Message/Request/Validators/IValidator.h"
 
@@ -20,24 +16,24 @@ namespace Lanter {
 
                 ~BasicValidator() override = default;
 
-                void appendMandatoryField(RequestFields field) override;
+                void appendMandatoryField(RequestField field) override;
 
-                const std::set<RequestFields> &getMandatoryFields() const override;
+                const std::set<RequestField> &getMandatoryFields() const override;
 
-                void appendOptionalField(RequestFields field) override;
+                void appendOptionalField(RequestField field) override;
 
-                const std::set<RequestFields> &getOptionalFields() const override;
+                const std::set<RequestField> &getOptionalFields() const override;
 
 
-                bool validate(const std::set<RequestFields> &fields) override;
+                bool validate(const std::set<RequestField> &fields) override;
 
                 virtual void addSpecificFields();
 
             private:
                 void addBasicMandatoryFields();
 
-                std::set<RequestFields> m_MandatoryFields;
-                std::set<RequestFields> m_OptionalFields;
+                std::set<RequestField> m_MandatoryFields;
+                std::set<RequestField> m_OptionalFields;
             };
         }//Request
     }

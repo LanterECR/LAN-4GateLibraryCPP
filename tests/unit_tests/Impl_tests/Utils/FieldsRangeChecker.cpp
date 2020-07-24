@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 28.06.2020.
-//
-
 #include "gtest/gtest.h"
 #include "Lanter/Utils/Constants.h"
 #include "Lanter/Utils/FieldRangeChecker.h"

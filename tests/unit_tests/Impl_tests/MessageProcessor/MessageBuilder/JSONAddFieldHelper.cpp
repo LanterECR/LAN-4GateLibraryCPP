@@ -1,14 +1,11 @@
-//
-// Created by Владимир Лысенков on 09.07.2020.
-//
-
 #include "gtest/gtest.h"
 
-#include "Lanter/MessageProcessor/MessageBuilder/JSONAddFieldHelper.h"
+#include "Lanter/MessageProcessor/Builder/JSONAddFieldHelper.h"
 #include "Lanter/MessageProcessor/JSONFieldExists.h"
 
 using namespace Lanter;
 using namespace Lanter::MessageProcessor;
+using namespace Lanter::MessageProcessor::Builder;
 
 TEST(JSONAddFieldHelper, CheckNumberField) {
     Json::Value object;

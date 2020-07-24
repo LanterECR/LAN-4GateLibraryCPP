@@ -1,14 +1,10 @@
-//
-// Created by Владимир Лысенков on 14.07.2020.
-//
-
 #include "gtest/gtest.h"
 
 #include "Lanter/Message/Response/ResponseDataFactory.h"
 #include "Lanter/Message/Request/RequestDataFactory.h"
 #include "Lanter/Message/Notification/NotificationDataFactory.h"
-#include "Lanter/MessageProcessor/MessageBuilder/MessageBuilderFactory.h"
-#include "Lanter/MessageProcessor/MessageParser/MessageParserFactory.h"
+#include "Lanter/MessageProcessor/Builder/MessageBuilderFactory.h"
+#include "Lanter/MessageProcessor/Parser/MessageParserFactory.h"
 #include "Lanter/Utils/Constants.h"
 
 using namespace Lanter;
@@ -18,6 +14,8 @@ using namespace Lanter::Message;
 using namespace Lanter::Message::Request;
 using namespace Lanter::Message::Notification;
 using namespace Lanter::MessageProcessor;
+using namespace Lanter::MessageProcessor::Builder;
+using namespace Lanter::MessageProcessor::Parser;
 
 TEST(TestBuilderParser, CheckRequest) {
     auto inputObject = RequestDataFactory::getRequestData();
@@ -38,7 +36,7 @@ TEST(TestBuilderParser, CheckRequest) {
     EXPECT_EQ(parser->parseMessage(serializedData), MessageType::Request);
     EXPECT_EQ(parser->requestCount(), 1);
 
-    auto outputObject = parser->getNextRequestData();
+    auto outputObject = parser->nextRequestData();
     EXPECT_NE(outputObject, nullptr);
 
     EXPECT_EQ((int)inputObject->getOperationCode(), (int)outputObject->getOperationCode());
@@ -93,7 +91,7 @@ TEST(TestBuilderParser, CheckResponse) {
     EXPECT_EQ(parser->parseMessage(serializedData), MessageType::Response);
     EXPECT_EQ(parser->responseCount(), 1);
 
-    auto outputObject = parser->getNextResponseData();
+    auto outputObject = parser->nextResponseData();
     EXPECT_NE(outputObject, nullptr);
 
     EXPECT_EQ(inputObject->getEcrNumber(), outputObject->getEcrNumber());
@@ -145,7 +143,7 @@ TEST(TestBuilderParser, CheckNotification) {
     EXPECT_EQ(parser->parseMessage(serializedData), MessageType::Notification);
     EXPECT_EQ(parser->notificationCount(), 1);
 
-    auto outputObject = parser->getNextNotificationData();
+    auto outputObject = parser->nextNotificationData();
     EXPECT_NE(outputObject, nullptr);
 
     EXPECT_EQ((int)outputObject->getCode(), (int)inputObject->getCode());

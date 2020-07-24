@@ -1,7 +1,3 @@
-//
-// Created by Владимир Лысенков on 25.06.2020.
-//
-
 #ifndef LAN_4GATELIBRARYCPP_RESPONSEDATA_H
 #define LAN_4GATELIBRARYCPP_RESPONSEDATA_H
 
@@ -18,13 +14,13 @@ namespace Lanter {
 
                 ~ResponseData() override = default;
 
-                const std::set<ResponseFields> &getFieldsSet() const override;
+                const std::set<ResponseField> &getFieldsSet() const override;
 
-                bool isFieldSet(ResponseFields field) const override;
+                bool isFieldSet(ResponseField field) const override;
 
-                const std::set<ResponseFields> &getMandatoryFields() const override;
+                const std::set<ResponseField> &getMandatoryFields() const override;
 
-                const std::set<ResponseFields> &getOptionalFields() const override;
+                const std::set<ResponseField> &getOptionalFields() const override;
 
                 bool validateMandatoryFields() const override;
 
@@ -212,7 +208,7 @@ namespace Lanter {
 
                 bool setRefundArray(const std::vector<std::shared_ptr<IResponseData> > &refundArray) override;
 
-                bool resetField(ResponseFields field) override;
+                bool resetField(ResponseField field) override;
 
                 bool resetEcrNumber() override;
 
@@ -310,7 +306,7 @@ namespace Lanter {
                 void initValidator();
                 void deinitValidator();
 
-                std::set<ResponseFields> m_FieldsSet; ///< Список установленных полей
+                std::set<ResponseField> m_FieldsSet; ///< Список установленных полей
 
                 std::shared_ptr<IValidator> m_Validator; ///< Валидатор полей операц
 
@@ -365,7 +361,7 @@ namespace Lanter {
                 std::vector<std::shared_ptr<IResponseData> > m_VoidArray;
                 std::vector<std::shared_ptr<IResponseData> > m_RefundArray;
 
-                std::set<ResponseFields> m_EmptyFieldsPlaceholder; ///< Пустая коллекция для полей при отсутствии валидатора
+                std::set<ResponseField> m_EmptyFieldsPlaceholder; ///< Пустая коллекция для полей при отсутствии валидатора
             };
         }
     }//Message
