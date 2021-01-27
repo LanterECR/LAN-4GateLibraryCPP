@@ -15,8 +15,8 @@ namespace Lanter {
                 /// \brief Возвращает указатель на объект интерфейса INotificationData
                 /// \return Указатель на объект интерфейса INotificationData
                 static std::shared_ptr<INotificationData> getNotificationData();
-            };
-        }
-    }
-}
+            };//class NotificationDataFactory
+        }//namespace Notification
+    }//namespace Message
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_NOTIFICATIONDATAFACTORY_H

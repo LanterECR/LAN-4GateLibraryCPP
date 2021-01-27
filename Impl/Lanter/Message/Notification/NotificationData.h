@@ -33,8 +33,8 @@ namespace Lanter {
                 NotificationCode m_Code = NotificationCode::NoNotification;
                 std::string m_Message;
                 std::string m_Additional;
-            };
-        }//Notifications
-    }//Lanter
-}
+            };//class NotificationData
+        }//namespace Notification
+    }//namespace Message
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_NOTIFICATIONDATA_H

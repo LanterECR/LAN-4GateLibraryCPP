@@ -1,12 +1,6 @@
 #include "ValidatorFactory.h"
 
-#include "Lanter/Message/Request/Validators/Operations/BasicValidator.h"
-
-#include "Lanter/Message/Request/Validators/Operations/Refund/QuickPaymentRefund.h"
-#include "Lanter/Message/Request/Validators/Operations/Refund/QuickPaymentRefundStatus.h"
-#include "Lanter/Message/Request/Validators/Operations/Refund/Refund.h"
-#include "Lanter/Message/Request/Validators/Operations/Refund/RefundWithoutRRN.h"
-
+//Sale operations
 #include "Lanter/Message/Request/Validators/Operations/Sale/AliPay.h"
 #include "Lanter/Message/Request/Validators/Operations/Sale/FastTrack.h"
 #include "Lanter/Message/Request/Validators/Operations/Sale/MOTO.h"
@@ -16,6 +10,18 @@
 #include "Lanter/Message/Request/Validators/Operations/Sale/Sale.h"
 #include "Lanter/Message/Request/Validators/Operations/Sale/SalesCompletion.h"
 
+//Void operations
+#include "Lanter/Message/Request/Validators/Operations/Void/Void.h"
+#include "Lanter/Message/Request/Validators/Operations/Void/VoidPartialSale.h"
+#include "Lanter/Message/Request/Validators/Operations/Void/VoidPreAuth.h"
+
+//Refund operations
+#include "Lanter/Message/Request/Validators/Operations/Refund/QuickPaymentRefund.h"
+#include "Lanter/Message/Request/Validators/Operations/Refund/QuickPaymentRefundStatus.h"
+#include "Lanter/Message/Request/Validators/Operations/Refund/Refund.h"
+#include "Lanter/Message/Request/Validators/Operations/Refund/RefundWithoutRRN.h"
+
+//Service operations
 #include "Lanter/Message/Request/Validators/Operations/Service/DisplayQR.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/FinalizeTransaction.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/GetCurrentPrinter.h"
@@ -37,11 +43,6 @@
 #include "Lanter/Message/Request/Validators/Operations/Service/TestCommunication.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/UpdateSW.h"
 
-#include "Lanter/Message/Request/Validators/Operations/Void/Void.h"
-#include "Lanter/Message/Request/Validators/Operations/Void/VoidPartialSale.h"
-#include "Lanter/Message/Request/Validators/Operations/Void/VoidPreAuth.h"
-
-// TODO Добавить QuickPaymentRefund
 namespace Lanter {
     namespace Message {
         namespace Request {
@@ -49,6 +50,7 @@ namespace Lanter {
             std::shared_ptr<IValidator> ValidatorFactory::getValidator(OperationCode operationCode) {
                 std::shared_ptr<BasicValidator> validator;
                 switch (operationCode) {
+                    //Sale operations
                     case OperationCode::Sale:
                         validator = std::make_shared<Sale>();
                         break;
@@ -73,6 +75,8 @@ namespace Lanter {
                     case OperationCode::FastTrack:
                         validator = std::make_shared<FastTrack>();
                         break;
+
+                    //Void operations
                     case OperationCode::Void:
                         validator = std::make_shared<Void>();
                         break;
@@ -82,6 +86,8 @@ namespace Lanter {
                     case OperationCode::VoidPreAuth:
                         validator = std::make_shared<VoidPreAuth>();
                         break;
+
+                    //Refund operations
                     case OperationCode::Refund:
                         validator = std::make_shared<Refund>();
                         break;
@@ -94,6 +100,8 @@ namespace Lanter {
                     case OperationCode::QuickPaymentRefundStatus:
                         validator = std::make_shared<QuickPaymentRefundStatus>();
                         break;
+
+                    //Service operations
                     case OperationCode::Registration:
                         validator = std::make_shared<Registration>();
                         break;
@@ -157,12 +165,15 @@ namespace Lanter {
                     default:
                         validator = std::make_shared<BasicValidator>();
                         break;
-                }
+                }//switch
+
                 if (validator) {
+                    //Из конструкторов не рекомендуется вызывать виртуальные методы. Необходима инициализация валидатора
                     validator->addSpecificFields();
-                }
+                }//if validator
+
                 return validator;
-            }
-        }//Request
-    }
-}//Lanter
+            }//getValidator()
+        }//namespace Request
+    }//namespace Message
+}//namespace Lanter

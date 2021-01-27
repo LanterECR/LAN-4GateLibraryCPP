@@ -1,5 +1,6 @@
 #ifndef LAN_4GATELIBRARYCPP_REQUESTFIELDS_H
 #define LAN_4GATELIBRARYCPP_REQUESTFIELDS_H
+
 namespace Lanter {
     namespace Message {
         namespace Request {
@@ -25,8 +26,8 @@ namespace Lanter {
                 //диапазон полей
                 FirstValue = EcrNumber, ///< Ссылка на первый элемент перечисления
                 LastValue = AdditionalInfo ///< Ссылка на последний элемент перечисления
-            };
-        }
-    }
-}
+            };//enum RequestField
+        }//namespace Request
+    }//namespace Message
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_REQUESTFIELDS_H

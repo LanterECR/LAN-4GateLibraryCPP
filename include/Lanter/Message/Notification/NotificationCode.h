@@ -62,8 +62,8 @@ namespace Lanter {
                 //Диапазон
                 FirstValue = ReversalUploadingError, ///< Ссылка на первый элемент перечисления
                 LastValue = QrShowing ///< Ссылка на последний элемент перечисления
-            };
-        }
-    }
-}//Lanter
+            };//enum NotificationCode
+        }//namespace Notification
+    }//namespace Message
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_NotificationCode_H

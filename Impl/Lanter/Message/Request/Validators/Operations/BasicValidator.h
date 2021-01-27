@@ -10,8 +10,11 @@
 namespace Lanter {
     namespace Message {
         namespace Request {
+            /// \brief Базовый валидатор для всех типов операций
             class BasicValidator : public IValidator {
             public:
+                /// \brief Конструктор вызывает метод addBasicMandatoryFields
+                /// \sa addBasicMandatoryFields
                 BasicValidator();
 
                 ~BasicValidator() override = default;
@@ -27,6 +30,7 @@ namespace Lanter {
 
                 bool validate(const std::set<RequestField> &fields) override;
 
+                /// \brief Добавляет специфичные для каждой операции мандатные поля. В данном классе пустой
                 virtual void addSpecificFields();
 
             private:
@@ -34,8 +38,8 @@ namespace Lanter {
 
                 std::set<RequestField> m_MandatoryFields;
                 std::set<RequestField> m_OptionalFields;
-            };
-        }//Request
-    }
-}//Lanter
+            };//class BasicValidator
+        }//namespace Request
+    }//namespace Message
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_BASICVALIDATOR_H

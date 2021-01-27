@@ -20,7 +20,7 @@ namespace Lanter {
                 virtual NotificationCode getCode() const = 0;
 
                 /// \brief Устанавливает код уведомления
-                /// \param notificationCode Код уведомления из перечисления Notification за исключением NoNotification
+                /// \param[in] notificationCode Код уведомления из перечисления Notification за исключением NoNotification
                 /// \return true, если поле успешно установлено
                 virtual bool setCode(NotificationCode notificationCode) = 0;
 
@@ -33,7 +33,7 @@ namespace Lanter {
                 virtual const std::string &getMessage() const = 0;
 
                 /// \brief Устанавливает текст уведомления
-                /// \param message текст уведомления
+                /// \param[in] message текст уведомления
                 /// \return true, если поле успешно установлено
                 virtual bool setMessage(const std::string &message) = 0;
 
@@ -46,16 +46,16 @@ namespace Lanter {
                 virtual const std::string & getAdditional() const = 0;
 
                 /// \brief Устанавливает дополнительнные данные уведомления
-                /// \param additional Дополнительные данные уведомления
+                /// \param[in] additional Дополнительные данные уведомления
                 /// \return true, если поле успешно установлено
                 virtual bool setAdditional(const std::string & additional) = 0;
 
                 /// \brief Очищает дополнительные данные уведомления
                 /// \return true, если данные успешно очищены
                 virtual bool resetAdditional() = 0;
-            };
-        }//Notifications
-    }
-}//Lanter
+            };//class INotificationData
+        }//namespace Notifications
+    }//namespace Message
+}//namespace Lanter
 
 #endif //LAN_4GATELIBRARYCPP_INOTIFICATIONDATA_H

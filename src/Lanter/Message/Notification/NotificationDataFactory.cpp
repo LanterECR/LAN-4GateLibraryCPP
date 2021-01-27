@@ -8,7 +8,7 @@ namespace Lanter {
 
             std::shared_ptr <INotificationData> NotificationDataFactory::getNotificationData() {
                 return std::make_shared<NotificationData>();
-            }
-        }
-    }
-}
+            }//getNotificationData()
+        }//namespace Notification
+    }//namespace Message
+}//namespace Lanter

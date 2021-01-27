@@ -23,12 +23,12 @@ namespace Lanter {
                 virtual const std::set<RequestField> &getFieldsSet() const = 0;
 
                 /// \brief Проверяет было ли установлено поле
-                /// \param field Поле, которое необходимо проверить
+                /// \param[in] field Поле, которое необходимо проверить
                 /// \return true, если поле было установлено
                 virtual bool isFieldSet(RequestField field) const = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля и удаляет из списка установленных полей
-                /// \param field Поле, которое необходимо удалить
+                /// \param[in] field Поле, которое необходимо удалить
                 /// \return true, если поле успешно удалено
                 virtual bool resetField(RequestField field) = 0;
 
@@ -51,7 +51,7 @@ namespace Lanter {
                 virtual int16_t getEcrNumber() const = 0;
 
                 /// \brief Устанавливает лоический иденитфикатор кассового ПО
-                /// \param ecrNumber Логический идентификатор кассового ПО в диапазоне [1, 999] 
+                /// \param[in] ecrNumber Логический идентификатор кассового ПО в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
                 virtual bool setEcrNumber(int16_t ecrNumber) = 0;
 
@@ -65,7 +65,7 @@ namespace Lanter {
                 virtual int16_t getEcrMerchantNumber() const = 0;
 
                 /// \brief Устанавливает лоический иденитфикатор мерчанта в кассовом ПО
-                /// \param ecrMerchantNumber Логический идентификатор мерчанта в кассовом в диапазоне [1, 999]
+                /// \param[in] ecrMerchantNumber Логический идентификатор мерчанта в кассовом в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
                 virtual bool setEcrMerchantNumber(int16_t ecrMerchantNumber) = 0;
 
@@ -81,7 +81,7 @@ namespace Lanter {
                 virtual OperationCode getOperationCode() const = 0;
 
                 /// \brief Устанавливает код выполнямой операции
-                /// \param operationCode Значение из перечислений OperationCode, за исключением NoOperation
+                /// \param[in] operationCode Значение из перечислений OperationCode, за исключением NoOperation
                 /// \return true, если поле успешно установлено
                 virtual bool setOperationCode(OperationCode operationCode) = 0;
 
@@ -95,7 +95,7 @@ namespace Lanter {
                 virtual int64_t getAmount() const = 0;
 
                 /// \brief Устанавливает сумму в минимальных единицах валюты (копейки для рублей)
-                /// \param amount Значение суммы в диапазоне [0, 999999999999] 
+                /// \param[in] amount Значение суммы в диапазоне [0, 999999999999]
                 /// \return true, если поле успешно установлено
                 virtual bool setAmount(int64_t amount) = 0;
 
@@ -109,7 +109,7 @@ namespace Lanter {
                 virtual int64_t getPartialAmount() const = 0;
 
                 /// \brief Устанавливает частичную сумму в минимальных единицах валюты (копейки для рублей)
-                /// \param partialAmount Значение частичной суммы операции в диапазоне [0, 999999999999] 
+                /// \param[in] partialAmount Значение частичной суммы операции в диапазоне [0, 999999999999]
                 /// \return true, если поле успешно установлено
                 virtual bool setPartialAmount(int64_t partialAmount) = 0;
 
@@ -123,7 +123,7 @@ namespace Lanter {
                 virtual int64_t getTipsAmount() const = 0;
 
                 /// \brief Устанавливает сумму чаевых в минимальных единицах валюты (копейки для рублей)
-                /// \param tipsAmount Значение суммы чаевых операции в диапазоне [0, 999999999999]
+                /// \param[in] tipsAmount Значение суммы чаевых операции в диапазоне [0, 999999999999]
                 /// \return true, если поле успешно установлено
                 virtual bool setTipsAmount(int64_t tipsAmount) = 0;
 
@@ -137,7 +137,7 @@ namespace Lanter {
                 virtual int64_t getCashbackAmount() const = 0;
 
                 /// \brief Устанавливает сумму кэшбека в минимальных единицах валюты (копейки для рублей)
-                /// \param cashbackAmount Значение суммы кэшбека операции в диапазоне [0, 999999999999]
+                /// \param[in] cashbackAmount Значение суммы кэшбека операции в диапазоне [0, 999999999999]
                 /// \return true, если поле успешно установлено
                 virtual bool setCashbackAmount(int64_t cashbackAmount) = 0;
 
@@ -151,7 +151,7 @@ namespace Lanter {
                 virtual int16_t getCurrencyCode() const = 0;
 
                 /// \brief Устанавливает код валюты согласно ISO 4217
-                /// \param currencyCode Код валюты в диапазоне [1, 999]
+                /// \param[in] currencyCode Код валюты в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
                 virtual bool setCurrencyCode(int16_t currencyCode) = 0;
 
@@ -165,7 +165,7 @@ namespace Lanter {
                 virtual const std::string &getRRN() const = 0;
 
                 /// \brief Устанавливает RRN, полученный в ответ на одну из предыдущих операций
-                /// \param RRN Строка, содержащая RRN.
+                /// \param[in] RRN Строка, содержащая RRN.
                 /// \return true, если поле успешно установлено
                 virtual bool setRRN(const std::string &RRN) = 0;
 
@@ -179,7 +179,7 @@ namespace Lanter {
                 virtual const std::string &getAuthCode() const = 0;
 
                 /// \brief Устанавливает код авторизации, полученный в ответ на одну из предыдущих операций
-                /// \param authCode Строка, содержащая код авторизации.
+                /// \param[in] authCode Строка, содержащая код авторизации.
                 /// \return true, если поле успешно установлено
                 virtual bool setAuthCode(const std::string &authCode) = 0;
 
@@ -194,7 +194,7 @@ namespace Lanter {
 
                 /// \brief Устанавливает значение номера чека в финансовом ПО LAN-4Tap,
                 /// полученное в ответ на однй из предыдущих операций
-                /// \param receiptReference Строка, содержащая номер чека в финансовом ПО LAN-4Tap
+                /// \param[in] receiptReference Строка, содержащая номер чека в финансовом ПО LAN-4Tap
                 /// \return true, если поле успешно установлено
                 virtual bool setReceiptReference(const std::string &receiptReference) = 0;
 
@@ -209,7 +209,7 @@ namespace Lanter {
                 virtual const std::string &getTransactionID() const = 0;
 
                 /// \brief Устанавливает значение идентификатора тназакции, полученное в ответ на однй из предыдущих операций
-                /// \param transactionId Строка, содержащая идентификатор тразакции
+                /// \param[in] transactionId Строка, содержащая идентификатор тразакции
                 /// \return true, если поле успешно установлено
                 virtual bool setTransactionID(const std::string &transactionId) = 0;
 
@@ -223,7 +223,7 @@ namespace Lanter {
                 virtual const std::string &getCardDataEnc() const = 0;
 
                 /// \brief Устанавливает значение зашифрованных данных карты, полученное в ответ на одну из предыдущих операций
-                /// \param cardDataEnc Строка, содержщая зашифрованные данные карты
+                /// \param[in] cardDataEnc Строка, содержщая зашифрованные данные карты
                 /// \return true, если поле успешно установлено
                 virtual bool setCardDataEnc(const std::string &cardDataEnc) = 0;
 
@@ -238,7 +238,7 @@ namespace Lanter {
                 virtual const std::string &getOpenTags() const = 0;
 
                 /// \brief Устанавливает список тегов, которые необходимо получить от финансового ПО LAN-4Tap в открытом виде
-                /// \param openTags Строка, отформатированная по следующему шаблону:
+                /// \param[in] openTags Строка, отформатированная по следующему шаблону:
                 /// Каждый тег должен быть закодирован 4 байтами в текстовом шестнадцатеричном представлении.
                 /// Например, тег DF82 кодируется, как 0000DF82, а тег 82 - 00000082
                 /// Несколько тегов записываются друг за другом, например  0000DF8200000082.
@@ -258,7 +258,7 @@ namespace Lanter {
                 virtual const std::string &getEncTags() const = 0;
 
                 /// \brief Устанавливает список тегов, которые необходимо получить от финансового ПО LAN-4Tap в зашифрованном виде
-                /// \param encTags Строка, отформатированная по следующему шаблону:
+                /// \param[in] encTags Строка, отформатированная по следующему шаблону:
                 /// Каждый тег должен быть закодирован 4 байтами в текстовом шестнадцатеричном представлении.
                 /// Например, тег DF82 кодируется, как 0000DF82, а тег 82 - 00000082
                 /// Несколько тегов записываются друг за другом, например  0000DF8200000082.
@@ -277,7 +277,7 @@ namespace Lanter {
                 virtual const std::string &getProviderCode() const = 0;
 
                 /// \brief Устанавливает код провайдера платежа
-                /// \param providerCode Строка, содержащая код провайдера платежа
+                /// \param[in] providerCode Строка, содержащая код провайдера платежа
                 /// \return true, если поле успешно установлено
                 virtual bool setProviderCode(const std::string &providerCode) = 0;
 
@@ -291,7 +291,7 @@ namespace Lanter {
                 virtual const std::string &getAdditionalInfo() const = 0;
 
                 /// \brief Устанавливает дополнительные параметры операции
-                /// \param additionalInfo Строка, содержащая дополнительные параметры операции. Формат зависит от операции.
+                /// \param[in] additionalInfo Строка, содержащая дополнительные параметры операции. Формат зависит от операции.
                 /// \return true, если поле успешно установлено
                 virtual bool setAdditionalInfo(const std::string &additionalInfo) = 0;
 
@@ -299,9 +299,9 @@ namespace Lanter {
                 /// и удаляет из списка установленных полей
                 /// \return true, если успешно удалено.
                 virtual bool resetAdditionalInfo() = 0;
-            };//IRequestData
-        }//Request
-    }
-}//Lanter
+            };//class IRequestData
+        }//namespace Request
+    }//namespace Message
+}//namespace Lanter
 
 #endif //LAN_4GATELIBRARYCPP_IREQUESTDATA_H

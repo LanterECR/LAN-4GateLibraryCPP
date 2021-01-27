@@ -1,7 +1,6 @@
 #ifndef LAN_4GATELIBRARYCPP_MESSAGETYPE_H
 #define LAN_4GATELIBRARYCPP_MESSAGETYPE_H
 
-
 namespace Lanter {
     namespace MessageProcessor {
         namespace Parser {
@@ -17,8 +16,8 @@ namespace Lanter {
                 //Границы
                 FirstValue = Unknown, ///< Ссылка на первый элемент перечисления
                 LastValue = Communication ///< Ссылка на последний элемент перечисления
-            };
-        }
-    }
-}
+            };//enum MessageType
+        }//namespace Parser
+    }//namespace MessageProcessor
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_MESSAGETYPE_H

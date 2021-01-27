@@ -1,7 +1,6 @@
 #ifndef LAN_4GATELIBRARYCPP_OPERATIONCODES_H
 #define LAN_4GATELIBRARYCPP_OPERATIONCODES_H
 
-
 namespace Lanter {
     namespace Message {
         /// \brief Список поддерживаемых операций
@@ -56,7 +55,7 @@ namespace Lanter {
             //Диапазон операций
             FirstValue = Sale, ///< Ссылка на первый элемент перечисления
             LastValue = ArrayElement ///< Ссылка на последний элемент перечисления
-        };
-    }
-}
+        };//enum OperationCode
+    }//namespace Message
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_OPERATIONCODES_H

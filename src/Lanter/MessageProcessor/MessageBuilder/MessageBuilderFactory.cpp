@@ -7,7 +7,7 @@ namespace Lanter {
         namespace Builder {
             std::shared_ptr<IMessageBuilder> MessageBuilderFactory::getMessageBuilder() {
                 return std::make_shared<JSONMessageBuilder>();
-            }
-        }
-    }
-}
+            }//getMessageBuilder
+        }//namespace Builder
+    }//namespace MessageProcessor
+}//namespace Lanter

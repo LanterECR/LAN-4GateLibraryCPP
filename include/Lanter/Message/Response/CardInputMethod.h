@@ -1,5 +1,6 @@
 #ifndef LAN_4GATELIBRARYCPP_CARDINPUTMETHOD_H
 #define LAN_4GATELIBRARYCPP_CARDINPUTMETHOD_H
+
 namespace Lanter {
     namespace Message {
         namespace Response {
@@ -17,8 +18,8 @@ namespace Lanter {
                 //Диапазон значений
                 FirstValue = TerminalManualEntry, ///< Ссылка на первый элемент перечисления
                 LastValue = ContactlessChipMode ///< Ссылка на последний элемент перечисления
-            };
-        }
-    }
-}
+            };//enum CardInputMethod
+        }//namespace Response
+    }//namespace Message
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_CARDINPUTMETHOD_H

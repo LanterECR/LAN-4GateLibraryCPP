@@ -29,12 +29,12 @@ namespace Lanter {
                 virtual const std::set<ResponseField> &getFieldsSet() const = 0;
 
                 /// \brief Проверяет было ли установлено поле
-                /// \param field Поле, которое необходимо проверить
+                /// \param[in] field Поле, которое необходимо проверить
                 /// \return true, если поле было установлено
                 virtual bool isFieldSet(ResponseField field) const = 0;
 
                 // \brief Устанавливает значение по умолчанию для поля и удаляет из списка установленных полей
-                /// \param field Поле, которое необходимо удалить
+                /// \param[in] field Поле, которое необходимо удалить
                 /// \return true, если поле успешно удалено
                 virtual bool resetField(ResponseField field) = 0;
 
@@ -57,7 +57,7 @@ namespace Lanter {
                 virtual int16_t getEcrNumber() const = 0;
 
                 /// \brief Устанавливает лоический иденитфикатор кассового ПО
-                /// \param ecrNumber Логический идентификатор кассового ПО в диапазоне [1, 999]
+                /// \param[in] ecrNumber Логический идентификатор кассового ПО в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
                 virtual bool setEcrNumber(int16_t ecrNumber) = 0;
 
@@ -71,7 +71,7 @@ namespace Lanter {
                 virtual int16_t getEcrMerchantNumber() const = 0;
 
                 /// \brief Устанавливает лоический иденитфикатор мерчанта в кассовом ПО
-                /// \param ecrMerchantNumber Логический идентификатор мерчанта в кассовом в диапазоне [1, 999]
+                /// \param[in] ecrMerchantNumber Логический идентификатор мерчанта в кассовом в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
                 virtual bool setEcrMerchantNumber(int16_t ecrMerchantNumber) = 0;
 
@@ -86,7 +86,7 @@ namespace Lanter {
                 virtual OperationCode getOperationCode() const = 0;
 
                 /// \brief Устанавливает код выполнямой операции
-                /// \param operationCode Значение из перечислений OperationCode, за исключением NoOperation
+                /// \param[in] operationCode Значение из перечислений OperationCode, за исключением NoOperation
                 /// \sa OperationCode
                 /// \return true, если поле успешно установлено
                 virtual bool setOperationCode(OperationCode operationCode) = 0;
@@ -98,12 +98,12 @@ namespace Lanter {
 
                 /// \brief Возвращает код оригинальной операции
                 /// \return Если поле установлено, возвращает код оригинальной операции. Иначе NoOperation
-                /// \see OperationCode
+                /// \sa OperationCode
                 virtual OperationCode getOriginalOperationCode() const = 0;
 
                 /// \brief Устанавливает код оригинальной операции
-                /// \param originalOperationCode Значение из перечислений OperationCode, за исключением NoOperation
-                /// \see OperationCode
+                /// \param[in] originalOperationCode Значение из перечислений OperationCode, за исключением NoOperation
+                /// \sa OperationCode
                 /// \return true, если поле успешно установлено
                 virtual bool setOriginalOperationCode(OperationCode originalOperationCode) = 0;
 
@@ -117,7 +117,8 @@ namespace Lanter {
                 virtual int64_t getTotalAmount() const = 0;
 
                 /// \brief Устанавливает сумму в минимальных единицах валюты (копейки для рублей)
-                /// \param totalAmount Значение суммы в диапазоне [0, 999999999999]
+                /// \param[in] totalAmount Значение суммы в диапазоне [0, 999999999999]
+                /// \return true, если поле успешно установлено
                 virtual bool setTotalAmount(int64_t totalAmount) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля TotalAmount
@@ -130,7 +131,8 @@ namespace Lanter {
                 virtual int64_t getPartialAmount() const = 0;
 
                 /// \brief Устанавливает частичную сумму в минимальных единицах валюты (копейки для рублей)
-                /// \param partialAmount Значение суммы в диапазоне [0, 999999999999]
+                /// \param[in] partialAmount Значение суммы в диапазоне [0, 999999999999]
+                /// \return true, если поле успешно установлено
                 virtual bool setPartialAmount(int64_t partialAmount) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля PartialAmount
@@ -143,7 +145,8 @@ namespace Lanter {
                 virtual int64_t getAcquirerFeeAmount() const = 0;
 
                 /// \brief Устанавливает сумму комиссии эквайера
-                /// \param amountAcquirerFee Значение суммы в диапазоне [0, 999999999999]
+                /// \param[in] amountAcquirerFee Значение суммы в диапазоне [0, 999999999999]
+                /// \return true, если поле успешно установлено
                 virtual bool setAcquirerFeeAmount(int64_t amountAcquirerFee) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля AcquirerFeeAmount
@@ -156,7 +159,8 @@ namespace Lanter {
                 virtual int64_t getTerminalFeeAmount() const = 0;
 
                 /// \brief Устанавливает сумму комиссии терминала
-                /// \param amountTerminalFee Значение суммы в диапазоне [0, 999999999999]
+                /// \param[in] amountTerminalFee Значение суммы в диапазоне [0, 999999999999]
+                /// \return true, если поле успешно установлено
                 virtual bool setTerminalFeeAmount(int64_t amountTerminalFee) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля TerminalFeeAmount
@@ -169,7 +173,8 @@ namespace Lanter {
                 virtual int64_t getTipsAmount() const = 0;
 
                 /// \brief Устанавливает сумму чаевых
-                /// \param tipsAmount Значение суммы в диапазоне [0, 999999999999]
+                /// \param[in] tipsAmount Значение суммы в диапазоне [0, 999999999999]
+                /// \return true, если поле успешно установлено
                 virtual bool setTipsAmount(int64_t tipsAmount) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля TipsAmount
@@ -182,7 +187,8 @@ namespace Lanter {
                 virtual int16_t getCurrencyCode() const = 0;
 
                 /// \brief Устанавливает код валюты согласно ISO 4217
-                /// \param currencyCode значение кода валюты в диапазоне [0, 999]
+                /// \param[in] currencyCode значение кода валюты в диапазоне [0, 999]
+                /// \return true, если поле успешно установлено
                 virtual bool setCurrencyCode(int16_t currencyCode) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля CurrencyCode
@@ -195,7 +201,8 @@ namespace Lanter {
                 virtual const std::string &getReceiptReference() const = 0;
 
                 /// \brief Устанавливает номер чека в финансовом ПО LAN-4Tap
-                /// \param receiptReference строка, содержащая номер чека
+                /// \param[in] receiptReference строка, содержащая номер чека
+                /// \return true, если поле успешно установлено
                 virtual bool setReceiptReference(const std::string &receiptReference) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля ReceiptReference
@@ -208,7 +215,8 @@ namespace Lanter {
                 virtual const std::string &getRRN() const = 0;
 
                 /// \brief Устанавливает RRN операции
-                /// \param rrn Строка, содержащая RRN операции
+                /// \param[in] rrn Строка, содержащая RRN операции
+                /// \return true, если поле успешно установлено
                 virtual bool setRRN(const std::string &rrn) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля RRN
@@ -221,7 +229,8 @@ namespace Lanter {
                 virtual Status getStatus() const = 0;
 
                 /// \brief Устанавливает статус операции
-                /// \param status Значение из перечисления Status, за исключением NoStatus
+                /// \param[in] status Значение из перечисления Status, за исключением NoStatus
+                /// \return true, если поле успешно установлено
                 virtual bool setStatus(Status status) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля Status
@@ -234,7 +243,8 @@ namespace Lanter {
                 virtual Status getOriginalOperationStatus() const = 0;
 
                 /// \brief Устанавливает статус ранее выполненной операции
-                /// \param originalOperationStatus Значение из перечисления Status, за исключением NoStatus
+                /// \param[in] originalOperationStatus Значение из перечисления Status, за исключением NoStatus
+                /// \return true, если поле успешно установлено
                 virtual bool setOriginalOperationStatus(Status originalOperationStatus) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля OriginalOperationStatus
@@ -247,7 +257,8 @@ namespace Lanter {
                 virtual const std::string &getTransDateTime() const = 0;
 
                 /// \brief Устанавливает время выполнения операции на хосте
-                /// \param transDateTime Строка формата YYYYMMDDHHMMSS, содержащая время выполнения операции на хосте
+                /// \param[in] transDateTime Строка формата YYYYMMDDHHMMSS, содержащая время выполнения операции на хосте
+                /// \return true, если поле успешно установлено
                 virtual bool setTransDateTime(const std::string &transDateTime) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля TransDateTime
@@ -260,7 +271,8 @@ namespace Lanter {
                 virtual const std::string &getTerminalDateTime() const = 0;
 
                 /// \brief Устанавливает время выполнения операции в финансовом ПО LAN-4Tap
-                /// \param terminalDateTime Строка формата YYYYMMDDHHMMSS, содержащая время выполнения операции в финансовом ПО LAN-4Tap
+                /// \param[in] terminalDateTime Строка формата YYYYMMDDHHMMSS, содержащая время выполнения операции в финансовом ПО LAN-4Tap
+                /// \return true, если поле успешно установлено
                 virtual bool setTerminalDateTime(const std::string &terminalDateTime) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля TerminalDateTime
@@ -273,7 +285,8 @@ namespace Lanter {
                 virtual const std::string &getCardPAN() const = 0;
 
                 /// \brief Устанавливает маскированный PAN карты
-                /// \param cardPan строка, содержащая маскированный PAN
+                /// \param[in] cardPan строка, содержащая маскированный PAN
+                /// \return true, если поле успешно установлено
                 virtual bool setCardPAN(const std::string &cardPan) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля CardPAN
@@ -286,7 +299,8 @@ namespace Lanter {
                 virtual const std::string &getExpireDate() const = 0;
 
                 /// \brief Устанавливает срок действия карты
-                /// \param expireDate Строка формата YYMM, содержащая срок действия карты
+                /// \param[in] expireDate Строка формата YYMM, содержащая срок действия карты
+                /// \return true, если поле успешно установлено
                 virtual bool setExpireDate(const std::string &expireDate) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля ExpireDate
@@ -299,7 +313,8 @@ namespace Lanter {
                 virtual const std::string &getCardholderName() const = 0;
 
                 /// \brief Устанавливает имя держателя карты
-                /// \param cardholderName Строка, содержащая имя держателя карты
+                /// \param[in] cardholderName Строка, содержащая имя держателя карты
+                /// \return true, если поле успешно установлено
                 virtual bool setCardholderName(const std::string &cardholderName) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля CardholderName
@@ -312,7 +327,8 @@ namespace Lanter {
                 virtual CardholderAuthMethod getCardholderAuthMethod() const = 0;
 
                 /// \brief Устанавливает способ авторизации держателя карты
-                /// \param cardholderAuthMethod Значение из перечисления CardholderAuthMethod, за исключением NoMethod
+                /// \param[in] cardholderAuthMethod Значение из перечисления CardholderAuthMethod, за исключением NoMethod
+                /// \return true, если поле успешно установлено
                 virtual bool setCardholderAuthMethod(CardholderAuthMethod cardholderAuthMethod) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля CardholderAuthMethod
@@ -325,7 +341,8 @@ namespace Lanter {
                 virtual const std::string &getAuthCode() const = 0;
 
                 /// \brief Устанавливает код авторизации на хосте
-                /// \param authCode Строка, содержащая код авторизации.
+                /// \param[in] authCode Строка, содержащая код авторизации.
+                /// \return true, если поле успешно установлено
                 virtual bool setAuthCode(const std::string &authCode) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля AuthCode
@@ -338,7 +355,8 @@ namespace Lanter {
                 virtual const std::string &getResponseCode() const = 0;
 
                 /// \brief Устанавливает код ответа хоста или финансового ПО LAN-4Tap
-                /// \param responseCode Строка, содержащая код ответа
+                /// \param[in] responseCode Строка, содержащая код ответа
+                /// \return true, если поле успешно установлено
                 virtual bool setResponseCode(const std::string &responseCode) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля ResponseCode
@@ -351,7 +369,8 @@ namespace Lanter {
                 virtual const std::string &getResponseText() const = 0;
 
                 /// \brief Возвращает текст ответа от хоста или финансового ПО LAN-4Tap
-                /// \param responseText Строка, содержащая текст ответа
+                /// \param[in] responseText Строка, содержащая текст ответа
+                /// \return true, если поле успешно установлено
                 virtual bool setResponseText(const std::string &responseText) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля ResponseText
@@ -364,7 +383,8 @@ namespace Lanter {
                 virtual const std::string &getSTAN() const = 0;
 
                 /// \brief Устанавливает идентификатор операции в финансовом ПО LAN-4Tap
-                /// \param stan Строка, содержащая STAN операции
+                /// \param[in] stan Строка, содержащая STAN операции
+                /// \return true, если поле успешно установлено
                 virtual bool setSTAN(const std::string &stan) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля STAN
@@ -377,7 +397,8 @@ namespace Lanter {
                 virtual const std::string &getTransactionID() const = 0;
 
                 /// \brief Устанавливает ID операции на хосте
-                /// \param transactionId Строка, содержащая ID операции
+                /// \param[in] transactionId Строка, содержащая ID операции
+                /// \return true, если поле успешно установлено
                 virtual bool setTransactionID(const std::string &transactionId) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля TransactionID
@@ -390,7 +411,8 @@ namespace Lanter {
                 virtual const std::string &getTerminalID() const = 0;
 
                 /// \brief Устанавливает ID терминала на хосте
-                /// \param terminalId Строка, содержащая ID терминала
+                /// \param[in] terminalId Строка, содержащая ID терминала
+                /// \return true, если поле успешно установлено
                 virtual bool setTerminalID(const std::string &terminalId) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля TerminalID
@@ -403,7 +425,8 @@ namespace Lanter {
                 virtual const std::string &getCardEmvAid() const = 0;
 
                 /// \brief Устанавливает EMV AID карты
-                /// \param cardEmvAid Строка, содержащая EMV AID
+                /// \param[in] cardEmvAid Строка, содержащая EMV AID
+                /// \return true, если поле успешно установлено
                 virtual bool setCardEmvAid(const std::string &cardEmvAid) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля CardEmvAid
@@ -416,7 +439,8 @@ namespace Lanter {
                 virtual const std::string &getCardAppName() const = 0;
 
                 /// \brief Устанавливает название прилжения карты
-                /// \param cardAppName Строка, содержащая название приложения карты
+                /// \param[in] cardAppName Строка, содержащая название приложения карты
+                /// \return true, если поле успешно установлено
                 virtual bool setCardAppName(const std::string &cardAppName) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля CardAppName
@@ -429,7 +453,8 @@ namespace Lanter {
                 virtual CardInputMethod getCardInputMethod() const = 0;
 
                 /// \brief Устанавливает способ предоставления карты
-                /// \param cardInputMethod Значение из перечисления CardInputMethod, за исключением NoMethod
+                /// \param[in] cardInputMethod Значение из перечисления CardInputMethod, за исключением NoMethod
+                /// \return true, если поле успешно установлено
                 virtual bool setCardInputMethod(CardInputMethod cardInputMethod) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля CardInputMethod
@@ -442,7 +467,8 @@ namespace Lanter {
                 virtual const std::string &getIssuerName() const = 0;
 
                 /// \brief Устанавливает название эмитента карты
-                /// \param issuerName Строка, содержащая название эмитента
+                /// \param[in] issuerName Строка, содержащая название эмитента
+                /// \return true, если поле успешно установлено
                 virtual bool setIssuerName(const std::string &issuerName) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля IssuerName
@@ -455,7 +481,8 @@ namespace Lanter {
                 virtual const std::string &getAdditionalInfo() const = 0;
 
                 /// \brief Устанавливает дополнительные данные операции
-                /// \param additionalInfo Строка, содержащая дополнительные данные операции. Формат зависит от операции
+                /// \param[in] additionalInfo Строка, содержащая дополнительные данные операции. Формат зависит от операции
+                /// \return true, если поле успешно установлено
                 virtual bool setAdditionalInfo(const std::string &additionalInfo) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля AdditionalInfo
@@ -470,9 +497,10 @@ namespace Lanter {
                 virtual const std::string &getCardData() const = 0;
 
                 /// \brief Устанавливает открытые данные карты
-                /// \param cardData Строка, содержащая открыте данные карты
+                /// \param[in] cardData Строка, содержащая открыте данные карты
                 /// Строка может начинаться с префикса 0x. После префикса - TLV открытых данных карты в ASCII HEX.
                 /// Регистр не важен.
+                /// \return true, если поле успешно установлено
                 virtual bool setCardData(const std::string &cardData) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля CardData
@@ -491,7 +519,8 @@ namespace Lanter {
                 /// Строка может начинаться с префикса 0x. После префикса - зашифрованные данные карты в ASCII HEX.
                 /// После расшифровки - данные карты в формате TLV
                 /// Регистр не важен.
-                /// \param cardDataEnc Строка, содержащая зашифрованные данные карты
+                /// \param[in] cardDataEnc Строка, содержащая зашифрованные данные карты
+                /// \return true, если поле успешно установлено
                 virtual bool setCardDataEnc(const std::string &cardDataEnc) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля CardDataEnc
@@ -504,7 +533,8 @@ namespace Lanter {
                 virtual const std::string &getMerchantID() const = 0;
 
                 /// \brief Устанавливает ID мерчанта на хосте
-                /// \param merchantId Строка, содержащая ID мерчанта на хосте
+                /// \param[in] merchantId Строка, содержащая ID мерчанта на хосте
+                /// \return true, если поле успешно установлено
                 virtual bool setMerchantID(const std::string &merchantId) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля MerchantID
@@ -517,7 +547,8 @@ namespace Lanter {
                 virtual const std::string &getTVR() const = 0;
 
                 /// \brief Дополнительные данные работы с картой
-                /// \param tvr Дополнительные данные работы с картой
+                /// \param[in] tvr Дополнительные данные работы с картой
+                /// \return true, если поле успешно установлено
                 virtual bool setTVR(const std::string &tvr) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля TVR
@@ -530,7 +561,8 @@ namespace Lanter {
                 virtual const std::string &getTSI() const = 0;
 
                 /// \brief Дополнительные данные работы с картой
-                /// \param tsi Дополнительные данные работы с картой
+                /// \param[in] tsi Дополнительные данные работы с картой
+                /// \return true, если поле успешно установлено
                 virtual bool setTSI(const std::string &tsi) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля TSI
@@ -543,7 +575,8 @@ namespace Lanter {
                 virtual const std::string &getTC() const = 0;
 
                 /// \brief Дополнительные данные работы с картой
-                /// \param tc Дополнительные данные работы с картой
+                /// \param[in] tc Дополнительные данные работы с картой
+                /// \return true, если поле успешно установлено
                 virtual bool setTC(const std::string &tc) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля TC
@@ -556,7 +589,8 @@ namespace Lanter {
                 virtual const std::string &getCID() const = 0;
 
                 /// \brief Дополнительные данные работы с картой
-                /// \param cid Дополнительные данные работы с картой
+                /// \param[in] cid Дополнительные данные работы с картой
+                /// \return true, если поле успешно установлено
                 virtual bool setCID(const std::string &cid) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля CID
@@ -569,7 +603,8 @@ namespace Lanter {
                 virtual const std::string &getKVR() const = 0;
 
                 /// \brief Дополнительные данные работы с картой
-                /// \param kvr Дополнительные данные работы с картой
+                /// \param[in] kvr Дополнительные данные работы с картой
+                /// \return true, если поле успешно установлено
                 virtual bool setKVR(const std::string &kvr) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля KVR
@@ -582,7 +617,8 @@ namespace Lanter {
                 virtual const std::string &getCDAResult() const = 0;
 
                 /// \brief Дополнительные данные работы с картой
-                /// \param cdaResult Дополнительные данные работы с картой
+                /// \param[in] cdaResult Дополнительные данные работы с картой
+                /// \return true, если поле успешно установлено
                 virtual bool setCDAResult(const std::string &cdaResult) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля CDAResult
@@ -595,7 +631,8 @@ namespace Lanter {
                 virtual int32_t getSalesCount() const = 0;
 
                 /// \brief Устанавливает количество операций продажи, выполненных с последней сверки итогов
-                /// \param salesCount количество операций продажи
+                /// \param[in] salesCount количество операций продажи
+                /// \return true, если поле успешно установлено
                 virtual bool setSalesCount(int32_t salesCount) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля SalesCount
@@ -608,7 +645,8 @@ namespace Lanter {
                 virtual int32_t getVoidCount() const = 0;
 
                 /// \brief Устанавливает количество операций отмены, выполненных с последней сверки итогов
-                /// \param voidCount количество операций продажи
+                /// \param[in] voidCount количество операций продажи
+                /// \return true, если поле успешно установлено
                 virtual bool setVoidCount(int32_t voidCount) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля VoidCount
@@ -621,7 +659,8 @@ namespace Lanter {
                 virtual int32_t getRefundCount() const = 0;
 
                 /// \brief Устанавливает количество операций возврата, выполненных с последней сверки итогов
-                /// \param refundCount количество операций возврата
+                /// \param[in] refundCount количество операций возврата
+                /// \return true, если поле успешно установлено
                 virtual bool setRefundCount(int32_t refundCount) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля RefundCount
@@ -634,7 +673,8 @@ namespace Lanter {
                 virtual const std::vector<std::shared_ptr<IResponseData> > &getSaleArray() const = 0;
 
                 /// \brief Устанавливает массив, содержащий краткую информацию по операциям продажи
-                /// \param salesArray std::vector, содержащий указатели std::shared_ptr на IResponseData
+                /// \param[in] salesArray std::vector, содержащий указатели std::shared_ptr на IResponseData
+                /// \return true, если поле успешно установлено
                 virtual bool setSalesArray(const std::vector<std::shared_ptr<IResponseData> > &salesArray) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля SalesArray
@@ -647,7 +687,8 @@ namespace Lanter {
                 virtual const std::vector<std::shared_ptr<IResponseData> > &getVoidArray() const = 0;
 
                 /// \brief Устанавливает массив, содержащий краткую информацию по операциям отмены
-                /// \param voidArray std::vector, содержащий указатели std::shared_ptr на IResponseData
+                /// \param[in] voidArray std::vector, содержащий указатели std::shared_ptr на IResponseData
+                /// \return true, если поле успешно установлено
                 virtual bool setVoidArray(const std::vector<std::shared_ptr<IResponseData> > &voidArray) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля VoidArray
@@ -660,15 +701,16 @@ namespace Lanter {
                 virtual const std::vector<std::shared_ptr<IResponseData> > &getRefundArray() const = 0;
 
                 /// \brief Устанавливает массив, содержащий краткую информацию по операциям возврата
-                /// \param refundArray std::vector, содержащий указатели std::shared_ptr на IResponseData
+                /// \param[in] refundArray std::vector, содержащий указатели std::shared_ptr на IResponseData
+                /// \return true, если поле успешно установлено
                 virtual bool setRefundArray(const std::vector<std::shared_ptr<IResponseData> > &refundArray) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля RefundArray
                 /// и удаляет из списка установленных полей
                 /// \return true, если успешно удалено.
                 virtual bool resetRefundArray() = 0;
-            };
-        }//Response
-    }
-}//Lanter
+            };//class IResponseData
+        }//namespace Response
+    }//namespace Message
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_IRESPONSEDATA_H

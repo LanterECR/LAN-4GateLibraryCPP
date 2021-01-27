@@ -10,7 +10,7 @@ option(BUILD_TESTS "Enable unit-testing" OFF)
 list(LENGTH LIBRARY_TYPE len)
 if(len EQUAL 1)
     string(TOUPPER ${LIBRARY_TYPE} LIB_BUILD_TYPE)
-    if(NOT ${LIB_BUILD_TYPE} STREQUAL SHARED AND NOT ${LIB_BUILD_TYPE} STREQUAL STATIC)
+    if(NOT "${LIB_BUILD_TYPE}" STREQUAL "SHARED" AND NOT "${LIB_BUILD_TYPE}" STREQUAL "STATIC")
         message(FATAL_ERROR "Unsupported library type \"${LIBRARY_TYPE}\"")
     endif()
 elseif(len GREATER 1)
@@ -36,7 +36,7 @@ if(EXISTS ${JSONCPP_AMALGAMATE_SCRIPT_PATH})
     execute_process(COMMAND ${Python3_EXECUTABLE} ${JSONCPP_AMALGAMATE_SCRIPT_PATH}
                     WORKING_DIRECTORY ${JSONCPP_PATH})
 else()
-    message(FATAL_ERROR "JSONCPP amalgamate script not found in ${JSONCPP_AMALGAMATE_SCRIPT_PATH}. Use git submodule init --update command for submodule init.")
+    message(FATAL_ERROR "JSONCPP amalgamate script not found in ${JSONCPP_AMALGAMATE_SCRIPT_PATH}. Use git submodule update --init command for submodule init.")
 endif()
 #Подключение amalgamation версии jsoncpp
 #EXISTS проверят полный путь
@@ -76,7 +76,7 @@ add_library(${PROJECT_NAME} #название проекта
             ${INCLUDE_FILES} ${SOURCE_FILES} #Файлы интерфейсной части
             ${IMPL_INCLUDE_FILES} ${IMPL_SOURCE_FILES} #Файлы реализации
            )
-if(${LIB_BUILD_TYPE} STREQUAL SHARED)
+if("${LIB_BUILD_TYPE}" STREQUAL "SHARED")
     target_compile_definitions(${PROJECT_NAME} PUBLIC LANTER_BUILD_SHARED)
 endif()
 

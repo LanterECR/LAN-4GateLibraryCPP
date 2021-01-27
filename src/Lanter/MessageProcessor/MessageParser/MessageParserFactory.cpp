@@ -7,7 +7,7 @@ namespace Lanter {
         namespace Parser {
             std::shared_ptr<IMessageParser> MessageParserFactory::getMessageParser() {
                 return std::make_shared<JSONMessageParser>();
-            }
-        }
-    }
-}
+            }//getMessageParser()
+        }//namespace Parser
+    }//namespace MessageProcessor
+}//namespace Lanter

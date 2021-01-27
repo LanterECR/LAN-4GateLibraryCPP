@@ -1,5 +1,6 @@
 #ifndef LAN_4GATELIBRARYCPP_RESPONSEFIELDS_H
 #define LAN_4GATELIBRARYCPP_RESPONSEFIELDS_H
+
 namespace Lanter {
     namespace Message {
         namespace Response {
@@ -54,8 +55,9 @@ namespace Lanter {
                 //диапазон полей
                 FirstValue = EcrNumber, ///< Ссылка на первый элемент перечисления
                 LastValue = RefundArray ///< Ссылка на последний элемент перечисления
-            };
-        }
-    }
-}
+            };//enum ResponseField
+        }//namespace Response
+    }//namespace Message
+}//namespace Lanter
+
 #endif //LAN_4GATELIBRARYCPP_RESPONSEFIELDS_H

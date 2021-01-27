@@ -41,10 +41,9 @@ namespace Lanter {
                 /// \param[out] result vector из байтов, содержащий собранное сообщение
                 /// \return true, если сборка сообщения прошла успешно.
                 /// \sa Message::Notification::INotificationData
-                virtual bool
-                createMessage(std::shared_ptr<INotificationData> data, std::vector<unsigned char> &result) = 0;
-            };
-        }
-    }//MessageProcessor
-}//Lanter
+                virtual bool createMessage(std::shared_ptr<INotificationData> data, std::vector<unsigned char> &result) = 0;
+            };//class IMessageBuilder
+        }//namespace Builder
+    }//namespace MessageProcessor
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_IMESSAGEBUILDER_H

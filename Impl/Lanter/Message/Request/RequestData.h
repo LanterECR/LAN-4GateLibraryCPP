@@ -1,16 +1,17 @@
 #ifndef LAN_4GATELIBRARYCPP_REQUESTDATA_H
 #define LAN_4GATELIBRARYCPP_REQUESTDATA_H
 
-#include <memory>
-
 #include "Lanter/Message/Request/IRequestData.h"
+
+#include <memory>
+#include <set>
 
 #include "Validators/IValidator.h"
 
 namespace Lanter {
     namespace Message {
         namespace Request {
-            ///\brief Базовый класс-контейнер для отправки запросов финансовому ПО LAN-4Tap
+
             class RequestData : public IRequestData {
             public:
                 RequestData();
@@ -158,8 +159,9 @@ namespace Lanter {
                 std::string m_AdditionalInfo; ///< Дополнительные данные операции
 
                 std::set<RequestField> m_EmptyFieldsPlaceholder; ///< Пустая коллекция для полей при отсутствии валидатора
-            };//RequestData
-        }//Request
-    }
-}//Lanter
+
+            };//class RequestData
+        }//namespace Request
+    }//namespace Message
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_REQUESTDATA_H

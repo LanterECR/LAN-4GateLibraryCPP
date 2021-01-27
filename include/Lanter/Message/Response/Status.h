@@ -1,11 +1,12 @@
 #ifndef LAN_4GATELIBRARYCPP_STATUS_H
 #define LAN_4GATELIBRARYCPP_STATUS_H
+
 namespace Lanter {
     namespace Message {
         namespace Response {
             /// \brief Список возможных значений поля ResponseField::Status в ответе финансового ПО LAN-4Tap
             enum class Status {
-                NoStatus,
+                NoStatus, ///< Значение-заглушка. Соответствует неизвестному статусу
                 Success = 1, ///< Операция успешно выполнена
                 Error, ///< Ошибка выполнения операции
                 Decline, ///< Операция отклонена хостом
@@ -21,8 +22,8 @@ namespace Lanter {
                 //Диапазон значений
                 FirstValue = Success, ///< Ссылка на первый элемент перечисления
                 LastValue = FastTrackKeyError ///< Ссылка на последний элемент перечисления
-            };
-        } //Response
-    }
-} //Lanter
+            };//enum Status
+        }//namespace Response
+    }//namespace Message
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_STATUS_H

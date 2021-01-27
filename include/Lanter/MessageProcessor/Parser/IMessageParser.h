@@ -11,12 +11,15 @@
 #include "Lanter/Message/Notification/INotificationData.h"
 #include "Lanter/Utils/VisibilityMacroses.h"
 
-using namespace Lanter::Message;
-using namespace Lanter::Message::Request;
-using namespace Lanter::Message::Response;
-using namespace Lanter::Message::Notification;
+
 
 namespace Lanter {
+
+    using namespace Message;
+    using namespace Message::Request;
+    using namespace Message::Response;
+    using namespace Message::Notification;
+
     namespace MessageProcessor {
         namespace Parser {
             /// \brief Парсер сообщений.
@@ -53,8 +56,8 @@ namespace Lanter {
                 /// Сообщает о количестве запросов в очереди
                 /// \return 0, если очередь пуста
                 virtual size_t notificationCount() const = 0;
-            };
-        }
-    }
-}
+            };//class IMessageParser
+        }//namespace Parser
+    }//namespace MessageProcessor
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_IMESSAGEPARSER_H

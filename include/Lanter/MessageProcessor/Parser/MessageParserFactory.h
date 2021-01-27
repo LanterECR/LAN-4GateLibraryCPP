@@ -15,8 +15,8 @@ namespace Lanter {
                 /// \brief Возвращает указатель на созданный объект парсера
                 /// \return nullptr, если не удалось создать парсер
                 static std::shared_ptr<IMessageParser> getMessageParser();
-            };
-        }
-    }
-}
+            };//class MessageParserFactory
+        }//namespace Parser
+    }//namespace MessageProcessor
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_MESSAGEPARSERFACTORY_H

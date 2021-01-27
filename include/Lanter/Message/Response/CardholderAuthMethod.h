@@ -1,5 +1,6 @@
 #ifndef LAN_4GATELIBRARYCPP_CARDHOLDERAUTHMETHOD_H
 #define LAN_4GATELIBRARYCPP_CARDHOLDERAUTHMETHOD_H
+
 namespace Lanter {
     namespace Message {
         namespace Response {
@@ -14,7 +15,7 @@ namespace Lanter {
                 FirstValue = NoVerification, ///< Ссылка на первый элемент перечисления
                 LastValue = ClientDeviceVerification ///< Ссылка на последний элемент перечисления
             };
-        }
-    }
-}
+        }//namespace Response
+    }//namespace Message
+}//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_CARDHOLDERAUTHMETHOD_H
