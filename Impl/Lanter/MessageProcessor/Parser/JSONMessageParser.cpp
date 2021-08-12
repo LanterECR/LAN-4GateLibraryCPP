@@ -1,5 +1,7 @@
 #include "JSONMessageParser.h"
 
+#include <sstream>
+
 #include "JSONRootFieldsChecker.h"
 #include "JSONMessageTypeChecker.h"
 
