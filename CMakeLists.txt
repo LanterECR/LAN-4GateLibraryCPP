@@ -13,8 +13,8 @@ endif()
 include(${HUNTER_GATE_PATH})
 
 HunterGate(
-        URL "https://github.com/cpp-pm/hunter/archive/v0.23.297.tar.gz"
-        SHA1 "3319fe6a3b08090df7df98dee75134d68e2ef5a3"
+        URL "https://github.com/cpp-pm/hunter/archive/v0.23.313.tar.gz"
+        SHA1 "6c369e5aab2749a616917df3b23511535f413604"
 )
 
 
@@ -64,7 +64,7 @@ if("${LIB_BUILD_TYPE}" STREQUAL "SHARED")
     target_compile_definitions(${PROJECT_NAME} PUBLIC LANTER_BUILD_SHARED)
 endif()
 
-target_link_libraries(${PROJECT_NAME} jsoncpp_lib_static)
+target_link_libraries(${PROJECT_NAME} jsoncpp_static)
 
 if(BUILD_TESTS)
     set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
