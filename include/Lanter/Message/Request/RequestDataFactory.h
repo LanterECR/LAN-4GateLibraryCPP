@@ -3,9 +3,11 @@
 
 #include <memory>
 
-#include "IRequestData.h"
-#include "Lanter/Message/OperationCode.h"
 #include "Lanter/Utils/VisibilityMacroses.h"
+
+#include "Lanter/Message/OperationCode.h"
+
+#include "IRequestData.h"
 
 namespace Lanter {
     namespace Message {

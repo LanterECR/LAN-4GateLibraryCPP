@@ -7,12 +7,15 @@
 #include <vector>
 #include <memory>
 
+
+#include "Lanter/Utils/VisibilityMacroses.h"
+
 #include "Lanter/Message/OperationCode.h"
+
 #include "ResponseField.h"
 #include "CardholderAuthMethod.h"
 #include "CardInputMethod.h"
 #include "Status.h"
-#include "Lanter/Utils/VisibilityMacroses.h"
 
 
 namespace Lanter {

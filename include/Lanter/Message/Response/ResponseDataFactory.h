@@ -2,9 +2,11 @@
 #define LAN_4GATELIBRARYCPP_RESPONSEDATAFACTORY_H
 #include <memory>
 
-#include "IResponseData.h"
-#include "Lanter/Message/OperationCode.h"
 #include "Lanter/Utils/VisibilityMacroses.h"
+
+#include "Lanter/Message/OperationCode.h"
+
+#include "IResponseData.h"
 
 namespace Lanter {
     namespace Message {

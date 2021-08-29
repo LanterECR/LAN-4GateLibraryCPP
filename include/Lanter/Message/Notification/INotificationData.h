@@ -3,8 +3,9 @@
 
 #include <string>
 
-#include "NotificationCode.h"
 #include "Lanter/Utils/VisibilityMacroses.h"
+
+#include "NotificationCode.h"
 
 namespace Lanter {
     namespace Message {

@@ -1,13 +1,15 @@
 #ifndef LAN_4GATELIBRARYCPP_IREQUESTDATA_H
 #define LAN_4GATELIBRARYCPP_IREQUESTDATA_H
 
+#include <cstdint>
 #include <string>
 #include <set>
-#include <cstdint>
+
+#include "Lanter/Utils/VisibilityMacroses.h"
+
+#include "Lanter/Message/OperationCode.h"
 
 #include "RequestField.h"
-#include "Lanter/Message/OperationCode.h"
-#include "Lanter/Utils/VisibilityMacroses.h"
 
 namespace Lanter {
     namespace Message {
