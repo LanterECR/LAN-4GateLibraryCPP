@@ -1,11 +1,13 @@
 #ifndef LAN_4GATELIBRARYCPP_RESPONSEFIELDS_H
 #define LAN_4GATELIBRARYCPP_RESPONSEFIELDS_H
 
+#include "Lanter/Utils/VisibilityMacroses.h"
+
 namespace Lanter {
     namespace Message {
         namespace Response {
             /// \brief Перечисление содержит все поля, используемые в ответах от финансового ПО LAN-4Tap
-            enum class ResponseField {
+            enum class LANTER_VISIBILITY ResponseField {
                 EcrNumber, ///< Логический номер кассы, используемый для взаимодействия с LAN-4Tap
                 EcrMerchantNumber, ///< Логический номер мерчанта в кассовом ПО
                 OperationCode, ///< Код запрашиваемой операции

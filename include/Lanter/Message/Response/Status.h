@@ -1,11 +1,13 @@
 #ifndef LAN_4GATELIBRARYCPP_STATUS_H
 #define LAN_4GATELIBRARYCPP_STATUS_H
 
+#include "Lanter/Utils/VisibilityMacroses.h"
+
 namespace Lanter {
     namespace Message {
         namespace Response {
             /// \brief Список возможных значений поля ResponseField::Status в ответе финансового ПО LAN-4Tap
-            enum class Status {
+            enum class LANTER_VISIBILITY Status {
                 NoStatus, ///< Значение-заглушка. Соответствует неизвестному статусу
                 Success = 1, ///< Операция успешно выполнена
                 Error, ///< Ошибка выполнения операции

@@ -1,11 +1,13 @@
 #ifndef LAN_4GATELIBRARYCPP_NotificationCode_H
 #define LAN_4GATELIBRARYCPP_NotificationCode_H
 
+#include "Lanter/Utils/VisibilityMacroses.h"
+
 namespace Lanter {
     namespace Message {
         namespace Notification {
             /// \brief Список поддерживаемых уведомлений
-            enum class NotificationCode {
+            enum class LANTER_VISIBILITY NotificationCode {
                 NoNotification, ///< Значение по умолчанию. Уведомления нет
                 ReversalUploadingError, ///< Ошибка выгрузки реверса
                 IncorrectVoidAmount, ///< Некорректная сумма отмены

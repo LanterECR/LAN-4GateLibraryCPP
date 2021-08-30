@@ -1,11 +1,13 @@
 #ifndef LAN_4GATELIBRARYCPP_CARDINPUTMETHOD_H
 #define LAN_4GATELIBRARYCPP_CARDINPUTMETHOD_H
 
+#include "Lanter/Utils/VisibilityMacroses.h"
+
 namespace Lanter {
     namespace Message {
         namespace Response {
             /// \brief Список возможных значений поля ResponseField::CardInputMethod в ответе финансового ПО LAN-4Tap
-            enum class CardInputMethod {
+            enum class LANTER_VISIBILITY CardInputMethod {
                 NoMethod,
                 TerminalManualEntry = 1, ///< Данные карты введены вручную в финансовом ПО LAN-4Tap
                 ExternalManualEntry, ///< Данные карты введены вручную за пределами финансового ПО LAN-4Tap

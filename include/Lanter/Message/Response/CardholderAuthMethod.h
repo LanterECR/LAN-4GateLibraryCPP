@@ -1,11 +1,13 @@
 #ifndef LAN_4GATELIBRARYCPP_CARDHOLDERAUTHMETHOD_H
 #define LAN_4GATELIBRARYCPP_CARDHOLDERAUTHMETHOD_H
 
+#include "Lanter/Utils/VisibilityMacroses.h"
+
 namespace Lanter {
     namespace Message {
         namespace Response {
             /// \brief Список возможных значений поля ResponseField::CardholderAuthMethod в ответе финансового ПО LAN-4Tap
-            enum class CardholderAuthMethod {
+            enum class LANTER_VISIBILITY CardholderAuthMethod {
                 NoMethod = -1,
                 NoVerification, ///< Операция не требует подтверждения
                 PinVerification, ///< Введен пин-код
