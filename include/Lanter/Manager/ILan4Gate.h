@@ -18,7 +18,16 @@ namespace Lanter {
         /// \brief Предоставляет интерфейс взаимодействия с функционалом библиотеки
         class LANTER_VISIBILITY ILan4Gate {
         public:
-            virtual ~ILan4Gate() = default;
+             virtual ~ILan4Gate() = default;
+
+            /// \brief Устанавливает лоический иденитфикатор кассового ПО. Значение по умолчанию 1
+            /// \param[in] ecrNumber Логический идентификатор кассового ПО в диапазоне [1, 999]
+            /// \return true, если поле успешно установлено
+             virtual bool setEcrNumber(int16_t ecrNumber) = 0;
+
+             /// \brief Возвращает логический идентификатор кассового ПО
+             /// \return Логический идентификатор в диапазоне [1,999]. По умолчанию равен 1
+             virtual int16_t getEcrNumber() const = 0;
 
             /// \brief Запускает цикл обработки запросов библиотеки
             /// \return true, если цикл успешно запущен
@@ -100,6 +109,24 @@ namespace Lanter {
             /// \brief Возвращает количество зарегестрированных колбеков для получения данных уведомления
             /// \return количество зарегестрированных колбеков
             virtual size_t notificationCallbacksCount() const = 0;
+
+            /// \brief Возвращает подготовленный объект запроса с заполненными полями EcrNumber и OperationCode
+            /// \param[in] operationCode Код операции, для которой необходимо подготовить объект
+            /// \return nullptr, если не удалось создать объект запроса
+            /// \sa Message::Request::RequestDataFactory
+            virtual std::shared_ptr<Message::Request::IRequestData> getPreparedRequest(Message::OperationCode operationCode) = 0;
+
+            /// \brief Возвращает подготовленный объект ответа с заполненными полями EcrNumber и OperationCode
+            /// \param[in] operationCode Код операции, для которой необходимо подготовить объект ответа
+            /// \return nullptr, если не удалось создать объект
+            /// \sa Message::Response::ResponseDataFactory
+            virtual std::shared_ptr<Message::Response::IResponseData> getPreparedResponse(Message::OperationCode operationCode) = 0;
+
+            /// \brief Возвращает подготовленный объект ответа с заполненным полем NotificationCode
+            /// \param[in] notificationCode Код уведомления, для которого необходимо создать объект. По умолчанию NoNotification
+            /// \return nullptr, если не удалось создать объект
+            /// \sa Message::Notification::NotificationDataFactory
+            virtual std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode = Message::Notification::NotificationCode::NoNotification) = 0;
         };
     }
 }
