@@ -10,7 +10,12 @@ namespace Lanter {
     namespace Manager {
         class Lan4Gate : public ILan4Gate {
         public:
+            Lan4Gate();
             ~Lan4Gate() override;
+
+            bool setEcrNumber(int16_t ecrNumber) override;
+
+            int16_t getEcrNumber() const override;
 
             bool start() override;
 
@@ -47,12 +52,23 @@ namespace Lanter {
 
             size_t notificationCallbacksCount() const override;
 
+            std::shared_ptr<Message::Request::IRequestData> getPreparedRequest(Message::OperationCode operationCode) override;
+
+            std::shared_ptr<Message::Response::IResponseData> getPreparedResponse(Message::OperationCode operationCode) override;
+
+            std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode ) override;
+
         private:
             /// \brief Генерирует ID для колбеков
             /// \return id в диапазоне от 1 до SIZE_MAX
             static size_t generateID();
 
+            bool openConnection();
+
+            int16_t m_EcrNumber = 1;
+
             std::atomic<bool> m_IsStarted;
+
             std::shared_ptr<Communication::ICommunication> m_Communication;
 
             std::unordered_map<size_t, std::function<void(std::shared_ptr<Message::Request::IRequestData>)> > m_RequestCallbacks;

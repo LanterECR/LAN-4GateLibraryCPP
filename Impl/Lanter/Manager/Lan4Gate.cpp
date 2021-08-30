@@ -2,18 +2,52 @@
 
 #include <random>
 
+#include "Lanter/Utils/FieldRangeChecker.h"
+
+#include "Lanter/Message/Request/RequestDataFactory.h"
+#include "Lanter/Message/Response/ResponseDataFactory.h"
+#include "Lanter/Message/Notification/NotificationDataFactory.h"
+
+#include "Lanter/MessageProcessor/Parser/MessageParserFactory.h"
+#include "Lanter/MessageProcessor/Builder/MessageBuilderFactory.h"
+
 namespace Lanter {
     namespace Manager {
+        Lan4Gate::Lan4Gate() : m_IsStarted(false) {}
+
         Lan4Gate::~Lan4Gate() {
             Lan4Gate::stop();
         }
 
+        bool Lan4Gate::setEcrNumber(int16_t ecrNumber) {
+            bool result = false;
+
+            if(!m_IsStarted) {
+                result = Utils::checkEcrNumberRange(ecrNumber);
+
+                if(result) {
+                    m_EcrNumber = ecrNumber;
+                }
+            }
+
+            return result;
+        }
+
+        int16_t Lan4Gate::getEcrNumber() const {
+            return m_EcrNumber;
+        }
+
         bool Lan4Gate::start() {
-            return false;
+            if(m_Communication != nullptr) {
+                m_IsStarted = true;
+            }
+            return m_IsStarted;
         }
 
         bool Lan4Gate::stop() {
-            return false;
+            m_IsStarted = false;
+
+            return !m_IsStarted;
         }
 
         bool Lan4Gate::isStarted() const {
@@ -22,11 +56,15 @@ namespace Lanter {
 
 
         void Lan4Gate::doLan4Gate() {
+            if(m_IsStarted) {
+                if(openConnection()) {
 
+                }
+            }
         }
 
         bool Lan4Gate::runOnThread() {
-            return false;
+            return isStarted();
         }
 
         bool Lan4Gate::setCommunication(std::shared_ptr<Communication::ICommunication> communication) {
@@ -185,6 +223,28 @@ namespace Lanter {
             std::uniform_int_distribution<size_t> distrib(min, max);
 
             return distrib(gen);
+        }
+
+        bool Lan4Gate::openConnection() {
+            bool result = m_Communication->isOpen();
+
+            if(!result){
+                result = m_Communication->open();
+            }
+
+            return result;
+        }
+
+        std::shared_ptr<Message::Request::IRequestData> Lan4Gate::getPreparedRequest(Message::OperationCode operationCode) {
+            return Message::Request::RequestDataFactory::getRequestData(operationCode, m_EcrNumber);
+        }
+
+        std::shared_ptr<Message::Response::IResponseData> Lan4Gate::getPreparedResponse(Message::OperationCode operationCode) {
+            return Message::Response::ResponseDataFactory::getResponseData(operationCode, m_EcrNumber);
+        }
+
+        std::shared_ptr<Message::Notification::INotificationData> Lan4Gate::getPreparedNotification(Message::Notification::NotificationCode notificationCode) {
+            return Message::Notification::NotificationDataFactory::getNotificationData(notificationCode);
         }
     }
 }
