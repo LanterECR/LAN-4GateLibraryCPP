@@ -116,6 +116,7 @@ namespace Lanter {
             /// \sa Message::Request::RequestDataFactory
             virtual std::shared_ptr<Message::Request::IRequestData> getPreparedRequest(Message::OperationCode operationCode) = 0;
 
+
             /// \brief Возвращает подготовленный объект ответа с заполненными полями EcrNumber и OperationCode
             /// \param[in] operationCode Код операции, для которой необходимо подготовить объект ответа
             /// \return nullptr, если не удалось создать объект
@@ -127,6 +128,21 @@ namespace Lanter {
             /// \return nullptr, если не удалось создать объект
             /// \sa Message::Notification::NotificationDataFactory
             virtual std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode = Message::Notification::NotificationCode::NoNotification) = 0;
+
+            /// \brief Отправляет сообщение запроса
+            /// \param[in] request объект запроса, который необходимо отправить
+            /// \return true если сообщение отправлено
+            virtual bool sendMessage(std::shared_ptr<Message::Request::IRequestData> request) = 0;
+
+            /// \brief Отправляет сообщение ответа
+            /// \param[in] response объект ответа, который необходимо отправить
+            /// \return true если сообщение отправлено
+            virtual bool sendMessage(std::shared_ptr<Message::Response::IResponseData> response) = 0;
+
+            /// \brief Отправляет сообщение уведомления
+            /// \param[in] notification объект ответа, который необходимо отправить
+            /// \return true если сообщение отправлено
+            virtual bool sendMessage(std::shared_ptr<Message::Notification::INotificationData> notification) = 0;
         };
     }
 }
