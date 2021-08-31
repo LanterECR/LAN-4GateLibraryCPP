@@ -20,8 +20,44 @@ using namespace Lanter::Message::Notification;
 using namespace Lanter::MessageProcessor;
 using namespace Lanter::MessageProcessor::Builder;
 
+TEST(JSONMessageBuilder, CheckRequestNullptr) {
+    std::vector<uint8_t> message;
+
+    JSONMessageBuilder builder;
+
+    std::shared_ptr<IRequestData> nullRequest = nullptr;
+    bool result;
+
+    EXPECT_NO_THROW(result = builder.createMessage(nullRequest, message));
+    EXPECT_FALSE(result);
+}
+
+TEST(JSONMessageBuilder, CheckResponseNullptr) {
+    std::vector<uint8_t> message;
+
+    JSONMessageBuilder builder;
+
+    std::shared_ptr<IResponseData> nullResponse = nullptr;
+    bool result;
+
+    EXPECT_NO_THROW(result = builder.createMessage(nullResponse, message));
+    EXPECT_FALSE(result);
+}
+
+TEST(JSONMessageBuilder, CheckNotificationNullptr) {
+    std::vector<uint8_t> message;
+
+    JSONMessageBuilder builder;
+
+    std::shared_ptr<INotificationData> nullNotification = nullptr;
+    bool result;
+
+    EXPECT_NO_THROW(result = builder.createMessage(nullNotification, message));
+    EXPECT_FALSE(result);
+}
+
 TEST(JSONMessageBuilder, CheckCreateRequestMessage) {
-    std::vector<unsigned char> message;
+    std::vector<uint8_t> message;
 
     JSONMessageBuilder builder;
 
@@ -42,7 +78,7 @@ TEST(JSONMessageBuilder, CheckCreateRequestMessage) {
 }
 
 TEST(JSONMessageBuilder, CheckCreateResponseMessage) {
-    std::vector<unsigned char> message;
+    std::vector<uint8_t> message;
 
     JSONMessageBuilder builder;
 
@@ -90,7 +126,7 @@ TEST(JSONMessageBuilder, CheckCreateResponseMessage) {
 }
 
 TEST(JSONMessageBuilder, CheckCreateNotificationMessage) {
-    std::vector<unsigned char> message;
+    std::vector<uint8_t> message;
 
     JSONMessageBuilder builder;
 
