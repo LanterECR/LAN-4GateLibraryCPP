@@ -2,9 +2,16 @@
 #define LAN_4GATELIB_LAN4GATE_H
 
 #include <unordered_map>
+#include <queue>
 #include <atomic>
+#include <thread>
+#include <mutex>
+#include <future>
 
 #include "Lanter/Manager/ILan4Gate.h"
+
+#include "Lanter/MessageProcessor/Builder/IMessageBuilder.h"
+#include "Lanter/MessageProcessor/Parser//IMessageParser.h"
 
 namespace Lanter {
     namespace Manager {
@@ -58,12 +65,34 @@ namespace Lanter {
 
             std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode ) override;
 
+            bool sendMessage(std::shared_ptr<Message::Request::IRequestData> request) override;
+
+            bool sendMessage(std::shared_ptr<Message::Response::IResponseData> response) override;
+
+            bool sendMessage(std::shared_ptr<Message::Notification::INotificationData> notification) override;
+
         private:
+            bool createParser();
+            bool deleteParser();
+
+            bool createBuilder();
+            bool deleteBuilder();
             /// \brief Генерирует ID для колбеков
             /// \return id в диапазоне от 1 до SIZE_MAX
             static size_t generateID();
 
             bool openConnection();
+            bool closeConnection();
+
+            bool pushToQueue(const std::vector<uint8_t> & data);
+            void popFromQueue(std::vector<uint8_t> &data);
+
+            void sendData();
+            void receiveData();
+            void notify();
+            void notifyRequest();
+            void notifyResponse();
+            void notifyNotification();
 
             int16_t m_EcrNumber = 1;
 
@@ -71,11 +100,23 @@ namespace Lanter {
 
             std::shared_ptr<Communication::ICommunication> m_Communication;
 
+            std::queue<std::vector<uint8_t> > m_MessageQueue;
+            std::mutex m_QueueMutex;
+
+            std::thread m_MainThread;
+
+
+
+            std::shared_ptr<MessageProcessor::Builder::IMessageBuilder> m_MessageBuilder;
+            std::shared_ptr<MessageProcessor::Parser::IMessageParser> m_MessageParser;
+
             std::unordered_map<size_t, std::function<void(std::shared_ptr<Message::Request::IRequestData>)> > m_RequestCallbacks;
 
             std::unordered_map<size_t, std::function<void(std::shared_ptr<Message::Response::IResponseData>)> > m_ResponseCallbacks;
 
             std::unordered_map<size_t, std::function<void(std::shared_ptr<Message::Notification::INotificationData>)> > m_NotificationCallbacks;
+
+            std::future<void> m_CallbacksFuture;
         };
     }
 }

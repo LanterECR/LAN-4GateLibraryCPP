@@ -1,6 +1,7 @@
 #include "Lan4Gate.h"
 
 #include <random>
+#include <chrono>
 
 #include "Lanter/Utils/FieldRangeChecker.h"
 
@@ -11,6 +12,7 @@
 #include "Lanter/MessageProcessor/Parser/MessageParserFactory.h"
 #include "Lanter/MessageProcessor/Builder/MessageBuilderFactory.h"
 
+using namespace std::chrono_literals;
 namespace Lanter {
     namespace Manager {
         Lan4Gate::Lan4Gate() : m_IsStarted(false) {}
@@ -38,8 +40,8 @@ namespace Lanter {
         }
 
         bool Lan4Gate::start() {
-            if(m_Communication != nullptr) {
-                m_IsStarted = true;
+            if(!m_IsStarted) {
+                m_IsStarted = createParser() && createBuilder() && m_Communication != nullptr;
             }
             return m_IsStarted;
         }
@@ -47,6 +49,7 @@ namespace Lanter {
         bool Lan4Gate::stop() {
             m_IsStarted = false;
 
+            closeConnection();
             return !m_IsStarted;
         }
 
@@ -58,8 +61,12 @@ namespace Lanter {
         void Lan4Gate::doLan4Gate() {
             if(m_IsStarted) {
                 if(openConnection()) {
-
+                    sendData();
+                    receiveData();
+                    notify();
                 }
+            } else {
+                closeConnection();
             }
         }
 
@@ -74,14 +81,9 @@ namespace Lanter {
             return m_Communication == communication;
         }
 
-        //TODO Оптимизировать
         bool Lan4Gate::resetCommunication() {
             if(m_Communication) {
-                if(m_Communication->isOpen()) {
-                    if (m_Communication->close()) {
-                        m_Communication.reset();
-                    }
-                } else {
+                if(closeConnection()) {
                     m_Communication.reset();
                 }
             }
@@ -213,6 +215,95 @@ namespace Lanter {
             return m_NotificationCallbacks.size();
         }
 
+
+
+        std::shared_ptr<Message::Request::IRequestData> Lan4Gate::getPreparedRequest(Message::OperationCode operationCode) {
+            return Message::Request::RequestDataFactory::getRequestData(operationCode, m_EcrNumber);
+        }
+
+        std::shared_ptr<Message::Response::IResponseData> Lan4Gate::getPreparedResponse(Message::OperationCode operationCode) {
+            return Message::Response::ResponseDataFactory::getResponseData(operationCode, m_EcrNumber);
+        }
+
+        std::shared_ptr<Message::Notification::INotificationData> Lan4Gate::getPreparedNotification(Message::Notification::NotificationCode notificationCode) {
+            return Message::Notification::NotificationDataFactory::getNotificationData(notificationCode);
+        }
+
+        //TODO оптимизировать блокировки очереди
+        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Request::IRequestData> request) {
+            bool result = false;
+
+            if(m_MessageBuilder != nullptr) {
+                std::vector<uint8_t> message;
+
+                if (m_MessageBuilder->createMessage(request, message)) {
+                    result = pushToQueue(message);
+                }
+            }
+            return result;
+        }
+
+        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Response::IResponseData> response) {
+            bool result = false;
+
+            if(m_MessageBuilder != nullptr) {
+                std::vector<uint8_t> message;
+
+                if (m_MessageBuilder->createMessage(response, message)) {
+                    result = pushToQueue(message);
+                }
+            }
+            return result;
+        }
+
+        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Notification::INotificationData> notification) {
+            bool result = false;
+
+            if(m_MessageBuilder != nullptr) {
+                std::vector<uint8_t> message;
+
+                if (m_MessageBuilder->createMessage(notification, message)) {
+                    result = pushToQueue(message);
+                }
+            }
+
+            return result;
+        }
+
+        bool Lan4Gate::pushToQueue(const std::vector<uint8_t> &data) {
+            std::lock_guard<std::mutex> lock(m_QueueMutex);
+
+            auto size = m_MessageQueue.size();
+
+            m_MessageQueue.push(data);
+
+            //Для определения, что сообщение добавлено в очередь
+            return m_MessageQueue.size() - size;
+        }
+
+        void Lan4Gate::popFromQueue(std::vector<uint8_t> &data) {
+            std::lock_guard<std::mutex> lock(m_QueueMutex);
+
+            if(!m_MessageQueue.empty()) {
+                data = std::move(m_MessageQueue.front());
+                m_MessageQueue.pop();
+            }
+        }
+
+        bool Lan4Gate::createParser() {
+            if(m_MessageParser == nullptr) {
+                m_MessageParser = MessageProcessor::Parser::MessageParserFactory::getMessageParser();
+            }
+            return m_MessageParser != nullptr;
+        }
+
+        bool Lan4Gate::createBuilder() {
+            if(m_MessageBuilder == nullptr) {
+                m_MessageBuilder = MessageProcessor::Builder::MessageBuilderFactory::getMessageBuilder();
+            }
+            return m_MessageBuilder != nullptr;
+        }
+
         size_t Lan4Gate::generateID() {
             size_t min = 1;
             size_t max = SIZE_MAX;
@@ -235,16 +326,85 @@ namespace Lanter {
             return result;
         }
 
-        std::shared_ptr<Message::Request::IRequestData> Lan4Gate::getPreparedRequest(Message::OperationCode operationCode) {
-            return Message::Request::RequestDataFactory::getRequestData(operationCode, m_EcrNumber);
+        bool Lan4Gate::deleteParser() {
+            m_MessageParser.reset();
+            return m_MessageParser == nullptr;
         }
 
-        std::shared_ptr<Message::Response::IResponseData> Lan4Gate::getPreparedResponse(Message::OperationCode operationCode) {
-            return Message::Response::ResponseDataFactory::getResponseData(operationCode, m_EcrNumber);
+        bool Lan4Gate::deleteBuilder() {
+            m_MessageBuilder.reset();
+            return m_MessageBuilder == nullptr;
         }
 
-        std::shared_ptr<Message::Notification::INotificationData> Lan4Gate::getPreparedNotification(Message::Notification::NotificationCode notificationCode) {
-            return Message::Notification::NotificationDataFactory::getNotificationData(notificationCode);
+        bool Lan4Gate::closeConnection() {
+            bool result = true;
+            if(m_Communication != nullptr && m_Communication->isOpen()) {
+                result = m_Communication->close();
+            }
+            return result;
+        }
+
+        void Lan4Gate::sendData() {
+            std::vector<uint8_t> data;
+            popFromQueue(data);
+
+            if(!data.empty()) {
+                m_Communication->send(data);
+            }
+        }
+
+        //TODO исправить логику. Возможны проблемы с приемом кусков данных
+        void Lan4Gate::receiveData() {
+            std::vector<uint8_t> data;
+
+            m_Communication->receive(data);
+
+            if(!data.empty()) {
+                m_MessageParser->parseMessage(data);
+            }
+        }
+
+        void Lan4Gate::notify() {
+            if(!m_CallbacksFuture.valid() || m_CallbacksFuture.wait_for(0s) == std::future_status::ready) {
+                m_CallbacksFuture = std::async(std::launch::async, [&]() {
+                    this->notifyRequest();
+                    this->notifyResponse();
+                    this->notifyNotification();
+                });
+            }
+        }
+
+        void Lan4Gate::notifyRequest() {
+            if(m_MessageParser->requestCount() > 0) {
+
+                auto request = m_MessageParser->nextRequestData();
+
+                for(auto callback : m_RequestCallbacks) {
+                    callback.second(request);
+                }
+            }
+        }
+
+        void Lan4Gate::notifyResponse() {
+            if(m_MessageParser->responseCount() > 0) {
+
+                auto response = m_MessageParser->nextResponseData();
+
+                for(auto callback : m_ResponseCallbacks) {
+                    callback.second(response);
+                }
+            }
+        }
+
+        void Lan4Gate::notifyNotification() {
+            if(m_MessageParser->notificationCount() > 0) {
+
+                auto notification = m_MessageParser->nextNotificationData();
+
+                for(auto callback : m_NotificationCallbacks) {
+                    callback.second(notification);
+                }
+            }
         }
     }
 }
