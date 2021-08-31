@@ -74,7 +74,7 @@
 ///using namespace Lanter::Message::Request;
 ///
 ///int main(int argc, char** argv) {
-///    std::vector<unsigned char> outputData; //Контейнер для данных запроса
+///    std::vector<uint8_t> outputData; //Контейнер для данных запроса
 ///
 ///    std::shared_ptr<IMessageBuilder> builder = MessageBuilderFactory::getMessageBuilder(); //Получение сборщика сообщений
 ///

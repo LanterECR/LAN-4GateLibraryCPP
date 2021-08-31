@@ -12,7 +12,7 @@ namespace Lanter {
         namespace Parser {
             class JSONMessageParser : public IMessageParser {
             public:
-                MessageType parseMessage(const std::vector<unsigned char> &data) override;
+                MessageType parseMessage(const std::vector<uint8_t> &data) override;
 
                 std::shared_ptr<IRequestData> nextRequestData() override;
 

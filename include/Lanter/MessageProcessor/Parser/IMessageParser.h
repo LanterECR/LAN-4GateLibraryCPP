@@ -31,7 +31,7 @@ namespace Lanter {
                 /// \param data Сообщение для разбора
                 /// \return Тип сообщения из MessageType
                 /// \sa MessageType
-                virtual MessageType parseMessage(const std::vector<unsigned char> &data) = 0;
+                virtual MessageType parseMessage(const std::vector<uint8_t> &data) = 0;
 
                 /// \brief Возвращает IRequestData экземпляр, хранящийся в очереди
                 /// \return nullptr, если очередь пуста

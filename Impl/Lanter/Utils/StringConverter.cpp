@@ -2,13 +2,13 @@
 
 namespace Lanter {
     namespace Utils {
-        bool StringConverter::convertToString(const std::vector<unsigned char> & data, std::string &result) {
+        bool StringConverter::convertToString(const std::vector<uint8_t> & data, std::string &result) {
             result.clear();
             std::copy(data.begin(), data.end(), std::back_inserter(result));
             return !result.empty();
         }
 
-        bool StringConverter::convertToVector(const std::string & data, std::vector<unsigned char> & result) {
+        bool StringConverter::convertToVector(const std::string & data, std::vector<uint8_t> & result) {
             result.clear();
             std::copy(data.begin(), data.end(), std::back_inserter(result));
             return !result.empty();

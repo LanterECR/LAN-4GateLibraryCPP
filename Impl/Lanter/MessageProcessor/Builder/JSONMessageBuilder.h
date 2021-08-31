@@ -14,13 +14,13 @@ namespace Lanter {
             /// \brief Интерфейс сборщика сообщений на основе заполненных контейнеровIMessageBuilder {
             class JSONMessageBuilder : public IMessageBuilder {
             public:
-                bool createMessage(std::shared_ptr<IRequestData> data, std::vector<unsigned char> &resultData) override;
+                bool createMessage(std::shared_ptr<IRequestData> data, std::vector<uint8_t> &resultData) override;
 
                 bool
-                createMessage(std::shared_ptr<IResponseData> data, std::vector<unsigned char> &resultData) override;
+                createMessage(std::shared_ptr<IResponseData> data, std::vector<uint8_t> &resultData) override;
 
                 bool
-                createMessage(std::shared_ptr<INotificationData> data, std::vector<unsigned char> &resultData) override;
+                createMessage(std::shared_ptr<INotificationData> data, std::vector<uint8_t> &resultData) override;
             };
         }
     }

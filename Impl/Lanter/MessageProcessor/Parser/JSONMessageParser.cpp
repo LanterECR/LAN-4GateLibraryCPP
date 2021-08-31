@@ -16,7 +16,7 @@
 namespace Lanter {
     namespace MessageProcessor {
         namespace Parser {
-            MessageType JSONMessageParser::parseMessage(const std::vector<unsigned char> &data) {
+            MessageType JSONMessageParser::parseMessage(const std::vector<uint8_t> &data) {
                 MessageType result = MessageType::Error;
                 std::string message;
 

@@ -8,7 +8,7 @@ using namespace Lanter::Utils;
 TEST(StringConverter, CheckConvertToVector) {
     std::string value = "Test text";
 
-    std::vector<unsigned char> target;
+    std::vector<uint8_t> target;
 
     EXPECT_TRUE(StringConverter::convertToVector(value, target));
 
@@ -20,7 +20,7 @@ TEST(StringConverter, CheckConvertToVector) {
 }
 
 TEST(StringConverter, CheckConvertToString) {
-    std::vector<unsigned char> value = {'T', 'e', 's', 't', ' ', 't', 'e', 'x', 't'};
+    std::vector<uint8_t> value = {'T', 'e', 's', 't', ' ', 't', 'e', 'x', 't'};
 
     std::string target;
 
@@ -36,7 +36,7 @@ TEST(StringConverter, CheckConvertToString) {
 TEST(StringConverter, CheckConvertStringVectorString) {
     std::string value = "Тестовый текст";
 
-    std::vector<unsigned char> targetVector;
+    std::vector<uint8_t> targetVector;
 
     std::string targetString;
 
@@ -54,11 +54,11 @@ TEST(StringConverter, CheckConvertStringVectorString) {
 }
 
 TEST(StringConverter, CheckConvertVectorStringVector) {
-    std::vector<unsigned char> value = {'T', 'e', 's', 't', ' ', 't', 'e', 'x', 't'};
+    std::vector<uint8_t> value = {'T', 'e', 's', 't', ' ', 't', 'e', 'x', 't'};
 
     std::string targetString;
 
-    std::vector<unsigned char> targetVector;
+    std::vector<uint8_t> targetVector;
 
     EXPECT_TRUE(StringConverter::convertToString(value, targetString));
 

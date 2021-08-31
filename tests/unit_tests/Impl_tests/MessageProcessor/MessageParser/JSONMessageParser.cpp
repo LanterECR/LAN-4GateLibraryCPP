@@ -36,7 +36,7 @@ TEST(JSONMessageParser, CheckReadMessage) {
 TEST(JSONMessageParser, CheckError) {
     Json::Value root;
 
-    std::vector<unsigned char> data = {'J', 'U', 'N', 'N', 'K'};
+    std::vector<uint8_t> data = {'J', 'U', 'N', 'N', 'K'};
     JSONMessageParser parser;
 
 
@@ -44,7 +44,7 @@ TEST(JSONMessageParser, CheckError) {
 }
 TEST(JSONMessageParser, CheckRequest) {
     Json::Value root;
-    std::vector<unsigned char> data;
+    std::vector<uint8_t> data;
     JSONMessageParser parser;
 
     auto ecrNumber = MAXIMUM_ECR_NUMBER;
@@ -88,7 +88,7 @@ TEST(JSONMessageParser, CheckRequest) {
 
 TEST(JSONMessageParser, CheckResponse) {
     Json::Value root;
-    std::vector<unsigned char> data;
+    std::vector<uint8_t> data;
     JSONMessageParser parser;
 
     auto ecrNumber = MAXIMUM_ECR_NUMBER;
@@ -163,7 +163,7 @@ TEST(JSONMessageParser, CheckResponse) {
 TEST(JSONMessageParser, CheckNotification) {
     Json::Value root;
 
-    std::vector<unsigned char> data;
+    std::vector<uint8_t> data;
     JSONMessageParser parser;
 
     AddFieldsHelper::addField(root, JSONRootFields::getClassField(), JSONClassFieldValues::getNotificationValue());

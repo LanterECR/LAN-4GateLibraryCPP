@@ -25,7 +25,7 @@ TEST(TestBuilderParser, CheckRequest) {
     inputObject->setEcrNumber(MAXIMUM_ECR_NUMBER);
     inputObject->setEcrMerchantNumber(MAXIMUM_ECR_MERCHANT_NUMBER);
 
-    std::vector<unsigned char> serializedData;
+    std::vector<uint8_t> serializedData;
 
     auto builder = MessageBuilderFactory::getMessageBuilder();
     auto parser = MessageParserFactory::getMessageParser();
@@ -80,7 +80,7 @@ TEST(TestBuilderParser, CheckResponse) {
     inputObject->setCardholderName("Значение");
     inputObject->setCardholderAuthMethod(Lanter::Message::Response::CardholderAuthMethod::PaperSignatureVerification);
 
-    std::vector<unsigned char> serializedData;
+    std::vector<uint8_t> serializedData;
 
     auto builder = MessageBuilderFactory::getMessageBuilder();
     auto parser = MessageParserFactory::getMessageParser();
@@ -132,7 +132,7 @@ TEST(TestBuilderParser, CheckNotification) {
     inputObject->setMessage("Сообщение");
     inputObject->setAdditional("Дополнительно");
 
-    std::vector<unsigned char> serializedData;
+    std::vector<uint8_t> serializedData;
 
     auto builder = MessageBuilderFactory::getMessageBuilder();
     auto parser = MessageParserFactory::getMessageParser();
