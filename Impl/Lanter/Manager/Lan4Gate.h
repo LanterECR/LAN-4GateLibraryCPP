@@ -41,6 +41,10 @@ namespace Lanter {
 
             std::shared_ptr<Communication::ICommunication> getCommunication() const override;
 
+            bool setCallbackNotificationType(CallbackNotificationType type) override;
+
+            CallbackNotificationType getCallbackNotificationType() const override  { return m_CallbackNotificationType; }
+
             size_t addRequestCallback(std::function<void(std::shared_ptr<Message::Request::IRequestData>)> callback) override;
 
             bool removeRequestCallback(size_t id) override;
@@ -93,6 +97,7 @@ namespace Lanter {
             void notifyRequest();
             void notifyResponse();
             void notifyNotification();
+            bool waitFuture();
 
             int16_t m_EcrNumber = 1;
 
@@ -106,9 +111,10 @@ namespace Lanter {
             std::thread m_MainThread;
 
 
-
             std::shared_ptr<MessageProcessor::Builder::IMessageBuilder> m_MessageBuilder;
             std::shared_ptr<MessageProcessor::Parser::IMessageParser> m_MessageParser;
+
+            CallbackNotificationType m_CallbackNotificationType = CallbackNotificationType::Async;
 
             std::unordered_map<size_t, std::function<void(std::shared_ptr<Message::Request::IRequestData>)> > m_RequestCallbacks;
 

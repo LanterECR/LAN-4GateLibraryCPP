@@ -50,6 +50,7 @@ namespace Lanter {
             m_IsStarted = false;
 
             closeConnection();
+            waitFuture();
             return !m_IsStarted;
         }
 
@@ -365,12 +366,18 @@ namespace Lanter {
         }
 
         void Lan4Gate::notify() {
-            if(!m_CallbacksFuture.valid() || m_CallbacksFuture.wait_for(0s) == std::future_status::ready) {
-                m_CallbacksFuture = std::async(std::launch::async, [&]() {
-                    this->notifyRequest();
-                    this->notifyResponse();
-                    this->notifyNotification();
-                });
+            auto notificationLambda = [&]() {
+                this->notifyRequest();
+                this->notifyResponse();
+                this->notifyNotification();
+            };
+
+            if(m_CallbackNotificationType == CallbackNotificationType::Async) {
+                if (!m_CallbacksFuture.valid() || m_CallbacksFuture.wait_for(0s) == std::future_status::ready) {
+                    m_CallbacksFuture = std::async(std::launch::async, notificationLambda);
+                }
+            } else {
+                notificationLambda();
             }
         }
 
@@ -405,6 +412,21 @@ namespace Lanter {
                     callback.second(notification);
                 }
             }
+        }
+
+        bool Lan4Gate::waitFuture() {
+            bool result = true;
+            if(m_CallbacksFuture.valid()) {
+                result = m_CallbacksFuture.wait_for(50ms) == std::future_status::ready;
+            }
+            return result;
+        }
+
+        bool Lan4Gate::setCallbackNotificationType(ILan4Gate::CallbackNotificationType type) {
+            if(!m_IsStarted) {
+                m_CallbackNotificationType = type;
+            }
+            return m_CallbackNotificationType == type;
         }
     }
 }
