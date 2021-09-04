@@ -6,6 +6,10 @@
 
 #include "Lanter/Manager/Lan4Gate.h"
 
+
+#include "MOCKComm.h"
+#include "MOCKCallback.h"
+
 using namespace Lanter;
 using namespace Lanter::Manager;
 
@@ -115,15 +119,7 @@ TEST(TestLan4Gate, TestAddRemoveNotificationCallback) {
 
 }
 
-class MOCKComms : public ICommunication {
-public:
-    MOCK_METHOD(bool, open, (), (override));
-    MOCK_METHOD(bool, close, (), (override));
-    MOCK_METHOD(bool, isOpen, (), (override));
 
-    MOCK_METHOD(size_t, send, (const std::vector<uint8_t> &), (override));
-    MOCK_METHOD(size_t, receive, (std::vector<uint8_t> &), (override));
-};
 
 TEST(TestLan4Gate, TestAddResetGetCommunication) {
     //закроется с первой попытки
@@ -134,6 +130,10 @@ TEST(TestLan4Gate, TestAddResetGetCommunication) {
     EXPECT_CALL(*closedComms, close).
             WillRepeatedly(Return(true));
 
+    EXPECT_CALL(*closedComms, open).Times(0);
+    EXPECT_CALL(*closedComms, send).Times(0);
+    EXPECT_CALL(*closedComms, receive).Times(0);
+
     auto simpleOpen = std::make_shared<MOCKComms>();
 
     EXPECT_CALL(*simpleOpen, isOpen).
@@ -143,6 +143,9 @@ TEST(TestLan4Gate, TestAddResetGetCommunication) {
     EXPECT_CALL(*simpleOpen, close).
             WillRepeatedly(Return(true)); //вызов close сразу вернет true
 
+    EXPECT_CALL(*simpleOpen, open).Times(0);
+    EXPECT_CALL(*simpleOpen, send).Times(0);
+    EXPECT_CALL(*simpleOpen, receive).Times(0);
 
     auto lockedComms = std::make_shared<MOCKComms>();
 
@@ -155,6 +158,10 @@ TEST(TestLan4Gate, TestAddResetGetCommunication) {
             WillOnce(Return(false)).
             WillOnce(Return(false)).
             WillRepeatedly(Return(true));
+
+    EXPECT_CALL(*lockedComms, open).Times(0);
+    EXPECT_CALL(*lockedComms, send).Times(0);
+    EXPECT_CALL(*lockedComms, receive).Times(0);
 
     Lan4Gate gate;
 
@@ -180,6 +187,12 @@ TEST(TestLan4Gate, TestAddResetGetCommunication) {
 TEST(TestLan4Gate, TestStartStop) {
     auto stubComms = std::make_shared<MOCKComms>();
 
+    EXPECT_CALL(*stubComms, open).Times(0);
+    EXPECT_CALL(*stubComms, close).Times(2).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, isOpen).Times(2).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, send).Times(0);
+    EXPECT_CALL(*stubComms, receive).Times(0);
+
     Lan4Gate gate;
     gate.setCommunication(stubComms);
 
@@ -192,6 +205,11 @@ TEST(TestLan4Gate, TestStartStop) {
 
 TEST(TestLan4Gate, TestEcrNumber) {
     auto stubComms = std::make_shared<MOCKComms>();
+    EXPECT_CALL(*stubComms, open).Times(0);
+    EXPECT_CALL(*stubComms, close).Times(2).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, isOpen).Times(2).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, send).Times(0);
+    EXPECT_CALL(*stubComms, receive).Times(0);
 
     int validEcrNumber = Utils::Constants::MINIMUM_ECR_NUMBER;
     int invalidEcrNumber = Utils::Constants::MAXIMUM_ECR_NUMBER + 1;
@@ -293,6 +311,12 @@ TEST(TestLan4Gate, TestPreparedNotification) {
 TEST(TestLan4Gate, TestSendRequest) {
     auto stubComms = std::make_shared<MOCKComms>();
 
+    EXPECT_CALL(*stubComms, open).Times(0);
+    EXPECT_CALL(*stubComms, close).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, isOpen).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, send).Times(0);
+    EXPECT_CALL(*stubComms, receive).Times(0);
+
     Lan4Gate gate;
 
     gate.setCommunication(stubComms);
@@ -314,6 +338,12 @@ TEST(TestLan4Gate, TestSendRequest) {
 
 TEST(TestLan4Gate, TestSendResponse) {
     auto stubComms = std::make_shared<MOCKComms>();
+
+    EXPECT_CALL(*stubComms, open).Times(0);
+    EXPECT_CALL(*stubComms, close).Times(1).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, isOpen).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, send).Times(0);
+    EXPECT_CALL(*stubComms, receive).Times(0);
 
     Lan4Gate gate;
 
@@ -341,6 +371,12 @@ TEST(TestLan4Gate, TestSendResponse) {
 TEST(TestLan4Gate, TestSendNotification) {
     auto stubComms = std::make_shared<MOCKComms>();
 
+    EXPECT_CALL(*stubComms, open).Times(0);
+    EXPECT_CALL(*stubComms, close).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, isOpen).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, send).Times(0);
+    EXPECT_CALL(*stubComms, receive).Times(0);
+
     Lan4Gate gate;
 
     gate.setCommunication(stubComms);
@@ -358,6 +394,43 @@ TEST(TestLan4Gate, TestSendNotification) {
     EXPECT_FALSE(gate.sendMessage(nullNotification));
 
     EXPECT_TRUE(gate.sendMessage(notification));
+}
+
+TEST(TestLan4Gate, TestChangeCallbackNotificationType) {
+    auto stubComms = std::make_shared<MOCKComms>();
+
+    EXPECT_CALL(*stubComms, open).Times(0);
+    EXPECT_CALL(*stubComms, close).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, isOpen).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, send).Times(0);
+    EXPECT_CALL(*stubComms, receive).Times(0);
+
+    //Объединение двух типов
+    auto callType = static_cast<ILan4Gate::CallbackNotificationType>(ILan4Gate::CallbackNotificationType::Sync | ILan4Gate::CallbackNotificationType::Async);
+
+    Lan4Gate gate;
+
+    gate.setCommunication(stubComms);
+
+    EXPECT_EQ(gate.getCallbackNotificationType(), ILan4Gate::CallbackNotificationType::Async);
+
+
+    EXPECT_TRUE(gate.setCallbackNotificationType(callType));
+    EXPECT_EQ(gate.getCallbackNotificationType(), ILan4Gate::CallbackNotificationType::Sync);
+
+    EXPECT_TRUE(gate.setCallbackNotificationType(ILan4Gate::CallbackNotificationType::Sync));
+
+    EXPECT_EQ(gate.getCallbackNotificationType(), ILan4Gate::CallbackNotificationType::Sync);
+
+    EXPECT_TRUE(gate.start());
+
+    EXPECT_FALSE(gate.setCallbackNotificationType(ILan4Gate::CallbackNotificationType::Async));
+    EXPECT_EQ(gate.getCallbackNotificationType(), ILan4Gate::CallbackNotificationType::Sync);
+
+    EXPECT_TRUE(gate.stop());
+
+    EXPECT_TRUE(gate.setCallbackNotificationType(ILan4Gate::CallbackNotificationType::Async));
+    EXPECT_EQ(gate.getCallbackNotificationType(), ILan4Gate::CallbackNotificationType::Async);
 }
 
 TEST(TestLan4Gate, TestSendMessageDoL4G) {
@@ -456,12 +529,6 @@ TEST(TestLan4Gate, TestSendMessageDoL4G) {
     EXPECT_TRUE(gate.stop());
 }
 
-class MOCKCallback {
-public:
-    MOCK_METHOD((void), requestCallback, (std::shared_ptr<IRequestData>));
-    MOCK_METHOD((void), responseCallback, (std::shared_ptr<IResponseData>));
-    MOCK_METHOD((void), notificationCallback, (std::shared_ptr<INotificationData>));
-};
 TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
     bool commsOpen = false;
 
@@ -571,7 +638,7 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
     Lan4Gate gate;
 
     gate.setCommunication(comms);
-
+    gate.setCallbackNotificationType(Lanter::Manager::ILan4Gate::Sync);
 
     gate.addRequestCallback(callbackRequest);
     gate.addResponseCallback(callbackResponse);
@@ -579,8 +646,8 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
 
     EXPECT_TRUE(gate.start());
 
-    //10 циклов библиотеки
-    for(int i = 0; i < 10; i++) {
+    //100 циклов библиотеки
+    for(int i = 0; i < 100; i++) {
         EXPECT_NO_THROW(gate.doLan4Gate());
     }
 
