@@ -18,6 +18,13 @@ namespace Lanter {
         /// \brief Предоставляет интерфейс взаимодействия с функционалом библиотеки
         class LANTER_VISIBILITY ILan4Gate {
         public:
+            /// \brief Способ вызова колбеков
+            /// Объединение Async | Sync будет интерпретировано, как Sync
+            enum  CallbackNotificationType {
+                Async, //!< Все колбеки вызываются из того же потока, в котором работает метод doLan4Gate
+                Sync///< Все колбеки вызываются из нового потока
+            };
+
              virtual ~ILan4Gate() = default;
 
             /// \brief Устанавливает лоический иденитфикатор кассового ПО. Значение по умолчанию 1
@@ -65,6 +72,16 @@ namespace Lanter {
             /// \return nullptr, если соединение не установлено или было сброшено
             virtual std::shared_ptr<Communication::ICommunication> getCommunication() const = 0;
 
+            /// \brief Устанавливает способ вызова колбеков
+            /// \param[in] type
+            /// \return ture, если удалось сменить тип
+            /// \sa CallbackNotificationType
+            virtual bool setCallbackNotificationType(CallbackNotificationType type) = 0;
+
+            /// \brief Возвращает установленный способ вызова колбеков
+            /// \return Утсановленный способ вызова колбеков. По умолчанию Async
+            /// \sa CallbackNotificationType
+            virtual CallbackNotificationType getCallbackNotificationType() const = 0;
             /// \brief Добавляет колбек в список слушателей для получения данных запроса
             /// \param[in] callback std::function с сигнатурой `void func(std::shared_ptr<Message::Request::IRequestData>)`
             /// \return id зарегестрированного колбека
