@@ -38,10 +38,13 @@ else()
     set(LIB_BUILD_TYPE SHARED include/Lanter/Utils/DoxygenMainpage.h)
 endif()
 
+find_package(Threads REQUIRED)
 hunter_add_package(asio)
 hunter_add_package(jsoncpp)
 
+
 find_package(jsoncpp CONFIG REQUIRED)
+find_package(asio CONFIG REQUIRED)
 
 include_directories(include;Impl)
 #поиск всех заголовочников
@@ -65,7 +68,7 @@ if("${LIB_BUILD_TYPE}" STREQUAL "SHARED")
 endif()
 
 target_link_libraries(${PROJECT_NAME} jsoncpp_static)
-
+target_link_libraries(${PROJECT_NAME} asio::asio_static)
 if(BUILD_TESTS)
     set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
     option(INSTALL_GTEST OFF)
