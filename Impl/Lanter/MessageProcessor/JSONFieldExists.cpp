@@ -1,5 +1,7 @@
 #include "JSONFieldExists.h"
 
+#include <algorithm>
+
 namespace Lanter {
     namespace MessageProcessor {
 
