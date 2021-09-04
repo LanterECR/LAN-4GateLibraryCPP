@@ -12,7 +12,6 @@
 #include "Lanter/MessageProcessor/Parser/MessageParserFactory.h"
 #include "Lanter/MessageProcessor/Builder/MessageBuilderFactory.h"
 
-using namespace std::chrono_literals;
 namespace Lanter {
     namespace Manager {
         Lan4Gate::Lan4Gate() : m_IsStarted(false) {}
@@ -373,7 +372,7 @@ namespace Lanter {
             };
 
             if(m_CallbackNotificationType == CallbackNotificationType::Async) {
-                if (!m_CallbacksFuture.valid() || m_CallbacksFuture.wait_for(0s) == std::future_status::ready) {
+                if (!m_CallbacksFuture.valid() || m_CallbacksFuture.wait_for(std::chrono::seconds(0)) == std::future_status::ready) {
                     m_CallbacksFuture = std::async(std::launch::async, notificationLambda);
                 }
             } else {
@@ -417,7 +416,7 @@ namespace Lanter {
         bool Lan4Gate::waitFuture() {
             bool result = true;
             if(m_CallbacksFuture.valid()) {
-                result = m_CallbacksFuture.wait_for(50ms) == std::future_status::ready;
+                result = m_CallbacksFuture.wait_for(std::chrono::milliseconds(50)) == std::future_status::ready;
             }
             return result;
         }
