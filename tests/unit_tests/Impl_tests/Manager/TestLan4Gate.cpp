@@ -406,7 +406,7 @@ TEST(TestLan4Gate, TestChangeCallbackNotificationType) {
     EXPECT_CALL(*stubComms, receive).Times(0);
 
     //Объединение двух типов
-    auto callType = static_cast<ILan4Gate::CallbackNotificationType>(ILan4Gate::CallbackNotificationType::Sync | ILan4Gate::CallbackNotificationType::Async);
+    auto callType = static_cast<ILan4Gate::CallbackNotificationType>(static_cast<int>(ILan4Gate::CallbackNotificationType::Sync) | static_cast<int>(ILan4Gate::CallbackNotificationType::Async));
 
     Lan4Gate gate;
 
@@ -638,7 +638,7 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
     Lan4Gate gate;
 
     gate.setCommunication(comms);
-    gate.setCallbackNotificationType(Lanter::Manager::ILan4Gate::Sync);
+    gate.setCallbackNotificationType(Lanter::Manager::ILan4Gate::CallbackNotificationType::Sync);
 
     gate.addRequestCallback(callbackRequest);
     gate.addResponseCallback(callbackResponse);

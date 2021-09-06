@@ -18,9 +18,10 @@ namespace Lanter {
         /// \brief Предоставляет интерфейс взаимодействия с функционалом библиотеки
         class LANTER_VISIBILITY ILan4Gate {
         public:
+
             /// \brief Способ вызова колбеков
             /// Объединение Async | Sync будет интерпретировано, как Sync
-            enum  CallbackNotificationType {
+            enum class CallbackNotificationType {
                 Async, //!< Все колбеки вызываются из того же потока, в котором работает метод doLan4Gate
                 Sync///< Все колбеки вызываются из нового потока
             };
