@@ -106,7 +106,15 @@ endif()
 
 install(DIRECTORY include/Lanter DESTINATION include)
 
-install(TARGETS l4g_static l4g_shared EXPORT LAN_4GateLibConfig)
+install(TARGETS l4g_static l4g_shared EXPORT LAN_4GateLibConfig
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib
+        )
+
+#[[install(TARGETS l4g_static l4g_shared
+
+        )]]
 install(EXPORT LAN_4GateLibConfig NAMESPACE L4G:: DESTINATION share/LAN_4GateLib/cmake)
 
 include(CMakePackageConfigHelpers)
