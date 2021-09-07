@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-16.04]
+        os: [ubuntu-18.04]
         compiler:
           - name: "g++-4.8"
             package: "g++-4.8"
