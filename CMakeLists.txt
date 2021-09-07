@@ -27,6 +27,10 @@ project(LAN_4GateLib VERSION 0.8.5 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 
+if(NOT CMAKE_CXX_EXTENSIONS)
+    set(CMAKE_CXX_EXTENSIONS OFF)
+endif()
+
 option(L4G_TESTS "Enable unit-testing" OFF)
 option(L4G_BUILD_SHARED "Build shared library" ON)
 option(L4G_BUILD_STATIC "Build static library" ON)
