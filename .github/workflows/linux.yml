@@ -13,55 +13,28 @@ jobs:
       matrix:
         os: [ubuntu-18.04]
         compiler:
-          - name: "gcc-5"
-            package-c: "gcc-5"
-            package-cxx: "g++-5"
-            cxx: "g++-5"
-            c: "gcc-5"
-          - name: "gcc-6"
-            package-c: "gcc-6"
-            package-cxx: "g++-6"
-            cxx: "g++-6"
-            c: "gcc-6"
-          - name: "gcc-7"
-            package-c: "gcc-7"
-            package-cxx: "g++-7"
-            cxx: "g++-7"
-            c: "gcc-7"
-          - name: "gcc-8"
-            package-c: "gcc-8"
-            package-cxx: "g++-8"
-            cxx: "g++-8"
-            c: "gcc-8"
-          - name: "gcc-9"
-            package-c: "gcc-9"
-            package-cxx: "g++-9"
-            cxx: "g++-9"
-            c: "gcc-9"
-          - name: "clang-5"
+          - name: "g++-5"
+            package: "g++-5"
+          - name: "g++-6"
+            package: "g++-6"
+          - name: "g++-7"
+            package: "g++-7"
+          - name: "g++-8"
+            package: "g++-8"
+          - name: "g++-9"
+            package: "g++-9"
+          - name: "clang-5.0"
             package: "clang-5.0"
-            cxx: "clang++-5.0"
-            c: "clang-5.0"
-          - name: "clang-6"
+          - name: "clang-6.0"
             package: "clang-6.0"
-            cxx: "clang++-6.0"
-            c: "clang-6.0"
           - name: "clang-7"
             package: "clang-7"
-            cxx: "clang++-7"
-            c: "clang-7"
           - name: "clang-8"
             package: "clang-8"
-            cxx: "clang++-8"
-            c: "clang-8"
           - name: "clang-9"
             package: "clang-9"
-            cxx: "clang++-9"
-            c: "clang-9"
           - name: "clang-10"
             package: "clang-10"
-            cxx: "clang++-10"
-            c: "clang-10"
         build_type: ["Debug", "Release"]
 
     runs-on: ${{matrix.os}}
@@ -76,13 +49,13 @@ jobs:
     - name: Install APT dependencies
       run: |
         sudo apt update
-        sudo apt install --yes ${{matrix.compiler.package}} ${{matrix.compiler.package-c}} ${{matrix.compiler.package-cxx}} git cmake
+        sudo apt install --yes ${{matrix.compiler.package}} git cmake ninja-build
 
     - name: Configure
       run: |
-        cmake -S . -B Build/L4GLibrary -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -DCMAKE_CXX_COMPILER=${{matrix.compiler.cxx}} -DCMAKE_C_COMPILER=${{matrix.compiler.c}} -DL4G_TESTS=ON
+        cmake -S . -B Build/L4GLibrary -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -DCMAKE_CXX_COMPILER=${{matrix.compiler.name}} -DL4G_TESTS=ON -G Ninja
 
     - name: Build and test
       run: |
         cmake --build Build/L4GLibrary
-        ctest Build/L4GLibrary
+        ctest --test-dir Build/L4GLibrary
