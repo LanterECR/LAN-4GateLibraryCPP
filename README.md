@@ -1,3 +1,5 @@
+![Статус сборки под Linux](https://github.com/izvolov/mylib/workflows/Linux/badge.svg)
+
 # LAN-4GateLibraryCPP
 Данная библиотека реализует протокол кассового взаимодействия LAN-4Gate на C++11
 
