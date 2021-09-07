@@ -13,16 +13,10 @@ jobs:
       matrix:
         os: [ubuntu-18.04]
         compiler:
-          - name: "g++-7"
-            package: "g++-7"
-          - name: "g++-8"
-            package: "g++-8"
+          - name: "g++4.8"
+            package: "g++4.8"
           - name: "g++-9"
             package: "g++-9"
-          - name: "clang++-8"
-            package: "clang-8"
-          - name: "clang++-9"
-            package: "clang-9"
           - name: "clang++-10"
             package: "clang-10"
         build_type: ["Debug", "Release"]
