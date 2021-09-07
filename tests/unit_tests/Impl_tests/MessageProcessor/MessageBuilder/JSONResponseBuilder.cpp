@@ -14,7 +14,7 @@ using namespace Lanter;
 using namespace Lanter::MessageProcessor;
 using namespace Lanter::MessageProcessor::Builder;
 
-TEST(JSONRequestBuilder, CheckFunctionInit) {
+TEST(JSONResponseBuilder, CheckFunctionInit) {
     JSONResponseBuilder builder;
 
     EXPECT_FALSE(builder.getFunctions().empty());
