@@ -5,6 +5,7 @@ get_directory_property(IS_SUBPROJECT PARENT_DIRECTORY)
 # Подключение и загрузка пакетного менеджера Hunter
 # Если данный проект подключен через add_subdirectory, то загрузить и инициировать Hunter не выйдет
 if(NOT IS_SUBPROJECT)
+
     if("$ENV{HUNTER_ROOT}" STREQUAL "")
         set(ENV{HUNTER_ROOT} ${CMAKE_BINARY_DIR}/cmake/hunter)
     endif()
@@ -60,7 +61,7 @@ file(GLOB_RECURSE IMPL_SOURCE_FILES Impl/*.cpp)
 
 add_compile_definitions(L4G_VERSION="${PROJECT_VERSION}")
 #список зависимостей библиотеки
-set(DEPENDENCIES_LIST jsoncpp_static asio::asio_static)
+set(DEPENDENCIES_LIST jsoncpp_object asio::asio_static)
 
 #Исходники будут скомпилированы дважды из-за разных дефайнов
 if(L4G_BUILD_STATIC)
