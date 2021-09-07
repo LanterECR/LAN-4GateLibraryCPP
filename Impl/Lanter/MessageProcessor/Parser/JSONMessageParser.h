@@ -8,6 +8,10 @@
 #include "Lanter/MessageProcessor/Parser/IMessageParser.h"
 
 namespace Lanter {
+    using namespace Message;
+    using namespace Message::Request;
+    using namespace Message::Response;
+    using namespace Message::Notification;
     namespace MessageProcessor {
         namespace Parser {
             class JSONMessageParser : public IMessageParser {

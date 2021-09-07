@@ -12,11 +12,6 @@
 #include "Lanter/Message/Notification/INotificationData.h"
 
 namespace Lanter {
-    using namespace Message;
-    using namespace Message::Request;
-    using namespace Message::Response;
-    using namespace Message::Notification;
-
     namespace MessageProcessor {
         namespace Builder {
             /// \brief Интерфейс сборщика сообщений на основе заполненных контейнеров
@@ -29,21 +24,21 @@ namespace Lanter {
                 /// \param[out] result vector из байтов, содержащий собранное сообщение
                 /// \return true, если сборка сообщения прошла успешно.
                 /// \sa Message::Request::IRequestData
-                virtual bool createMessage(std::shared_ptr<IRequestData> data, std::vector<uint8_t> &result) = 0;
+                virtual bool createMessage(std::shared_ptr<Message::Request::IRequestData> data, std::vector<uint8_t> &result) = 0;
 
                 /// \brief Создает сообщение на основе контейнера IResponseData
                 /// \param[in] data Заполненный контейнер IResponseData
                 /// \param[out] result vector из байтов, содержащий собранное сообщение
                 /// \return true, если сборка сообщения прошла успешно.
                 /// \sa Message::Response::IResponseData
-                virtual bool createMessage(std::shared_ptr<IResponseData> data, std::vector<uint8_t> &result) = 0;
+                virtual bool createMessage(std::shared_ptr<Message::Response::IResponseData> data, std::vector<uint8_t> &result) = 0;
 
                 /// \brief Создает сообщение на основе контейнера INotificationData
                 /// \param[in] data Заполненный контейнер INotificationData
                 /// \param[out] result vector из байтов, содержащий собранное сообщение
                 /// \return true, если сборка сообщения прошла успешно.
                 /// \sa Message::Notification::INotificationData
-                virtual bool createMessage(std::shared_ptr<INotificationData> data, std::vector<uint8_t> &result) = 0;
+                virtual bool createMessage(std::shared_ptr<Message::Notification::INotificationData> data, std::vector<uint8_t> &result) = 0;
             };//class IMessageBuilder
         }//namespace Builder
     }//namespace MessageProcessor

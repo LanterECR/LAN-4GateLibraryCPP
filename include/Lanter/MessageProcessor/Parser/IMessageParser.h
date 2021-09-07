@@ -14,12 +14,6 @@
 
 
 namespace Lanter {
-
-    using namespace Message;
-    using namespace Message::Request;
-    using namespace Message::Response;
-    using namespace Message::Notification;
-
     namespace MessageProcessor {
         namespace Parser {
             /// \brief Парсер сообщений.
@@ -35,7 +29,7 @@ namespace Lanter {
 
                 /// \brief Возвращает IRequestData экземпляр, хранящийся в очереди
                 /// \return nullptr, если очередь пуста
-                virtual std::shared_ptr<IRequestData> nextRequestData() = 0;
+                virtual std::shared_ptr<Message::Request::IRequestData> nextRequestData() = 0;
 
                 /// Сообщает о количестве запросов в очереди
                 /// \return 0, если очередь пуста
@@ -43,7 +37,7 @@ namespace Lanter {
 
                 /// \brief Возвращает IResponseData экземпляр, хранящийся в очереди
                 /// \return nullptr, если очередь пуста
-                virtual std::shared_ptr<IResponseData> nextResponseData() = 0;
+                virtual std::shared_ptr<Message::Response::IResponseData> nextResponseData() = 0;
 
                 /// Сообщает о количестве запросов в очереди
                 /// \return 0, если очередь пуста
@@ -51,7 +45,7 @@ namespace Lanter {
 
                 /// \brief Возвращает INotificationData экземпляр, хранящийся в очереди
                 /// \return nullptr, если очередь пуста
-                virtual std::shared_ptr<INotificationData> nextNotificationData() = 0;
+                virtual std::shared_ptr<Message::Notification::INotificationData> nextNotificationData() = 0;
 
                 /// Сообщает о количестве запросов в очереди
                 /// \return 0, если очередь пуста

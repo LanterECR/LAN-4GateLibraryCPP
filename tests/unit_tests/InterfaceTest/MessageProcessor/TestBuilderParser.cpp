@@ -12,6 +12,7 @@ using namespace Lanter::Utils;
 using namespace Lanter::Utils::Constants;
 using namespace Lanter::Message;
 using namespace Lanter::Message::Request;
+using namespace Lanter::Message::Response;
 using namespace Lanter::Message::Notification;
 using namespace Lanter::MessageProcessor;
 using namespace Lanter::MessageProcessor::Builder;
