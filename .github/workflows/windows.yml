@@ -27,8 +27,10 @@ jobs:
 
     - name: Build
       run: |
+        cd build
         cmake --build . --config ${{matrix.build_type}}
 
     - name: Test
       run: |
+        cd build
         cmake --build . --config ${{matrix.build_type}} --target RUN_TESTS
