@@ -1,4 +1,4 @@
-![Статус сборки под Linux](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/Linux/badge.svg)
+![Статус сборки под Linux](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/Linux/badge.svg) ![Статус сборки под macOS](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/macOS/badge.svg) ![Статус сборки под Виндой](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/Windows/badge.svg)
 
 # LAN-4GateLibraryCPP
 Данная библиотека реализует протокол кассового взаимодействия LAN-4Gate на C++11

@@ -1,0 +1,33 @@
+name: Windows
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2019]
+        platform: [Win32, x64]
+        build_type: ["Debug", "Release"]
+
+    runs-on: ${{matrix.os}}
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Configure
+      run: |
+        cmake -S . -B Build\L -DL4G_TESTS=ON -A ${{matrix.platform}}
+
+    - name: Build
+      run: |
+        cmake --build Build\L4GLibrary
+
+    - name: Test
+      run: |
+        cmake --build Build\L4GLibrary --config ${{matrix.build_type}}
+        ctest --test-dir Build\L4GLibrary

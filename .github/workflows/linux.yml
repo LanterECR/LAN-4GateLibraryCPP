@@ -49,13 +49,16 @@ jobs:
     - name: Install APT dependencies
       run: |
         sudo apt update
-        sudo apt install --yes ${{matrix.compiler.package}} git cmake ninja-build
+        sudo apt install --yes ${{matrix.compiler.package}} git cmake
 
     - name: Configure
       run: |
-        cmake -S . -B Build/L4GLibrary -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -DCMAKE_CXX_COMPILER=${{matrix.compiler.name}} -DL4G_TESTS=ON -G Ninja
+        cmake -S . -B Build/L4GLibrary -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -DCMAKE_CXX_COMPILER=${{matrix.compiler.name}} -DL4G_TESTS=ON
 
-    - name: Build and test
+    - name: Build
       run: |
         cmake --build Build/L4GLibrary
+
+    - name: Test
+      run: |
         ctest --test-dir Build/L4GLibrary
