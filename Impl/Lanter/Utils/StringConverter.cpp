@@ -1,5 +1,7 @@
 #include "StringConverter.h"
 
+#include <iterator>
+
 namespace Lanter {
     namespace Utils {
         bool StringConverter::convertToString(const std::vector<uint8_t> & data, std::string &result) {
