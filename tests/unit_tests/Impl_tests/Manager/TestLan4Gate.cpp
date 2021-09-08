@@ -194,12 +194,15 @@ TEST(TestLan4Gate, TestStartStop) {
     EXPECT_CALL(*stubComms, receive).Times(0);
 
     Lan4Gate gate;
+    EXPECT_EQ(gate.start(), ILan4Gate::Status::Error);
+
+
     gate.setCommunication(stubComms);
 
     EXPECT_FALSE(gate.isStarted());
-    EXPECT_TRUE(gate.start());
+    EXPECT_EQ(gate.start(), ILan4Gate::Status::Success);
     EXPECT_TRUE(gate.isStarted());
-    EXPECT_TRUE(gate.stop());
+    EXPECT_EQ(gate.stop(), ILan4Gate::Status::Success);
     EXPECT_FALSE(gate.isStarted());
 }
 
@@ -225,12 +228,12 @@ TEST(TestLan4Gate, TestEcrNumber) {
 
     gate.setCommunication(stubComms);
 
-    EXPECT_TRUE(gate.start());
+    EXPECT_EQ(gate.start(), ILan4Gate::Status::Success);
 
     EXPECT_FALSE(gate.setEcrNumber(validEcrNumber));
     EXPECT_FALSE(gate.setEcrNumber(invalidEcrNumber));
 
-    EXPECT_TRUE(gate.stop());
+    EXPECT_EQ(gate.stop(), ILan4Gate::Status::Success);
 
     EXPECT_TRUE(gate.setEcrNumber(validEcrNumber));
     EXPECT_FALSE(gate.setEcrNumber(invalidEcrNumber));
@@ -329,7 +332,7 @@ TEST(TestLan4Gate, TestSendRequest) {
 
     EXPECT_FALSE(gate.sendMessage(request));
 
-    EXPECT_TRUE(gate.start());
+    EXPECT_EQ(gate.start(), ILan4Gate::Status::Success);
 
     EXPECT_FALSE(gate.sendMessage(nullRequest));
 
@@ -357,7 +360,7 @@ TEST(TestLan4Gate, TestSendResponse) {
 
     EXPECT_FALSE(gate.sendMessage(response));
 
-    EXPECT_TRUE(gate.start());
+    EXPECT_EQ(gate.start(), ILan4Gate::Status::Success);
 
     EXPECT_FALSE(gate.sendMessage(nullResponse));
 
@@ -389,7 +392,7 @@ TEST(TestLan4Gate, TestSendNotification) {
 
     EXPECT_FALSE(gate.sendMessage(notification));
 
-    EXPECT_TRUE(gate.start());
+    EXPECT_EQ(gate.start(), ILan4Gate::Status::Success);
 
     EXPECT_FALSE(gate.sendMessage(nullNotification));
 
@@ -422,12 +425,12 @@ TEST(TestLan4Gate, TestChangeCallbackNotificationType) {
 
     EXPECT_EQ(gate.getCallbackNotificationType(), ILan4Gate::CallbackNotificationType::Sync);
 
-    EXPECT_TRUE(gate.start());
+    EXPECT_EQ(gate.start(), ILan4Gate::Status::Success);
 
     EXPECT_FALSE(gate.setCallbackNotificationType(ILan4Gate::CallbackNotificationType::Async));
     EXPECT_EQ(gate.getCallbackNotificationType(), ILan4Gate::CallbackNotificationType::Sync);
 
-    EXPECT_TRUE(gate.stop());
+    EXPECT_EQ(gate.stop(), ILan4Gate::Status::Success);
 
     EXPECT_TRUE(gate.setCallbackNotificationType(ILan4Gate::CallbackNotificationType::Async));
     EXPECT_EQ(gate.getCallbackNotificationType(), ILan4Gate::CallbackNotificationType::Async);
@@ -511,7 +514,7 @@ TEST(TestLan4Gate, TestSendMessageDoL4G) {
 
     ASSERT_NE(notification, nullptr);
 
-    EXPECT_TRUE(gate.start());
+    EXPECT_EQ(gate.start(), ILan4Gate::Status::Success);
 
     //6 отправок данных
     EXPECT_TRUE(gate.sendMessage(request));
@@ -526,7 +529,7 @@ TEST(TestLan4Gate, TestSendMessageDoL4G) {
         EXPECT_NO_THROW(gate.doLan4Gate());
     }
 
-    EXPECT_TRUE(gate.stop());
+    EXPECT_EQ(gate.stop(), ILan4Gate::Status::Success);
 }
 
 TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
@@ -644,12 +647,12 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
     gate.addResponseCallback(callbackResponse);
     gate.addNotificationCallback(callbackNotification);
 
-    EXPECT_TRUE(gate.start());
+    EXPECT_EQ(gate.start(), ILan4Gate::Status::Success);
 
     //100 циклов библиотеки
     for(int i = 0; i < 100; i++) {
         EXPECT_NO_THROW(gate.doLan4Gate());
     }
 
-    EXPECT_TRUE(gate.stop());
+    EXPECT_EQ(gate.stop(), ILan4Gate::Status::Success);
 }
