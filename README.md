@@ -7,7 +7,7 @@
 ![Сборка macOS](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/macOS/badge.svg) 
 ![Сборка Windows](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/Windows/badge.svg)
 
-### Список [будущих изменений](TODO.md) и расширения функионала
+### Список [будущих изменений](TODO.md) и расширения функционала
 
 Содержание
 ----------
@@ -17,20 +17,20 @@
    2. [CMake](#CMake)
    3. [Компиляторы](#Компиляторы)
    4. [Зависимости](#Зависимости)
-   5. [Тесты](#Тесты)
-3. [Переменные CMake](#Переменные-CMake)
+3. [Тесты](#Тесты)
+4. [Переменные CMake](#Переменные-CMake)
    1. [CMAKE_INSTALL_PREFIX](#CMAKE_INSTALL_PREFIX)
    2. [CMAKE_BUILD_TYPE](#CMAKE_BUILD_TYPE)
    3. [L4G_BUILD_STATIC](#L4G_BUILD_STATIC)
    4. [L4G_BUILD_SHARED](#L4G_BUILD_SHARED)
    5. [ENV{HUNTER_ROOT}](#ENV{HUNTER_ROOT})
-4. [Сборка и установка](#Сборка-и-установка)
-5. [Подключение к проекту](#Подключение-к-проекту)
+5. [Сборка и установка](#Сборка-и-установка)
+6. [Подключение к проекту](#Подключение-к-проекту)
    1. [Подключение к CMake](#Подключение-к-CMake)
-      1. [add_subdirectory()](#add_subdirecotry())
+      1. [Поддиректория проекта](#Поддиректория-проекта))
       2. [find_package()](#find_package())
    2. [Другие системы сборки](#Другие-системы-сборки)
-6. [Примеры](#Примеры)
+7. [Примеры](#Примеры)
 
 
 Описание
@@ -60,7 +60,9 @@
 - asio. Используется статическая версия библиотеки
 - GTest
 
-### Тесты
+Тесты
+------
+
 Работа библиотеки проверена на нижеперечисленных компиляторах. Работа с другими версиями не гарантируется
 - MSVC версий 2015, 2017 и 2019
 - GCC версий 5, 6, 7, 8 и 9
@@ -110,7 +112,7 @@ cmake -DL4G_TESTS=[ON|OFF] [прочие опции...]
 
 Сборка и установка
 --------
-Для сборки необходимо склонировать репозиторий, выполнить генерацию, сборку и установку
+Для сборки необходимо клонировать репозиторий, выполнить генерацию, сборку и установку
 ```shell
 git clone https://github.com/LanterECR/LAN-4GateLibraryCPP.git
 ```
@@ -183,12 +185,17 @@ target_link_libraries(SomeAwesomeProgram L4G::l4g_shared)
 target_link_libraries(SomeAwesomeProgram L4G::l4g_static)
 ...
 ```
-#### add_subdirectory()
+
+Интерфейсные библиотеки содержат путь к заголовочным файлам, соответствующим библиотекам и зависимостям.
+
+Вся информация будет автоматически доступна после добавление к линковке
+
+#### Поддиректория проекта
 Проект может быть подключен как поддиректория проекта, например [git submodule](https://git-scm.com/book/ru/v2/%D0%98%D0%BD%D1%81%D1%82%D1%80%D1%83%D0%BC%D0%B5%D0%BD%D1%82%D1%8B-Git-%D0%9F%D0%BE%D0%B4%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D0%B8)
 
 В таком случае предварительная сборка библиотеки не требуется и будет выполнена автоматически вместе с проектом.
 
-Для корректного использования требуется подключение менеджера Hunter ПЕРЕД директивой project 
+Для корректного использования требуется подключение менеджера Hunter ПЕРЕД директивой project. Возможность отключения Hunter появится в следующих версиях.
 
 Пример для следующей иерархии директорий
 ```
@@ -196,7 +203,9 @@ Project
 │
 └───3rdparty
 │   │ LAN-4GateLibraryCPP
+|
 | CMakeLists.txt
+| source.cpp
 ```
 
 ```cmake
@@ -225,7 +234,7 @@ target_link_libraries(Example L4G::l4g_shared)
 
 #### find_package()
 Используется при предварительно скомпилированной библиотеке. 
-Поисковые модули из shared должны быть доступны в переменной [CMAKE_MODULE_PATH](#https://cmake.org/cmake/help/latest/variable/CMAKE_MODULE_PATH.html), переменной [LAN-4GateLib_ROOT](https://cmake.org/cmake/help/latest/variable/PackageName_ROOT.html) или через PATH
+Поисковые модули из директории shared должны быть доступны в переменной [CMAKE_MODULE_PATH](#https://cmake.org/cmake/help/latest/variable/CMAKE_MODULE_PATH.html), переменной [LAN-4GateLib_ROOT](https://cmake.org/cmake/help/latest/variable/PackageName_ROOT.html) или через PATH
 
 ```cmake
 project(Example)
@@ -237,6 +246,10 @@ add_executable(Example source.cpp)
 target_link_libraries(Example L4G::l4g_shared)
 ```
 ### Другие системы сборки
+Для подключения к системам сборки, отличным от CMake необходимо указать путь к заголовочным файлам и конкретной версии библиотеки
+
+При работе под Windows линковаться должна статическая библиотека l4g_shared.lib
+
 Примеры
 -------
 
