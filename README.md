@@ -77,7 +77,7 @@
 
 Без указания переменной установка будет выполнена в директорию по умолчанию. 
 
-###CMAKE_BUILD_TYPE
+### CMAKE_BUILD_TYPE
 Стандартная переменная [CMake](https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html), указывающая тип сборки библиотек - Debug, Release, MinSizeRel, RelWithDebInfo
 
 ### L4G_BUILD_STATIC
