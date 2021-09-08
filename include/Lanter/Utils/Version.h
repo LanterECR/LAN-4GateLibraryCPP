@@ -5,6 +5,8 @@
 
 namespace Lanter {
     namespace Utils {
+        /// \brief Возвращает текущую версию библиотеки
+        /// \return версия библиотеки
         const std::string & getVersion();
     }
 }

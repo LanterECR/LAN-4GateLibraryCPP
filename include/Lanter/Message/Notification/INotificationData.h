@@ -25,7 +25,7 @@ namespace Lanter {
                 /// \return true, если поле успешно установлено
                 virtual bool setCode(NotificationCode notificationCode) = 0;
 
-                /// \brief Устанавливает код уведомления на значение по умолнчанию
+                /// \brief Устанавливает код уведомления на значение по умолчанию
                 /// \return true, если код успешно убран
                 virtual bool resetCode() = 0;
 
@@ -46,7 +46,7 @@ namespace Lanter {
                 /// \return Дополнительные данные уведомления
                 virtual const std::string & getAdditional() const = 0;
 
-                /// \brief Устанавливает дополнительнные данные уведомления
+                /// \brief Устанавливает дополнительные данные уведомления
                 /// \param[in] additional Дополнительные данные уведомления
                 /// \return true, если поле успешно установлено
                 virtual bool setAdditional(const std::string & additional) = 0;

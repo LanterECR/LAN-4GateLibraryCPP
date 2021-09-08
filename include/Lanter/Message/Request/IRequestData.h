@@ -52,7 +52,7 @@ namespace Lanter {
                 /// \return Если поле установлено - логический идентификатор кассового ПО, иначе -1
                 virtual int16_t getEcrNumber() const = 0;
 
-                /// \brief Устанавливает лоический иденитфикатор кассового ПО
+                /// \brief Устанавливает логический идентификатор кассового ПО
                 /// \param[in] ecrNumber Логический идентификатор кассового ПО в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
                 virtual bool setEcrNumber(int16_t ecrNumber) = 0;
@@ -66,7 +66,7 @@ namespace Lanter {
                 /// \return Если поле установлено - логический идентификатор мерчанта в кассовом ПО, иначе -1
                 virtual int16_t getEcrMerchantNumber() const = 0;
 
-                /// \brief Устанавливает лоический иденитфикатор мерчанта в кассовом ПО
+                /// \brief Устанавливает логический идентификатор мерчанта в кассовом ПО
                 /// \param[in] ecrMerchantNumber Логический идентификатор мерчанта в кассовом в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
                 virtual bool setEcrMerchantNumber(int16_t ecrMerchantNumber) = 0;
@@ -82,7 +82,7 @@ namespace Lanter {
                 /// \sa OperationCode
                 virtual OperationCode getOperationCode() const = 0;
 
-                /// \brief Устанавливает код выполнямой операции
+                /// \brief Устанавливает код выполняемой операции
                 /// \param[in] operationCode Значение из перечислений OperationCode, за исключением NoOperation
                 /// \return true, если поле успешно установлено
                 virtual bool setOperationCode(OperationCode operationCode) = 0;
@@ -176,7 +176,7 @@ namespace Lanter {
                 /// \return true, если успешно удалено.
                 virtual bool resetRRN() = 0;
 
-                /// \brief Возвращает установленное знаение кода авторизации
+                /// \brief Возвращает установленное значение кода авторизации
                 /// \return строка, содержащая код авторизации
                 virtual const std::string &getAuthCode() const = 0;
 
@@ -195,7 +195,7 @@ namespace Lanter {
                 virtual const std::string &getReceiptReference() const = 0;
 
                 /// \brief Устанавливает значение номера чека в финансовом ПО LAN-4Tap,
-                /// полученное в ответ на однй из предыдущих операций
+                /// полученное в ответ на одной из предыдущих операций
                 /// \param[in] receiptReference Строка, содержащая номер чека в финансовом ПО LAN-4Tap
                 /// \return true, если поле успешно установлено
                 virtual bool setReceiptReference(const std::string &receiptReference) = 0;
@@ -206,12 +206,12 @@ namespace Lanter {
                 /// \return true, если успешно удалено.
                 virtual bool resetReceiptReference() = 0;
 
-                /// \brief Возвращает установленное значение иднетификатора транзакции
+                /// \brief Возвращает установленное значение идентификатора транзакции
                 /// \return Строка содержащая значение идентификатора транзакции
                 virtual const std::string &getTransactionID() const = 0;
 
-                /// \brief Устанавливает значение идентификатора тназакции, полученное в ответ на однй из предыдущих операций
-                /// \param[in] transactionId Строка, содержащая идентификатор тразакции
+                /// \brief Устанавливает значение идентификатора транзакции, полученное в ответ на одной из предыдущих операций
+                /// \param[in] transactionId Строка, содержащая идентификатор транзакции
                 /// \return true, если поле успешно установлено
                 virtual bool setTransactionID(const std::string &transactionId) = 0;
 
@@ -225,7 +225,7 @@ namespace Lanter {
                 virtual const std::string &getCardDataEnc() const = 0;
 
                 /// \brief Устанавливает значение зашифрованных данных карты, полученное в ответ на одну из предыдущих операций
-                /// \param[in] cardDataEnc Строка, содержщая зашифрованные данные карты
+                /// \param[in] cardDataEnc Строка, содержащая зашифрованные данные карты
                 /// \return true, если поле успешно установлено
                 virtual bool setCardDataEnc(const std::string &cardDataEnc) = 0;
 

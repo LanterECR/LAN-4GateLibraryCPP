@@ -23,6 +23,14 @@ namespace Lanter {
             /// \return true - открыто, false - закрыто
             virtual bool isOpen() = 0;
 
+            /// \brief Пытается выполнить подключение соединения
+            /// \return true, если удалось подключиться
+            virtual bool connect() = 0;
+
+            /// \brief Возвращает статус подключения
+            /// \return true, если подключено
+            virtual bool isConnected() = 0;
+
             /// \brief Отправляет данные в соединение
             /// \param[in] in отправляемые данные
             /// \return размер отправленных данных

@@ -33,7 +33,7 @@ namespace Lanter {
 
              virtual ~ILan4Gate() = default;
 
-            /// \brief Устанавливает лоический иденитфикатор кассового ПО. Значение по умолчанию 1
+            /// \brief Устанавливает логический идентификатор кассового ПО. Значение по умолчанию 1
             /// \param[in] ecrNumber Логический идентификатор кассового ПО в диапазоне [1, 999]
             /// \return true, если поле успешно установлено
              virtual bool setEcrNumber(int16_t ecrNumber) = 0;
@@ -62,7 +62,7 @@ namespace Lanter {
             virtual void doLan4Gate() = 0;
 
             /// \brief Запускает цикл обработки запросов в отдельном потоке
-            /// Если планируется встраиваение цикла обработки в собственный поток, то данный метод не нужно вызывать
+            /// Если планируется встраивание цикла обработки в собственный поток, то данный метод не нужно вызывать
             /// \return Одно из значений перечисления Status
             /// \sa Status
             virtual Status runOnThread() = 0;
@@ -88,53 +88,67 @@ namespace Lanter {
             virtual bool setCallbackNotificationType(CallbackNotificationType type) = 0;
 
             /// \brief Возвращает установленный способ вызова колбеков
-            /// \return Утсановленный способ вызова колбеков. По умолчанию Async
+            /// \return Установленный способ вызова колбеков. По умолчанию Async
             /// \sa CallbackNotificationType
             virtual CallbackNotificationType getCallbackNotificationType() const = 0;
             /// \brief Добавляет колбек в список слушателей для получения данных запроса
             /// \param[in] callback std::function с сигнатурой `void func(std::shared_ptr<Message::Request::IRequestData>)`
-            /// \return id зарегестрированного колбека
+            /// \return id зарегистрированного колбека
             /// \sa Message::Request::IRequestData
             virtual size_t addRequestCallback(std::function<void(std::shared_ptr<Message::Request::IRequestData>)> callback) = 0;
 
             /// \brief Удаляет колбек запроса из списка
-            /// \param[in] id иденитфикатор колбека
+            /// \param[in] id идентификатор колбека
             /// \return true, если успешно удалено
             virtual bool removeRequestCallback(size_t id) = 0;
 
-            /// \brief Возвращает количество зарегестрированных колбеков для получения данных запроса
-            /// \return количество зарегестрированных колбеков
+            /// \brief Возвращает количество зарегистрированных колбеков для получения данных запроса
+            /// \return количество зарегистрированных колбеков
             virtual size_t requestCallbacksCount() const = 0;
 
             /// \brief Добавляет колбек в список слушателей для получения данных ответа
             /// \param[in] callback std::function с сигнатурой `void func(std::shared_ptr<Message::Response::IResponseData>)`
-            /// \return id зарегестрированного колбека
+            /// \return id зарегистрированного колбека
             /// \sa Message::Response::IResponseData
             virtual size_t addResponseCallback(std::function<void(std::shared_ptr<Message::Response::IResponseData>)> callback) = 0;
 
             /// \brief Удаляет колбек ответа из списка
-            /// \param[in] id иденитфикатор колбека
+            /// \param[in] id идентификатор колбека
             /// \return true, если успешно удалено
             virtual bool removeResponseCallback(size_t id) = 0;
 
-            /// \brief Возвращает количество зарегестрированных колбеков для получения данных ответа
-            /// \return количество зарегестрированных колбеков
+            /// \brief Возвращает количество зарегистрированных колбеков для получения данных ответа
+            /// \return количество зарегистрированных колбеков
             virtual size_t responseCallbacksCount() const = 0;
 
             /// \brief Добавляет колбек в список слушателей для получения данных уведомления
             /// \param[in] callback std::function на колбек-функцию
-            /// \return id зарегестрированного колбека
+            /// \return id зарегистрированного колбека
             /// \sa Message::Notification::INotificationData
             virtual size_t addNotificationCallback(std::function<void(std::shared_ptr<Message::Notification::INotificationData>)> callback) = 0;
 
             /// \brief Удаляет колбек уведомления из списка
-            /// \param[in] id иденитфикатор колбека
+            /// \param[in] id идентификатор колбека
             /// \return true, если успешно удалено
             virtual bool removeNotificationCallback(size_t id) = 0;
 
-            /// \brief Возвращает количество зарегестрированных колбеков для получения данных уведомления
-            /// \return количество зарегестрированных колбеков
+            /// \brief Возвращает количество зарегистрированных колбеков для получения данных уведомления
+            /// \return количество зарегистрированных колбеков
             virtual size_t notificationCallbacksCount() const = 0;
+
+            /// \brief Добавляет колбек в список слушателей для получения уведомления о подключении
+            /// \param[in] callback std::function на колбек-функцию
+            /// \return id зарегистрированного колбека
+            virtual size_t addConnectionCallback(std::function<void(bool)> callback) = 0;
+
+            /// \brief Удаляет колбек уведомления из списка
+            /// \param[in] id идентификатор колбека
+            /// \return true, если успешно удалено
+            virtual bool removeConnectionCallback(size_t id) = 0;
+
+            /// \brief Возвращает количество зарегистрированных колбеков для получения уведомления о подключении
+            /// \return количество зарегистрированных колбеков
+            virtual size_t connectionCallbacksCount() const = 0;
 
             /// \brief Возвращает подготовленный объект запроса с заполненными полями EcrNumber и OperationCode
             /// \param[in] operationCode Код операции, для которой необходимо подготовить объект

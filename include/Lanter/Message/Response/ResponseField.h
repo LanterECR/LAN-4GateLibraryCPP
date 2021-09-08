@@ -21,7 +21,7 @@ namespace Lanter {
                 ReceiptReference, ///< Номер чека в финансовом ПО LAN-4Tap.
                 RRN, ///< Retrieval Reference Number, полученный в ответ от хоста
                 Status, ///< Статус выполнения операции
-                OriginalOperationStatus, ///< Статус выполнения оригиналной операции
+                OriginalOperationStatus, ///< Статус выполнения оригинальной операции
                 TransDateTime, ///< Время выполнения операции на хосте
                 TerminalDateTime, ///< Время выполнения операции на терминале
                 CardPAN, ///< Маскированный PAN карты
@@ -40,7 +40,7 @@ namespace Lanter {
                 IssuerName, ///< Название платежной системы
                 AdditionalInfo, ///< Дополнительные данные операции
                 CardData, ///< Открытые данные карты
-                CardDataEnc, ///< Зашированные данные карты
+                CardDataEnc, ///< Зашифрованные данные карты
                 MerchantID, ///< Идентификатор мерчанта на хосте
                 TVR, ///< Данные работы с картой
                 TSI, ///< Данные работы с картой

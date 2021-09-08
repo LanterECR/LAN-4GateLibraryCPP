@@ -59,7 +59,7 @@ namespace Lanter {
                 /// \return Если поле установлено - логический идентификатор кассового ПО, иначе -1
                 virtual int16_t getEcrNumber() const = 0;
 
-                /// \brief Устанавливает лоический иденитфикатор кассового ПО
+                /// \brief Устанавливает логический идентификатор кассового ПО
                 /// \param[in] ecrNumber Логический идентификатор кассового ПО в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
                 virtual bool setEcrNumber(int16_t ecrNumber) = 0;
@@ -73,7 +73,7 @@ namespace Lanter {
                 /// \return Если поле установлено - логический идентификатор мерчанта в кассовом ПО, иначе -1
                 virtual int16_t getEcrMerchantNumber() const = 0;
 
-                /// \brief Устанавливает лоический иденитфикатор мерчанта в кассовом ПО
+                /// \brief Устанавливает логический идентификатор мерчанта в кассовом ПО
                 /// \param[in] ecrMerchantNumber Логический идентификатор мерчанта в кассовом в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
                 virtual bool setEcrMerchantNumber(int16_t ecrMerchantNumber) = 0;
@@ -88,7 +88,7 @@ namespace Lanter {
                 /// \sa OperationCode
                 virtual OperationCode getOperationCode() const = 0;
 
-                /// \brief Устанавливает код выполнямой операции
+                /// \brief Устанавливает код выполняемой операции
                 /// \param[in] operationCode Значение из перечислений OperationCode, за исключением NoOperation
                 /// \sa OperationCode
                 /// \return true, если поле успешно установлено
@@ -312,7 +312,7 @@ namespace Lanter {
                 virtual bool resetExpireDate() = 0;
 
                 /// \brief Возвращает имя держателя карты
-                /// \return Строка, содержщая имя держателя карты
+                /// \return Строка, содержащая имя держателя карты
                 virtual const std::string &getCardholderName() const = 0;
 
                 /// \brief Устанавливает имя держателя карты
@@ -437,11 +437,11 @@ namespace Lanter {
                 /// \return true, если успешно удалено.
                 virtual bool resetCardEmvAid() = 0;
 
-                /// \brief Возвращает название прилжения карты
+                /// \brief Возвращает название приложения карты
                 /// \return Строка, содержащая название приложения карты
                 virtual const std::string &getCardAppName() const = 0;
 
-                /// \brief Устанавливает название прилжения карты
+                /// \brief Устанавливает название приложения карты
                 /// \param[in] cardAppName Строка, содержащая название приложения карты
                 /// \return true, если поле успешно установлено
                 virtual bool setCardAppName(const std::string &cardAppName) = 0;
@@ -494,13 +494,13 @@ namespace Lanter {
                 virtual bool resetAdditionalInfo() = 0;
 
                 /// \brief Возвращает открытые данные карты
-                /// \return Строка, содержащая открыте данные карты
+                /// \return Строка, содержащая открытые данные карты
                 /// Строка может начинаться с префикса 0x. После префикса - TLV открытых данных карты в ASCII HEX.
                 /// Регистр не важен.
                 virtual const std::string &getCardData() const = 0;
 
                 /// \brief Устанавливает открытые данные карты
-                /// \param[in] cardData Строка, содержащая открыте данные карты
+                /// \param[in] cardData Строка, содержащая открытые данные карты
                 /// Строка может начинаться с префикса 0x. После префикса - TLV открытых данных карты в ASCII HEX.
                 /// Регистр не важен.
                 /// \return true, если поле успешно установлено
