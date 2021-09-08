@@ -2,6 +2,7 @@
 
 #include <random>
 #include <chrono>
+#include <Lanter/Message/Response/Status.h>
 
 #include "Lanter/Utils/FieldRangeChecker.h"
 
@@ -38,19 +39,23 @@ namespace Lanter {
             return m_EcrNumber;
         }
 
-        bool Lan4Gate::start() {
+        ILan4Gate::Status Lan4Gate::start() {
             if(!m_IsStarted) {
                 m_IsStarted = createParser() && createBuilder() && m_Communication != nullptr;
             }
-            return m_IsStarted;
+            return m_IsStarted ? ILan4Gate::Status::Success : ILan4Gate::Status::Error;
         }
 
-        bool Lan4Gate::stop() {
+        ILan4Gate::Status Lan4Gate::stop() {
             m_IsStarted = false;
+
+            if(m_MainThread != nullptr) {
+                m_MainThread->join();
+            }
 
             closeConnection();
             waitFuture();
-            return !m_IsStarted;
+            return m_IsStarted ? ILan4Gate::Status::Error : ILan4Gate::Status::Success;
         }
 
         bool Lan4Gate::isStarted() const {
@@ -70,8 +75,26 @@ namespace Lanter {
             }
         }
 
-        bool Lan4Gate::runOnThread() {
-            return isStarted();
+        ILan4Gate::Status Lan4Gate::runOnThread() {
+            Status result = ILan4Gate::Status::Error;
+
+            if(m_MainThread == nullptr) {
+                auto threadLoop = [this]() {
+                    while(isStarted()) {
+                        doLan4Gate();
+                    }
+                };
+                if(start() == ILan4Gate::Status::Success) {
+                    m_MainThread = std::make_shared<std::thread>(threadLoop);
+                }
+            }
+
+            if(m_MainThread != nullptr && m_MainThread->joinable() && isStarted()) {
+                result = ILan4Gate::Status::Success;
+            }
+
+
+            return result;
         }
 
         bool Lan4Gate::setCommunication(std::shared_ptr<Communication::ICommunication> communication) {

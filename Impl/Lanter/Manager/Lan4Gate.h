@@ -24,15 +24,15 @@ namespace Lanter {
 
             int16_t getEcrNumber() const override;
 
-            bool start() override;
+            Status start() override;
 
-            bool stop() override;
+            Status stop() override;
 
             bool isStarted() const override;
 
             void doLan4Gate() override;
 
-            bool runOnThread() override;
+            Status runOnThread() override;
 
 
             bool setCommunication(std::shared_ptr<Communication::ICommunication> communication) override;
@@ -108,7 +108,7 @@ namespace Lanter {
             std::queue<std::vector<uint8_t> > m_MessageQueue;
             std::mutex m_QueueMutex;
 
-            std::thread m_MainThread;
+            std::shared_ptr<std::thread> m_MainThread;
 
 
             std::shared_ptr<MessageProcessor::Builder::IMessageBuilder> m_MessageBuilder;
