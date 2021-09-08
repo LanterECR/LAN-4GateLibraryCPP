@@ -18,6 +18,11 @@ namespace Lanter {
         /// \brief Предоставляет интерфейс взаимодействия с функционалом библиотеки
         class LANTER_VISIBILITY ILan4Gate {
         public:
+            /// \brief Статус запуска ILan4Gate
+            enum class Status {
+                Success, //!< Успешно запущено
+                Error //!< Произошла ошибка при запуске
+            };
 
             /// \brief Способ вызова колбеков
             /// Объединение Async | Sync будет интерпретировано, как Sync
@@ -38,15 +43,17 @@ namespace Lanter {
              virtual int16_t getEcrNumber() const = 0;
 
             /// \brief Запускает цикл обработки запросов библиотеки
-            /// \return true, если цикл успешно запущен
-            virtual bool start() = 0;
+            /// \return Одно из значений перечисления Status
+            /// \sa Status
+            virtual Status start() = 0;
 
             /// \brief Останавливает цикл обработки
-            /// \return true, если цикл обработки запросов успешно остановлен
-            virtual bool stop() = 0;
+            /// \return Одно из значений перечисления Status
+            virtual Status stop() = 0;
 
             /// \brief Возвращает состояние цикла обработки
             /// \return true, если цикл запущен и выполняется
+            /// \sa Status
             virtual bool isStarted() const = 0;
 
             /// \brief Выполняет одну итерацию цикла обработки запросов.
@@ -56,8 +63,9 @@ namespace Lanter {
 
             /// \brief Запускает цикл обработки запросов в отдельном потоке
             /// Если планируется встраиваение цикла обработки в собственный поток, то данный метод не нужно вызывать
-            /// \return true, если поток успешно запущен
-            virtual bool runOnThread() = 0;
+            /// \return Одно из значений перечисления Status
+            /// \sa Status
+            virtual Status runOnThread() = 0;
 
             /// \brief Устанавливает соединение в качестве основного используемого
             /// \param[in] communication указатель на используемое соединение
