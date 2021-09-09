@@ -63,6 +63,7 @@ add_compile_definitions(L4G_VERSION="${PROJECT_VERSION}")
 #список зависимостей библиотеки
 set(DEPENDENCIES_LIST jsoncpp_object asio::asio_static)
 
+set(INSTALLATION_TARGETS "")
 #Исходники будут скомпилированы дважды из-за разных дефайнов
 if(L4G_BUILD_STATIC)
     add_library(l4g_static STATIC ${INCLUDE_FILES} ${SOURCE_FILES} ${IMPL_INCLUDE_FILES} ${IMPL_SOURCE_FILES})
@@ -76,6 +77,8 @@ if(L4G_BUILD_STATIC)
     target_link_libraries(l4g_static ${DEPENDENCIES_LIST})
 
     add_library(L4G::l4g_static ALIAS l4g_static)
+
+    list(APPEND INSTALLATION_TARGETS l4g_static)
 endif()
 
 if(L4G_BUILD_SHARED)
@@ -92,6 +95,8 @@ if(L4G_BUILD_SHARED)
     target_compile_definitions(l4g_shared PUBLIC LANTER_BUILD_SHARED)
 
     add_library(L4G::l4g_shared ALIAS l4g_shared)
+
+    list(APPEND INSTALLATION_TARGETS l4g_shared)
 endif()
 
 if(L4G_TESTS AND L4G_BUILD_STATIC AND NOT IS_SUBPROJECT)
@@ -106,15 +111,12 @@ endif()
 
 install(DIRECTORY include/Lanter DESTINATION include)
 
-install(TARGETS l4g_static l4g_shared EXPORT LAN_4GateLibConfig
+install(TARGETS ${INSTALLATION_TARGETS} EXPORT LAN_4GateLibConfig
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
         )
 
-#[[install(TARGETS l4g_static l4g_shared
-
-        )]]
 install(EXPORT LAN_4GateLibConfig NAMESPACE L4G:: DESTINATION share/LAN_4GateLib/cmake)
 
 include(CMakePackageConfigHelpers)
