@@ -717,3 +717,89 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
 
     EXPECT_EQ(gate.stop(), ILan4Gate::Status::Success);
 }
+
+TEST(TestLan4Gate, TestConnectedCallback) {
+    bool commsOpen = false;
+    bool commsConnected = false;
+
+    auto openFunc = [&commsOpen](){
+        commsOpen = true;
+        return commsOpen;
+    };
+
+    auto isOpenFunc = [&commsOpen](){
+        return commsOpen;
+    };
+
+    auto closeFunc = [&commsOpen, &commsConnected](){
+        commsOpen = false;
+        commsConnected = false;
+        return commsOpen;
+    };
+
+    auto connectFunc = [&commsConnected] () {
+        commsConnected = true;
+        return commsConnected;
+    };
+
+    auto receiveConnectionStatusTrueFunc = [](bool connected) {
+        EXPECT_TRUE(connected);
+    };
+
+    auto receiveConnectionStatusFalseFunc = [](bool connected) {
+        EXPECT_FALSE(connected);
+    };
+
+    auto comms = std::make_shared<MOCKComms>();
+
+    EXPECT_CALL(*comms, isOpen).
+            WillRepeatedly(Invoke(isOpenFunc));
+
+    EXPECT_CALL(*comms, open).
+            WillOnce(Invoke(openFunc));
+
+    EXPECT_CALL(*comms, close).
+            WillOnce(Invoke(closeFunc));
+
+
+    EXPECT_CALL(*comms, receive).WillRepeatedly(Return(0));
+
+    EXPECT_CALL(*comms, connect).
+            WillRepeatedly(Invoke(connectFunc));
+
+    EXPECT_CALL(*comms, isConnected).
+            WillOnce(Return(false)).
+            WillOnce(Return(true)).
+            WillRepeatedly(Return(false));
+
+   MOCKCallback callback;
+
+    EXPECT_CALL(callback, requestCallback(_)).Times(0);
+
+    EXPECT_CALL(callback, responseCallback(_)).Times(0);
+
+    EXPECT_CALL(callback, notificationCallback(_)).Times(0);
+
+    EXPECT_CALL(callback, connectedCallback(_)).
+            WillOnce(Invoke(receiveConnectionStatusTrueFunc)).
+            WillOnce(Invoke(receiveConnectionStatusFalseFunc));
+
+    std::function<void(bool)> callbackConnection = [&callback](bool connected) {
+        callback.connectedCallback(connected);
+    };
+
+    Lan4Gate gate;
+
+    gate.setCommunication(comms);
+    gate.setCallbackNotificationType(Lanter::Manager::ILan4Gate::CallbackNotificationType::Sync);
+
+    gate.addConnectionCallback(callbackConnection);
+    EXPECT_EQ(gate.start(), ILan4Gate::Status::Success);
+
+    //100 циклов библиотеки
+    for(int i = 0; i < 100; i++) {
+        EXPECT_NO_THROW(gate.doLan4Gate());
+    }
+
+    EXPECT_EQ(gate.stop(), ILan4Gate::Status::Success);
+}
