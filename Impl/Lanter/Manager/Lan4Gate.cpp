@@ -501,13 +501,7 @@ namespace Lanter {
 
         void Lan4Gate::connect() {
             if(m_Communication != nullptr) {
-                if(!isConnected()) {
-                    auto result = m_Communication->connect();
-                    if (result != m_PreviousConnectionStatus) {
-                        m_PreviousConnectionStatus = result;
-                        notifyConnectionStatus(result);
-                    }
-                }
+                m_Communication->connect();
             }
         }
 
@@ -515,6 +509,10 @@ namespace Lanter {
             bool result = false;
             if(m_Communication != nullptr) {
                 result = m_Communication->isConnected();
+                if (result != m_PreviousConnectionStatus) {
+                    m_PreviousConnectionStatus = result;
+                    notifyConnectionStatus(result);
+                }
             }
             return result;
         }
