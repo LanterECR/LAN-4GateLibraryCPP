@@ -2,7 +2,6 @@
 
 #include <random>
 #include <chrono>
-#include <Lanter/Message/Response/Status.h>
 
 #include "Lanter/Utils/FieldRangeChecker.h"
 
@@ -41,7 +40,10 @@ namespace Lanter {
 
         ILan4Gate::Status Lan4Gate::start() {
             if(!m_IsStarted) {
-                m_IsStarted = createParser() && createBuilder() && m_Communication != nullptr;
+                m_IsStarted = m_Communication != nullptr;
+                m_IsStarted = m_IsStarted && createParser();
+                m_IsStarted = m_IsStarted && createBuilder();
+                m_IsStarted = m_IsStarted && openConnection();
             }
             return m_IsStarted ? ILan4Gate::Status::Success : ILan4Gate::Status::Error;
         }
@@ -65,10 +67,12 @@ namespace Lanter {
 
         void Lan4Gate::doLan4Gate() {
             if(m_IsStarted) {
-                if(openConnection()) {
+                if(isConnected()) {
                     sendData();
                     receiveData();
                     notify();
+                } else {
+                    connect();
                 }
             } else {
                 closeConnection();
@@ -121,7 +125,7 @@ namespace Lanter {
         size_t Lan4Gate::addRequestCallback(std::function<void(std::shared_ptr<Message::Request::IRequestData>)> callback) {
             size_t result = 0;
             if(callback) {
-                int size = m_RequestCallbacks.size();
+                auto size = m_RequestCallbacks.size();
 
                 size_t id = generateID();
                 while(m_RequestCallbacks.find(id) != m_RequestCallbacks.end()) {
@@ -161,7 +165,7 @@ namespace Lanter {
         size_t Lan4Gate::addResponseCallback(std::function<void(std::shared_ptr<Message::Response::IResponseData>)> callback) {
             size_t result = 0;
             if(callback) {
-                int size = m_ResponseCallbacks.size();
+                auto size = m_ResponseCallbacks.size();
 
                 size_t id = generateID();
                 while(m_ResponseCallbacks.find(id) != m_ResponseCallbacks.end()) {
@@ -201,7 +205,7 @@ namespace Lanter {
         size_t Lan4Gate::addNotificationCallback(std::function<void(std::shared_ptr<Message::Notification::INotificationData>)> callback) {
             size_t result = 0;
             if(callback) {
-                int size = m_NotificationCallbacks.size();
+                auto size = m_NotificationCallbacks.size();
 
                 size_t id = generateID();
                 while(m_NotificationCallbacks.find(id) != m_NotificationCallbacks.end()) {
@@ -238,7 +242,45 @@ namespace Lanter {
             return m_NotificationCallbacks.size();
         }
 
+        size_t Lan4Gate::addConnectionCallback(std::function<void(bool)> callback) {
+            size_t result = 0;
+            if(callback) {
+                auto size = m_ConnectionCallbacks.size();
 
+                size_t id = generateID();
+                while(m_ConnectionCallbacks.find(id) != m_ConnectionCallbacks.end()) {
+                    id = generateID();
+                }
+
+                m_ConnectionCallbacks[id] = callback;
+
+                if(m_ConnectionCallbacks.size() - size > 0) {
+                    result = id;
+                } else {
+                    result = 0;
+                }
+            }
+            return result;
+        }
+
+        bool Lan4Gate::removeConnectionCallback(size_t id) {
+            bool result = false;
+
+            auto item = m_ConnectionCallbacks.find(id);
+            if(item != m_ConnectionCallbacks.end()) {
+                size_t size = m_ConnectionCallbacks.size();
+
+                m_ConnectionCallbacks.erase(item);
+
+                result = size - m_ConnectionCallbacks.size() > 0;
+            }
+
+            return result;
+        }
+
+        size_t Lan4Gate::connectionCallbacksCount() const {
+            return m_NotificationCallbacks.size();
+        }
 
         std::shared_ptr<Message::Request::IRequestData> Lan4Gate::getPreparedRequest(Message::OperationCode operationCode) {
             return Message::Request::RequestDataFactory::getRequestData(operationCode, m_EcrNumber);
@@ -408,7 +450,7 @@ namespace Lanter {
 
                 auto request = m_MessageParser->nextRequestData();
 
-                for(auto callback : m_RequestCallbacks) {
+                for(const auto& callback : m_RequestCallbacks) {
                     callback.second(request);
                 }
             }
@@ -419,7 +461,7 @@ namespace Lanter {
 
                 auto response = m_MessageParser->nextResponseData();
 
-                for(auto callback : m_ResponseCallbacks) {
+                for(const auto& callback : m_ResponseCallbacks) {
                     callback.second(response);
                 }
             }
@@ -430,9 +472,15 @@ namespace Lanter {
 
                 auto notification = m_MessageParser->nextNotificationData();
 
-                for(auto callback : m_NotificationCallbacks) {
+                for(const auto& callback : m_NotificationCallbacks) {
                     callback.second(notification);
                 }
+            }
+        }
+
+        void Lan4Gate::notifyConnectionStatus(bool status) {
+            for(const auto & callback : m_ConnectionCallbacks) {
+                callback.second(status);
             }
         }
 
@@ -449,6 +497,26 @@ namespace Lanter {
                 m_CallbackNotificationType = type;
             }
             return m_CallbackNotificationType == type;
+        }
+
+        void Lan4Gate::connect() {
+            if(m_Communication != nullptr) {
+                if(!isConnected()) {
+                    auto result = m_Communication->connect();
+                    if (result != m_PreviousConnectionStatus) {
+                        m_PreviousConnectionStatus = result;
+                        notifyConnectionStatus(result);
+                    }
+                }
+            }
+        }
+
+        bool Lan4Gate::isConnected() {
+            bool result = false;
+            if(m_Communication != nullptr) {
+                result = m_Communication->isConnected();
+            }
+            return result;
         }
     }
 }

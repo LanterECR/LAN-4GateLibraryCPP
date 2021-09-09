@@ -69,6 +69,12 @@ namespace Lanter {
 
             std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode ) override;
 
+            size_t addConnectionCallback(std::function<void(bool)> callback) override;
+
+            bool removeConnectionCallback(size_t id) override;
+
+            size_t connectionCallbacksCount() const override;
+
             bool sendMessage(std::shared_ptr<Message::Request::IRequestData> request) override;
 
             bool sendMessage(std::shared_ptr<Message::Response::IResponseData> response) override;
@@ -97,13 +103,21 @@ namespace Lanter {
             void notifyRequest();
             void notifyResponse();
             void notifyNotification();
+            void notifyConnectionStatus(bool status);
+
             bool waitFuture();
+
+            void connect();
+            bool isConnected();
 
             int16_t m_EcrNumber = 1;
 
             std::atomic<bool> m_IsStarted;
 
+            bool m_PreviousConnectionStatus = false;
+
             std::shared_ptr<Communication::ICommunication> m_Communication;
+
 
             std::queue<std::vector<uint8_t> > m_MessageQueue;
             std::mutex m_QueueMutex;
@@ -121,6 +135,8 @@ namespace Lanter {
             std::unordered_map<size_t, std::function<void(std::shared_ptr<Message::Response::IResponseData>)> > m_ResponseCallbacks;
 
             std::unordered_map<size_t, std::function<void(std::shared_ptr<Message::Notification::INotificationData>)> > m_NotificationCallbacks;
+
+            std::unordered_map<size_t, std::function<void(bool)> > m_ConnectionCallbacks;
 
             std::future<void> m_CallbacksFuture;
         };
