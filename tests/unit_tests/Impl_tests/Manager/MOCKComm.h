@@ -12,6 +12,10 @@ namespace Lanter {
 
         MOCK_METHOD(size_t, send, (const std::vector<uint8_t> &), (override));
         MOCK_METHOD(size_t, receive, (std::vector<uint8_t> & ), (override));
+
+        MOCK_METHOD(bool, connect, (), (override));
+
+        MOCK_METHOD(bool, isConnected, (), (override));
     };
 }
 

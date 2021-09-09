@@ -133,6 +133,8 @@ TEST(TestLan4Gate, TestAddResetGetCommunication) {
     EXPECT_CALL(*closedComms, open).Times(0);
     EXPECT_CALL(*closedComms, send).Times(0);
     EXPECT_CALL(*closedComms, receive).Times(0);
+    EXPECT_CALL(*closedComms, connect).Times(0);
+    EXPECT_CALL(*closedComms, isConnected).Times(0);
 
     auto simpleOpen = std::make_shared<MOCKComms>();
 
@@ -146,6 +148,8 @@ TEST(TestLan4Gate, TestAddResetGetCommunication) {
     EXPECT_CALL(*simpleOpen, open).Times(0);
     EXPECT_CALL(*simpleOpen, send).Times(0);
     EXPECT_CALL(*simpleOpen, receive).Times(0);
+    EXPECT_CALL(*simpleOpen, connect).Times(0);
+    EXPECT_CALL(*simpleOpen, isConnected).Times(0);
 
     auto lockedComms = std::make_shared<MOCKComms>();
 
@@ -162,6 +166,8 @@ TEST(TestLan4Gate, TestAddResetGetCommunication) {
     EXPECT_CALL(*lockedComms, open).Times(0);
     EXPECT_CALL(*lockedComms, send).Times(0);
     EXPECT_CALL(*lockedComms, receive).Times(0);
+    EXPECT_CALL(*lockedComms, connect).Times(0);
+    EXPECT_CALL(*lockedComms, isConnected).Times(0);
 
     Lan4Gate gate;
 
@@ -189,9 +195,11 @@ TEST(TestLan4Gate, TestStartStop) {
 
     EXPECT_CALL(*stubComms, open).Times(0);
     EXPECT_CALL(*stubComms, close).Times(2).WillRepeatedly(Return(true));
-    EXPECT_CALL(*stubComms, isOpen).Times(2).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, isOpen).Times(3).WillRepeatedly(Return(true));
     EXPECT_CALL(*stubComms, send).Times(0);
     EXPECT_CALL(*stubComms, receive).Times(0);
+    EXPECT_CALL(*stubComms, connect).Times(0);
+    EXPECT_CALL(*stubComms, isConnected).Times(0);
 
     Lan4Gate gate;
     EXPECT_EQ(gate.start(), ILan4Gate::Status::Error);
@@ -210,9 +218,11 @@ TEST(TestLan4Gate, TestEcrNumber) {
     auto stubComms = std::make_shared<MOCKComms>();
     EXPECT_CALL(*stubComms, open).Times(0);
     EXPECT_CALL(*stubComms, close).Times(2).WillRepeatedly(Return(true));
-    EXPECT_CALL(*stubComms, isOpen).Times(2).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, isOpen).Times(3).WillRepeatedly(Return(true));
     EXPECT_CALL(*stubComms, send).Times(0);
     EXPECT_CALL(*stubComms, receive).Times(0);
+    EXPECT_CALL(*stubComms, connect).Times(0);
+    EXPECT_CALL(*stubComms, isConnected).Times(0);
 
     int validEcrNumber = Utils::Constants::MINIMUM_ECR_NUMBER;
     int invalidEcrNumber = Utils::Constants::MAXIMUM_ECR_NUMBER + 1;
@@ -319,6 +329,8 @@ TEST(TestLan4Gate, TestSendRequest) {
     EXPECT_CALL(*stubComms, isOpen).WillRepeatedly(Return(true));
     EXPECT_CALL(*stubComms, send).Times(0);
     EXPECT_CALL(*stubComms, receive).Times(0);
+    EXPECT_CALL(*stubComms, connect).Times(0);
+    EXPECT_CALL(*stubComms, isConnected).Times(0);
 
     Lan4Gate gate;
 
@@ -347,6 +359,8 @@ TEST(TestLan4Gate, TestSendResponse) {
     EXPECT_CALL(*stubComms, isOpen).WillRepeatedly(Return(true));
     EXPECT_CALL(*stubComms, send).Times(0);
     EXPECT_CALL(*stubComms, receive).Times(0);
+    EXPECT_CALL(*stubComms, connect).Times(0);
+    EXPECT_CALL(*stubComms, isConnected).Times(0);
 
     Lan4Gate gate;
 
@@ -379,6 +393,8 @@ TEST(TestLan4Gate, TestSendNotification) {
     EXPECT_CALL(*stubComms, isOpen).WillRepeatedly(Return(true));
     EXPECT_CALL(*stubComms, send).Times(0);
     EXPECT_CALL(*stubComms, receive).Times(0);
+    EXPECT_CALL(*stubComms, connect).Times(0);
+    EXPECT_CALL(*stubComms, isConnected).Times(0);
 
     Lan4Gate gate;
 
@@ -407,6 +423,8 @@ TEST(TestLan4Gate, TestChangeCallbackNotificationType) {
     EXPECT_CALL(*stubComms, isOpen).WillRepeatedly(Return(true));
     EXPECT_CALL(*stubComms, send).Times(0);
     EXPECT_CALL(*stubComms, receive).Times(0);
+    EXPECT_CALL(*stubComms, connect).Times(0);
+    EXPECT_CALL(*stubComms, isConnected).Times(0);
 
     //Объединение двух типов
     auto callType = static_cast<ILan4Gate::CallbackNotificationType>(static_cast<int>(ILan4Gate::CallbackNotificationType::Sync) | static_cast<int>(ILan4Gate::CallbackNotificationType::Async));
@@ -438,6 +456,7 @@ TEST(TestLan4Gate, TestChangeCallbackNotificationType) {
 
 TEST(TestLan4Gate, TestSendMessageDoL4G) {
     bool commsOpen = false;
+    bool commsConnected = false;
 
     auto openFunc = [&commsOpen](){
         commsOpen = true;
@@ -448,9 +467,19 @@ TEST(TestLan4Gate, TestSendMessageDoL4G) {
         return commsOpen;
     };
 
-    auto closeFunc = [&commsOpen](){
+    auto closeFunc = [&commsOpen, &commsConnected](){
         commsOpen = false;
+        commsConnected = false;
         return commsOpen;
+    };
+
+    auto connectFunc = [&commsConnected] () {
+        commsConnected = true;
+        return commsConnected;
+    };
+
+    auto isConnectedFunc = [&commsConnected] () {
+        return commsConnected;
     };
 
     auto sendRequestFunc = [](const std::vector<uint8_t> & data){
@@ -491,6 +520,11 @@ TEST(TestLan4Gate, TestSendMessageDoL4G) {
     EXPECT_CALL(*comms, close).
             WillOnce(Invoke(closeFunc));
 
+    EXPECT_CALL(*comms, connect).
+            WillRepeatedly(Invoke(connectFunc));
+
+    EXPECT_CALL(*comms, isConnected).
+            WillRepeatedly(Invoke(isConnectedFunc));
 
     EXPECT_CALL(*comms, send(_)).
             WillOnce(Invoke(sendRequestFunc)).
@@ -534,6 +568,7 @@ TEST(TestLan4Gate, TestSendMessageDoL4G) {
 
 TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
     bool commsOpen = false;
+    bool commsConnected = false;
 
     auto openFunc = [&commsOpen](){
         commsOpen = true;
@@ -544,9 +579,19 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
         return commsOpen;
     };
 
-    auto closeFunc = [&commsOpen](){
+    auto closeFunc = [&commsOpen, &commsConnected](){
         commsOpen = false;
+        commsConnected = false;
         return commsOpen;
+    };
+
+    auto connectFunc = [&commsConnected] () {
+        commsConnected = true;
+        return commsConnected;
+    };
+
+    auto isConnectedFunc = [&commsConnected] () {
+        return commsConnected;
     };
 
     auto receiveRequestFunc = [](std::vector<uint8_t> & data){
@@ -570,6 +615,10 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
         return data.size();
     };
 
+    auto receiveConnectionStatusTrueFunc = [](bool connected) {
+        EXPECT_TRUE(connected);
+    };
+
     auto comms = std::make_shared<MOCKComms>();
 
     EXPECT_CALL(*comms, isOpen).
@@ -591,6 +640,11 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
             WillOnce(Invoke(receiveRequestFunc)).
             WillRepeatedly(Return(0));
 
+    EXPECT_CALL(*comms, connect).
+            WillRepeatedly(Invoke(connectFunc));
+
+    EXPECT_CALL(*comms, isConnected).
+            WillRepeatedly(Invoke(isConnectedFunc));
 
     auto checkRequest = [](std::shared_ptr<IRequestData> request) {
         ASSERT_NE(request, nullptr);
@@ -626,6 +680,8 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
             WillOnce(checkNotification).
             WillOnce(checkNotification);
 
+    EXPECT_CALL(callback, connectedCallback(_)).
+            WillOnce(Invoke(receiveConnectionStatusTrueFunc));
 
     std::function<void(std::shared_ptr<IRequestData>)> callbackRequest = [&callback](std::shared_ptr<IRequestData> data) {
         callback.requestCallback(data);
@@ -638,6 +694,11 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
     std::function<void(std::shared_ptr<INotificationData>)> callbackNotification = [&callback](std::shared_ptr<INotificationData> data) {
         callback.notificationCallback(data);
     };
+
+    std::function<void(bool)> callbackConnection = [&callback](bool connected) {
+        callback.connectedCallback(connected);
+    };
+
     Lan4Gate gate;
 
     gate.setCommunication(comms);
@@ -646,7 +707,7 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
     gate.addRequestCallback(callbackRequest);
     gate.addResponseCallback(callbackResponse);
     gate.addNotificationCallback(callbackNotification);
-
+    gate.addConnectionCallback(callbackConnection);
     EXPECT_EQ(gate.start(), ILan4Gate::Status::Success);
 
     //100 циклов библиотеки

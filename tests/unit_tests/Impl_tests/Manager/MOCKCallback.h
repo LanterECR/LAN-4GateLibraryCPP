@@ -12,6 +12,7 @@ namespace Lanter {
         MOCK_METHOD((void), requestCallback, (std::shared_ptr<Message::Request::IRequestData>));
         MOCK_METHOD((void), responseCallback, (std::shared_ptr<Message::Response::IResponseData>));
         MOCK_METHOD((void), notificationCallback, (std::shared_ptr<Message::Notification::INotificationData>));
+        MOCK_METHOD((void), connectedCallback, (bool));
     };
 }
 #endif //LAN_4GATELIB_MOCKCALLBACK_H
