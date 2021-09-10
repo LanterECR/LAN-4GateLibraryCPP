@@ -119,7 +119,7 @@ namespace Lanter {
             }
 
             bool JSONResponseParser::getFieldCurrencyCode(const Json::Value &object, IResponseData &responseData) {
-                int currencyCode;
+                std::string currencyCode;
 
                 bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCurrencyCode(), currencyCode);
                 bool result = exists && responseData.setCurrencyCode(currencyCode);

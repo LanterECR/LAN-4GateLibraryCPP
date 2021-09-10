@@ -1,4 +1,5 @@
 #include <stdexcept>
+#include <sstream>
 
 #include "FieldRangeChecker.h"
 
@@ -33,8 +34,12 @@ namespace Lanter {
             return checkValueRange(amount, MINIMUM_AMOUNT, MAXIMUM_AMOUNT);
         }
 
-        bool checkCurrencyCodeRange(int64_t currencyCode) {
-            return checkValueRange(currencyCode, MINIMUM_CURRENCY_CODE, MAXIMUM_CURRENCY_CODE);
+        bool checkCurrencyCodeRange(const std::string &currencyCode) {
+            int currencyCodeInt;
+            std::stringstream ss(currencyCode);
+
+            ss >> currencyCodeInt;
+            return checkValueRange(currencyCodeInt, MINIMUM_CURRENCY_CODE, MAXIMUM_CURRENCY_CODE);
         }
 
         bool checkRRNRange(const std::string &RRN) {

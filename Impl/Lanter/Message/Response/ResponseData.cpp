@@ -170,11 +170,11 @@ namespace Lanter {
                 return result;
             }
 
-            int16_t ResponseData::getCurrencyCode() const {
+            const std::string & ResponseData::getCurrencyCode() const {
                 return m_CurrencyCode;
             }
 
-            bool ResponseData::setCurrencyCode(int16_t currencyCode) {
+            bool ResponseData::setCurrencyCode(const std::string &currencyCode) {
                 bool result = false;
                 if (checkCurrencyCodeRange(currencyCode)) {
                     m_CurrencyCode = currencyCode;
@@ -604,7 +604,7 @@ namespace Lanter {
                 return result;
             }
 
-            int32_t ResponseData::getSalesCount() const {
+            int32_t ResponseData::getSaleCount() const {
                 return m_SalesCount;
             }
 
@@ -900,7 +900,7 @@ namespace Lanter {
             }
 
             bool ResponseData::resetCurrencyCode() {
-                m_CurrencyCode = -1;
+                m_CurrencyCode.clear();
                 m_FieldsSet.erase(ResponseField::CurrencyCode);
                 return !isFieldSet(ResponseField::CurrencyCode);
             }

@@ -218,23 +218,23 @@ TEST(TestResponseData, CheckCurrencyCode) {
     int16_t lessMinimum = MINIMUM_CURRENCY_CODE - 1;
     int16_t greatMaximum = MAXIMUM_CURRENCY_CODE + 1;
 
-    EXPECT_FALSE(data.setCurrencyCode(lessMinimum));
-    EXPECT_FALSE(data.setCurrencyCode(greatMaximum));
+    EXPECT_FALSE(data.setCurrencyCode(std::to_string(lessMinimum)));
+    EXPECT_FALSE(data.setCurrencyCode(std::to_string(greatMaximum)));
 
-    EXPECT_EQ(data.getCurrencyCode(), -1);
+    EXPECT_TRUE(data.getCurrencyCode().empty());
 
-    EXPECT_TRUE(data.setCurrencyCode(MINIMUM_CURRENCY_CODE));
+    EXPECT_TRUE(data.setCurrencyCode(std::to_string((MINIMUM_CURRENCY_CODE))));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getCurrencyCode(), MINIMUM_CURRENCY_CODE);
+    EXPECT_EQ(data.getCurrencyCode(), std::to_string(MINIMUM_CURRENCY_CODE));
     EXPECT_NE(data.getFieldsSet().find(ResponseField::CurrencyCode), data.getFieldsSet().end());
 
-    EXPECT_TRUE(data.setCurrencyCode(MAXIMUM_CURRENCY_CODE));
+    EXPECT_TRUE(data.setCurrencyCode(std::to_string((MAXIMUM_CURRENCY_CODE))));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getCurrencyCode(), MAXIMUM_CURRENCY_CODE);
+    EXPECT_EQ(data.getCurrencyCode(), std::to_string(MAXIMUM_CURRENCY_CODE));
     EXPECT_NE(data.getFieldsSet().find(ResponseField::CurrencyCode), data.getFieldsSet().end());
 
     EXPECT_TRUE(data.resetCurrencyCode());
-    EXPECT_EQ(data.getCurrencyCode(), -1);
+    EXPECT_TRUE(data.getCurrencyCode().empty());
     EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
@@ -1083,20 +1083,20 @@ TEST(TestResponseData, CheckSalesCount) {
     EXPECT_FALSE(data.setSalesCount(lessMinimum));
     EXPECT_FALSE(data.setSalesCount(greatMaximum));
 
-    EXPECT_EQ(data.getSalesCount(), -1);
+    EXPECT_EQ(data.getSaleCount(), -1);
 
     EXPECT_TRUE(data.setSalesCount(MINIMUM_ARRAY_SIZE));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getSalesCount(), MINIMUM_ARRAY_SIZE);
+    EXPECT_EQ(data.getSaleCount(), MINIMUM_ARRAY_SIZE);
     EXPECT_NE(data.getFieldsSet().find(ResponseField::SaleCount), data.getFieldsSet().end());
 
     EXPECT_TRUE(data.setSalesCount(MAXIMUM_ARRAY_SIZE));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getSalesCount(), MAXIMUM_ARRAY_SIZE);
+    EXPECT_EQ(data.getSaleCount(), MAXIMUM_ARRAY_SIZE);
     EXPECT_NE(data.getFieldsSet().find(ResponseField::SaleCount), data.getFieldsSet().end());
 
     EXPECT_TRUE(data.resetSalesCount());
-    EXPECT_EQ(data.getSalesCount(), -1);
+    EXPECT_EQ(data.getSaleCount(), -1);
     EXPECT_TRUE(data.getFieldsSet().empty());
 }
 

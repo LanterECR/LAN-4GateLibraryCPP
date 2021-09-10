@@ -63,7 +63,7 @@ TEST(TestJSONMessageParser, CheckRequest) {
     AddFieldsHelper::addField(object, JSONRequestFields::getOperationCode(), (int)operationCode);
     AddFieldsHelper::addField(object, JSONRequestFields::getEcrMerchantNumber(), ecrMerchantNumber);
     AddFieldsHelper::addField(object, JSONRequestFields::getAmount(), amount);
-    AddFieldsHelper::addField(object, JSONRequestFields::getCurrencyCode(), currencyCode);
+    AddFieldsHelper::addField(object, JSONRequestFields::getCurrencyCode(), std::to_string(currencyCode));
 
     AddFieldsHelper::addField(root, JSONRootFields::getObjectField(), object);
 
@@ -112,7 +112,7 @@ TEST(TestJSONMessageParser, CheckResponse) {
     AddFieldsHelper::addField(object, JSONResponseFields::getStatus(), (int)status);
     AddFieldsHelper::addField(object, JSONResponseFields::getEcrMerchantNumber(), ecrMerchantNumber);
     AddFieldsHelper::addField(object, JSONResponseFields::getTotalAmount(), totalAmount);
-    AddFieldsHelper::addField(object, JSONResponseFields::getCurrencyCode(), currencyCode);
+    AddFieldsHelper::addField(object, JSONResponseFields::getCurrencyCode(), std::to_string(currencyCode));
     AddFieldsHelper::addField(object, JSONResponseFields::getRRN(), stringValue);
     AddFieldsHelper::addField(object, JSONResponseFields::getReceiptReference(), stringValue);
     AddFieldsHelper::addField(object, JSONResponseFields::getTransactionID(), stringValue);

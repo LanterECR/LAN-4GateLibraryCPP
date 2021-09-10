@@ -73,11 +73,11 @@ TEST(TestFieldsRangeChecker, CheckCurrencyCodeRange){
     int64_t lessMinimum = MINIMUM_CURRENCY_CODE - 1;
     int64_t greatMaximum = MAXIMUM_CURRENCY_CODE + 1;
 
-    EXPECT_FALSE(checkCurrencyCodeRange(lessMinimum));
-    EXPECT_FALSE(checkCurrencyCodeRange(greatMaximum));
+    EXPECT_FALSE(checkCurrencyCodeRange(std::to_string(lessMinimum)));
+    EXPECT_FALSE(checkCurrencyCodeRange(std::to_string(greatMaximum)));
 
-    EXPECT_TRUE(checkCurrencyCodeRange(MINIMUM_CURRENCY_CODE));
-    EXPECT_TRUE(checkCurrencyCodeRange(MAXIMUM_CURRENCY_CODE));
+    EXPECT_TRUE(checkCurrencyCodeRange(std::to_string((MINIMUM_CURRENCY_CODE))));
+    EXPECT_TRUE(checkCurrencyCodeRange(std::to_string((MAXIMUM_CURRENCY_CODE))));
 
     EXPECT_TRUE(checkAmountRange(MINIMUM_CURRENCY_CODE + 1));
     EXPECT_TRUE(checkAmountRange(MAXIMUM_CURRENCY_CODE - 1));

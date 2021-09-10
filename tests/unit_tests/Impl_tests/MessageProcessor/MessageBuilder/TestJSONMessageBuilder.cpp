@@ -64,7 +64,7 @@ TEST(TestJSONMessageBuilder, CheckCreateRequestMessage) {
     auto data = RequestDataFactory::getRequestData(OperationCode::Sale, 1);
     data->setEcrMerchantNumber(1);
     data->setAmount(100);
-    data->setCurrencyCode(643);
+    data->setCurrencyCode("643");
 
     EXPECT_TRUE(builder.createMessage(data, message));
 
@@ -87,7 +87,7 @@ TEST(TestJSONMessageBuilder, CheckCreateResponseMessage) {
     data->setStatus(Lanter::Message::Response::Status::Success);
     data->setEcrMerchantNumber(1);
     data->setTotalAmount(100);
-    data->setCurrencyCode(643);
+    data->setCurrencyCode("643");
     data->setRRN("123");
     data->setReceiptReference("123");
     data->setTransactionID("123");

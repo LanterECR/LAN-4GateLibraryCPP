@@ -343,7 +343,7 @@ namespace Lanter {
 
             bool JSONResponseBuilder::addFieldSalesCount(const IResponseData &responseData, Json::Value &object) {
                 if (responseData.isFieldSet(ResponseField::SaleCount)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), responseData.getSalesCount());
+                    AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), responseData.getSaleCount());
                 }
                 return fieldExists(object, JSONResponseFields::getSaleCount());
             }

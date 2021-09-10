@@ -185,14 +185,14 @@ namespace Lanter {
                 /// \return true, если успешно удалено.
                 virtual bool resetTipsAmount() = 0;
 
-                /// \brief Возвращает код валюты согласно ISO 4217
-                /// \return Если поле установлено - значение кода валюты в диапазоне [0, 999]. Иначе -1
-                virtual int16_t getCurrencyCode() const = 0;
+                /// \brief Возвращает строку, содержащую установленный код валюты согласно ISO 4217
+                /// \return Если код валюты не установлен, возвращаемая строка пуста
+                virtual const std::string & getCurrencyCode() const = 0;
 
                 /// \brief Устанавливает код валюты согласно ISO 4217
-                /// \param[in] currencyCode значение кода валюты в диапазоне [0, 999]
+                /// \param[in] currencyCode Строка, содержащая код валюты в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
-                virtual bool setCurrencyCode(int16_t currencyCode) = 0;
+                virtual bool setCurrencyCode(const std::string &currencyCode) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля CurrencyCode
                 /// и удаляет из списка установленных полей
@@ -631,7 +631,7 @@ namespace Lanter {
 
                 /// \brief Возвращает количество операций продажи, выполненных с последней сверки итогов
                 /// \return Количество операций продажи
-                virtual int32_t getSalesCount() const = 0;
+                virtual int32_t getSaleCount() const = 0;
 
                 /// \brief Устанавливает количество операций продажи, выполненных с последней сверки итогов
                 /// \param[in] salesCount количество операций продажи

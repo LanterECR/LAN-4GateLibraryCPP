@@ -60,9 +60,9 @@ namespace Lanter {
 
                 bool setTipsAmount(int64_t tipsAmount) override;
 
-                int16_t getCurrencyCode() const override;
+                const std::string & getCurrencyCode() const override;
 
-                bool setCurrencyCode(int16_t currencyCode) override;
+                bool setCurrencyCode(const std::string &currencyCode) override;
 
                 const std::string &getReceiptReference() const override;
 
@@ -184,7 +184,7 @@ namespace Lanter {
 
                 bool setCDAResult(const std::string &cdaResult) override;
 
-                int32_t getSalesCount() const override;
+                int32_t getSaleCount() const override;
 
                 bool setSalesCount(int32_t salesCount) override;
 
@@ -322,7 +322,7 @@ namespace Lanter {
                 int64_t m_TerminalFeeAmount = -1;
                 int64_t m_TipsAmount = -1;
 
-                int16_t m_CurrencyCode = -1;
+                std::string m_CurrencyCode;
                 std::string m_ReceiptReference;
                 std::string m_RRN;
                 Status m_Status = Status::NoStatus;

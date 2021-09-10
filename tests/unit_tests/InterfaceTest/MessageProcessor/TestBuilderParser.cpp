@@ -22,7 +22,7 @@ TEST(TestBuilderParser, CheckRequest) {
     auto inputObject = RequestDataFactory::getRequestData();
     inputObject->setOperationCode(Lanter::Message::OperationCode::Sale);
     inputObject->setAmount(MAXIMUM_AMOUNT);
-    inputObject->setCurrencyCode(MAXIMUM_CURRENCY_CODE);
+    inputObject->setCurrencyCode(std::to_string((MAXIMUM_CURRENCY_CODE)));
     inputObject->setEcrNumber(MAXIMUM_ECR_NUMBER);
     inputObject->setEcrMerchantNumber(MAXIMUM_ECR_MERCHANT_NUMBER);
 
@@ -54,7 +54,7 @@ TEST(TestBuilderParser, CheckResponse) {
     inputObject->setStatus(Lanter::Message::Response::Status::Success);
     inputObject->setEcrMerchantNumber(MAXIMUM_ECR_MERCHANT_NUMBER);
     inputObject->setTotalAmount(MAXIMUM_AMOUNT);
-    inputObject->setCurrencyCode(MAXIMUM_CURRENCY_CODE);
+    inputObject->setCurrencyCode(std::to_string((MAXIMUM_CURRENCY_CODE)));
     inputObject->setRRN("Значение");
     inputObject->setReceiptReference("Значение");
     inputObject->setTransactionID("Значение");

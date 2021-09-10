@@ -227,13 +227,13 @@ TEST(TestJSONResponseBuilder, CheckAddFieldCurrencyCode) {
 
     ResponseData data;
 
-    data.setCurrencyCode(1);
+    data.setCurrencyCode("1");
 
     Json::Value directObject;
 
     EXPECT_TRUE(builder.addFieldCurrencyCode(data, directObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getCurrencyCode()));
-    EXPECT_EQ(data.getCurrencyCode(), directObject[JSONResponseFields::getCurrencyCode()].asInt());
+    EXPECT_EQ(data.getCurrencyCode(), directObject[JSONResponseFields::getCurrencyCode()].asString());
 
     Json::Value listObject;
 
@@ -241,7 +241,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldCurrencyCode) {
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getCurrencyCode()));
-    EXPECT_EQ(data.getCurrencyCode(), listObject[JSONResponseFields::getCurrencyCode()].asInt());
+    EXPECT_EQ(data.getCurrencyCode(), listObject[JSONResponseFields::getCurrencyCode()].asString());
 }
 
 TEST(TestJSONResponseBuilder, CheckAddFieldReceiptReference) {
@@ -915,7 +915,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldSalesCount) {
 
     EXPECT_TRUE(builder.addFieldSalesCount(data, directObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getSaleCount()));
-    EXPECT_EQ(data.getSalesCount(), directObject[JSONResponseFields::getSaleCount()].asInt());
+    EXPECT_EQ(data.getSaleCount(), directObject[JSONResponseFields::getSaleCount()].asInt());
 
     Json::Value listObject;
 
@@ -923,7 +923,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldSalesCount) {
 
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getSaleCount()));
-    EXPECT_EQ(data.getSalesCount(), listObject[JSONResponseFields::getSaleCount()].asInt());
+    EXPECT_EQ(data.getSaleCount(), listObject[JSONResponseFields::getSaleCount()].asInt());
 }
 
 TEST(TestJSONResponseBuilder, CheckAddFieldVoidCount) {
@@ -979,7 +979,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldSalesArray) {
     auto arrayElement = ResponseDataFactory::getResponseData(Lanter::Message::OperationCode::ArrayElement);
 
     arrayElement->setTotalAmount(100);
-    arrayElement->setCurrencyCode(643);
+    arrayElement->setCurrencyCode("643");
     arrayElement->setRRN("1234");
     arrayElement->setReceiptReference("1234");
     arrayElement->setResponseCode("1234");
@@ -1003,7 +1003,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldSalesArray) {
     EXPECT_EQ(arrayElement->getTotalAmount(),
               directObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              directObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getCurrencyCode()].asInt());
+              directObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
                  directObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
@@ -1022,7 +1022,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldSalesArray) {
     EXPECT_EQ(arrayElement->getTotalAmount(),
               directObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              directObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getCurrencyCode()].asInt());
+              directObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
                  directObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
@@ -1048,7 +1048,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldSalesArray) {
     EXPECT_EQ(arrayElement->getTotalAmount(),
               listObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              listObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getCurrencyCode()].asInt());
+              listObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
                  listObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
@@ -1067,7 +1067,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldSalesArray) {
     EXPECT_EQ(arrayElement->getTotalAmount(),
               listObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              listObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getCurrencyCode()].asInt());
+              listObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
                  listObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
@@ -1094,7 +1094,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldVoidArray) {
     auto arrayElement = ResponseDataFactory::getResponseData(Lanter::Message::OperationCode::ArrayElement);
 
     arrayElement->setTotalAmount(100);
-    arrayElement->setCurrencyCode(643);
+    arrayElement->setCurrencyCode("643");
     arrayElement->setRRN("1234");
     arrayElement->setReceiptReference("1234");
     arrayElement->setResponseCode("1234");
@@ -1118,7 +1118,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldVoidArray) {
     EXPECT_EQ(arrayElement->getTotalAmount(),
               directObject[JSONResponseFields::getVoidArray()][0][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              directObject[JSONResponseFields::getVoidArray()][0][JSONResponseFields::getCurrencyCode()].asInt());
+              directObject[JSONResponseFields::getVoidArray()][0][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
                  directObject[JSONResponseFields::getVoidArray()][0][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
@@ -1137,7 +1137,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldVoidArray) {
     EXPECT_EQ(arrayElement->getTotalAmount(),
               directObject[JSONResponseFields::getVoidArray()][1][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              directObject[JSONResponseFields::getVoidArray()][1][JSONResponseFields::getCurrencyCode()].asInt());
+              directObject[JSONResponseFields::getVoidArray()][1][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
                  directObject[JSONResponseFields::getVoidArray()][1][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
@@ -1163,7 +1163,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldVoidArray) {
     EXPECT_EQ(arrayElement->getTotalAmount(),
               listObject[JSONResponseFields::getVoidArray()][0][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              listObject[JSONResponseFields::getVoidArray()][0][JSONResponseFields::getCurrencyCode()].asInt());
+              listObject[JSONResponseFields::getVoidArray()][0][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
                  listObject[JSONResponseFields::getVoidArray()][0][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
@@ -1182,7 +1182,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldVoidArray) {
     EXPECT_EQ(arrayElement->getTotalAmount(),
               listObject[JSONResponseFields::getVoidArray()][1][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              listObject[JSONResponseFields::getVoidArray()][1][JSONResponseFields::getCurrencyCode()].asInt());
+              listObject[JSONResponseFields::getVoidArray()][1][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
                  listObject[JSONResponseFields::getVoidArray()][1][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
@@ -1208,7 +1208,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldRefundArray) {
     auto arrayElement = ResponseDataFactory::getResponseData(Lanter::Message::OperationCode::ArrayElement);
 
     arrayElement->setTotalAmount(100);
-    arrayElement->setCurrencyCode(643);
+    arrayElement->setCurrencyCode("643");
     arrayElement->setRRN("1234");
     arrayElement->setReceiptReference("1234");
     arrayElement->setResponseCode("1234");
@@ -1232,7 +1232,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldRefundArray) {
     EXPECT_EQ(arrayElement->getTotalAmount(),
               directObject[JSONResponseFields::getRefundArray()][0][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              directObject[JSONResponseFields::getRefundArray()][0][JSONResponseFields::getCurrencyCode()].asInt());
+              directObject[JSONResponseFields::getRefundArray()][0][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
                  directObject[JSONResponseFields::getRefundArray()][0][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
@@ -1251,7 +1251,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldRefundArray) {
     EXPECT_EQ(arrayElement->getTotalAmount(),
               directObject[JSONResponseFields::getRefundArray()][1][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              directObject[JSONResponseFields::getRefundArray()][1][JSONResponseFields::getCurrencyCode()].asInt());
+              directObject[JSONResponseFields::getRefundArray()][1][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
                  directObject[JSONResponseFields::getRefundArray()][1][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
@@ -1277,7 +1277,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldRefundArray) {
     EXPECT_EQ(arrayElement->getTotalAmount(),
               listObject[JSONResponseFields::getRefundArray()][0][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              listObject[JSONResponseFields::getRefundArray()][0][JSONResponseFields::getCurrencyCode()].asInt());
+              listObject[JSONResponseFields::getRefundArray()][0][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
                  listObject[JSONResponseFields::getRefundArray()][0][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
@@ -1296,7 +1296,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldRefundArray) {
     EXPECT_EQ(arrayElement->getTotalAmount(),
               listObject[JSONResponseFields::getRefundArray()][1][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              listObject[JSONResponseFields::getRefundArray()][1][JSONResponseFields::getCurrencyCode()].asInt());
+              listObject[JSONResponseFields::getRefundArray()][1][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
                  listObject[JSONResponseFields::getRefundArray()][1][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
@@ -1319,7 +1319,7 @@ TEST(TestJSONResponseBuilder, CheckCreateObject) {
     auto data = ResponseDataFactory::getResponseData(OperationCode::PrintDetailReport, 1);
 
     data->setTotalAmount(100);
-    data->setCurrencyCode(643);
+    data->setCurrencyCode("643");
     data->setTerminalID("1234");
     data->setMerchantID("1234");
     data->setTerminalDateTime("1234");
@@ -1332,7 +1332,7 @@ TEST(TestJSONResponseBuilder, CheckCreateObject) {
     auto arrayElement = ResponseDataFactory::getResponseData(Lanter::Message::OperationCode::ArrayElement);
 
     arrayElement->setTotalAmount(100);
-    arrayElement->setCurrencyCode(643);
+    arrayElement->setCurrencyCode("643");
     arrayElement->setRRN("1234");
     arrayElement->setReceiptReference("1234");
     arrayElement->setResponseCode("1234");

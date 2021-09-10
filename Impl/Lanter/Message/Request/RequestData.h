@@ -72,9 +72,9 @@ namespace Lanter {
 
                 bool resetCashbackAmount() override;
 
-                int16_t getCurrencyCode() const override;
+                const std::string & getCurrencyCode() const override;
 
-                bool setCurrencyCode(int16_t currencyCode) override;
+                bool setCurrencyCode(const std::string &currencyCode) override;
 
                 bool resetCurrencyCode() override;
 
@@ -147,7 +147,7 @@ namespace Lanter {
                 int64_t m_PartialAmount = -1; ///< Часть оригинальной суммы. Используется в операциях отмены и возврата
                 int64_t m_TipsAmount = -1; ///< Сумма чаевых
                 int64_t m_CashbackAmount = -1; ///< Сумма кэшбека
-                int16_t m_CurrencyCode = -1; ///< Код валюты согласно ISO 4217
+                std::string m_CurrencyCode; ///< Код валюты согласно ISO 4217
                 std::string m_RRN; ///< Retrieval Reference Number, полученный в ответ на предыдущую операцию
                 std::string m_AuthCode; ///< Код авторизации на хосте, полученный в ответ на предыдущю операцию
                 std::string m_ReceiptReference; ///< Номер чека в финансовом ПО LAN-4Tap. Может отличаться от номера чека в кассовом ПО

@@ -196,11 +196,11 @@ namespace Lanter {
                 return !isFieldSet(RequestField::CashbackAmount);
             }//resetCashbackAmount()
 
-            int16_t RequestData::getCurrencyCode() const {
+            const std::string & RequestData::getCurrencyCode() const {
                 return m_CurrencyCode;
             }//getCurrencyCode()
 
-            bool RequestData::setCurrencyCode(int16_t currencyCode) {
+            bool RequestData::setCurrencyCode(const std::string &currencyCode) {
                 bool result = false;
 
                 if (checkCurrencyCodeRange(currencyCode)) {
@@ -213,7 +213,7 @@ namespace Lanter {
             }//setCurrencyCode(
 
             bool RequestData::resetCurrencyCode() {
-                m_CurrencyCode = -1;
+                m_CurrencyCode.clear();
                 m_FieldsSet.erase(RequestField::CurrencyCode);
                 return !isFieldSet(RequestField::CurrencyCode);
             }//resetCurrencyCode()

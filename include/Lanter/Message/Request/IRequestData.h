@@ -148,14 +148,14 @@ namespace Lanter {
                 /// \return true, если успешно удалено.
                 virtual bool resetCashbackAmount() = 0;
 
-                /// \brief Возвращает установленный код валюты согласно ISO 4217
-                /// \return Установленный код валюты, иначе -1
-                virtual int16_t getCurrencyCode() const = 0;
+                /// \brief Возвращает строку, содержащую установленный код валюты согласно ISO 4217
+                /// \return Если код валюты не установлен, возвращаемая строка пуста
+                virtual const std::string & getCurrencyCode() const = 0;
 
                 /// \brief Устанавливает код валюты согласно ISO 4217
-                /// \param[in] currencyCode Код валюты в диапазоне [1, 999]
+                /// \param[in] currencyCode Строка, содержащая код валюты в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
-                virtual bool setCurrencyCode(int16_t currencyCode) = 0;
+                virtual bool setCurrencyCode(const std::string &currencyCode) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля CurrencyCode
                 /// и удаляет из списка установленных полей

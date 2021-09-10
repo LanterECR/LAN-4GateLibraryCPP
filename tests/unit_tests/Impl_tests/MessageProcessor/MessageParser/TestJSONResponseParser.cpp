@@ -274,13 +274,13 @@ TEST(TestJSONResponseParser, CheckGetCurrencyCode) {
     AddFieldsHelper::addField(object, JSONResponseFields::getCurrencyCode(), greatMaximum);
     EXPECT_FALSE(parser.getFieldCurrencyCode(object, data));
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getCurrencyCode(), MINIMUM_CURRENCY_CODE);
+    AddFieldsHelper::addField(object, JSONResponseFields::getCurrencyCode(), std::to_string(MINIMUM_CURRENCY_CODE));
     EXPECT_TRUE(parser.getFieldCurrencyCode(object, data));
-    EXPECT_EQ(data.getCurrencyCode(), MINIMUM_CURRENCY_CODE);
+    EXPECT_EQ(data.getCurrencyCode(), std::to_string(MINIMUM_CURRENCY_CODE));
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getCurrencyCode(), MAXIMUM_CURRENCY_CODE);
+    AddFieldsHelper::addField(object, JSONResponseFields::getCurrencyCode(), std::to_string(MAXIMUM_CURRENCY_CODE));
     EXPECT_TRUE(parser.getFieldCurrencyCode(object, data));
-    EXPECT_EQ(data.getCurrencyCode(), MAXIMUM_CURRENCY_CODE);
+    EXPECT_EQ(data.getCurrencyCode(), std::to_string(MAXIMUM_CURRENCY_CODE));
 }
 
 TEST(TestJSONResponseParser, CheckGetReceiptReference) {
@@ -977,7 +977,7 @@ TEST(TestJSONResponseParser, CheckGetCDAResult) {
     EXPECT_STREQ(data.getCDAResult().c_str(), maxSize.c_str());
 }
 
-TEST(TestJSONResponseParser, CheckGetSalesCount) {
+TEST(TestJSONResponseParser, CheckgetSaleCount) {
     JSONResponseParser parser;
 
     Json::Value object;
@@ -996,11 +996,11 @@ TEST(TestJSONResponseParser, CheckGetSalesCount) {
 
     AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), MINIMUM_ARRAY_SIZE);
     EXPECT_TRUE(parser.getFieldSalesCount(object, data));
-    EXPECT_EQ(data.getSalesCount(), MINIMUM_ARRAY_SIZE);
+    EXPECT_EQ(data.getSaleCount(), MINIMUM_ARRAY_SIZE);
 
     AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), MAXIMUM_ARRAY_SIZE);
     EXPECT_TRUE(parser.getFieldSalesCount(object, data));
-    EXPECT_EQ(data.getSalesCount(), MAXIMUM_ARRAY_SIZE);
+    EXPECT_EQ(data.getSaleCount(), MAXIMUM_ARRAY_SIZE);
 }
 TEST(TestJSONResponseParser, CheckGetVoidCount) {
     JSONResponseParser parser;

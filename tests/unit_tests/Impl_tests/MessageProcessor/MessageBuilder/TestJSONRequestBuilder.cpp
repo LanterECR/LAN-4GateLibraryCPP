@@ -154,18 +154,18 @@ TEST(TestJSONRequestBuilder, CheckAddFieldCurrencyCode) {
     JSONRequestBuilder builder;
 
     RequestData data;
-    data.setCurrencyCode(1);
+    data.setCurrencyCode("1");
 
     Json::Value directObject;
     EXPECT_TRUE(builder.addFieldCurrencyCode(data, directObject));
     EXPECT_TRUE(fieldExists(directObject, JSONRequestFields::getCurrencyCode()));
-    EXPECT_EQ(data.getCurrencyCode(), directObject[JSONRequestFields::getCurrencyCode()].asInt());
+    EXPECT_EQ(data.getCurrencyCode(), directObject[JSONRequestFields::getCurrencyCode()].asString());
 
     Json::Value listObject;
     auto function = builder.getFunctions().at(RequestField::CurrencyCode);
     EXPECT_TRUE(function(data, listObject));
     EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getCurrencyCode()));
-    EXPECT_EQ(data.getCurrencyCode(), listObject[JSONRequestFields::getCurrencyCode()].asInt());
+    EXPECT_EQ(data.getCurrencyCode(), listObject[JSONRequestFields::getCurrencyCode()].asString());
 }
 
 TEST(TestJSONRequestBuilder, CheckAddFieldRRN) {
@@ -334,7 +334,7 @@ TEST(TestJSONRequestBuilder, CheckCreateObject) {
 
     data->setEcrMerchantNumber(1);
     data->setAmount(100);
-    data->setCurrencyCode(643);
+    data->setCurrencyCode("643");
 
     EXPECT_TRUE(builder.createObject(*data, object));
 
@@ -348,5 +348,5 @@ TEST(TestJSONRequestBuilder, CheckCreateObject) {
     EXPECT_EQ(data->getAmount(), object[JSONRequestFields::getAmount()].asInt64());
 
     EXPECT_TRUE(fieldExists(object, JSONRequestFields::getCurrencyCode()));
-    EXPECT_EQ(data->getCurrencyCode(), object[JSONRequestFields::getCurrencyCode()].asInt());
+    EXPECT_EQ(data->getCurrencyCode(), object[JSONRequestFields::getCurrencyCode()].asString());
 }

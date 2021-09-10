@@ -219,11 +219,11 @@ TEST(TestJSONRequestParser, CheckGetFieldCurrencyCode) {
 
     EXPECT_FALSE(parser.getFieldCurrencyCode(object, data));
 
-    object[JSONRequestFields::getCurrencyCode()] = goodValue;
+    object[JSONRequestFields::getCurrencyCode()] = std::to_string(goodValue);
 
     EXPECT_TRUE(parser.getFieldCurrencyCode(object, data));
 
-    EXPECT_EQ(data.getCurrencyCode(), goodValue);
+    EXPECT_EQ(data.getCurrencyCode(), std::to_string(goodValue));
 
 }
 TEST(TestJSONRequestParser, CheckGetFieldRRN) {
@@ -441,7 +441,7 @@ TEST(TestJSONRequestParser, CheckParseData) {
 
     EXPECT_EQ(parser.parseData(object), nullptr);
 
-    object[JSONRequestFields::getCurrencyCode()] = currencyCode;
+    object[JSONRequestFields::getCurrencyCode()] = std::to_string(currencyCode);
 
     auto data = parser.parseData(object);
 
@@ -451,7 +451,7 @@ TEST(TestJSONRequestParser, CheckParseData) {
     EXPECT_EQ(data->getEcrNumber(), ecrNumber);
     EXPECT_EQ(data->getEcrMerchantNumber(), ecrMerchantNumber);
     EXPECT_EQ(data->getAmount(), amount);
-    EXPECT_EQ(data->getCurrencyCode(), currencyCode);
+    EXPECT_EQ(data->getCurrencyCode(), std::to_string(currencyCode));
 
     EXPECT_EQ(data->getFieldsSet().find(RequestField::OpenTags), data->getFieldsSet().end());
 }

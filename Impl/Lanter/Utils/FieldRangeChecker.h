@@ -12,7 +12,7 @@ namespace Lanter {
         bool checkEcrMerchantNumberRange(int16_t ecrMerchantNumber);
         bool checkOperationCodeRange(int32_t operationCode);
         bool checkAmountRange(int64_t amount);
-        bool checkCurrencyCodeRange(int64_t currencyCode);
+        bool checkCurrencyCodeRange(const std::string &currencyCode);
         bool checkRRNRange(const std::string & RRN);
         bool checkAuthCodeRange(const std::string & authCode);
         bool checkReceiptReferenceRange(const std::string & receiptReference);
