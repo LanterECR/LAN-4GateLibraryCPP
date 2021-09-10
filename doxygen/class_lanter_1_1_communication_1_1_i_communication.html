@@ -1,0 +1,385 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LAN-4Gate: Класс Lanter::Communication::ICommunication</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.8.5</span>
+   </div>
+   <div id="projectbrief">Реализация протокола кассового взаимодействия LAN-4Gate</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_lanter_1_1_communication_1_1_i_communication.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="class_lanter_1_1_communication_1_1_i_communication-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс Lanter::Communication::ICommunication<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Интерфейс класса коммуникаций, используемый в работе Lan4Gate.  
+ <a href="class_lanter_1_1_communication_1_1_i_communication.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_i_communication_8h_source.html">ICommunication.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a9bb6e964ff4b9414b858610e44407f81"><td class="memItemLeft" align="right" valign="top"><a id="a9bb6e964ff4b9414b858610e44407f81" name="a9bb6e964ff4b9414b858610e44407f81"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doCommunication</b> ()=0</td></tr>
+<tr class="memdesc:a9bb6e964ff4b9414b858610e44407f81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Выполняет один цикл асинхронного соединения. Может быть не реализован <br /></td></tr>
+<tr class="separator:a9bb6e964ff4b9414b858610e44407f81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab91872c3f3e01feb5bf8f4c7017f3ac5"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_communication_1_1_i_communication.html#ab91872c3f3e01feb5bf8f4c7017f3ac5">open</a> ()=0</td></tr>
+<tr class="memdesc:ab91872c3f3e01feb5bf8f4c7017f3ac5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Открывает соединение  <a href="class_lanter_1_1_communication_1_1_i_communication.html#ab91872c3f3e01feb5bf8f4c7017f3ac5">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab91872c3f3e01feb5bf8f4c7017f3ac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8bc9a5476b790ca83566af372396a5d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_communication_1_1_i_communication.html#ac8bc9a5476b790ca83566af372396a5d">close</a> ()=0</td></tr>
+<tr class="memdesc:ac8bc9a5476b790ca83566af372396a5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Закрывает соединение  <a href="class_lanter_1_1_communication_1_1_i_communication.html#ac8bc9a5476b790ca83566af372396a5d">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac8bc9a5476b790ca83566af372396a5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac56002003ce9613258f951b29d0fc3c2"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_communication_1_1_i_communication.html#ac56002003ce9613258f951b29d0fc3c2">isOpen</a> ()=0</td></tr>
+<tr class="memdesc:ac56002003ce9613258f951b29d0fc3c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает признак открытого соединения  <a href="class_lanter_1_1_communication_1_1_i_communication.html#ac56002003ce9613258f951b29d0fc3c2">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac56002003ce9613258f951b29d0fc3c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aa8093603665f92fe9b7a15a4340a15"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_communication_1_1_i_communication.html#a0aa8093603665f92fe9b7a15a4340a15">connect</a> ()=0</td></tr>
+<tr class="memdesc:a0aa8093603665f92fe9b7a15a4340a15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Пытается выполнить подключение соединения  <a href="class_lanter_1_1_communication_1_1_i_communication.html#a0aa8093603665f92fe9b7a15a4340a15">Подробнее...</a><br /></td></tr>
+<tr class="separator:a0aa8093603665f92fe9b7a15a4340a15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1a83f4f69cf09593ba73329ee2035d2"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_communication_1_1_i_communication.html#aa1a83f4f69cf09593ba73329ee2035d2">disconnect</a> ()=0</td></tr>
+<tr class="memdesc:aa1a83f4f69cf09593ba73329ee2035d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Отключает соединение  <a href="class_lanter_1_1_communication_1_1_i_communication.html#aa1a83f4f69cf09593ba73329ee2035d2">Подробнее...</a><br /></td></tr>
+<tr class="separator:aa1a83f4f69cf09593ba73329ee2035d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7524cd5e3d6481c7a780244d1448fc5b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_communication_1_1_i_communication.html#a7524cd5e3d6481c7a780244d1448fc5b">isConnected</a> ()=0</td></tr>
+<tr class="memdesc:a7524cd5e3d6481c7a780244d1448fc5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает статус подключения  <a href="class_lanter_1_1_communication_1_1_i_communication.html#a7524cd5e3d6481c7a780244d1448fc5b">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7524cd5e3d6481c7a780244d1448fc5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb229c95146f28c22baccfa20754f3b8"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_communication_1_1_i_communication.html#abb229c95146f28c22baccfa20754f3b8">send</a> (const std::vector&lt; uint8_t &gt; &amp;in)=0</td></tr>
+<tr class="memdesc:abb229c95146f28c22baccfa20754f3b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Отправляет данные в соединение  <a href="class_lanter_1_1_communication_1_1_i_communication.html#abb229c95146f28c22baccfa20754f3b8">Подробнее...</a><br /></td></tr>
+<tr class="separator:abb229c95146f28c22baccfa20754f3b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52c37c3857c43d6450f28f4924e5b36f"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_communication_1_1_i_communication.html#a52c37c3857c43d6450f28f4924e5b36f">receive</a> (std::vector&lt; uint8_t &gt; &amp;out)=0</td></tr>
+<tr class="memdesc:a52c37c3857c43d6450f28f4924e5b36f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Принимает данные из соединения  <a href="class_lanter_1_1_communication_1_1_i_communication.html#a52c37c3857c43d6450f28f4924e5b36f">Подробнее...</a><br /></td></tr>
+<tr class="separator:a52c37c3857c43d6450f28f4924e5b36f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p >Интерфейс класса коммуникаций, используемый в работе Lan4Gate. </p>
+<dl class="section see"><dt>См. также</dt><dd>Lan4Gate </dd></dl>
+</div><h2 class="groupheader">Методы</h2>
+<a id="ac8bc9a5476b790ca83566af372396a5d" name="ac8bc9a5476b790ca83566af372396a5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8bc9a5476b790ca83566af372396a5d">&#9670;&nbsp;</a></span>close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Communication::ICommunication::close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Закрывает соединение </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если соединение успешно закрыто </dd></dl>
+
+</div>
+</div>
+<a id="a0aa8093603665f92fe9b7a15a4340a15" name="a0aa8093603665f92fe9b7a15a4340a15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aa8093603665f92fe9b7a15a4340a15">&#9670;&nbsp;</a></span>connect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Communication::ICommunication::connect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Пытается выполнить подключение соединения </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если удалось подключиться </dd></dl>
+
+</div>
+</div>
+<a id="aa1a83f4f69cf09593ba73329ee2035d2" name="aa1a83f4f69cf09593ba73329ee2035d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1a83f4f69cf09593ba73329ee2035d2">&#9670;&nbsp;</a></span>disconnect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Communication::ICommunication::disconnect </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Отключает соединение </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно отключено </dd></dl>
+
+</div>
+</div>
+<a id="a7524cd5e3d6481c7a780244d1448fc5b" name="a7524cd5e3d6481c7a780244d1448fc5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7524cd5e3d6481c7a780244d1448fc5b">&#9670;&nbsp;</a></span>isConnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Communication::ICommunication::isConnected </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает статус подключения </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если подключено </dd></dl>
+
+</div>
+</div>
+<a id="ac56002003ce9613258f951b29d0fc3c2" name="ac56002003ce9613258f951b29d0fc3c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac56002003ce9613258f951b29d0fc3c2">&#9670;&nbsp;</a></span>isOpen()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Communication::ICommunication::isOpen </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает признак открытого соединения </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true - открыто, false - закрыто </dd></dl>
+
+</div>
+</div>
+<a id="ab91872c3f3e01feb5bf8f4c7017f3ac5" name="ab91872c3f3e01feb5bf8f4c7017f3ac5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab91872c3f3e01feb5bf8f4c7017f3ac5">&#9670;&nbsp;</a></span>open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Communication::ICommunication::open </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Открывает соединение </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если соединение успешно открыто </dd></dl>
+
+</div>
+</div>
+<a id="a52c37c3857c43d6450f28f4924e5b36f" name="a52c37c3857c43d6450f28f4924e5b36f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52c37c3857c43d6450f28f4924e5b36f">&#9670;&nbsp;</a></span>receive()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual size_t Lanter::Communication::ICommunication::receive </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; uint8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>out</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Принимает данные из соединения </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">out</td><td>контейнер для полученных данных </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>размер полученных данных </dd></dl>
+
+</div>
+</div>
+<a id="abb229c95146f28c22baccfa20754f3b8" name="abb229c95146f28c22baccfa20754f3b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb229c95146f28c22baccfa20754f3b8">&#9670;&nbsp;</a></span>send()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual size_t Lanter::Communication::ICommunication::send </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>in</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Отправляет данные в соединение </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">in</td><td>отправляемые данные </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>размер отправленных данных </dd></dl>
+
+</div>
+</div>
+<hr/>Объявления и описания членов класса находятся в файле:<ul>
+<li><a class="el" href="_i_communication_8h_source.html">ICommunication.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_lanter.html">Lanter</a></li><li class="navelem"><b>Communication</b></li><li class="navelem"><a class="el" href="class_lanter_1_1_communication_1_1_i_communication.html">ICommunication</a></li>
+    <li class="footer">Документация по LAN-4Gate. Последние изменения: Пт 10 Сен 2021 17:09:56. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>
