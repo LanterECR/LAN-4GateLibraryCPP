@@ -1,6 +1,13 @@
 #ifndef LAN_4GATELIB_DOXYGENMAINPAGE_H
 #define LAN_4GATELIB_DOXYGENMAINPAGE_H
 
+///\mainpage
+/// Для использования библиотеки подключите заголовочный файл Lanter/Lan4GateInclude.h \n
+/// Данный файл подключает следующие классы: \n
+/// Lanter::Manager::Lan4GateFactory - Фабрика главного менеджера библиотеки, инкапсулирующий весь функционал \n
+/// Lanter::Communication::CommunicationFactory - Фабрика соединений \n
+/// Lanter::Utils::Version - Класс для получения версии библиотеки \n
+
 /// \brief Главное пространство имен. Содержит весь код библиотеки
 namespace Lanter {
 
