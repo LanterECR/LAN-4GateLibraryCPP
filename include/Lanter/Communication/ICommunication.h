@@ -11,6 +11,10 @@ namespace Lanter {
         /// \sa Lan4Gate
         class ICommunication {
         public:
+
+            /// \brief Выполняет один цикл асинхронного соединения. Может быть не реализован
+            virtual void doCommunication() = 0;
+
             /// \brief Открывает соединение
             /// \return true, если соединение успешно открыто
             virtual bool open() = 0;
@@ -26,6 +30,10 @@ namespace Lanter {
             /// \brief Пытается выполнить подключение соединения
             /// \return true, если удалось подключиться
             virtual bool connect() = 0;
+
+            /// \brief Отключает соединение
+            /// \return true, если успешно отключено
+            virtual bool disconnect() = 0;
 
             /// \brief Возвращает статус подключения
             /// \return true, если подключено
