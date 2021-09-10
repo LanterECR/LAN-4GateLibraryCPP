@@ -16,6 +16,14 @@ namespace Lanter {
         MOCK_METHOD(bool, connect, (), (override));
 
         MOCK_METHOD(bool, isConnected, (), (override));
+
+        void doCommunication() override {
+
+        }
+
+        bool disconnect() override {
+            return false;
+        }
     };
 }
 
