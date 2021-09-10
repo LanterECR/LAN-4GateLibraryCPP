@@ -6,7 +6,7 @@
 ![Сборка Linux](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/Linux/badge.svg) 
 ![Сборка macOS](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/macOS/badge.svg) 
 ![Сборка Windows](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/Windows/badge.svg)
-
+[![badge](https://img.shields.io/badge/Documentation-doxygen-blue)](http://https://github.com/dolbaster/LAN-4GateLibraryCPP/doxygen/index.html)
 ### Список [будущих изменений](TODO.md) и расширения функционала
 
 Содержание
@@ -38,6 +38,8 @@
 Библиотека реализует протокол кассового взаимодействия LAN-4Gate компании ЛАНТЕР.
 
 Для разрешения зависимостей используется пакетный менеджер [Hunter](https://hunter.readthedocs.io/en/latest) версии 0.23.313
+
+Подробная [документация](http://https://github.com/dolbaster/LAN-4GateLibraryCPP/doxygen/index.html) сгенерирована [Doxygen](https://www.doxygen.nl/index.html) 
 
 Требования
 ----------
