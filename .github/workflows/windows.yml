@@ -1,0 +1,36 @@
+name: Windows
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2019]
+        platform: [Win32, x64]
+        build_type: ["Debug", "Release"]
+
+    runs-on: ${{matrix.os}}
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Configure
+      run: |
+        mkdir build
+        cd build
+        cmake -DL4G_TESTS=ON -A ${{matrix.platform}} ..
+
+    - name: Build
+      run: |
+        cd build
+        cmake --build . --config ${{matrix.build_type}}
+
+    - name: Test
+      run: |
+        cd build
+        cmake --build . --config ${{matrix.build_type}} --target RUN_TESTS
