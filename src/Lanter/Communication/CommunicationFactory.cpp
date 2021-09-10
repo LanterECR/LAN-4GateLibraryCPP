@@ -4,7 +4,7 @@
 
 namespace Lanter {
     namespace Communication {
-        std::shared_ptr<ICommunication> getSingleTcpServer(int port) {
+        std::shared_ptr<ICommunication> CommunicationFactory::getSingleTcpServer(int port) {
             return std::make_shared<SingleTCPServer>(port);
         }
     }
