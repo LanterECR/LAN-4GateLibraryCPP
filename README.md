@@ -3,9 +3,9 @@
 
 
 
-![Сборка Linux](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/Linux/badge.svg) 
-![Сборка macOS](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/macOS/badge.svg) 
-![Сборка Windows](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/Windows/badge.svg)
+![Сборка Linux](https://github.com/LanterECR/LAN-4GateLibraryCPP/workflows/Linux/badge.svg) 
+![Сборка macOS](https://github.com/LanterECR/LAN-4GateLibraryCPP/workflows/macOS/badge.svg) 
+![Сборка Windows](https://github.com/LanterECR/LAN-4GateLibraryCPP/workflows/Windows/badge.svg)
 
 ### Список [будущих изменений](TODO.md) и расширения функционала
 
