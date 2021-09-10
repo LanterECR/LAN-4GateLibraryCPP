@@ -28,9 +28,9 @@
 6. [Подключение к проекту](#Подключение-к-проекту)
    1. [Подключение к CMake](#Подключение-к-CMake)
       1. [Поддиректория проекта](#Поддиректория-проекта))
-      2. [find_package()](#find_package())
+      2. [Поиск пакета](#Поиск-пакета))
    2. [Другие системы сборки](#Другие-системы-сборки)
-7. [Примеры](#Примеры)
+7. [Использование](#Использование)
 
 
 Описание
@@ -232,7 +232,7 @@ add_executable(Example source.cpp)
 target_link_libraries(Example L4G::l4g_shared)
 ```
 
-#### find_package()
+#### Поиск пакета
 Используется при предварительно скомпилированной библиотеке. 
 Поисковые модули из директории shared должны быть доступны в переменной [CMAKE_MODULE_PATH](#https://cmake.org/cmake/help/latest/variable/CMAKE_MODULE_PATH.html), переменной [LAN-4GateLib_ROOT](https://cmake.org/cmake/help/latest/variable/PackageName_ROOT.html) или через PATH
 
@@ -250,6 +250,63 @@ target_link_libraries(Example L4G::l4g_shared)
 
 При работе под Windows линковаться должна статическая библиотека l4g_shared.lib
 
-Примеры
+Использование
 -------
+Для использования функционала библиотеки необходимо подключить заголовочный файл Lanter/Lan4GateInclude.h
 
+Данный файл подключает фабрику соединений, фабрику менеджера ILan4Gate и функцию получения версии библиотеки.
+
+В следующем примере создается менеджер ILan4Gate с логическим идентификатором 1. Ему передается TCP сервер, обслуживающий единственное соединение, который слушает порт по умолчанию - 20501.
+
+В качестве колбеков передаются лямбда-функции, выводящие сообщения на полученные события 
+
+Менеджер запускает отдельный поток.
+
+После ожидается ввод пользователя. Если введен символ "q", то происходит выход. В остальных случаях отправляется FinalizeTransaction
+
+```c++
+#include <iostream>
+
+#include "Lanter/Lan4GateIncude.h"
+
+int main(int argc, char* argv[])
+{
+
+    std::cout << " +++++ Lan4Gate library version is " << Lanter::Utils::getVersion() << " +++++" << std::endl;
+    auto manager = Lanter::Manager::getLan4Gate(1, Lanter::Communication::getSingleTcpServer());
+
+    manager->addConnectionCallback([](bool connected) {
+        if(connected) {
+            std::cout << "==== Gate connected ====" << std::endl;
+        } else {
+            std::cout << "==== Gate disconnected ====" << std::endl;
+        }
+    });
+
+    manager->addRequestCallback([](std::shared_ptr<Lanter::Message::Request::IRequestData> request) {
+        std::cout << std::endl << "===== REQUEST ====" << std::endl;
+    });
+
+    manager->addResponseCallback([](std::shared_ptr<Lanter::Message::Response::IResponseData> response) {
+        std::cout << std::endl << "===== RESPONSE ====" << std::endl;
+    });
+
+    manager->addNotificationCallback([](std::shared_ptr<Lanter::Message::Notification::INotificationData> notification) {
+        std::cout << std::endl << "===== NOTIFICATION ====" << std::endl;
+    });
+
+    if(manager->runOnThread() ==Lanter::Manager::ILan4Gate::Status::Success) {
+        std::cout << "+++++ Gate started +++++" << std::endl;
+    }
+
+    std::string str;
+    for(;;) {
+        std::cin >> str;
+        if(str == "q") {
+            break;
+        }
+        manager->sendMessage(manager->getPreparedRequest(Lanter::Message::OperationCode::FinalizeTransaction));
+    }
+    return 0;
+}
+```
