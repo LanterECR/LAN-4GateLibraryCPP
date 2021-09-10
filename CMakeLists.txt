@@ -61,7 +61,7 @@ file(GLOB_RECURSE IMPL_SOURCE_FILES Impl/*.cpp)
 
 add_compile_definitions(L4G_VERSION="${PROJECT_VERSION}")
 #список зависимостей библиотеки
-set(DEPENDENCIES_LIST jsoncpp_object asio::asio_static)
+set(DEPENDENCIES_LIST jsoncpp_object asio::asio_headeronly)
 
 set(INSTALLATION_TARGETS "")
 #Исходники будут скомпилированы дважды из-за разных дефайнов
