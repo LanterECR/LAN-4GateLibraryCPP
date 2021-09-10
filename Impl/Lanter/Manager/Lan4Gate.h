@@ -93,6 +93,7 @@ namespace Lanter {
 
             bool openConnection();
             bool closeConnection();
+            void doCommunication();
 
             bool pushToQueue(const std::vector<uint8_t> & data);
             void popFromQueue(std::vector<uint8_t> &data);

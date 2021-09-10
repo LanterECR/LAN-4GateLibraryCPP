@@ -67,6 +67,7 @@ namespace Lanter {
 
         void Lan4Gate::doLan4Gate() {
             if(m_IsStarted) {
+                doCommunication();
                 if(isConnected()) {
                     sendData();
                     receiveData();
@@ -515,6 +516,13 @@ namespace Lanter {
                 }
             }
             return result;
+        }
+
+        void Lan4Gate::doCommunication() {
+            if(m_Communication != nullptr) {
+                m_Communication->doCommunication();
+            }
+
         }
     }
 }
