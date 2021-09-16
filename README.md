@@ -41,7 +41,7 @@
 
 Для разрешения зависимостей используется пакетный менеджер [Hunter](https://hunter.readthedocs.io/en/latest) версии 0.23.313
 
-Подробная документация сгенерирована [Doxygen](https://www.doxygen.nl/index.html). Доступна по [ссылке](https://dolbaster.github.io/LAN-4GateLibraryCPP/doxygen/index.html) и в шапке файла
+Подробная документация сгенерирована [Doxygen](https://www.doxygen.nl/index.html). Доступна по [ссылке](https://LanterECR.github.io/LAN-4GateLibraryCPP/doxygen/index.html) и в шапке файла
 
 Требования
 ----------
