@@ -3,10 +3,11 @@
 
 
 
-![Сборка Linux](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/Linux/badge.svg) 
-![Сборка macOS](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/macOS/badge.svg) 
-![Сборка Windows](https://github.com/dolbaster/LAN-4GateLibraryCPP/workflows/Windows/badge.svg)
-[![badge](https://img.shields.io/badge/document-doxygen-blue)](https://dolbaster.github.io/LAN-4GateLibraryCPP/doxygen/index.html)
+
+![Сборка Linux](https://github.com/LanterECR/LAN-4GateLibraryCPP/workflows/Linux/badge.svg) 
+![Сборка macOS](https://github.com/LanterECR/LAN-4GateLibraryCPP/workflows/macOS/badge.svg) 
+![Сборка Windows](https://github.com/LanterECR/LAN-4GateLibraryCPP/workflows/Windows/badge.svg)
+[![badge](https://img.shields.io/badge/document-doxygen-blue)](https://LanterECR.github.io/LAN-4GateLibraryCPP/doxygen/index.html)
 
 ### Список [будущих изменений](TODO.md) и расширения функционала
 
