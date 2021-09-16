@@ -1,0 +1,2024 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LAN-4Gate: Класс Lanter::Message::Request::IRequestData</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.8.5</span>
+   </div>
+   <div id="projectbrief">Реализация протокола кассового взаимодействия LAN-4Gate</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('class_lanter_1_1_message_1_1_request_1_1_i_request_data.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle"><div class="title">Класс Lanter::Message::Request::IRequestData<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Базовый класс-контейнер для отправки запросов финансовому ПО LAN-4Tap.  
+ <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_i_request_data_8h_source.html">IRequestData.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a73038cc9c5f5a118a862423ec494a744"><td class="memItemLeft" align="right" valign="top">virtual const std::set&lt; RequestField &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a73038cc9c5f5a118a862423ec494a744">getFieldsSet</a> () const =0</td></tr>
+<tr class="memdesc:a73038cc9c5f5a118a862423ec494a744"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает список установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a73038cc9c5f5a118a862423ec494a744">Подробнее...</a><br /></td></tr>
+<tr class="separator:a73038cc9c5f5a118a862423ec494a744"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acccbdec66d5cd3616d8f33f755290510"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#acccbdec66d5cd3616d8f33f755290510">isFieldSet</a> (RequestField field) const =0</td></tr>
+<tr class="memdesc:acccbdec66d5cd3616d8f33f755290510"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверяет было ли установлено поле  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#acccbdec66d5cd3616d8f33f755290510">Подробнее...</a><br /></td></tr>
+<tr class="separator:acccbdec66d5cd3616d8f33f755290510"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a024d36b9a29657be3b69d3979eb058b0"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a024d36b9a29657be3b69d3979eb058b0">resetField</a> (RequestField field)=0</td></tr>
+<tr class="memdesc:a024d36b9a29657be3b69d3979eb058b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a024d36b9a29657be3b69d3979eb058b0">Подробнее...</a><br /></td></tr>
+<tr class="separator:a024d36b9a29657be3b69d3979eb058b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ba38fe6e8a655f3478bf04aa8eec868"><td class="memItemLeft" align="right" valign="top">virtual const std::set&lt; RequestField &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a1ba38fe6e8a655f3478bf04aa8eec868">getMandatoryFields</a> () const =0</td></tr>
+<tr class="memdesc:a1ba38fe6e8a655f3478bf04aa8eec868"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает список обязательных полей для выполняемой операции  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a1ba38fe6e8a655f3478bf04aa8eec868">Подробнее...</a><br /></td></tr>
+<tr class="separator:a1ba38fe6e8a655f3478bf04aa8eec868"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d97b72d8ac8b245e81f244313098393"><td class="memItemLeft" align="right" valign="top">virtual const std::set&lt; RequestField &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a0d97b72d8ac8b245e81f244313098393">getOptionalFields</a> () const =0</td></tr>
+<tr class="memdesc:a0d97b72d8ac8b245e81f244313098393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает список опциональных полей для выполняемой операции  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a0d97b72d8ac8b245e81f244313098393">Подробнее...</a><br /></td></tr>
+<tr class="separator:a0d97b72d8ac8b245e81f244313098393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a772013fe12aa5312c6c2042ac8a515bf"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a772013fe12aa5312c6c2042ac8a515bf">validateMandatoryFields</a> () const =0</td></tr>
+<tr class="memdesc:a772013fe12aa5312c6c2042ac8a515bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Проверяет наличие обязательных полей.  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a772013fe12aa5312c6c2042ac8a515bf">Подробнее...</a><br /></td></tr>
+<tr class="separator:a772013fe12aa5312c6c2042ac8a515bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f52de377a82fa9104d208525510db59"><td class="memItemLeft" align="right" valign="top">virtual int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a5f52de377a82fa9104d208525510db59">getEcrNumber</a> () const =0</td></tr>
+<tr class="memdesc:a5f52de377a82fa9104d208525510db59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает логический идентификатор кассового ПО  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a5f52de377a82fa9104d208525510db59">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5f52de377a82fa9104d208525510db59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0177c2f7160c15c0aa724fcaa076e27e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a0177c2f7160c15c0aa724fcaa076e27e">setEcrNumber</a> (int16_t ecrNumber)=0</td></tr>
+<tr class="memdesc:a0177c2f7160c15c0aa724fcaa076e27e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает логический идентификатор кассового ПО  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a0177c2f7160c15c0aa724fcaa076e27e">Подробнее...</a><br /></td></tr>
+<tr class="separator:a0177c2f7160c15c0aa724fcaa076e27e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01ca368c6426b3203f76558c67dd7ec8"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a01ca368c6426b3203f76558c67dd7ec8">resetEcrNumber</a> ()=0</td></tr>
+<tr class="memdesc:a01ca368c6426b3203f76558c67dd7ec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля EcrNumber и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a01ca368c6426b3203f76558c67dd7ec8">Подробнее...</a><br /></td></tr>
+<tr class="separator:a01ca368c6426b3203f76558c67dd7ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3262824f4ac6fa62693b1eef0370b27c"><td class="memItemLeft" align="right" valign="top">virtual int16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a3262824f4ac6fa62693b1eef0370b27c">getEcrMerchantNumber</a> () const =0</td></tr>
+<tr class="memdesc:a3262824f4ac6fa62693b1eef0370b27c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает логический идентификатор мерчанта в кассовом ПО  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a3262824f4ac6fa62693b1eef0370b27c">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3262824f4ac6fa62693b1eef0370b27c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa895bc5dbb4a6cd5d6150e541331376"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#aaa895bc5dbb4a6cd5d6150e541331376">setEcrMerchantNumber</a> (int16_t ecrMerchantNumber)=0</td></tr>
+<tr class="memdesc:aaa895bc5dbb4a6cd5d6150e541331376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает логический идентификатор мерчанта в кассовом ПО  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#aaa895bc5dbb4a6cd5d6150e541331376">Подробнее...</a><br /></td></tr>
+<tr class="separator:aaa895bc5dbb4a6cd5d6150e541331376"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0d44554c9fdd690712c86f1ff0f8a1c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ac0d44554c9fdd690712c86f1ff0f8a1c">resetEcrMerchantNumber</a> ()=0</td></tr>
+<tr class="memdesc:ac0d44554c9fdd690712c86f1ff0f8a1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля EcrMerchantNumber и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ac0d44554c9fdd690712c86f1ff0f8a1c">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac0d44554c9fdd690712c86f1ff0f8a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2897dbca48c11fce430820869b437ad"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597">OperationCode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#af2897dbca48c11fce430820869b437ad">getOperationCode</a> () const =0</td></tr>
+<tr class="memdesc:af2897dbca48c11fce430820869b437ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает код выполняемой операции  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#af2897dbca48c11fce430820869b437ad">Подробнее...</a><br /></td></tr>
+<tr class="separator:af2897dbca48c11fce430820869b437ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58ff68a411297f279bd68f56734945c3"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a58ff68a411297f279bd68f56734945c3">setOperationCode</a> (<a class="el" href="namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597">OperationCode</a> operationCode)=0</td></tr>
+<tr class="memdesc:a58ff68a411297f279bd68f56734945c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает код выполняемой операции  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a58ff68a411297f279bd68f56734945c3">Подробнее...</a><br /></td></tr>
+<tr class="separator:a58ff68a411297f279bd68f56734945c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f9d84770256a5c0da4d51a65baf38b3"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a3f9d84770256a5c0da4d51a65baf38b3">resetOperationCode</a> ()=0</td></tr>
+<tr class="memdesc:a3f9d84770256a5c0da4d51a65baf38b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля OperationCode и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a3f9d84770256a5c0da4d51a65baf38b3">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3f9d84770256a5c0da4d51a65baf38b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a333f58d2f8112ef82eb286335520419c"><td class="memItemLeft" align="right" valign="top">virtual int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a333f58d2f8112ef82eb286335520419c">getAmount</a> () const =0</td></tr>
+<tr class="memdesc:a333f58d2f8112ef82eb286335520419c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает установленную сумму операции в минимальных единицах валюты (копейки для рублей)  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a333f58d2f8112ef82eb286335520419c">Подробнее...</a><br /></td></tr>
+<tr class="separator:a333f58d2f8112ef82eb286335520419c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d9cdadab1a43fc9a34f1f5c6167c109"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a9d9cdadab1a43fc9a34f1f5c6167c109">setAmount</a> (int64_t amount)=0</td></tr>
+<tr class="memdesc:a9d9cdadab1a43fc9a34f1f5c6167c109"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает сумму в минимальных единицах валюты (копейки для рублей)  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a9d9cdadab1a43fc9a34f1f5c6167c109">Подробнее...</a><br /></td></tr>
+<tr class="separator:a9d9cdadab1a43fc9a34f1f5c6167c109"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebb5bc0e0878b371739022e9801420da"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#aebb5bc0e0878b371739022e9801420da">resetAmount</a> ()=0</td></tr>
+<tr class="memdesc:aebb5bc0e0878b371739022e9801420da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля Amount и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#aebb5bc0e0878b371739022e9801420da">Подробнее...</a><br /></td></tr>
+<tr class="separator:aebb5bc0e0878b371739022e9801420da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47d9e425058c61c0f281bae72d6a9e1c"><td class="memItemLeft" align="right" valign="top">virtual int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a47d9e425058c61c0f281bae72d6a9e1c">getPartialAmount</a> () const =0</td></tr>
+<tr class="memdesc:a47d9e425058c61c0f281bae72d6a9e1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает установленную частичную сумму в минимальных единицах валюты (копейки для рублей)  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a47d9e425058c61c0f281bae72d6a9e1c">Подробнее...</a><br /></td></tr>
+<tr class="separator:a47d9e425058c61c0f281bae72d6a9e1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50f42fbe202064ca440b1cab668354ae"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a50f42fbe202064ca440b1cab668354ae">setPartialAmount</a> (int64_t partialAmount)=0</td></tr>
+<tr class="memdesc:a50f42fbe202064ca440b1cab668354ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает частичную сумму в минимальных единицах валюты (копейки для рублей)  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a50f42fbe202064ca440b1cab668354ae">Подробнее...</a><br /></td></tr>
+<tr class="separator:a50f42fbe202064ca440b1cab668354ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91c1812ea99b0c1a9453ba418bf8102a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a91c1812ea99b0c1a9453ba418bf8102a">resetPartialAmount</a> ()=0</td></tr>
+<tr class="memdesc:a91c1812ea99b0c1a9453ba418bf8102a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля PartialAmount и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a91c1812ea99b0c1a9453ba418bf8102a">Подробнее...</a><br /></td></tr>
+<tr class="separator:a91c1812ea99b0c1a9453ba418bf8102a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4356412ac9781ad6e9eada0a17c8c7d"><td class="memItemLeft" align="right" valign="top">virtual int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ac4356412ac9781ad6e9eada0a17c8c7d">getTipsAmount</a> () const =0</td></tr>
+<tr class="memdesc:ac4356412ac9781ad6e9eada0a17c8c7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает установленную сумму чаевых в минимальных единицах валюты (копейки для рублей)  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ac4356412ac9781ad6e9eada0a17c8c7d">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac4356412ac9781ad6e9eada0a17c8c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85c6bed81768f06e51df1691bdfba696"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a85c6bed81768f06e51df1691bdfba696">setTipsAmount</a> (int64_t tipsAmount)=0</td></tr>
+<tr class="memdesc:a85c6bed81768f06e51df1691bdfba696"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает сумму чаевых в минимальных единицах валюты (копейки для рублей)  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a85c6bed81768f06e51df1691bdfba696">Подробнее...</a><br /></td></tr>
+<tr class="separator:a85c6bed81768f06e51df1691bdfba696"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1a5bde9d4276df56210b7ef52517791"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ad1a5bde9d4276df56210b7ef52517791">resetTipsAmount</a> ()=0</td></tr>
+<tr class="memdesc:ad1a5bde9d4276df56210b7ef52517791"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля TipsAmount и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ad1a5bde9d4276df56210b7ef52517791">Подробнее...</a><br /></td></tr>
+<tr class="separator:ad1a5bde9d4276df56210b7ef52517791"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae07981cf140c2d00b5157573355ba91f"><td class="memItemLeft" align="right" valign="top">virtual int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ae07981cf140c2d00b5157573355ba91f">getCashbackAmount</a> () const =0</td></tr>
+<tr class="memdesc:ae07981cf140c2d00b5157573355ba91f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает установленную сумму кэшбека в минимальных единицах валюты (копейки для рублей)  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ae07981cf140c2d00b5157573355ba91f">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae07981cf140c2d00b5157573355ba91f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01967fc8ee40f25267893c306a942ceb"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a01967fc8ee40f25267893c306a942ceb">setCashbackAmount</a> (int64_t cashbackAmount)=0</td></tr>
+<tr class="memdesc:a01967fc8ee40f25267893c306a942ceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает сумму кэшбека в минимальных единицах валюты (копейки для рублей)  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a01967fc8ee40f25267893c306a942ceb">Подробнее...</a><br /></td></tr>
+<tr class="separator:a01967fc8ee40f25267893c306a942ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95a4261393916c5e1697c680d7a5109f"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a95a4261393916c5e1697c680d7a5109f">resetCashbackAmount</a> ()=0</td></tr>
+<tr class="memdesc:a95a4261393916c5e1697c680d7a5109f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля CashbackAmount и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a95a4261393916c5e1697c680d7a5109f">Подробнее...</a><br /></td></tr>
+<tr class="separator:a95a4261393916c5e1697c680d7a5109f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09269a4098bbd9de656435e0393d60f8"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a09269a4098bbd9de656435e0393d60f8">getCurrencyCode</a> () const =0</td></tr>
+<tr class="memdesc:a09269a4098bbd9de656435e0393d60f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает строку, содержащую установленный код валюты согласно ISO 4217.  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a09269a4098bbd9de656435e0393d60f8">Подробнее...</a><br /></td></tr>
+<tr class="separator:a09269a4098bbd9de656435e0393d60f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d239c3b9be315fe4c2a203b91cd9525"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a7d239c3b9be315fe4c2a203b91cd9525">setCurrencyCode</a> (const std::string &amp;currencyCode)=0</td></tr>
+<tr class="memdesc:a7d239c3b9be315fe4c2a203b91cd9525"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает код валюты согласно ISO 4217.  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a7d239c3b9be315fe4c2a203b91cd9525">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7d239c3b9be315fe4c2a203b91cd9525"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a957503f869f4cede70d9597adba0f6d7"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a957503f869f4cede70d9597adba0f6d7">resetCurrencyCode</a> ()=0</td></tr>
+<tr class="memdesc:a957503f869f4cede70d9597adba0f6d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля CurrencyCode и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a957503f869f4cede70d9597adba0f6d7">Подробнее...</a><br /></td></tr>
+<tr class="separator:a957503f869f4cede70d9597adba0f6d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a154aea79857d6c8e7c21919c16f03fe0"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a154aea79857d6c8e7c21919c16f03fe0">getRRN</a> () const =0</td></tr>
+<tr class="memdesc:a154aea79857d6c8e7c21919c16f03fe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает установленное значение RRN.  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a154aea79857d6c8e7c21919c16f03fe0">Подробнее...</a><br /></td></tr>
+<tr class="separator:a154aea79857d6c8e7c21919c16f03fe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58405fa8df67f347e291758a367ba893"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a58405fa8df67f347e291758a367ba893">setRRN</a> (const std::string &amp;RRN)=0</td></tr>
+<tr class="memdesc:a58405fa8df67f347e291758a367ba893"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает RRN, полученный в ответ на одну из предыдущих операций  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a58405fa8df67f347e291758a367ba893">Подробнее...</a><br /></td></tr>
+<tr class="separator:a58405fa8df67f347e291758a367ba893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea246e41289822b79c5ca4dae29f139c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#aea246e41289822b79c5ca4dae29f139c">resetRRN</a> ()=0</td></tr>
+<tr class="memdesc:aea246e41289822b79c5ca4dae29f139c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля RRN и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#aea246e41289822b79c5ca4dae29f139c">Подробнее...</a><br /></td></tr>
+<tr class="separator:aea246e41289822b79c5ca4dae29f139c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac43573c14e7d36b8123bcb9d99a2f3a6"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ac43573c14e7d36b8123bcb9d99a2f3a6">getAuthCode</a> () const =0</td></tr>
+<tr class="memdesc:ac43573c14e7d36b8123bcb9d99a2f3a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает установленное значение кода авторизации  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ac43573c14e7d36b8123bcb9d99a2f3a6">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac43573c14e7d36b8123bcb9d99a2f3a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a152cef1b6223850290fc7e562456bfc5"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a152cef1b6223850290fc7e562456bfc5">setAuthCode</a> (const std::string &amp;authCode)=0</td></tr>
+<tr class="memdesc:a152cef1b6223850290fc7e562456bfc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает код авторизации, полученный в ответ на одну из предыдущих операций  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a152cef1b6223850290fc7e562456bfc5">Подробнее...</a><br /></td></tr>
+<tr class="separator:a152cef1b6223850290fc7e562456bfc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e726e9b5ef150d3504941350ffb1146"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a6e726e9b5ef150d3504941350ffb1146">resetAuthCode</a> ()=0</td></tr>
+<tr class="memdesc:a6e726e9b5ef150d3504941350ffb1146"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля AuthCode и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a6e726e9b5ef150d3504941350ffb1146">Подробнее...</a><br /></td></tr>
+<tr class="separator:a6e726e9b5ef150d3504941350ffb1146"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2f9ca58397f92c5f9c7a870f6743ceb"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ac2f9ca58397f92c5f9c7a870f6743ceb">getReceiptReference</a> () const =0</td></tr>
+<tr class="memdesc:ac2f9ca58397f92c5f9c7a870f6743ceb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает установленное значение номера чека  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ac2f9ca58397f92c5f9c7a870f6743ceb">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac2f9ca58397f92c5f9c7a870f6743ceb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ce20115b7de42aea2cab9d1e791af96"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a6ce20115b7de42aea2cab9d1e791af96">setReceiptReference</a> (const std::string &amp;receiptReference)=0</td></tr>
+<tr class="memdesc:a6ce20115b7de42aea2cab9d1e791af96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение номера чека в финансовом ПО LAN-4Tap, полученное в ответ на одной из предыдущих операций  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a6ce20115b7de42aea2cab9d1e791af96">Подробнее...</a><br /></td></tr>
+<tr class="separator:a6ce20115b7de42aea2cab9d1e791af96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a757a5369bfa98b98d8abbdf6423b56de"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a757a5369bfa98b98d8abbdf6423b56de">resetReceiptReference</a> ()=0</td></tr>
+<tr class="memdesc:a757a5369bfa98b98d8abbdf6423b56de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля ReceiptReference и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a757a5369bfa98b98d8abbdf6423b56de">Подробнее...</a><br /></td></tr>
+<tr class="separator:a757a5369bfa98b98d8abbdf6423b56de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb4d84c4ce1f923af1a2bcd8dfa04bbc"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#aeb4d84c4ce1f923af1a2bcd8dfa04bbc">getTransactionID</a> () const =0</td></tr>
+<tr class="memdesc:aeb4d84c4ce1f923af1a2bcd8dfa04bbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает установленное значение идентификатора транзакции  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#aeb4d84c4ce1f923af1a2bcd8dfa04bbc">Подробнее...</a><br /></td></tr>
+<tr class="separator:aeb4d84c4ce1f923af1a2bcd8dfa04bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2848cab23d862cfed4e392c720e1e39"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ae2848cab23d862cfed4e392c720e1e39">setTransactionID</a> (const std::string &amp;transactionId)=0</td></tr>
+<tr class="memdesc:ae2848cab23d862cfed4e392c720e1e39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение идентификатора транзакции, полученное в ответ на одной из предыдущих операций  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ae2848cab23d862cfed4e392c720e1e39">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae2848cab23d862cfed4e392c720e1e39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2a63193033f4fa8d9a242eae13da815"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#af2a63193033f4fa8d9a242eae13da815">resetTransactionID</a> ()=0</td></tr>
+<tr class="memdesc:af2a63193033f4fa8d9a242eae13da815"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля TransactionID и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#af2a63193033f4fa8d9a242eae13da815">Подробнее...</a><br /></td></tr>
+<tr class="separator:af2a63193033f4fa8d9a242eae13da815"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bc30c36f17ad5b87db88f02ae069289"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a8bc30c36f17ad5b87db88f02ae069289">getCardDataEnc</a> () const =0</td></tr>
+<tr class="memdesc:a8bc30c36f17ad5b87db88f02ae069289"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает установленное значение, содержащее зашифрованные данные карты  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a8bc30c36f17ad5b87db88f02ae069289">Подробнее...</a><br /></td></tr>
+<tr class="separator:a8bc30c36f17ad5b87db88f02ae069289"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb54ee3fc28b702278e67fce549ce76a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#afb54ee3fc28b702278e67fce549ce76a">setCardDataEnc</a> (const std::string &amp;cardDataEnc)=0</td></tr>
+<tr class="memdesc:afb54ee3fc28b702278e67fce549ce76a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение зашифрованных данных карты, полученное в ответ на одну из предыдущих операций  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#afb54ee3fc28b702278e67fce549ce76a">Подробнее...</a><br /></td></tr>
+<tr class="separator:afb54ee3fc28b702278e67fce549ce76a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03adb343afcc408c9b190569649aabcd"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a03adb343afcc408c9b190569649aabcd">resetCardDataEnc</a> ()=0</td></tr>
+<tr class="memdesc:a03adb343afcc408c9b190569649aabcd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля CardDataEnc и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a03adb343afcc408c9b190569649aabcd">Подробнее...</a><br /></td></tr>
+<tr class="separator:a03adb343afcc408c9b190569649aabcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5482e2c70f178815b4cbf3da454328de"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a5482e2c70f178815b4cbf3da454328de">getOpenTags</a> () const =0</td></tr>
+<tr class="memdesc:a5482e2c70f178815b4cbf3da454328de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает установленное значение списка открытых тегов операции FastTrack.  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a5482e2c70f178815b4cbf3da454328de">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5482e2c70f178815b4cbf3da454328de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80e08a838c33e44791ab0306657ee014"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a80e08a838c33e44791ab0306657ee014">setOpenTags</a> (const std::string &amp;openTags)=0</td></tr>
+<tr class="memdesc:a80e08a838c33e44791ab0306657ee014"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает список тегов, которые необходимо получить от финансового ПО LAN-4Tap в открытом виде  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a80e08a838c33e44791ab0306657ee014">Подробнее...</a><br /></td></tr>
+<tr class="separator:a80e08a838c33e44791ab0306657ee014"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81daee5d29ff87bc0b9b7a648939fa4d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a81daee5d29ff87bc0b9b7a648939fa4d">resetOpenTags</a> ()=0</td></tr>
+<tr class="memdesc:a81daee5d29ff87bc0b9b7a648939fa4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля OpenTags и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a81daee5d29ff87bc0b9b7a648939fa4d">Подробнее...</a><br /></td></tr>
+<tr class="separator:a81daee5d29ff87bc0b9b7a648939fa4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9112acf0571649907cd9d406d59438a"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#af9112acf0571649907cd9d406d59438a">getEncTags</a> () const =0</td></tr>
+<tr class="memdesc:af9112acf0571649907cd9d406d59438a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает установленное значение списка шифруемых тегов операции FastTrack.  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#af9112acf0571649907cd9d406d59438a">Подробнее...</a><br /></td></tr>
+<tr class="separator:af9112acf0571649907cd9d406d59438a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1807c536890c0f3a49d13cf42ba0b3e9"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a1807c536890c0f3a49d13cf42ba0b3e9">setEncTags</a> (const std::string &amp;encTags)=0</td></tr>
+<tr class="memdesc:a1807c536890c0f3a49d13cf42ba0b3e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает список тегов, которые необходимо получить от финансового ПО LAN-4Tap в зашифрованном виде  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a1807c536890c0f3a49d13cf42ba0b3e9">Подробнее...</a><br /></td></tr>
+<tr class="separator:a1807c536890c0f3a49d13cf42ba0b3e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15a9b4cedbb7dc9dc6a4b7eccb66e55f"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a15a9b4cedbb7dc9dc6a4b7eccb66e55f">resetEncTags</a> ()=0</td></tr>
+<tr class="memdesc:a15a9b4cedbb7dc9dc6a4b7eccb66e55f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля EncTags и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a15a9b4cedbb7dc9dc6a4b7eccb66e55f">Подробнее...</a><br /></td></tr>
+<tr class="separator:a15a9b4cedbb7dc9dc6a4b7eccb66e55f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5c375a64705b678ef77339e0463b2c2"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#af5c375a64705b678ef77339e0463b2c2">getProviderCode</a> () const =0</td></tr>
+<tr class="memdesc:af5c375a64705b678ef77339e0463b2c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает установленный код провайдера платежа  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#af5c375a64705b678ef77339e0463b2c2">Подробнее...</a><br /></td></tr>
+<tr class="separator:af5c375a64705b678ef77339e0463b2c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a269b7a589848522fb264e05937b88dbf"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a269b7a589848522fb264e05937b88dbf">setProviderCode</a> (const std::string &amp;providerCode)=0</td></tr>
+<tr class="memdesc:a269b7a589848522fb264e05937b88dbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает код провайдера платежа  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a269b7a589848522fb264e05937b88dbf">Подробнее...</a><br /></td></tr>
+<tr class="separator:a269b7a589848522fb264e05937b88dbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a630b4734ab6c34d6ce7ec5990cf9a9ee"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a630b4734ab6c34d6ce7ec5990cf9a9ee">resetProviderCode</a> ()=0</td></tr>
+<tr class="memdesc:a630b4734ab6c34d6ce7ec5990cf9a9ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля ProviderCode и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a630b4734ab6c34d6ce7ec5990cf9a9ee">Подробнее...</a><br /></td></tr>
+<tr class="separator:a630b4734ab6c34d6ce7ec5990cf9a9ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37efb5a562398687d18d2da20681b70f"><td class="memItemLeft" align="right" valign="top">virtual const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a37efb5a562398687d18d2da20681b70f">getAdditionalInfo</a> () const =0</td></tr>
+<tr class="memdesc:a37efb5a562398687d18d2da20681b70f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает установленное значение дополнительных параметров операции  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a37efb5a562398687d18d2da20681b70f">Подробнее...</a><br /></td></tr>
+<tr class="separator:a37efb5a562398687d18d2da20681b70f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2808a54769b8864eab8908f79266e34e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a2808a54769b8864eab8908f79266e34e">setAdditionalInfo</a> (const std::string &amp;additionalInfo)=0</td></tr>
+<tr class="memdesc:a2808a54769b8864eab8908f79266e34e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает дополнительные параметры операции  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a2808a54769b8864eab8908f79266e34e">Подробнее...</a><br /></td></tr>
+<tr class="separator:a2808a54769b8864eab8908f79266e34e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a192f4a5167c0488c4097815c9020bd40"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a192f4a5167c0488c4097815c9020bd40">resetAdditionalInfo</a> ()=0</td></tr>
+<tr class="memdesc:a192f4a5167c0488c4097815c9020bd40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля AdditionalInfo и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a192f4a5167c0488c4097815c9020bd40">Подробнее...</a><br /></td></tr>
+<tr class="separator:a192f4a5167c0488c4097815c9020bd40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p >Базовый класс-контейнер для отправки запросов финансовому ПО LAN-4Tap. </p>
+</div><h2 class="groupheader">Методы</h2>
+<a id="a37efb5a562398687d18d2da20681b70f" name="a37efb5a562398687d18d2da20681b70f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37efb5a562398687d18d2da20681b70f">&#9670;&nbsp;</a></span>getAdditionalInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::string &amp; Lanter::Message::Request::IRequestData::getAdditionalInfo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает установленное значение дополнительных параметров операции </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Строка, содержащая дополнительные параметры операции </dd></dl>
+
+</div>
+</div>
+<a id="a333f58d2f8112ef82eb286335520419c" name="a333f58d2f8112ef82eb286335520419c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a333f58d2f8112ef82eb286335520419c">&#9670;&nbsp;</a></span>getAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int64_t Lanter::Message::Request::IRequestData::getAmount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает установленную сумму операции в минимальных единицах валюты (копейки для рублей) </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Если поле установлено - значение суммы операции в диапазоне [0, 999999999999]. Иначе -1. </dd></dl>
+
+</div>
+</div>
+<a id="ac43573c14e7d36b8123bcb9d99a2f3a6" name="ac43573c14e7d36b8123bcb9d99a2f3a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac43573c14e7d36b8123bcb9d99a2f3a6">&#9670;&nbsp;</a></span>getAuthCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::string &amp; Lanter::Message::Request::IRequestData::getAuthCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает установленное значение кода авторизации </p>
+<dl class="section return"><dt>Возвращает</dt><dd>строка, содержащая код авторизации </dd></dl>
+
+</div>
+</div>
+<a id="a8bc30c36f17ad5b87db88f02ae069289" name="a8bc30c36f17ad5b87db88f02ae069289"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bc30c36f17ad5b87db88f02ae069289">&#9670;&nbsp;</a></span>getCardDataEnc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::string &amp; Lanter::Message::Request::IRequestData::getCardDataEnc </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает установленное значение, содержащее зашифрованные данные карты </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Строка, содержащая зашифрованные данные карты </dd></dl>
+
+</div>
+</div>
+<a id="ae07981cf140c2d00b5157573355ba91f" name="ae07981cf140c2d00b5157573355ba91f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae07981cf140c2d00b5157573355ba91f">&#9670;&nbsp;</a></span>getCashbackAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int64_t Lanter::Message::Request::IRequestData::getCashbackAmount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает установленную сумму кэшбека в минимальных единицах валюты (копейки для рублей) </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Если поле установлено - значение суммы чаевых в диапазоне [0, 999999999999]. Иначе -1. </dd></dl>
+
+</div>
+</div>
+<a id="a09269a4098bbd9de656435e0393d60f8" name="a09269a4098bbd9de656435e0393d60f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09269a4098bbd9de656435e0393d60f8">&#9670;&nbsp;</a></span>getCurrencyCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::string &amp; Lanter::Message::Request::IRequestData::getCurrencyCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает строку, содержащую установленный код валюты согласно ISO 4217. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Если код валюты не установлен, возвращаемая строка пуста </dd></dl>
+
+</div>
+</div>
+<a id="a3262824f4ac6fa62693b1eef0370b27c" name="a3262824f4ac6fa62693b1eef0370b27c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3262824f4ac6fa62693b1eef0370b27c">&#9670;&nbsp;</a></span>getEcrMerchantNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int16_t Lanter::Message::Request::IRequestData::getEcrMerchantNumber </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает логический идентификатор мерчанта в кассовом ПО </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Если поле установлено - логический идентификатор мерчанта в кассовом ПО, иначе -1 </dd></dl>
+
+</div>
+</div>
+<a id="a5f52de377a82fa9104d208525510db59" name="a5f52de377a82fa9104d208525510db59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f52de377a82fa9104d208525510db59">&#9670;&nbsp;</a></span>getEcrNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int16_t Lanter::Message::Request::IRequestData::getEcrNumber </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает логический идентификатор кассового ПО </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Если поле установлено - логический идентификатор кассового ПО, иначе -1 </dd></dl>
+
+</div>
+</div>
+<a id="af9112acf0571649907cd9d406d59438a" name="af9112acf0571649907cd9d406d59438a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9112acf0571649907cd9d406d59438a">&#9670;&nbsp;</a></span>getEncTags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::string &amp; Lanter::Message::Request::IRequestData::getEncTags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает установленное значение списка шифруемых тегов операции FastTrack. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Строка, содержащая список шифруемых тегов операции FastTrack </dd></dl>
+<dl class="section see"><dt>См. также</dt><dd><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a1807c536890c0f3a49d13cf42ba0b3e9" title="Устанавливает список тегов, которые необходимо получить от финансового ПО LAN-4Tap в зашифрованном ви...">setEncTags</a> </dd></dl>
+
+</div>
+</div>
+<a id="a73038cc9c5f5a118a862423ec494a744" name="a73038cc9c5f5a118a862423ec494a744"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73038cc9c5f5a118a862423ec494a744">&#9670;&nbsp;</a></span>getFieldsSet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::set&lt; RequestField &gt; &amp; Lanter::Message::Request::IRequestData::getFieldsSet </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает список установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Список установленных полей </dd></dl>
+<dl class="section see"><dt>См. также</dt><dd>RequestField </dd></dl>
+
+</div>
+</div>
+<a id="a1ba38fe6e8a655f3478bf04aa8eec868" name="a1ba38fe6e8a655f3478bf04aa8eec868"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ba38fe6e8a655f3478bf04aa8eec868">&#9670;&nbsp;</a></span>getMandatoryFields()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::set&lt; RequestField &gt; &amp; Lanter::Message::Request::IRequestData::getMandatoryFields </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает список обязательных полей для выполняемой операции </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Список обязательных полей </dd></dl>
+<dl class="section see"><dt>См. также</dt><dd>RequestField </dd></dl>
+
+</div>
+</div>
+<a id="a5482e2c70f178815b4cbf3da454328de" name="a5482e2c70f178815b4cbf3da454328de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5482e2c70f178815b4cbf3da454328de">&#9670;&nbsp;</a></span>getOpenTags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::string &amp; Lanter::Message::Request::IRequestData::getOpenTags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает установленное значение списка открытых тегов операции FastTrack. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Строка, содержащая список открытых тегов операции FastTrack </dd></dl>
+<dl class="section see"><dt>См. также</dt><dd><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a80e08a838c33e44791ab0306657ee014" title="Устанавливает список тегов, которые необходимо получить от финансового ПО LAN-4Tap в открытом виде">setOpenTags</a> </dd></dl>
+
+</div>
+</div>
+<a id="af2897dbca48c11fce430820869b437ad" name="af2897dbca48c11fce430820869b437ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2897dbca48c11fce430820869b437ad">&#9670;&nbsp;</a></span>getOperationCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597">OperationCode</a> Lanter::Message::Request::IRequestData::getOperationCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает код выполняемой операции </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Если поле установлено, возвращает код операции. Иначе NoOperation </dd></dl>
+<dl class="section see"><dt>См. также</dt><dd><a class="el" href="namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597" title="Список поддерживаемых операций">OperationCode</a> </dd></dl>
+
+</div>
+</div>
+<a id="a0d97b72d8ac8b245e81f244313098393" name="a0d97b72d8ac8b245e81f244313098393"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d97b72d8ac8b245e81f244313098393">&#9670;&nbsp;</a></span>getOptionalFields()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::set&lt; RequestField &gt; &amp; Lanter::Message::Request::IRequestData::getOptionalFields </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает список опциональных полей для выполняемой операции </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Список опциональных полей </dd></dl>
+<dl class="section see"><dt>См. также</dt><dd>RequestField </dd></dl>
+
+</div>
+</div>
+<a id="a47d9e425058c61c0f281bae72d6a9e1c" name="a47d9e425058c61c0f281bae72d6a9e1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47d9e425058c61c0f281bae72d6a9e1c">&#9670;&nbsp;</a></span>getPartialAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int64_t Lanter::Message::Request::IRequestData::getPartialAmount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает установленную частичную сумму в минимальных единицах валюты (копейки для рублей) </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Если поле установлено - значение суммы операции в диапазоне [0, 999999999999]. Иначе -1. </dd></dl>
+
+</div>
+</div>
+<a id="af5c375a64705b678ef77339e0463b2c2" name="af5c375a64705b678ef77339e0463b2c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5c375a64705b678ef77339e0463b2c2">&#9670;&nbsp;</a></span>getProviderCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::string &amp; Lanter::Message::Request::IRequestData::getProviderCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает установленный код провайдера платежа </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Строка, содержащая установленный код провайдера платежа </dd></dl>
+
+</div>
+</div>
+<a id="ac2f9ca58397f92c5f9c7a870f6743ceb" name="ac2f9ca58397f92c5f9c7a870f6743ceb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2f9ca58397f92c5f9c7a870f6743ceb">&#9670;&nbsp;</a></span>getReceiptReference()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::string &amp; Lanter::Message::Request::IRequestData::getReceiptReference </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает установленное значение номера чека </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Строка, содержащая номер чека </dd></dl>
+
+</div>
+</div>
+<a id="a154aea79857d6c8e7c21919c16f03fe0" name="a154aea79857d6c8e7c21919c16f03fe0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a154aea79857d6c8e7c21919c16f03fe0">&#9670;&nbsp;</a></span>getRRN()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::string &amp; Lanter::Message::Request::IRequestData::getRRN </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает установленное значение RRN. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>строка, содержащая RRN. </dd></dl>
+
+</div>
+</div>
+<a id="ac4356412ac9781ad6e9eada0a17c8c7d" name="ac4356412ac9781ad6e9eada0a17c8c7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4356412ac9781ad6e9eada0a17c8c7d">&#9670;&nbsp;</a></span>getTipsAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int64_t Lanter::Message::Request::IRequestData::getTipsAmount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает установленную сумму чаевых в минимальных единицах валюты (копейки для рублей) </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Если поле установлено - значение суммы чаевых в диапазоне [0, 999999999999]. Иначе -1. </dd></dl>
+
+</div>
+</div>
+<a id="aeb4d84c4ce1f923af1a2bcd8dfa04bbc" name="aeb4d84c4ce1f923af1a2bcd8dfa04bbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb4d84c4ce1f923af1a2bcd8dfa04bbc">&#9670;&nbsp;</a></span>getTransactionID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const std::string &amp; Lanter::Message::Request::IRequestData::getTransactionID </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает установленное значение идентификатора транзакции </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Строка содержащая значение идентификатора транзакции </dd></dl>
+
+</div>
+</div>
+<a id="acccbdec66d5cd3616d8f33f755290510" name="acccbdec66d5cd3616d8f33f755290510"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acccbdec66d5cd3616d8f33f755290510">&#9670;&nbsp;</a></span>isFieldSet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::isFieldSet </td>
+          <td>(</td>
+          <td class="paramtype">RequestField&#160;</td>
+          <td class="paramname"><em>field</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Проверяет было ли установлено поле </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">field</td><td>Поле, которое необходимо проверить </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле было установлено </dd></dl>
+
+</div>
+</div>
+<a id="a192f4a5167c0488c4097815c9020bd40" name="a192f4a5167c0488c4097815c9020bd40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a192f4a5167c0488c4097815c9020bd40">&#9670;&nbsp;</a></span>resetAdditionalInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetAdditionalInfo </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля AdditionalInfo и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="aebb5bc0e0878b371739022e9801420da" name="aebb5bc0e0878b371739022e9801420da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebb5bc0e0878b371739022e9801420da">&#9670;&nbsp;</a></span>resetAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetAmount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля Amount и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="a6e726e9b5ef150d3504941350ffb1146" name="a6e726e9b5ef150d3504941350ffb1146"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e726e9b5ef150d3504941350ffb1146">&#9670;&nbsp;</a></span>resetAuthCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetAuthCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля AuthCode и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="a03adb343afcc408c9b190569649aabcd" name="a03adb343afcc408c9b190569649aabcd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03adb343afcc408c9b190569649aabcd">&#9670;&nbsp;</a></span>resetCardDataEnc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetCardDataEnc </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля CardDataEnc и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="a95a4261393916c5e1697c680d7a5109f" name="a95a4261393916c5e1697c680d7a5109f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95a4261393916c5e1697c680d7a5109f">&#9670;&nbsp;</a></span>resetCashbackAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetCashbackAmount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля CashbackAmount и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="a957503f869f4cede70d9597adba0f6d7" name="a957503f869f4cede70d9597adba0f6d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a957503f869f4cede70d9597adba0f6d7">&#9670;&nbsp;</a></span>resetCurrencyCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetCurrencyCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля CurrencyCode и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="ac0d44554c9fdd690712c86f1ff0f8a1c" name="ac0d44554c9fdd690712c86f1ff0f8a1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0d44554c9fdd690712c86f1ff0f8a1c">&#9670;&nbsp;</a></span>resetEcrMerchantNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetEcrMerchantNumber </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля EcrMerchantNumber и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="a01ca368c6426b3203f76558c67dd7ec8" name="a01ca368c6426b3203f76558c67dd7ec8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01ca368c6426b3203f76558c67dd7ec8">&#9670;&nbsp;</a></span>resetEcrNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetEcrNumber </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля EcrNumber и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="a15a9b4cedbb7dc9dc6a4b7eccb66e55f" name="a15a9b4cedbb7dc9dc6a4b7eccb66e55f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15a9b4cedbb7dc9dc6a4b7eccb66e55f">&#9670;&nbsp;</a></span>resetEncTags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetEncTags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля EncTags и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="a024d36b9a29657be3b69d3979eb058b0" name="a024d36b9a29657be3b69d3979eb058b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a024d36b9a29657be3b69d3979eb058b0">&#9670;&nbsp;</a></span>resetField()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetField </td>
+          <td>(</td>
+          <td class="paramtype">RequestField&#160;</td>
+          <td class="paramname"><em>field</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля и удаляет из списка установленных полей </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">field</td><td>Поле, которое необходимо удалить </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно удалено </dd></dl>
+
+</div>
+</div>
+<a id="a81daee5d29ff87bc0b9b7a648939fa4d" name="a81daee5d29ff87bc0b9b7a648939fa4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81daee5d29ff87bc0b9b7a648939fa4d">&#9670;&nbsp;</a></span>resetOpenTags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetOpenTags </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля OpenTags и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="a3f9d84770256a5c0da4d51a65baf38b3" name="a3f9d84770256a5c0da4d51a65baf38b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f9d84770256a5c0da4d51a65baf38b3">&#9670;&nbsp;</a></span>resetOperationCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetOperationCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля OperationCode и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="a91c1812ea99b0c1a9453ba418bf8102a" name="a91c1812ea99b0c1a9453ba418bf8102a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91c1812ea99b0c1a9453ba418bf8102a">&#9670;&nbsp;</a></span>resetPartialAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetPartialAmount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля PartialAmount и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="a630b4734ab6c34d6ce7ec5990cf9a9ee" name="a630b4734ab6c34d6ce7ec5990cf9a9ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a630b4734ab6c34d6ce7ec5990cf9a9ee">&#9670;&nbsp;</a></span>resetProviderCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetProviderCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля ProviderCode и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="a757a5369bfa98b98d8abbdf6423b56de" name="a757a5369bfa98b98d8abbdf6423b56de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a757a5369bfa98b98d8abbdf6423b56de">&#9670;&nbsp;</a></span>resetReceiptReference()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetReceiptReference </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля ReceiptReference и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="aea246e41289822b79c5ca4dae29f139c" name="aea246e41289822b79c5ca4dae29f139c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea246e41289822b79c5ca4dae29f139c">&#9670;&nbsp;</a></span>resetRRN()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetRRN </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля RRN и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="ad1a5bde9d4276df56210b7ef52517791" name="ad1a5bde9d4276df56210b7ef52517791"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1a5bde9d4276df56210b7ef52517791">&#9670;&nbsp;</a></span>resetTipsAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetTipsAmount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля TipsAmount и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="af2a63193033f4fa8d9a242eae13da815" name="af2a63193033f4fa8d9a242eae13da815"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2a63193033f4fa8d9a242eae13da815">&#9670;&nbsp;</a></span>resetTransactionID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::resetTransactionID </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля TransactionID и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="a2808a54769b8864eab8908f79266e34e" name="a2808a54769b8864eab8908f79266e34e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2808a54769b8864eab8908f79266e34e">&#9670;&nbsp;</a></span>setAdditionalInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setAdditionalInfo </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>additionalInfo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает дополнительные параметры операции </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">additionalInfo</td><td>Строка, содержащая дополнительные параметры операции. Формат зависит от операции. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="a9d9cdadab1a43fc9a34f1f5c6167c109" name="a9d9cdadab1a43fc9a34f1f5c6167c109"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d9cdadab1a43fc9a34f1f5c6167c109">&#9670;&nbsp;</a></span>setAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setAmount </td>
+          <td>(</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>amount</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает сумму в минимальных единицах валюты (копейки для рублей) </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">amount</td><td>Значение суммы в диапазоне [0, 999999999999] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="a152cef1b6223850290fc7e562456bfc5" name="a152cef1b6223850290fc7e562456bfc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a152cef1b6223850290fc7e562456bfc5">&#9670;&nbsp;</a></span>setAuthCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setAuthCode </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>authCode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает код авторизации, полученный в ответ на одну из предыдущих операций </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">authCode</td><td>Строка, содержащая код авторизации. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="afb54ee3fc28b702278e67fce549ce76a" name="afb54ee3fc28b702278e67fce549ce76a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb54ee3fc28b702278e67fce549ce76a">&#9670;&nbsp;</a></span>setCardDataEnc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setCardDataEnc </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>cardDataEnc</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение зашифрованных данных карты, полученное в ответ на одну из предыдущих операций </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">cardDataEnc</td><td>Строка, содержащая зашифрованные данные карты </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="a01967fc8ee40f25267893c306a942ceb" name="a01967fc8ee40f25267893c306a942ceb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01967fc8ee40f25267893c306a942ceb">&#9670;&nbsp;</a></span>setCashbackAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setCashbackAmount </td>
+          <td>(</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>cashbackAmount</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает сумму кэшбека в минимальных единицах валюты (копейки для рублей) </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">cashbackAmount</td><td>Значение суммы кэшбека операции в диапазоне [0, 999999999999] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="a7d239c3b9be315fe4c2a203b91cd9525" name="a7d239c3b9be315fe4c2a203b91cd9525"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d239c3b9be315fe4c2a203b91cd9525">&#9670;&nbsp;</a></span>setCurrencyCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setCurrencyCode </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>currencyCode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает код валюты согласно ISO 4217. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">currencyCode</td><td>Строка, содержащая код валюты в диапазоне [1, 999] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="aaa895bc5dbb4a6cd5d6150e541331376" name="aaa895bc5dbb4a6cd5d6150e541331376"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa895bc5dbb4a6cd5d6150e541331376">&#9670;&nbsp;</a></span>setEcrMerchantNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setEcrMerchantNumber </td>
+          <td>(</td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>ecrMerchantNumber</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает логический идентификатор мерчанта в кассовом ПО </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ecrMerchantNumber</td><td>Логический идентификатор мерчанта в кассовом в диапазоне [1, 999] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="a0177c2f7160c15c0aa724fcaa076e27e" name="a0177c2f7160c15c0aa724fcaa076e27e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0177c2f7160c15c0aa724fcaa076e27e">&#9670;&nbsp;</a></span>setEcrNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setEcrNumber </td>
+          <td>(</td>
+          <td class="paramtype">int16_t&#160;</td>
+          <td class="paramname"><em>ecrNumber</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает логический идентификатор кассового ПО </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ecrNumber</td><td>Логический идентификатор кассового ПО в диапазоне [1, 999] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="a1807c536890c0f3a49d13cf42ba0b3e9" name="a1807c536890c0f3a49d13cf42ba0b3e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1807c536890c0f3a49d13cf42ba0b3e9">&#9670;&nbsp;</a></span>setEncTags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setEncTags </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>encTags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает список тегов, которые необходимо получить от финансового ПО LAN-4Tap в зашифрованном виде </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">encTags</td><td>Строка, отформатированная по следующему шаблону: Каждый тег должен быть закодирован 4 байтами в текстовом шестнадцатеричном представлении. Например, тег DF82 кодируется, как 0000DF82, а тег 82 - 00000082 Несколько тегов записываются друг за другом, например 0000DF8200000082. Опционально, строка может начинаться с лидирующей последовательности 0x Регистр текста не важен </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="a80e08a838c33e44791ab0306657ee014" name="a80e08a838c33e44791ab0306657ee014"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80e08a838c33e44791ab0306657ee014">&#9670;&nbsp;</a></span>setOpenTags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setOpenTags </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>openTags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает список тегов, которые необходимо получить от финансового ПО LAN-4Tap в открытом виде </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">openTags</td><td>Строка, отформатированная по следующему шаблону: Каждый тег должен быть закодирован 4 байтами в текстовом шестнадцатеричном представлении. Например, тег DF82 кодируется, как 0000DF82, а тег 82 - 00000082 Несколько тегов записываются друг за другом, например 0000DF8200000082. Опционально, строка может начинаться с лидирующей последовательности 0x Регистр текста не важен </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="a58ff68a411297f279bd68f56734945c3" name="a58ff68a411297f279bd68f56734945c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58ff68a411297f279bd68f56734945c3">&#9670;&nbsp;</a></span>setOperationCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setOperationCode </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597">OperationCode</a>&#160;</td>
+          <td class="paramname"><em>operationCode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает код выполняемой операции </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">operationCode</td><td>Значение из перечислений OperationCode, за исключением NoOperation </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="a50f42fbe202064ca440b1cab668354ae" name="a50f42fbe202064ca440b1cab668354ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50f42fbe202064ca440b1cab668354ae">&#9670;&nbsp;</a></span>setPartialAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setPartialAmount </td>
+          <td>(</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>partialAmount</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает частичную сумму в минимальных единицах валюты (копейки для рублей) </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">partialAmount</td><td>Значение частичной суммы операции в диапазоне [0, 999999999999] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="a269b7a589848522fb264e05937b88dbf" name="a269b7a589848522fb264e05937b88dbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a269b7a589848522fb264e05937b88dbf">&#9670;&nbsp;</a></span>setProviderCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setProviderCode </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>providerCode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает код провайдера платежа </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">providerCode</td><td>Строка, содержащая код провайдера платежа </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="a6ce20115b7de42aea2cab9d1e791af96" name="a6ce20115b7de42aea2cab9d1e791af96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ce20115b7de42aea2cab9d1e791af96">&#9670;&nbsp;</a></span>setReceiptReference()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setReceiptReference </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>receiptReference</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение номера чека в финансовом ПО LAN-4Tap, полученное в ответ на одной из предыдущих операций </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">receiptReference</td><td>Строка, содержащая номер чека в финансовом ПО LAN-4Tap </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="a58405fa8df67f347e291758a367ba893" name="a58405fa8df67f347e291758a367ba893"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58405fa8df67f347e291758a367ba893">&#9670;&nbsp;</a></span>setRRN()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setRRN </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>RRN</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает RRN, полученный в ответ на одну из предыдущих операций </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">RRN</td><td>Строка, содержащая RRN. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="a85c6bed81768f06e51df1691bdfba696" name="a85c6bed81768f06e51df1691bdfba696"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85c6bed81768f06e51df1691bdfba696">&#9670;&nbsp;</a></span>setTipsAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setTipsAmount </td>
+          <td>(</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>tipsAmount</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает сумму чаевых в минимальных единицах валюты (копейки для рублей) </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">tipsAmount</td><td>Значение суммы чаевых операции в диапазоне [0, 999999999999] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="ae2848cab23d862cfed4e392c720e1e39" name="ae2848cab23d862cfed4e392c720e1e39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2848cab23d862cfed4e392c720e1e39">&#9670;&nbsp;</a></span>setTransactionID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::setTransactionID </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>transactionId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение идентификатора транзакции, полученное в ответ на одной из предыдущих операций </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">transactionId</td><td>Строка, содержащая идентификатор транзакции </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="a772013fe12aa5312c6c2042ac8a515bf" name="a772013fe12aa5312c6c2042ac8a515bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a772013fe12aa5312c6c2042ac8a515bf">&#9670;&nbsp;</a></span>validateMandatoryFields()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Request::IRequestData::validateMandatoryFields </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Проверяет наличие обязательных полей. </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true - если все обязательные поля установлены. </dd></dl>
+
+</div>
+</div>
+<hr/>Объявления и описания членов класса находятся в файле:<ul>
+<li><a class="el" href="_i_request_data_8h_source.html">IRequestData.h</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_lanter.html">Lanter</a></li><li class="navelem"><a class="el" href="namespace_lanter_1_1_message.html">Message</a></li><li class="navelem"><a class="el" href="namespace_lanter_1_1_message_1_1_request.html">Request</a></li><li class="navelem"><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html">IRequestData</a></li>
+    <li class="footer">Документация по LAN-4Gate. Последние изменения: Пт 10 Сен 2021 17:09:56. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>
