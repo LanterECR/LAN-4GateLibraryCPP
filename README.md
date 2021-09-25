@@ -1,9 +1,9 @@
 Реализация кассового протокола LAN-4Gate
 ===========================================
 
-![Сборка Linux](https://github.com/LanterECR/LAN-4GateLibraryCPP/workflows/Linux/badge.svg) 
-![Сборка macOS](https://github.com/LanterECR/LAN-4GateLibraryCPP/workflows/macOS/badge.svg) 
-![Сборка Windows](https://github.com/LanterECR/LAN-4GateLibraryCPP/workflows/Windows/badge.svg)
+![Сборка Linux](../..//workflows/Linux/badge.svg) 
+![Сборка macOS](../..//workflows/macOS/badge.svg) 
+![Сборка Windows](../..//workflows/Windows/badge.svg)
 
 [![Release](https://img.shields.io/badge/release-v0.8.5-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibraryCPP/releases/tag/v0.8.5)
 [![badge](https://img.shields.io/badge/document-doxygen-blue)](https://LanterECR.github.io/LAN-4GateLibraryCPP/doxygen/index.html)
