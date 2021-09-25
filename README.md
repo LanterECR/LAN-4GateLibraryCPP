@@ -7,7 +7,10 @@
 ![Сборка Linux](https://github.com/LanterECR/LAN-4GateLibraryCPP/workflows/Linux/badge.svg) 
 ![Сборка macOS](https://github.com/LanterECR/LAN-4GateLibraryCPP/workflows/macOS/badge.svg) 
 ![Сборка Windows](https://github.com/LanterECR/LAN-4GateLibraryCPP/workflows/Windows/badge.svg)
+[![Release](https://img.shields.io/badge/release-v0.8.5-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibraryCPP/releases/tag/v0.8.5)
 [![badge](https://img.shields.io/badge/document-doxygen-blue)](https://LanterECR.github.io/LAN-4GateLibraryCPP/doxygen/index.html)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/LanterECR/LAN-4GateLibraryCPP.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/LanterECR/LAN-4GateLibraryCPP/alerts/)
+[![Language grade: C/C++](https://img.shields.io/lgtm/grade/cpp/g/LanterECR/LAN-4GateLibraryCPP.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/LanterECR/LAN-4GateLibraryCPP/context:cpp)
 
 ### Список [будущих изменений](TODO.md) и расширения функционала
 
