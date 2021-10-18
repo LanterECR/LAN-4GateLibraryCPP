@@ -264,11 +264,13 @@ target_link_libraries(Example L4G::l4g_shared)
 
 В следующем примере создается менеджер ILan4Gate с логическим идентификатором 1. Ему передается TCP сервер, обслуживающий единственное соединение, который слушает порт по умолчанию - 20501.
 
-В качестве колбеков передаются лямбда-функции, выводящие сообщения на полученные события 
+В качестве колбеков передаются лямбда-функции, выводящие сообщения на полученные события.
+
+При получении сообщения Response, проверяется, что ответ получен на операцию Sale и результат выполнения был успешен. В таком случае отправляется команда FinalizeTransaction.
 
 Менеджер запускает отдельный поток.
 
-После ожидается ввод пользователя. Если введен символ "q", то происходит выход. В остальных случаях отправляется FinalizeTransaction
+После ожидается ввод пользователя. Если введен символ "q", то происходит выход. В остальных случаях отправляется Sale на 1 рубль
 
 ```c++
 #include <iostream>
@@ -293,8 +295,13 @@ int main(int argc, char* argv[])
         std::cout << std::endl << "===== REQUEST ====" << std::endl;
     });
 
-    manager->addResponseCallback([](std::shared_ptr<Lanter::Message::Response::IResponseData> response) {
+    manager->addResponseCallback([manager](std::shared_ptr<Lanter::Message::Response::IResponseData> response) {
         std::cout << std::endl << "===== RESPONSE ====" << std::endl;
+        if(reponse != nullptr) {
+            if(response->getOperationCode() == Lanter::Message::OperationCode::Sale && response->getStatus() == Lanter::Message::Status::Success) {
+               manager.sendMessage(manager.getPreparedRequest(Lanter::Message::OperationCode::FinalizeTransaction));
+            }
+        }
     });
 
     manager->addNotificationCallback([](std::shared_ptr<Lanter::Message::Notification::INotificationData> notification) {
@@ -311,7 +318,13 @@ int main(int argc, char* argv[])
         if(str == "q") {
             break;
         }
-        manager->sendMessage(manager->getPreparedRequest(Lanter::Message::OperationCode::FinalizeTransaction));
+        auto sale = manager->getPreparedRequest(Lanter::Message::OperationCode::Sale);
+        
+        sale->setAmount(100); //1 рубль
+        sale->setCurrencyCode(643); //Российский рубль
+        sale->setEcrMerchantNumber(1);//Логический номер мерчанта
+        
+        manager->sendMessage(sale);
     }
     return 0;
 }
