@@ -19,6 +19,7 @@ using namespace Lanter::Message;
 using namespace Lanter::Message::Request;
 using namespace Lanter::Message::Response;
 using namespace Lanter::Message::Notification;
+using namespace Lanter::Message::Interaction;
 
 //using ::testing::Return;
 using namespace ::testing;
@@ -119,7 +120,37 @@ TEST(TestLan4Gate, TestAddRemoveNotificationCallback) {
 
 }
 
+TEST(TestLan4Gate, TestAddRemoveInteractionCallback) {
+    int iterationCount = 50;
+    std::vector<size_t> callbackIDs;
+    Lan4Gate gate;
 
+    std::function<void(std::shared_ptr<IInteractionData>)> emptyFunc;
+
+    auto realFunc = [](std::shared_ptr<IInteractionData>) -> void {};
+
+    EXPECT_EQ(gate.interactionCallbacksCount(), 0);
+    EXPECT_EQ(gate.addInteractionCallback(emptyFunc), 0);
+    EXPECT_EQ(gate.interactionCallbacksCount(), 0);
+
+    EXPECT_FALSE(gate.removeInteractionCallback(1234));
+
+    for(int i = 0; i < iterationCount; i++) {
+        size_t id = gate.addInteractionCallback(realFunc);
+        EXPECT_NE(id, 0);
+
+        callbackIDs.push_back(id);
+    }
+
+    ASSERT_EQ(gate.interactionCallbacksCount(), callbackIDs.size());
+
+    for(auto i : callbackIDs) {
+        EXPECT_TRUE(gate.removeInteractionCallback(i));
+    }
+
+    EXPECT_EQ(gate.interactionCallbacksCount(), 0);
+
+}
 
 TEST(TestLan4Gate, TestAddResetGetCommunication) {
     //закроется с первой попытки
@@ -305,9 +336,6 @@ TEST(TestLan4Gate, TestPreparedNotification) {
 
     auto noCode = gate->getPreparedNotification(NotificationCode::NoNotification);
 
-    auto withoutParam = gate->getPreparedNotification();
-
-
     ASSERT_NE(firstValue, nullptr);
     EXPECT_EQ(firstValue->getCode(), NotificationCode::FirstValue);
 
@@ -316,9 +344,27 @@ TEST(TestLan4Gate, TestPreparedNotification) {
 
     ASSERT_NE(noCode, nullptr);
     EXPECT_EQ(noCode->getCode(), NotificationCode::NoNotification);
+}
 
-    ASSERT_NE(withoutParam, nullptr);
-    EXPECT_EQ(withoutParam->getCode(), NotificationCode::NoNotification);
+TEST(TestLan4Gate, TestPreparedInteraction) {
+    std::shared_ptr<ILan4Gate> gate = std::make_shared<Lan4Gate>();
+
+    ASSERT_NE(gate, nullptr);
+
+    auto firstValue = gate->getPreparedInteraction(InteractionCode::FirstValue);
+
+    auto lastValue = gate->getPreparedInteraction(InteractionCode::LastValue);
+
+    auto noCode = gate->getPreparedInteraction(InteractionCode::NoInteraction);
+
+    ASSERT_NE(firstValue, nullptr);
+    EXPECT_EQ(firstValue->getCode(), InteractionCode::FirstValue);
+
+    ASSERT_NE(lastValue, nullptr);
+    EXPECT_EQ(lastValue->getCode(), InteractionCode::LastValue);
+
+    ASSERT_NE(noCode, nullptr);
+    EXPECT_EQ(noCode->getCode(), InteractionCode::NoInteraction);
 }
 
 TEST(TestLan4Gate, TestSendRequest) {
@@ -415,6 +461,36 @@ TEST(TestLan4Gate, TestSendNotification) {
     EXPECT_TRUE(gate.sendMessage(notification));
 }
 
+TEST(TestLan4Gate, TestSendInteraction) {
+    auto stubComms = std::make_shared<MOCKComms>();
+
+    EXPECT_CALL(*stubComms, open).Times(0);
+    EXPECT_CALL(*stubComms, close).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, isOpen).WillRepeatedly(Return(true));
+    EXPECT_CALL(*stubComms, send).Times(0);
+    EXPECT_CALL(*stubComms, receive).Times(0);
+    EXPECT_CALL(*stubComms, connect).Times(0);
+    EXPECT_CALL(*stubComms, isConnected).Times(0);
+
+    Lan4Gate gate;
+
+    gate.setCommunication(stubComms);
+
+    auto interaction = gate.getPreparedInteraction(InteractionCode::Abort);
+
+    std::shared_ptr<IInteractionData> nullInteraction = nullptr;
+
+    ASSERT_NE(interaction, nullptr);
+
+    EXPECT_FALSE(gate.sendMessage(interaction));
+
+    EXPECT_EQ(gate.start(), ILan4Gate::Status::Success);
+
+    EXPECT_FALSE(gate.sendMessage(nullInteraction));
+
+    EXPECT_TRUE(gate.sendMessage(interaction));
+}
+
 TEST(TestLan4Gate, TestChangeCallbackNotificationType) {
     auto stubComms = std::make_shared<MOCKComms>();
 
@@ -509,6 +585,15 @@ TEST(TestLan4Gate, TestSendMessageDoL4G) {
         return data.size();
     };
 
+    auto sendInteractionFunc = [](const std::vector<uint8_t> & data){
+        std::string interaction(R"({"__class":"LANTER::Interaction","__object":{"Code":1}})");
+
+        std::string str(data.begin(), data.end());
+
+        EXPECT_TRUE(interaction == str);
+        return data.size();
+    };
+
     auto comms = std::make_shared<MOCKComms>();
 
     EXPECT_CALL(*comms, isOpen).
@@ -531,6 +616,7 @@ TEST(TestLan4Gate, TestSendMessageDoL4G) {
             WillOnce(Invoke(sendResponseFunc)).
             WillOnce(Invoke(sendNotificationFunc)).
             WillOnce(Invoke(sendNotificationFunc)).
+            WillOnce(Invoke(sendInteractionFunc)).
             WillOnce(Invoke(sendResponseFunc)).
             WillOnce(Invoke(sendRequestFunc));
 
@@ -545,6 +631,7 @@ TEST(TestLan4Gate, TestSendMessageDoL4G) {
 
     auto notification = gate.getPreparedNotification(NotificationCode::AccountBlocked);
 
+    auto interaction = gate.getPreparedInteraction(InteractionCode::Abort);
 
     ASSERT_NE(notification, nullptr);
 
@@ -555,6 +642,7 @@ TEST(TestLan4Gate, TestSendMessageDoL4G) {
     EXPECT_TRUE(gate.sendMessage(response));
     EXPECT_TRUE(gate.sendMessage(notification));
     EXPECT_TRUE(gate.sendMessage(notification));
+    EXPECT_TRUE(gate.sendMessage(interaction));
     EXPECT_TRUE(gate.sendMessage(response));
     EXPECT_TRUE(gate.sendMessage(request));
 
@@ -615,6 +703,13 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
         return data.size();
     };
 
+    auto receiveInteractionFunc = [](std::vector<uint8_t> & data){
+        std::string notification(R"({"__class":"LANTER::Interaction","__object":{"Code":1}})");
+
+        Utils::StringConverter::convertToVector(notification, data);
+        return data.size();
+    };
+
     auto receiveConnectionStatusTrueFunc = [](bool connected) {
         EXPECT_TRUE(connected);
     };
@@ -636,6 +731,8 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
             WillOnce(Invoke(receiveResponseFunc)).
             WillOnce(Invoke(receiveNotificationFunc)).
             WillOnce(Invoke(receiveNotificationFunc)).
+            WillOnce(Invoke(receiveInteractionFunc)).
+            WillOnce(Invoke(receiveInteractionFunc)).
             WillOnce(Invoke(receiveResponseFunc)).
             WillOnce(Invoke(receiveRequestFunc)).
             WillRepeatedly(Return(0));
@@ -666,6 +763,13 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
 
         EXPECT_EQ(notification->getCode(), NotificationCode::AccountBlocked);
     };
+
+    auto checkInteraction = [](std::shared_ptr<IInteractionData> interaction) {
+        ASSERT_NE(interaction, nullptr);
+
+        EXPECT_EQ(interaction->getCode(), InteractionCode::Abort);
+    };
+
     MOCKCallback callback;
 
     EXPECT_CALL(callback, requestCallback(_)).
@@ -679,6 +783,10 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
     EXPECT_CALL(callback, notificationCallback(_)).
             WillOnce(checkNotification).
             WillOnce(checkNotification);
+
+    EXPECT_CALL(callback, interactionCallback(_)).
+            WillOnce(checkInteraction).
+            WillOnce(checkInteraction);
 
     EXPECT_CALL(callback, connectedCallback(_)).
             WillOnce(Invoke(receiveConnectionStatusTrueFunc));
@@ -695,6 +803,10 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
         callback.notificationCallback(data);
     };
 
+    std::function<void(std::shared_ptr<IInteractionData>)> callbackInteraction = [&callback](std::shared_ptr<IInteractionData> data) {
+        callback.interactionCallback(data);
+    };
+
     std::function<void(bool)> callbackConnection = [&callback](bool connected) {
         callback.connectedCallback(connected);
     };
@@ -707,6 +819,7 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
     gate.addRequestCallback(callbackRequest);
     gate.addResponseCallback(callbackResponse);
     gate.addNotificationCallback(callbackNotification);
+    gate.addInteractionCallback(callbackInteraction);
     gate.addConnectionCallback(callbackConnection);
     EXPECT_EQ(gate.start(), ILan4Gate::Status::Success);
 

@@ -9,6 +9,8 @@
 #include "Lanter/Message/Response/CardInputMethod.h"
 #include "Lanter/Message/Response/Status.h"
 #include "Lanter/Message/Notification/NotificationCode.h"
+#include "Lanter/Message/Interaction/InteractionCode.h"
+
 #include "Constants.h"
 
 using namespace Lanter::Message;
@@ -191,6 +193,13 @@ namespace Lanter {
             return checkValueRange(notification,
                                 static_cast<int64_t>(Notification::NotificationCode::FirstValue),
                                 static_cast<int64_t>(Notification::NotificationCode::LastValue));
+
+        }
+
+        bool checkInteractionsRange(int32_t notification) {
+            return checkValueRange(notification,
+                                   static_cast<int64_t>(Interaction::InteractionCode::FirstValue),
+                                   static_cast<int64_t>(Interaction::InteractionCode::LastValue));
 
         }
     }//Utils

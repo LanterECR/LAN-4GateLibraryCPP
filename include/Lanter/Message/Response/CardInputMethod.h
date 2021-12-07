@@ -7,7 +7,7 @@ namespace Lanter {
     namespace Message {
         namespace Response {
             /// \brief Список возможных значений поля ResponseField::CardInputMethod в ответе финансового ПО LAN-4Tap
-            enum class LANTER_VISIBILITY CardInputMethod {
+            enum class CardInputMethod {
                 NoMethod,
                 TerminalManualEntry = 1, ///< Данные карты введены вручную в финансовом ПО LAN-4Tap
                 ExternalManualEntry, ///< Данные карты введены вручную за пределами финансового ПО LAN-4Tap

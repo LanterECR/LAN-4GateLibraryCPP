@@ -8,6 +8,7 @@
 #include "Lanter/Message/Request/RequestDataFactory.h"
 #include "Lanter/Message/Response/ResponseDataFactory.h"
 #include "Lanter/Message/Notification/NotificationDataFactory.h"
+#include "Lanter/Message/Interaction/InteractionDataFactory.h"
 
 #include "Lanter/MessageProcessor/Parser/MessageParserFactory.h"
 #include "Lanter/MessageProcessor/Builder/MessageBuilderFactory.h"
@@ -243,6 +244,48 @@ namespace Lanter {
             return m_NotificationCallbacks.size();
         }
 
+        size_t Lan4Gate::addInteractionCallback(
+                std::function<void(std::shared_ptr<Message::Interaction::IInteractionData>)> callback) {
+
+            size_t result = 0;
+            if(callback) {
+                auto size = m_InteractionCallbacks.size();
+
+                size_t id = generateID();
+                while(m_InteractionCallbacks.find(id) != m_InteractionCallbacks.end()) {
+                    id = generateID();
+                }
+
+                m_InteractionCallbacks[id] = callback;
+
+                if(m_InteractionCallbacks.size() - size > 0) {
+                    result = id;
+                } else {
+                    result = 0;
+                }
+            }
+            return result;
+        }
+
+        bool Lan4Gate::removeInteractionCallback(size_t id) {
+            bool result = false;
+
+            auto item = m_InteractionCallbacks.find(id);
+            if(item != m_InteractionCallbacks.end()) {
+                size_t size = m_InteractionCallbacks.size();
+
+                m_InteractionCallbacks.erase(item);
+
+                result = size - m_InteractionCallbacks.size() > 0;
+            }
+
+            return result;
+        }
+
+        size_t Lan4Gate::interactionCallbacksCount() const {
+            return m_InteractionCallbacks.size();
+        }
+
         size_t Lan4Gate::addConnectionCallback(std::function<void(bool)> callback) {
             size_t result = 0;
             if(callback) {
@@ -295,6 +338,11 @@ namespace Lanter {
             return Message::Notification::NotificationDataFactory::getNotificationData(notificationCode);
         }
 
+        std::shared_ptr<Message::Interaction::IInteractionData>
+        Lan4Gate::getPreparedInteraction(Message::Interaction::InteractionCode interactionCode) {
+            return Message::Interaction::InteractionDataFactory::getInteractionData(interactionCode);
+        }
+
         //TODO оптимизировать блокировки очереди
         bool Lan4Gate::sendMessage(std::shared_ptr<Message::Request::IRequestData> request) {
             bool result = false;
@@ -329,6 +377,20 @@ namespace Lanter {
                 std::vector<uint8_t> message;
 
                 if (m_MessageBuilder->createMessage(notification, message)) {
+                    result = pushToQueue(message);
+                }
+            }
+
+            return result;
+        }
+
+        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Interaction::IInteractionData> interaction) {
+            bool result = false;
+
+            if(m_MessageBuilder != nullptr) {
+                std::vector<uint8_t> message;
+
+                if (m_MessageBuilder->createMessage(interaction, message)) {
                     result = pushToQueue(message);
                 }
             }
@@ -435,6 +497,7 @@ namespace Lanter {
                 this->notifyRequest();
                 this->notifyResponse();
                 this->notifyNotification();
+                this->notifyInteraction();
             };
 
             if(m_CallbackNotificationType == CallbackNotificationType::Async) {
@@ -475,6 +538,17 @@ namespace Lanter {
 
                 for(const auto& callback : m_NotificationCallbacks) {
                     callback.second(notification);
+                }
+            }
+        }
+
+        void Lan4Gate::notifyInteraction() {
+            if(m_MessageParser->interactionCount() > 0) {
+
+                auto interaction = m_MessageParser->nextInteractionData();
+
+                for(const auto& callback : m_InteractionCallbacks) {
+                    callback.second(interaction);
                 }
             }
         }

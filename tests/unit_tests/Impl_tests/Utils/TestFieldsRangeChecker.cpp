@@ -6,11 +6,13 @@
 #include "Lanter/Message/Response/CardInputMethod.h"
 #include "Lanter/Message/Response/CardholderAuthMethod.h"
 #include "Lanter/Message/Notification/NotificationCode.h"
+#include "Lanter/Message/Interaction/InteractionCode.h"
 
 using namespace Lanter;
 using namespace Lanter::Message;
 using namespace Lanter::Message::Response;
 using namespace Lanter::Message::Notification;
+using namespace Lanter::Message::Interaction;
 using namespace Lanter::Utils;
 using namespace Lanter::Utils::Constants;
 
@@ -643,4 +645,15 @@ TEST(TestFieldsRangeChecker, CheckNotiticationCodes){
 
     EXPECT_TRUE(checkNotificationsRange(greatMinimum));
     EXPECT_TRUE(checkNotificationsRange(lessMaximum));
+}
+
+TEST(TestFieldsRangeChecker, CheckInteractionCodes){
+    auto lessMinimum =  (int32_t)InteractionCode::FirstValue - 1;
+    auto greatMaximum = (int32_t)InteractionCode::LastValue + 1;
+
+    EXPECT_FALSE(checkInteractionsRange(lessMinimum));
+    EXPECT_FALSE(checkInteractionsRange(greatMaximum));
+
+    EXPECT_TRUE(checkInteractionsRange((int32_t)InteractionCode::FirstValue));
+    EXPECT_TRUE(checkInteractionsRange((int32_t)InteractionCode::LastValue));
 }

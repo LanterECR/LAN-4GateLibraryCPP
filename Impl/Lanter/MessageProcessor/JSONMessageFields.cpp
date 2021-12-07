@@ -11,6 +11,7 @@ namespace Lanter {
         std::string JSONClassFieldValues::responseValue;
         std::string JSONClassFieldValues::communicationValue;
         std::string JSONClassFieldValues::notificationValue;
+        std::string JSONClassFieldValues::interactionValue;
 
         std::string JSONRequestFields::EcrNumber;
         std::string JSONRequestFields::EcrMerchantNumber;
@@ -99,6 +100,8 @@ namespace Lanter {
         std::string JSONNotificationFields::Message;
         std::string JSONNotificationFields::Additional;
 
+        std::string JSONInteractionFields::Code;
+
         //реализация геттеров
         const std::string &JSONRootFields::getObjectField() {
 
@@ -143,6 +146,13 @@ namespace Lanter {
                 JSONClassFieldValues::notificationValue = "LANTER::Notification";
             }
             return JSONClassFieldValues::notificationValue;
+        }
+
+        const std::string &JSONClassFieldValues::getInteractionValue() {
+            if(JSONClassFieldValues::interactionValue.empty()) {
+                JSONClassFieldValues::interactionValue = "LANTER::Interaction";
+            }
+            return JSONClassFieldValues::interactionValue;
         }
 
 //request object fields
@@ -724,6 +734,13 @@ namespace Lanter {
                 JSONNotificationFields::Additional = "Additional";
             }
             return JSONNotificationFields::Additional;
+        }
+
+        const std::string &JSONInteractionFields::getCode() {
+            if(JSONInteractionFields::Code.empty()) {
+                JSONInteractionFields::Code = "Code";
+            }
+            return JSONInteractionFields::Code;
         }
     }
 }

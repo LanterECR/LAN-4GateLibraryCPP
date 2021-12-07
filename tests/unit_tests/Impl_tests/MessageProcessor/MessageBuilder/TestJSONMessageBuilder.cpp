@@ -4,9 +4,9 @@
 #include "gtest/gtest.h"
 
 #include "Lanter/Message/Request/RequestDataFactory.h"
-#include <Lanter/Message/Response/ResponseDataFactory.h>
-#include <Lanter/Message/Notification/NotificationDataFactory.h>
-
+#include "Lanter/Message/Response/ResponseDataFactory.h"
+#include "Lanter/Message/Notification/NotificationDataFactory.h"
+#include "Lanter/Message/Interaction/InteractionDataFactory.h"
 #include "Lanter/MessageProcessor/JSONMessageFields.h"
 
 #include "Lanter/MessageProcessor/Builder/JSONMessageBuilder.h"
@@ -53,6 +53,18 @@ TEST(TestJSONMessageBuilder, CheckNotificationNullptr) {
     bool result;
 
     EXPECT_NO_THROW(result = builder.createMessage(nullNotification, message));
+    EXPECT_FALSE(result);
+}
+
+TEST(TestJSONMessageBuilder, CheckInteractionNullptr) {
+    std::vector<uint8_t> message;
+
+    JSONMessageBuilder builder;
+
+    std::shared_ptr<IInteractionData> nullInteraction = nullptr;
+    bool result;
+
+    EXPECT_NO_THROW(result = builder.createMessage(nullInteraction, message));
     EXPECT_FALSE(result);
 }
 
@@ -144,4 +156,23 @@ TEST(TestJSONMessageBuilder, CheckCreateNotificationMessage) {
     Utils::StringConverter::convertToString(message, stringMsg);
 
     EXPECT_NE(stringMsg.find(JSONClassFieldValues::getNotificationValue()), std::string::npos);
+}
+
+TEST(TestJSONMessageBuilder, CheckCreateInteractionMessage) {
+    std::vector<uint8_t> message;
+
+    JSONMessageBuilder builder;
+
+    auto data = InteractionDataFactory::getInteractionData();
+    data->setCode(Lanter::Message::Interaction::InteractionCode::Abort);
+
+    EXPECT_TRUE(builder.createMessage(data, message));
+
+    EXPECT_FALSE(message.empty());
+
+    std::string stringMsg;
+
+    Utils::StringConverter::convertToString(message, stringMsg);
+
+    EXPECT_NE(stringMsg.find(JSONClassFieldValues::getInteractionValue()), std::string::npos);
 }

@@ -3,6 +3,7 @@
 #include "Lanter/Message/Response/ResponseDataFactory.h"
 #include "Lanter/Message/Request/RequestDataFactory.h"
 #include "Lanter/Message/Notification/NotificationDataFactory.h"
+#include "Lanter/Message/Interaction/InteractionDataFactory.h"
 #include "Lanter/MessageProcessor/Builder/MessageBuilderFactory.h"
 #include "Lanter/MessageProcessor/Parser/MessageParserFactory.h"
 #include "Lanter/Utils/Constants.h"
@@ -14,6 +15,7 @@ using namespace Lanter::Message;
 using namespace Lanter::Message::Request;
 using namespace Lanter::Message::Response;
 using namespace Lanter::Message::Notification;
+using namespace Lanter::Message::Interaction;
 using namespace Lanter::MessageProcessor;
 using namespace Lanter::MessageProcessor::Builder;
 using namespace Lanter::MessageProcessor::Parser;
@@ -150,4 +152,25 @@ TEST(TestBuilderParser, CheckNotification) {
     EXPECT_EQ((int)outputObject->getCode(), (int)inputObject->getCode());
     EXPECT_STREQ(outputObject->getMessage().c_str(), inputObject->getMessage().c_str());
     EXPECT_STREQ(outputObject->getAdditional().c_str(), inputObject->getAdditional().c_str());
+}
+
+TEST(TestBuilderParser, CheckInteraction) {
+    auto inputObject = InteractionDataFactory::getInteractionData();
+    inputObject->setCode(Lanter::Message::Interaction::InteractionCode::FirstValue);
+
+    std::vector<uint8_t> serializedData;
+
+    auto builder = MessageBuilderFactory::getMessageBuilder();
+    auto parser = MessageParserFactory::getMessageParser();
+
+    EXPECT_TRUE(builder->createMessage(inputObject, serializedData));
+    EXPECT_FALSE(serializedData.empty());
+
+    EXPECT_EQ(parser->parseMessage(serializedData), MessageType::Interaction);
+    EXPECT_EQ(parser->interactionCount(), 1);
+
+    auto outputObject = parser->nextInteractionData();
+    EXPECT_NE(outputObject, nullptr);
+
+    EXPECT_EQ((int)outputObject->getCode(), (int)inputObject->getCode());
 }

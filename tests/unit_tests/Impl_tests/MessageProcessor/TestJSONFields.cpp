@@ -15,6 +15,7 @@ TEST(TestJSONFields, CheckClassFieldsValues) {
     EXPECT_FALSE(JSONClassFieldValues::getResponseValue().empty());
     EXPECT_FALSE(JSONClassFieldValues::getCommunicationValue().empty());
     EXPECT_FALSE(JSONClassFieldValues::getNotificationValue().empty());
+    EXPECT_FALSE(JSONClassFieldValues::getInteractionValue().empty());
 }
 
 TEST(TestJSONFields, CheckRequestFields) {
@@ -111,5 +112,10 @@ TEST(TestJSONFields, CheckNotificationFields) {
     EXPECT_FALSE(JSONNotificationFields::getCode().empty());
     EXPECT_FALSE(JSONNotificationFields::getMessage().empty());
     EXPECT_FALSE(JSONNotificationFields::getAdditional().empty());
+
+}
+
+TEST(TestJSONFields, CheckInteractionFields) {
+    EXPECT_FALSE(JSONInteractionFields::getCode().empty());
 
 }

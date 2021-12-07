@@ -9,9 +9,9 @@
 #include "Lanter/Message/Request/IRequestData.h"
 #include "Lanter/Message/Response/IResponseData.h"
 #include "Lanter/Message/Notification/INotificationData.h"
+#include "Lanter/Message/Interaction/IInteractionData.h"
+
 #include "Lanter/Utils/VisibilityMacroses.h"
-
-
 
 namespace Lanter {
     namespace MessageProcessor {
@@ -27,7 +27,7 @@ namespace Lanter {
                 /// \sa MessageType
                 virtual MessageType parseMessage(const std::vector<uint8_t> &data) = 0;
 
-                /// \brief Возвращает IRequestData экземпляр, хранящийся в очереди
+                /// \brief Возвращает экземпляр IRequestData, хранящийся в очереди
                 /// \return nullptr, если очередь пуста
                 virtual std::shared_ptr<Message::Request::IRequestData> nextRequestData() = 0;
 
@@ -35,21 +35,29 @@ namespace Lanter {
                 /// \return 0, если очередь пуста
                 virtual size_t requestCount() const = 0;
 
-                /// \brief Возвращает IResponseData экземпляр, хранящийся в очереди
+                /// \brief Возвращает экземпляр IResponseData, хранящийся в очереди
                 /// \return nullptr, если очередь пуста
                 virtual std::shared_ptr<Message::Response::IResponseData> nextResponseData() = 0;
 
-                /// Сообщает о количестве запросов в очереди
+                /// Сообщает о количестве ответов в очереди
                 /// \return 0, если очередь пуста
                 virtual size_t responseCount() const = 0;
 
-                /// \brief Возвращает INotificationData экземпляр, хранящийся в очереди
+                /// \brief Возвращает экземпляр INotificationData, хранящийся в очереди
                 /// \return nullptr, если очередь пуста
                 virtual std::shared_ptr<Message::Notification::INotificationData> nextNotificationData() = 0;
 
-                /// Сообщает о количестве запросов в очереди
+                /// Сообщает о количестве уведомлений в очереди
                 /// \return 0, если очередь пуста
                 virtual size_t notificationCount() const = 0;
+
+                /// \brief Возвращает экземпляр IInteractionData, хранящийся в очереди
+                /// \return nullptr, если очередь пуста
+                virtual std::shared_ptr<Message::Interaction::IInteractionData> nextInteractionData() = 0;
+
+                /// Сообщает о количестве команд взаимодействия в очереди
+                /// \return 0, если очередь пуста
+                virtual size_t interactionCount() const = 0;
             };//class IMessageParser
         }//namespace Parser
     }//namespace MessageProcessor

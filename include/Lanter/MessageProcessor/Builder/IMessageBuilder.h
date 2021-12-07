@@ -10,6 +10,7 @@
 #include "Lanter/Message/Request/IRequestData.h"
 #include "Lanter/Message/Response/IResponseData.h"
 #include "Lanter/Message/Notification/INotificationData.h"
+#include "Lanter/Message/Interaction/IInteractionData.h"
 
 namespace Lanter {
     namespace MessageProcessor {
@@ -39,6 +40,13 @@ namespace Lanter {
                 /// \return true, если сборка сообщения прошла успешно.
                 /// \sa Message::Notification::INotificationData
                 virtual bool createMessage(std::shared_ptr<Message::Notification::INotificationData> data, std::vector<uint8_t> &result) = 0;
+
+                /// \brief Создает сообщение на основе контейнера IInteractionData
+                /// \param[in] data Заполненный контейнер IInteractionData
+                /// \param[out] result vector из байтов, содержащий собранное сообщение
+                /// \return true, если сборка сообщения прошла успешно.
+                /// \sa Message::Interaction::IInteractionData
+                virtual bool createMessage(std::shared_ptr<Message::Interaction::IInteractionData> data, std::vector<uint8_t> &result) = 0;
             };//class IMessageBuilder
         }//namespace Builder
     }//namespace MessageProcessor

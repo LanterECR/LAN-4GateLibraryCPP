@@ -20,6 +20,11 @@ namespace Lanter {
         /// уведомлений Notification::NotificationCode
         namespace Notification { }
 
+        /// \brief Пространство имен команд взаимодействия к финансовому ПО LAN-4Tap.
+        /// \details Содержит контейнер IInteractionData, его фабрику InteractionDataFactory и перечисление с кодами
+        /// уведомлений Interaction::InteractionCode
+        namespace Interaction { }
+
         /// \brief Пространство имен запросов к финансовому ПО LAN-4Tap.
         /// \details Содержит контейнер IRequestData, его фабрику RequestDataFactory и перечисление с
         /// доступными полями запроса Request::RequestField

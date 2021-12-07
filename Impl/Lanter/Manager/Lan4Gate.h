@@ -49,25 +49,35 @@ namespace Lanter {
 
             bool removeRequestCallback(size_t id) override;
 
+            size_t requestCallbacksCount() const override;
+
             size_t addResponseCallback(std::function<void(std::shared_ptr<Message::Response::IResponseData>)> callback) override;
 
             bool removeResponseCallback(size_t id) override;
+
+            size_t responseCallbacksCount() const override;
 
             size_t addNotificationCallback(std::function<void(std::shared_ptr<Message::Notification::INotificationData>)> callback) override;
 
             bool removeNotificationCallback(size_t id) override;
 
-            size_t requestCallbacksCount() const override;
-
-            size_t responseCallbacksCount() const override;
-
             size_t notificationCallbacksCount() const override;
+
+            size_t addInteractionCallback(
+                    std::function<void(std::shared_ptr<Message::Interaction::IInteractionData>)> callback) override;
+
+            bool removeInteractionCallback(size_t id) override;
+
+            size_t interactionCallbacksCount() const override;
 
             std::shared_ptr<Message::Request::IRequestData> getPreparedRequest(Message::OperationCode operationCode) override;
 
             std::shared_ptr<Message::Response::IResponseData> getPreparedResponse(Message::OperationCode operationCode) override;
 
             std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode ) override;
+
+            std::shared_ptr<Message::Interaction::IInteractionData>
+            getPreparedInteraction(Message::Interaction::InteractionCode interactionCode) override;
 
             size_t addConnectionCallback(std::function<void(bool)> callback) override;
 
@@ -80,6 +90,8 @@ namespace Lanter {
             bool sendMessage(std::shared_ptr<Message::Response::IResponseData> response) override;
 
             bool sendMessage(std::shared_ptr<Message::Notification::INotificationData> notification) override;
+
+            bool sendMessage(std::shared_ptr<Message::Interaction::IInteractionData> interaction) override;
 
         private:
             bool createParser();
@@ -104,6 +116,7 @@ namespace Lanter {
             void notifyRequest();
             void notifyResponse();
             void notifyNotification();
+            void notifyInteraction();
             void notifyConnectionStatus(bool status);
 
             bool waitFuture();
@@ -136,6 +149,8 @@ namespace Lanter {
             std::unordered_map<size_t, std::function<void(std::shared_ptr<Message::Response::IResponseData>)> > m_ResponseCallbacks;
 
             std::unordered_map<size_t, std::function<void(std::shared_ptr<Message::Notification::INotificationData>)> > m_NotificationCallbacks;
+
+            std::unordered_map<size_t, std::function<void(std::shared_ptr<Message::Interaction::IInteractionData>)> > m_InteractionCallbacks;
 
             std::unordered_map<size_t, std::function<void(bool)> > m_ConnectionCallbacks;
 

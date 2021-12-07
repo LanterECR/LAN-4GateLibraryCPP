@@ -23,12 +23,14 @@ namespace Lanter {
             static const std::string &getResponseValue();
             static const std::string &getCommunicationValue();
             static const std::string &getNotificationValue();
+            static const std::string &getInteractionValue();
         private:
             JSONClassFieldValues() = default;
             static std::string requestValue;
             static std::string responseValue;
             static std::string communicationValue;
             static std::string notificationValue;
+            static std::string interactionValue;
         };
 
         class JSONRequestFields
@@ -306,6 +308,15 @@ namespace Lanter {
             static std::string Code;
             static std::string Message;
             static std::string Additional;
+        };
+
+        class JSONInteractionFields
+        {
+        public:
+            static const std::string &getCode();
+        private:
+            JSONInteractionFields() = default;
+            static std::string Code;
         };
     }
 }

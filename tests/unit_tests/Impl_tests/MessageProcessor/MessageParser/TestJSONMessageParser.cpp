@@ -201,3 +201,39 @@ TEST(TestJSONMessageParser, CheckNotification) {
     EXPECT_EQ(parser.nextNotificationData(), nullptr);
     EXPECT_EQ(parser.notificationCount(), 0);
 }
+
+TEST(TestJSONMessageParser, CheckInteraction) {
+    Json::Value root;
+
+    std::vector<uint8_t> data;
+    JSONMessageParser parser;
+
+    AddFieldsHelper::addField(root, JSONRootFields::getClassField(), JSONClassFieldValues::getInteractionValue());
+
+    Json::Value object;
+    AddFieldsHelper::addField(object, JSONInteractionFields::getCode(), (int)InteractionCode::FirstValue);
+
+    AddFieldsHelper::addField(root, JSONRootFields::getObjectField(), object);
+
+    //TODO заменить на актуальный writer
+    Json::FastWriter writer;
+
+    StringConverter::convertToVector(writer.write(root), data);
+
+    EXPECT_EQ(parser.parseMessage(data), MessageType::Interaction);
+    EXPECT_EQ(parser.interactionCount(), 1);
+
+    EXPECT_EQ(parser.parseMessage(data), MessageType::Interaction);
+    EXPECT_EQ(parser.interactionCount(), 2);
+
+
+
+    EXPECT_NE(parser.nextInteractionData(), nullptr);
+    EXPECT_EQ(parser.interactionCount(), 1);
+
+    EXPECT_NE(parser.nextInteractionData(), nullptr);
+    EXPECT_EQ(parser.interactionCount(), 0);
+
+    EXPECT_EQ(parser.nextInteractionData(), nullptr);
+    EXPECT_EQ(parser.interactionCount(), 0);
+}

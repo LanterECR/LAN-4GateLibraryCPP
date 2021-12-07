@@ -12,10 +12,10 @@ namespace Lanter {
                 Response, ///< Ответ финансового ПО LAN-4Tap
                 Notification, ///< Уведомление от финансового ПО LAN-4Tap
                 Communication, ///< Коммуникационное сообщение от финансового ПО LAN-4Tap
-
+                Interaction, ///< Сообщение взаимодействия
                 //Границы
                 FirstValue = Unknown, ///< Ссылка на первый элемент перечисления
-                LastValue = Communication ///< Ссылка на последний элемент перечисления
+                LastValue = Interaction ///< Ссылка на последний элемент перечисления
             };//enum MessageType
         }//namespace Parser
     }//namespace MessageProcessor

@@ -7,7 +7,7 @@ namespace Lanter {
     namespace Message {
         namespace Notification {
             /// \brief Список поддерживаемых уведомлений
-            enum class LANTER_VISIBILITY NotificationCode {
+            enum class NotificationCode {
                 NoNotification, ///< Значение по умолчанию. Уведомления нет
                 ReversalUploadingError, ///< Ошибка выгрузки реверса
                 IncorrectVoidAmount, ///< Некорректная сумма отмены
