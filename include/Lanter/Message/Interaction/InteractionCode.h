@@ -6,7 +6,9 @@ namespace Lanter {
         namespace Interaction {
             enum class InteractionCode {
                 NoInteraction, ///< Значение по умолчанию
-                Abort ///< Прервать выполняемую операцию
+                Abort, ///< Прервать выполняемую операцию
+                FirstValue = Abort, ///< Ссылка на первый элемент перечисления
+                LastValue = Abort ///< Ссылка на последний элемент перечисления
             };
         }
     }
