@@ -35,6 +35,13 @@ TEST(TestJSONMessageTypeChecker, CheckNotification) {
     EXPECT_EQ(JSONMessageTypeChecker::checkType(object), MessageType::Notification);
 }
 
+TEST(TestJSONMessageTypeChecker, CheckInteraction) {
+    Json::Value object;
+
+    object[JSONRootFields::getClassField()] = JSONClassFieldValues::getInteractionValue();
+    EXPECT_EQ(JSONMessageTypeChecker::checkType(object), MessageType::Interaction);
+}
+
 TEST(TestJSONMessageTypeChecker, CheckCommunication) {
     Json::Value object;
 
