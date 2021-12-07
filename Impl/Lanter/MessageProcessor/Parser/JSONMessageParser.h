@@ -12,6 +12,7 @@ namespace Lanter {
     using namespace Message::Request;
     using namespace Message::Response;
     using namespace Message::Notification;
+    using namespace Message::Interaction;
     namespace MessageProcessor {
         namespace Parser {
             class JSONMessageParser : public IMessageParser {
@@ -31,6 +32,10 @@ namespace Lanter {
 
                 size_t notificationCount() const override;
 
+                std::shared_ptr<Message::Interaction::IInteractionData> nextInteractionData() override;
+
+                size_t interactionCount() const override;
+
                 MessageType parseObject(const Json::Value &root);
 
                 static bool readMessage(const std::string &message, Json::Value &root);
@@ -42,9 +47,12 @@ namespace Lanter {
 
                 bool createNotification(const Json::Value &object);
 
+                bool createInteraction(const Json::Value &object);
+
                 std::queue<std::shared_ptr<IRequestData> > m_Requests;
                 std::queue<std::shared_ptr<IResponseData> > m_Responses;
                 std::queue<std::shared_ptr<INotificationData> > m_Notifications;
+                std::queue<std::shared_ptr<IInteractionData> > m_Interactions;
             };
         }
     }

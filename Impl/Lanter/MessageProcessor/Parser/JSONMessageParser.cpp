@@ -12,6 +12,7 @@
 #include "JSONRequestParser.h"
 #include "JSONResponseParser.h"
 #include "JSONNotificationParser.h"
+#include "JSONInteractionParser.h"
 
 namespace Lanter {
     namespace MessageProcessor {
@@ -69,6 +70,19 @@ namespace Lanter {
                 return m_Notifications.size();
             }
 
+            std::shared_ptr<Message::Interaction::IInteractionData> JSONMessageParser::nextInteractionData() {
+                std::shared_ptr<IInteractionData> result = nullptr;
+                if (!m_Interactions.empty()) {
+                    result = m_Interactions.front();
+                    m_Interactions.pop();
+                }
+                return result;
+            }
+
+            size_t JSONMessageParser::interactionCount() const {
+                return m_Interactions.size();
+            }
+
             bool JSONMessageParser::readMessage(const std::string &message, Json::Value &root) {
                 bool result = false;
                 try {
@@ -100,6 +114,11 @@ namespace Lanter {
                         break;
                     case MessageType::Notification:
                         if (!createNotification(object)) {
+                            result = MessageType::Error;
+                        }
+                        break;
+                    case MessageType::Interaction:
+                        if(!createInteraction(object)) {
                             result = MessageType::Error;
                         }
                         break;
@@ -143,6 +162,18 @@ namespace Lanter {
                 }
                 return result;
             }
+
+            bool JSONMessageParser::createInteraction(const Json::Value &object) {
+                JSONInteractionParser parser;
+
+                auto interaction = parser.parseData(object);
+                bool result = interaction != nullptr;
+                if (result) {
+                    m_Interactions.push(interaction);
+                }
+                return result;
+            }
+
         }
     }
 }
