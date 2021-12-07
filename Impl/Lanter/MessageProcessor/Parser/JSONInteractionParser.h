@@ -16,7 +16,6 @@ namespace Lanter {
             class JSONInteractionParser {
             public:
                 std::shared_ptr<IInteractionData> parseData(const Json::Value &object);
-            private:
                 bool getCode(const Json::Value &object, IInteractionData &data);
             };
         }
