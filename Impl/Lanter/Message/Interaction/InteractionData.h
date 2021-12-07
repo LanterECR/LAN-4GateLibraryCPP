@@ -1,0 +1,22 @@
+#ifndef LAN_4GATELIB_INTERACTIONDATA_H
+#define LAN_4GATELIB_INTERACTIONDATA_H
+
+#include "Lanter/Message/Interaction/IInteractionData.h"
+
+namespace Lanter {
+    namespace Message {
+        namespace Interaction {
+            class InteractionData : public IInteractionData {
+            public:
+                InteractionCode getCode() const override;
+
+                void setCode(InteractionCode code) override;
+
+            private:
+                InteractionCode m_Code = InteractionCode::NoInteraction;
+            };
+        }
+    }
+}
+
+#endif //LAN_4GATELIB_INTERACTIONDATA_H
