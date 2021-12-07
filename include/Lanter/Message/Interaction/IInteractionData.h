@@ -7,7 +7,7 @@ namespace Lanter {
     namespace Message {
         namespace Interaction {
             ///\brief Базовый класс-контейнер для передачи команд взаимодействия
-            class InteractionData {
+            class IInteractionData {
             public:
                 /// \brief Возвращает установленный код команды взаимодействия
                 /// \return Код команды взаимодействия. По умолчанию NoInteraction
