@@ -12,6 +12,7 @@
 #include "Lanter/Message/Request/IRequestData.h"
 #include "Lanter/Message/Response/IResponseData.h"
 #include "Lanter/Message/Notification/INotificationData.h"
+#include "Lanter/Message/Interaction/IInteractionData.h"
 
 namespace Lanter {
     namespace Manager {
@@ -136,6 +137,21 @@ namespace Lanter {
             /// \return количество зарегистрированных колбеков
             virtual size_t notificationCallbacksCount() const = 0;
 
+            /// \brief Добавляет колбек в список слушателей для получения данных команд взаимодействия
+            /// \param[in] callback std::function на колбек-функцию
+            /// \return id зарегистрированного колбека
+            /// \sa Message::Interaction::IInteractionData
+            virtual size_t addInteractionCallback(std::function<void(std::shared_ptr<Message::Interaction::IInteractionData>)> callback) = 0;
+
+            /// \brief Удаляет колбек команд взаимодействия из списка
+            /// \param[in] id идентификатор колбека
+            /// \return true, если успешно удалено
+            virtual bool removeInteractionCallback(size_t id) = 0;
+
+            /// \brief Возвращает количество зарегистрированных колбеков для получения данных команд взаимодействия
+            /// \return количество зарегистрированных колбеков
+            virtual size_t interactionCallbacksCount() const = 0;
+
             /// \brief Добавляет колбек в список слушателей для получения уведомления о подключении
             /// \param[in] callback std::function на колбек-функцию
             /// \return id зарегистрированного колбека
@@ -167,7 +183,13 @@ namespace Lanter {
             /// \param[in] notificationCode Код уведомления, для которого необходимо создать объект. По умолчанию NoNotification
             /// \return nullptr, если не удалось создать объект
             /// \sa Message::Notification::NotificationDataFactory
-            virtual std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode = Message::Notification::NotificationCode::NoNotification) = 0;
+            virtual std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode) = 0;
+
+            /// \brief Возвращает подготовленный объект ответа с заполненным полем InteractionCode
+            /// \param[in] interactionCode Код взаимодействия, для которого необходимо создать объект. По умолчанию NoInteraction
+            /// \return nullptr, если не удалось создать объект
+            /// \sa Message::Interaction::InteractionDataFactory
+            virtual std::shared_ptr<Message::Interaction::IInteractionData> getPreparedInteraction(Message::Interaction::InteractionCode interactionCode) = 0;
 
             /// \brief Отправляет сообщение запроса
             /// \param[in] request объект запроса, который необходимо отправить
@@ -180,9 +202,14 @@ namespace Lanter {
             virtual bool sendMessage(std::shared_ptr<Message::Response::IResponseData> response) = 0;
 
             /// \brief Отправляет сообщение уведомления
-            /// \param[in] notification объект ответа, который необходимо отправить
+            /// \param[in] notification объект уведомления, который необходимо отправить
             /// \return true если сообщение отправлено
             virtual bool sendMessage(std::shared_ptr<Message::Notification::INotificationData> notification) = 0;
+
+            /// \brief Отправляет сообщение взаимодействия
+            /// \param[in] interaction объект взаимодействия, который необходимо отправить
+            /// \return true если сообщение отправлено
+            virtual bool sendMessage(std::shared_ptr<Message::Interaction::IInteractionData> interaction) = 0;
         };
     }
 }
