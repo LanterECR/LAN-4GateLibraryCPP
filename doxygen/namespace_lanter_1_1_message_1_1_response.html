@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.8.5</span>
+   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.9.0</span>
    </div>
    <div id="projectbrief">Реализация протокола кассового взаимодействия LAN-4Gate</div>
   </td>
@@ -85,7 +85,8 @@ $(document).ready(function(){initNavTree('namespace_lanter_1_1_message_1_1_respo
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Классы</a>  </div>
+<a href="#nested-classes">Классы</a> &#124;
+<a href="#enum-members">Перечисления</a>  </div>
   <div class="headertitle"><div class="title">Пространство имен Lanter::Message::Response</div></div>
 </div><!--header-->
 <div class="contents">
@@ -101,22 +102,406 @@ $(document).ready(function(){initNavTree('namespace_lanter_1_1_message_1_1_respo
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_response_data_factory.html">ResponseDataFactory</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Фабричный класс, возвращающий предварительно заполненный объект <a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html" title="Базовый класс-контейнер для получения уведомлений от финансового ПО LAN-4Tap.">IResponseData</a>.  <a href="class_lanter_1_1_message_1_1_response_1_1_response_data_factory.html#details">Подробнее...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
+Перечисления</h2></td></tr>
+<tr class="memitem:abec5ca6b89771c54b86bc2e4428be2f9"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_lanter_1_1_message_1_1_response.html#abec5ca6b89771c54b86bc2e4428be2f9">CardholderAuthMethod</a> { <br />
+&#160;&#160;<b>NoMethod</b> = -1
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#abec5ca6b89771c54b86bc2e4428be2f9a3dc1fafb60dbaa88465b88f77478d7e2">NoVerification</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#abec5ca6b89771c54b86bc2e4428be2f9a9caba20886bea0cb5d3cdb7577980579">PinVerification</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#abec5ca6b89771c54b86bc2e4428be2f9a05372aa8edf2c1e0be36eff8076af9a9">PaperSignatureVerification</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#abec5ca6b89771c54b86bc2e4428be2f9ae1d5013bea70bbef8f60975c695b2fa8">ClientDeviceVerification</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#abec5ca6b89771c54b86bc2e4428be2f9a72fbccc72f1137a08c4b289d51a0a18c">FirstValue</a> = NoVerification
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#abec5ca6b89771c54b86bc2e4428be2f9a52f7b2c6f7851fcda22428c654459715">LastValue</a> = ClientDeviceVerification
+<br />
+ }</td></tr>
+<tr class="memdesc:abec5ca6b89771c54b86bc2e4428be2f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список возможных значений поля ResponseField::CardholderAuthMethod в ответе финансового ПО LAN-4Tap.  <a href="namespace_lanter_1_1_message_1_1_response.html#abec5ca6b89771c54b86bc2e4428be2f9">Подробнее...</a><br /></td></tr>
+<tr class="separator:abec5ca6b89771c54b86bc2e4428be2f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6dcbd24e296f207907b51c8123d9a63"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63">CardInputMethod</a> { <br />
+&#160;&#160;<b>NoMethod</b>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63ae07eda98af129600ee503bde71d6cbf5">TerminalManualEntry</a> = 1
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a234d97a682f474e819e05977e445a4cc">ExternalManualEntry</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a631e753701bdc9e4d28330ddb000d575">MagStrip</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63af61041ab56ea8d9fae5caee7b2319850">MagStripFallback</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a572ba8d18ba586932a163256d44411cf">ChipFullGrade</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a4eedb8b63b554e30f94a45c0d4f90783">ChipPartialGrade</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a7448e4b2cbd46461d616004e0b491451">ContactlessMagStripMode</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a75e0ea4f37d420e1950792944039bc49">ContactlessChipMode</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a72fbccc72f1137a08c4b289d51a0a18c">FirstValue</a> = TerminalManualEntry
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a52f7b2c6f7851fcda22428c654459715">LastValue</a> = ContactlessChipMode
+<br />
+ }</td></tr>
+<tr class="memdesc:aa6dcbd24e296f207907b51c8123d9a63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список возможных значений поля ResponseField::CardInputMethod в ответе финансового ПО LAN-4Tap.  <a href="namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63">Подробнее...</a><br /></td></tr>
+<tr class="separator:aa6dcbd24e296f207907b51c8123d9a63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab92cdd52172d3e9ae313e969a1700ef7"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7">ResponseField</a> { <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a5087365dbca04882814027eb490e74d2">EcrNumber</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7ac848f9938fc01e1ab41c96698e54398b">EcrMerchantNumber</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7ad99d5cb8ccd92959020e8020c016c493">OperationCode</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a5cc213d2ea09defbd9ebd3eb7c294f0c">OriginalOperationCode</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a6ea5ae17abbd79c2573bbf37aa0fef07">TotalAmount</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a144fbea229b16154f849597d3ac86705">PartialAmount</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a9674f842529846eeba5b8b0a056d1cb7">AcquirerFeeAmount</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a788b5587998e333a1216bef35777613f">TerminalFeeAmount</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a0a431891dc8cdc29f82add263596b4d6">TipsAmount</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a75c8ef7d73415885d3739c899a166bd2">CurrencyCode</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a52fe1a39ddda56cca9ef238f60ce2615">ReceiptReference</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a902a96ab5d74394f3c685e607b4248fc">RRN</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7aec53a8c4f07baed5d8825072c89799be">Status</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a2313a3f9253cb3d22fdb138bc0f46bdc">OriginalOperationStatus</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7ae56f76cc5b44201cbb08452b846abc33">TransDateTime</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a6159479b42a367f1923ece5a7f0465f3">TerminalDateTime</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7adee78f105b6a9feb5c493ed59747b1bf">CardPAN</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a702111df9258b6aba81b9a19576238bc">ExpireDate</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a40c384f541cfbd9b06e29cfb2b86058a">CardholderName</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7aa32647d468f4c010dd1c879779431c77">CardholderAuthMethod</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a543fd7578846f4d5089c4198b3b883d9">AuthCode</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7af1d055ec755a314f31ba9a81d911a210">ResponseCode</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a3c8b6c8966ea5d6ef7fe8eef58a3680d">ResponseText</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7ac2863d2a50c9acad1fb50e53ece60817">STAN</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a2b2c378590e8ed54781c5cc4959e2a8c">TransactionID</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a49bd341e0beef1579bab75c26b826dc2">TerminalID</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a1de31170e016bb7c9808e415fd0c187e">CardEmvAid</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7aa70b0cc78b24c1975d7939c6d2f3511e">CardAppName</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a26984a2cc44df41242076e61e2ef2bb0">CardInputMethod</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a3c2650f9886e47b5cd9e909e82958fee">IssuerName</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a509dce9f08fe15e12f857e209f92cb14">AdditionalInfo</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a0352728b30c7090a2c4010fa396df3d8">CardData</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a9ae4a8be356c4c99b388e88a80c76c45">CardDataEnc</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a88e1bafdb410cd41139a1235610e364e">MerchantID</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a25e20053ed7a0b71110207f5481bbe96">TVR</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7af1d129854777266fc2757df0224eae5c">TSI</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7aff9c072d42a94d0a5112613019b54eae">TC</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7add395d6201581ad212d782d571f0ad64">CID</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a7e2ad69f4a90f57a1f32bd4c27b72f56">KVR</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a2c2c6cf1c5107ea9549d5be0542ad433">CDAResult</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7ab8adb670af6a694306eb4dfb359e2a34">SaleCount</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a07be43db4e40e0e7c56790bf08064d63">VoidCount</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7aa3e11ef78aaafe00f415a2f3be8bf858">RefundCount</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a311cdd7ba770559622cb4d6f30489f6a">SaleArray</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a711442470617c351dc1dc8dcc07792e7">VoidArray</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a1232114aced6abf639deb595c428eef2">RefundArray</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a72fbccc72f1137a08c4b289d51a0a18c">FirstValue</a> = EcrNumber
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a52f7b2c6f7851fcda22428c654459715">LastValue</a> = RefundArray
+<br />
+ }</td></tr>
+<tr class="memdesc:ab92cdd52172d3e9ae313e969a1700ef7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Перечисление содержит все поля, используемые в ответах от финансового ПО LAN-4Tap.  <a href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab92cdd52172d3e9ae313e969a1700ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15fd06a4f465e1d2db00a5c7c3b762fd"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fd">Status</a> { <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda2c1303eeef311e5528208cf16767d135">NoStatus</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda505a83f220c02df2f85c3810cd9ceb38">Success</a> = 1
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda902b0d55fddef6f8d651fe1035b7d4bd">Error</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda0d3627289b893d3eea08e52589ed06ae">Decline</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fdadb3f55cd913a0331acdfa5fa1da8323a">CommunicationError</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda42a398df666dabd19580b750e9d11535">OperationIsAutoReversal</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fdaa0a5012bd1b0f4312084b8eda6c8251d">EcrAlreadyRegistered</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda6e9c7599632a61635feb98d1fe28888a">ConnectionLimitReached</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda918bef8fa4719dd77fe7532c9a7e6ff7">ReceiptNotFound</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda0453fc59b175d07afdeaffdd0bcdb7d8">TotalsNotAgreed</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda771f9a9aad606aaf7f125bd507d2cb79">NeedSettlement</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fdaf4082a2bd68ee29ec342c49d9a69c439">CanceledByTerminal</a>
+, <br />
+&#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda8d60b2d4aef8f5cffe71226b955455e3">FastTrackKeyError</a>
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda72fbccc72f1137a08c4b289d51a0a18c">FirstValue</a> = Success
+, <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda52f7b2c6f7851fcda22428c654459715">LastValue</a> = FastTrackKeyError
+<br />
+ }</td></tr>
+<tr class="memdesc:a15fd06a4f465e1d2db00a5c7c3b762fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список возможных значений поля ResponseField::Status в ответе финансового ПО LAN-4Tap.  <a href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fd">Подробнее...</a><br /></td></tr>
+<tr class="separator:a15fd06a4f465e1d2db00a5c7c3b762fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><p >Пространство имен ответов от финансового ПО LAN-4Tap. </p>
 <p >Содержит контейнер <a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html" title="Базовый класс-контейнер для получения уведомлений от финансового ПО LAN-4Tap.">IResponseData</a>, его фабрику <a class="el" href="class_lanter_1_1_message_1_1_response_1_1_response_data_factory.html" title="Фабричный класс, возвращающий предварительно заполненный объект IResponseData.">ResponseDataFactory</a> и следующие перечисления:<br  />
-Response::ResponseField - доступные поля ответа;<br  />
-Response::CardholderAuthMethod - значения поля ResponseField::CardholderAuthMethod; <br  />
-Response::CardInputMethod - значения поля ResponseField::CardInputMethod <br  />
-Response::Status - значения поля ResponseField::Status и ResponseField::OriginalOperationStatus <br  />
+<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7" title="Перечисление содержит все поля, используемые в ответах от финансового ПО LAN-4Tap.">Response::ResponseField</a> - доступные поля ответа;<br  />
+<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#abec5ca6b89771c54b86bc2e4428be2f9" title="Список возможных значений поля ResponseField::CardholderAuthMethod в ответе финансового ПО LAN-4Tap.">Response::CardholderAuthMethod</a> - значения поля <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7aa32647d468f4c010dd1c879779431c77" title="Способ авторизации держателя карты">ResponseField::CardholderAuthMethod</a>; <br  />
+<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63" title="Список возможных значений поля ResponseField::CardInputMethod в ответе финансового ПО LAN-4Tap.">Response::CardInputMethod</a> - значения поля <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a26984a2cc44df41242076e61e2ef2bb0" title="Метод обработки карты">ResponseField::CardInputMethod</a> <br  />
+<a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fd" title="Список возможных значений поля ResponseField::Status в ответе финансового ПО LAN-4Tap.">Response::Status</a> - значения поля <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7aec53a8c4f07baed5d8825072c89799be" title="Статус выполнения операции">ResponseField::Status</a> и <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a2313a3f9253cb3d22fdb138bc0f46bdc" title="Статус выполнения оригинальной операции">ResponseField::OriginalOperationStatus</a> <br  />
  </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Перечисления</h2>
+<a id="abec5ca6b89771c54b86bc2e4428be2f9" name="abec5ca6b89771c54b86bc2e4428be2f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abec5ca6b89771c54b86bc2e4428be2f9">&#9670;&nbsp;</a></span>CardholderAuthMethod</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#abec5ca6b89771c54b86bc2e4428be2f9">Lanter::Message::Response::CardholderAuthMethod</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Список возможных значений поля <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7aa32647d468f4c010dd1c879779431c77" title="Способ авторизации держателя карты">ResponseField::CardholderAuthMethod</a> в ответе финансового ПО LAN-4Tap. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="abec5ca6b89771c54b86bc2e4428be2f9a3dc1fafb60dbaa88465b88f77478d7e2" name="abec5ca6b89771c54b86bc2e4428be2f9a3dc1fafb60dbaa88465b88f77478d7e2"></a>NoVerification&#160;</td><td class="fielddoc"><p >Операция не требует подтверждения </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abec5ca6b89771c54b86bc2e4428be2f9a9caba20886bea0cb5d3cdb7577980579" name="abec5ca6b89771c54b86bc2e4428be2f9a9caba20886bea0cb5d3cdb7577980579"></a>PinVerification&#160;</td><td class="fielddoc"><p >Введен пин-код </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abec5ca6b89771c54b86bc2e4428be2f9a05372aa8edf2c1e0be36eff8076af9a9" name="abec5ca6b89771c54b86bc2e4428be2f9a05372aa8edf2c1e0be36eff8076af9a9"></a>PaperSignatureVerification&#160;</td><td class="fielddoc"><p >Необходимо получить подпись клиента на чеке и проверить ее </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abec5ca6b89771c54b86bc2e4428be2f9ae1d5013bea70bbef8f60975c695b2fa8" name="abec5ca6b89771c54b86bc2e4428be2f9ae1d5013bea70bbef8f60975c695b2fa8"></a>ClientDeviceVerification&#160;</td><td class="fielddoc"><p >Клиент выполнил проверку на своем устройстве </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abec5ca6b89771c54b86bc2e4428be2f9a72fbccc72f1137a08c4b289d51a0a18c" name="abec5ca6b89771c54b86bc2e4428be2f9a72fbccc72f1137a08c4b289d51a0a18c"></a>FirstValue&#160;</td><td class="fielddoc"><p >Ссылка на первый элемент перечисления </p>
+</td></tr>
+<tr><td class="fieldname"><a id="abec5ca6b89771c54b86bc2e4428be2f9a52f7b2c6f7851fcda22428c654459715" name="abec5ca6b89771c54b86bc2e4428be2f9a52f7b2c6f7851fcda22428c654459715"></a>LastValue&#160;</td><td class="fielddoc"><p >Ссылка на последний элемент перечисления </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="aa6dcbd24e296f207907b51c8123d9a63" name="aa6dcbd24e296f207907b51c8123d9a63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6dcbd24e296f207907b51c8123d9a63">&#9670;&nbsp;</a></span>CardInputMethod</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63">Lanter::Message::Response::CardInputMethod</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Список возможных значений поля <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a26984a2cc44df41242076e61e2ef2bb0" title="Метод обработки карты">ResponseField::CardInputMethod</a> в ответе финансового ПО LAN-4Tap. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="aa6dcbd24e296f207907b51c8123d9a63ae07eda98af129600ee503bde71d6cbf5" name="aa6dcbd24e296f207907b51c8123d9a63ae07eda98af129600ee503bde71d6cbf5"></a>TerminalManualEntry&#160;</td><td class="fielddoc"><p >Данные карты введены вручную в финансовом ПО LAN-4Tap. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa6dcbd24e296f207907b51c8123d9a63a234d97a682f474e819e05977e445a4cc" name="aa6dcbd24e296f207907b51c8123d9a63a234d97a682f474e819e05977e445a4cc"></a>ExternalManualEntry&#160;</td><td class="fielddoc"><p >Данные карты введены вручную за пределами финансового ПО LAN-4Tap. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa6dcbd24e296f207907b51c8123d9a63a631e753701bdc9e4d28330ddb000d575" name="aa6dcbd24e296f207907b51c8123d9a63a631e753701bdc9e4d28330ddb000d575"></a>MagStrip&#160;</td><td class="fielddoc"><p >Использована магнитная полоса </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa6dcbd24e296f207907b51c8123d9a63af61041ab56ea8d9fae5caee7b2319850" name="aa6dcbd24e296f207907b51c8123d9a63af61041ab56ea8d9fae5caee7b2319850"></a>MagStripFallback&#160;</td><td class="fielddoc"><p >Произошел фолбэк на магнитную полосу </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa6dcbd24e296f207907b51c8123d9a63a572ba8d18ba586932a163256d44411cf" name="aa6dcbd24e296f207907b51c8123d9a63a572ba8d18ba586932a163256d44411cf"></a>ChipFullGrade&#160;</td><td class="fielddoc"><p >Использована полная схема работы с чипом (контактным интерфейсом) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa6dcbd24e296f207907b51c8123d9a63a4eedb8b63b554e30f94a45c0d4f90783" name="aa6dcbd24e296f207907b51c8123d9a63a4eedb8b63b554e30f94a45c0d4f90783"></a>ChipPartialGrade&#160;</td><td class="fielddoc"><p >Использована сокращенная схема работы с чипом (контактным интерфейсом) </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa6dcbd24e296f207907b51c8123d9a63a7448e4b2cbd46461d616004e0b491451" name="aa6dcbd24e296f207907b51c8123d9a63a7448e4b2cbd46461d616004e0b491451"></a>ContactlessMagStripMode&#160;</td><td class="fielddoc"><p >Использован бесконтактный интерфейс в режиме эмуляции магнитной полосы </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa6dcbd24e296f207907b51c8123d9a63a75e0ea4f37d420e1950792944039bc49" name="aa6dcbd24e296f207907b51c8123d9a63a75e0ea4f37d420e1950792944039bc49"></a>ContactlessChipMode&#160;</td><td class="fielddoc"><p >Использован бесконтактный интерфейс в режиме эмуляции чипа </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa6dcbd24e296f207907b51c8123d9a63a72fbccc72f1137a08c4b289d51a0a18c" name="aa6dcbd24e296f207907b51c8123d9a63a72fbccc72f1137a08c4b289d51a0a18c"></a>FirstValue&#160;</td><td class="fielddoc"><p >Ссылка на первый элемент перечисления </p>
+</td></tr>
+<tr><td class="fieldname"><a id="aa6dcbd24e296f207907b51c8123d9a63a52f7b2c6f7851fcda22428c654459715" name="aa6dcbd24e296f207907b51c8123d9a63a52f7b2c6f7851fcda22428c654459715"></a>LastValue&#160;</td><td class="fielddoc"><p >Ссылка на последний элемент перечисления </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="ab92cdd52172d3e9ae313e969a1700ef7" name="ab92cdd52172d3e9ae313e969a1700ef7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab92cdd52172d3e9ae313e969a1700ef7">&#9670;&nbsp;</a></span>ResponseField</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7">Lanter::Message::Response::ResponseField</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Перечисление содержит все поля, используемые в ответах от финансового ПО LAN-4Tap. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a5087365dbca04882814027eb490e74d2" name="ab92cdd52172d3e9ae313e969a1700ef7a5087365dbca04882814027eb490e74d2"></a>EcrNumber&#160;</td><td class="fielddoc"><p >Логический номер кассы, используемый для взаимодействия с LAN-4Tap. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7ac848f9938fc01e1ab41c96698e54398b" name="ab92cdd52172d3e9ae313e969a1700ef7ac848f9938fc01e1ab41c96698e54398b"></a>EcrMerchantNumber&#160;</td><td class="fielddoc"><p >Логический номер мерчанта в кассовом ПО </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7ad99d5cb8ccd92959020e8020c016c493" name="ab92cdd52172d3e9ae313e969a1700ef7ad99d5cb8ccd92959020e8020c016c493"></a>OperationCode&#160;</td><td class="fielddoc"><p >Код запрашиваемой операции </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a5cc213d2ea09defbd9ebd3eb7c294f0c" name="ab92cdd52172d3e9ae313e969a1700ef7a5cc213d2ea09defbd9ebd3eb7c294f0c"></a>OriginalOperationCode&#160;</td><td class="fielddoc"><p >Номер оригинальной операции </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a6ea5ae17abbd79c2573bbf37aa0fef07" name="ab92cdd52172d3e9ae313e969a1700ef7a6ea5ae17abbd79c2573bbf37aa0fef07"></a>TotalAmount&#160;</td><td class="fielddoc"><p >Общая сумма операции </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a144fbea229b16154f849597d3ac86705" name="ab92cdd52172d3e9ae313e969a1700ef7a144fbea229b16154f849597d3ac86705"></a>PartialAmount&#160;</td><td class="fielddoc"><p >Часть оригинальной суммы. Используется в операциях отмены и возврата </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a9674f842529846eeba5b8b0a056d1cb7" name="ab92cdd52172d3e9ae313e969a1700ef7a9674f842529846eeba5b8b0a056d1cb7"></a>AcquirerFeeAmount&#160;</td><td class="fielddoc"><p >Комиссия эквайера </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a788b5587998e333a1216bef35777613f" name="ab92cdd52172d3e9ae313e969a1700ef7a788b5587998e333a1216bef35777613f"></a>TerminalFeeAmount&#160;</td><td class="fielddoc"><p >Комиссия терминала </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a0a431891dc8cdc29f82add263596b4d6" name="ab92cdd52172d3e9ae313e969a1700ef7a0a431891dc8cdc29f82add263596b4d6"></a>TipsAmount&#160;</td><td class="fielddoc"><p >Сумма чаевых </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a75c8ef7d73415885d3739c899a166bd2" name="ab92cdd52172d3e9ae313e969a1700ef7a75c8ef7d73415885d3739c899a166bd2"></a>CurrencyCode&#160;</td><td class="fielddoc"><p >Код валюты согласно ISO 4217. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a52fe1a39ddda56cca9ef238f60ce2615" name="ab92cdd52172d3e9ae313e969a1700ef7a52fe1a39ddda56cca9ef238f60ce2615"></a>ReceiptReference&#160;</td><td class="fielddoc"><p >Номер чека в финансовом ПО LAN-4Tap. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a902a96ab5d74394f3c685e607b4248fc" name="ab92cdd52172d3e9ae313e969a1700ef7a902a96ab5d74394f3c685e607b4248fc"></a>RRN&#160;</td><td class="fielddoc"><p >Retrieval Reference Number, полученный в ответ от хоста </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7aec53a8c4f07baed5d8825072c89799be" name="ab92cdd52172d3e9ae313e969a1700ef7aec53a8c4f07baed5d8825072c89799be"></a>Status&#160;</td><td class="fielddoc"><p >Статус выполнения операции </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a2313a3f9253cb3d22fdb138bc0f46bdc" name="ab92cdd52172d3e9ae313e969a1700ef7a2313a3f9253cb3d22fdb138bc0f46bdc"></a>OriginalOperationStatus&#160;</td><td class="fielddoc"><p >Статус выполнения оригинальной операции </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7ae56f76cc5b44201cbb08452b846abc33" name="ab92cdd52172d3e9ae313e969a1700ef7ae56f76cc5b44201cbb08452b846abc33"></a>TransDateTime&#160;</td><td class="fielddoc"><p >Время выполнения операции на хосте </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a6159479b42a367f1923ece5a7f0465f3" name="ab92cdd52172d3e9ae313e969a1700ef7a6159479b42a367f1923ece5a7f0465f3"></a>TerminalDateTime&#160;</td><td class="fielddoc"><p >Время выполнения операции на терминале </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7adee78f105b6a9feb5c493ed59747b1bf" name="ab92cdd52172d3e9ae313e969a1700ef7adee78f105b6a9feb5c493ed59747b1bf"></a>CardPAN&#160;</td><td class="fielddoc"><p >Маскированный PAN карты </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a702111df9258b6aba81b9a19576238bc" name="ab92cdd52172d3e9ae313e969a1700ef7a702111df9258b6aba81b9a19576238bc"></a>ExpireDate&#160;</td><td class="fielddoc"><p >Срок действия карты </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a40c384f541cfbd9b06e29cfb2b86058a" name="ab92cdd52172d3e9ae313e969a1700ef7a40c384f541cfbd9b06e29cfb2b86058a"></a>CardholderName&#160;</td><td class="fielddoc"><p >Имя держателя карты </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7aa32647d468f4c010dd1c879779431c77" name="ab92cdd52172d3e9ae313e969a1700ef7aa32647d468f4c010dd1c879779431c77"></a>CardholderAuthMethod&#160;</td><td class="fielddoc"><p >Способ авторизации держателя карты </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a543fd7578846f4d5089c4198b3b883d9" name="ab92cdd52172d3e9ae313e969a1700ef7a543fd7578846f4d5089c4198b3b883d9"></a>AuthCode&#160;</td><td class="fielddoc"><p >Код авторизации на хосте </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7af1d055ec755a314f31ba9a81d911a210" name="ab92cdd52172d3e9ae313e969a1700ef7af1d055ec755a314f31ba9a81d911a210"></a>ResponseCode&#160;</td><td class="fielddoc"><p >Код ответа хоста или финансового ПО LAN-4Tap. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a3c8b6c8966ea5d6ef7fe8eef58a3680d" name="ab92cdd52172d3e9ae313e969a1700ef7a3c8b6c8966ea5d6ef7fe8eef58a3680d"></a>ResponseText&#160;</td><td class="fielddoc"><p >Дополнительные данные ответа </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7ac2863d2a50c9acad1fb50e53ece60817" name="ab92cdd52172d3e9ae313e969a1700ef7ac2863d2a50c9acad1fb50e53ece60817"></a>STAN&#160;</td><td class="fielddoc"><p >Идентификатор транзакции в финансовом ПО LAN-4Tap. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a2b2c378590e8ed54781c5cc4959e2a8c" name="ab92cdd52172d3e9ae313e969a1700ef7a2b2c378590e8ed54781c5cc4959e2a8c"></a>TransactionID&#160;</td><td class="fielddoc"><p >Идентификатор транзакции на хосте, полученный в ответ на предыдущую операцию </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a49bd341e0beef1579bab75c26b826dc2" name="ab92cdd52172d3e9ae313e969a1700ef7a49bd341e0beef1579bab75c26b826dc2"></a>TerminalID&#160;</td><td class="fielddoc"><p >Идентификатор терминала на хосте </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a1de31170e016bb7c9808e415fd0c187e" name="ab92cdd52172d3e9ae313e969a1700ef7a1de31170e016bb7c9808e415fd0c187e"></a>CardEmvAid&#160;</td><td class="fielddoc"><p >Идентификатор приложения карты </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7aa70b0cc78b24c1975d7939c6d2f3511e" name="ab92cdd52172d3e9ae313e969a1700ef7aa70b0cc78b24c1975d7939c6d2f3511e"></a>CardAppName&#160;</td><td class="fielddoc"><p >Название приложения карты </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a26984a2cc44df41242076e61e2ef2bb0" name="ab92cdd52172d3e9ae313e969a1700ef7a26984a2cc44df41242076e61e2ef2bb0"></a>CardInputMethod&#160;</td><td class="fielddoc"><p >Метод обработки карты </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a3c2650f9886e47b5cd9e909e82958fee" name="ab92cdd52172d3e9ae313e969a1700ef7a3c2650f9886e47b5cd9e909e82958fee"></a>IssuerName&#160;</td><td class="fielddoc"><p >Название платежной системы </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a509dce9f08fe15e12f857e209f92cb14" name="ab92cdd52172d3e9ae313e969a1700ef7a509dce9f08fe15e12f857e209f92cb14"></a>AdditionalInfo&#160;</td><td class="fielddoc"><p >Дополнительные данные операции </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a0352728b30c7090a2c4010fa396df3d8" name="ab92cdd52172d3e9ae313e969a1700ef7a0352728b30c7090a2c4010fa396df3d8"></a>CardData&#160;</td><td class="fielddoc"><p >Открытые данные карты </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a9ae4a8be356c4c99b388e88a80c76c45" name="ab92cdd52172d3e9ae313e969a1700ef7a9ae4a8be356c4c99b388e88a80c76c45"></a>CardDataEnc&#160;</td><td class="fielddoc"><p >Зашифрованные данные карты </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a88e1bafdb410cd41139a1235610e364e" name="ab92cdd52172d3e9ae313e969a1700ef7a88e1bafdb410cd41139a1235610e364e"></a>MerchantID&#160;</td><td class="fielddoc"><p >Идентификатор мерчанта на хосте </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a25e20053ed7a0b71110207f5481bbe96" name="ab92cdd52172d3e9ae313e969a1700ef7a25e20053ed7a0b71110207f5481bbe96"></a>TVR&#160;</td><td class="fielddoc"><p >Данные работы с картой </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7af1d129854777266fc2757df0224eae5c" name="ab92cdd52172d3e9ae313e969a1700ef7af1d129854777266fc2757df0224eae5c"></a>TSI&#160;</td><td class="fielddoc"><p >Данные работы с картой </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7aff9c072d42a94d0a5112613019b54eae" name="ab92cdd52172d3e9ae313e969a1700ef7aff9c072d42a94d0a5112613019b54eae"></a>TC&#160;</td><td class="fielddoc"><p >Данные работы с картой </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7add395d6201581ad212d782d571f0ad64" name="ab92cdd52172d3e9ae313e969a1700ef7add395d6201581ad212d782d571f0ad64"></a>CID&#160;</td><td class="fielddoc"><p >Данные работы с картой </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a7e2ad69f4a90f57a1f32bd4c27b72f56" name="ab92cdd52172d3e9ae313e969a1700ef7a7e2ad69f4a90f57a1f32bd4c27b72f56"></a>KVR&#160;</td><td class="fielddoc"><p >Данные работы с картой </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a2c2c6cf1c5107ea9549d5be0542ad433" name="ab92cdd52172d3e9ae313e969a1700ef7a2c2c6cf1c5107ea9549d5be0542ad433"></a>CDAResult&#160;</td><td class="fielddoc"><p >Данные работы с картой </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7ab8adb670af6a694306eb4dfb359e2a34" name="ab92cdd52172d3e9ae313e969a1700ef7ab8adb670af6a694306eb4dfb359e2a34"></a>SaleCount&#160;</td><td class="fielddoc"><p >Количество операций оплаты, выполненных с момента последней сверки итогов </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a07be43db4e40e0e7c56790bf08064d63" name="ab92cdd52172d3e9ae313e969a1700ef7a07be43db4e40e0e7c56790bf08064d63"></a>VoidCount&#160;</td><td class="fielddoc"><p >Количество операций отмены, выполненных с момента последней сверки итогов </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7aa3e11ef78aaafe00f415a2f3be8bf858" name="ab92cdd52172d3e9ae313e969a1700ef7aa3e11ef78aaafe00f415a2f3be8bf858"></a>RefundCount&#160;</td><td class="fielddoc"><p >Количество операций возврата, выполненных с момента последней сверки итогов </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a311cdd7ba770559622cb4d6f30489f6a" name="ab92cdd52172d3e9ae313e969a1700ef7a311cdd7ba770559622cb4d6f30489f6a"></a>SaleArray&#160;</td><td class="fielddoc"><p >Массив, содержащий краткие сведения операций оплаты </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a711442470617c351dc1dc8dcc07792e7" name="ab92cdd52172d3e9ae313e969a1700ef7a711442470617c351dc1dc8dcc07792e7"></a>VoidArray&#160;</td><td class="fielddoc"><p >Массив, содержащий краткие сведения операций отмены </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a1232114aced6abf639deb595c428eef2" name="ab92cdd52172d3e9ae313e969a1700ef7a1232114aced6abf639deb595c428eef2"></a>RefundArray&#160;</td><td class="fielddoc"><p >Массив, содержащий краткие сведения операций возврата </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a72fbccc72f1137a08c4b289d51a0a18c" name="ab92cdd52172d3e9ae313e969a1700ef7a72fbccc72f1137a08c4b289d51a0a18c"></a>FirstValue&#160;</td><td class="fielddoc"><p >Ссылка на первый элемент перечисления </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ab92cdd52172d3e9ae313e969a1700ef7a52f7b2c6f7851fcda22428c654459715" name="ab92cdd52172d3e9ae313e969a1700ef7a52f7b2c6f7851fcda22428c654459715"></a>LastValue&#160;</td><td class="fielddoc"><p >Ссылка на последний элемент перечисления </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a id="a15fd06a4f465e1d2db00a5c7c3b762fd" name="a15fd06a4f465e1d2db00a5c7c3b762fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15fd06a4f465e1d2db00a5c7c3b762fd">&#9670;&nbsp;</a></span>Status</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fd">Lanter::Message::Response::Status</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Список возможных значений поля <a class="el" href="namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7aec53a8c4f07baed5d8825072c89799be" title="Статус выполнения операции">ResponseField::Status</a> в ответе финансового ПО LAN-4Tap. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fda2c1303eeef311e5528208cf16767d135" name="a15fd06a4f465e1d2db00a5c7c3b762fda2c1303eeef311e5528208cf16767d135"></a>NoStatus&#160;</td><td class="fielddoc"><p >Значение-заглушка. Соответствует неизвестному статусу </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fda505a83f220c02df2f85c3810cd9ceb38" name="a15fd06a4f465e1d2db00a5c7c3b762fda505a83f220c02df2f85c3810cd9ceb38"></a>Success&#160;</td><td class="fielddoc"><p >Операция успешно выполнена </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fda902b0d55fddef6f8d651fe1035b7d4bd" name="a15fd06a4f465e1d2db00a5c7c3b762fda902b0d55fddef6f8d651fe1035b7d4bd"></a>Error&#160;</td><td class="fielddoc"><p >Ошибка выполнения операции </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fda0d3627289b893d3eea08e52589ed06ae" name="a15fd06a4f465e1d2db00a5c7c3b762fda0d3627289b893d3eea08e52589ed06ae"></a>Decline&#160;</td><td class="fielddoc"><p >Операция отклонена хостом </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fdadb3f55cd913a0331acdfa5fa1da8323a" name="a15fd06a4f465e1d2db00a5c7c3b762fdadb3f55cd913a0331acdfa5fa1da8323a"></a>CommunicationError&#160;</td><td class="fielddoc"><p >Ошибка связи </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fda42a398df666dabd19580b750e9d11535" name="a15fd06a4f465e1d2db00a5c7c3b762fda42a398df666dabd19580b750e9d11535"></a>OperationIsAutoReversal&#160;</td><td class="fielddoc"><p >Операция находится в состоянии автореверса </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fdaa0a5012bd1b0f4312084b8eda6c8251d" name="a15fd06a4f465e1d2db00a5c7c3b762fdaa0a5012bd1b0f4312084b8eda6c8251d"></a>EcrAlreadyRegistered&#160;</td><td class="fielddoc"><p >Данный логический номер кассового ПО уже зарегистрирован в сервисе LAN-4Gate. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fda6e9c7599632a61635feb98d1fe28888a" name="a15fd06a4f465e1d2db00a5c7c3b762fda6e9c7599632a61635feb98d1fe28888a"></a>ConnectionLimitReached&#160;</td><td class="fielddoc"><p >Достигнут предел подключений к сервису LAN-4Gate. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fda918bef8fa4719dd77fe7532c9a7e6ff7" name="a15fd06a4f465e1d2db00a5c7c3b762fda918bef8fa4719dd77fe7532c9a7e6ff7"></a>ReceiptNotFound&#160;</td><td class="fielddoc"><p >Чек не найден </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fda0453fc59b175d07afdeaffdd0bcdb7d8" name="a15fd06a4f465e1d2db00a5c7c3b762fda0453fc59b175d07afdeaffdd0bcdb7d8"></a>TotalsNotAgreed&#160;</td><td class="fielddoc"><p >Итоги не совпали </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fda771f9a9aad606aaf7f125bd507d2cb79" name="a15fd06a4f465e1d2db00a5c7c3b762fda771f9a9aad606aaf7f125bd507d2cb79"></a>NeedSettlement&#160;</td><td class="fielddoc"><p >Необходима сверка итогов </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fdaf4082a2bd68ee29ec342c49d9a69c439" name="a15fd06a4f465e1d2db00a5c7c3b762fdaf4082a2bd68ee29ec342c49d9a69c439"></a>CanceledByTerminal&#160;</td><td class="fielddoc"><p >Выполнение операции отменено в финансовом ПО LAN-4Tap. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fda8d60b2d4aef8f5cffe71226b955455e3" name="a15fd06a4f465e1d2db00a5c7c3b762fda8d60b2d4aef8f5cffe71226b955455e3"></a>FastTrackKeyError&#160;</td><td class="fielddoc"><p >Ошибка ключей шифрования для операции FastTrack. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fda72fbccc72f1137a08c4b289d51a0a18c" name="a15fd06a4f465e1d2db00a5c7c3b762fda72fbccc72f1137a08c4b289d51a0a18c"></a>FirstValue&#160;</td><td class="fielddoc"><p >Ссылка на первый элемент перечисления </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a15fd06a4f465e1d2db00a5c7c3b762fda52f7b2c6f7851fcda22428c654459715" name="a15fd06a4f465e1d2db00a5c7c3b762fda52f7b2c6f7851fcda22428c654459715"></a>LastValue&#160;</td><td class="fielddoc"><p >Ссылка на последний элемент перечисления </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_lanter.html">Lanter</a></li><li class="navelem"><a class="el" href="namespace_lanter_1_1_message.html">Message</a></li><li class="navelem"><a class="el" href="namespace_lanter_1_1_message_1_1_response.html">Response</a></li>
-    <li class="footer">Документация по LAN-4Gate. Последние изменения: Пт 10 Сен 2021 17:09:56. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Документация по LAN-4Gate. Последние изменения: Вт 7 Дек 2021 17:47:48. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

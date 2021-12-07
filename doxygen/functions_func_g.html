@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.8.5</span>
+   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.9.0</span>
    </div>
    <div id="projectbrief">Реализация протокола кассового взаимодействия LAN-4Gate</div>
   </td>
@@ -104,7 +104,7 @@ $(document).ready(function(){initNavTree('functions_func_g.html',''); initResiza
 <li>getCashbackAmount()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#ae07981cf140c2d00b5157573355ba91f">Lanter::Message::Request::IRequestData</a></li>
 <li>getCDAResult()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a45c6b03540f6d36565e351a0f302a274">Lanter::Message::Response::IResponseData</a></li>
 <li>getCID()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a4ae7e6cafa340c4f71fc72ec302cb5b5">Lanter::Message::Response::IResponseData</a></li>
-<li>getCode()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_notification_1_1_i_notification_data.html#a709668a87e370e8e769feacddc44d91e">Lanter::Message::Notification::INotificationData</a></li>
+<li>getCode()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_interaction_1_1_i_interaction_data.html#a03eb1df6a80bcfe0dee82fe9c27ee7c2">Lanter::Message::Interaction::IInteractionData</a>, <a class="el" href="class_lanter_1_1_message_1_1_notification_1_1_i_notification_data.html#a709668a87e370e8e769feacddc44d91e">Lanter::Message::Notification::INotificationData</a></li>
 <li>getCommunication()&#160;:&#160;<a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a72760d607524d5ae1ed3f40dceb0bbbc">Lanter::Manager::ILan4Gate</a></li>
 <li>getCurrencyCode()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a09269a4098bbd9de656435e0393d60f8">Lanter::Message::Request::IRequestData</a>, <a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a7efc0ca851a4451e37d0a031ac42eef1">Lanter::Message::Response::IResponseData</a></li>
 <li>getEcrMerchantNumber()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a3262824f4ac6fa62693b1eef0370b27c">Lanter::Message::Request::IRequestData</a>, <a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a12a2c7e890f3671b6567fe8e378d036c">Lanter::Message::Response::IResponseData</a></li>
@@ -112,6 +112,7 @@ $(document).ready(function(){initNavTree('functions_func_g.html',''); initResiza
 <li>getEncTags()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#af9112acf0571649907cd9d406d59438a">Lanter::Message::Request::IRequestData</a></li>
 <li>getExpireDate()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a85d6c25e0625246aa502650c94683f35">Lanter::Message::Response::IResponseData</a></li>
 <li>getFieldsSet()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a73038cc9c5f5a118a862423ec494a744">Lanter::Message::Request::IRequestData</a>, <a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a68a3a7bdc839a32fa141fb4c0ad1a672">Lanter::Message::Response::IResponseData</a></li>
+<li>getInteractionData()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_interaction_1_1_interaction_data_factory.html#ac440531e915f18e52f682db114b7d45a">Lanter::Message::Interaction::InteractionDataFactory</a></li>
 <li>getIssuerName()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a0bbcffc57ad390c0055a6368643a87b9">Lanter::Message::Response::IResponseData</a></li>
 <li>getKVR()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#af38123a41b7f1c6808be1b78d0643604">Lanter::Message::Response::IResponseData</a></li>
 <li>getLan4Gate()&#160;:&#160;<a class="el" href="class_lanter_1_1_manager_1_1_lan4_gate_factory.html#a49ac2ef354b45c08bafe7ac3c77502de">Lanter::Manager::Lan4GateFactory</a></li>
@@ -127,7 +128,8 @@ $(document).ready(function(){initNavTree('functions_func_g.html',''); initResiza
 <li>getOriginalOperationCode()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a8324c5a85b08a86db2d02699865dcb84">Lanter::Message::Response::IResponseData</a></li>
 <li>getOriginalOperationStatus()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#acee1da48727b782f863974f836f9d598">Lanter::Message::Response::IResponseData</a></li>
 <li>getPartialAmount()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a47d9e425058c61c0f281bae72d6a9e1c">Lanter::Message::Request::IRequestData</a>, <a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#ad0e1b5772ab76f5a6f9a3cdfd9b43a23">Lanter::Message::Response::IResponseData</a></li>
-<li>getPreparedNotification()&#160;:&#160;<a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a73255332d183cc07e39a6d10e9b25300">Lanter::Manager::ILan4Gate</a></li>
+<li>getPreparedInteraction()&#160;:&#160;<a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a388d00ca9810f281345e6c791f08cad1">Lanter::Manager::ILan4Gate</a></li>
+<li>getPreparedNotification()&#160;:&#160;<a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#ababd6222c294fcee168cb26de4eb5a4a">Lanter::Manager::ILan4Gate</a></li>
 <li>getPreparedRequest()&#160;:&#160;<a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#ac578583d9cb1f7abfabcdb93363599fb">Lanter::Manager::ILan4Gate</a></li>
 <li>getPreparedResponse()&#160;:&#160;<a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#ad2b8fd3be6f2b9537a44be55f2641b5f">Lanter::Manager::ILan4Gate</a></li>
 <li>getProviderCode()&#160;:&#160;<a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#af5c375a64705b678ef77339e0463b2c2">Lanter::Message::Request::IRequestData</a></li>
@@ -163,7 +165,7 @@ $(document).ready(function(){initNavTree('functions_func_g.html',''); initResiza
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Документация по LAN-4Gate. Последние изменения: Пт 10 Сен 2021 17:09:56. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Документация по LAN-4Gate. Последние изменения: Вт 7 Дек 2021 17:47:48. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
