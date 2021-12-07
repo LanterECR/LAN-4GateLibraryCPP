@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LAN-4Gate: Исходный файл InteractionCode.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.9.0</span>
+   </div>
+   <div id="projectbrief">Реализация протокола кассового взаимодействия LAN-4Gate</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.9.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search",'Поиск','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function(){initNavTree('_interaction_code_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">InteractionCode.h</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef LAN_4GATELIB_INTERACTIONCODE_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define LAN_4GATELIB_INTERACTIONCODE_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespace_lanter.html">Lanter</a> {</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    <span class="keyword">namespace </span>Message {</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>        <span class="keyword">namespace </span><a class="code hl_enumvalue" href="namespace_lanter_1_1_message_processor_1_1_parser.html#a7cac533f90c32722aaa4df81f8726694a61ee5a22cd5f14ed4e48eb5611031e74">Interaction</a> {</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="namespace_lanter_1_1_message_1_1_interaction.html#a2c7377ed62432e79bf41890dc8d72104">    7</a></span>            <span class="keyword">enum class</span> <a class="code hl_enumeration" href="namespace_lanter_1_1_message_1_1_interaction.html#a2c7377ed62432e79bf41890dc8d72104">InteractionCode</a> {</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>                <a class="code hl_enumvalue" href="namespace_lanter_1_1_message_1_1_interaction.html#a2c7377ed62432e79bf41890dc8d72104aa09ba4f31b9bd7b693a511f0accf29d1">NoInteraction</a>, </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>                <a class="code hl_enumvalue" href="namespace_lanter_1_1_message_1_1_interaction.html#a2c7377ed62432e79bf41890dc8d72104a727b63583e01fa2b3952dab580c84dc2">Abort</a>, </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>                <a class="code hl_enumvalue" href="namespace_lanter_1_1_message_1_1_interaction.html#a2c7377ed62432e79bf41890dc8d72104a72fbccc72f1137a08c4b289d51a0a18c">FirstValue</a> = <a class="code hl_enumvalue" href="namespace_lanter_1_1_message_1_1_interaction.html#a2c7377ed62432e79bf41890dc8d72104a727b63583e01fa2b3952dab580c84dc2">Abort</a>, </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>                <a class="code hl_enumvalue" href="namespace_lanter_1_1_message_1_1_interaction.html#a2c7377ed62432e79bf41890dc8d72104a52f7b2c6f7851fcda22428c654459715">LastValue</a> = <a class="code hl_enumvalue" href="namespace_lanter_1_1_message_1_1_interaction.html#a2c7377ed62432e79bf41890dc8d72104a727b63583e01fa2b3952dab580c84dc2">Abort</a> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>            };</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        }</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    }</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>}</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#endif </span><span class="comment">//LAN_4GATELIB_INTERACTIONCODE_H</span></div>
+<div class="ttc" id="anamespace_lanter_1_1_message_1_1_interaction_html_a2c7377ed62432e79bf41890dc8d72104"><div class="ttname"><a href="namespace_lanter_1_1_message_1_1_interaction.html#a2c7377ed62432e79bf41890dc8d72104">Lanter::Message::Interaction::InteractionCode</a></div><div class="ttdeci">InteractionCode</div><div class="ttdef"><b>Definition:</b> InteractionCode.h:7</div></div>
+<div class="ttc" id="anamespace_lanter_1_1_message_1_1_interaction_html_a2c7377ed62432e79bf41890dc8d72104a52f7b2c6f7851fcda22428c654459715"><div class="ttname"><a href="namespace_lanter_1_1_message_1_1_interaction.html#a2c7377ed62432e79bf41890dc8d72104a52f7b2c6f7851fcda22428c654459715">Lanter::Message::Interaction::InteractionCode::LastValue</a></div><div class="ttdeci">@ LastValue</div><div class="ttdoc">Ссылка на последний элемент перечисления</div></div>
+<div class="ttc" id="anamespace_lanter_1_1_message_1_1_interaction_html_a2c7377ed62432e79bf41890dc8d72104a727b63583e01fa2b3952dab580c84dc2"><div class="ttname"><a href="namespace_lanter_1_1_message_1_1_interaction.html#a2c7377ed62432e79bf41890dc8d72104a727b63583e01fa2b3952dab580c84dc2">Lanter::Message::Interaction::InteractionCode::Abort</a></div><div class="ttdeci">@ Abort</div><div class="ttdoc">Прервать выполняемую операцию</div></div>
+<div class="ttc" id="anamespace_lanter_1_1_message_1_1_interaction_html_a2c7377ed62432e79bf41890dc8d72104a72fbccc72f1137a08c4b289d51a0a18c"><div class="ttname"><a href="namespace_lanter_1_1_message_1_1_interaction.html#a2c7377ed62432e79bf41890dc8d72104a72fbccc72f1137a08c4b289d51a0a18c">Lanter::Message::Interaction::InteractionCode::FirstValue</a></div><div class="ttdeci">@ FirstValue</div><div class="ttdoc">Ссылка на первый элемент перечисления</div></div>
+<div class="ttc" id="anamespace_lanter_1_1_message_1_1_interaction_html_a2c7377ed62432e79bf41890dc8d72104aa09ba4f31b9bd7b693a511f0accf29d1"><div class="ttname"><a href="namespace_lanter_1_1_message_1_1_interaction.html#a2c7377ed62432e79bf41890dc8d72104aa09ba4f31b9bd7b693a511f0accf29d1">Lanter::Message::Interaction::InteractionCode::NoInteraction</a></div><div class="ttdeci">@ NoInteraction</div><div class="ttdoc">Значение по умолчанию</div></div>
+<div class="ttc" id="anamespace_lanter_1_1_message_processor_1_1_parser_html_a7cac533f90c32722aaa4df81f8726694a61ee5a22cd5f14ed4e48eb5611031e74"><div class="ttname"><a href="namespace_lanter_1_1_message_processor_1_1_parser.html#a7cac533f90c32722aaa4df81f8726694a61ee5a22cd5f14ed4e48eb5611031e74">Lanter::MessageProcessor::Parser::MessageType::Interaction</a></div><div class="ttdeci">@ Interaction</div><div class="ttdoc">Сообщение взаимодействия</div></div>
+<div class="ttc" id="anamespace_lanter_html"><div class="ttname"><a href="namespace_lanter.html">Lanter</a></div><div class="ttdoc">Главное пространство имен. Содержит весь код библиотеки</div><div class="ttdef"><b>Definition:</b> CommunicatinFactory.h:10</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_e00390653cc726fe98c43c1b84a5d626.html">Lanter</a></li><li class="navelem"><a class="el" href="dir_05d19849e45e77131f803c9a4a403d84.html">Message</a></li><li class="navelem"><a class="el" href="dir_4db7415042393a2b1e038e5a9164fd09.html">Interaction</a></li><li class="navelem"><b>InteractionCode.h</b></li>
+    <li class="footer">Документация по LAN-4Gate. Последние изменения: Вт 7 Дек 2021 17:47:47. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.8.5</span>
+   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.9.0</span>
    </div>
    <div id="projectbrief">Реализация протокола кассового взаимодействия LAN-4Gate</div>
   </td>
@@ -107,12 +107,62 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_processor_1_1
 <tr class="memitem:ad56774c8f7bb590fe3871b535146e27c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_processor_1_1_builder_1_1_i_message_builder.html#ad56774c8f7bb590fe3871b535146e27c">createMessage</a> (std::shared_ptr&lt; <a class="el" href="class_lanter_1_1_message_1_1_notification_1_1_i_notification_data.html">Message::Notification::INotificationData</a> &gt; data, std::vector&lt; uint8_t &gt; &amp;result)=0</td></tr>
 <tr class="memdesc:ad56774c8f7bb590fe3871b535146e27c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создает сообщение на основе контейнера INotificationData.  <a href="class_lanter_1_1_message_processor_1_1_builder_1_1_i_message_builder.html#ad56774c8f7bb590fe3871b535146e27c">Подробнее...</a><br /></td></tr>
 <tr class="separator:ad56774c8f7bb590fe3871b535146e27c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9cee696f8ee706cf05b64c3647789e95"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_processor_1_1_builder_1_1_i_message_builder.html#a9cee696f8ee706cf05b64c3647789e95">createMessage</a> (std::shared_ptr&lt; <a class="el" href="class_lanter_1_1_message_1_1_interaction_1_1_i_interaction_data.html">Message::Interaction::IInteractionData</a> &gt; data, std::vector&lt; uint8_t &gt; &amp;result)=0</td></tr>
+<tr class="memdesc:a9cee696f8ee706cf05b64c3647789e95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Создает сообщение на основе контейнера IInteractionData.  <a href="class_lanter_1_1_message_processor_1_1_builder_1_1_i_message_builder.html#a9cee696f8ee706cf05b64c3647789e95">Подробнее...</a><br /></td></tr>
+<tr class="separator:a9cee696f8ee706cf05b64c3647789e95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><p >Интерфейс сборщика сообщений на основе заполненных контейнеров </p>
 </div><h2 class="groupheader">Методы</h2>
+<a id="a9cee696f8ee706cf05b64c3647789e95" name="a9cee696f8ee706cf05b64c3647789e95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9cee696f8ee706cf05b64c3647789e95">&#9670;&nbsp;</a></span>createMessage() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::MessageProcessor::Builder::IMessageBuilder::createMessage </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="class_lanter_1_1_message_1_1_interaction_1_1_i_interaction_data.html">Message::Interaction::IInteractionData</a> &gt;&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; uint8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>result</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Создает сообщение на основе контейнера IInteractionData. </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">data</td><td>Заполненный контейнер IInteractionData </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">result</td><td>vector из байтов, содержащий собранное сообщение </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если сборка сообщения прошла успешно. </dd></dl>
+<dl class="section see"><dt>См. также</dt><dd><a class="el" href="class_lanter_1_1_message_1_1_interaction_1_1_i_interaction_data.html" title="Базовый класс-контейнер для передачи команд взаимодействия">Message::Interaction::IInteractionData</a> </dd></dl>
+
+</div>
+</div>
 <a id="ad56774c8f7bb590fe3871b535146e27c" name="ad56774c8f7bb590fe3871b535146e27c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad56774c8f7bb590fe3871b535146e27c">&#9670;&nbsp;</a></span>createMessage() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad56774c8f7bb590fe3871b535146e27c">&#9670;&nbsp;</a></span>createMessage() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -159,7 +209,7 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_processor_1_1
 </div>
 </div>
 <a id="a3395d45ff1e5290bcb71afd5fae711b1" name="a3395d45ff1e5290bcb71afd5fae711b1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3395d45ff1e5290bcb71afd5fae711b1">&#9670;&nbsp;</a></span>createMessage() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a3395d45ff1e5290bcb71afd5fae711b1">&#9670;&nbsp;</a></span>createMessage() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -206,7 +256,7 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_processor_1_1
 </div>
 </div>
 <a id="a0b8127ba19f27868a7e77a735179464f" name="a0b8127ba19f27868a7e77a735179464f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b8127ba19f27868a7e77a735179464f">&#9670;&nbsp;</a></span>createMessage() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b8127ba19f27868a7e77a735179464f">&#9670;&nbsp;</a></span>createMessage() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -261,7 +311,7 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_processor_1_1
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_lanter.html">Lanter</a></li><li class="navelem"><a class="el" href="namespace_lanter_1_1_message_processor.html">MessageProcessor</a></li><li class="navelem"><a class="el" href="namespace_lanter_1_1_message_processor_1_1_builder.html">Builder</a></li><li class="navelem"><a class="el" href="class_lanter_1_1_message_processor_1_1_builder_1_1_i_message_builder.html">IMessageBuilder</a></li>
-    <li class="footer">Документация по LAN-4Gate. Последние изменения: Пт 10 Сен 2021 17:09:56. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Документация по LAN-4Gate. Последние изменения: Вт 7 Дек 2021 17:47:48. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

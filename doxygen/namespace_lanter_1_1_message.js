@@ -1,5 +1,6 @@
 var namespace_lanter_1_1_message =
 [
+    [ "Interaction", "namespace_lanter_1_1_message_1_1_interaction.html", "namespace_lanter_1_1_message_1_1_interaction" ],
     [ "Notification", "namespace_lanter_1_1_message_1_1_notification.html", "namespace_lanter_1_1_message_1_1_notification" ],
     [ "Request", "namespace_lanter_1_1_message_1_1_request.html", "namespace_lanter_1_1_message_1_1_request" ],
     [ "Response", "namespace_lanter_1_1_message_1_1_response.html", "namespace_lanter_1_1_message_1_1_response" ],

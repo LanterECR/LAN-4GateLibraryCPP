@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['messagetype_0',['MessageType',['../namespace_lanter_1_1_message_processor_1_1_parser.html#a7cac533f90c32722aaa4df81f8726694',1,'Lanter::MessageProcessor::Parser']]]
+  ['interactioncode_0',['InteractionCode',['../namespace_lanter_1_1_message_1_1_interaction.html#a2c7377ed62432e79bf41890dc8d72104',1,'Lanter::Message::Interaction']]]
 ];

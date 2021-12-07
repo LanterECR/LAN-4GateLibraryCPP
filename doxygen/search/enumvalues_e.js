@@ -1,10 +1,18 @@
 var searchData=
 [
-  ['sale_0',['Sale',['../namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597af2cd171bd42220283b7a595c3ff2aaaf',1,'Lanter::Message']]],
-  ['salescompletion_1',['SalesCompletion',['../namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a8aecca05bc2bf4cdb5522df57ee355a5',1,'Lanter::Message']]],
-  ['selftest_2',['SelfTest',['../namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597af01242ef29e5426615adc0f4c0f0d43d',1,'Lanter::Message']]],
-  ['setcurrentprinter_3',['SetCurrentPrinter',['../namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a645cb2b3d565eadb5a13ae71a37808ee',1,'Lanter::Message']]],
-  ['settlement_4',['Settlement',['../namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a1610f44571feba48aa8a30a8112a06fe',1,'Lanter::Message']]],
-  ['success_5',['Success',['../class_lanter_1_1_manager_1_1_i_lan4_gate.html#a56d40851ce8c134ed4c81d3eb5bab2daa505a83f220c02df2f85c3810cd9ceb38',1,'Lanter::Manager::ILan4Gate']]],
-  ['sync_6',['Sync',['../class_lanter_1_1_manager_1_1_i_lan4_gate.html#a5a45fe271268f033eef88693b8b32789ad8e87c0927539672f54462c837be0b7f',1,'Lanter::Manager::ILan4Gate']]]
+  ['readererror_0',['ReaderError',['../namespace_lanter_1_1_message_1_1_notification.html#a434b23e4775c77b6361a208b28cb885daf13f84f86f884c45a80d9c0f910b4623',1,'Lanter::Message::Notification']]],
+  ['receiptnotfound_1',['ReceiptNotFound',['../namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda918bef8fa4719dd77fe7532c9a7e6ff7',1,'Lanter::Message::Response']]],
+  ['receiptprintingerror_2',['ReceiptPrintingError',['../namespace_lanter_1_1_message_1_1_notification.html#a434b23e4775c77b6361a208b28cb885daadd2927aeeb365c641be127fe22a5e21',1,'Lanter::Message::Notification']]],
+  ['receiptreference_3',['ReceiptReference',['../namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a52fe1a39ddda56cca9ef238f60ce2615',1,'Lanter::Message::Request::ReceiptReference()'],['../namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a52fe1a39ddda56cca9ef238f60ce2615',1,'Lanter::Message::Response::ReceiptReference()']]],
+  ['refund_4',['Refund',['../namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a76f0ed934de85cc7131910b32ede7714',1,'Lanter::Message']]],
+  ['refundarray_5',['RefundArray',['../namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a1232114aced6abf639deb595c428eef2',1,'Lanter::Message::Response']]],
+  ['refundcount_6',['RefundCount',['../namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7aa3e11ef78aaafe00f415a2f3be8bf858',1,'Lanter::Message::Response']]],
+  ['refundwithoutrrn_7',['RefundWithoutRRN',['../namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a778e07ca97e76e0358bc2cd277a5f0f0',1,'Lanter::Message']]],
+  ['registration_8',['Registration',['../namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a0f98b7f230f3c91292f0de4c99e263f2',1,'Lanter::Message']]],
+  ['request_9',['Request',['../namespace_lanter_1_1_message_processor_1_1_parser.html#a7cac533f90c32722aaa4df81f8726694a15c2d85f1fae22a3c3a0594510a1f611',1,'Lanter::MessageProcessor::Parser']]],
+  ['response_10',['Response',['../namespace_lanter_1_1_message_processor_1_1_parser.html#a7cac533f90c32722aaa4df81f8726694ad64ed3e9c10229648e069f56e32f4c8e',1,'Lanter::MessageProcessor::Parser']]],
+  ['responsecode_11',['ResponseCode',['../namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7af1d055ec755a314f31ba9a81d911a210',1,'Lanter::Message::Response']]],
+  ['responsetext_12',['ResponseText',['../namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a3c8b6c8966ea5d6ef7fe8eef58a3680d',1,'Lanter::Message::Response']]],
+  ['reversaluploadingerror_13',['ReversalUploadingError',['../namespace_lanter_1_1_message_1_1_notification.html#a434b23e4775c77b6361a208b28cb885da79adfc32e16434ac7ea23392dc02e22f',1,'Lanter::Message::Notification']]],
+  ['rrn_14',['RRN',['../namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a902a96ab5d74394f3c685e607b4248fc',1,'Lanter::Message::Request::RRN()'],['../namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a902a96ab5d74394f3c685e607b4248fc',1,'Lanter::Message::Response::RRN()']]]
 ];
