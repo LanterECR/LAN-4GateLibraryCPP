@@ -116,6 +116,7 @@ namespace Lanter {
             void notifyRequest();
             void notifyResponse();
             void notifyNotification();
+            void notifyInteraction();
             void notifyConnectionStatus(bool status);
 
             bool waitFuture();

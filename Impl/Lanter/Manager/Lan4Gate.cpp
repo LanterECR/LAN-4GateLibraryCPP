@@ -497,6 +497,7 @@ namespace Lanter {
                 this->notifyRequest();
                 this->notifyResponse();
                 this->notifyNotification();
+                this->notifyInteraction();
             };
 
             if(m_CallbackNotificationType == CallbackNotificationType::Async) {
@@ -537,6 +538,17 @@ namespace Lanter {
 
                 for(const auto& callback : m_NotificationCallbacks) {
                     callback.second(notification);
+                }
+            }
+        }
+
+        void Lan4Gate::notifyInteraction() {
+            if(m_MessageParser->interactionCount() > 0) {
+
+                auto interaction = m_MessageParser->nextInteractionData();
+
+                for(const auto& callback : m_InteractionCallbacks) {
+                    callback.second(interaction);
                 }
             }
         }
