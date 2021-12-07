@@ -12,6 +12,8 @@ namespace Lanter {
 
                 bool setCode(InteractionCode code) override;
 
+                bool resetCode() override;
+
             private:
                 InteractionCode m_Code = InteractionCode::NoInteraction;
             };

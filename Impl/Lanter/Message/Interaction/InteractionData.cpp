@@ -19,6 +19,11 @@ namespace Lanter {
 
                 return result;
             }
+
+            bool InteractionData::resetCode() {
+                m_Code = InteractionCode::NoInteraction;
+                return m_Code == InteractionCode::NoInteraction;
+            }
         }
     }
 }

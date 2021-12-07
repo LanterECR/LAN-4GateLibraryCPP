@@ -20,6 +20,10 @@ namespace Lanter {
                 /// \param code Код команды взаимодействия из enum InteractionCode
                 /// \sa InteractionCode
                 virtual bool setCode(InteractionCode code) = 0;
+
+                /// \brief Устанавливает код команды взаимодействия на значение по умолчанию
+                /// \return true, если код успешно убран
+                virtual bool resetCode() = 0;
             };
         }
     }
