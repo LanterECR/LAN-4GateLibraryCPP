@@ -150,7 +150,7 @@ namespace Lanter {
 
         const std::string &JSONClassFieldValues::getInteractionValue() {
             if(JSONClassFieldValues::interactionValue.empty()) {
-                JSONClassFieldValues::notificationValue = "LANTER::Interaction";
+                JSONClassFieldValues::interactionValue = "LANTER::Interaction";
             }
             return JSONClassFieldValues::interactionValue;
         }
