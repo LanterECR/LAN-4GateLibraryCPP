@@ -7,7 +7,7 @@ namespace Lanter {
     namespace Message {
         namespace Response {
             /// \brief Перечисление содержит все поля, используемые в ответах от финансового ПО LAN-4Tap
-            enum class LANTER_VISIBILITY ResponseField {
+            enum class ResponseField {
                 EcrNumber, ///< Логический номер кассы, используемый для взаимодействия с LAN-4Tap
                 EcrMerchantNumber, ///< Логический номер мерчанта в кассовом ПО
                 OperationCode, ///< Код запрашиваемой операции

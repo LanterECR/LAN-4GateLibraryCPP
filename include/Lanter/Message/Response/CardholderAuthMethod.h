@@ -7,7 +7,7 @@ namespace Lanter {
     namespace Message {
         namespace Response {
             /// \brief Список возможных значений поля ResponseField::CardholderAuthMethod в ответе финансового ПО LAN-4Tap
-            enum class LANTER_VISIBILITY CardholderAuthMethod {
+            enum class CardholderAuthMethod {
                 NoMethod = -1,
                 NoVerification, ///< Операция не требует подтверждения
                 PinVerification, ///< Введен пин-код
