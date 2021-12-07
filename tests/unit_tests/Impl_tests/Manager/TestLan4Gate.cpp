@@ -305,9 +305,6 @@ TEST(TestLan4Gate, TestPreparedNotification) {
 
     auto noCode = gate->getPreparedNotification(NotificationCode::NoNotification);
 
-    auto withoutParam = gate->getPreparedNotification();
-
-
     ASSERT_NE(firstValue, nullptr);
     EXPECT_EQ(firstValue->getCode(), NotificationCode::FirstValue);
 
@@ -316,9 +313,6 @@ TEST(TestLan4Gate, TestPreparedNotification) {
 
     ASSERT_NE(noCode, nullptr);
     EXPECT_EQ(noCode->getCode(), NotificationCode::NoNotification);
-
-    ASSERT_NE(withoutParam, nullptr);
-    EXPECT_EQ(withoutParam->getCode(), NotificationCode::NoNotification);
 }
 
 TEST(TestLan4Gate, TestSendRequest) {
