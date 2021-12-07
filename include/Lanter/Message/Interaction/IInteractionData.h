@@ -17,7 +17,7 @@ namespace Lanter {
                 /// \brief Устанавливает код команды взаимодействия
                 /// \param code Код команды взаимодействия из enum InteractionCode
                 /// \sa InteractionCode
-                virtual void setCode(InteractionCode code) = 0;
+                virtual bool setCode(InteractionCode code) = 0;
             };
         }
     }
