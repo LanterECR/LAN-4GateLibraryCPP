@@ -50,6 +50,8 @@ namespace Lanter {
         bool checkRefundCountRange(int32_t refundCount);
 
         bool checkNotificationsRange(int32_t notification);
+
+        bool checkInteractionsRange(int32_t interaction);
     }
 }
 

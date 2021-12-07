@@ -10,7 +10,7 @@ namespace Lanter {
             public:
                 InteractionCode getCode() const override;
 
-                void setCode(InteractionCode code) override;
+                bool setCode(InteractionCode code) override;
 
             private:
                 InteractionCode m_Code = InteractionCode::NoInteraction;

@@ -1,5 +1,7 @@
 #include "InteractionData.h"
 
+#include "Lanter/Utils/FieldRangeChecker.h"
+
 namespace Lanter {
     namespace Message {
         namespace Interaction {
@@ -8,8 +10,14 @@ namespace Lanter {
                 return m_Code;
             }
 
-            void InteractionData::setCode(InteractionCode code) {
-                m_Code = code;
+            bool InteractionData::setCode(InteractionCode code) {
+                bool result = false;
+                if (Utils::checkInteractionsRange(static_cast<int32_t>(code))) {
+                    m_Code = code;
+                    result = true;
+                }//if check
+
+                return result;
             }
         }
     }
