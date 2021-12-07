@@ -7,6 +7,7 @@
 #include "JSONRequestBuilder.h"
 #include "JSONResponseBuilder.h"
 #include "JSONNotificationBuilder.h"
+#include "JSONInteractionBuilder.h"
 
 #include "Lanter/Utils/StringTrimmer.h"
 #include "Lanter/Utils/StringConverter.h"
@@ -58,8 +59,8 @@ namespace Lanter {
                         root[JSONRootFields::getClassField()] = JSONClassFieldValues::getResponseValue();
 
                         Json::Value object;
-                        JSONResponseBuilder requestBuilder;
-                        if (requestBuilder.createObject(*data, object)) {
+                        JSONResponseBuilder responseBuilder;
+                        if (responseBuilder.createObject(*data, object)) {
                             root[JSONRootFields::getObjectField()] = object;
                             result = createVector(root, resultData);
                         }
@@ -80,8 +81,8 @@ namespace Lanter {
                         root[JSONRootFields::getClassField()] = JSONClassFieldValues::getNotificationValue();
 
                         Json::Value object;
-                        JSONNotificationBuilder requestBuilder;
-                        if (requestBuilder.createObject(*data, object)) {
+                        JSONNotificationBuilder notificationBuilder;
+                        if (notificationBuilder.createObject(*data, object)) {
                             root[JSONRootFields::getObjectField()] = object;
                             result = createVector(root, resultData);
                         }
@@ -91,6 +92,29 @@ namespace Lanter {
                 }
                 return result;
             }
+
+            bool JSONMessageBuilder::createMessage(std::shared_ptr<IInteractionData> data,
+                                                   std::vector<uint8_t> &resultData) {
+                bool result = false;
+                if(data != nullptr) {
+                    resultData.clear();
+                    try {
+                        Json::Value root;
+                        root[JSONRootFields::getClassField()] = JSONClassFieldValues::getInteractionValue();
+
+                        Json::Value object;
+                        JSONInteractionBuilder interactionBuilder;
+                        if (interactionBuilder.createObject(*data, object)) {
+                            root[JSONRootFields::getObjectField()] = object;
+                            result = createVector(root, resultData);
+                        }
+                    } catch (std::exception &) {
+                        result = false;
+                    }
+                }
+                return result;
+            }
+
         }
     }
 }
