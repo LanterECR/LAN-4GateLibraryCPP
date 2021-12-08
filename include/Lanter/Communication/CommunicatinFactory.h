@@ -16,6 +16,11 @@ namespace Lanter {
             /// \param[in] port Порт, который будет слушать сервер
             /// \return nullptr, если не удалось создать соединение
             static std::shared_ptr<ICommunication> getSingleTcpServer(int port = 20501);
+
+            /// \brief Создает декоратор, контролирующий длину сообщений
+            /// \param communication декорируемое соединение
+            /// \return nullptr, если не удалось создать декоратор
+            static std::shared_ptr<ICommunication> getSizeControlDecorator(std::shared_ptr<ICommunication> communication);
         };
     }
 }
