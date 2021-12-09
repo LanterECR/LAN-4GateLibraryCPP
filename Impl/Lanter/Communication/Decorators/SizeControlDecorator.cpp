@@ -1,5 +1,7 @@
 #include "SizeControlDecorator.h"
 
+#include <sstream>
+
 namespace Lanter {
     namespace Communication {
         SizeControlDecorator::SizeControlDecorator(std::shared_ptr<ICommunication> communication) :
@@ -8,35 +10,79 @@ namespace Lanter {
         }
 
         void SizeControlDecorator::doCommunication() {
-
+            if(m_Communication != nullptr) {
+                m_Communication->doCommunication();
+            }
         }
 
         bool SizeControlDecorator::open() {
-            return false;
+            bool result = false;
+            if(m_Communication != nullptr) {
+                result = m_Communication->open();
+            }
+            return result;
         }
 
         bool SizeControlDecorator::close() {
-            return false;
+            bool result = false;
+            if(m_Communication != nullptr) {
+                result = m_Communication->close();
+            }
+            return result;
         }
 
         bool SizeControlDecorator::isOpen() {
-            return false;
+            bool result = false;
+            if(m_Communication != nullptr) {
+                result = m_Communication->isOpen();
+            }
+            return result;
         }
 
         bool SizeControlDecorator::connect() {
-            return false;
+            bool result = false;
+            if(m_Communication != nullptr) {
+                result = m_Communication->connect();
+            }
+            return result;
         }
 
         bool SizeControlDecorator::disconnect() {
-            return false;
+            bool result = false;
+            if(m_Communication != nullptr) {
+                result = m_Communication->disconnect();
+            }
+            return result;
         }
 
         bool SizeControlDecorator::isConnected() {
-            return false;
+            bool result = false;
+            if(m_Communication != nullptr) {
+                result = m_Communication->isConnected();
+            }
+            return result;
         }
 
+        //TODO Переделать нормально. Большие потери памяти
         size_t SizeControlDecorator::send(const std::vector<uint8_t> &in) {
-            return 0;
+            bool result = false;
+            if(m_Communication != nullptr) {
+                std::string hexLength;
+
+                std::stringstream ss;
+                ss << std::hex << in.size();
+                ss >> hexLength;
+
+                while(hexLength.size() < m_SizeCharsCount) {
+                    hexLength = "0" + hexLength;
+                }
+
+                std::vector<uint8_t> resultData(hexLength.begin(), hexLength.end());
+                resultData.insert(resultData.end(), in.begin(), in.end());
+
+                result = m_Communication->send(resultData);
+            }
+            return result;
         }
 
         size_t SizeControlDecorator::receive(std::vector<uint8_t> &out) {
@@ -59,10 +105,12 @@ namespace Lanter {
             int result = 0;
             if (data.size() >= m_SizeCharsCount)
             {
-                std::string size (data.begin(), std::next(data.begin(), m_SizeCharsCount -1));
+                std::string size (data.begin(), std::next(data.begin(), m_SizeCharsCount));
                 if (checkHex(size))
                 {
-                    result = std::stoi(size);
+                    std::stringstream ss;
+                    ss << std::hex << size;
+                    ss >> result;
                 }
             }
             return result;
@@ -85,25 +133,17 @@ namespace Lanter {
             return result;
         }
 
-        bool SizeControlDecorator::getDataFromQueue(std::vector<uint8_t> &data, size_t maxLen) {
+        bool SizeControlDecorator::getDataFromQueue(std::vector<uint8_t> &data) {
             bool result = false;
             if (!m_ReceivedData.empty())
             {
                 auto receivedData = m_ReceivedData.front();
                 m_ReceivedData.pop_front();
 
-                if (receivedData.size() > maxLen)
-                {
-                    m_ReceivedData.push_front(receivedData.mid(0, maxLen));
-                }
-
                 data.clear();
-                data.append(receivedData.mid(0, maxLen));
+                std::swap(data, receivedData);
 
-                if (data.size() > 0)
-                {
-                    result = Status::Success;
-                }
+                result = !data.empty();
             }
             return result;
         }

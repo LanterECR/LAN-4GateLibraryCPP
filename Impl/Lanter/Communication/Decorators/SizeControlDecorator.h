@@ -35,7 +35,7 @@ namespace Lanter {
 
         private:
             bool getDataToQueue(std::vector<uint8_t> & data);
-            bool getDataFromQueue(std::vector<uint8_t> & data, size_t maxLen);
+            bool getDataFromQueue(std::vector<uint8_t> & data);
             void resetState();
 
             std::shared_ptr<ICommunication> m_Communication;
