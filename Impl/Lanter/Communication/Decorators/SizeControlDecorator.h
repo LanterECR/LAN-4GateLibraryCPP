@@ -11,6 +11,8 @@ namespace Lanter {
     namespace Communication {
         class SizeControlDecorator : public ICommunication{
         public:
+            explicit SizeControlDecorator(std::shared_ptr<ICommunication> communication);
+
             void doCommunication() override;
 
             bool open() override;
@@ -28,9 +30,10 @@ namespace Lanter {
             size_t send(const std::vector<uint8_t> &in) override;
 
             size_t receive(std::vector<uint8_t> &out) override;
-        private:
             bool checkHex(const std::string & value);
             int getReceiveSize(const std::vector<uint8_t> & data);
+
+        private:
             bool getDataToQueue(std::vector<uint8_t> & data);
             bool getDataFromQueue(std::vector<uint8_t> & data, size_t maxLen);
             void resetState();

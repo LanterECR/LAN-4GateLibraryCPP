@@ -2,6 +2,10 @@
 
 namespace Lanter {
     namespace Communication {
+        SizeControlDecorator::SizeControlDecorator(std::shared_ptr<ICommunication> communication) :
+            m_Communication(communication){
+
+        }
 
         void SizeControlDecorator::doCommunication() {
 
