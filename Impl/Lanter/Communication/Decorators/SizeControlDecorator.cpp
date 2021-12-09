@@ -86,7 +86,35 @@ namespace Lanter {
         }
 
         size_t SizeControlDecorator::receive(std::vector<uint8_t> &out) {
-            return 0;
+            size_t result = 0;
+            if (m_Communication)
+            {
+                std::vector<uint8_t> receivedData;
+                m_Communication->receive(receivedData);
+                if (!receivedData.empty())
+                {
+                    m_CurrentBuffer.insert(m_CurrentBuffer.end(), receivedData.begin(), receivedData.end());
+                }
+
+                //Эта странная логика с двойным if используется для того, чтобы за один заход получить размер и само сообщение. Как написать чисто пока не придумал.
+                if (m_MessageSize <= 0)
+                {
+                    m_MessageSize = getReceiveSize(m_CurrentBuffer);
+                }
+
+                if (m_MessageSize > 0)
+                {
+                    if (getDataToQueue(m_CurrentBuffer))
+                    {
+                        m_MessageSize = -1;
+                    }
+                }
+                if (!m_ReceivedData.empty())
+                {
+                    result = getDataFromQueue(out);
+                }
+            }
+            return result;
         }
 
         bool SizeControlDecorator::checkHex(const std::string &value) {
