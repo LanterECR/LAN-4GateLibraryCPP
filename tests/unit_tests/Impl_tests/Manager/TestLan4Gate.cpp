@@ -7,8 +7,8 @@
 #include "Lanter/Manager/Lan4Gate.h"
 
 
-#include "MOCKComm.h"
-#include "MOCKCallback.h"
+#include "../MOCK/MOCKComm.h"
+#include "../MOCK/MOCKCallback.h"
 
 using namespace Lanter;
 using namespace Lanter::Manager;
