@@ -5,7 +5,9 @@
 namespace Lanter {
     namespace Communication {
         SizeControlDecorator::SizeControlDecorator(std::shared_ptr<ICommunication> communication) :
-            m_Communication(communication){
+            m_Communication(communication),
+            m_SizeCharsCount(4), //Жесткая фиксация длины на 4 ASCII-HEX символа
+            m_MessageSize(-1){
 
         }
 
@@ -65,7 +67,7 @@ namespace Lanter {
 
         //TODO Переделать нормально. Большие потери памяти
         size_t SizeControlDecorator::send(const std::vector<uint8_t> &in) {
-            bool result = false;
+            size_t result = false;
             if(m_Communication != nullptr) {
                 std::string hexLength;
 

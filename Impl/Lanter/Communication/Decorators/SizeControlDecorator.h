@@ -40,8 +40,8 @@ namespace Lanter {
 
             std::shared_ptr<ICommunication> m_Communication;
 
-            size_t m_SizeCharsCount = 4; //Жесткая фиксация длины на 4 ASCII-HEX символа
-            size_t m_MessageSize = -1;
+            int m_SizeCharsCount = 4; //Жесткая фиксация длины на 4 ASCII-HEX символа
+            int m_MessageSize = -1;
             std::vector<uint8_t> m_CurrentBuffer;
             std::deque<std::vector<uint8_t> > m_ReceivedData;
         };
