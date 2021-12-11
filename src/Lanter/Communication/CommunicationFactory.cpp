@@ -1,6 +1,6 @@
 #include "Lanter/Communication/CommunicatinFactory.h"
 
-#include "Lanter/Communication/TCP/SingleTCPServer.h"
+#include "Lanter/Communication/TCP/Server/SingleTCPServer.h"
 #include "Lanter/Communication/Decorators/SizeControlDecorator.h"
 
 namespace Lanter {
