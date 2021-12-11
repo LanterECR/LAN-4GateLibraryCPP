@@ -1,7 +1,7 @@
 #ifndef TESTL4G_TCPSESSION_H
 #define TESTL4G_TCPSESSION_H
 
-#include <deque>
+#include <queue>
 #include <functional>
 #include <mutex>
 
@@ -11,10 +11,9 @@ using asio::ip::tcp;
 
 namespace Lanter {
     namespace Communication {
-        class TCPSession : public std::enable_shared_from_this<TCPSession> {
+        class ServerTCPSession : public std::enable_shared_from_this<ServerTCPSession> {
         public:
-
-            explicit TCPSession(tcp::socket socket, std::function<void()> closeConnectionCallback);
+            explicit ServerTCPSession(tcp::socket socket, std::function<void()> closeConnectionCallback);
 
             void start();
 
@@ -26,15 +25,10 @@ namespace Lanter {
 
             void receive();
 
-            bool connect(const asio::ip::tcp::endpoint & address);
-
-            bool isConnected() const { return m_IsConnected; }
         private:
             void pushToQueue(const std::vector<uint8_t> &data);
 
             void popFromQueue(std::vector<uint8_t> &data);
-
-            void clearQueue();
 
             tcp::socket m_Socket;
 
@@ -44,10 +38,8 @@ namespace Lanter {
 
             uint8_t m_ReceiveBuffer[m_MaxMessageSize];
 
-            std::deque<std::vector<uint8_t> > m_MessageQueue;
+            std::queue<std::vector<uint8_t> > m_MessageQueue;
             std::mutex m_QueueMutex;
-
-            bool m_IsConnected = false;
         };
     }
 }

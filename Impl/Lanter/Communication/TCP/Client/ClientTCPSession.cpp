@@ -1,46 +1,51 @@
-#include "TCPSession.h"
+#include "ClientTCPSession.h"
 
 
 namespace Lanter {
     namespace Communication {
 
-        TCPSession::TCPSession(tcp::socket socket, std::function<void()> closeConnectionCallback):
+        ClientTCPSession::ClientTCPSession(tcp::socket socket, std::function<void()> closeConnectionCallback):
             m_Socket (std::move(socket)),
             m_CloseConnectionCallback(std::move(closeConnectionCallback)) {}
 
-        void TCPSession::start() {
+        void ClientTCPSession::start() {
             receive();
         }
 
-        void TCPSession::stop() {
+        void ClientTCPSession::stop() {
+            clearQueue();
             m_Socket.close();
         }
 
-        size_t TCPSession::send(const std::vector<uint8_t> &data) {
+        size_t ClientTCPSession::send(const std::vector<uint8_t> &data) {
             std::error_code ec;
             auto result = asio::write(m_Socket, asio::buffer(data), ec);
 
             if (ec) {
+                clearQueue();
                 if (m_CloseConnectionCallback) {
+                    m_IsConnected = false;
                     m_CloseConnectionCallback();
                 }
             }
             return result;
         }
 
-        void TCPSession::getData(std::vector<uint8_t> &data) {
+        void ClientTCPSession::getData(std::vector<uint8_t> &data) {
             popFromQueue(data);
         }
 
-        void TCPSession::receive() {
+        void ClientTCPSession::receive() {
             auto self(shared_from_this());
             m_Socket.async_read_some(asio::buffer(m_ReceiveBuffer, m_MaxMessageSize),
                                      [this, self](std::error_code ec, std::size_t length) {
                                          if (ec) {
+                                             clearQueue();
+                                             m_IsConnected = false;
                                              if (m_CloseConnectionCallback) {
                                                  m_CloseConnectionCallback();
-                                                 return;
                                              }
+                                             return;
                                          } else {
                                              std::vector <uint8_t> data;
                                              data.insert(data.end(), m_ReceiveBuffer, m_ReceiveBuffer + length);
@@ -51,21 +56,35 @@ namespace Lanter {
                                      });
         }
 
-        void TCPSession::pushToQueue(const std::vector<uint8_t> &data) {
+        void ClientTCPSession::pushToQueue(const std::vector<uint8_t> &data) {
             std::lock_guard <std::mutex> lock(m_QueueMutex);
 
-            m_MessageQueue.push(data);
+            m_MessageQueue.push_back(data);
         }
 
-        void TCPSession::popFromQueue(std::vector<uint8_t> &data) {
+        void ClientTCPSession::popFromQueue(std::vector<uint8_t> &data) {
             std::lock_guard <std::mutex> lock(m_QueueMutex);
 
             if (!m_MessageQueue.empty()) {
                 data = std::move(m_MessageQueue.front());
-                m_MessageQueue.pop();
+                m_MessageQueue.pop_front();
             }
         }
 
+        void ClientTCPSession::clearQueue() {
+            m_MessageQueue.clear();
+        }
+
+        bool ClientTCPSession::connect(const tcp::endpoint &address) {
+            try {
+                m_Socket.connect(address);
+                m_IsConnected = true;
+                start();
+            } catch (std::exception & e) {
+                m_IsConnected = false;
+            }
+            return m_IsConnected;
+        }
 
     }
 }
