@@ -9,7 +9,7 @@ using asio::ip::tcp;
 
 namespace Lanter {
     namespace Communication {
-        class TCPSession;
+        class ServerTCPSession;
         class SingleTCPServer : public ICommunication {
         public:
             explicit  SingleTCPServer(int port);
@@ -39,7 +39,7 @@ namespace Lanter {
             asio::io_context m_Context;
             std::shared_ptr<tcp::acceptor> m_ServerAcceptor;
 
-            std::shared_ptr<TCPSession> m_CurrentConnection;
+            std::shared_ptr<ServerTCPSession> m_CurrentConnection;
 
             int m_Port;
         };

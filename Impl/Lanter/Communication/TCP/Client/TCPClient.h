@@ -1,7 +1,7 @@
 #ifndef LAN_4GATELIBRARYCPP_TCPCLIENT_H
 #define LAN_4GATELIBRARYCPP_TCPCLIENT_H
 
-#include "ICommunication.h"
+#include "Lanter/Communication/ICommunication.h"
 
 #include <memory>
 
@@ -9,7 +9,7 @@
 
 namespace Lanter {
     namespace Communication {
-        class TCPSession;
+        class ClientTCPSession;
         class TCPClient : public ICommunication{
         public:
             TCPClient(const std::string & ip, int port);
@@ -35,7 +35,7 @@ namespace Lanter {
             void disconnectCallback();
             asio::ip::tcp::endpoint m_Endpoint;
             asio::io_service m_Context;
-            std::shared_ptr<TCPSession> m_CurrentConnection;
+            std::shared_ptr<ClientTCPSession> m_CurrentConnection;
         };
     }
 }

@@ -1,6 +1,6 @@
 #include "SingleTCPServer.h"
 
-#include "TCPSession.h"
+#include "ServerTCPSession.h"
 namespace Lanter {
     namespace Communication {
 
@@ -74,7 +74,7 @@ namespace Lanter {
                     if (!ec)
                     {
                         if(m_CurrentConnection == nullptr) {
-                            m_CurrentConnection = std::make_shared<TCPSession>(std::move(socket), [this](){disconnect();});
+                            m_CurrentConnection = std::make_shared<ServerTCPSession>(std::move(socket), [this](){disconnect();});
                             m_CurrentConnection->start();
                         } else {
                             socket.close();

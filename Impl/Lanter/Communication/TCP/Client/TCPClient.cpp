@@ -1,6 +1,6 @@
 #include "TCPClient.h"
 
-#include "TCPSession.h"
+#include "ClientTCPSession.h"
 
 namespace Lanter {
     namespace Communication {
@@ -29,7 +29,7 @@ namespace Lanter {
         bool TCPClient::connect() {
             if(m_CurrentConnection == nullptr) {
                 tcp::socket clientSocket(m_Context);
-                m_CurrentConnection = std::make_shared<TCPSession>(std::move(clientSocket), [this](){disconnectCallback();});
+                m_CurrentConnection = std::make_shared<ClientTCPSession>(std::move(clientSocket), [this](){disconnectCallback();});
             }
             return m_CurrentConnection->connect(m_Endpoint);
         }
