@@ -1,6 +1,7 @@
 #include "Lanter/Communication/CommunicatinFactory.h"
 
 #include "Lanter/Communication/TCP/Server/SingleTCPServer.h"
+#include "Lanter/Communication/TCP/Client/TCPClient.h"
 #include "Lanter/Communication/Decorators/SizeControlDecorator.h"
 
 namespace Lanter {
@@ -11,6 +12,10 @@ namespace Lanter {
 
         std::shared_ptr<ICommunication> CommunicationFactory::getSizeControlDecorator(std::shared_ptr<ICommunication> communication) {
             return std::make_shared<SizeControlDecorator>(communication);
+        }
+
+        std::shared_ptr<ICommunication> CommunicationFactory::getTcpClient(const std::string &ip, int port) {
+            return std::make_shared<TCPClient>(ip, port);
         }
     }
 }

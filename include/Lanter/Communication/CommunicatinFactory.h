@@ -17,6 +17,13 @@ namespace Lanter {
             /// \return nullptr, если не удалось создать соединение
             static std::shared_ptr<ICommunication> getSingleTcpServer(int port = 20501);
 
+            /// Создает экземпляр TCP клиента.
+            /// \param ip Адрес, к которому необходимо подключиться. В формате IP4 (1.1.1.1 - 255.255.255.255)
+            /// На данный момент нет валидации IP. При неправильном формате ASIO может кинуть исключение
+            /// \param port Порт, по которому будет выполнено подключение
+            /// \return nullptr, если не удалось создать соединение
+            static std::shared_ptr<ICommunication> getTcpClient(const std::string & ip, int port = 20501);
+
             /// \brief Создает декоратор, контролирующий длину сообщений
             /// \param communication декорируемое соединение
             /// \return nullptr, если не удалось создать декоратор
