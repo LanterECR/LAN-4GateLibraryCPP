@@ -2,6 +2,7 @@
 #define TESTL4G_COMMUNICATINFACTORY_H
 
 #include <memory>
+#include <string>
 
 #include "Lanter/Utils/VisibilityMacroses.h"
 
