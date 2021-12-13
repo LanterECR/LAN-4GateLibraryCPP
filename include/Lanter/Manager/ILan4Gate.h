@@ -179,13 +179,13 @@ namespace Lanter {
             /// \sa Message::Response::ResponseDataFactory
             virtual std::shared_ptr<Message::Response::IResponseData> getPreparedResponse(Message::OperationCode operationCode) = 0;
 
-            /// \brief Возвращает подготовленный объект ответа с заполненным полем NotificationCode
+            /// \brief Возвращает подготовленный объект уведомления с заполненным полем NotificationCode
             /// \param[in] notificationCode Код уведомления, для которого необходимо создать объект. По умолчанию NoNotification
             /// \return nullptr, если не удалось создать объект
             /// \sa Message::Notification::NotificationDataFactory
             virtual std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode) = 0;
 
-            /// \brief Возвращает подготовленный объект ответа с заполненным полем InteractionCode
+            /// \brief Возвращает подготовленный объект взаимодействия с заполненным полем InteractionCode
             /// \param[in] interactionCode Код взаимодействия, для которого необходимо создать объект. По умолчанию NoInteraction
             /// \return nullptr, если не удалось создать объект
             /// \sa Message::Interaction::InteractionDataFactory

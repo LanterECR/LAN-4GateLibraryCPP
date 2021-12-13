@@ -104,9 +104,15 @@ namespace Lanter {
 
                 bool getFieldCDAResult(const Json::Value &object, IResponseData &responseData);
 
+                bool getFieldSalesAmount(const Json::Value &object, IResponseData &responseData);
+
                 bool getFieldSalesCount(const Json::Value &object, IResponseData &responseData);
 
+                bool getFieldVoidAmount(const Json::Value &object, IResponseData &responseData);
+
                 bool getFieldVoidCount(const Json::Value &object, IResponseData &responseData);
+
+                bool getFieldRefundAmount(const Json::Value &object, IResponseData &responseData);
 
                 bool getFieldRefundCount(const Json::Value &object, IResponseData &responseData);
 

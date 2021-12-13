@@ -341,6 +341,13 @@ namespace Lanter {
                 return fieldExists(object, JSONResponseFields::getCDAResult());
             }
 
+            bool JSONResponseBuilder::addFieldSalesAmount(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::SalesAmount)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getSalesAmount(), responseData.getSalesAmount());
+                }
+                return fieldExists(object, JSONResponseFields::getSalesAmount());
+            }
+
             bool JSONResponseBuilder::addFieldSalesCount(const IResponseData &responseData, Json::Value &object) {
                 if (responseData.isFieldSet(ResponseField::SaleCount)) {
                     AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), responseData.getSaleCount());
@@ -348,11 +355,27 @@ namespace Lanter {
                 return fieldExists(object, JSONResponseFields::getSaleCount());
             }
 
+
+            bool JSONResponseBuilder::addFieldVoidAmount(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::VoidAmount)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getVoidAmount(), responseData.getVoidAmount());
+                }
+                return fieldExists(object, JSONResponseFields::getVoidAmount());
+            }
+
             bool JSONResponseBuilder::addFieldVoidCount(const IResponseData &responseData, Json::Value &object) {
                 if (responseData.isFieldSet(ResponseField::VoidCount)) {
                     AddFieldsHelper::addField(object, JSONResponseFields::getVoidCount(), responseData.getVoidCount());
                 }
                 return fieldExists(object, JSONResponseFields::getVoidCount());
+            }
+
+
+            bool JSONResponseBuilder::addFieldRefundAmount(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::RefundAmount)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getRefundAmount(), responseData.getRefundAmount());
+                }
+                return fieldExists(object, JSONResponseFields::getRefundAmount());
             }
 
             bool JSONResponseBuilder::addFieldRefundCount(const IResponseData &responseData, Json::Value &object) {
@@ -505,10 +528,16 @@ namespace Lanter {
                 m_InsertFunctions[ResponseField::KVR] = std::bind(&JSONResponseBuilder::addFieldKVR, this, _1, _2);
                 m_InsertFunctions[ResponseField::CDAResult] = std::bind(&JSONResponseBuilder::addFieldCDAResult, this,
                                                                         _1, _2);
+                m_InsertFunctions[ResponseField::SalesAmount] = std::bind(&JSONResponseBuilder::addFieldSalesAmount, this,
+                                                                        _1, _2);
                 m_InsertFunctions[ResponseField::SaleCount] = std::bind(&JSONResponseBuilder::addFieldSalesCount, this,
                                                                         _1, _2);
+                m_InsertFunctions[ResponseField::VoidAmount] = std::bind(&JSONResponseBuilder::addFieldVoidAmount, this,
+                                                                          _1, _2);
                 m_InsertFunctions[ResponseField::VoidCount] = std::bind(&JSONResponseBuilder::addFieldVoidCount, this,
                                                                         _1, _2);
+                m_InsertFunctions[ResponseField::RefundAmount] = std::bind(&JSONResponseBuilder::addFieldRefundAmount, this,
+                                                                          _1, _2);
                 m_InsertFunctions[ResponseField::RefundCount] = std::bind(&JSONResponseBuilder::addFieldRefundCount,
                                                                           this, _1, _2);
                 m_InsertFunctions[ResponseField::SaleArray] = std::bind(&JSONResponseBuilder::addFieldSalesArray, this,

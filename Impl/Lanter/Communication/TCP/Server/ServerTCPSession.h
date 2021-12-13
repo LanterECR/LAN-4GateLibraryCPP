@@ -11,9 +11,9 @@ using asio::ip::tcp;
 
 namespace Lanter {
     namespace Communication {
-        class TCPSession : public std::enable_shared_from_this<TCPSession> {
+        class ServerTCPSession : public std::enable_shared_from_this<ServerTCPSession> {
         public:
-            explicit TCPSession(tcp::socket socket, std::function<void()> closeConnectionCallback);
+            explicit ServerTCPSession(tcp::socket socket, std::function<void()> closeConnectionCallback);
 
             void start();
 

@@ -184,13 +184,26 @@ namespace Lanter {
 
                 bool setCDAResult(const std::string &cdaResult) override;
 
+                int64_t getSalesAmount() const override;
+
+                bool setSalesAmount(int64_t amount) override;
+
                 int32_t getSaleCount() const override;
 
                 bool setSalesCount(int32_t salesCount) override;
 
+
+                int64_t getVoidAmount() const override;
+
+                bool setVoidAmount(int64_t amount) override;
+
                 int32_t getVoidCount() const override;
 
                 bool setVoidCount(int32_t voidCount) override;
+
+                int64_t getRefundAmount() const override;
+
+                bool setRefundAmount(int64_t amount) override;
 
                 int32_t getRefundCount() const override;
 
@@ -290,9 +303,15 @@ namespace Lanter {
 
                 bool resetCDAResult() override;
 
+                bool resetSalesAmount() override;
+
                 bool resetSalesCount() override;
 
+                bool resetVoidAmount() override;
+
                 bool resetVoidCount() override;
+
+                bool resetRefundAmount() override;
 
                 bool resetRefundCount() override;
 
@@ -354,8 +373,11 @@ namespace Lanter {
                 std::string m_CID;
                 std::string m_KVR;
                 std::string m_CDAResult;
+                int64_t m_SalesAmount = -1;
                 int32_t m_SalesCount = -1;
+                int64_t m_VoidAmount = -1;
                 int32_t m_VoidCount = -1;
+                int64_t m_RefundAmount = -1;
                 int32_t m_RefundCount = -1;
                 std::vector<std::shared_ptr<IResponseData> > m_SalesArray;
                 std::vector<std::shared_ptr<IResponseData> > m_VoidArray;

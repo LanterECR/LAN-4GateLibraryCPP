@@ -410,6 +410,15 @@ namespace Lanter {
                 return result;
             }
 
+            bool JSONResponseParser::getFieldSalesAmount(const Json::Value &object, IResponseData &responseData) {
+                int64_t salesAmount;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getSalesAmount(), salesAmount);
+                bool result = exists && responseData.setSalesAmount(salesAmount);
+
+                return result;
+            }
+
             bool JSONResponseParser::getFieldSalesCount(const Json::Value &object, IResponseData &responseData) {
                 int salesCount;
 
@@ -419,11 +428,29 @@ namespace Lanter {
                 return result;
             }
 
+            bool JSONResponseParser::getFieldVoidAmount(const Json::Value &object, IResponseData &responseData) {
+                int64_t voidAmount;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getVoidAmount(), voidAmount);
+                bool result = exists && responseData.setVoidAmount(voidAmount);
+
+                return result;
+            }
+
             bool JSONResponseParser::getFieldVoidCount(const Json::Value &object, IResponseData &responseData) {
                 int voidCount;
 
                 bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getVoidCount(), voidCount);
                 bool result = exists && responseData.setVoidCount(voidCount);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldRefundAmount(const Json::Value &object, IResponseData &responseData) {
+                int64_t refundAmount;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getRefundAmount(), refundAmount);
+                bool result = exists && responseData.setRefundAmount(refundAmount);
 
                 return result;
             }
@@ -586,10 +613,16 @@ namespace Lanter {
                 m_ExtractFunctions[ResponseField::KVR] = std::bind(&JSONResponseParser::getFieldKVR, this, _1, _2);
                 m_ExtractFunctions[ResponseField::CDAResult] = std::bind(&JSONResponseParser::getFieldCDAResult, this,
                                                                          _1, _2);
+                m_ExtractFunctions[ResponseField::SalesAmount] = std::bind(&JSONResponseParser::getFieldSalesAmount, this,
+                                                                         _1, _2);
                 m_ExtractFunctions[ResponseField::SaleCount] = std::bind(&JSONResponseParser::getFieldSalesCount, this,
                                                                          _1, _2);
+                m_ExtractFunctions[ResponseField::VoidAmount] = std::bind(&JSONResponseParser::getFieldVoidAmount, this,
+                                                                           _1, _2);
                 m_ExtractFunctions[ResponseField::VoidCount] = std::bind(&JSONResponseParser::getFieldVoidCount, this,
                                                                          _1, _2);
+                m_ExtractFunctions[ResponseField::RefundAmount] = std::bind(&JSONResponseParser::getFieldRefundAmount, this,
+                                                                           _1, _2);
                 m_ExtractFunctions[ResponseField::RefundCount] = std::bind(&JSONResponseParser::getFieldRefundCount,
                                                                            this, _1, _2);
                 m_ExtractFunctions[ResponseField::SaleArray] = std::bind(&JSONResponseParser::getFieldSaleArray, this,
