@@ -50,9 +50,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_card_input_method_8h_source.html",
-"class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a81daee5d29ff87bc0b9b7a648939fa4d",
-"class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#aa8d60d6d6a855b71ae980bb2c31954a5",
-"namespace_lanter_1_1_message_1_1_notification.html#a434b23e4775c77b6361a208b28cb885da998b7fcf550f2b3994abbb67be00c49c"
+"class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a7d239c3b9be315fe4c2a203b91cd9525",
+"class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a9d6aee6da4297a8ba2330ae904a19dc4",
+"namespace_lanter_1_1_message_1_1_notification.html#a434b23e4775c77b6361a208b28cb885da4e126b38ed10277fcfeebbf026431ca6"
 ];
 
 var SYNCONMSG = 'нажмите на выключить для синхронизации панелей';
