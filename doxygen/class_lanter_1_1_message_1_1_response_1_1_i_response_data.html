@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.9.0</span>
+   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.9.2</span>
    </div>
    <div id="projectbrief">Реализация протокола кассового взаимодействия LAN-4Gate</div>
   </td>
@@ -475,6 +475,15 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_1_1_response_
 <tr class="memitem:a9880698badca336e32966118aaaac7cc"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a9880698badca336e32966118aaaac7cc">resetCDAResult</a> ()=0</td></tr>
 <tr class="memdesc:a9880698badca336e32966118aaaac7cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля CDAResult и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a9880698badca336e32966118aaaac7cc">Подробнее...</a><br /></td></tr>
 <tr class="separator:a9880698badca336e32966118aaaac7cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af20857ccabec038dd06b4c65ee306366"><td class="memItemLeft" align="right" valign="top">virtual int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#af20857ccabec038dd06b4c65ee306366">getSalesAmount</a> () const =0</td></tr>
+<tr class="memdesc:af20857ccabec038dd06b4c65ee306366"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает общую сумму продаж при сверке итогов  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#af20857ccabec038dd06b4c65ee306366">Подробнее...</a><br /></td></tr>
+<tr class="separator:af20857ccabec038dd06b4c65ee306366"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa678db7ed679865f52198e52c38330a7"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#aa678db7ed679865f52198e52c38330a7">setSalesAmount</a> (int64_t amount)=0</td></tr>
+<tr class="memdesc:aa678db7ed679865f52198e52c38330a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает общую сумму продаж при сверке итогов в минимальных единицах валюты (копейки для рублей)  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#aa678db7ed679865f52198e52c38330a7">Подробнее...</a><br /></td></tr>
+<tr class="separator:aa678db7ed679865f52198e52c38330a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a096ae89c7815e48aa0b79fb466b650f7"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a096ae89c7815e48aa0b79fb466b650f7">resetSalesAmount</a> ()=0</td></tr>
+<tr class="memdesc:a096ae89c7815e48aa0b79fb466b650f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля SalesAmount и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a096ae89c7815e48aa0b79fb466b650f7">Подробнее...</a><br /></td></tr>
+<tr class="separator:a096ae89c7815e48aa0b79fb466b650f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f6d3e3c287406743d0b653c2c2f07d8"><td class="memItemLeft" align="right" valign="top">virtual int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a2f6d3e3c287406743d0b653c2c2f07d8">getSaleCount</a> () const =0</td></tr>
 <tr class="memdesc:a2f6d3e3c287406743d0b653c2c2f07d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество операций продажи, выполненных с последней сверки итогов  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a2f6d3e3c287406743d0b653c2c2f07d8">Подробнее...</a><br /></td></tr>
 <tr class="separator:a2f6d3e3c287406743d0b653c2c2f07d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -484,6 +493,15 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_1_1_response_
 <tr class="memitem:a1116a10a03607514248485a8823ed95e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a1116a10a03607514248485a8823ed95e">resetSalesCount</a> ()=0</td></tr>
 <tr class="memdesc:a1116a10a03607514248485a8823ed95e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля SalesCount и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a1116a10a03607514248485a8823ed95e">Подробнее...</a><br /></td></tr>
 <tr class="separator:a1116a10a03607514248485a8823ed95e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90b409a890e93974c35d171b230909ce"><td class="memItemLeft" align="right" valign="top">virtual int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a90b409a890e93974c35d171b230909ce">getVoidAmount</a> () const =0</td></tr>
+<tr class="memdesc:a90b409a890e93974c35d171b230909ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает общую сумму отмен при сверке итогов  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a90b409a890e93974c35d171b230909ce">Подробнее...</a><br /></td></tr>
+<tr class="separator:a90b409a890e93974c35d171b230909ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3df8fb066c39b6195d695201965d26a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#ac3df8fb066c39b6195d695201965d26a">setVoidAmount</a> (int64_t amount)=0</td></tr>
+<tr class="memdesc:ac3df8fb066c39b6195d695201965d26a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает общую сумму отмен при сверке итогов в минимальных единицах валюты (копейки для рублей)  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#ac3df8fb066c39b6195d695201965d26a">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac3df8fb066c39b6195d695201965d26a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8b738a33a64af1445f37206114cd82a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#ac8b738a33a64af1445f37206114cd82a">resetVoidAmount</a> ()=0</td></tr>
+<tr class="memdesc:ac8b738a33a64af1445f37206114cd82a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля VoidAmount и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#ac8b738a33a64af1445f37206114cd82a">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac8b738a33a64af1445f37206114cd82a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4db4b6555fd3d21ff5781336b43bcb14"><td class="memItemLeft" align="right" valign="top">virtual int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a4db4b6555fd3d21ff5781336b43bcb14">getVoidCount</a> () const =0</td></tr>
 <tr class="memdesc:a4db4b6555fd3d21ff5781336b43bcb14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество операций отмены, выполненных с последней сверки итогов  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a4db4b6555fd3d21ff5781336b43bcb14">Подробнее...</a><br /></td></tr>
 <tr class="separator:a4db4b6555fd3d21ff5781336b43bcb14"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -493,6 +511,15 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_1_1_response_
 <tr class="memitem:a2c0d3fb028d7e77ff6fd8f570601464a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a2c0d3fb028d7e77ff6fd8f570601464a">resetVoidCount</a> ()=0</td></tr>
 <tr class="memdesc:a2c0d3fb028d7e77ff6fd8f570601464a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля VoidCount и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a2c0d3fb028d7e77ff6fd8f570601464a">Подробнее...</a><br /></td></tr>
 <tr class="separator:a2c0d3fb028d7e77ff6fd8f570601464a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad32604e3bc9aa64b97d6021f7a62f90d"><td class="memItemLeft" align="right" valign="top">virtual int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#ad32604e3bc9aa64b97d6021f7a62f90d">getRefundAmount</a> () const =0</td></tr>
+<tr class="memdesc:ad32604e3bc9aa64b97d6021f7a62f90d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает общую сумму возвратов при сверке итогов  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#ad32604e3bc9aa64b97d6021f7a62f90d">Подробнее...</a><br /></td></tr>
+<tr class="separator:ad32604e3bc9aa64b97d6021f7a62f90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d71252a97541799074d0511aecc026b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a6d71252a97541799074d0511aecc026b">setRefundAmount</a> (int64_t amount)=0</td></tr>
+<tr class="memdesc:a6d71252a97541799074d0511aecc026b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает общую сумму возвратов при сверке итогов в минимальных единицах валюты (копейки для рублей)  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a6d71252a97541799074d0511aecc026b">Подробнее...</a><br /></td></tr>
+<tr class="separator:a6d71252a97541799074d0511aecc026b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5753a74644a0dd882b9b8d271a9aa853"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a5753a74644a0dd882b9b8d271a9aa853">resetRefundAmount</a> ()=0</td></tr>
+<tr class="memdesc:a5753a74644a0dd882b9b8d271a9aa853"><td class="mdescLeft">&#160;</td><td class="mdescRight">Устанавливает значение по умолчанию для поля VoidAmount и удаляет из списка установленных полей  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a5753a74644a0dd882b9b8d271a9aa853">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5753a74644a0dd882b9b8d271a9aa853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14e577429435f5735f5e7e1515732d60"><td class="memItemLeft" align="right" valign="top">virtual int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a14e577429435f5735f5e7e1515732d60">getRefundCount</a> () const =0</td></tr>
 <tr class="memdesc:a14e577429435f5735f5e7e1515732d60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество операций возврата, выполненных с последней сверки итогов  <a href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a14e577429435f5735f5e7e1515732d60">Подробнее...</a><br /></td></tr>
 <tr class="separator:a14e577429435f5735f5e7e1515732d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1322,6 +1349,34 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_1_1_response_
 
 </div>
 </div>
+<a id="ad32604e3bc9aa64b97d6021f7a62f90d" name="ad32604e3bc9aa64b97d6021f7a62f90d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad32604e3bc9aa64b97d6021f7a62f90d">&#9670;&nbsp;</a></span>getRefundAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int64_t Lanter::Message::Response::IResponseData::getRefundAmount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает общую сумму возвратов при сверке итогов </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Если поле установлено - значение суммы операции в диапазоне [0, 999999999999]. Иначе -1. </dd></dl>
+
+</div>
+</div>
 <a id="a109ea6c817f830549007810e56b0d045" name="a109ea6c817f830549007810e56b0d045"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a109ea6c817f830549007810e56b0d045">&#9670;&nbsp;</a></span>getRefundArray()</h2>
 
@@ -1515,6 +1570,34 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_1_1_response_
 
 <p>Возвращает количество операций продажи, выполненных с последней сверки итогов </p>
 <dl class="section return"><dt>Возвращает</dt><dd>Количество операций продажи </dd></dl>
+
+</div>
+</div>
+<a id="af20857ccabec038dd06b4c65ee306366" name="af20857ccabec038dd06b4c65ee306366"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af20857ccabec038dd06b4c65ee306366">&#9670;&nbsp;</a></span>getSalesAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int64_t Lanter::Message::Response::IResponseData::getSalesAmount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает общую сумму продаж при сверке итогов </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Если поле установлено - значение суммы операции в диапазоне [0, 999999999999]. Иначе -1. </dd></dl>
 
 </div>
 </div>
@@ -1851,6 +1934,34 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_1_1_response_
 
 <p>Дополнительные данные работы с картой </p>
 <dl class="section return"><dt>Возвращает</dt><dd>Дополнительные данные работы с картой </dd></dl>
+
+</div>
+</div>
+<a id="a90b409a890e93974c35d171b230909ce" name="a90b409a890e93974c35d171b230909ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90b409a890e93974c35d171b230909ce">&#9670;&nbsp;</a></span>getVoidAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int64_t Lanter::Message::Response::IResponseData::getVoidAmount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Возвращает общую сумму отмен при сверке итогов </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Если поле установлено - значение суммы операции в диапазоне [0, 999999999999]. Иначе -1. </dd></dl>
 
 </div>
 </div>
@@ -2678,6 +2789,34 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_1_1_response_
 
 </div>
 </div>
+<a id="a5753a74644a0dd882b9b8d271a9aa853" name="a5753a74644a0dd882b9b8d271a9aa853"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5753a74644a0dd882b9b8d271a9aa853">&#9670;&nbsp;</a></span>resetRefundAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Response::IResponseData::resetRefundAmount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля VoidAmount и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
 <a id="a6a1ff0bd9628982bf2661108057179c5" name="a6a1ff0bd9628982bf2661108057179c5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6a1ff0bd9628982bf2661108057179c5">&#9670;&nbsp;</a></span>resetRefundArray()</h2>
 
@@ -2814,6 +2953,34 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_1_1_response_
 </div><div class="memdoc">
 
 <p>Устанавливает значение по умолчанию для поля RRN и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="a096ae89c7815e48aa0b79fb466b650f7" name="a096ae89c7815e48aa0b79fb466b650f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a096ae89c7815e48aa0b79fb466b650f7">&#9670;&nbsp;</a></span>resetSalesAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Response::IResponseData::resetSalesAmount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля SalesAmount и удаляет из списка установленных полей </p>
 <dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
 
 </div>
@@ -3206,6 +3373,34 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_1_1_response_
 </div><div class="memdoc">
 
 <p>Устанавливает значение по умолчанию для поля TVR и удаляет из списка установленных полей </p>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
+
+</div>
+</div>
+<a id="ac8b738a33a64af1445f37206114cd82a" name="ac8b738a33a64af1445f37206114cd82a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8b738a33a64af1445f37206114cd82a">&#9670;&nbsp;</a></span>resetVoidAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Response::IResponseData::resetVoidAmount </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает значение по умолчанию для поля VoidAmount и удаляет из списка установленных полей </p>
 <dl class="section return"><dt>Возвращает</dt><dd>true, если успешно удалено. </dd></dl>
 
 </div>
@@ -4143,6 +4338,41 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_1_1_response_
 
 </div>
 </div>
+<a id="a6d71252a97541799074d0511aecc026b" name="a6d71252a97541799074d0511aecc026b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d71252a97541799074d0511aecc026b">&#9670;&nbsp;</a></span>setRefundAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Response::IResponseData::setRefundAmount </td>
+          <td>(</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>amount</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает общую сумму возвратов при сверке итогов в минимальных единицах валюты (копейки для рублей) </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">totalAmount</td><td>Значение суммы в диапазоне [0, 999999999999] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
 <a id="a121a89e7e0483afd16282b9b5850fb3a" name="a121a89e7e0483afd16282b9b5850fb3a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a121a89e7e0483afd16282b9b5850fb3a">&#9670;&nbsp;</a></span>setRefundArray()</h2>
 
@@ -4311,6 +4541,41 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_1_1_response_
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">rrn</td><td>Строка, содержащая RRN операции </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
+<a id="aa678db7ed679865f52198e52c38330a7" name="aa678db7ed679865f52198e52c38330a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa678db7ed679865f52198e52c38330a7">&#9670;&nbsp;</a></span>setSalesAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Response::IResponseData::setSalesAmount </td>
+          <td>(</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>amount</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает общую сумму продаж при сверке итогов в минимальных единицах валюты (копейки для рублей) </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">totalAmount</td><td>Значение суммы в диапазоне [0, 999999999999] </td></tr>
   </table>
   </dd>
 </dl>
@@ -4808,6 +5073,41 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_1_1_response_
 
 </div>
 </div>
+<a id="ac3df8fb066c39b6195d695201965d26a" name="ac3df8fb066c39b6195d695201965d26a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3df8fb066c39b6195d695201965d26a">&#9670;&nbsp;</a></span>setVoidAmount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Lanter::Message::Response::IResponseData::setVoidAmount </td>
+          <td>(</td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>amount</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Устанавливает общую сумму отмен при сверке итогов в минимальных единицах валюты (копейки для рублей) </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">totalAmount</td><td>Значение суммы в диапазоне [0, 999999999999] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>true, если поле успешно установлено </dd></dl>
+
+</div>
+</div>
 <a id="acfcdbf9feae9a8560cc3c90d86a2c72e" name="acfcdbf9feae9a8560cc3c90d86a2c72e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acfcdbf9feae9a8560cc3c90d86a2c72e">&#9670;&nbsp;</a></span>setVoidArray()</h2>
 
@@ -4915,7 +5215,7 @@ $(document).ready(function(){initNavTree('class_lanter_1_1_message_1_1_response_
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_lanter.html">Lanter</a></li><li class="navelem"><a class="el" href="namespace_lanter_1_1_message.html">Message</a></li><li class="navelem"><a class="el" href="namespace_lanter_1_1_message_1_1_response.html">Response</a></li><li class="navelem"><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html">IResponseData</a></li>
-    <li class="footer">Документация по LAN-4Gate. Последние изменения: Вт 7 Дек 2021 17:47:48. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Документация по LAN-4Gate. Последние изменения: Пн 13 Дек 2021 11:52:16. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
