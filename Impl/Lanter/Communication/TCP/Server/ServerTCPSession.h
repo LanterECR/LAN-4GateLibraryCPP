@@ -1,5 +1,5 @@
-#ifndef TESTL4G_TCPSESSION_H
-#define TESTL4G_TCPSESSION_H
+#ifndef TESTL4G_TCPSERVERSESSION_H
+#define TESTL4G_TCPSERVERSESSION_H
 
 #include <queue>
 #include <functional>
