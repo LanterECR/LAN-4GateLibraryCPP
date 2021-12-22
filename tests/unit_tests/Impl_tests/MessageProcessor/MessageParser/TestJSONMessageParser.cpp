@@ -20,11 +20,17 @@ using namespace Lanter::MessageProcessor::Builder;
 TEST(TestJSONMessageParser, CheckReadMessage) {
     std::string junkValue = "JUNK";
 
+    std::string jsonLengthValue = R"(0012{"field":"value"})";
+
     std::string jsonValue = R"({"field":"value"})";
 
     Json::Value root;
 
     EXPECT_FALSE(JSONMessageParser::readMessage(junkValue, root));
+
+    EXPECT_TRUE(JSONMessageParser::readMessage(jsonLengthValue, root));
+    EXPECT_TRUE(root.isInt());
+
     EXPECT_TRUE(JSONMessageParser::readMessage(jsonValue, root));
 
     auto members = root.getMemberNames();
@@ -38,11 +44,13 @@ TEST(TestJSONMessageParser, CheckReadMessage) {
 TEST(TestJSONMessageParser, CheckError) {
     Json::Value root;
 
-    std::vector<uint8_t> data = {'J', 'U', 'N', 'N', 'K'};
+    std::vector<uint8_t> dataJunk = {'J', 'U', 'N', 'N', 'K'};
+    std::vector<uint8_t> jsonLength = {'0', '0', '1', '2', '{', '"', 'f', 'i', 'e', 'l', 'd', '"', ':', '"', 'v', 'a', 'l', 'u', 'e', '"', '}'};
     JSONMessageParser parser;
 
 
-    EXPECT_EQ(parser.parseMessage(data), MessageType::Error);
+    EXPECT_EQ(parser.parseMessage(dataJunk), MessageType::Error);
+    EXPECT_EQ(parser.parseMessage(jsonLength), MessageType::Error);
 }
 TEST(TestJSONMessageParser, CheckRequest) {
     Json::Value root;
