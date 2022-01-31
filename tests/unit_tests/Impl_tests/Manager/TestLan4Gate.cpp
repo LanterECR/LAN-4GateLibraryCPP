@@ -32,16 +32,14 @@ TEST(TestLan4Gate, TestAddRemoveRequestCallback) {
 
     std::function<void(std::shared_ptr<IRequestData>)> emptyFunc;
 
-    auto realFunc = [](std::shared_ptr<IRequestData>) -> void {};
+    MOCKRequestCallback requestCallback;
 
-    EXPECT_EQ(gate.requestCallbacksCount(), 0);
-    EXPECT_EQ(gate.addRequestCallback(emptyFunc), 0);
     EXPECT_EQ(gate.requestCallbacksCount(), 0);
 
     EXPECT_FALSE(gate.removeRequestCallback(1234));
 
     for(int i = 0; i < iterationCount; i++) {
-        size_t id = gate.addRequestCallback(realFunc);
+        size_t id = gate.addRequestCallback(requestCallback);
         EXPECT_NE(id, 0);
 
         callbackIDs.push_back(id);
@@ -61,18 +59,14 @@ TEST(TestLan4Gate, TestAddRemoveResponseCallback) {
     std::vector<size_t> callbackIDs;
     Lan4Gate gate;
 
-    std::function<void(std::shared_ptr<IResponseData>)> emptyFunc;
+    MOCKResponseCallback responseCallback;
 
-    auto realFunc = [](std::shared_ptr<IResponseData>) -> void {};
-
-    EXPECT_EQ(gate.responseCallbacksCount(), 0);
-    EXPECT_EQ(gate.addResponseCallback(emptyFunc), 0);
     EXPECT_EQ(gate.responseCallbacksCount(), 0);
 
     EXPECT_FALSE(gate.removeResponseCallback(1234));
 
     for(int i = 0; i < iterationCount; i++) {
-        size_t id = gate.addResponseCallback(realFunc);
+        size_t id = gate.addResponseCallback(responseCallback);
         EXPECT_NE(id, 0);
 
         callbackIDs.push_back(id);
@@ -93,18 +87,14 @@ TEST(TestLan4Gate, TestAddRemoveNotificationCallback) {
     std::vector<size_t> callbackIDs;
     Lan4Gate gate;
 
-    std::function<void(std::shared_ptr<INotificationData>)> emptyFunc;
+    MOCKNotificationCallback notificationCallback;
 
-    auto realFunc = [](std::shared_ptr<INotificationData>) -> void {};
-
-    EXPECT_EQ(gate.notificationCallbacksCount(), 0);
-    EXPECT_EQ(gate.addNotificationCallback(emptyFunc), 0);
     EXPECT_EQ(gate.notificationCallbacksCount(), 0);
 
     EXPECT_FALSE(gate.removeNotificationCallback(1234));
 
     for(int i = 0; i < iterationCount; i++) {
-        size_t id = gate.addNotificationCallback(realFunc);
+        size_t id = gate.addNotificationCallback(notificationCallback);
         EXPECT_NE(id, 0);
 
         callbackIDs.push_back(id);
@@ -125,18 +115,14 @@ TEST(TestLan4Gate, TestAddRemoveInteractionCallback) {
     std::vector<size_t> callbackIDs;
     Lan4Gate gate;
 
-    std::function<void(std::shared_ptr<IInteractionData>)> emptyFunc;
+    MOCKInteractionCallback interactionCallback;
 
-    auto realFunc = [](std::shared_ptr<IInteractionData>) -> void {};
-
-    EXPECT_EQ(gate.interactionCallbacksCount(), 0);
-    EXPECT_EQ(gate.addInteractionCallback(emptyFunc), 0);
     EXPECT_EQ(gate.interactionCallbacksCount(), 0);
 
     EXPECT_FALSE(gate.removeInteractionCallback(1234));
 
     for(int i = 0; i < iterationCount; i++) {
-        size_t id = gate.addInteractionCallback(realFunc);
+        size_t id = gate.addInteractionCallback(interactionCallback);
         EXPECT_NE(id, 0);
 
         callbackIDs.push_back(id);
@@ -149,6 +135,34 @@ TEST(TestLan4Gate, TestAddRemoveInteractionCallback) {
     }
 
     EXPECT_EQ(gate.interactionCallbacksCount(), 0);
+
+}
+
+TEST(TestLan4Gate, TestAddRemoveConnectionCallback) {
+    int iterationCount = 50;
+    std::vector<size_t> callbackIDs;
+    Lan4Gate gate;
+
+    MOCKConnectionCallback interactionCallback;
+
+    EXPECT_EQ(gate.connectionCallbacksCount(), 0);
+
+    EXPECT_FALSE(gate.removeConnectionCallback(1234));
+
+    for(int i = 0; i < iterationCount; i++) {
+        size_t id = gate.addConnectionCallback(interactionCallback);
+        EXPECT_NE(id, 0);
+
+        callbackIDs.push_back(id);
+    }
+
+    ASSERT_EQ(gate.connectionCallbacksCount(), callbackIDs.size());
+
+    for(auto i : callbackIDs) {
+        EXPECT_TRUE(gate.removeConnectionCallback(i));
+    }
+
+    EXPECT_EQ(gate.connectionCallbacksCount(), 0);
 
 }
 
@@ -770,57 +784,41 @@ TEST(TestLan4Gate, TestReceiveMessageDoL4G) {
         EXPECT_EQ(interaction->getCode(), InteractionCode::Abort);
     };
 
-    MOCKCallback callback;
+    MOCKRequestCallback requestCallback;
 
-    EXPECT_CALL(callback, requestCallback(_)).
+    EXPECT_CALL(requestCallback, newData(_)).
         WillOnce(checkRequest).
         WillOnce(checkRequest);
 
-    EXPECT_CALL(callback, responseCallback(_)).
+    MOCKResponseCallback responseCallback;
+    EXPECT_CALL(responseCallback, newData(_)).
             WillOnce(checkResponse).
             WillOnce(checkResponse);
 
-    EXPECT_CALL(callback, notificationCallback(_)).
+    MOCKNotificationCallback notificationCallback;
+    EXPECT_CALL(notificationCallback, newData(_)).
             WillOnce(checkNotification).
             WillOnce(checkNotification);
 
-    EXPECT_CALL(callback, interactionCallback(_)).
+    MOCKInteractionCallback interactionCallback;
+    EXPECT_CALL(interactionCallback, newData(_)).
             WillOnce(checkInteraction).
             WillOnce(checkInteraction);
 
-    EXPECT_CALL(callback, connectedCallback(_)).
+    MOCKConnectionCallback connectionCallback;
+    EXPECT_CALL(connectionCallback, newState(_)).
             WillOnce(Invoke(receiveConnectionStatusTrueFunc));
-
-    std::function<void(std::shared_ptr<IRequestData>)> callbackRequest = [&callback](std::shared_ptr<IRequestData> data) {
-        callback.requestCallback(data);
-    };
-
-    std::function<void(std::shared_ptr<IResponseData>)> callbackResponse = [&callback](std::shared_ptr<IResponseData> data) {
-        callback.responseCallback(data);
-    };
-
-    std::function<void(std::shared_ptr<INotificationData>)> callbackNotification = [&callback](std::shared_ptr<INotificationData> data) {
-        callback.notificationCallback(data);
-    };
-
-    std::function<void(std::shared_ptr<IInteractionData>)> callbackInteraction = [&callback](std::shared_ptr<IInteractionData> data) {
-        callback.interactionCallback(data);
-    };
-
-    std::function<void(bool)> callbackConnection = [&callback](bool connected) {
-        callback.connectedCallback(connected);
-    };
 
     Lan4Gate gate;
 
     gate.setCommunication(comms);
     gate.setCallbackNotificationType(Lanter::Manager::ILan4Gate::CallbackNotificationType::Sync);
 
-    gate.addRequestCallback(callbackRequest);
-    gate.addResponseCallback(callbackResponse);
-    gate.addNotificationCallback(callbackNotification);
-    gate.addInteractionCallback(callbackInteraction);
-    gate.addConnectionCallback(callbackConnection);
+    gate.addRequestCallback(requestCallback);
+    gate.addResponseCallback(responseCallback);
+    gate.addNotificationCallback(notificationCallback);
+    gate.addInteractionCallback(interactionCallback);
+    gate.addConnectionCallback(connectionCallback);
     EXPECT_EQ(gate.start(), ILan4Gate::Status::Success);
 
     //100 циклов библиотеки
@@ -885,28 +883,17 @@ TEST(TestLan4Gate, TestConnectedCallback) {
             WillOnce(Return(true)).
             WillRepeatedly(Return(false));
 
-   MOCKCallback callback;
-
-    EXPECT_CALL(callback, requestCallback(_)).Times(0);
-
-    EXPECT_CALL(callback, responseCallback(_)).Times(0);
-
-    EXPECT_CALL(callback, notificationCallback(_)).Times(0);
-
-    EXPECT_CALL(callback, connectedCallback(_)).
+    MOCKConnectionCallback connectionCallback;
+    EXPECT_CALL(connectionCallback, newState(_)).
             WillOnce(Invoke(receiveConnectionStatusTrueFunc)).
             WillOnce(Invoke(receiveConnectionStatusFalseFunc));
-
-    std::function<void(bool)> callbackConnection = [&callback](bool connected) {
-        callback.connectedCallback(connected);
-    };
 
     Lan4Gate gate;
 
     gate.setCommunication(comms);
     gate.setCallbackNotificationType(Lanter::Manager::ILan4Gate::CallbackNotificationType::Sync);
 
-    gate.addConnectionCallback(callbackConnection);
+    gate.addConnectionCallback(connectionCallback);
     EXPECT_EQ(gate.start(), ILan4Gate::Status::Success);
 
     //100 циклов библиотеки
