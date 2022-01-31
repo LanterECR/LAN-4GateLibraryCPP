@@ -88,6 +88,8 @@ namespace Lanter {
                 auto threadLoop = [this]() {
                     while(isStarted()) {
                         doLan4Gate();
+                        int sleepTimeout = 1; //ms
+                        std::this_thread::sleep_for(std::chrono::milliseconds(sleepTimeout));
                     }
                 };
                 if(start() == ILan4Gate::Status::Success) {
