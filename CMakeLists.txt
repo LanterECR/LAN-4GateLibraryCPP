@@ -33,11 +33,12 @@ if(NOT CMAKE_CXX_EXTENSIONS)
 endif()
 
 option(L4G_TESTS "Enable unit-testing" OFF)
+option(L4G_BUILD_MODULE "Build module library" ON)
 option(L4G_BUILD_SHARED "Build shared library" ON)
 option(L4G_BUILD_STATIC "Build static library" ON)
 
-if(NOT L4G_BUILD_SHARED AND NOT L4G_BUILD_STATIC)
-    message(FATAL_ERROR "This library must be static or shared. Enable L4G_BUILD_STATIC or L4G_BUILD_SHARED flag")
+if(NOT L4G_BUILD_SHARED AND NOT L4G_BUILD_STATIC AND NOT L4G_BUILD_MODULE)
+    message(FATAL_ERROR "This library must be static or shared. Enable L4G_BUILD_STATIC, L4G_BUILD_SHARED or L4G_BUILD_MODULE flag")
 endif()
 
 
@@ -99,6 +100,24 @@ if(L4G_BUILD_SHARED)
     list(APPEND INSTALLATION_TARGETS l4g_shared)
 endif()
 
+if(L4G_BUILD_MODULE)
+    add_library(l4g_module MODULE ${INCLUDE_FILES} ${SOURCE_FILES} ${IMPL_INCLUDE_FILES} ${IMPL_SOURCE_FILES})
+
+    target_include_directories(l4g_module INTERFACE
+            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+            $<INSTALL_INTERFACE:include>)
+
+    target_compile_features(l4g_module INTERFACE cxx_std_11)
+
+    target_link_libraries(l4g_module ${DEPENDENCIES_LIST})
+
+    target_compile_definitions(l4g_module PUBLIC LANTER_BUILD_SHARED)
+
+    add_library(L4G::l4g_module ALIAS l4g_module)
+
+    list(APPEND INSTALLATION_TARGETS l4g_module)
+endif()
+
 if(L4G_TESTS AND L4G_BUILD_STATIC AND NOT IS_SUBPROJECT)
     set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
     option(INSTALL_GTEST OFF)
@@ -127,3 +146,9 @@ write_basic_package_version_file("${PROJECT_BINARY_DIR}/LAN_4GateLibConfigVersio
         AnyNewerVersion
         )
 install(FILES "${PROJECT_BINARY_DIR}/LAN_4GateLibConfigVersion.cmake" DESTINATION share/LAN_4GateLib/cmake)
+
+find_package(SWIG)
+
+message("SWIG found = ${SWIG_FOUND}")
+message("SWIG_EXECUTABLE = ${SWIG_EXECUTABLE}")
+message("SWIG_DIR = ${SWIG_DIR}")
