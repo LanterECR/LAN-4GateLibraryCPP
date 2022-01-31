@@ -13,6 +13,7 @@ namespace Lanter {
             /// \brief Колбэк для приема данных уведомления от терминала
             class LANTER_VISIBILITY NotificationCallback {
             public:
+                virtual ~NotificationCallback() = default;
                 /// \brief Метод, в который будет переданы данные уведомления
                 /// \param data данные уведомления
                 /// \sa Message::Notification::INotificationData

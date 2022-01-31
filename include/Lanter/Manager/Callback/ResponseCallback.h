@@ -13,6 +13,7 @@ namespace Lanter {
             /// \brief Колбэк для приема данных ответа от терминала
             class LANTER_VISIBILITY ResponseCallback {
             public:
+                virtual ~ResponseCallback() = default;
                 /// \brief Метод, в который будет переданы данные ответа
                 /// \param data данные ответа
                 /// \sa Message::Response::IResponseData

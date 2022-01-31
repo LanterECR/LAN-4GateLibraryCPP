@@ -13,6 +13,7 @@ namespace Lanter {
             /// \brief Колбэк для приема данных запроса от кассы
             class LANTER_VISIBILITY RequestCallback {
             public:
+                virtual ~RequestCallback() = default;
                 /// \brief Метод, в который будет переданы данные запроса
                 /// \param data данные запроса
                 /// \sa Message::Request::IRequestData

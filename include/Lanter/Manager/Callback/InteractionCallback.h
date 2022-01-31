@@ -13,6 +13,7 @@ namespace Lanter {
             /// \brief Колбэк для приема данных команд взаимодействия
             class LANTER_VISIBILITY InteractionCallback {
             public:
+                virtual ~InteractionCallback() = default;
                 /// \brief Метод, в который будет переданы данные команды взаимодействия
                 /// \param data данные команды взаимодействия
                 /// \sa Message::Interaction::IInteractionData

@@ -8,7 +8,8 @@ namespace Lanter {
         namespace Callback {
             /// \brief Колбэк для приема состояния соединения
             class LANTER_VISIBILITY ConnectionCallback {
-                    public:
+            public:
+                    virtual ~ConnectionCallback() = default;
                     /// \brief Метод, в который будет передано новое состояние соединения
                     /// \param state Состояние соединения. true - связь между терминалом и кассой установлена
                     virtual void newState(bool state) = 0;
