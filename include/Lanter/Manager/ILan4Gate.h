@@ -3,7 +3,6 @@
 
 #include <cstddef>
 #include <memory>
-#include <functional>
 
 #include "Lanter/Utils/VisibilityMacroses.h"
 
@@ -13,6 +12,12 @@
 #include "Lanter/Message/Response/IResponseData.h"
 #include "Lanter/Message/Notification/INotificationData.h"
 #include "Lanter/Message/Interaction/IInteractionData.h"
+
+#include "Callback/RequestCallback.h"
+#include "Callback/ResponseCallback.h"
+#include "Callback/NotificationCallback.h"
+#include "Callback/InteractionCallback.h"
+#include "Callback/ConnectionCallback.h"
 
 namespace Lanter {
     namespace Manager {
@@ -92,11 +97,13 @@ namespace Lanter {
             /// \return Установленный способ вызова колбеков. По умолчанию Async
             /// \sa CallbackNotificationType
             virtual CallbackNotificationType getCallbackNotificationType() const = 0;
+
             /// \brief Добавляет колбек в список слушателей для получения данных запроса
-            /// \param[in] callback std::function с сигнатурой `void func(std::shared_ptr<Message::Request::IRequestData>)`
+            /// \param[in] callback имплементация интерфейса Callback::RequestCallback
             /// \return id зарегистрированного колбека
             /// \sa Message::Request::IRequestData
-            virtual size_t addRequestCallback(std::function<void(std::shared_ptr<Message::Request::IRequestData>)> callback) = 0;
+            /// \sa Callback::RequestCallback
+            virtual size_t addRequestCallback(Callback::RequestCallback &callback) = 0;
 
             /// \brief Удаляет колбек запроса из списка
             /// \param[in] id идентификатор колбека
@@ -108,10 +115,11 @@ namespace Lanter {
             virtual size_t requestCallbacksCount() const = 0;
 
             /// \brief Добавляет колбек в список слушателей для получения данных ответа
-            /// \param[in] callback std::function с сигнатурой `void func(std::shared_ptr<Message::Response::IResponseData>)`
+            /// \param[in] callback имплементация интерфейса Callback::ResponseCallback
             /// \return id зарегистрированного колбека
             /// \sa Message::Response::IResponseData
-            virtual size_t addResponseCallback(std::function<void(std::shared_ptr<Message::Response::IResponseData>)> callback) = 0;
+            /// \sa Callback::ResponseCallback
+            virtual size_t addResponseCallback(Callback::ResponseCallback &callback) = 0;
 
             /// \brief Удаляет колбек ответа из списка
             /// \param[in] id идентификатор колбека
@@ -123,10 +131,11 @@ namespace Lanter {
             virtual size_t responseCallbacksCount() const = 0;
 
             /// \brief Добавляет колбек в список слушателей для получения данных уведомления
-            /// \param[in] callback std::function на колбек-функцию
+            /// \param[in] callback имплементация интерфейса Callback::NotificationCallback
             /// \return id зарегистрированного колбека
             /// \sa Message::Notification::INotificationData
-            virtual size_t addNotificationCallback(std::function<void(std::shared_ptr<Message::Notification::INotificationData>)> callback) = 0;
+            /// \sa Callback::NotificationCallback
+            virtual size_t addNotificationCallback(Callback::NotificationCallback &callback) = 0;
 
             /// \brief Удаляет колбек уведомления из списка
             /// \param[in] id идентификатор колбека
@@ -138,10 +147,11 @@ namespace Lanter {
             virtual size_t notificationCallbacksCount() const = 0;
 
             /// \brief Добавляет колбек в список слушателей для получения данных команд взаимодействия
-            /// \param[in] callback std::function на колбек-функцию
+            /// \param[in] callback имплементация интерфейса Callback::InteractionCallback
             /// \return id зарегистрированного колбека
             /// \sa Message::Interaction::IInteractionData
-            virtual size_t addInteractionCallback(std::function<void(std::shared_ptr<Message::Interaction::IInteractionData>)> callback) = 0;
+            /// \sa Callback::InteractionCallback
+            virtual size_t addInteractionCallback(Callback::InteractionCallback &callback) = 0;
 
             /// \brief Удаляет колбек команд взаимодействия из списка
             /// \param[in] id идентификатор колбека
@@ -153,9 +163,10 @@ namespace Lanter {
             virtual size_t interactionCallbacksCount() const = 0;
 
             /// \brief Добавляет колбек в список слушателей для получения уведомления о подключении
-            /// \param[in] callback std::function на колбек-функцию
+            /// \param[in] callback имплементация интерфейса Callback::ConnectionCallback
             /// \return id зарегистрированного колбека
-            virtual size_t addConnectionCallback(std::function<void(bool)> callback) = 0;
+            /// \sa Callback::ConnectionCallback
+            virtual size_t addConnectionCallback(Callback::ConnectionCallback &callback) = 0;
 
             /// \brief Удаляет колбек уведомления из списка
             /// \param[in] id идентификатор колбека

@@ -45,26 +45,26 @@ namespace Lanter {
 
             CallbackNotificationType getCallbackNotificationType() const override  { return m_CallbackNotificationType; }
 
-            size_t addRequestCallback(std::function<void(std::shared_ptr<Message::Request::IRequestData>)> callback) override;
+            size_t addRequestCallback(Callback::RequestCallback &callback) override;
 
             bool removeRequestCallback(size_t id) override;
 
             size_t requestCallbacksCount() const override;
 
-            size_t addResponseCallback(std::function<void(std::shared_ptr<Message::Response::IResponseData>)> callback) override;
+            size_t addResponseCallback(Callback::ResponseCallback &callback) override;
 
             bool removeResponseCallback(size_t id) override;
 
             size_t responseCallbacksCount() const override;
 
-            size_t addNotificationCallback(std::function<void(std::shared_ptr<Message::Notification::INotificationData>)> callback) override;
+            size_t addNotificationCallback(Callback::NotificationCallback &callback) override;
 
             bool removeNotificationCallback(size_t id) override;
 
             size_t notificationCallbacksCount() const override;
 
             size_t addInteractionCallback(
-                    std::function<void(std::shared_ptr<Message::Interaction::IInteractionData>)> callback) override;
+                    Callback::InteractionCallback &callback) override;
 
             bool removeInteractionCallback(size_t id) override;
 
@@ -79,7 +79,7 @@ namespace Lanter {
             std::shared_ptr<Message::Interaction::IInteractionData>
             getPreparedInteraction(Message::Interaction::InteractionCode interactionCode) override;
 
-            size_t addConnectionCallback(std::function<void(bool)> callback) override;
+            size_t addConnectionCallback(Callback::ConnectionCallback &callback) override;
 
             bool removeConnectionCallback(size_t id) override;
 
@@ -144,15 +144,15 @@ namespace Lanter {
 
             CallbackNotificationType m_CallbackNotificationType = CallbackNotificationType::Async;
 
-            std::unordered_map<size_t, std::function<void(std::shared_ptr<Message::Request::IRequestData>)> > m_RequestCallbacks;
+            std::unordered_map<size_t, Callback::RequestCallback&> m_RequestCallbacks;
 
-            std::unordered_map<size_t, std::function<void(std::shared_ptr<Message::Response::IResponseData>)> > m_ResponseCallbacks;
+            std::unordered_map<size_t, Callback::ResponseCallback&> m_ResponseCallbacks;
 
-            std::unordered_map<size_t, std::function<void(std::shared_ptr<Message::Notification::INotificationData>)> > m_NotificationCallbacks;
+            std::unordered_map<size_t, Callback::NotificationCallback&> m_NotificationCallbacks;
 
-            std::unordered_map<size_t, std::function<void(std::shared_ptr<Message::Interaction::IInteractionData>)> > m_InteractionCallbacks;
+            std::unordered_map<size_t, Callback::InteractionCallback& > m_InteractionCallbacks;
 
-            std::unordered_map<size_t, std::function<void(bool)> > m_ConnectionCallbacks;
+            std::unordered_map<size_t, Callback::ConnectionCallback&> m_ConnectionCallbacks;
 
             std::future<void> m_CallbacksFuture;
         };
