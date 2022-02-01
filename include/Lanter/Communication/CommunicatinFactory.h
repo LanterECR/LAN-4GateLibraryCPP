@@ -23,7 +23,12 @@ namespace Lanter {
             /// На данный момент нет валидации IP. При неправильном формате ASIO может кинуть исключение
             /// \param port Порт, по которому будет выполнено подключение
             /// \return nullptr, если не удалось создать соединение
-            static std::shared_ptr<ICommunication> getTcpClient(const std::string & ip, int port = 20501);
+            static std::shared_ptr<ICommunication> getTcpClient(const std::string & ip = "127.0.0.1", int port = 20501);
+
+            /// Создает экземпляр TCP клиента, который подключается на 127.0.0.1
+            /// \param port Порт, по которому будет выполнено подключение
+            /// \return nullptr, если не удалось создать соединение
+            static std::shared_ptr<ICommunication> getTcpClient(int port);
 
             /// \brief Создает декоратор, контролирующий длину сообщений
             /// \param communication декорируемое соединение
