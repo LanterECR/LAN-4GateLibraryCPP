@@ -8,25 +8,25 @@ using namespace Lanter::Message::Notification;
 
 TEST(TestNotificationData, CheckNotiticationData) {
     NotificationData data;
-    auto lessMinimum = (NotificationCode)((int)NotificationCode::FirstValue - 1);
-    auto greatMaximum = (NotificationCode)((int)NotificationCode::LastValue + 1);
+    auto lessMinimum = (NotificationCode)((int)getFirstNotificationCode() - 1);
+    auto greatMaximum = (NotificationCode)((int)getLastNotificationCode() + 1);
     EXPECT_FALSE(data.setCode(lessMinimum));
     EXPECT_FALSE(data.setCode(greatMaximum));
 
     EXPECT_EQ(data.getCode(), NotificationCode::NoNotification);
 
-    EXPECT_TRUE(data.setCode(NotificationCode::FirstValue));
-    EXPECT_EQ(data.getCode(), NotificationCode::FirstValue);
-    EXPECT_TRUE(data.setCode(NotificationCode::LastValue));
-    EXPECT_EQ(data.getCode(), NotificationCode::LastValue);
+    EXPECT_TRUE(data.setCode(getFirstNotificationCode()));
+    EXPECT_EQ(data.getCode(), getFirstNotificationCode());
+    EXPECT_TRUE(data.setCode(getLastNotificationCode()));
+    EXPECT_EQ(data.getCode(), getLastNotificationCode());
 }
 
 TEST(TestNotificationData, CheckUnsetCode) {
     NotificationData data;
     EXPECT_EQ((int)data.getCode(), (int)NotificationCode::NoNotification);
 
-    EXPECT_TRUE(data.setCode(Lanter::Message::Notification::NotificationCode::FirstValue));
-    EXPECT_EQ((int)data.getCode(), (int)NotificationCode::FirstValue);
+    EXPECT_TRUE(data.setCode(Lanter::Message::Notification::getFirstNotificationCode()));
+    EXPECT_EQ((int)data.getCode(), (int)getFirstNotificationCode());
 
     EXPECT_TRUE(data.resetCode());
     EXPECT_EQ((int)data.getCode(), (int)NotificationCode::NoNotification);

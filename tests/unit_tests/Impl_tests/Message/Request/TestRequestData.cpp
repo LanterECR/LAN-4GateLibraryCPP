@@ -80,7 +80,7 @@ TEST(TestRequestData, ChechEcrMerchantNumber) {
 TEST(TestRequestData, CheckOperationCode) {
     RequestData data;
 
-    auto greatMaximum = (OperationCode)((int)(OperationCode::LastValue) + 1);
+    auto greatMaximum = (OperationCode)((int)(getLastOperationCode()) + 1);
     EXPECT_FALSE(data.setOperationCode(OperationCode::NoOperation));
     EXPECT_EQ(data.getFieldsSet().size(), 0);
     EXPECT_FALSE(data.setOperationCode(greatMaximum));
@@ -88,13 +88,13 @@ TEST(TestRequestData, CheckOperationCode) {
 
     EXPECT_EQ(data.getOperationCode(), OperationCode::NoOperation);
 
-    EXPECT_TRUE(data.setOperationCode(OperationCode::FirstValue));
+    EXPECT_TRUE(data.setOperationCode(getFirstOperationCode()));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getOperationCode(), OperationCode::FirstValue);
+    EXPECT_EQ(data.getOperationCode(), getFirstOperationCode());
 
-    EXPECT_TRUE(data.setOperationCode(OperationCode::LastValue));
+    EXPECT_TRUE(data.setOperationCode(getLastOperationCode()));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getOperationCode(), OperationCode::LastValue);
+    EXPECT_EQ(data.getOperationCode(), getLastOperationCode());
 
     EXPECT_NE(data.getFieldsSet().find(RequestField::OperationCode), data.getFieldsSet().end());
 

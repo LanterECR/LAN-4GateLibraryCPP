@@ -22,7 +22,7 @@ TEST(TestJSONResponseParser, CheckInitMap) {
 
     EXPECT_FALSE(parser.getFunctions().empty());
 
-    auto count = (size_t)ResponseField::LastValue - (size_t)ResponseField::FirstValue +1;
+    auto count = (size_t)getLastResponseField() - (size_t)getFirstResponseField() +1;
 
     EXPECT_EQ(count, parser.getFunctions().size());
 }
@@ -88,21 +88,21 @@ TEST(TestJSONResponseParser, CheckGetOperationCode) {
 
     EXPECT_FALSE(parser.getFieldOperationCode(object, data));
 
-    auto lessMinimum = (int)OperationCode::FirstValue - 1;
+    auto lessMinimum = (int)getFirstOperationCode() - 1;
     AddFieldsHelper::addField(object, JSONResponseFields::getOperationCode(), lessMinimum);
     EXPECT_FALSE(parser.getFieldOperationCode(object, data));
 
-    auto greatMaximum = (int)OperationCode::LastValue + 1;
+    auto greatMaximum = (int)getLastOperationCode() + 1;
     AddFieldsHelper::addField(object, JSONResponseFields::getOperationCode(), greatMaximum);
     EXPECT_FALSE(parser.getFieldOperationCode(object, data));
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getOperationCode(), (int)OperationCode::FirstValue);
+    AddFieldsHelper::addField(object, JSONResponseFields::getOperationCode(), (int)getFirstOperationCode());
     EXPECT_TRUE(parser.getFieldOperationCode(object, data));
-    EXPECT_EQ((int)data.getOperationCode(), (int)OperationCode::FirstValue);
+    EXPECT_EQ((int)data.getOperationCode(), (int)getFirstOperationCode());
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getOperationCode(), (int)OperationCode::LastValue);
+    AddFieldsHelper::addField(object, JSONResponseFields::getOperationCode(), (int)getLastOperationCode());
     EXPECT_TRUE(parser.getFieldOperationCode(object, data));
-    EXPECT_EQ((int)data.getOperationCode(), (int)OperationCode::LastValue);
+    EXPECT_EQ((int)data.getOperationCode(), (int)getLastOperationCode());
 }
 
 TEST(TestJSONResponseParser, CheckGetOriginalOperationCode) {
@@ -114,21 +114,21 @@ TEST(TestJSONResponseParser, CheckGetOriginalOperationCode) {
 
     EXPECT_FALSE(parser.getFieldOriginalOperationCode(object, data));
 
-    auto lessMinimum = (int)OperationCode::FirstValue - 1;
+    auto lessMinimum = (int)getFirstOperationCode() - 1;
     AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationCode(), lessMinimum);
     EXPECT_FALSE(parser.getFieldOriginalOperationCode(object, data));
 
-    auto greatMaximum = (int)OperationCode::LastValue + 1;
+    auto greatMaximum = (int)getLastOperationCode() + 1;
     AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationCode(), greatMaximum);
     EXPECT_FALSE(parser.getFieldOriginalOperationCode(object, data));
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationCode(), (int)OperationCode::FirstValue);
+    AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationCode(), (int)getFirstOperationCode());
     EXPECT_TRUE(parser.getFieldOriginalOperationCode(object, data));
-    EXPECT_EQ((int)data.getOriginalOperationCode(), (int)OperationCode::FirstValue);
+    EXPECT_EQ((int)data.getOriginalOperationCode(), (int)getFirstOperationCode());
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationCode(), (int)OperationCode::LastValue);
+    AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationCode(), (int)getLastOperationCode());
     EXPECT_TRUE(parser.getFieldOriginalOperationCode(object, data));
-    EXPECT_EQ((int)data.getOriginalOperationCode(), (int)OperationCode::LastValue);
+    EXPECT_EQ((int)data.getOriginalOperationCode(), (int)getLastOperationCode());
 }
 
 TEST(TestJSONResponseParser, CheckGetTotalAmount) {
@@ -339,21 +339,21 @@ TEST(TestJSONResponseParser, CheckGetStatus) {
 
     EXPECT_FALSE(parser.getFieldStatus(object, data));
 
-    auto lessMinimum = (int)Status::FirstValue - 1;
+    auto lessMinimum = (int)getFirstStatus() - 1;
     AddFieldsHelper::addField(object, JSONResponseFields::getStatus(), lessMinimum);
     EXPECT_FALSE(parser.getFieldStatus(object, data));
 
-    auto greatMaximum = (int)Status::LastValue + 1;
+    auto greatMaximum = (int)getLastStatus() + 1;
     AddFieldsHelper::addField(object, JSONResponseFields::getStatus(), greatMaximum);
     EXPECT_FALSE(parser.getFieldStatus(object, data));
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getStatus(), (int)Status::FirstValue);
+    AddFieldsHelper::addField(object, JSONResponseFields::getStatus(), (int)getFirstStatus());
     EXPECT_TRUE(parser.getFieldStatus(object, data));
-    EXPECT_EQ((int)data.getStatus(), (int)Status::FirstValue);
+    EXPECT_EQ((int)data.getStatus(), (int)getFirstStatus());
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getStatus(), (int)Status::LastValue);
+    AddFieldsHelper::addField(object, JSONResponseFields::getStatus(), (int)getLastStatus());
     EXPECT_TRUE(parser.getFieldStatus(object, data));
-    EXPECT_EQ((int)data.getStatus(), (int)Status::LastValue);
+    EXPECT_EQ((int)data.getStatus(), (int)getLastStatus());
 }
 TEST(TestJSONResponseParser, CheckGetOriginalOperationStatus) {
     JSONResponseParser parser;
@@ -364,21 +364,21 @@ TEST(TestJSONResponseParser, CheckGetOriginalOperationStatus) {
 
     EXPECT_FALSE(parser.getFieldOriginalOperationStatus(object, data));
 
-    auto lessMinimum = (int)Status::FirstValue - 1;
+    auto lessMinimum = (int)getFirstStatus() - 1;
     AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationStatus(), lessMinimum);
     EXPECT_FALSE(parser.getFieldOriginalOperationStatus(object, data));
 
-    auto greatMaximum = (int)Status::LastValue + 1;
+    auto greatMaximum = (int)getLastStatus() + 1;
     AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationStatus(), greatMaximum);
     EXPECT_FALSE(parser.getFieldOriginalOperationStatus(object, data));
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationStatus(), (int)Status::FirstValue);
+    AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationStatus(), (int)getFirstStatus());
     EXPECT_TRUE(parser.getFieldOriginalOperationStatus(object, data));
-    EXPECT_EQ((int)data.getOriginalOperationStatus(), (int)Status::FirstValue);
+    EXPECT_EQ((int)data.getOriginalOperationStatus(), (int)getFirstStatus());
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationStatus(), (int)Status::LastValue);
+    AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationStatus(), (int)getLastStatus());
     EXPECT_TRUE(parser.getFieldOriginalOperationStatus(object, data));
-    EXPECT_EQ((int)data.getOriginalOperationStatus(), (int)Status::LastValue);
+    EXPECT_EQ((int)data.getOriginalOperationStatus(), (int)getLastStatus());
 }
 
 TEST(TestJSONResponseParser, CheckGetTransDateTime) {
@@ -717,21 +717,21 @@ TEST(TestJSONResponseParser, CheckGetCardInputMethod) {
 
     EXPECT_FALSE(parser.getFieldCardInputMethod(object, data));
 
-    auto lessMinimum = (int)CardInputMethod::FirstValue - 1;
+    auto lessMinimum = (int)getFirstCardInputMethod() - 1;
     AddFieldsHelper::addField(object, JSONResponseFields::getCardInputMethod(), lessMinimum);
     EXPECT_FALSE(parser.getFieldCardInputMethod(object, data));
 
-    auto greatMaximum = (int)CardInputMethod::LastValue + 1;
+    auto greatMaximum = (int)getLastCardInputMethod() + 1;
     AddFieldsHelper::addField(object, JSONResponseFields::getCardInputMethod(), greatMaximum);
     EXPECT_FALSE(parser.getFieldCardInputMethod(object, data));
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getCardInputMethod(), (int)CardInputMethod::FirstValue);
+    AddFieldsHelper::addField(object, JSONResponseFields::getCardInputMethod(), (int)getFirstCardInputMethod());
     EXPECT_TRUE(parser.getFieldCardInputMethod(object, data));
-    EXPECT_EQ((int)data.getCardInputMethod(), (int)CardInputMethod::FirstValue);
+    EXPECT_EQ((int)data.getCardInputMethod(), (int)getFirstCardInputMethod());
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getCardInputMethod(), (int)CardInputMethod::LastValue);
+    AddFieldsHelper::addField(object, JSONResponseFields::getCardInputMethod(), (int)getLastCardInputMethod());
     EXPECT_TRUE(parser.getFieldCardInputMethod(object, data));
-    EXPECT_EQ((int)data.getCardInputMethod(), (int)CardInputMethod::LastValue);
+    EXPECT_EQ((int)data.getCardInputMethod(), (int)getLastCardInputMethod());
 }
 
 TEST(TestJSONResponseParser, CheckGetIssuerName) {

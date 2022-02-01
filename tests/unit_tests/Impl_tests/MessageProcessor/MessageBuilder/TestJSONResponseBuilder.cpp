@@ -19,7 +19,7 @@ TEST(TestJSONResponseBuilder, CheckFunctionInit) {
 
     EXPECT_FALSE(builder.getFunctions().empty());
 
-    int fieldsCount = (int)ResponseField::LastValue - (int)ResponseField::FirstValue + 1;
+    int fieldsCount = (int)getLastResponseField() - (int)getFirstResponseField() + 1;
 
     EXPECT_EQ(builder.getFunctions().size(), fieldsCount);
 }
@@ -73,7 +73,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldOperationCode) {
 
     ResponseData data;
 
-    data.setOperationCode(OperationCode::FirstValue);
+    data.setOperationCode(getFirstOperationCode());
 
     Json::Value directObject;
 
@@ -95,7 +95,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldOriginalOperationCode) {
 
     ResponseData data;
 
-    data.setOriginalOperationCode(OperationCode::FirstValue);
+    data.setOriginalOperationCode(getFirstOperationCode());
 
     Json::Value directObject;
 
@@ -293,7 +293,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldStatus) {
 
     ResponseData data;
 
-    data.setStatus(Status::FirstValue);
+    data.setStatus(getFirstStatus());
 
     Json::Value directObject;
 
@@ -315,7 +315,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldOriginalOperationStatus) {
 
     ResponseData data;
 
-    data.setOriginalOperationStatus(Status::FirstValue);
+    data.setOriginalOperationStatus(getFirstStatus());
 
     Json::Value directObject;
 
@@ -645,7 +645,7 @@ TEST(TestJSONResponseBuilder, CheckAddFieldCardInputMethod) {
 
     ResponseData data;
 
-    data.setCardInputMethod(CardInputMethod::FirstValue);
+    data.setCardInputMethod(getFirstCardInputMethod());
 
     Json::Value directObject;
 

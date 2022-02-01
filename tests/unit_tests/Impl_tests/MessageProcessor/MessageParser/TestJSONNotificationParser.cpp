@@ -21,19 +21,19 @@ TEST(TestJSONNotificationParser, CheckGetCode) {
 
     EXPECT_FALSE(parser.getCode(object, data));
 
-    object[JSONNotificationFields::getCode()] = (int)NotificationCode::LastValue + 1;
+    object[JSONNotificationFields::getCode()] = (int)getLastNotificationCode() + 1;
 
     EXPECT_FALSE(parser.getCode(object, data));
 
-    object[JSONNotificationFields::getCode()] = (int)NotificationCode::FirstValue - 1;
+    object[JSONNotificationFields::getCode()] = (int)getFirstNotificationCode() - 1;
 
     EXPECT_FALSE(parser.getCode(object, data));
 
-    object[JSONNotificationFields::getCode()] = (int)NotificationCode::FirstValue;
+    object[JSONNotificationFields::getCode()] = (int)getFirstNotificationCode();
 
     EXPECT_TRUE(parser.getCode(object, data));
 
-    EXPECT_EQ(data.getCode(), NotificationCode::FirstValue);
+    EXPECT_EQ(data.getCode(), getFirstNotificationCode());
 }
 
 TEST(TestJSONNotificationParser, CheckGetMessage) {
@@ -86,14 +86,14 @@ TEST(TestJSONNotificationParser, CheckGetNotificationData) {
 
     std::string value = "Значение";
 
-    object[JSONNotificationFields::getCode()] = (int)NotificationCode::FirstValue;
+    object[JSONNotificationFields::getCode()] = (int)getFirstNotificationCode();
     object[JSONNotificationFields::getMessage()] = value;
     object[JSONNotificationFields::getAdditional()] = value;
 
     data = parser.parseData(object);
     EXPECT_NE(data, nullptr);
 
-    EXPECT_EQ(data->getCode(), NotificationCode::FirstValue);
+    EXPECT_EQ(data->getCode(), getFirstNotificationCode());
     EXPECT_STREQ(data->getMessage().c_str(), value.c_str());
     EXPECT_STREQ(data->getAdditional().c_str(), value.c_str());
 }

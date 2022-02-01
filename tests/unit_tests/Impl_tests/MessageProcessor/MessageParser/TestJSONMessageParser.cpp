@@ -181,7 +181,7 @@ TEST(TestJSONMessageParser, CheckNotification) {
     std::string value = "Значение";
 
     Json::Value object;
-    AddFieldsHelper::addField(object, JSONNotificationFields::getCode(), (int)NotificationCode::FirstValue);
+    AddFieldsHelper::addField(object, JSONNotificationFields::getCode(), (int)getFirstNotificationCode());
     AddFieldsHelper::addField(object, JSONNotificationFields::getAdditional(),  value);
     AddFieldsHelper::addField(object, JSONNotificationFields::getMessage(),  value);
 
@@ -219,7 +219,7 @@ TEST(TestJSONMessageParser, CheckInteraction) {
     AddFieldsHelper::addField(root, JSONRootFields::getClassField(), JSONClassFieldValues::getInteractionValue());
 
     Json::Value object;
-    AddFieldsHelper::addField(object, JSONInteractionFields::getCode(), (int)InteractionCode::FirstValue);
+    AddFieldsHelper::addField(object, JSONInteractionFields::getCode(), (int)getFirstInteractionCode());
 
     AddFieldsHelper::addField(root, JSONRootFields::getObjectField(), object);
 

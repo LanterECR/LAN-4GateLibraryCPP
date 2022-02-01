@@ -344,17 +344,17 @@ TEST(TestLan4Gate, TestPreparedNotification) {
 
     ASSERT_NE(gate, nullptr);
 
-    auto firstValue = gate->getPreparedNotification(NotificationCode::FirstValue);
+    auto firstValue = gate->getPreparedNotification(getFirstNotificationCode());
 
-    auto lastValue = gate->getPreparedNotification(NotificationCode::LastValue);
+    auto lastValue = gate->getPreparedNotification(getLastNotificationCode());
 
     auto noCode = gate->getPreparedNotification(NotificationCode::NoNotification);
 
     ASSERT_NE(firstValue, nullptr);
-    EXPECT_EQ(firstValue->getCode(), NotificationCode::FirstValue);
+    EXPECT_EQ(firstValue->getCode(), getFirstNotificationCode());
 
     ASSERT_NE(lastValue, nullptr);
-    EXPECT_EQ(lastValue->getCode(), NotificationCode::LastValue);
+    EXPECT_EQ(lastValue->getCode(), getLastNotificationCode());
 
     ASSERT_NE(noCode, nullptr);
     EXPECT_EQ(noCode->getCode(), NotificationCode::NoNotification);
@@ -365,17 +365,17 @@ TEST(TestLan4Gate, TestPreparedInteraction) {
 
     ASSERT_NE(gate, nullptr);
 
-    auto firstValue = gate->getPreparedInteraction(InteractionCode::FirstValue);
+    auto firstValue = gate->getPreparedInteraction(getFirstInteractionCode());
 
-    auto lastValue = gate->getPreparedInteraction(InteractionCode::LastValue);
+    auto lastValue = gate->getPreparedInteraction(getLastInteractionCode());
 
     auto noCode = gate->getPreparedInteraction(InteractionCode::NoInteraction);
 
     ASSERT_NE(firstValue, nullptr);
-    EXPECT_EQ(firstValue->getCode(), InteractionCode::FirstValue);
+    EXPECT_EQ(firstValue->getCode(), getFirstInteractionCode());
 
     ASSERT_NE(lastValue, nullptr);
-    EXPECT_EQ(lastValue->getCode(), InteractionCode::LastValue);
+    EXPECT_EQ(lastValue->getCode(), getLastInteractionCode());
 
     ASSERT_NE(noCode, nullptr);
     EXPECT_EQ(noCode->getCode(), InteractionCode::NoInteraction);

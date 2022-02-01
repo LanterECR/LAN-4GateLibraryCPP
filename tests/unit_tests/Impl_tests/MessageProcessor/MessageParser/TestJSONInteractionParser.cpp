@@ -21,19 +21,19 @@ TEST(TestJSONInteractionParser, CheckGetCode) {
 
     EXPECT_FALSE(parser.getCode(object, data));
 
-    object[JSONInteractionFields::getCode()] = (int)InteractionCode::LastValue + 1;
+    object[JSONInteractionFields::getCode()] = (int)getLastInteractionCode() + 1;
 
     EXPECT_FALSE(parser.getCode(object, data));
 
-    object[JSONInteractionFields::getCode()] = (int)InteractionCode::FirstValue - 1;
+    object[JSONInteractionFields::getCode()] = (int)getFirstInteractionCode() - 1;
 
     EXPECT_FALSE(parser.getCode(object, data));
 
-    object[JSONInteractionFields::getCode()] = (int)InteractionCode::FirstValue;
+    object[JSONInteractionFields::getCode()] = (int)getFirstInteractionCode();
 
     EXPECT_TRUE(parser.getCode(object, data));
 
-    EXPECT_EQ(data.getCode(), InteractionCode::FirstValue);
+    EXPECT_EQ(data.getCode(), getFirstInteractionCode());
 }
 
 
@@ -47,10 +47,10 @@ TEST(TestJSONInteractionParser, CheckGetInteractionData) {
     data = parser.parseData(object);
     EXPECT_EQ(data, nullptr);
 
-    object[JSONInteractionFields::getCode()] = (int)InteractionCode::FirstValue;
+    object[JSONInteractionFields::getCode()] = (int)getFirstInteractionCode();
 
     data = parser.parseData(object);
     EXPECT_NE(data, nullptr);
 
-    EXPECT_EQ(data->getCode(), InteractionCode::FirstValue);
+    EXPECT_EQ(data->getCode(), getFirstInteractionCode());
 }

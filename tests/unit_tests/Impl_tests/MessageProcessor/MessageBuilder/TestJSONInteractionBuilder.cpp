@@ -23,7 +23,7 @@ TEST(TestJSONInteractionBuilder, CheckAddCode) {
 
     EXPECT_FALSE(JSONInteractionBuilder::addCode(data, object));
 
-    data.setCode(InteractionCode::FirstValue);
+    data.setCode(getFirstInteractionCode());
 
     EXPECT_TRUE(JSONInteractionBuilder::addCode(data, object));
     EXPECT_TRUE(fieldExists(object, JSONInteractionFields::getCode()));
@@ -37,7 +37,7 @@ TEST(TestJSONInteractionBuilder, CheckCreateObject) {
 
     EXPECT_FALSE(builder.createObject(*data, object));
 
-    data->setCode(InteractionCode::FirstValue);
+    data->setCode(getFirstInteractionCode());
 
     EXPECT_TRUE(builder.createObject(*data, object));
     EXPECT_TRUE(fieldExists(object, JSONInteractionFields::getCode()));
