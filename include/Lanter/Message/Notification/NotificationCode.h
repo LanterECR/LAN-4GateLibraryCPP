@@ -60,11 +60,20 @@ namespace Lanter {
                 ErrorPinInput, ///< Ошибка ввода пин-кода
                 MsrDeclinedUseChip, ///< Операция по магнитной полосе отклонена. Используйте контактный интерфейс
                 PinEntryTimeout, ///< Тайм-аут ввода пин-кода
-                QrShowing, ///< Отображение QR кода
-                //Диапазон
-                FirstValue = ReversalUploadingError, ///< Ссылка на первый элемент перечисления
-                LastValue = QrShowing ///< Ссылка на последний элемент перечисления
+                QrShowing ///< Отображение QR кода
             };//enum NotificationCode
+
+            /// Функция, возвращающая первый значимый элемент перечисления NotificationCode
+            /// \return Первый элемент значимый перечисления NotificationCode
+            constexpr NotificationCode getFirstNotificationCode() {
+                return NotificationCode::ReversalUploadingError;
+            }
+
+            /// Функция, возвращающая последний значимый элемент перечисления NotificationCode
+            /// \return Последний элемент значимый перечисления NotificationCode
+            constexpr NotificationCode getLastNotificationCode() {
+                return NotificationCode::QrShowing;
+            }
         }//namespace Notification
     }//namespace Message
 }//namespace Lanter

@@ -51,11 +51,21 @@ namespace Lanter {
             DisplayQR, ///< Отображение информации в виде QR кода финансовым ПО LAN-4Tap
 
             //Отдельный тип операции для представления массивов операции DetailReport
-            ArrayElement = 1000, ///< Фиктивный код операции для создания элементов массива
-            //Диапазон операций
-            FirstValue = Sale, ///< Ссылка на первый элемент перечисления
-            LastValue = ArrayElement ///< Ссылка на последний элемент перечисления
+            ArrayElement = 1000 ///< Фиктивный код операции для создания элементов массива
         };//enum OperationCode
+
+        /// Функция, возвращающая первый значимый элемент перечисления OperationCode
+        /// \return Первый элемент значимый перечисления OperationCode
+        constexpr OperationCode getFirstOperationCode() {
+            return OperationCode::Sale;
+        }
+
+        /// Функция, возвращающая последний значимый элемент перечисления OperationCode
+        /// \return Последний элемент значимый перечисления OperationCode
+        constexpr OperationCode getLastOperationCode() {
+            return OperationCode::ArrayElement;
+        }
+
     }//namespace Message
 }//namespace Lanter
 #endif //LAN_4GATELIBRARYCPP_OPERATIONCODES_H

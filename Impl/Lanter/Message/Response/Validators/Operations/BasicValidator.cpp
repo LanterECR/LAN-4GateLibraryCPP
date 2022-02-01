@@ -14,8 +14,8 @@ namespace Lanter {
 
             void BasicValidator::appendMandatoryField(ResponseField field) {
                 auto value = static_cast<int64_t>(field);
-                auto minValue = static_cast<int64_t>(ResponseField::FirstValue);
-                auto maxValue = static_cast<int64_t>(ResponseField::LastValue);
+                auto minValue = static_cast<int64_t>(getFirstResponseField());
+                auto maxValue = static_cast<int64_t>(getLastResponseField());
 
                 if (Utils::checkValueRange(value, minValue, maxValue)) {
                     m_MandatoryFields.insert(field);
@@ -30,8 +30,8 @@ namespace Lanter {
 
             void BasicValidator::appendOptionalField(ResponseField field) {
                 auto value = static_cast<int64_t>(field);
-                auto minValue = static_cast<int64_t>(ResponseField::FirstValue);
-                auto maxValue = static_cast<int64_t>(ResponseField::LastValue);
+                auto minValue = static_cast<int64_t>(getFirstResponseField());
+                auto maxValue = static_cast<int64_t>(getLastResponseField());
 
                 if (Utils::checkValueRange(value, minValue, maxValue)) {
                     m_OptionalFields.insert(field);

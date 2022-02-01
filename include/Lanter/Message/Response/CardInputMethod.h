@@ -16,11 +16,20 @@ namespace Lanter {
                 ChipFullGrade, ///< Использована полная схема работы с чипом (контактным интерфейсом)
                 ChipPartialGrade, ///< Использована сокращенная схема работы с чипом (контактным интерфейсом)
                 ContactlessMagStripMode, ///< Использован бесконтактный интерфейс в режиме эмуляции магнитной полосы
-                ContactlessChipMode, ///< Использован бесконтактный интерфейс в режиме эмуляции чипа
-                //Диапазон значений
-                FirstValue = TerminalManualEntry, ///< Ссылка на первый элемент перечисления
-                LastValue = ContactlessChipMode ///< Ссылка на последний элемент перечисления
+                ContactlessChipMode ///< Использован бесконтактный интерфейс в режиме эмуляции чипа
             };//enum CardInputMethod
+            
+            /// Функция, возвращающая первый значимый элемент перечисления CardInputMethod
+            /// \return Первый элемент значимый перечисления CardInputMethod
+            constexpr CardInputMethod getFirstCardInputMethod() {
+                return CardInputMethod::TerminalManualEntry;
+            }
+
+            /// Функция, возвращающая последний значимый элемент перечисления CardInputMethod
+            /// \return Последний элемент значимый перечисления CardInputMethod
+            constexpr CardInputMethod getLastCardInputMethod() {
+                return CardInputMethod::ContactlessChipMode;
+            }
         }//namespace Response
     }//namespace Message
 }//namespace Lanter
