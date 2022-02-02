@@ -1,5 +1,5 @@
-#ifndef LAN_4GATELIB_INTERACTIONCALLBACK_H
-#define LAN_4GATELIB_INTERACTIONCALLBACK_H
+#ifndef LAN_4GATELIB_IINTERACTIONCALLBACK_H
+#define LAN_4GATELIB_IINTERACTIONCALLBACK_H
 
 #include <memory>
 
@@ -11,9 +11,9 @@ namespace Lanter {
     namespace Manager {
         namespace Callback {
             /// \brief Колбэк для приема данных команд взаимодействия
-            class LANTER_VISIBILITY InteractionCallback {
+            class LANTER_VISIBILITY IInteractionCallback {
             public:
-                virtual ~InteractionCallback() = default;
+                virtual ~IInteractionCallback() = default;
                 /// \brief Метод, в который будет переданы данные команды взаимодействия
                 /// \param data данные команды взаимодействия
                 /// \sa Message::Interaction::IInteractionData
@@ -23,4 +23,4 @@ namespace Lanter {
     }
 }
 
-#endif //LAN_4GATELIB_INTERACTIONCALLBACK_H
+#endif //LAN_4GATELIB_IINTERACTIONCALLBACK_H

@@ -2,12 +2,11 @@
 %module(directors="1") Lan4Gate
 //Определение классов, от которых можно наследоваться
 %feature("director") ICommunication;
-//%feature("director") ILan4Gate;
-%feature("director") RequestCallback;
-%feature("director") ResponseCallback;
-%feature("director") NotificationCallback;
-%feature("director") InteractionCallback;
-%feature("director") ConnectionCallback;
+%feature("director") IRequestCallback;
+%feature("director") IResponseCallback;
+%feature("director") INotificationCallback;
+%feature("director") IInteractionCallback;
+%feature("director") IConnectionCallback;
 
 %include "windows.i"
 %include "inttypes.i"
@@ -48,11 +47,11 @@
 #include "Lanter/Message/Interaction/InteractionCode.h"
 #include "Lanter/Message/Interaction/IInteractionData.h"
 
-#include "Lanter/Manager/Callback/RequestCallback.h"
-#include "Lanter/Manager/Callback/ResponseCallback.h"
-#include "Lanter/Manager/Callback/NotificationCallback.h"
-#include "Lanter/Manager/Callback/InteractionCallback.h"
-#include "Lanter/Manager/Callback/ConnectionCallback.h"
+#include "Lanter/Manager/Callback/IRequestCallback.h"
+#include "Lanter/Manager/Callback/IResponseCallback.h"
+#include "Lanter/Manager/Callback/INotificationCallback.h"
+#include "Lanter/Manager/Callback/IInteractionCallback.h"
+#include "Lanter/Manager/Callback/IConnectionCallback.h"
 
 #include "Lanter/Manager/ILan4Gate.h"
 #include "Lanter/Manager/Lan4GateFactory.h"
@@ -89,11 +88,11 @@ namespace std {
 %include "Lanter/Message/Interaction/InteractionCode.h"
 %include "Lanter/Message/Interaction/IInteractionData.h"
 
-%include "Lanter/Manager/Callback/RequestCallback.h"
-%include "Lanter/Manager/Callback/ResponseCallback.h"
-%include "Lanter/Manager/Callback/NotificationCallback.h"
-%include "Lanter/Manager/Callback/InteractionCallback.h"
-%include "Lanter/Manager/Callback/ConnectionCallback.h"
+%include "Lanter/Manager/Callback/IRequestCallback.h"
+%include "Lanter/Manager/Callback/IResponseCallback.h"
+%include "Lanter/Manager/Callback/INotificationCallback.h"
+%include "Lanter/Manager/Callback/IInteractionCallback.h"
+%include "Lanter/Manager/Callback/IConnectionCallback.h"
 
 %include "Lanter/Manager/ILan4Gate.h"
 %include "Lanter/Manager/Lan4GateFactory.h"

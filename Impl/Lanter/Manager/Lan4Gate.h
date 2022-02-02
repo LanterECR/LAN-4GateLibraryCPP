@@ -45,26 +45,26 @@ namespace Lanter {
 
             CallbackNotificationType getCallbackNotificationType() const override  { return m_CallbackNotificationType; }
 
-            size_t addRequestCallback(Callback::RequestCallback &callback) override;
+            size_t addRequestCallback(Callback::IRequestCallback &callback) override;
 
             bool removeRequestCallback(size_t id) override;
 
             size_t requestCallbacksCount() const override;
 
-            size_t addResponseCallback(Callback::ResponseCallback &callback) override;
+            size_t addResponseCallback(Callback::IResponseCallback &callback) override;
 
             bool removeResponseCallback(size_t id) override;
 
             size_t responseCallbacksCount() const override;
 
-            size_t addNotificationCallback(Callback::NotificationCallback &callback) override;
+            size_t addNotificationCallback(Callback::INotificationCallback &callback) override;
 
             bool removeNotificationCallback(size_t id) override;
 
             size_t notificationCallbacksCount() const override;
 
             size_t addInteractionCallback(
-                    Callback::InteractionCallback &callback) override;
+                    Callback::IInteractionCallback &callback) override;
 
             bool removeInteractionCallback(size_t id) override;
 
@@ -79,7 +79,7 @@ namespace Lanter {
             std::shared_ptr<Message::Interaction::IInteractionData>
             getPreparedInteraction(Message::Interaction::InteractionCode interactionCode) override;
 
-            size_t addConnectionCallback(Callback::ConnectionCallback &callback) override;
+            size_t addConnectionCallback(Callback::IConnectionCallback &callback) override;
 
             bool removeConnectionCallback(size_t id) override;
 
@@ -144,15 +144,15 @@ namespace Lanter {
 
             CallbackNotificationType m_CallbackNotificationType = CallbackNotificationType::Async;
 
-            std::unordered_map<size_t, Callback::RequestCallback&> m_RequestCallbacks;
+            std::unordered_map<size_t, Callback::IRequestCallback&> m_RequestCallbacks;
 
-            std::unordered_map<size_t, Callback::ResponseCallback&> m_ResponseCallbacks;
+            std::unordered_map<size_t, Callback::IResponseCallback&> m_ResponseCallbacks;
 
-            std::unordered_map<size_t, Callback::NotificationCallback&> m_NotificationCallbacks;
+            std::unordered_map<size_t, Callback::INotificationCallback&> m_NotificationCallbacks;
 
-            std::unordered_map<size_t, Callback::InteractionCallback& > m_InteractionCallbacks;
+            std::unordered_map<size_t, Callback::IInteractionCallback& > m_InteractionCallbacks;
 
-            std::unordered_map<size_t, Callback::ConnectionCallback&> m_ConnectionCallbacks;
+            std::unordered_map<size_t, Callback::IConnectionCallback&> m_ConnectionCallbacks;
 
             std::future<void> m_CallbacksFuture;
         };

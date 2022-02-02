@@ -1,5 +1,5 @@
-#ifndef LAN_4GATELIB_NOTIFICATIONCALLBACK_H
-#define LAN_4GATELIB_NOTIFICATIONCALLBACK_H
+#ifndef LAN_4GATELIB_INOTIFICATIONCALLBACK_H
+#define LAN_4GATELIB_INOTIFICATIONCALLBACK_H
 
 #include <memory>
 
@@ -11,9 +11,9 @@ namespace Lanter {
     namespace Manager {
         namespace Callback {
             /// \brief Колбэк для приема данных уведомления от терминала
-            class LANTER_VISIBILITY NotificationCallback {
+            class LANTER_VISIBILITY INotificationCallback {
             public:
-                virtual ~NotificationCallback() = default;
+                virtual ~INotificationCallback() = default;
                 /// \brief Метод, в который будет переданы данные уведомления
                 /// \param data данные уведомления
                 /// \sa Message::Notification::INotificationData
@@ -23,4 +23,4 @@ namespace Lanter {
     }
 }
 
-#endif //LAN_4GATELIB_NOTIFICATIONCALLBACK_H
+#endif //LAN_4GATELIB_INOTIFICATIONCALLBACK_H

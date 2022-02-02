@@ -125,7 +125,7 @@ namespace Lanter {
             return m_Communication;
         }
 
-        size_t Lan4Gate::addRequestCallback(Callback::RequestCallback &callback) {
+        size_t Lan4Gate::addRequestCallback(Callback::IRequestCallback &callback) {
             size_t id = generateID();
             while (m_RequestCallbacks.find(id) != m_RequestCallbacks.end()) {
                 id = generateID();
@@ -155,7 +155,7 @@ namespace Lanter {
             return m_RequestCallbacks.size();
         }
 
-        size_t Lan4Gate::addResponseCallback(Callback::ResponseCallback &callback) {
+        size_t Lan4Gate::addResponseCallback(Callback::IResponseCallback &callback) {
             size_t id = generateID();
             while (m_ResponseCallbacks.find(id) != m_ResponseCallbacks.end()) {
                 id = generateID();
@@ -185,7 +185,7 @@ namespace Lanter {
             return m_ResponseCallbacks.size();
         }
 
-        size_t Lan4Gate::addNotificationCallback(Callback::NotificationCallback &callback) {
+        size_t Lan4Gate::addNotificationCallback(Callback::INotificationCallback &callback) {
             size_t id = generateID();
             while (m_NotificationCallbacks.find(id) != m_NotificationCallbacks.end()) {
                 id = generateID();
@@ -215,7 +215,7 @@ namespace Lanter {
             return m_NotificationCallbacks.size();
         }
 
-        size_t Lan4Gate::addInteractionCallback(Callback::InteractionCallback &callback) {
+        size_t Lan4Gate::addInteractionCallback(Callback::IInteractionCallback &callback) {
             size_t id = generateID();
             while (m_InteractionCallbacks.find(id) != m_InteractionCallbacks.end()) {
                 id = generateID();
@@ -245,7 +245,7 @@ namespace Lanter {
             return m_InteractionCallbacks.size();
         }
 
-        size_t Lan4Gate::addConnectionCallback(Callback::ConnectionCallback &callback) {
+        size_t Lan4Gate::addConnectionCallback(Callback::IConnectionCallback &callback) {
             size_t id = generateID();
             while (m_ConnectionCallbacks.find(id) != m_ConnectionCallbacks.end()) {
                 id = generateID();

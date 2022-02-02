@@ -1,5 +1,5 @@
-#ifndef LAN_4GATELIB_REQUESTCALLBACK_H
-#define LAN_4GATELIB_REQUESTCALLBACK_H
+#ifndef LAN_4GATELIB_IREQUESTCALLBACK_H
+#define LAN_4GATELIB_IREQUESTCALLBACK_H
 
 #include <memory>
 
@@ -11,9 +11,9 @@ namespace Lanter {
     namespace Manager {
         namespace Callback {
             /// \brief Колбэк для приема данных запроса от кассы
-            class LANTER_VISIBILITY RequestCallback {
+            class LANTER_VISIBILITY IRequestCallback {
             public:
-                virtual ~RequestCallback() = default;
+                virtual ~IRequestCallback() = default;
                 /// \brief Метод, в который будет переданы данные запроса
                 /// \param data данные запроса
                 /// \sa Message::Request::IRequestData
@@ -22,4 +22,4 @@ namespace Lanter {
         }
     }
 }
-#endif //LAN_4GATELIB_REQUESTCALLBACK_H
+#endif //LAN_4GATELIB_IREQUESTCALLBACK_H

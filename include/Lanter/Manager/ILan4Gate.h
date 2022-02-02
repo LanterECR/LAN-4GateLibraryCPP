@@ -13,11 +13,11 @@
 #include "Lanter/Message/Notification/INotificationData.h"
 #include "Lanter/Message/Interaction/IInteractionData.h"
 
-#include "Callback/RequestCallback.h"
-#include "Callback/ResponseCallback.h"
-#include "Callback/NotificationCallback.h"
-#include "Callback/InteractionCallback.h"
-#include "Callback/ConnectionCallback.h"
+#include "Callback/IRequestCallback.h"
+#include "Callback/IResponseCallback.h"
+#include "Callback/INotificationCallback.h"
+#include "Callback/IInteractionCallback.h"
+#include "Callback/IConnectionCallback.h"
 
 namespace Lanter {
     namespace Manager {
@@ -103,7 +103,7 @@ namespace Lanter {
             /// \return id зарегистрированного колбека
             /// \sa Message::Request::IRequestData
             /// \sa Callback::RequestCallback
-            virtual size_t addRequestCallback(Callback::RequestCallback &callback) = 0;
+            virtual size_t addRequestCallback(Callback::IRequestCallback &callback) = 0;
 
             /// \brief Удаляет колбек запроса из списка
             /// \param[in] id идентификатор колбека
@@ -119,7 +119,7 @@ namespace Lanter {
             /// \return id зарегистрированного колбека
             /// \sa Message::Response::IResponseData
             /// \sa Callback::ResponseCallback
-            virtual size_t addResponseCallback(Callback::ResponseCallback &callback) = 0;
+            virtual size_t addResponseCallback(Callback::IResponseCallback &callback) = 0;
 
             /// \brief Удаляет колбек ответа из списка
             /// \param[in] id идентификатор колбека
@@ -135,7 +135,7 @@ namespace Lanter {
             /// \return id зарегистрированного колбека
             /// \sa Message::Notification::INotificationData
             /// \sa Callback::NotificationCallback
-            virtual size_t addNotificationCallback(Callback::NotificationCallback &callback) = 0;
+            virtual size_t addNotificationCallback(Callback::INotificationCallback &callback) = 0;
 
             /// \brief Удаляет колбек уведомления из списка
             /// \param[in] id идентификатор колбека
@@ -151,7 +151,7 @@ namespace Lanter {
             /// \return id зарегистрированного колбека
             /// \sa Message::Interaction::IInteractionData
             /// \sa Callback::InteractionCallback
-            virtual size_t addInteractionCallback(Callback::InteractionCallback &callback) = 0;
+            virtual size_t addInteractionCallback(Callback::IInteractionCallback &callback) = 0;
 
             /// \brief Удаляет колбек команд взаимодействия из списка
             /// \param[in] id идентификатор колбека
@@ -166,7 +166,7 @@ namespace Lanter {
             /// \param[in] callback имплементация интерфейса Callback::ConnectionCallback
             /// \return id зарегистрированного колбека
             /// \sa Callback::ConnectionCallback
-            virtual size_t addConnectionCallback(Callback::ConnectionCallback &callback) = 0;
+            virtual size_t addConnectionCallback(Callback::IConnectionCallback &callback) = 0;
 
             /// \brief Удаляет колбек уведомления из списка
             /// \param[in] id идентификатор колбека

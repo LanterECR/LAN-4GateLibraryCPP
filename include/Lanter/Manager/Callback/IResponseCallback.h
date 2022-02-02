@@ -1,5 +1,5 @@
-#ifndef LAN_4GATELIB_RESPONSECALLBACK_H
-#define LAN_4GATELIB_RESPONSECALLBACK_H
+#ifndef LAN_4GATELIB_IRESPONSECALLBACK_H
+#define LAN_4GATELIB_IRESPONSECALLBACK_H
 
 #include <memory>
 
@@ -11,9 +11,9 @@ namespace Lanter {
     namespace Manager {
         namespace Callback {
             /// \brief Колбэк для приема данных ответа от терминала
-            class LANTER_VISIBILITY ResponseCallback {
+            class LANTER_VISIBILITY IResponseCallback {
             public:
-                virtual ~ResponseCallback() = default;
+                virtual ~IResponseCallback() = default;
                 /// \brief Метод, в который будет переданы данные ответа
                 /// \param data данные ответа
                 /// \sa Message::Response::IResponseData
@@ -23,4 +23,4 @@ namespace Lanter {
     }
 }
 
-#endif //LAN_4GATELIB_RESPONSECALLBACK_H
+#endif //LAN_4GATELIB_IRESPONSECALLBACK_H
