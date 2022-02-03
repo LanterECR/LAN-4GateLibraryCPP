@@ -5,7 +5,7 @@
 ![Сборка macOS](../..//workflows/macOS/badge.svg) 
 ![Сборка Windows](../..//workflows/Windows/badge.svg)
 
-[![Release](https://img.shields.io/badge/release-v0.9.2-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibraryCPP/releases/tag/v0.9.2)
+[![Release](https://img.shields.io/badge/release-v0.9.5-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibraryCPP/releases/tag/v0.9.5)
 [![badge](https://img.shields.io/badge/document-doxygen-blue)](https://LanterECR.github.io/LAN-4GateLibraryCPP/doxygen/index.html)
 
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/LanterECR/LAN-4GateLibraryCPP.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/LanterECR/LAN-4GateLibraryCPP/alerts/)
@@ -27,14 +27,20 @@
    2. [CMAKE_BUILD_TYPE](#CMAKE_BUILD_TYPE)
    3. [L4G_BUILD_STATIC](#L4G_BUILD_STATIC)
    4. [L4G_BUILD_SHARED](#L4G_BUILD_SHARED)
-   5. [ENV{HUNTER_ROOT}](#ENV{HUNTER_ROOT})
+   5. [L4G_BUILD_MODULE](#L4G_BUILD_MODULE)
+   6. [L4G_BUILD_SWIG](#L4G_BUILD_SWIG)
+   7. [L4G_SWIG_TARGET_LANGUAGE](#L4G_SWIG_TARGET_LANGUAGE)
+   8. [ENV{HUNTER_ROOT}](#ENV{HUNTER_ROOT})
 5. [Сборка и установка](#Сборка-и-установка)
 6. [Подключение к проекту](#Подключение-к-проекту)
    1. [Подключение к CMake](#Подключение-к-CMake)
       1. [Поддиректория проекта](#Поддиректория-проекта))
       2. [Поиск пакета](#Поиск-пакета))
    2. [Другие системы сборки](#Другие-системы-сборки)
+   3. [Использование совместно с языками, отличными от C++](#Использование-совместно-с-языками,-отличными-от-C++)
 7. [Использование](#Использование)
+   1. [C++](#C++)
+   2. [C#](#C#)
 
 
 Описание
@@ -103,6 +109,29 @@ cmake -DL4G_BUILD_STATIC=[ON|OFF] [прочие опции...]
 ```shell
 cmake -DL4G_BUILD_SHARED=[ON|OFF] [прочие опции...]
 ```
+### L4G_BUILD_MODULE
+Включает или отключает сборку динамической модульной библиотеки. Включена опция fpic
+
+Значение по умолчанию - ON
+
+### L4G_BUILD_SWIG
+Включает сборку библиотеки с использованием [SWIG](http://www.swig.org). Включение данной опции отключает остальные сборки L4G_BUILD_*.
+Будет собрана библиотека с интегрированным интерфейсом доступа из целевого языка и файл, содержащий API на целевом языке
+
+Значение по умолчанию - OFF
+```shell
+cmake -DL4G_BUILD_SWIG=[ON|OFF] [прочие опции...]
+```
+### L4G_SWIG_TARGET_LANGUAGE
+Указывает целевой язык для генерации обертки с помощью SWIG. Имеет действие только при включенной опции L4G_BUILD_SWIG
+
+В текущей версии поддерживается генерация оберток только для языка C# 
+
+Значение по умолчанию - csharp
+
+```shell
+cmake -L4G_BUILD_SWIG=ON -DL4G_SWIG_TARGET_LANGUAGE=csharp [прочие опции...]
+```
 ### L4G_TESTS
 Включает или отключает сборку unit-тестов с помощью GTest
 
@@ -141,9 +170,12 @@ cmake --build . --target install
 Иерархия соответствует ОС Windows.
 
 Список библиотек Windows
+- l4g_module.dll - динамическая библиотека
 - l4g_shared.dll - динамическая библиотека
 - l4g_shared.lib - статическая библиотека для линовки динамической 
 - l4g_static.lib - статическая библиотека
+
+ВНИМАНИЕ: Для библиотек Windows в сборке Debug добавляется суффикс d перед точкой.
 
 В папке share находятся модули cmake, используемые командой [find_package()](https://cmake.org/cmake/help/latest/command/find_package.html)
 ```
@@ -166,6 +198,19 @@ Install_dir
           | LAN_4GateLibConfig.cmake
           | LAN_4GateLibConfig-release.cmake
           | LAN_4GateLibConfigVersion.cmake
+```
+
+В случае сборки SWIG будет сгенерирована библиотека Lan4Gate.dll. Используется совместно с интерфейсным файлом для целевого языка. В случае Debug сборки необходимо удалить суффикс d.
+
+Иерархия каталога установки будет следующей (на примере генерации интерфейса для C#): 
+```
+Install_dir  
+│
+└───bin
+│   │ Lan4Gate.dll
+│   
+└───csharp
+    | Lan4gateInterface.cs
 ```
 Цели сборки
 -----------
@@ -256,15 +301,22 @@ target_link_libraries(Example L4G::l4g_shared)
 
 При работе под Windows линковаться должна статическая библиотека l4g_shared.lib
 
+### Использование совместно с языками, отличными от C++
+При сборке библиотеки с включённой опцией L4G_BUILD_SWIG будет сгенерирован интерфейсный файл, содержащий API доступа к библиотеке с помощью целевого языка.
+Данный файл необходимо подключить к проекту согласно правилам используемого языка
+
+
 Использование
 -------
-Для использования функционала библиотеки необходимо подключить заголовочный файл Lanter/Lan4GateInclude.h
+
+### C++
+Для использования функционала библиотеки с языком C++ необходимо подключить заголовочный файл Lanter/Lan4GateInclude.h
 
 Данный файл подключает фабрику соединений, фабрику менеджера ILan4Gate и функцию получения версии библиотеки.
 
 В следующем примере создается менеджер ILan4Gate с логическим идентификатором 1. Ему передается TCP сервер, обслуживающий единственное соединение, который слушает порт по умолчанию - 20501.
 
-В качестве колбеков передаются лямбда-функции, выводящие сообщения на полученные события 
+В качестве колбеков передаются реализации интерфейсов из пространства имен Lanter::Manager::Callback; 
 
 Менеджер запускает отдельный поток.
 
@@ -275,38 +327,72 @@ target_link_libraries(Example L4G::l4g_shared)
 
 #include "Lanter/Lan4GateIncude.h"
 
-int main(int argc, char* argv[])
-{
+class ConnectionCallback : public Lanter::Manager::Callback::IConnectionCallback {
+public:
+    ~ConnectionCallback() override = default;
 
-    std::cout << " +++++ Lan4Gate library version is " << Lanter::Utils::getVersion() << " +++++" << std::endl;
-    auto manager = Lanter::Manager::getLan4Gate(1, Lanter::Communication::getSingleTcpServer());
-
-    manager->addConnectionCallback([](bool connected) {
-        if(connected) {
+    void newState(bool state) override {
+        if(state) {
             std::cout << "==== Gate connected ====" << std::endl;
         } else {
             std::cout << "==== Gate disconnected ====" << std::endl;
         }
-    });
+    }
+};
 
-    manager->addRequestCallback([](std::shared_ptr<Lanter::Message::Request::IRequestData> request) {
+class RequestCallback : public Lanter::Manager::Callback::IRequestCallback {
+public:
+    ~RequestCallback() override = default;
+
+    void newData(std::shared_ptr<Lanter::Message::Request::IRequestData> data) override {
         std::cout << std::endl << "===== REQUEST ====" << std::endl;
-    });
+    }
+};
 
-    manager->addResponseCallback([](std::shared_ptr<Lanter::Message::Response::IResponseData> response) {
+class ResponseCallback : public Lanter::Manager::Callback::IResponseCallback {
+public:
+    ~ResponseCallback() override = default;
+
+    void newData(std::shared_ptr<Lanter::Message::Response::IResponseData> data) override {
         std::cout << std::endl << "===== RESPONSE ====" << std::endl;
-    });
+    }
+};
 
-    manager->addNotificationCallback([](std::shared_ptr<Lanter::Message::Notification::INotificationData> notification) {
+class NotificationCallback : public Lanter::Manager::Callback::INotificationCallback{
+public:
+    ~NotificationCallback() override = default;
+
+    void newData(std::shared_ptr<Lanter::Message::Notification::INotificationData> data) override {
         std::cout << std::endl << "===== NOTIFICATION ====" << std::endl;
-    });
+    }
+};
+
+
+int main(int argc, char* argv[])
+{
+
+    std::cout << " +++++ Lan4Gate library version is " << Lanter::Utils::Version::getVersion() << " +++++" << std::endl;
+    auto manager = Lanter::Manager::Lan4GateFactory::getLan4Gate(1, Lanter::Communication::CommunicationFactory::getSingleTcpServer());
+
+
+    ConnectionCallback connectionCallback;
+    manager->addConnectionCallback(connectionCallback);
+
+    RequestCallback requestCallback;
+    manager->addRequestCallback(requestCallback);
+
+    ResponseCallback responseCallback;
+    manager->addResponseCallback(responseCallback);
+
+    NotificationCallback notificationCallback;
+    manager->addNotificationCallback(notificationCallback);
 
     if(manager->runOnThread() ==Lanter::Manager::ILan4Gate::Status::Success) {
         std::cout << "+++++ Gate started +++++" << std::endl;
     }
 
     std::string str;
-    for(;;) {
+    while(true) {
         std::cin >> str;
         if(str == "q") {
             break;
@@ -314,5 +400,102 @@ int main(int argc, char* argv[])
         manager->sendMessage(manager->getPreparedRequest(Lanter::Message::OperationCode::FinalizeTransaction));
     }
     return 0;
+}
+```
+
+### C#
+Для использования функционала библиотеки с языком C# необходимо подключить файл Lan4gateInterface.cs, 
+содержащий интерфейс доступа, к проекту, а библиотеку Lan4Gate.dll добавить в зависимости проекта. Библиотека должна находиться в одном каталоге с исполняемым файлом
+
+Интерфейс доступа находится в пространстве имен Lanter.Lan4Gate;
+
+ВНИМАНИЕ: SWIG не генерирует interface для C#. Вместо interface генерируются полноценные классы. Анонимная реализация или множественная имплементация невозможна. 
+
+В следующем примере создается менеджер ILan4Gate с логическим идентификатором 1. Ему передается TCP сервер, обслуживающий единственное соединение, который слушает порт по умолчанию - 20501.
+
+В качестве колбеков передаются реализации интерфейсов из пространства имен Lanter.Lan4Gate;
+
+Менеджер запускает отдельный поток.
+
+После ожидается ввод пользователя. Если введен символ "q", то происходит выход. В остальных случаях отправляется FinalizeTransaction
+
+```C#
+using System;
+
+namespace Lan4GateExample
+{
+    class ConnectionCallback : Lanter.Lan4Gate.IConnectionCallback
+    {
+        public override void newState(bool state)
+        {
+            if (state)
+            {
+                Console.WriteLine("==== Gate connected ====");
+            }
+            else
+            {
+                Console.WriteLine("==== Gate disconnected ====");
+            }
+        }
+    }
+
+    class RequestCallback : Lanter.Lan4Gate.IRequestCallback
+    {
+        public override void newData(Lanter.Lan4Gate.IRequestData data)
+        {
+            Console.WriteLine("===== REQUEST ====");
+        }
+    }
+
+    class ResponseCallback : Lanter.Lan4Gate.IResponseCallback
+    {
+        public override void newData(Lanter.Lan4Gate.IResponseData data)
+        {
+            Console.WriteLine("===== RESPONSE ====");
+        }
+    }
+
+    class NotificationCallback : Lanter.Lan4Gate.INotificationCallback
+    {
+        public override void newData(Lanter.Lan4Gate.INotificationData data)
+        {
+            Console.WriteLine("===== NOTIFICATION ====");
+        }
+    } 
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(" +++++ Lan4Gate library version is " + Lanter.Lan4Gate.Version.getVersion() + " +++++");
+
+            var manager = Lanter.Lan4Gate.Lan4GateFactory.getLan4Gate(1, Lanter.Lan4Gate.CommunicationFactory.getSingleTcpServer());
+
+            manager.addConnectionCallback(new ConnectionCallback());
+
+            manager.addRequestCallback(new RequestCallback());
+
+            manager.addResponseCallback(new ResponseCallback());
+
+            manager.addNotificationCallback(new NotificationCallback());
+
+            if (manager.runOnThread() == Lanter.Lan4Gate.ILan4Gate.Status.Success)
+            {
+                Console.WriteLine("+++++ Gate started +++++");
+            }
+
+            while(true)
+            {
+                string str = Console.ReadLine();
+
+                if(str == "q")
+                {
+                    break;
+                }
+
+                manager.sendMessage(manager.getPreparedRequest(Lanter.Lan4Gate.OperationCode.FinalizeTransaction));
+            }
+        }
+    }
 }
 ```
