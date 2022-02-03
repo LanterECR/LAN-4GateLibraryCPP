@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.9.2</span>
+   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.9.5</span>
    </div>
    <div id="projectbrief">Реализация протокола кассового взаимодействия LAN-4Gate</div>
   </td>
@@ -149,45 +149,45 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doLan4Gate</b
 <tr class="memitem:a335fe633c6b688cb75a138f98e1bf1b8"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a5a45fe271268f033eef88693b8b32789">CallbackNotificationType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a335fe633c6b688cb75a138f98e1bf1b8">getCallbackNotificationType</a> () const =0</td></tr>
 <tr class="memdesc:a335fe633c6b688cb75a138f98e1bf1b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает установленный способ вызова колбеков  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a335fe633c6b688cb75a138f98e1bf1b8">Подробнее...</a><br /></td></tr>
 <tr class="separator:a335fe633c6b688cb75a138f98e1bf1b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a875d4de09060cc7b925645e4ae8c2951"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a875d4de09060cc7b925645e4ae8c2951">addRequestCallback</a> (std::function&lt; void(std::shared_ptr&lt; <a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html">Message::Request::IRequestData</a> &gt;)&gt; callback)=0</td></tr>
-<tr class="memdesc:a875d4de09060cc7b925645e4ae8c2951"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавляет колбек в список слушателей для получения данных запроса  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a875d4de09060cc7b925645e4ae8c2951">Подробнее...</a><br /></td></tr>
-<tr class="separator:a875d4de09060cc7b925645e4ae8c2951"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa43d9f73412de93bd4f23ff052433328"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#aa43d9f73412de93bd4f23ff052433328">addRequestCallback</a> (<a class="el" href="class_lanter_1_1_manager_1_1_callback_1_1_i_request_callback.html">Callback::IRequestCallback</a> &amp;callback)=0</td></tr>
+<tr class="memdesc:aa43d9f73412de93bd4f23ff052433328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавляет колбек в список слушателей для получения данных запроса  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#aa43d9f73412de93bd4f23ff052433328">Подробнее...</a><br /></td></tr>
+<tr class="separator:aa43d9f73412de93bd4f23ff052433328"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c2f76d63e63bdc349f1a6b505c07a86"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a6c2f76d63e63bdc349f1a6b505c07a86">removeRequestCallback</a> (size_t id)=0</td></tr>
 <tr class="memdesc:a6c2f76d63e63bdc349f1a6b505c07a86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Удаляет колбек запроса из списка  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a6c2f76d63e63bdc349f1a6b505c07a86">Подробнее...</a><br /></td></tr>
 <tr class="separator:a6c2f76d63e63bdc349f1a6b505c07a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aac0307acd60826c29d977b9dc0429481"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#aac0307acd60826c29d977b9dc0429481">requestCallbacksCount</a> () const =0</td></tr>
 <tr class="memdesc:aac0307acd60826c29d977b9dc0429481"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество зарегистрированных колбеков для получения данных запроса  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#aac0307acd60826c29d977b9dc0429481">Подробнее...</a><br /></td></tr>
 <tr class="separator:aac0307acd60826c29d977b9dc0429481"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a353de5859c523d7592dd7dfc37cf3c2f"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a353de5859c523d7592dd7dfc37cf3c2f">addResponseCallback</a> (std::function&lt; void(std::shared_ptr&lt; <a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html">Message::Response::IResponseData</a> &gt;)&gt; callback)=0</td></tr>
-<tr class="memdesc:a353de5859c523d7592dd7dfc37cf3c2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавляет колбек в список слушателей для получения данных ответа  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a353de5859c523d7592dd7dfc37cf3c2f">Подробнее...</a><br /></td></tr>
-<tr class="separator:a353de5859c523d7592dd7dfc37cf3c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09eac4ef6f3131a2e8ede18e273015b8"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a09eac4ef6f3131a2e8ede18e273015b8">addResponseCallback</a> (<a class="el" href="class_lanter_1_1_manager_1_1_callback_1_1_i_response_callback.html">Callback::IResponseCallback</a> &amp;callback)=0</td></tr>
+<tr class="memdesc:a09eac4ef6f3131a2e8ede18e273015b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавляет колбек в список слушателей для получения данных ответа  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a09eac4ef6f3131a2e8ede18e273015b8">Подробнее...</a><br /></td></tr>
+<tr class="separator:a09eac4ef6f3131a2e8ede18e273015b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f84c262f50baa1a4b4c624e46942129"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a5f84c262f50baa1a4b4c624e46942129">removeResponseCallback</a> (size_t id)=0</td></tr>
 <tr class="memdesc:a5f84c262f50baa1a4b4c624e46942129"><td class="mdescLeft">&#160;</td><td class="mdescRight">Удаляет колбек ответа из списка  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a5f84c262f50baa1a4b4c624e46942129">Подробнее...</a><br /></td></tr>
 <tr class="separator:a5f84c262f50baa1a4b4c624e46942129"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f413d0aede2c4be69c7e227c1e1e7cb"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a3f413d0aede2c4be69c7e227c1e1e7cb">responseCallbacksCount</a> () const =0</td></tr>
 <tr class="memdesc:a3f413d0aede2c4be69c7e227c1e1e7cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество зарегистрированных колбеков для получения данных ответа  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a3f413d0aede2c4be69c7e227c1e1e7cb">Подробнее...</a><br /></td></tr>
 <tr class="separator:a3f413d0aede2c4be69c7e227c1e1e7cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa40ec07e1c8fb81e29aa66918f025da0"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#aa40ec07e1c8fb81e29aa66918f025da0">addNotificationCallback</a> (std::function&lt; void(std::shared_ptr&lt; <a class="el" href="class_lanter_1_1_message_1_1_notification_1_1_i_notification_data.html">Message::Notification::INotificationData</a> &gt;)&gt; callback)=0</td></tr>
-<tr class="memdesc:aa40ec07e1c8fb81e29aa66918f025da0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавляет колбек в список слушателей для получения данных уведомления  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#aa40ec07e1c8fb81e29aa66918f025da0">Подробнее...</a><br /></td></tr>
-<tr class="separator:aa40ec07e1c8fb81e29aa66918f025da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0e0f7a531b53717cb8302fcd3926553"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#ab0e0f7a531b53717cb8302fcd3926553">addNotificationCallback</a> (<a class="el" href="class_lanter_1_1_manager_1_1_callback_1_1_i_notification_callback.html">Callback::INotificationCallback</a> &amp;callback)=0</td></tr>
+<tr class="memdesc:ab0e0f7a531b53717cb8302fcd3926553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавляет колбек в список слушателей для получения данных уведомления  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#ab0e0f7a531b53717cb8302fcd3926553">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab0e0f7a531b53717cb8302fcd3926553"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40f8685db74316f88e571365a3d516b2"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a40f8685db74316f88e571365a3d516b2">removeNotificationCallback</a> (size_t id)=0</td></tr>
 <tr class="memdesc:a40f8685db74316f88e571365a3d516b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Удаляет колбек уведомления из списка  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a40f8685db74316f88e571365a3d516b2">Подробнее...</a><br /></td></tr>
 <tr class="separator:a40f8685db74316f88e571365a3d516b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a216a7774db4afe9eecb26ee384a49962"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a216a7774db4afe9eecb26ee384a49962">notificationCallbacksCount</a> () const =0</td></tr>
 <tr class="memdesc:a216a7774db4afe9eecb26ee384a49962"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество зарегистрированных колбеков для получения данных уведомления  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a216a7774db4afe9eecb26ee384a49962">Подробнее...</a><br /></td></tr>
 <tr class="separator:a216a7774db4afe9eecb26ee384a49962"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a152386b64c5371a5c4e5b452486dd108"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a152386b64c5371a5c4e5b452486dd108">addInteractionCallback</a> (std::function&lt; void(std::shared_ptr&lt; <a class="el" href="class_lanter_1_1_message_1_1_interaction_1_1_i_interaction_data.html">Message::Interaction::IInteractionData</a> &gt;)&gt; callback)=0</td></tr>
-<tr class="memdesc:a152386b64c5371a5c4e5b452486dd108"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавляет колбек в список слушателей для получения данных команд взаимодействия  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a152386b64c5371a5c4e5b452486dd108">Подробнее...</a><br /></td></tr>
-<tr class="separator:a152386b64c5371a5c4e5b452486dd108"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a255d86043f8419c64a76a58b8f96cf9a"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a255d86043f8419c64a76a58b8f96cf9a">addInteractionCallback</a> (<a class="el" href="class_lanter_1_1_manager_1_1_callback_1_1_i_interaction_callback.html">Callback::IInteractionCallback</a> &amp;callback)=0</td></tr>
+<tr class="memdesc:a255d86043f8419c64a76a58b8f96cf9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавляет колбек в список слушателей для получения данных команд взаимодействия  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a255d86043f8419c64a76a58b8f96cf9a">Подробнее...</a><br /></td></tr>
+<tr class="separator:a255d86043f8419c64a76a58b8f96cf9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5221394ffbf62be0a532096f9af9b08"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#aa5221394ffbf62be0a532096f9af9b08">removeInteractionCallback</a> (size_t id)=0</td></tr>
 <tr class="memdesc:aa5221394ffbf62be0a532096f9af9b08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Удаляет колбек команд взаимодействия из списка  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#aa5221394ffbf62be0a532096f9af9b08">Подробнее...</a><br /></td></tr>
 <tr class="separator:aa5221394ffbf62be0a532096f9af9b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e5a315bf2af24be0dc9bbc3f11d310a"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a8e5a315bf2af24be0dc9bbc3f11d310a">interactionCallbacksCount</a> () const =0</td></tr>
 <tr class="memdesc:a8e5a315bf2af24be0dc9bbc3f11d310a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Возвращает количество зарегистрированных колбеков для получения данных команд взаимодействия  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a8e5a315bf2af24be0dc9bbc3f11d310a">Подробнее...</a><br /></td></tr>
 <tr class="separator:a8e5a315bf2af24be0dc9bbc3f11d310a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a563c6543e5bf1cc7a75651e123d6325f"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a563c6543e5bf1cc7a75651e123d6325f">addConnectionCallback</a> (std::function&lt; void(bool)&gt; callback)=0</td></tr>
-<tr class="memdesc:a563c6543e5bf1cc7a75651e123d6325f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавляет колбек в список слушателей для получения уведомления о подключении  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#a563c6543e5bf1cc7a75651e123d6325f">Подробнее...</a><br /></td></tr>
-<tr class="separator:a563c6543e5bf1cc7a75651e123d6325f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea79c3333f928d4b6519b525b12164e7"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#aea79c3333f928d4b6519b525b12164e7">addConnectionCallback</a> (<a class="el" href="class_lanter_1_1_manager_1_1_callback_1_1_i_connection_callback.html">Callback::IConnectionCallback</a> &amp;callback)=0</td></tr>
+<tr class="memdesc:aea79c3333f928d4b6519b525b12164e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Добавляет колбек в список слушателей для получения уведомления о подключении  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#aea79c3333f928d4b6519b525b12164e7">Подробнее...</a><br /></td></tr>
+<tr class="separator:aea79c3333f928d4b6519b525b12164e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbd647c1701c844fadec990b74d57668"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#acbd647c1701c844fadec990b74d57668">removeConnectionCallback</a> (size_t id)=0</td></tr>
 <tr class="memdesc:acbd647c1701c844fadec990b74d57668"><td class="mdescLeft">&#160;</td><td class="mdescRight">Удаляет колбек уведомления из списка  <a href="class_lanter_1_1_manager_1_1_i_lan4_gate.html#acbd647c1701c844fadec990b74d57668">Подробнее...</a><br /></td></tr>
 <tr class="separator:acbd647c1701c844fadec990b74d57668"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -283,8 +283,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doLan4Gate</b
 </div>
 </div>
 <h2 class="groupheader">Методы</h2>
-<a id="a563c6543e5bf1cc7a75651e123d6325f" name="a563c6543e5bf1cc7a75651e123d6325f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a563c6543e5bf1cc7a75651e123d6325f">&#9670;&nbsp;</a></span>addConnectionCallback()</h2>
+<a id="aea79c3333f928d4b6519b525b12164e7" name="aea79c3333f928d4b6519b525b12164e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea79c3333f928d4b6519b525b12164e7">&#9670;&nbsp;</a></span>addConnectionCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -295,7 +295,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doLan4Gate</b
         <tr>
           <td class="memname">virtual size_t Lanter::Manager::ILan4Gate::addConnectionCallback </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; void(bool)&gt;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_lanter_1_1_manager_1_1_callback_1_1_i_connection_callback.html">Callback::IConnectionCallback</a> &amp;&#160;</td>
           <td class="paramname"><em>callback</em></td><td>)</td>
           <td></td>
         </tr>
@@ -310,16 +310,17 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doLan4Gate</b
 <p>Добавляет колбек в список слушателей для получения уведомления о подключении </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>std::function на колбек-функцию </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>имплементация интерфейса Callback::ConnectionCallback </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Возвращает</dt><dd>id зарегистрированного колбека </dd></dl>
+<dl class="section see"><dt>См. также</dt><dd>Callback::ConnectionCallback </dd></dl>
 
 </div>
 </div>
-<a id="a152386b64c5371a5c4e5b452486dd108" name="a152386b64c5371a5c4e5b452486dd108"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a152386b64c5371a5c4e5b452486dd108">&#9670;&nbsp;</a></span>addInteractionCallback()</h2>
+<a id="a255d86043f8419c64a76a58b8f96cf9a" name="a255d86043f8419c64a76a58b8f96cf9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a255d86043f8419c64a76a58b8f96cf9a">&#9670;&nbsp;</a></span>addInteractionCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -330,7 +331,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doLan4Gate</b
         <tr>
           <td class="memname">virtual size_t Lanter::Manager::ILan4Gate::addInteractionCallback </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; void(std::shared_ptr&lt; <a class="el" href="class_lanter_1_1_message_1_1_interaction_1_1_i_interaction_data.html">Message::Interaction::IInteractionData</a> &gt;)&gt;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_lanter_1_1_manager_1_1_callback_1_1_i_interaction_callback.html">Callback::IInteractionCallback</a> &amp;&#160;</td>
           <td class="paramname"><em>callback</em></td><td>)</td>
           <td></td>
         </tr>
@@ -345,17 +346,19 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doLan4Gate</b
 <p>Добавляет колбек в список слушателей для получения данных команд взаимодействия </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>std::function на колбек-функцию </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>имплементация интерфейса Callback::InteractionCallback </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Возвращает</dt><dd>id зарегистрированного колбека </dd></dl>
-<dl class="section see"><dt>См. также</dt><dd><a class="el" href="class_lanter_1_1_message_1_1_interaction_1_1_i_interaction_data.html" title="Базовый класс-контейнер для передачи команд взаимодействия">Message::Interaction::IInteractionData</a> </dd></dl>
+<dl class="section see"><dt>См. также</dt><dd><a class="el" href="class_lanter_1_1_message_1_1_interaction_1_1_i_interaction_data.html" title="Базовый класс-контейнер для передачи команд взаимодействия">Message::Interaction::IInteractionData</a> </dd>
+<dd>
+Callback::InteractionCallback </dd></dl>
 
 </div>
 </div>
-<a id="aa40ec07e1c8fb81e29aa66918f025da0" name="aa40ec07e1c8fb81e29aa66918f025da0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa40ec07e1c8fb81e29aa66918f025da0">&#9670;&nbsp;</a></span>addNotificationCallback()</h2>
+<a id="ab0e0f7a531b53717cb8302fcd3926553" name="ab0e0f7a531b53717cb8302fcd3926553"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0e0f7a531b53717cb8302fcd3926553">&#9670;&nbsp;</a></span>addNotificationCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -366,7 +369,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doLan4Gate</b
         <tr>
           <td class="memname">virtual size_t Lanter::Manager::ILan4Gate::addNotificationCallback </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; void(std::shared_ptr&lt; <a class="el" href="class_lanter_1_1_message_1_1_notification_1_1_i_notification_data.html">Message::Notification::INotificationData</a> &gt;)&gt;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_lanter_1_1_manager_1_1_callback_1_1_i_notification_callback.html">Callback::INotificationCallback</a> &amp;&#160;</td>
           <td class="paramname"><em>callback</em></td><td>)</td>
           <td></td>
         </tr>
@@ -381,17 +384,19 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doLan4Gate</b
 <p>Добавляет колбек в список слушателей для получения данных уведомления </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>std::function на колбек-функцию </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>имплементация интерфейса Callback::NotificationCallback </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Возвращает</dt><dd>id зарегистрированного колбека </dd></dl>
-<dl class="section see"><dt>См. также</dt><dd><a class="el" href="class_lanter_1_1_message_1_1_notification_1_1_i_notification_data.html" title="Базовый класс-контейнер для получения уведомлений от финансового ПО LAN-4Tap.">Message::Notification::INotificationData</a> </dd></dl>
+<dl class="section see"><dt>См. также</dt><dd><a class="el" href="class_lanter_1_1_message_1_1_notification_1_1_i_notification_data.html" title="Базовый класс-контейнер для получения уведомлений от финансового ПО LAN-4Tap.">Message::Notification::INotificationData</a> </dd>
+<dd>
+Callback::NotificationCallback </dd></dl>
 
 </div>
 </div>
-<a id="a875d4de09060cc7b925645e4ae8c2951" name="a875d4de09060cc7b925645e4ae8c2951"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a875d4de09060cc7b925645e4ae8c2951">&#9670;&nbsp;</a></span>addRequestCallback()</h2>
+<a id="aa43d9f73412de93bd4f23ff052433328" name="aa43d9f73412de93bd4f23ff052433328"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa43d9f73412de93bd4f23ff052433328">&#9670;&nbsp;</a></span>addRequestCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -402,7 +407,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doLan4Gate</b
         <tr>
           <td class="memname">virtual size_t Lanter::Manager::ILan4Gate::addRequestCallback </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; void(std::shared_ptr&lt; <a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html">Message::Request::IRequestData</a> &gt;)&gt;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_lanter_1_1_manager_1_1_callback_1_1_i_request_callback.html">Callback::IRequestCallback</a> &amp;&#160;</td>
           <td class="paramname"><em>callback</em></td><td>)</td>
           <td></td>
         </tr>
@@ -417,17 +422,19 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doLan4Gate</b
 <p>Добавляет колбек в список слушателей для получения данных запроса </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>std::function с сигнатурой <code>void func(std::shared_ptr&lt;<a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html" title="Базовый класс-контейнер для отправки запросов финансовому ПО LAN-4Tap.">Message::Request::IRequestData</a>&gt;)</code> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>имплементация интерфейса Callback::RequestCallback </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Возвращает</dt><dd>id зарегистрированного колбека </dd></dl>
-<dl class="section see"><dt>См. также</dt><dd><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html" title="Базовый класс-контейнер для отправки запросов финансовому ПО LAN-4Tap.">Message::Request::IRequestData</a> </dd></dl>
+<dl class="section see"><dt>См. также</dt><dd><a class="el" href="class_lanter_1_1_message_1_1_request_1_1_i_request_data.html" title="Базовый класс-контейнер для отправки запросов финансовому ПО LAN-4Tap.">Message::Request::IRequestData</a> </dd>
+<dd>
+Callback::RequestCallback </dd></dl>
 
 </div>
 </div>
-<a id="a353de5859c523d7592dd7dfc37cf3c2f" name="a353de5859c523d7592dd7dfc37cf3c2f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a353de5859c523d7592dd7dfc37cf3c2f">&#9670;&nbsp;</a></span>addResponseCallback()</h2>
+<a id="a09eac4ef6f3131a2e8ede18e273015b8" name="a09eac4ef6f3131a2e8ede18e273015b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09eac4ef6f3131a2e8ede18e273015b8">&#9670;&nbsp;</a></span>addResponseCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -438,7 +445,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doLan4Gate</b
         <tr>
           <td class="memname">virtual size_t Lanter::Manager::ILan4Gate::addResponseCallback </td>
           <td>(</td>
-          <td class="paramtype">std::function&lt; void(std::shared_ptr&lt; <a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html">Message::Response::IResponseData</a> &gt;)&gt;&#160;</td>
+          <td class="paramtype"><a class="el" href="class_lanter_1_1_manager_1_1_callback_1_1_i_response_callback.html">Callback::IResponseCallback</a> &amp;&#160;</td>
           <td class="paramname"><em>callback</em></td><td>)</td>
           <td></td>
         </tr>
@@ -453,12 +460,14 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doLan4Gate</b
 <p>Добавляет колбек в список слушателей для получения данных ответа </p>
 <dl class="params"><dt>Аргументы</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>std::function с сигнатурой <code>void func(std::shared_ptr&lt;<a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html" title="Базовый класс-контейнер для получения уведомлений от финансового ПО LAN-4Tap.">Message::Response::IResponseData</a>&gt;)</code> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">callback</td><td>имплементация интерфейса Callback::ResponseCallback </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Возвращает</dt><dd>id зарегистрированного колбека </dd></dl>
-<dl class="section see"><dt>См. также</dt><dd><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html" title="Базовый класс-контейнер для получения уведомлений от финансового ПО LAN-4Tap.">Message::Response::IResponseData</a> </dd></dl>
+<dl class="section see"><dt>См. также</dt><dd><a class="el" href="class_lanter_1_1_message_1_1_response_1_1_i_response_data.html" title="Базовый класс-контейнер для получения уведомлений от финансового ПО LAN-4Tap.">Message::Response::IResponseData</a> </dd>
+<dd>
+Callback::ResponseCallback </dd></dl>
 
 </div>
 </div>
@@ -1405,7 +1414,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>doLan4Gate</b
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_lanter.html">Lanter</a></li><li class="navelem"><a class="el" href="namespace_lanter_1_1_manager.html">Manager</a></li><li class="navelem"><a class="el" href="class_lanter_1_1_manager_1_1_i_lan4_gate.html">ILan4Gate</a></li>
-    <li class="footer">Документация по LAN-4Gate. Последние изменения: Пн 13 Дек 2021 11:52:16. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Документация по LAN-4Gate. Последние изменения: Чт 3 Фев 2022 03:18:50. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

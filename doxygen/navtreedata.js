@@ -29,6 +29,7 @@ var NAVTREE =
       [ "Пространства имен", "namespaces.html", "namespaces_dup" ],
       [ "Члены пространств имен", "namespacemembers.html", [
         [ "Указатель", "namespacemembers.html", null ],
+        [ "Функции", "namespacemembers_func.html", null ],
         [ "Перечисления", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
@@ -50,9 +51,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_card_input_method_8h_source.html",
-"class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a7d239c3b9be315fe4c2a203b91cd9525",
-"class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a9d6aee6da4297a8ba2330ae904a19dc4",
-"namespace_lanter_1_1_message_1_1_notification.html#a434b23e4775c77b6361a208b28cb885da4e126b38ed10277fcfeebbf026431ca6"
+"class_lanter_1_1_message_1_1_request_1_1_i_request_data.html#a37efb5a562398687d18d2da20681b70f",
+"class_lanter_1_1_message_1_1_response_1_1_i_response_data.html#a876c86a323efee8f228b6926f6d181b3",
+"namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597ad89d653bf8beb0e0a247e722e154996c"
 ];
 
 var SYNCONMSG = 'нажмите на выключить для синхронизации панелей';

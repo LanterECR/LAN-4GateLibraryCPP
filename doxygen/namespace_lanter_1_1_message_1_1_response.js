@@ -20,9 +20,7 @@ var namespace_lanter_1_1_message_1_1_response =
       [ "ChipFullGrade", "namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a572ba8d18ba586932a163256d44411cf", null ],
       [ "ChipPartialGrade", "namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a4eedb8b63b554e30f94a45c0d4f90783", null ],
       [ "ContactlessMagStripMode", "namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a7448e4b2cbd46461d616004e0b491451", null ],
-      [ "ContactlessChipMode", "namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a75e0ea4f37d420e1950792944039bc49", null ],
-      [ "FirstValue", "namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a72fbccc72f1137a08c4b289d51a0a18c", null ],
-      [ "LastValue", "namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a52f7b2c6f7851fcda22428c654459715", null ]
+      [ "ContactlessChipMode", "namespace_lanter_1_1_message_1_1_response.html#aa6dcbd24e296f207907b51c8123d9a63a75e0ea4f37d420e1950792944039bc49", null ]
     ] ],
     [ "ResponseField", "namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7", [
       [ "EcrNumber", "namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a5087365dbca04882814027eb490e74d2", null ],
@@ -73,9 +71,7 @@ var namespace_lanter_1_1_message_1_1_response =
       [ "RefundCount", "namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7aa3e11ef78aaafe00f415a2f3be8bf858", null ],
       [ "SaleArray", "namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a311cdd7ba770559622cb4d6f30489f6a", null ],
       [ "VoidArray", "namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a711442470617c351dc1dc8dcc07792e7", null ],
-      [ "RefundArray", "namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a1232114aced6abf639deb595c428eef2", null ],
-      [ "FirstValue", "namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a72fbccc72f1137a08c4b289d51a0a18c", null ],
-      [ "LastValue", "namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a52f7b2c6f7851fcda22428c654459715", null ]
+      [ "RefundArray", "namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a1232114aced6abf639deb595c428eef2", null ]
     ] ],
     [ "Status", "namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fd", [
       [ "NoStatus", "namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda2c1303eeef311e5528208cf16767d135", null ],
@@ -90,8 +86,14 @@ var namespace_lanter_1_1_message_1_1_response =
       [ "TotalsNotAgreed", "namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda0453fc59b175d07afdeaffdd0bcdb7d8", null ],
       [ "NeedSettlement", "namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda771f9a9aad606aaf7f125bd507d2cb79", null ],
       [ "CanceledByTerminal", "namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fdaf4082a2bd68ee29ec342c49d9a69c439", null ],
-      [ "FastTrackKeyError", "namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda8d60b2d4aef8f5cffe71226b955455e3", null ],
-      [ "FirstValue", "namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda72fbccc72f1137a08c4b289d51a0a18c", null ],
-      [ "LastValue", "namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda52f7b2c6f7851fcda22428c654459715", null ]
-    ] ]
+      [ "FastTrackKeyError", "namespace_lanter_1_1_message_1_1_response.html#a15fd06a4f465e1d2db00a5c7c3b762fda8d60b2d4aef8f5cffe71226b955455e3", null ]
+    ] ],
+    [ "getFirstCardholderAuthMethod", "namespace_lanter_1_1_message_1_1_response.html#aa324572f978be5ec0fb9dced78dab49e", null ],
+    [ "getFirstCardInputMethod", "namespace_lanter_1_1_message_1_1_response.html#ab103f3699d8cfa53dcee6bcfb5b90efe", null ],
+    [ "getFirstResponseField", "namespace_lanter_1_1_message_1_1_response.html#ae9889feccfe64b562f4e36bafd36aed2", null ],
+    [ "getFirstStatus", "namespace_lanter_1_1_message_1_1_response.html#a0dc28e1fcc970ee95b50c94aa4efb75f", null ],
+    [ "getLastCardholderAuthMethod", "namespace_lanter_1_1_message_1_1_response.html#a3be286b6940b4edae7ed4a19bf2381f4", null ],
+    [ "getLastCardInputMethod", "namespace_lanter_1_1_message_1_1_response.html#af2cfc8977b2887e02e2e5cc4b318e784", null ],
+    [ "getLastResponseField", "namespace_lanter_1_1_message_1_1_response.html#af40ba5a92e9d045c18d0033d23e67563", null ],
+    [ "getLastStatus", "namespace_lanter_1_1_message_1_1_response.html#a35ffb395087c3dd80a3e263b635cf036", null ]
 ];

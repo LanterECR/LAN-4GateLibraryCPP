@@ -55,8 +55,8 @@ var namespace_lanter_1_1_message_1_1_notification =
       [ "ErrorPinInput", "namespace_lanter_1_1_message_1_1_notification.html#a434b23e4775c77b6361a208b28cb885dafb6084e8913250b96f2b5960652fcc6d", null ],
       [ "MsrDeclinedUseChip", "namespace_lanter_1_1_message_1_1_notification.html#a434b23e4775c77b6361a208b28cb885da638bcaa068d179eb79f480cdf1269fe2", null ],
       [ "PinEntryTimeout", "namespace_lanter_1_1_message_1_1_notification.html#a434b23e4775c77b6361a208b28cb885da02025848a92778a21a70fdfce1eaecad", null ],
-      [ "QrShowing", "namespace_lanter_1_1_message_1_1_notification.html#a434b23e4775c77b6361a208b28cb885da16d8d043e3058fdabb006ca10b86623f", null ],
-      [ "FirstValue", "namespace_lanter_1_1_message_1_1_notification.html#a434b23e4775c77b6361a208b28cb885da72fbccc72f1137a08c4b289d51a0a18c", null ],
-      [ "LastValue", "namespace_lanter_1_1_message_1_1_notification.html#a434b23e4775c77b6361a208b28cb885da52f7b2c6f7851fcda22428c654459715", null ]
-    ] ]
+      [ "QrShowing", "namespace_lanter_1_1_message_1_1_notification.html#a434b23e4775c77b6361a208b28cb885da16d8d043e3058fdabb006ca10b86623f", null ]
+    ] ],
+    [ "getFirstNotificationCode", "namespace_lanter_1_1_message_1_1_notification.html#aa0bbe9238667f3cb90690f37be404ae3", null ],
+    [ "getLastNotificationCode", "namespace_lanter_1_1_message_1_1_notification.html#a9e875066c8b02dd3ea090bdaaaaf0b9f", null ]
 ];
