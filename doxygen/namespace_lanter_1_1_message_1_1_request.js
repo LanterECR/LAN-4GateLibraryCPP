@@ -19,8 +19,8 @@ var namespace_lanter_1_1_message_1_1_request =
       [ "OpenTags", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0ae0677efeed15e347bb8f9366ccd45004", null ],
       [ "EncTags", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a3ec1aaf1494bbe1e4c946aec64d96397", null ],
       [ "ProviderCode", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a435b96d0f2bd8802e06a81940574f81d", null ],
-      [ "AdditionalInfo", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a509dce9f08fe15e12f857e209f92cb14", null ],
-      [ "FirstValue", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a72fbccc72f1137a08c4b289d51a0a18c", null ],
-      [ "LastValue", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a52f7b2c6f7851fcda22428c654459715", null ]
-    ] ]
+      [ "AdditionalInfo", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a509dce9f08fe15e12f857e209f92cb14", null ]
+    ] ],
+    [ "getFirstRequestField", "namespace_lanter_1_1_message_1_1_request.html#a0a3a4fb14069821a085f5bab3161ccf2", null ],
+    [ "getLastRequestField", "namespace_lanter_1_1_message_1_1_request.html#a57f7ff3d2edbfeb3b6ec1ebd5dd140d5", null ]
 ];

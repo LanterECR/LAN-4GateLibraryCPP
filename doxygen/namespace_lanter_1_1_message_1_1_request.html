@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.9.2</span>
+   <div id="projectname">LAN-4Gate<span id="projectnumber">&#160;0.9.5</span>
    </div>
    <div id="projectbrief">Реализация протокола кассового взаимодействия LAN-4Gate</div>
   </td>
@@ -86,7 +86,8 @@ $(document).ready(function(){initNavTree('namespace_lanter_1_1_message_1_1_reque
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Классы</a> &#124;
-<a href="#enum-members">Перечисления</a>  </div>
+<a href="#enum-members">Перечисления</a> &#124;
+<a href="#func-members">Функции</a>  </div>
   <div class="headertitle"><div class="title">Пространство имен Lanter::Message::Request</div></div>
 </div><!--header-->
 <div class="contents">
@@ -127,12 +128,17 @@ $(document).ready(function(){initNavTree('namespace_lanter_1_1_message_1_1_reque
 , <a class="el" href="namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a435b96d0f2bd8802e06a81940574f81d">ProviderCode</a>
 , <br />
 &#160;&#160;<a class="el" href="namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a509dce9f08fe15e12f857e209f92cb14">AdditionalInfo</a>
-, <a class="el" href="namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a72fbccc72f1137a08c4b289d51a0a18c">FirstValue</a> = EcrNumber
-, <a class="el" href="namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a52f7b2c6f7851fcda22428c654459715">LastValue</a> = AdditionalInfo
 <br />
  }</td></tr>
 <tr class="memdesc:ac5f8f0b27bf536c9fe08aed2a9fd08a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список полей, используемых для запроса к финансовому ПО LAN-4Tap.  <a href="namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0">Подробнее...</a><br /></td></tr>
 <tr class="separator:ac5f8f0b27bf536c9fe08aed2a9fd08a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Функции</h2></td></tr>
+<tr class="memitem:a0a3a4fb14069821a085f5bab3161ccf2"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0">RequestField</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_lanter_1_1_message_1_1_request.html#a0a3a4fb14069821a085f5bab3161ccf2">getFirstRequestField</a> ()</td></tr>
+<tr class="separator:a0a3a4fb14069821a085f5bab3161ccf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57f7ff3d2edbfeb3b6ec1ebd5dd140d5"><td class="memItemLeft" align="right" valign="top">constexpr <a class="el" href="namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0">RequestField</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_lanter_1_1_message_1_1_request.html#a57f7ff3d2edbfeb3b6ec1ebd5dd140d5">getLastRequestField</a> ()</td></tr>
+<tr class="separator:a57f7ff3d2edbfeb3b6ec1ebd5dd140d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><p >Пространство имен запросов к финансовому ПО LAN-4Tap. </p>
@@ -194,11 +200,60 @@ $(document).ready(function(){initNavTree('namespace_lanter_1_1_message_1_1_reque
 </td></tr>
 <tr><td class="fieldname"><a id="ac5f8f0b27bf536c9fe08aed2a9fd08a0a509dce9f08fe15e12f857e209f92cb14" name="ac5f8f0b27bf536c9fe08aed2a9fd08a0a509dce9f08fe15e12f857e209f92cb14"></a>AdditionalInfo&#160;</td><td class="fielddoc"><p >Дополнительные данные операции </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ac5f8f0b27bf536c9fe08aed2a9fd08a0a72fbccc72f1137a08c4b289d51a0a18c" name="ac5f8f0b27bf536c9fe08aed2a9fd08a0a72fbccc72f1137a08c4b289d51a0a18c"></a>FirstValue&#160;</td><td class="fielddoc"><p >Ссылка на первый элемент перечисления </p>
-</td></tr>
-<tr><td class="fieldname"><a id="ac5f8f0b27bf536c9fe08aed2a9fd08a0a52f7b2c6f7851fcda22428c654459715" name="ac5f8f0b27bf536c9fe08aed2a9fd08a0a52f7b2c6f7851fcda22428c654459715"></a>LastValue&#160;</td><td class="fielddoc"><p >Ссылка на последний элемент перечисления </p>
-</td></tr>
 </table>
+
+</div>
+</div>
+<h2 class="groupheader">Функции</h2>
+<a id="a0a3a4fb14069821a085f5bab3161ccf2" name="a0a3a4fb14069821a085f5bab3161ccf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a3a4fb14069821a085f5bab3161ccf2">&#9670;&nbsp;</a></span>getFirstRequestField()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0">RequestField</a> Lanter::Message::Request::getFirstRequestField </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Функция, возвращающая первый значимый элемент перечисления RequestField </p><dl class="section return"><dt>Возвращает</dt><dd>Первый элемент значимый перечисления RequestField </dd></dl>
+
+</div>
+</div>
+<a id="a57f7ff3d2edbfeb3b6ec1ebd5dd140d5" name="a57f7ff3d2edbfeb3b6ec1ebd5dd140d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57f7ff3d2edbfeb3b6ec1ebd5dd140d5">&#9670;&nbsp;</a></span>getLastRequestField()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0">RequestField</a> Lanter::Message::Request::getLastRequestField </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p >Функция, возвращающая последний значимый элемент перечисления RequestField </p><dl class="section return"><dt>Возвращает</dt><dd>Последний элемент значимый перечисления RequestField </dd></dl>
 
 </div>
 </div>
@@ -208,7 +263,7 @@ $(document).ready(function(){initNavTree('namespace_lanter_1_1_message_1_1_reque
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespace_lanter.html">Lanter</a></li><li class="navelem"><a class="el" href="namespace_lanter_1_1_message.html">Message</a></li><li class="navelem"><a class="el" href="namespace_lanter_1_1_message_1_1_request.html">Request</a></li>
-    <li class="footer">Документация по LAN-4Gate. Последние изменения: Пн 13 Дек 2021 11:52:16. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Документация по LAN-4Gate. Последние изменения: Чт 3 Фев 2022 03:18:50. Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
