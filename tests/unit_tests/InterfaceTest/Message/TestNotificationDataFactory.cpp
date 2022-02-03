@@ -9,15 +9,15 @@ using namespace Lanter::Message::Notification;
 using namespace Lanter::Utils::Constants;
 
 TEST(TestNotificationDataFactory, CheckFactory) {
-    auto lessFirstOperation = (NotificationCode)((int)NotificationCode::FirstValue - 1);
+    auto lessFirstOperation = (NotificationCode)((int)getFirstNotificationCode() - 1);
 
-    auto greatLastOperation = (NotificationCode)((int)NotificationCode::LastValue + 1);
+    auto greatLastOperation = (NotificationCode)((int)getLastNotificationCode() + 1);
 
     auto lessNotification = NotificationDataFactory::getNotificationData(lessFirstOperation);
     auto greatNotification = NotificationDataFactory::getNotificationData(greatLastOperation);
 
-    auto firstNotification = NotificationDataFactory::getNotificationData(NotificationCode::FirstValue);
-    auto lastNotification = NotificationDataFactory::getNotificationData(NotificationCode::LastValue);
+    auto firstNotification = NotificationDataFactory::getNotificationData(getFirstNotificationCode());
+    auto lastNotification = NotificationDataFactory::getNotificationData(getLastNotificationCode());
 
     EXPECT_NE(NotificationDataFactory::getNotificationData(), nullptr);
 
@@ -30,9 +30,9 @@ TEST(TestNotificationDataFactory, CheckFactory) {
 
 
     ASSERT_NE(firstNotification, nullptr);
-    EXPECT_EQ(firstNotification->getCode(), NotificationCode::FirstValue);
+    EXPECT_EQ(firstNotification->getCode(), getFirstNotificationCode());
 
     ASSERT_NE(lastNotification, nullptr);
-    EXPECT_EQ(lastNotification->getCode(), NotificationCode::LastValue);
+    EXPECT_EQ(lastNotification->getCode(), getLastNotificationCode());
 
 }

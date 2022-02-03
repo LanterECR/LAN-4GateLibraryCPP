@@ -17,5 +17,9 @@ namespace Lanter {
         std::shared_ptr<ICommunication> CommunicationFactory::getTcpClient(const std::string &ip, int port) {
             return std::make_shared<TCPClient>(ip, port);
         }
+
+        std::shared_ptr<ICommunication> CommunicationFactory::getTcpClient(int port) {
+            return getTcpClient("127.0.0.1", port);
+        }
     }
 }

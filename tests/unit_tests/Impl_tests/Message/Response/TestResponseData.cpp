@@ -80,7 +80,7 @@ TEST(TestResponseData, CheckEcrMerchantNumber) {
 TEST(TestResponseData, CheckOperationCode) {
     ResponseData data;
 
-    auto greatMaximum = (OperationCode)((int)(OperationCode::LastValue) + 1);
+    auto greatMaximum = (OperationCode)((int)(getLastOperationCode()) + 1);
     EXPECT_FALSE(data.setOperationCode(OperationCode::NoOperation));
     EXPECT_EQ(data.getFieldsSet().size(), 0);
     EXPECT_FALSE(data.setOperationCode(greatMaximum));
@@ -88,14 +88,14 @@ TEST(TestResponseData, CheckOperationCode) {
 
     EXPECT_EQ(data.getOperationCode(), OperationCode::NoOperation);
 
-    EXPECT_TRUE(data.setOperationCode(OperationCode::FirstValue));
+    EXPECT_TRUE(data.setOperationCode(getFirstOperationCode()));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getOperationCode(), OperationCode::FirstValue);
+    EXPECT_EQ(data.getOperationCode(), getFirstOperationCode());
     EXPECT_FALSE(data.getMandatoryFields().empty());
 
-    EXPECT_TRUE(data.setOperationCode(OperationCode::LastValue));
+    EXPECT_TRUE(data.setOperationCode(getLastOperationCode()));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getOperationCode(), OperationCode::LastValue);
+    EXPECT_EQ(data.getOperationCode(), getLastOperationCode());
     EXPECT_NE(data.getFieldsSet().find(ResponseField::OperationCode), data.getFieldsSet().end());
 
     EXPECT_TRUE(data.resetOperationCode());
@@ -107,7 +107,7 @@ TEST(TestResponseData, CheckOperationCode) {
 TEST(TestResponseData, CheckOriginalOperationCode) {
     ResponseData data;
 
-    auto greatMaximum = (OperationCode)((int)(OperationCode::LastValue) + 1);
+    auto greatMaximum = (OperationCode)((int)(getLastOperationCode()) + 1);
     EXPECT_FALSE(data.setOriginalOperationCode(OperationCode::NoOperation));
     EXPECT_EQ(data.getFieldsSet().size(), 0);
     EXPECT_FALSE(data.setOriginalOperationCode(greatMaximum));
@@ -115,13 +115,13 @@ TEST(TestResponseData, CheckOriginalOperationCode) {
 
     EXPECT_EQ(data.getOriginalOperationCode(), OperationCode::NoOperation);
 
-    EXPECT_TRUE(data.setOriginalOperationCode(OperationCode::FirstValue));
+    EXPECT_TRUE(data.setOriginalOperationCode(getFirstOperationCode()));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getOriginalOperationCode(), OperationCode::FirstValue);
+    EXPECT_EQ(data.getOriginalOperationCode(), getFirstOperationCode());
 
-    EXPECT_TRUE(data.setOriginalOperationCode(OperationCode::LastValue));
+    EXPECT_TRUE(data.setOriginalOperationCode(getLastOperationCode()));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getOriginalOperationCode(), OperationCode::LastValue);
+    EXPECT_EQ(data.getOriginalOperationCode(), getLastOperationCode());
     EXPECT_NE(data.getFieldsSet().find(ResponseField::OriginalOperationCode), data.getFieldsSet().end());
 
     EXPECT_TRUE(data.resetOriginalOperationCode());
@@ -299,7 +299,7 @@ TEST(TestResponseData, CheckRRN) {
 TEST(TestResponseData, CheckStatus) {
     ResponseData data;
 
-    auto greatMaximum = (Status)((int)(Status::LastValue) + 1);
+    auto greatMaximum = (Status)((int)(getLastStatus()) + 1);
     EXPECT_FALSE(data.setStatus(Status::NoStatus));
     EXPECT_EQ(data.getFieldsSet().size(), 0);
 
@@ -308,13 +308,13 @@ TEST(TestResponseData, CheckStatus) {
 
     EXPECT_EQ(data.getStatus(), Status::NoStatus);
 
-    EXPECT_TRUE(data.setStatus(Status::FirstValue));
+    EXPECT_TRUE(data.setStatus(getFirstStatus()));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getStatus(), Status::FirstValue);
+    EXPECT_EQ(data.getStatus(), getFirstStatus());
 
-    EXPECT_TRUE(data.setStatus(Status::LastValue));
+    EXPECT_TRUE(data.setStatus(getLastStatus()));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getStatus(), Status::LastValue);
+    EXPECT_EQ(data.getStatus(), getLastStatus());
     EXPECT_NE(data.getFieldsSet().find(ResponseField::Status), data.getFieldsSet().end());
 
     EXPECT_TRUE(data.resetStatus());
@@ -325,7 +325,7 @@ TEST(TestResponseData, CheckStatus) {
 TEST(TestResponseData, CheckOriginalOperationStatus) {
     ResponseData data;
 
-    auto greatMaximum = (Status)((int)(Status::LastValue) + 1);
+    auto greatMaximum = (Status)((int)(getLastStatus()) + 1);
     EXPECT_FALSE(data.setOriginalOperationStatus(Status::NoStatus));
     EXPECT_EQ(data.getFieldsSet().size(), 0);
 
@@ -334,13 +334,13 @@ TEST(TestResponseData, CheckOriginalOperationStatus) {
 
     EXPECT_EQ(data.getOriginalOperationStatus(), Status::NoStatus);
 
-    EXPECT_TRUE(data.setOriginalOperationStatus(Status::FirstValue));
+    EXPECT_TRUE(data.setOriginalOperationStatus(getFirstStatus()));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getOriginalOperationStatus(), Status::FirstValue);
+    EXPECT_EQ(data.getOriginalOperationStatus(), getFirstStatus());
 
-    EXPECT_TRUE(data.setOriginalOperationStatus(Status::LastValue));
+    EXPECT_TRUE(data.setOriginalOperationStatus(getLastStatus()));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getOriginalOperationStatus(), Status::LastValue);
+    EXPECT_EQ(data.getOriginalOperationStatus(), getLastStatus());
     EXPECT_NE(data.getFieldsSet().find(ResponseField::OriginalOperationStatus), data.getFieldsSet().end());
 
     EXPECT_TRUE(data.resetOriginalOperationStatus());
@@ -754,7 +754,7 @@ TEST(TestResponseData, CheckCardAppName) {
 TEST(TestResponseData, CheckCardInputMethod) {
     ResponseData data;
 
-    auto greatMaximum = (CardInputMethod)((int)(CardInputMethod::LastValue) + 1);
+    auto greatMaximum = (CardInputMethod)((int)(getLastCardInputMethod()) + 1);
     EXPECT_FALSE(data.setCardInputMethod(CardInputMethod::NoMethod));
     EXPECT_EQ(data.getFieldsSet().size(), 0);
 
@@ -763,13 +763,13 @@ TEST(TestResponseData, CheckCardInputMethod) {
 
     EXPECT_EQ(data.getCardInputMethod(), CardInputMethod::NoMethod);
 
-    EXPECT_TRUE(data.setCardInputMethod(CardInputMethod::FirstValue));
+    EXPECT_TRUE(data.setCardInputMethod(getFirstCardInputMethod()));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getCardInputMethod(), CardInputMethod::FirstValue);
+    EXPECT_EQ(data.getCardInputMethod(), getFirstCardInputMethod());
 
-    EXPECT_TRUE(data.setCardInputMethod(CardInputMethod::LastValue));
+    EXPECT_TRUE(data.setCardInputMethod(getLastCardInputMethod()));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getCardInputMethod(), CardInputMethod::LastValue);
+    EXPECT_EQ(data.getCardInputMethod(), getLastCardInputMethod());
     EXPECT_NE(data.getFieldsSet().find(ResponseField::CardInputMethod), data.getFieldsSet().end());
 
     EXPECT_TRUE(data.resetCardInputMethod());

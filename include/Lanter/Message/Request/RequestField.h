@@ -24,11 +24,20 @@ namespace Lanter {
                 OpenTags, ///< Теги, которые необходимо получить в открытом виде (формат TLV) в операции FastTrack
                 EncTags, ///< Теги, которые необходимо получить в зашифрованном виде в операции FastTrack
                 ProviderCode, ///< Код вендора платежа
-                AdditionalInfo, ///< Дополнительные данные операции
-                //диапазон полей
-                FirstValue = EcrNumber, ///< Ссылка на первый элемент перечисления
-                LastValue = AdditionalInfo ///< Ссылка на последний элемент перечисления
+                AdditionalInfo ///< Дополнительные данные операции
             };//enum RequestField
+
+            /// Функция, возвращающая первый значимый элемент перечисления RequestField
+            /// \return Первый элемент значимый перечисления RequestField
+            constexpr RequestField getFirstRequestField() {
+                return RequestField::EcrNumber;
+            }
+
+            /// Функция, возвращающая последний значимый элемент перечисления RequestField
+            /// \return Последний элемент значимый перечисления RequestField
+            constexpr RequestField getLastRequestField() {
+                return RequestField::AdditionalInfo;
+            }
         }//namespace Request
     }//namespace Message
 }//namespace Lanter

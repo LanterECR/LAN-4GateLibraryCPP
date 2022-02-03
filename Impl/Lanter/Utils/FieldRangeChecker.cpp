@@ -28,8 +28,8 @@ namespace Lanter {
 
         bool checkOperationCodeRange(int32_t operationCode) {
             return checkValueRange(operationCode,
-                                static_cast<int64_t>(OperationCode::FirstValue),
-                                static_cast<int64_t>(OperationCode::LastValue));
+                                static_cast<int64_t>(getFirstOperationCode()),
+                                static_cast<int64_t>(getLastOperationCode()));
         }
 
         bool checkAmountRange(int64_t amount) {
@@ -82,8 +82,8 @@ namespace Lanter {
 
         bool checkStatusRange(int32_t status) {
             return checkValueRange(status,
-                                 static_cast<int64_t>(Response::Status::FirstValue),
-                                 static_cast<int64_t>(Response::Status::LastValue));
+                                 static_cast<int64_t>(Response::getFirstStatus()),
+                                 static_cast<int64_t>(Response::getLastStatus()));
         }
 
         bool checkTransDateTimeRange(const std::string &dateTime) {
@@ -137,8 +137,8 @@ namespace Lanter {
 
         bool checkCardInputMethodRange(int32_t cardInputMethod) {
             return checkValueRange(cardInputMethod,
-                                static_cast<int64_t>(Response::CardInputMethod::FirstValue),
-                                static_cast<int64_t>(Response::CardInputMethod::LastValue));
+                                static_cast<int64_t>(Response::getFirstCardInputMethod()),
+                                static_cast<int64_t>(Response::getLastCardInputMethod()));
         }
 
         bool checkIssuerNameRange(const std::string &issuerName) {
@@ -191,15 +191,15 @@ namespace Lanter {
 
         bool checkNotificationsRange(int32_t notification) {
             return checkValueRange(notification,
-                                static_cast<int64_t>(Notification::NotificationCode::FirstValue),
-                                static_cast<int64_t>(Notification::NotificationCode::LastValue));
+                                static_cast<int64_t>(Notification::getFirstNotificationCode()),
+                                static_cast<int64_t>(Notification::getLastNotificationCode()));
 
         }
 
-        bool checkInteractionsRange(int32_t notification) {
-            return checkValueRange(notification,
-                                   static_cast<int64_t>(Interaction::InteractionCode::FirstValue),
-                                   static_cast<int64_t>(Interaction::InteractionCode::LastValue));
+        bool checkInteractionsRange(int32_t interaction) {
+            return checkValueRange(interaction,
+                                   static_cast<int64_t>(Interaction::getFirstInteractionCode()),
+                                   static_cast<int64_t>(Interaction::getLastInteractionCode()));
 
         }
     }//Utils

@@ -18,7 +18,7 @@ TEST(TestJSONRequestParser, CheckInitMap) {
 
     EXPECT_FALSE(parser.getFunctions().empty());
 
-    auto count = (size_t)RequestField::LastValue - (size_t)RequestField::FirstValue +1;
+    auto count = (size_t)getLastRequestField() - (size_t)getFirstRequestField() +1;
 
     EXPECT_EQ(count, parser.getFunctions().size());
 }
@@ -76,9 +76,9 @@ TEST(TestJSONRequestParser, CheckGetFieldEcrMerchantNumber) {
 TEST(TestJSONRequestParser, CheckGetFieldOperationCode) {
     JSONRequestParser parser;
 
-    auto badValueLess = (int) OperationCode::FirstValue - 1;
-    auto badValueGreat = (int) OperationCode::LastValue + 1;
-    auto goodValue = (int)OperationCode::FirstValue;
+    auto badValueLess = (int) getFirstOperationCode() - 1;
+    auto badValueGreat = (int) getLastOperationCode() + 1;
+    auto goodValue = (int)getFirstOperationCode();
 
     RequestData data;
 

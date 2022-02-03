@@ -1,20 +1,36 @@
 #ifndef LAN_4GATELIB_MOCKCALLBACK_H
 #define LAN_4GATELIB_MOCKCALLBACK_H
-#include "memory"
 
-#include "Lanter/Message/Request/IRequestData.h"
-#include "Lanter/Message/Response/IResponseData.h"
-#include "Lanter/Message/Notification/INotificationData.h"
-#include "Lanter/Message/Interaction/IInteractionData.h"
+#include "Lanter/Manager/Callback/IRequestCallback.h"
+#include "Lanter/Manager/Callback/IResponseCallback.h"
+#include "Lanter/Manager/Callback/INotificationCallback.h"
+#include "Lanter/Manager/Callback/IInteractionCallback.h"
+#include "Lanter/Manager/Callback/IConnectionCallback.h"
 
 namespace Lanter {
-    class MOCKCallback {
+    class MOCKRequestCallback : public Manager::Callback::IRequestCallback {
     public:
-        MOCK_METHOD((void), requestCallback, (std::shared_ptr<Message::Request::IRequestData>));
-        MOCK_METHOD((void), responseCallback, (std::shared_ptr<Message::Response::IResponseData>));
-        MOCK_METHOD((void), notificationCallback, (std::shared_ptr<Message::Notification::INotificationData>));
-        MOCK_METHOD((void), interactionCallback, (std::shared_ptr<Message::Interaction::IInteractionData>));
-        MOCK_METHOD((void), connectedCallback, (bool));
+        MOCK_METHOD((void), newData, (std::shared_ptr<Message::Request::IRequestData>), (override));
+    };
+
+    class MOCKResponseCallback : public Manager::Callback::IResponseCallback {
+    public:
+        MOCK_METHOD((void), newData, (std::shared_ptr<Message::Response::IResponseData>), (override));
+    };
+
+    class MOCKNotificationCallback : public Manager::Callback::INotificationCallback {
+    public:
+        MOCK_METHOD((void), newData, (std::shared_ptr<Message::Notification::INotificationData>), (override));
+    };
+
+    class MOCKInteractionCallback : public Manager::Callback::IInteractionCallback {
+    public:
+        MOCK_METHOD((void), newData, (std::shared_ptr<Message::Interaction::IInteractionData>), (override));
+    };
+
+    class MOCKConnectionCallback : public Manager::Callback::IConnectionCallback {
+    public:
+        MOCK_METHOD((void), newState, (bool));
     };
 }
 #endif //LAN_4GATELIB_MOCKCALLBACK_H

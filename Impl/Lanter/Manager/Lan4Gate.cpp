@@ -88,6 +88,8 @@ namespace Lanter {
                 auto threadLoop = [this]() {
                     while(isStarted()) {
                         doLan4Gate();
+                        int sleepTimeout = 1; //ms
+                        std::this_thread::sleep_for(std::chrono::milliseconds(sleepTimeout));
                     }
                 };
                 if(start() == ILan4Gate::Status::Success) {
@@ -123,26 +125,15 @@ namespace Lanter {
             return m_Communication;
         }
 
-        //TODO попытаться оптимизировать работу с колбеками
-        size_t Lan4Gate::addRequestCallback(std::function<void(std::shared_ptr<Message::Request::IRequestData>)> callback) {
-            size_t result = 0;
-            if(callback) {
-                auto size = m_RequestCallbacks.size();
-
-                size_t id = generateID();
-                while(m_RequestCallbacks.find(id) != m_RequestCallbacks.end()) {
-                    id = generateID();
-                }
-
-                m_RequestCallbacks[id] = callback;
-
-                if(m_RequestCallbacks.size() - size > 0) {
-                    result = id;
-                } else {
-                    result = 0;
-                }
+        size_t Lan4Gate::addRequestCallback(Callback::IRequestCallback &callback) {
+            size_t id = generateID();
+            while (m_RequestCallbacks.find(id) != m_RequestCallbacks.end()) {
+                id = generateID();
             }
-            return result;
+
+            m_RequestCallbacks.emplace(id, callback);
+
+            return id;
         }
 
         bool Lan4Gate::removeRequestCallback(size_t id) {
@@ -164,25 +155,15 @@ namespace Lanter {
             return m_RequestCallbacks.size();
         }
 
-        size_t Lan4Gate::addResponseCallback(std::function<void(std::shared_ptr<Message::Response::IResponseData>)> callback) {
-            size_t result = 0;
-            if(callback) {
-                auto size = m_ResponseCallbacks.size();
-
-                size_t id = generateID();
-                while(m_ResponseCallbacks.find(id) != m_ResponseCallbacks.end()) {
-                    id = generateID();
-                }
-
-                m_ResponseCallbacks[id] = callback;
-
-                if(m_ResponseCallbacks.size() - size > 0) {
-                    result = id;
-                } else {
-                    result = 0;
-                }
+        size_t Lan4Gate::addResponseCallback(Callback::IResponseCallback &callback) {
+            size_t id = generateID();
+            while (m_ResponseCallbacks.find(id) != m_ResponseCallbacks.end()) {
+                id = generateID();
             }
-            return result;
+
+            m_ResponseCallbacks.emplace(id, callback);
+
+            return id;
         }
 
         bool Lan4Gate::removeResponseCallback(size_t id) {
@@ -204,25 +185,15 @@ namespace Lanter {
             return m_ResponseCallbacks.size();
         }
 
-        size_t Lan4Gate::addNotificationCallback(std::function<void(std::shared_ptr<Message::Notification::INotificationData>)> callback) {
-            size_t result = 0;
-            if(callback) {
-                auto size = m_NotificationCallbacks.size();
-
-                size_t id = generateID();
-                while(m_NotificationCallbacks.find(id) != m_NotificationCallbacks.end()) {
-                    id = generateID();
-                }
-
-                m_NotificationCallbacks[id] = callback;
-
-                if(m_NotificationCallbacks.size() - size > 0) {
-                    result = id;
-                } else {
-                    result = 0;
-                }
+        size_t Lan4Gate::addNotificationCallback(Callback::INotificationCallback &callback) {
+            size_t id = generateID();
+            while (m_NotificationCallbacks.find(id) != m_NotificationCallbacks.end()) {
+                id = generateID();
             }
-            return result;
+
+            m_NotificationCallbacks.emplace(id, callback);
+
+            return id;
         }
 
         bool Lan4Gate::removeNotificationCallback(size_t id) {
@@ -244,27 +215,15 @@ namespace Lanter {
             return m_NotificationCallbacks.size();
         }
 
-        size_t Lan4Gate::addInteractionCallback(
-                std::function<void(std::shared_ptr<Message::Interaction::IInteractionData>)> callback) {
-
-            size_t result = 0;
-            if(callback) {
-                auto size = m_InteractionCallbacks.size();
-
-                size_t id = generateID();
-                while(m_InteractionCallbacks.find(id) != m_InteractionCallbacks.end()) {
-                    id = generateID();
-                }
-
-                m_InteractionCallbacks[id] = callback;
-
-                if(m_InteractionCallbacks.size() - size > 0) {
-                    result = id;
-                } else {
-                    result = 0;
-                }
+        size_t Lan4Gate::addInteractionCallback(Callback::IInteractionCallback &callback) {
+            size_t id = generateID();
+            while (m_InteractionCallbacks.find(id) != m_InteractionCallbacks.end()) {
+                id = generateID();
             }
-            return result;
+
+            m_InteractionCallbacks.emplace(id, callback);
+
+            return id;
         }
 
         bool Lan4Gate::removeInteractionCallback(size_t id) {
@@ -286,25 +245,15 @@ namespace Lanter {
             return m_InteractionCallbacks.size();
         }
 
-        size_t Lan4Gate::addConnectionCallback(std::function<void(bool)> callback) {
-            size_t result = 0;
-            if(callback) {
-                auto size = m_ConnectionCallbacks.size();
-
-                size_t id = generateID();
-                while(m_ConnectionCallbacks.find(id) != m_ConnectionCallbacks.end()) {
-                    id = generateID();
-                }
-
-                m_ConnectionCallbacks[id] = callback;
-
-                if(m_ConnectionCallbacks.size() - size > 0) {
-                    result = id;
-                } else {
-                    result = 0;
-                }
+        size_t Lan4Gate::addConnectionCallback(Callback::IConnectionCallback &callback) {
+            size_t id = generateID();
+            while (m_ConnectionCallbacks.find(id) != m_ConnectionCallbacks.end()) {
+                id = generateID();
             }
-            return result;
+
+            m_ConnectionCallbacks.emplace(id, callback);
+
+            return id;
         }
 
         bool Lan4Gate::removeConnectionCallback(size_t id) {
@@ -323,7 +272,7 @@ namespace Lanter {
         }
 
         size_t Lan4Gate::connectionCallbacksCount() const {
-            return m_NotificationCallbacks.size();
+            return m_ConnectionCallbacks.size();
         }
 
         std::shared_ptr<Message::Request::IRequestData> Lan4Gate::getPreparedRequest(Message::OperationCode operationCode) {
@@ -515,7 +464,7 @@ namespace Lanter {
                 auto request = m_MessageParser->nextRequestData();
 
                 for(const auto& callback : m_RequestCallbacks) {
-                    callback.second(request);
+                    callback.second.newData(request);
                 }
             }
         }
@@ -526,7 +475,7 @@ namespace Lanter {
                 auto response = m_MessageParser->nextResponseData();
 
                 for(const auto& callback : m_ResponseCallbacks) {
-                    callback.second(response);
+                    callback.second.newData(response);
                 }
             }
         }
@@ -537,7 +486,7 @@ namespace Lanter {
                 auto notification = m_MessageParser->nextNotificationData();
 
                 for(const auto& callback : m_NotificationCallbacks) {
-                    callback.second(notification);
+                    callback.second.newData(notification);
                 }
             }
         }
@@ -548,14 +497,14 @@ namespace Lanter {
                 auto interaction = m_MessageParser->nextInteractionData();
 
                 for(const auto& callback : m_InteractionCallbacks) {
-                    callback.second(interaction);
+                    callback.second.newData(interaction);
                 }
             }
         }
 
         void Lan4Gate::notifyConnectionStatus(bool status) {
             for(const auto & callback : m_ConnectionCallbacks) {
-                callback.second(status);
+                callback.second.newState(status);
             }
         }
 

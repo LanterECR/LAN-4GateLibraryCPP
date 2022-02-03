@@ -19,7 +19,7 @@ TEST(TestJSONRequestBuilder, CheckFunctionInit) {
 
     EXPECT_FALSE(builder.getFunctions().empty());
 
-    int fieldsCount = (int)RequestField::LastValue - (int)RequestField::FirstValue + 1;
+    int fieldsCount = (int)getLastRequestField() - (int)getFirstRequestField() + 1;
 
     EXPECT_EQ(builder.getFunctions().size(), fieldsCount);
 }
@@ -64,7 +64,7 @@ TEST(TestJSONRequestBuilder, CheckAddFieldOperationCode) {
     JSONRequestBuilder builder;
 
     RequestData data;
-    data.setOperationCode(OperationCode::FirstValue);
+    data.setOperationCode(getFirstOperationCode());
 
     Json::Value directObject;
     EXPECT_TRUE(builder.addFieldOperationCode(data, directObject));

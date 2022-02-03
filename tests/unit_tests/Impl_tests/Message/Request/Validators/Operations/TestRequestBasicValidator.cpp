@@ -11,8 +11,8 @@ TEST(TestRequestBasicValidator, CheckAppendMandatory) {
     EXPECT_NE(validator.getMandatoryFields().find(RequestField::EcrNumber), validator.getMandatoryFields().end());
     EXPECT_NE(validator.getMandatoryFields().find(RequestField::OperationCode), validator.getMandatoryFields().end());
 
-    auto lessMinimum = (RequestField)((int)RequestField::FirstValue - 1);
-    auto greatMaximum = (RequestField)((int)RequestField::LastValue + 1);
+    auto lessMinimum = (RequestField)((int)getFirstRequestField() - 1);
+    auto greatMaximum = (RequestField)((int)getLastRequestField() + 1);
     EXPECT_THROW(validator.appendMandatoryField(lessMinimum), std::invalid_argument);
     EXPECT_THROW(validator.appendMandatoryField(greatMaximum), std::invalid_argument);
 
@@ -31,19 +31,19 @@ TEST(TestRequestBasicValidator, CheckAppendOptional) {
 
     EXPECT_TRUE(validator.getOptionalFields().empty());
 
-    auto lessMinimum = (RequestField)((int)RequestField::FirstValue - 1);
-    auto greatMaximum = (RequestField)((int)RequestField::LastValue + 1);
+    auto lessMinimum = (RequestField)((int)getFirstRequestField() - 1);
+    auto greatMaximum = (RequestField)((int)getLastRequestField() + 1);
     EXPECT_THROW(validator.appendOptionalField(lessMinimum), std::invalid_argument);
     EXPECT_THROW(validator.appendOptionalField(greatMaximum), std::invalid_argument);
 
-    EXPECT_NO_THROW(validator.appendOptionalField(RequestField::FirstValue));
-    EXPECT_NO_THROW(validator.appendOptionalField(RequestField::LastValue));
+    EXPECT_NO_THROW(validator.appendOptionalField(getFirstRequestField()));
+    EXPECT_NO_THROW(validator.appendOptionalField(getLastRequestField()));
 
     EXPECT_FALSE(validator.getOptionalFields().empty());
     EXPECT_EQ(validator.getOptionalFields().size(), 2);
 
-    EXPECT_NE(validator.getOptionalFields().find(RequestField::FirstValue), validator.getOptionalFields().end());
-    EXPECT_NE(validator.getOptionalFields().find(RequestField::LastValue), validator.getOptionalFields().end());
+    EXPECT_NE(validator.getOptionalFields().find(getFirstRequestField()), validator.getOptionalFields().end());
+    EXPECT_NE(validator.getOptionalFields().find(getLastRequestField()), validator.getOptionalFields().end());
 }
 
 TEST(TestRequestBasicValidator, CheckValidateEmptyMandatory) {
@@ -58,10 +58,10 @@ TEST(TestRequestBasicValidator, CheckValidateEmptyMandatory) {
 
 TEST(TestRequestBasicValidator, CheckValidateOneMandatory) {
     BasicValidator validator;
-    validator.appendMandatoryField(RequestField::FirstValue);
+    validator.appendMandatoryField(getFirstRequestField());
 
     std::set<RequestField> fields;
-    fields.insert(RequestField::FirstValue);
+    fields.insert(getFirstRequestField());
     fields.insert(RequestField::OperationCode);
     fields.insert(RequestField::EcrNumber);
 
@@ -70,18 +70,18 @@ TEST(TestRequestBasicValidator, CheckValidateOneMandatory) {
 
 TEST(TestRequestBasicValidator, CheckValidateAllFields) {
     BasicValidator validator;
-    auto first = (int)RequestField::FirstValue;
-    auto last = (int)RequestField::LastValue;
+    auto first = (int)getFirstRequestField();
+    auto last = (int)getLastRequestField();
 
     for(auto i = first; i <= last; i++){
         EXPECT_NO_THROW(validator.appendMandatoryField((RequestField)i));
     }
 
-    validator.appendMandatoryField(RequestField::FirstValue);
+    validator.appendMandatoryField(getFirstRequestField());
 
     std::set<RequestField> twoFields;
-    twoFields.insert(RequestField::FirstValue);
-    twoFields.insert(RequestField::LastValue);
+    twoFields.insert(getFirstRequestField());
+    twoFields.insert(getLastRequestField());
     twoFields.insert(RequestField::OperationCode);
     twoFields.insert(RequestField::EcrNumber);
 
@@ -97,11 +97,11 @@ TEST(TestRequestBasicValidator, CheckValidateAllFields) {
 
 TEST(TestRequestBasicValidator, CheckOptional) {
     BasicValidator validator;
-    validator.appendOptionalField(RequestField::FirstValue);
+    validator.appendOptionalField(getFirstRequestField());
 
     std::set<RequestField> fields;
-    fields.insert(RequestField::FirstValue);
-    fields.insert(RequestField::LastValue);
+    fields.insert(getFirstRequestField());
+    fields.insert(getLastRequestField());
     fields.insert(RequestField::OperationCode);
     fields.insert(RequestField::EcrNumber);
 

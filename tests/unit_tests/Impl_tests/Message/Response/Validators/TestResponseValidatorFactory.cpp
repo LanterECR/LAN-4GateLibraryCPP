@@ -7,8 +7,8 @@ using namespace Lanter::Message;
 using namespace Lanter::Message::Response;
 
 TEST(TestResponseValidatorFactory, CheckValidatorCreation) {
-    auto start = (int)OperationCode::FirstValue;
-    auto end = (int)OperationCode::LastValue;
+    auto start = (int)getFirstOperationCode();
+    auto end = (int)getLastOperationCode();
 
     for(int i = start; i <= end; i++) {
         EXPECT_TRUE(ValidatorFactory::getValidator((OperationCode)i) != nullptr);

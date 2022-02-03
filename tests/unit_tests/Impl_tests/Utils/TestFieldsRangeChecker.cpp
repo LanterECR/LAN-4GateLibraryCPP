@@ -43,17 +43,17 @@ TEST(TestFieldsRangeChecker, CheckEcrMerchantNumberRange){
     EXPECT_TRUE(checkEcrMerchantNumberRange(MAXIMUM_ECR_NUMBER - 1));
 }
 TEST(TestFieldsRangeChecker, CheckOperationCodeRange){
-    auto lessMinimum =  (int32_t)OperationCode::FirstValue - 1;
-    auto greatMaximum = (int32_t)OperationCode::LastValue + 1;
+    auto lessMinimum =  (int32_t)getFirstOperationCode() - 1;
+    auto greatMaximum = (int32_t)getLastOperationCode() + 1;
 
-    auto greatMinimum = (int32_t)OperationCode::FirstValue + 1;
-    auto lessMaximum = (int32_t)OperationCode::LastValue - 1;
+    auto greatMinimum = (int32_t)getFirstOperationCode() + 1;
+    auto lessMaximum = (int32_t)getLastOperationCode() - 1;
 
     EXPECT_FALSE(checkOperationCodeRange(lessMinimum));
     EXPECT_FALSE(checkOperationCodeRange(greatMaximum));
 
-    EXPECT_TRUE(checkOperationCodeRange((int32_t)OperationCode::FirstValue));
-    EXPECT_TRUE(checkOperationCodeRange((int32_t)OperationCode::LastValue));
+    EXPECT_TRUE(checkOperationCodeRange((int32_t)getFirstOperationCode()));
+    EXPECT_TRUE(checkOperationCodeRange((int32_t)getLastOperationCode()));
 
     EXPECT_TRUE(checkOperationCodeRange(greatMinimum));
     EXPECT_TRUE(checkOperationCodeRange(lessMaximum));
@@ -212,17 +212,17 @@ TEST(TestFieldsRangeChecker, CheckAdditionalInfoRange){
     EXPECT_TRUE(checkAdditionalInfoRange(notEmpty));
 }
 TEST(TestFieldsRangeChecker, CheckStatusRange){
-    auto lessMinimum =  (int32_t)Status::FirstValue - 1;
-    auto greatMaximum = (int32_t)Status::LastValue + 1;
+    auto lessMinimum =  (int32_t)getFirstStatus() - 1;
+    auto greatMaximum = (int32_t)getLastStatus() + 1;
 
-    auto greatMinimum = (int32_t)Status::FirstValue + 1;
-    auto lessMaximum = (int32_t)Status::LastValue - 1;
+    auto greatMinimum = (int32_t)getFirstStatus() + 1;
+    auto lessMaximum = (int32_t)getLastStatus() - 1;
 
     EXPECT_FALSE(checkStatusRange(lessMinimum));
     EXPECT_FALSE(checkStatusRange(greatMaximum));
 
-    EXPECT_TRUE(checkStatusRange((int32_t)Status::FirstValue));
-    EXPECT_TRUE(checkStatusRange((int32_t)Status::LastValue));
+    EXPECT_TRUE(checkStatusRange((int32_t)getFirstStatus()));
+    EXPECT_TRUE(checkStatusRange((int32_t)getLastStatus()));
 
     EXPECT_TRUE(checkStatusRange(greatMinimum));
     EXPECT_TRUE(checkStatusRange(lessMaximum));
@@ -431,17 +431,17 @@ TEST(TestFieldsRangeChecker, CheckCardAppNameRange){
     EXPECT_TRUE(checkCardAppNameRange(maximumSize));
 }
 TEST(TestFieldsRangeChecker, CheckCardInputMethodRange){
-    auto lessMinimum =  (int32_t)CardInputMethod::FirstValue - 1;
-    auto greatMaximum = (int32_t)CardInputMethod::LastValue + 1;
+    auto lessMinimum =  (int32_t)getFirstCardInputMethod() - 1;
+    auto greatMaximum = (int32_t)getLastCardInputMethod() + 1;
 
-    auto greatMinimum = (int32_t)CardInputMethod::FirstValue + 1;
-    auto lessMaximum = (int32_t)CardInputMethod::LastValue - 1;
+    auto greatMinimum = (int32_t)getFirstCardInputMethod() + 1;
+    auto lessMaximum = (int32_t)getLastCardInputMethod() - 1;
 
     EXPECT_FALSE(checkCardInputMethodRange(lessMinimum));
     EXPECT_FALSE(checkCardInputMethodRange(greatMaximum));
 
-    EXPECT_TRUE(checkCardInputMethodRange((int32_t)CardInputMethod::FirstValue));
-    EXPECT_TRUE(checkCardInputMethodRange((int32_t)CardInputMethod::LastValue));
+    EXPECT_TRUE(checkCardInputMethodRange((int32_t)getFirstCardInputMethod()));
+    EXPECT_TRUE(checkCardInputMethodRange((int32_t)getLastCardInputMethod()));
 
     EXPECT_TRUE(checkCardInputMethodRange(greatMinimum));
     EXPECT_TRUE(checkCardInputMethodRange(lessMaximum));
@@ -631,29 +631,29 @@ TEST(TestFieldsRangeChecker, CheckRefundCountRange){
     EXPECT_TRUE(checkRefundCountRange(MAXIMUM_ARRAY_SIZE - 1));
 }
 TEST(TestFieldsRangeChecker, CheckNotiticationCodes){
-    auto lessMinimum =  (int32_t)NotificationCode::FirstValue - 1;
-    auto greatMaximum = (int32_t)NotificationCode::LastValue + 1;
+    auto lessMinimum =  (int32_t)getFirstNotificationCode() - 1;
+    auto greatMaximum = (int32_t)getLastNotificationCode() + 1;
 
-    auto greatMinimum = (int32_t)NotificationCode::FirstValue + 1;
-    auto lessMaximum = (int32_t)NotificationCode::LastValue - 1;
+    auto greatMinimum = (int32_t)getFirstNotificationCode() + 1;
+    auto lessMaximum = (int32_t)getLastNotificationCode() - 1;
 
     EXPECT_FALSE(checkNotificationsRange(lessMinimum));
     EXPECT_FALSE(checkNotificationsRange(greatMaximum));
 
-    EXPECT_TRUE(checkNotificationsRange((int32_t)NotificationCode::FirstValue));
-    EXPECT_TRUE(checkNotificationsRange((int32_t)NotificationCode::LastValue));
+    EXPECT_TRUE(checkNotificationsRange((int32_t)getFirstNotificationCode()));
+    EXPECT_TRUE(checkNotificationsRange((int32_t)getLastNotificationCode()));
 
     EXPECT_TRUE(checkNotificationsRange(greatMinimum));
     EXPECT_TRUE(checkNotificationsRange(lessMaximum));
 }
 
 TEST(TestFieldsRangeChecker, CheckInteractionCodes){
-    auto lessMinimum =  (int32_t)InteractionCode::FirstValue - 1;
-    auto greatMaximum = (int32_t)InteractionCode::LastValue + 1;
+    auto lessMinimum =  (int32_t)getFirstInteractionCode() - 1;
+    auto greatMaximum = (int32_t)getLastInteractionCode() + 1;
 
     EXPECT_FALSE(checkInteractionsRange(lessMinimum));
     EXPECT_FALSE(checkInteractionsRange(greatMaximum));
 
-    EXPECT_TRUE(checkInteractionsRange((int32_t)InteractionCode::FirstValue));
-    EXPECT_TRUE(checkInteractionsRange((int32_t)InteractionCode::LastValue));
+    EXPECT_TRUE(checkInteractionsRange((int32_t)getFirstInteractionCode()));
+    EXPECT_TRUE(checkInteractionsRange((int32_t)getLastInteractionCode()));
 }

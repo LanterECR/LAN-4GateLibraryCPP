@@ -6,10 +6,20 @@ namespace Lanter {
         namespace Interaction {
             enum class InteractionCode {
                 NoInteraction, ///< Значение по умолчанию
-                Abort, ///< Прервать выполняемую операцию
-                FirstValue = Abort, ///< Ссылка на первый элемент перечисления
-                LastValue = Abort ///< Ссылка на последний элемент перечисления
+                Abort ///< Прервать выполняемую операцию
             };
+
+            /// Функция, возвращающая первый значимый элемент перечисления InteractionCode
+            /// \return Первый элемент значимый перечисления InteractionCode
+            constexpr InteractionCode getFirstInteractionCode() {
+                return InteractionCode::Abort;
+            }
+
+            /// Функция, возвращающая последний значимый элемент перечисления InteractionCode
+            /// \return Последний элемент значимый перечисления InteractionCode
+            constexpr InteractionCode getLastInteractionCode() {
+                return InteractionCode::Abort;
+            }
         }
     }
 }

@@ -56,11 +56,20 @@ namespace Lanter {
                 RefundCount, ///< Количество операций возврата, выполненных с момента последней сверки итогов
                 SaleArray, ///< Массив, содержащий краткие сведения операций оплаты
                 VoidArray, ///< Массив, содержащий краткие сведения операций отмены
-                RefundArray, ///< Массив, содержащий краткие сведения операций возврата
-                //диапазон полей
-                FirstValue = EcrNumber, ///< Ссылка на первый элемент перечисления
-                LastValue = RefundArray ///< Ссылка на последний элемент перечисления
+                RefundArray ///< Массив, содержащий краткие сведения операций возврата
             };//enum ResponseField
+
+            /// Функция, возвращающая первый значимый элемент перечисления ResponseField
+            /// \return Первый элемент значимый перечисления ResponseField
+            constexpr ResponseField getFirstResponseField() {
+                return ResponseField::EcrNumber;
+            }
+
+            /// Функция, возвращающая последний значимый элемент перечисления ResponseField
+            /// \return Последний элемент значимый перечисления ResponseField
+            constexpr ResponseField getLastResponseField() {
+                return ResponseField::RefundArray;
+            }
         }//namespace Response
     }//namespace Message
 }//namespace Lanter

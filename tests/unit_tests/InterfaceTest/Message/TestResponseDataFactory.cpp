@@ -22,11 +22,11 @@ TEST(TestResponseDataFactory, CheckFactory) {
     EXPECT_EQ(ResponseDataFactory::getResponseData(OperationCode::NoOperation, ecrNumberLessMinimum), nullptr);
     EXPECT_EQ(ResponseDataFactory::getResponseData(OperationCode::NoOperation, ecrNumberGreatMaximum), nullptr);
 
-    EXPECT_EQ(ResponseDataFactory::getResponseData(OperationCode::FirstValue, ecrNumberGreatMaximum), nullptr);
-    EXPECT_EQ(ResponseDataFactory::getResponseData(OperationCode::LastValue, ecrNumberGreatMaximum), nullptr);
+    EXPECT_EQ(ResponseDataFactory::getResponseData(getFirstOperationCode(), ecrNumberGreatMaximum), nullptr);
+    EXPECT_EQ(ResponseDataFactory::getResponseData(getLastOperationCode(), ecrNumberGreatMaximum), nullptr);
 
-    EXPECT_EQ(ResponseDataFactory::getResponseData(OperationCode::FirstValue, ecrNumberLessMinimum), nullptr);
-    EXPECT_EQ(ResponseDataFactory::getResponseData(OperationCode::LastValue, ecrNumberLessMinimum), nullptr);
+    EXPECT_EQ(ResponseDataFactory::getResponseData(getFirstOperationCode(), ecrNumberLessMinimum), nullptr);
+    EXPECT_EQ(ResponseDataFactory::getResponseData(getLastOperationCode(), ecrNumberLessMinimum), nullptr);
 
     EXPECT_NE(ResponseDataFactory::getResponseData(OperationCode::Sale, MINIMUM_ECR_NUMBER), nullptr);
     EXPECT_FALSE(ResponseDataFactory::getResponseData(OperationCode::Sale, MINIMUM_ECR_NUMBER)->validateMandatoryFields());

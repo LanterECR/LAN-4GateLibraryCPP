@@ -131,7 +131,7 @@ TEST(TestBuilderParser, CheckResponse) {
 }
 TEST(TestBuilderParser, CheckNotification) {
     auto inputObject = NotificationDataFactory::getNotificationData();
-    inputObject->setCode(Lanter::Message::Notification::NotificationCode::FirstValue);
+    inputObject->setCode(Lanter::Message::Notification::getFirstNotificationCode());
     inputObject->setMessage("Сообщение");
     inputObject->setAdditional("Дополнительно");
 
@@ -156,7 +156,7 @@ TEST(TestBuilderParser, CheckNotification) {
 
 TEST(TestBuilderParser, CheckInteraction) {
     auto inputObject = InteractionDataFactory::getInteractionData();
-    inputObject->setCode(Lanter::Message::Interaction::InteractionCode::FirstValue);
+    inputObject->setCode(Lanter::Message::Interaction::getFirstInteractionCode());
 
     std::vector<uint8_t> serializedData;
 
