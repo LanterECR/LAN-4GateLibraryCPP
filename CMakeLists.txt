@@ -24,7 +24,7 @@ if(NOT IS_SUBPROJECT)
     )
 endif()
 
-project(LAN_4GateLib VERSION 0.9.2 LANGUAGES CXX)
+project(LAN_4GateLib VERSION 0.9.5 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -70,9 +70,13 @@ set(DEPENDENCIES_LIST jsoncpp_object asio::asio_headeronly)
 set(INSTALLATION_TARGETS "")
 
 if(L4G_BUILD_SWIG)
-    message("L4G_SWIG_TARGET_LANGUAGE = ${L4G_SWIG_TARGET_LANGUAGE}")
     if(NOT "${L4G_SWIG_TARGET_LANGUAGE}" STREQUAL "csharp")
         message(FATAL_ERROR "${L4G_SWIG_TARGET_LANGUAGE} doesn`t support yet")
+    endif()
+
+    if("${L4G_SWIG_TARGET_LANGUAGE}" STREQUAL "csharp")
+        set(SWIG_LANG_PARAMS -${L4G_SWIG_TARGET_LANGUAGE} -namespace Lanter.Lan4Gate)
+        set(SWIG_IFACE_RESULT_SUFFUX "cs")
     endif()
 
     FIND_PACKAGE(SWIG REQUIRED)
@@ -81,9 +85,9 @@ if(L4G_BUILD_SWIG)
             COMMAND ${CMAKE_COMMAND} -E make_directory ${L4G_SWIG_TARGET_LANGUAGE}
             COMMAND ${SWIG_EXECUTABLE} -outdir ${L4G_SWIG_TARGET_LANGUAGE}
             -c++
-            -${L4G_SWIG_TARGET_LANGUAGE} -namespace Lanter.Lan4Gate
+            ${SWIG_LANG_PARAMS}
             -outcurrentdir
-            -outfile Lan4gateInterface.cs
+            -outfile Lan4gateInterface.${SWIG_IFACE_RESULT_SUFFUX}
             -I${CMAKE_SOURCE_DIR}/include
             ${CMAKE_SOURCE_DIR}/include/Lan4GateSwig.i)
 
@@ -102,7 +106,7 @@ if(L4G_BUILD_SWIG)
     set_target_properties(l4g_swig PROPERTIES PREFIX "")
     set_target_properties(l4g_swig PROPERTIES OUTPUT_NAME "Lan4Gate")
 
-    install(DIRECTORY ${CMAKE_BINARY_DIR}/${L4G_SWIG_TARGET_LANGUAGE} DESTINATION ${L4G_SWIG_TARGET_LANGUAGE})
+    install(FILES ${CMAKE_BINARY_DIR}/${L4G_SWIG_TARGET_LANGUAGE}/Lan4gateInterface.${SWIG_IFACE_RESULT_SUFFUX} DESTINATION ${L4G_SWIG_TARGET_LANGUAGE})
 
     install(TARGETS l4g_swig
             RUNTIME DESTINATION bin
