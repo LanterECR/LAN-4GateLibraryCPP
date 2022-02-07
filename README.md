@@ -316,11 +316,12 @@ target_link_libraries(Example L4G::l4g_shared)
 
 В следующем примере создается менеджер ILan4Gate с логическим идентификатором 1. Ему передается TCP сервер, обслуживающий единственное соединение, который слушает порт по умолчанию - 20501.
 
+
 В качестве колбеков передаются реализации интерфейсов из пространства имен Lanter::Manager::Callback; 
 
 Менеджер запускает отдельный поток.
 
-После ожидается ввод пользователя. Если введен символ "q", то происходит выход. В остальных случаях отправляется FinalizeTransaction
+После ожидается ввод пользователя. Если введен символ "q", то происходит выход. В остальных случаях отправляется Sale на 1 рубль
 
 ```c++
 #include <iostream>
@@ -397,7 +398,13 @@ int main(int argc, char* argv[])
         if(str == "q") {
             break;
         }
-        manager->sendMessage(manager->getPreparedRequest(Lanter::Message::OperationCode::FinalizeTransaction));
+        auto sale = manager->getPreparedRequest(Lanter::Message::OperationCode::Sale);
+        
+        sale->setAmount(100); //1 рубль
+        sale->setCurrencyCode(643); //Российский рубль
+        sale->setEcrMerchantNumber(1);//Логический номер мерчанта
+        
+        manager->sendMessage(sale);
     }
     return 0;
 }
