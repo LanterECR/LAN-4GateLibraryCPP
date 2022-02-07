@@ -59,13 +59,12 @@ namespace Lanter {
                 VoidArray, ///< Массив, содержащий краткие сведения операций отмены
                 RefundArray, ///< Массив, содержащий краткие сведения операций возврата
                 CardPANHash, ///< Кэш, рассчитанный на основе PAN карты
-                receiptLine1, ///< Первая строка заголовка чека
-                receiptLine2, ///< Вторая строка заголовка чека
-                receiptLine3, ///< Третья строка заголовка чека
-                receiptLine4, ///< Четвертая строка заголовка чека
-                receiptLine5, ///< Пятая строка заголовка чека
+                ReceiptLine1, ///< Первая строка заголовка чека
+                ReceiptLine2, ///< Вторая строка заголовка чека
+                ReceiptLine3, ///< Третья строка заголовка чека
+                ReceiptLine4, ///< Четвертая строка заголовка чека
+                ReceiptLine5, ///< Пятая строка заголовка чека
                 ApplicationLabel, ///< Название приложения карты, которое использовалось в операции
-                AdditionalChoiceResult, ///< Выбор пользователя из поля Request::RequestField::AdditionalChoice
                 BonusBalance, ///< Баланс бонусного счета
                 BonusAmount, ///< Сумма бонусов
                 HashCardTrack2, ///< Кэшированный Track 2
@@ -81,7 +80,7 @@ namespace Lanter {
             /// Функция, возвращающая последний значимый элемент перечисления ResponseField
             /// \return Последний элемент значимый перечисления ResponseField
             constexpr ResponseField getLastResponseField() {
-                return ResponseField::RefundArray;
+                return ResponseField::FinalizationRequired;
             }
         }//namespace Response
     }//namespace Message
