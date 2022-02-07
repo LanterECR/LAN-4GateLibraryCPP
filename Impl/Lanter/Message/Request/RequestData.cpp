@@ -417,6 +417,159 @@ namespace Lanter {
                 return !isFieldSet(RequestField::AdditionalInfo);
             }//resetAdditionalInfo()
 
+            int64_t RequestData::getBonusBalance() const {
+                return m_BonusBalance;
+            }
+
+            bool RequestData::setBonusBalance(int64_t balance) {
+                bool result = false;
+
+                if (checkAmountRange(balance)) {
+                    m_BonusBalance = balance;
+                    m_FieldsSet.insert(RequestField::BonusBalance);
+                    result = true;
+                }//if check tips amount
+
+                return result;
+            }
+
+            bool RequestData::resetBonusBalance() {
+                m_BonusBalance = -1;
+                m_FieldsSet.erase(RequestField::BonusBalance);
+                return !isFieldSet(RequestField::BonusBalance);
+            }
+
+            int64_t RequestData::getBonusAmount() const {
+                return m_BonusAmount;
+            }
+
+            bool RequestData::setBonusAmount(int64_t amount) {
+                bool result = false;
+
+                if (checkAmountRange(amount)) {
+                    m_BonusAmount = amount;
+                    m_FieldsSet.insert(RequestField::BonusAmount);
+                    result = true;
+                }//if check tips amount
+
+                return result;
+            }
+
+            bool RequestData::resetBonusAmount() {
+                m_BonusAmount = -1;
+                m_FieldsSet.erase(RequestField::BonusAmount);
+                return !isFieldSet(RequestField::BonusAmount);
+            }
+
+            const std::string &RequestData::getHashCardTrack2() const {
+                return m_HashCardTrack2;
+            }
+
+            bool RequestData::setHashCardTrack2(const std::string &cardTrack2) {
+                bool result = false;
+
+                if (checkHashCardTrack2(cardTrack2)) {
+                    m_HashCardTrack2 = cardTrack2;
+                    m_FieldsSet.insert(RequestField::HashCardTrack2);
+                    result = true;
+                }//if check tips amount
+
+                return result;
+            }
+
+            bool RequestData::resetHashCardTrack2() {
+                m_HashCardTrack2.clear();
+                m_FieldsSet.erase(RequestField::HashCardTrack2);
+                return !isFieldSet(RequestField::HashCardTrack2);
+            }
+
+            const std::string &RequestData::getPaymentProviderCode() const {
+                return m_PaymentProviderCode;
+            }
+
+            bool RequestData::setPaymentProviderCode(const std::string &code) {
+                bool result = false;
+
+                if (checkProviderCodeRange(code)) {
+                    m_PaymentProviderCode = code;
+                    m_FieldsSet.insert(RequestField::PaymentProviderCode);
+                    result = true;
+                }//if check tips amount
+
+                return result;
+            }
+
+            bool RequestData::resetPaymentProviderCode() {
+                m_PaymentProviderCode.clear();
+                m_FieldsSet.erase(RequestField::PaymentProviderCode);
+                return !isFieldSet(RequestField::PaymentProviderCode);
+            }
+
+            const std::string &RequestData::getPaymentParam1() const {
+                return m_PaymentParam1;
+            }
+
+            bool RequestData::setPaymentParam1(const std::string &param) {
+                bool result = false;
+
+                if (!param.empty()) {
+                    m_PaymentParam1 = param;
+                    m_FieldsSet.insert(RequestField::PaymentParam1);
+                    result = true;
+                }//if check tips amount
+
+                return result;
+            }
+
+            bool RequestData::resetPaymentParam1() {
+                m_PaymentParam1.clear();
+                m_FieldsSet.erase(RequestField::PaymentParam1);
+                return !isFieldSet(RequestField::PaymentParam1);
+            }
+
+            const std::string &RequestData::getPaymentParam2() const {
+                return m_PaymentParam2;
+            }
+
+            bool RequestData::setPaymentParam2(const std::string &param) {
+                bool result = false;
+
+                if (!param.empty()) {
+                    m_PaymentParam2 = param;
+                    m_FieldsSet.insert(RequestField::PaymentParam2);
+                    result = true;
+                }//if check tips amount
+
+                return result;
+            }
+
+            bool RequestData::resetPaymentParam2() {
+                m_PaymentParam2.clear();
+                m_FieldsSet.erase(RequestField::PaymentParam2);
+                return !isFieldSet(RequestField::PaymentParam2);
+            }
+
+            const std::string &RequestData::getPaymentParam3() const {
+                return m_PaymentParam3;
+            }
+
+            bool RequestData::setPaymentParam3(const std::string &param) {
+                bool result = false;
+
+                if (!param.empty()) {
+                    m_PaymentParam3 = param;
+                    m_FieldsSet.insert(RequestField::PaymentParam3);
+                    result = true;
+                }//if check tips amount
+
+                return result;
+            }
+
+            bool RequestData::resetPaymentParam3() {
+                m_PaymentParam3.clear();
+                m_FieldsSet.erase(RequestField::PaymentParam3);
+                return !isFieldSet(RequestField::PaymentParam3);
+            }
 
             const std::set<RequestField> &RequestData::getFieldsSet() const {
                 return m_FieldsSet;
@@ -481,6 +634,27 @@ namespace Lanter {
                         break;
                     case RequestField::AdditionalInfo:
                         result = resetAdditionalInfo();
+                        break;
+                    case RequestField::BonusBalance:
+                        result = resetBonusBalance();
+                        break;
+                    case RequestField::BonusAmount:
+                        result = resetBonusAmount();
+                        break;
+                    case RequestField::HashCardTrack2:
+                        result = resetHashCardTrack2();
+                        break;
+                    case RequestField::PaymentProviderCode:
+                        result = resetPaymentProviderCode();
+                        break;
+                    case RequestField::PaymentParam1:
+                        result = resetPaymentParam1();
+                        break;
+                    case RequestField::PaymentParam2:
+                        result = resetPaymentParam2();
+                        break;
+                    case RequestField::PaymentParam3:
+                        result = resetPaymentParam3();
                         break;
                 }//switch fields
 

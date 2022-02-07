@@ -25,7 +25,6 @@ namespace Lanter {
                 EncTags, ///< Теги, которые необходимо получить в зашифрованном виде в операции FastTrack
                 ProviderCode, ///< Код вендора платежа
                 AdditionalInfo, ///< Дополнительные данные операции
-                AdditionalChoice, ///< Список значений для вывода терминалом в окне выбора
                 BonusBalance, ///< Баланс бонусного счета
                 BonusAmount, ///< Сумма бонусов к оплате
                 HashCardTrack2, ///< Кэшированный Track2
@@ -45,7 +44,7 @@ namespace Lanter {
             /// Функция, возвращающая последний значимый элемент перечисления RequestField
             /// \return Последний элемент значимый перечисления RequestField
             constexpr RequestField getLastRequestField() {
-                return RequestField::AdditionalInfo;
+                return RequestField::PaymentParam3;
             }
         }//namespace Request
     }//namespace Message

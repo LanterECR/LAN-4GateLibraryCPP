@@ -72,6 +72,10 @@ namespace Lanter {
             return !encTags.empty();
         }
 
+        bool checkHashCardTrack2(const std::string &hashCardTrack2) {
+            return !hashCardTrack2.empty();
+        }
+
         bool checkProviderCodeRange(const std::string &providerCode) {
             return checkValueRange(providerCode.size(), MINIMUM_PROVIDER_CODE_LENGTH, MAXIMUM_PROVIDER_CODE_LENGTH);
         }
