@@ -21,8 +21,13 @@ namespace Lanter {
                 NeedSettlement, ///< Необходима сверка итогов
                 CanceledByTerminal, ///< Выполнение операции отменено в финансовом ПО LAN-4Tap
                 FastTrackKeyError,///< Ошибка ключей шифрования для операции FastTrack
+                OperationPending, ///< Операция отложена
+                UploadPendingRequired, ///< Требуется выгрузка операций
+                UnknownPaymentProvider, ///< Неизвестный платежный провайдер
+                InvalidTAK, ///< Неверный ТАК
+                LicenseAbsent, ///< Отсутствует лицензия
+                TrVoidHasCanceled ///< Транзакция отмены была отменена
             };//enum Status
-
             /// Функция, возвращающая первый значимый элемент перечисления Status
             /// \return Первый элемент значимый перечисления Status
             constexpr Status getFirstStatus() {
@@ -32,7 +37,7 @@ namespace Lanter {
             /// Функция, возвращающая последний значимый элемент перечисления Status
             /// \return Последний элемент значимый перечисления Status
             constexpr Status getLastStatus() {
-                return Status::FastTrackKeyError;
+                return Status::TrVoidHasCanceled;
             }
         }//namespace Response
     }//namespace Message
