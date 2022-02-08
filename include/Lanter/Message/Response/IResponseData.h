@@ -853,20 +853,6 @@ namespace Lanter {
                 /// \return true, если поле успешно удалено
                 virtual bool resetApplicationLabel() = 0;
 
-                /// \brief Возвращает сделанный пользователем на терминале выбор согласно Request::RequestField::AdditionalChoice
-                /// \return Строка, содержащая выбор пользователя
-                virtual const std::string & getAdditionalChoiceResult() const = 0;
-
-                /// \brief Устанавливает сделанный пользователем на терминале выбор согласно Request::RequestField::AdditionalChoice
-                /// \param choice Сделанный пользователем на терминале выбор
-                /// \return true, если поле успешно установлено
-                virtual bool setAdditionalChoiceResult(const std::string & choice) = 0;
-
-                /// \brief Устанавливает значение по умолчанию для поля AdditionalChoiceResult
-                /// и удаляет из списка установленных полей
-                /// \return true, если поле успешно удалено
-                virtual bool resetAdditionalChoiceResult() = 0;
-
                 /// \brief Возвращает баланс бонусного счета
                 /// \return Если поле установлено - баланс бонусного счета в диапазоне [0, 999999999999]. Иначе -1.
                 virtual uint64_t getBonusBalance() const = 0;
@@ -874,7 +860,7 @@ namespace Lanter {
                 /// \brief Устанавливает баланс бонусного счета
                 /// \param balance Значение в диапазоне [0, 999999999999]
                 /// \return true, если поле успешно установлено
-                virtual bool setBonusBalance(uint64_t balance) = 0;
+                virtual bool setBonusBalance(int64_t balance) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля BonusBalance
                 /// и удаляет из списка установленных полей
@@ -888,7 +874,7 @@ namespace Lanter {
                 /// \brief Устанавливает сумму бонусов, использованных в операции
                 /// \param amount Количество бонусов в диапазоне [0, 999999999999].
                 /// \return true, если поле успешно установлено
-                virtual bool setBonusAmount(uint64_t amount) = 0;
+                virtual bool setBonusAmount(int64_t amount) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля BonusAmount
                 /// и удаляет из списка установленных полей

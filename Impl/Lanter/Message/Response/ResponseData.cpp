@@ -1185,7 +1185,235 @@ namespace Lanter {
             }
 
             bool ResponseData::resetRefundAmount() {
-                return m_RefundAmount;
+                m_RefundAmount = -1;
+                m_FieldsSet.erase(ResponseField::RefundAmount);
+                return !isFieldSet(ResponseField::RefundAmount);
+            }
+
+            const std::string &ResponseData::getCardPANHash() const {
+                return m_CardPANHash;
+            }
+
+            bool ResponseData::setCardPANHash(const std::string &pan) {
+                bool result = false;
+                //TODO добавить чекер
+                if (pan.empty()) {
+                    m_CardPANHash = pan;
+                    m_FieldsSet.insert(ResponseField::CardPANHash);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetCardPANHash() {
+                m_CardPANHash.clear();
+                m_FieldsSet.erase(ResponseField::CardPANHash);
+                return !isFieldSet(ResponseField::CardPANHash);
+            }
+
+            const std::string &ResponseData::getReceiptLine1() const {
+                return m_ReceiptLine1;
+            }
+
+            bool ResponseData::setReceiptLine1(const std::string &text) {
+                bool result = false;
+                //TODO добавить чекер
+                if (text.empty()) {
+                    m_ReceiptLine1 = text;
+                    m_FieldsSet.insert(ResponseField::ReceiptLine1);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetReceiptLine1() {
+                m_ReceiptLine1.clear();
+                m_FieldsSet.erase(ResponseField::ReceiptLine1);
+                return !isFieldSet(ResponseField::ReceiptLine1);
+            }
+
+            const std::string &ResponseData::getReceiptLine2() const {
+                return m_ReceiptLine2;
+            }
+
+            bool ResponseData::setReceiptLine2(const std::string &text) {
+                bool result = false;
+                //TODO добавить чекер
+                if (text.empty()) {
+                    m_ReceiptLine2 = text;
+                    m_FieldsSet.insert(ResponseField::ReceiptLine2);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetReceiptLine2() {
+                m_ReceiptLine2.clear();
+                m_FieldsSet.erase(ResponseField::ReceiptLine2);
+                return !isFieldSet(ResponseField::ReceiptLine2);
+            }
+
+            const std::string &ResponseData::getReceiptLine3() const {
+                return m_ReceiptLine3;
+            }
+
+            bool ResponseData::setReceiptLine3(const std::string &text) {
+                bool result = false;
+                //TODO добавить чекер
+                if (text.empty()) {
+                    m_ReceiptLine3 = text;
+                    m_FieldsSet.insert(ResponseField::ReceiptLine3);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetReceiptLine3() {
+                m_ReceiptLine3.clear();
+                m_FieldsSet.erase(ResponseField::ReceiptLine3);
+                return !isFieldSet(ResponseField::ReceiptLine3);
+            }
+
+            const std::string &ResponseData::getReceiptLine4() const {
+                return m_ReceiptLine4;
+            }
+
+            bool ResponseData::setReceiptLine4(const std::string &text) {
+                bool result = false;
+                //TODO добавить чекер
+                if (text.empty()) {
+                    m_ReceiptLine4 = text;
+                    m_FieldsSet.insert(ResponseField::ReceiptLine4);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetReceiptLine4() {
+                m_ReceiptLine4.clear();
+                m_FieldsSet.erase(ResponseField::ReceiptLine4);
+                return !isFieldSet(ResponseField::ReceiptLine4);
+            }
+
+            const std::string &ResponseData::getReceiptLine5() const {
+                return m_ReceiptLine5;
+            }
+
+            bool ResponseData::setReceiptLine5(const std::string &text) {
+                bool result = false;
+                //TODO добавить чекер
+                if (text.empty()) {
+                    m_ReceiptLine5 = text;
+                    m_FieldsSet.insert(ResponseField::ReceiptLine5);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetReceiptLine5() {
+                m_ReceiptLine5.clear();
+                m_FieldsSet.erase(ResponseField::ReceiptLine5);
+                return !isFieldSet(ResponseField::ReceiptLine5);
+            }
+
+            const std::string &ResponseData::getApplicationLabel() const {
+                return m_ApplicationLabel;
+            }
+
+            bool ResponseData::setApplicationLabel(const std::string &label) {
+                bool result = false;
+                //TODO добавить чекер
+                if (label.empty()) {
+                    m_ApplicationLabel = label;
+                    m_FieldsSet.insert(ResponseField::ApplicationLabel);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetApplicationLabel() {
+                m_ApplicationLabel.clear();
+                m_FieldsSet.erase(ResponseField::ApplicationLabel);
+                return !isFieldSet(ResponseField::ApplicationLabel);
+            }
+
+            uint64_t ResponseData::getBonusBalance() const {
+                return m_BonusBalance;
+            }
+
+            bool ResponseData::setBonusBalance(int64_t balance) {
+                bool result = false;
+                if (checkAmountRange(balance)) {
+                    m_BonusBalance = balance;
+                    m_FieldsSet.insert(ResponseField::BonusBalance);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetBonusBalance() {
+                m_BonusBalance = -1;
+                m_FieldsSet.erase(ResponseField::BonusBalance);
+                return !isFieldSet(ResponseField::BonusBalance);
+            }
+
+            uint64_t ResponseData::getBonusAmount() const {
+                return m_BonusAmount;
+            }
+
+            bool ResponseData::setBonusAmount(int64_t amount) {
+                bool result = false;
+                if (checkAmountRange(amount)) {
+                    m_BonusAmount = amount;
+                    m_FieldsSet.insert(ResponseField::BonusAmount);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetBonusAmount() {
+                m_BonusAmount = -1;
+                m_FieldsSet.erase(ResponseField::BonusAmount);
+                return !isFieldSet(ResponseField::BonusAmount);
+            }
+
+            const std::string &ResponseData::getHashCardTrack2() const {
+                return m_HashCardTrack2;
+            }
+
+            bool ResponseData::setHashCardTrack2(const std::string &hashTrack2) {
+                bool result = false;
+                //TODO добавить чекер
+                if (hashTrack2.empty()) {
+                    m_HashCardTrack2 = hashTrack2;
+                    m_FieldsSet.insert(ResponseField::HashCardTrack2);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetHashCardTrack2() {
+                m_HashCardTrack2.clear();
+                m_FieldsSet.erase(ResponseField::HashCardTrack2);
+                return !isFieldSet(ResponseField::HashCardTrack2);
+            }
+
+            bool ResponseData::getFinalizationRequired() const {
+                return m_FinalizationRequired;
+            }
+
+            bool ResponseData::setFinalizationRequired(bool required) {
+                m_FinalizationRequired = required;
+                m_FieldsSet.insert(ResponseField::FinalizationRequired);
+
+                //Тут невозможно ничего проверить, только установить поле и флаг
+                return isFieldSet(ResponseField::FinalizationRequired);
+            }
+
+            bool ResponseData::resetFinalizationRequired() {
+                m_FinalizationRequired = false;
+                m_FieldsSet.erase(ResponseField::FinalizationRequired);
+                return !isFieldSet(ResponseField::FinalizationRequired);
             }
         }
     }
