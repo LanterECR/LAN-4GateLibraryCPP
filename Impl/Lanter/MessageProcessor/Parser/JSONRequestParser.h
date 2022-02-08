@@ -57,6 +57,19 @@ namespace Lanter {
 
                 bool getFieldAdditionalInfo(const Json::Value &object, IRequestData &requestData);
 
+                bool getFieldBonusBalance(const Json::Value &object, IRequestData &requestData);
+
+                bool getFieldBonusAmount(const Json::Value &object, IRequestData &requestData);
+
+                bool getFieldHashCardTrack2(const Json::Value &object, IRequestData &requestData);
+
+                bool getFieldPaymentProviderCode(const Json::Value &object, IRequestData &requestData);
+
+                bool getFieldPaymentParam1(const Json::Value &object, IRequestData &requestData);
+
+                bool getFieldPaymentParam2(const Json::Value &object, IRequestData &requestData);
+
+                bool getFieldPaymentParam3(const Json::Value &object, IRequestData &requestData);
             private:
                 void initFunctionsMap();
 

@@ -324,6 +324,43 @@ TEST(TestJSONRequestBuilder, CheckAddFieldAdditionalInfo) {
     EXPECT_STREQ(data.getAdditionalInfo().c_str(), listObject[JSONRequestFields::getAdditionalInfo()].asString().c_str());
 }
 
+TEST(TestJSONRequestBuilder, CheckAddFieldBonusBalance) {
+    JSONRequestBuilder builder;
+
+    RequestData data;
+    data.setBonusBalance(999999999999);
+
+    Json::Value directObject;
+    EXPECT_TRUE(builder.addFieldBonusBalance(data, directObject));
+    EXPECT_TRUE(fieldExists(directObject, JSONRequestFields::getBonusBalance()));
+    EXPECT_EQ(data.getBonusBalance(), directObject[JSONRequestFields::getBonusBalance()].asInt64());
+
+    Json::Value listObject;
+    auto function = builder.getFunctions().at(RequestField::BonusBalance);
+    EXPECT_TRUE(function(data, listObject));
+    EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getBonusBalance()));
+    EXPECT_EQ(data.getBonusBalance(), listObject[JSONRequestFields::getBonusBalance()].asInt64());
+}
+
+TEST(TestJSONRequestBuilder, CheckAddFieldBonusAmount) {
+    JSONRequestBuilder builder;
+
+    RequestData data;
+    data.setBonusAmount(999999999999);
+
+    Json::Value directObject;
+    EXPECT_TRUE(builder.addFieldBonusAmount(data, directObject));
+    EXPECT_TRUE(fieldExists(directObject, JSONRequestFields::getBonusAmount()));
+    EXPECT_EQ(data.getBonusAmount(), directObject[JSONRequestFields::getBonusAmount()].asInt64());
+
+    Json::Value listObject;
+    auto function = builder.getFunctions().at(RequestField::BonusAmount);
+    EXPECT_TRUE(function(data, listObject));
+    EXPECT_TRUE(fieldExists(listObject, JSONRequestFields::getBonusAmount()));
+    EXPECT_EQ(data.getBonusAmount(), listObject[JSONRequestFields::getBonusAmount()].asInt64());
+}
+
+
 TEST(TestJSONRequestBuilder, CheckCreateObject) {
     JSONRequestBuilder builder;
     Json::Value object;

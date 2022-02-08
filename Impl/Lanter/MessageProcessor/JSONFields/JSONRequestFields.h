@@ -25,6 +25,13 @@ namespace Lanter {
             static inline std::string getProviderCode() { return "ProviderCode";}
             static inline std::string getAdditionalInfo() { return "AdditionalInfo";}
             static inline std::string getCfgTerminalId() { return "CfgTerminalID";}
+            static inline std::string getBonusBalance() { return "BonusBalance"; }
+            static inline std::string getBonusAmount() { return "BonusAmount"; }
+            static inline std::string getHashCardTrack2() { return "HashCardTrack2"; }
+            static inline std::string getPaymentProviderCode() { return "PaymentProviderCode"; }
+            static inline std::string getPaymentParam1() { return "PaymentParam1"; }
+            static inline std::string getPaymentParam2() { return "PaymentParam2"; }
+            static inline std::string getPaymentParam3() { return "PaymentParam3"; }
         };
     }
 }
