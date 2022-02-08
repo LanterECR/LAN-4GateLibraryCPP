@@ -6,7 +6,7 @@
 #include "Lanter/MessageProcessor/Parser/JSONResponseParser.h"
 
 #include "Lanter/MessageProcessor/Builder/JSONAddFieldHelper.h"
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONResponseFields.h"
 
 using namespace Lanter;
 using namespace Lanter::Message;

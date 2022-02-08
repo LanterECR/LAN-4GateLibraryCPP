@@ -7,7 +7,7 @@
 #include "Lanter/Message/Response/ResponseDataFactory.h"
 #include "Lanter/Message/Notification/NotificationDataFactory.h"
 #include "Lanter/Message/Interaction/InteractionDataFactory.h"
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONClassFieldsValues.h"
 
 #include "Lanter/MessageProcessor/Builder/JSONMessageBuilder.h"
 #include "Lanter/Utils/StringConverter.h"

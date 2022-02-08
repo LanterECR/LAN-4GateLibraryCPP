@@ -5,7 +5,7 @@
 #include "gtest/gtest.h"
 
 #include "Lanter/MessageProcessor/Parser/JSONRequestParser.h"
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRequestFields.h"
 #include "Lanter/Message/Request/RequestData.h"
 
 using namespace Lanter;

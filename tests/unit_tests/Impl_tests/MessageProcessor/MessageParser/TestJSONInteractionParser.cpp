@@ -4,7 +4,7 @@
 
 #include "Lanter/Message/Interaction/InteractionData.h"
 
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONInteractionFields.h"
 
 using namespace Lanter;
 using namespace Lanter::Message;

@@ -2,7 +2,8 @@
 
 #include "Lanter/MessageProcessor/Parser/JSONMessageTypeChecker.h"
 
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRootFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONClassFieldsValues.h"
 
 using namespace Lanter;
 using namespace Lanter::MessageProcessor;

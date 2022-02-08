@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
-#include "Lanter/MessageProcessor/JSONFieldExists.h"
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONFieldExists.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRootFields.h"
 
 using namespace Lanter;
 using namespace Lanter::MessageProcessor;

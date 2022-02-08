@@ -2,9 +2,9 @@
 
 #include "JSONAddFieldHelper.h"
 
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONResponseFields.h"
 
-#include "Lanter/MessageProcessor/JSONFieldExists.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONFieldExists.h"
 namespace Lanter {
     namespace MessageProcessor {
         namespace Builder {

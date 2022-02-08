@@ -1,7 +1,7 @@
 #include "JSONRootFieldsChecker.h"
 
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
-#include "Lanter/MessageProcessor/JSONFieldExists.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRootFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONFieldExists.h"
 
 namespace Lanter {
     namespace MessageProcessor {

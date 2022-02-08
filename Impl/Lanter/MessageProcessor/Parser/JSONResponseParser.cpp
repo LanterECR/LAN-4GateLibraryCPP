@@ -1,7 +1,7 @@
 #include "JSONResponseParser.h"
 
 #include "JSONGetFieldHelper.h"
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONResponseFields.h"
 #include "Lanter/Message/Response/ResponseDataFactory.h"
 
 namespace Lanter {

@@ -1,6 +1,12 @@
 #include "gtest/gtest.h"
 
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONClassFieldsValues.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRootFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRequestFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONResponseFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONNotificationFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONInteractionFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONCommunicationFields.h"
 
 using namespace Lanter;
 using namespace Lanter::MessageProcessor;
@@ -37,7 +43,6 @@ TEST(TestJSONFields, CheckRequestFields) {
     EXPECT_FALSE(JSONRequestFields::getProviderCode().empty());
     EXPECT_FALSE(JSONRequestFields::getAdditionalInfo().empty());
     EXPECT_FALSE(JSONRequestFields::getCfgTerminalId().empty());
-    EXPECT_FALSE(JSONRequestFields::getStatus().empty());
 }
 
 TEST(TestJSONFields, CheckResponseFields) {

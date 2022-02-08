@@ -2,9 +2,9 @@
 
 #include "Lanter/MessageProcessor/Builder/JSONRequestBuilder.h"
 
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRequestFields.h"
 
-#include "Lanter/MessageProcessor/JSONFieldExists.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONFieldExists.h"
 
 #include "Lanter/Message/Request/RequestDataFactory.h"
 

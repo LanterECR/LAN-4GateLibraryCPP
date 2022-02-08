@@ -1,5 +1,5 @@
 #include "JSONAddFieldHelper.h"
-#include "Lanter/MessageProcessor/JSONFieldExists.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONFieldExists.h"
 
 namespace Lanter {
     namespace MessageProcessor {
