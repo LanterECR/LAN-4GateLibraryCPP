@@ -77,9 +77,13 @@ namespace Lanter {
 
         bool ClientTCPSession::connect(const tcp::endpoint &address) {
             try {
-                m_Socket.connect(address);
-                m_IsConnected = true;
-                start();
+                m_IsConnected = false;
+                std::error_code ec;
+                m_Socket.connect(address, ec);
+                if(!ec) {
+                    m_IsConnected = true;
+                    start();
+                }
             } catch (std::exception & e) {
                 m_IsConnected = false;
             }
