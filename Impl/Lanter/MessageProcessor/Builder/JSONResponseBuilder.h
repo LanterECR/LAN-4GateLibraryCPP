@@ -121,6 +121,30 @@ namespace Lanter {
 
                 bool addFieldRefundArray(const IResponseData &responseData, Json::Value &object);
 
+                bool addFieldCfgTerminalID(const IResponseData &responseData, Json::Value &object);
+
+                bool addFieldCardPANHash(const IResponseData &responseData, Json::Value &object);
+
+                bool addFieldReceiptLine1(const IResponseData &responseData, Json::Value &object);
+
+                bool addFieldReceiptLine2(const IResponseData &responseData, Json::Value &object);
+
+                bool addFieldReceiptLine3(const IResponseData &responseData, Json::Value &object);
+
+                bool addFieldReceiptLine4(const IResponseData &responseData, Json::Value &object);
+
+                bool addFieldReceiptLine5(const IResponseData &responseData, Json::Value &object);
+
+                bool addFieldApplicationLabel(const IResponseData &responseData, Json::Value &object);
+
+                bool addFieldBonusBalance(const IResponseData &responseData, Json::Value &object);
+
+                bool addFieldBonusAmount(const IResponseData &responseData, Json::Value &object);
+
+                bool addFieldHashCardTrack2(const IResponseData &responseData, Json::Value &object);
+
+                bool addFieldFinalizationRequired(const IResponseData &responseData, Json::Value &object);
+
             private:
                 void initFunctionsMap();
 

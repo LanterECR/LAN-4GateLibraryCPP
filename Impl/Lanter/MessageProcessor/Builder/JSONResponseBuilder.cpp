@@ -431,6 +431,91 @@ namespace Lanter {
                 return fieldExists(object, JSONResponseFields::getRefundArray());
             }
 
+            bool JSONResponseBuilder::addFieldCfgTerminalID(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::CfgTerminalID)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getCfgTerminalID(), responseData.getCfgTerminalID());
+                }
+                return fieldExists(object, JSONResponseFields::getCfgTerminalID());
+            }
+
+            bool JSONResponseBuilder::addFieldCardPANHash(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::CardPANHash)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getCardPanHash(), responseData.getCardPANHash());
+                }
+                return fieldExists(object, JSONResponseFields::getCardPanHash());
+            }
+
+            bool JSONResponseBuilder::addFieldReceiptLine1(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::ReceiptLine1)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine1(), responseData.getReceiptLine1());
+                }
+                return fieldExists(object, JSONResponseFields::getReceiptLine1());
+            }
+
+            bool JSONResponseBuilder::addFieldReceiptLine2(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::ReceiptLine2)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine2(), responseData.getReceiptLine2());
+                }
+                return fieldExists(object, JSONResponseFields::getReceiptLine2());
+            }
+
+            bool JSONResponseBuilder::addFieldReceiptLine3(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::ReceiptLine3)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine3(), responseData.getReceiptLine3());
+                }
+                return fieldExists(object, JSONResponseFields::getReceiptLine3());
+            }
+
+            bool JSONResponseBuilder::addFieldReceiptLine4(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::ReceiptLine4)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine4(), responseData.getReceiptLine4());
+                }
+                return fieldExists(object, JSONResponseFields::getReceiptLine4());
+            }
+
+            bool JSONResponseBuilder::addFieldReceiptLine5(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::ReceiptLine5)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine5(), responseData.getReceiptLine5());
+                }
+                return fieldExists(object, JSONResponseFields::getReceiptLine5());
+            }
+
+            bool JSONResponseBuilder::addFieldApplicationLabel(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::ApplicationLabel)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getApplicationLabel(), responseData.getApplicationLabel());
+                }
+                return fieldExists(object, JSONResponseFields::getApplicationLabel());
+            }
+
+            bool JSONResponseBuilder::addFieldBonusBalance(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::BonusBalance)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getBonusBalance(), responseData.getBonusBalance());
+                }
+                return fieldExists(object, JSONResponseFields::getBonusBalance());
+            }
+
+            bool JSONResponseBuilder::addFieldBonusAmount(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::BonusAmount)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getBonusAmount(), responseData.getBonusAmount());
+                }
+                return fieldExists(object, JSONResponseFields::getBonusAmount());
+            }
+
+            bool JSONResponseBuilder::addFieldHashCardTrack2(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::HashCardTrack2)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getHashCardTrack2(), responseData.getHashCardTrack2());
+                }
+                return fieldExists(object, JSONResponseFields::getHashCardTrack2());
+            }
+
+            bool
+            JSONResponseBuilder::addFieldFinalizationRequired(const IResponseData &responseData, Json::Value &object) {
+                if (responseData.isFieldSet(ResponseField::FinalizationRequired)) {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getFinalizationRequired(), responseData.getFinalizationRequired());
+                }
+                return fieldExists(object, JSONResponseFields::getFinalizationRequired());
+            }
+
             bool JSONResponseBuilder::addFields(const IResponseData &responseData, Json::Value &object) {
                 bool result = false;
 
@@ -455,97 +540,67 @@ namespace Lanter {
             }
 
             void JSONResponseBuilder::initFunctionsMap() {
-                m_InsertFunctions[ResponseField::EcrNumber] = std::bind(&JSONResponseBuilder::addFieldEcrNumber, this,
-                                                                        _1, _2);
-                m_InsertFunctions[ResponseField::EcrMerchantNumber] = std::bind(
-                        &JSONResponseBuilder::addFieldEcrMerchantNumber, this, _1, _2);
-                m_InsertFunctions[ResponseField::OperationCode] = std::bind(&JSONResponseBuilder::addFieldOperationCode,
-                                                                            this, _1, _2);
-                m_InsertFunctions[ResponseField::OriginalOperationCode] = std::bind(
-                        &JSONResponseBuilder::addFieldOriginalOperationCode, this, _1, _2);
-                m_InsertFunctions[ResponseField::TotalAmount] = std::bind(&JSONResponseBuilder::addFieldTotalAmount,
-                                                                          this, _1, _2);
-                m_InsertFunctions[ResponseField::PartialAmount] = std::bind(&JSONResponseBuilder::addFieldPartialAmount,
-                                                                            this, _1, _2);
-                m_InsertFunctions[ResponseField::AcquirerFeeAmount] = std::bind(
-                        &JSONResponseBuilder::addFieldAcquirerFeeAmount, this, _1, _2);
-                m_InsertFunctions[ResponseField::TerminalFeeAmount] = std::bind(
-                        &JSONResponseBuilder::addFieldTerminalFeeAmount, this, _1, _2);
-                m_InsertFunctions[ResponseField::TipsAmount] = std::bind(&JSONResponseBuilder::addFieldTipsAmount, this,
-                                                                         _1, _2);
-                m_InsertFunctions[ResponseField::CurrencyCode] = std::bind(&JSONResponseBuilder::addFieldCurrencyCode,
-                                                                           this, _1, _2);
-                m_InsertFunctions[ResponseField::ReceiptReference] = std::bind(
-                        &JSONResponseBuilder::addFieldReceiptReference, this, _1, _2);
-                m_InsertFunctions[ResponseField::RRN] = std::bind(&JSONResponseBuilder::addFieldRRN, this, _1, _2);
-                m_InsertFunctions[ResponseField::Status] = std::bind(&JSONResponseBuilder::addFieldStatus, this, _1,
-                                                                     _2);
-                m_InsertFunctions[ResponseField::OriginalOperationStatus] = std::bind(
-                        &JSONResponseBuilder::addFieldOriginalOperationStatus, this, _1, _2);
-                m_InsertFunctions[ResponseField::TransDateTime] = std::bind(&JSONResponseBuilder::addFieldTransDateTime,
-                                                                            this, _1, _2);
-                m_InsertFunctions[ResponseField::TerminalDateTime] = std::bind(
-                        &JSONResponseBuilder::addFieldTerminalDateTime, this, _1, _2);
-                m_InsertFunctions[ResponseField::CardPAN] = std::bind(&JSONResponseBuilder::addFieldCardPAN, this, _1,
-                                                                      _2);
-                m_InsertFunctions[ResponseField::ExpireDate] = std::bind(&JSONResponseBuilder::addFieldExpireDate, this,
-                                                                         _1, _2);
-                m_InsertFunctions[ResponseField::CardholderName] = std::bind(
-                        &JSONResponseBuilder::addFieldCardholderName, this, _1, _2);
-                m_InsertFunctions[ResponseField::CardholderAuthMethod] = std::bind(
-                        &JSONResponseBuilder::addFieldCardholderAuthMethod, this, _1, _2);
-                m_InsertFunctions[ResponseField::AuthCode] = std::bind(&JSONResponseBuilder::addFieldAuthCode, this, _1,
-                                                                       _2);
-                m_InsertFunctions[ResponseField::ResponseCode] = std::bind(&JSONResponseBuilder::addFieldResponseCode,
-                                                                           this, _1, _2);
-                m_InsertFunctions[ResponseField::ResponseText] = std::bind(&JSONResponseBuilder::addFieldResponseText,
-                                                                           this, _1, _2);
-                m_InsertFunctions[ResponseField::STAN] = std::bind(&JSONResponseBuilder::addFieldSTAN, this, _1, _2);
-                m_InsertFunctions[ResponseField::TransactionID] = std::bind(&JSONResponseBuilder::addFieldTransactionID,
-                                                                            this, _1, _2);
-                m_InsertFunctions[ResponseField::TerminalID] = std::bind(&JSONResponseBuilder::addFieldTerminalID, this,
-                                                                         _1, _2);
-                m_InsertFunctions[ResponseField::CardEmvAid] = std::bind(&JSONResponseBuilder::addFieldCardEmvAid, this,
-                                                                         _1, _2);
-                m_InsertFunctions[ResponseField::CardAppName] = std::bind(&JSONResponseBuilder::addFieldCardAppName,
-                                                                          this, _1, _2);
-                m_InsertFunctions[ResponseField::CardInputMethod] = std::bind(
-                        &JSONResponseBuilder::addFieldCardInputMethod, this, _1, _2);
-                m_InsertFunctions[ResponseField::IssuerName] = std::bind(&JSONResponseBuilder::addFieldIssuerName, this,
-                                                                         _1, _2);
-                m_InsertFunctions[ResponseField::AdditionalInfo] = std::bind(
-                        &JSONResponseBuilder::addFieldAdditionalInfo, this, _1, _2);
-                m_InsertFunctions[ResponseField::CardData] = std::bind(&JSONResponseBuilder::addFieldCardData, this, _1,
-                                                                       _2);
-                m_InsertFunctions[ResponseField::CardDataEnc] = std::bind(&JSONResponseBuilder::addFieldCardDataEnc,
-                                                                          this, _1, _2);
-                m_InsertFunctions[ResponseField::MerchantID] = std::bind(&JSONResponseBuilder::addFieldMerchantID, this,
-                                                                         _1, _2);
-                m_InsertFunctions[ResponseField::TVR] = std::bind(&JSONResponseBuilder::addFieldTVR, this, _1, _2);
-                m_InsertFunctions[ResponseField::TSI] = std::bind(&JSONResponseBuilder::addFieldTSI, this, _1, _2);
-                m_InsertFunctions[ResponseField::TC] = std::bind(&JSONResponseBuilder::addFieldTC, this, _1, _2);
-                m_InsertFunctions[ResponseField::CID] = std::bind(&JSONResponseBuilder::addFieldCID, this, _1, _2);
-                m_InsertFunctions[ResponseField::KVR] = std::bind(&JSONResponseBuilder::addFieldKVR, this, _1, _2);
-                m_InsertFunctions[ResponseField::CDAResult] = std::bind(&JSONResponseBuilder::addFieldCDAResult, this,
-                                                                        _1, _2);
-                m_InsertFunctions[ResponseField::SalesAmount] = std::bind(&JSONResponseBuilder::addFieldSalesAmount, this,
-                                                                        _1, _2);
-                m_InsertFunctions[ResponseField::SaleCount] = std::bind(&JSONResponseBuilder::addFieldSalesCount, this,
-                                                                        _1, _2);
-                m_InsertFunctions[ResponseField::VoidAmount] = std::bind(&JSONResponseBuilder::addFieldVoidAmount, this,
-                                                                          _1, _2);
-                m_InsertFunctions[ResponseField::VoidCount] = std::bind(&JSONResponseBuilder::addFieldVoidCount, this,
-                                                                        _1, _2);
-                m_InsertFunctions[ResponseField::RefundAmount] = std::bind(&JSONResponseBuilder::addFieldRefundAmount, this,
-                                                                          _1, _2);
-                m_InsertFunctions[ResponseField::RefundCount] = std::bind(&JSONResponseBuilder::addFieldRefundCount,
-                                                                          this, _1, _2);
-                m_InsertFunctions[ResponseField::SaleArray] = std::bind(&JSONResponseBuilder::addFieldSalesArray, this,
-                                                                        _1, _2);
-                m_InsertFunctions[ResponseField::VoidArray] = std::bind(&JSONResponseBuilder::addFieldVoidArray, this,
-                                                                        _1, _2);
-                m_InsertFunctions[ResponseField::RefundArray] = std::bind(&JSONResponseBuilder::addFieldRefundArray,
-                                                                          this, _1, _2);
+                m_InsertFunctions[ResponseField::EcrNumber] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldEcrNumber(responseData, object); };
+                m_InsertFunctions[ResponseField::EcrMerchantNumber] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldEcrMerchantNumber(responseData, object); };
+                m_InsertFunctions[ResponseField::OperationCode] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldOperationCode(responseData, object); };
+                m_InsertFunctions[ResponseField::OriginalOperationCode] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldOriginalOperationCode(responseData, object); };
+                m_InsertFunctions[ResponseField::TotalAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldTotalAmount(responseData, object); };
+                m_InsertFunctions[ResponseField::PartialAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldPartialAmount(responseData, object); };
+                m_InsertFunctions[ResponseField::AcquirerFeeAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldAcquirerFeeAmount(responseData, object); };
+                m_InsertFunctions[ResponseField::TerminalFeeAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldTerminalFeeAmount(responseData, object); };
+                m_InsertFunctions[ResponseField::TipsAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldTipsAmount(responseData, object); };
+                m_InsertFunctions[ResponseField::CurrencyCode] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCurrencyCode(responseData, object); };
+                m_InsertFunctions[ResponseField::ReceiptReference] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldReceiptReference(responseData, object); };
+                m_InsertFunctions[ResponseField::RRN] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldRRN(responseData, object); };
+                m_InsertFunctions[ResponseField::Status] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldStatus(responseData, object); };
+                m_InsertFunctions[ResponseField::OriginalOperationStatus] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldOriginalOperationStatus(responseData, object); };
+                m_InsertFunctions[ResponseField::TransDateTime] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldTransDateTime(responseData, object); };
+                m_InsertFunctions[ResponseField::TerminalDateTime] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldTerminalDateTime(responseData, object); };
+                m_InsertFunctions[ResponseField::CardPAN] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCardPAN(responseData, object); };
+                m_InsertFunctions[ResponseField::ExpireDate] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldExpireDate(responseData, object); };
+                m_InsertFunctions[ResponseField::CardholderName] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCardholderName(responseData, object); };
+                m_InsertFunctions[ResponseField::CardholderAuthMethod] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCardholderAuthMethod(responseData, object); };
+                m_InsertFunctions[ResponseField::AuthCode] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldAuthCode(responseData, object); };
+                m_InsertFunctions[ResponseField::ResponseCode] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldResponseCode(responseData, object); };
+                m_InsertFunctions[ResponseField::ResponseText] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldResponseText(responseData, object); };
+                m_InsertFunctions[ResponseField::STAN] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldSTAN(responseData, object); };
+                m_InsertFunctions[ResponseField::TransactionID] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldTransactionID(responseData, object); };
+                m_InsertFunctions[ResponseField::TerminalID] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldTerminalID(responseData, object); };
+                m_InsertFunctions[ResponseField::CardEmvAid] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCardEmvAid(responseData, object); };
+                m_InsertFunctions[ResponseField::CardAppName] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCardAppName(responseData, object); };
+                m_InsertFunctions[ResponseField::CardInputMethod] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCardInputMethod(responseData, object); };
+                m_InsertFunctions[ResponseField::IssuerName] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldIssuerName(responseData, object); };
+                m_InsertFunctions[ResponseField::AdditionalInfo] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldAdditionalInfo(responseData, object); };
+                m_InsertFunctions[ResponseField::CardData] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCardData(responseData, object); };
+                m_InsertFunctions[ResponseField::CardDataEnc] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCardDataEnc(responseData, object); };
+                m_InsertFunctions[ResponseField::MerchantID] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldMerchantID(responseData, object); };
+                m_InsertFunctions[ResponseField::TVR] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldTVR(responseData, object); };
+                m_InsertFunctions[ResponseField::TSI] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldTSI(responseData, object); };
+                m_InsertFunctions[ResponseField::TC] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldTC(responseData, object); };
+                m_InsertFunctions[ResponseField::CID] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCID(responseData, object); };
+                m_InsertFunctions[ResponseField::KVR] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldKVR(responseData, object); };
+                m_InsertFunctions[ResponseField::CDAResult] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCDAResult(responseData, object); };
+                m_InsertFunctions[ResponseField::SalesAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldSalesAmount(responseData, object); };
+                m_InsertFunctions[ResponseField::SaleCount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldSalesCount(responseData, object); };
+                m_InsertFunctions[ResponseField::VoidAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldVoidAmount(responseData, object); };
+                m_InsertFunctions[ResponseField::VoidCount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldVoidCount(responseData, object); };
+                m_InsertFunctions[ResponseField::RefundAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldRefundAmount(responseData, object); };
+                m_InsertFunctions[ResponseField::RefundCount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldRefundCount(responseData, object); };
+                m_InsertFunctions[ResponseField::SaleArray] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldSalesArray(responseData, object); };
+                m_InsertFunctions[ResponseField::VoidArray] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldVoidArray(responseData, object); };
+                m_InsertFunctions[ResponseField::RefundArray] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldRefundArray(responseData, object); };
+                m_InsertFunctions[ResponseField::CfgTerminalID] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCfgTerminalID(responseData, object); };
+                m_InsertFunctions[ResponseField::CardPANHash] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCardPANHash(responseData, object); };
+                m_InsertFunctions[ResponseField::ReceiptLine1] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldReceiptLine1(responseData, object); };
+                m_InsertFunctions[ResponseField::ReceiptLine2] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldReceiptLine2(responseData, object); };
+                m_InsertFunctions[ResponseField::ReceiptLine3] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldReceiptLine3(responseData, object); };
+                m_InsertFunctions[ResponseField::ReceiptLine4] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldReceiptLine4(responseData, object); };
+                m_InsertFunctions[ResponseField::ReceiptLine5] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldReceiptLine5(responseData, object); };
+                m_InsertFunctions[ResponseField::ApplicationLabel] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldApplicationLabel(responseData, object); };
+                m_InsertFunctions[ResponseField::BonusBalance] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldBonusBalance(responseData, object); };
+                m_InsertFunctions[ResponseField::BonusAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldBonusAmount(responseData, object); };
+                m_InsertFunctions[ResponseField::HashCardTrack2] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldHashCardTrack2(responseData, object); };
+                m_InsertFunctions[ResponseField::FinalizationRequired] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldFinalizationRequired(responseData, object); };
             }
         }
     }

@@ -33,7 +33,7 @@ namespace Lanter {
             static inline std::string getSTAN() { return "STAN"; }
             static inline std::string getTransactionID() { return "TransactionID"; }
             static inline std::string getTerminalID() { return "TerminalID"; }
-            static inline std::string getCfgTerminalId() { return "CfgTerminalID"; }
+            static inline std::string getCfgTerminalID() { return "CfgTerminalID"; }
             static inline std::string getCardEmvAid() { return "CardEmvAid"; }
             static inline std::string getCardAppName() { return "CardAppName"; }
             static inline std::string getCardInputMethod() { return "CardInputMethod"; }
@@ -63,6 +63,12 @@ namespace Lanter {
             static inline std::string getReceiptLine3() { return "ReceiptLine3"; }
             static inline std::string getReceiptLine4() { return "ReceiptLine4"; }
             static inline std::string getReceiptLine5() { return "ReceiptLine5"; }
+            static inline std::string getApplicationLabel() { return "ApplicationLabel"; }
+            static inline std::string getBonusBalance() { return "BonusBalance"; }
+            static inline std::string getBonusAmount() { return "BonusAmount"; }
+            static inline std::string getHashCardTrack2() { return "HashCardTrack2"; }
+            static inline std::string getFinalizationRequired() { return "FinalizationRequired"; }
+
         };
     }
 }
