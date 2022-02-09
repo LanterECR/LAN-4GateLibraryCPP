@@ -1197,7 +1197,7 @@ namespace Lanter {
             bool ResponseData::setCardPANHash(const std::string &pan) {
                 bool result = false;
                 //TODO добавить чекер
-                if (pan.empty()) {
+                if (!pan.empty()) {
                     m_CardPANHash = pan;
                     m_FieldsSet.insert(ResponseField::CardPANHash);
                     result = true;
@@ -1218,7 +1218,7 @@ namespace Lanter {
             bool ResponseData::setReceiptLine1(const std::string &text) {
                 bool result = false;
                 //TODO добавить чекер
-                if (text.empty()) {
+                if (!text.empty()) {
                     m_ReceiptLine1 = text;
                     m_FieldsSet.insert(ResponseField::ReceiptLine1);
                     result = true;
@@ -1239,7 +1239,7 @@ namespace Lanter {
             bool ResponseData::setReceiptLine2(const std::string &text) {
                 bool result = false;
                 //TODO добавить чекер
-                if (text.empty()) {
+                if (!text.empty()) {
                     m_ReceiptLine2 = text;
                     m_FieldsSet.insert(ResponseField::ReceiptLine2);
                     result = true;
@@ -1260,7 +1260,7 @@ namespace Lanter {
             bool ResponseData::setReceiptLine3(const std::string &text) {
                 bool result = false;
                 //TODO добавить чекер
-                if (text.empty()) {
+                if (!text.empty()) {
                     m_ReceiptLine3 = text;
                     m_FieldsSet.insert(ResponseField::ReceiptLine3);
                     result = true;
@@ -1281,7 +1281,7 @@ namespace Lanter {
             bool ResponseData::setReceiptLine4(const std::string &text) {
                 bool result = false;
                 //TODO добавить чекер
-                if (text.empty()) {
+                if (!text.empty()) {
                     m_ReceiptLine4 = text;
                     m_FieldsSet.insert(ResponseField::ReceiptLine4);
                     result = true;
@@ -1302,7 +1302,7 @@ namespace Lanter {
             bool ResponseData::setReceiptLine5(const std::string &text) {
                 bool result = false;
                 //TODO добавить чекер
-                if (text.empty()) {
+                if (!text.empty()) {
                     m_ReceiptLine5 = text;
                     m_FieldsSet.insert(ResponseField::ReceiptLine5);
                     result = true;
@@ -1323,7 +1323,7 @@ namespace Lanter {
             bool ResponseData::setApplicationLabel(const std::string &label) {
                 bool result = false;
                 //TODO добавить чекер
-                if (label.empty()) {
+                if (!label.empty()) {
                     m_ApplicationLabel = label;
                     m_FieldsSet.insert(ResponseField::ApplicationLabel);
                     result = true;
@@ -1384,7 +1384,7 @@ namespace Lanter {
             bool ResponseData::setHashCardTrack2(const std::string &hashTrack2) {
                 bool result = false;
                 //TODO добавить чекер
-                if (hashTrack2.empty()) {
+                if (!hashTrack2.empty()) {
                     m_HashCardTrack2 = hashTrack2;
                     m_FieldsSet.insert(ResponseField::HashCardTrack2);
                     result = true;
