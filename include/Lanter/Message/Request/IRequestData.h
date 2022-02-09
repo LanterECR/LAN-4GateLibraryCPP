@@ -344,28 +344,62 @@ namespace Lanter {
                 /// \return true, если поле успешно удалено
                 virtual bool resetHashCardTrack2() = 0;
 
+                /// \brief Возвращает код провайдера оплаты. Например, ID оператора связи
+                /// Используется для операции Payment
+                /// \return
                 virtual const std::string & getPaymentProviderCode() const = 0;
 
+                /// \brief Устанавливает код провайдера оплаты. Например, ID оператора связи
+                /// Используется для операции Payment
+                /// \param code строка, содержащая код провайдера оплаты
+                /// \return true, если поле успешно установлено
                 virtual bool setPaymentProviderCode(const std::string & code) = 0;
 
+                /// \brief Устанавливает значение по умолчанию для поля HashCardTrack2
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
                 virtual bool resetPaymentProviderCode() = 0;
 
+                /// \brief Возвращает первый параметр оплаты
+                /// \return Строка, содержащая первый параметр оплаты
                 virtual const std::string & getPaymentParam1() const = 0;
 
+                /// \brief Устанавливает первый параметр оплаты
+                /// \param param Строка, содержащая первый параметр оплаты
+                /// \return true, если поле успешно установлено
                 virtual bool setPaymentParam1(const std::string & param) = 0;
 
+                /// \brief Устанавливает значение по умолчанию для поля PaymentParam1
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
                 virtual bool resetPaymentParam1() = 0;
 
+                /// \brief Возвращает второй параметр оплаты
+                /// \return Строка, содержащая второй параметр оплаты
                 virtual const std::string & getPaymentParam2() const = 0;
 
+                /// \brief Устанавливает второй параметр оплаты
+                /// \param param Строка, содержащая второй параметр оплаты
+                /// \return true, если поле успешно установлено
                 virtual bool setPaymentParam2(const std::string & param) = 0;
 
+                /// \brief Устанавливает значение по умолчанию для поля PaymentParam2
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
                 virtual bool resetPaymentParam2() = 0;
 
+                /// \brief Возвращает третий параметр оплаты
+                /// \return Строка, содержащая третий параметр оплаты
                 virtual const std::string & getPaymentParam3() const = 0;
 
+                /// \brief Устанавливает третий параметр оплаты
+                /// \param param Строка, содержащая третий параметр оплаты
+                /// \return true, если поле успешно установлено
                 virtual bool setPaymentParam3(const std::string & param) = 0;
 
+                /// \brief Устанавливает значение по умолчанию для поля PaymentParam3
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
                 virtual bool resetPaymentParam3() = 0;
             };//class IRequestData
         }//namespace Request
