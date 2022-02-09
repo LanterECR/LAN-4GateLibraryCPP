@@ -72,8 +72,10 @@ namespace Lanter {
         }
 
         void TCPClient::disconnectCallback() {
-            m_CurrentConnection->stop();
-
+            if(m_CurrentConnection) {
+                m_CurrentConnection->stop();
+            }
+            m_CurrentConnection.reset();
         }
     }
 }
