@@ -1337,7 +1337,7 @@ namespace Lanter {
                 return !isFieldSet(ResponseField::ApplicationLabel);
             }
 
-            uint64_t ResponseData::getBonusBalance() const {
+            int64_t ResponseData::getBonusBalance() const {
                 return m_BonusBalance;
             }
 
@@ -1357,7 +1357,7 @@ namespace Lanter {
                 return !isFieldSet(ResponseField::BonusBalance);
             }
 
-            uint64_t ResponseData::getBonusAmount() const {
+            int64_t ResponseData::getBonusAmount() const {
                 return m_BonusAmount;
             }
 
@@ -1414,6 +1414,26 @@ namespace Lanter {
                 m_FinalizationRequired = false;
                 m_FieldsSet.erase(ResponseField::FinalizationRequired);
                 return !isFieldSet(ResponseField::FinalizationRequired);
+            }
+
+            const std::string &ResponseData::getCfgTerminalID() const {
+                return m_CfgTerminalID;
+            }
+
+            bool ResponseData::setCfgTerminalID(const std::string &terminalId) {
+                bool result = false;
+                if (checkTerminalIDRange(terminalId)) {
+                    m_CfgTerminalID = terminalId;
+                    m_FieldsSet.insert(ResponseField::CfgTerminalID);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetCfgTerminalID() {
+                m_CfgTerminalID.clear();
+                m_FieldsSet.erase(ResponseField::CfgTerminalID);
+                return !isFieldSet(ResponseField::CfgTerminalID);
             }
         }
     }

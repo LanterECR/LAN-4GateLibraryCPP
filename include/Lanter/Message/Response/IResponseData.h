@@ -869,7 +869,7 @@ namespace Lanter {
 
                 /// \brief Возвращает баланс бонусного счета
                 /// \return Если поле установлено - баланс бонусного счета в диапазоне [0, 999999999999]. Иначе -1.
-                virtual uint64_t getBonusBalance() const = 0;
+                virtual int64_t getBonusBalance() const = 0;
 
                 /// \brief Устанавливает баланс бонусного счета
                 /// \param balance Значение в диапазоне [0, 999999999999]
@@ -883,7 +883,7 @@ namespace Lanter {
 
                 /// \brief Возвращает сумму бонусов, использованных в операции
                 /// \return Если поле установлено - количество бонусов в диапазоне [0, 999999999999]. Иначе -1.
-                virtual uint64_t getBonusAmount() const = 0;
+                virtual int64_t getBonusAmount() const = 0;
 
                 /// \brief Устанавливает сумму бонусов, использованных в операции
                 /// \param amount Количество бонусов в диапазоне [0, 999999999999].

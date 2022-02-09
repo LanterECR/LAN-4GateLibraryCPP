@@ -363,13 +363,13 @@ namespace Lanter {
 
                 bool resetApplicationLabel() override;
 
-                uint64_t getBonusBalance() const override;
+                int64_t getBonusBalance() const override;
 
                 bool setBonusBalance(int64_t balance) override;
 
                 bool resetBonusBalance() override;
 
-                uint64_t getBonusAmount() const override;
+                int64_t getBonusAmount() const override;
 
                 bool setBonusAmount(int64_t amount) override;
 
@@ -386,6 +386,12 @@ namespace Lanter {
                 bool setFinalizationRequired(bool required) override;
 
                 bool resetFinalizationRequired() override;
+
+                const std::string &getCfgTerminalID() const override;
+
+                bool setCfgTerminalID(const std::string &terminalId) override;
+
+                bool resetCfgTerminalID() override;
 
             private:
                 void initValidator();
@@ -425,6 +431,7 @@ namespace Lanter {
                 std::string m_STAN;
                 std::string m_TransactionID;
                 std::string m_TerminalID;
+                std::string m_CfgTerminalID;
                 std::string m_CardEmvAid;
                 std::string m_CardAppName;
                 CardInputMethod m_CardInputMethod = CardInputMethod::NoMethod;
