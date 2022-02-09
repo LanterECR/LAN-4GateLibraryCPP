@@ -423,6 +423,20 @@ namespace Lanter {
                 /// \return true, если успешно удалено.
                 virtual bool resetTerminalID() = 0;
 
+                /// \brief Возвращает ID терминала в системе параметризации
+                /// \return Строка, содержащая ID терминала в системе параметризации
+                virtual const std::string &getCfgTerminalID() const = 0;
+
+                /// \brief Устанавливает ID терминала в системе параметризации
+                /// \param[in] terminalId Строка, содержащая ID терминала в системе параметризации
+                /// \return true, если поле успешно установлено
+                virtual bool setCfgTerminalID(const std::string &terminalId) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля CfgTerminalID
+                /// и удаляет из списка установленных полей
+                /// \return true, если успешно удалено.
+                virtual bool resetCfgTerminalID() = 0;
+
                 /// \brief Возвращает EMV AID карты
                 /// \return Строка, содержащая EMV AID
                 virtual const std::string &getCardEmvAid() const = 0;
