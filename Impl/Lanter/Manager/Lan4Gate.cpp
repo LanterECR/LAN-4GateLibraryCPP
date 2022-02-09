@@ -44,6 +44,7 @@ namespace Lanter {
                 m_IsStarted = m_Communication != nullptr;
                 m_IsStarted = m_IsStarted && createParser();
                 m_IsStarted = m_IsStarted && createBuilder();
+                m_IsStarted = m_IsStarted && openConnection();
             }
             return m_IsStarted ? ILan4Gate::Status::Success : ILan4Gate::Status::Error;
         }
