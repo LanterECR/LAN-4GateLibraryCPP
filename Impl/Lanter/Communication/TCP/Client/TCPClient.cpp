@@ -14,7 +14,7 @@ namespace Lanter {
         }
 
         bool TCPClient::open() {
-            return connect();
+            return true;
         }
 
         bool TCPClient::close() {
@@ -75,7 +75,6 @@ namespace Lanter {
             if(m_CurrentConnection) {
                 m_CurrentConnection->stop();
             }
-            m_CurrentConnection.reset();
         }
     }
 }
