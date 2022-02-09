@@ -72,7 +72,7 @@ TEST(TestJSONFields, CheckResponseFields) {
     EXPECT_FALSE(JSONResponseFields::getSTAN().empty());
     EXPECT_FALSE(JSONResponseFields::getTransactionID().empty());
     EXPECT_FALSE(JSONResponseFields::getTerminalID().empty());
-    EXPECT_FALSE(JSONResponseFields::getCfgTerminalId().empty());
+    EXPECT_FALSE(JSONResponseFields::getCfgTerminalID().empty());
     EXPECT_FALSE(JSONResponseFields::getCardEmvAid().empty());
     EXPECT_FALSE(JSONResponseFields::getCardAppName().empty());
     EXPECT_FALSE(JSONResponseFields::getCardInputMethod().empty());
