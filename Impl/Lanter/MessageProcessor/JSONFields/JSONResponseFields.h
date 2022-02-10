@@ -57,7 +57,7 @@ namespace Lanter {
             static inline std::string getSalesAmount() { return "SalesAmount"; }
             static inline std::string getVoidAmount() { return "VoidAmount"; }
             static inline std::string getRefundAmount() { return "RefundAmount"; }
-            static inline std::string getCardPanHash() { return "CardPANHash"; }
+            static inline std::string getCardPANHash() { return "CardPANHash"; }
             static inline std::string getReceiptLine1() { return "ReceiptLine1"; }
             static inline std::string getReceiptLine2() { return "ReceiptLine2"; }
             static inline std::string getReceiptLine3() { return "ReceiptLine3"; }
