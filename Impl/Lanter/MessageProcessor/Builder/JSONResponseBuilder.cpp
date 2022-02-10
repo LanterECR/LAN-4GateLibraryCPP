@@ -440,9 +440,9 @@ namespace Lanter {
 
             bool JSONResponseBuilder::addFieldCardPANHash(const IResponseData &responseData, Json::Value &object) {
                 if (responseData.isFieldSet(ResponseField::CardPANHash)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getCardPanHash(), responseData.getCardPANHash());
+                    AddFieldsHelper::addField(object, JSONResponseFields::getCardPANHash(), responseData.getCardPANHash());
                 }
-                return fieldExists(object, JSONResponseFields::getCardPanHash());
+                return fieldExists(object, JSONResponseFields::getCardPANHash());
             }
 
             bool JSONResponseBuilder::addFieldReceiptLine1(const IResponseData &responseData, Json::Value &object) {
