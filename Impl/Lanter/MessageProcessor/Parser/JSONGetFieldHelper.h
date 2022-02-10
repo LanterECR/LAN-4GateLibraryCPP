@@ -11,6 +11,8 @@ namespace Lanter {
         namespace Parser {
             class JSONGetFieldHelper {
             public:
+                static bool getField(const Json::Value &object, const std::string &fieldName, bool &value);
+
                 static bool getField(const Json::Value &object, const std::string &fieldName, int &value);
 
                 static bool getField(const Json::Value &object, const std::string &fieldName, int64_t &value);
