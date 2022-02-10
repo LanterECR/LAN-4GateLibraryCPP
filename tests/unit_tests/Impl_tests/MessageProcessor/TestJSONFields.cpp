@@ -96,7 +96,7 @@ TEST(TestJSONFields, CheckResponseFields) {
     EXPECT_FALSE(JSONResponseFields::getSalesAmount().empty());
     EXPECT_FALSE(JSONResponseFields::getVoidAmount().empty());
     EXPECT_FALSE(JSONResponseFields::getRefundAmount().empty());
-    EXPECT_FALSE(JSONResponseFields::getCardPanHash().empty());
+    EXPECT_FALSE(JSONResponseFields::getCardPANHash().empty());
     EXPECT_FALSE(JSONResponseFields::getReceiptLine1().empty());
     EXPECT_FALSE(JSONResponseFields::getReceiptLine2().empty());
     EXPECT_FALSE(JSONResponseFields::getReceiptLine3().empty());
