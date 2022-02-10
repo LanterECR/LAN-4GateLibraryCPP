@@ -23,6 +23,7 @@ namespace Lanter {
                 appendOptionalField(ResponseField::CardDataEnc);
                 appendOptionalField(ResponseField::CardholderName);
                 appendOptionalField(ResponseField::CardholderAuthMethod);
+                appendOptionalField(ResponseField::CardPANHash);
             }
         }
     }
