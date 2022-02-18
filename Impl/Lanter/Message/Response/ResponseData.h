@@ -321,6 +321,78 @@ namespace Lanter {
 
                 bool resetRefundArray() override;
 
+                const std::string &getCardPANHash() const override;
+
+                bool setCardPANHash(const std::string &pan) override;
+
+                bool resetCardPANHash() override;
+
+                const std::string &getReceiptLine1() const override;
+
+                bool setReceiptLine1(const std::string &text) override;
+
+                bool resetReceiptLine1() override;
+
+                const std::string &getReceiptLine2() const override;
+
+                bool setReceiptLine2(const std::string &text) override;
+
+                bool resetReceiptLine2() override;
+
+                const std::string &getReceiptLine3() const override;
+
+                bool setReceiptLine3(const std::string &text) override;
+
+                bool resetReceiptLine3() override;
+
+                const std::string &getReceiptLine4() const override;
+
+                bool setReceiptLine4(const std::string &text) override;
+
+                bool resetReceiptLine4() override;
+
+                const std::string &getReceiptLine5() const override;
+
+                bool setReceiptLine5(const std::string &text) override;
+
+                bool resetReceiptLine5() override;
+
+                const std::string &getApplicationLabel() const override;
+
+                bool setApplicationLabel(const std::string &label) override;
+
+                bool resetApplicationLabel() override;
+
+                int64_t getBonusBalance() const override;
+
+                bool setBonusBalance(int64_t balance) override;
+
+                bool resetBonusBalance() override;
+
+                int64_t getBonusAmount() const override;
+
+                bool setBonusAmount(int64_t amount) override;
+
+                bool resetBonusAmount() override;
+
+                const std::string &getHashCardTrack2() const override;
+
+                bool setHashCardTrack2(const std::string &hashTrack2) override;
+
+                bool resetHashCardTrack2() override;
+
+                bool getFinalizationRequired() const override;
+
+                bool setFinalizationRequired(bool required) override;
+
+                bool resetFinalizationRequired() override;
+
+                const std::string &getCfgTerminalID() const override;
+
+                bool setCfgTerminalID(const std::string &terminalId) override;
+
+                bool resetCfgTerminalID() override;
+
             private:
                 void initValidator();
                 void deinitValidator();
@@ -359,6 +431,7 @@ namespace Lanter {
                 std::string m_STAN;
                 std::string m_TransactionID;
                 std::string m_TerminalID;
+                std::string m_CfgTerminalID;
                 std::string m_CardEmvAid;
                 std::string m_CardAppName;
                 CardInputMethod m_CardInputMethod = CardInputMethod::NoMethod;
@@ -379,6 +452,19 @@ namespace Lanter {
                 int32_t m_VoidCount = -1;
                 int64_t m_RefundAmount = -1;
                 int32_t m_RefundCount = -1;
+
+                std::string m_CardPANHash;
+                std::string m_ReceiptLine1;
+                std::string m_ReceiptLine2;
+                std::string m_ReceiptLine3;
+                std::string m_ReceiptLine4;
+                std::string m_ReceiptLine5;
+                std::string m_ApplicationLabel;
+                int64_t m_BonusBalance = -1;
+                int64_t m_BonusAmount = -1;
+                std::string m_HashCardTrack2;
+                bool m_FinalizationRequired = false;
+
                 std::vector<std::shared_ptr<IResponseData> > m_SalesArray;
                 std::vector<std::shared_ptr<IResponseData> > m_VoidArray;
                 std::vector<std::shared_ptr<IResponseData> > m_RefundArray;

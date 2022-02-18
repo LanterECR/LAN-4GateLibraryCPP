@@ -59,6 +59,13 @@ namespace Lanter {
                 appendMandatoryField(ResponseField::EcrNumber);
                 appendMandatoryField(ResponseField::OperationCode);
                 appendMandatoryField(ResponseField::Status);
+                appendOptionalField(ResponseField::ReceiptLine1);
+                appendOptionalField(ResponseField::ReceiptLine2);
+                appendOptionalField(ResponseField::ReceiptLine3);
+                appendOptionalField(ResponseField::ReceiptLine4);
+                appendOptionalField(ResponseField::ReceiptLine5);
+                appendOptionalField(ResponseField::ApplicationLabel);
+                appendOptionalField(ResponseField::FinalizationRequired);
             }
 
             void BasicValidator::addSpecificFields() {

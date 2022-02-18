@@ -1,10 +1,24 @@
 #include "JSONGetFieldHelper.h"
 
-#include "Lanter/MessageProcessor/JSONFieldExists.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONFieldExists.h"
 
 namespace Lanter {
     namespace MessageProcessor {
         namespace Parser {
+            bool JSONGetFieldHelper::getField(const Json::Value &object, const std::string &fieldName, bool &value) {
+                bool result = false;
+                if(fieldExists(object, fieldName)) {
+                    if (object[fieldName].isInt()) {
+                        value = object[fieldName].asInt();
+                        result = true;
+                    } else if (object[fieldName].isBool()) {
+                        value = object[fieldName].asBool();
+                        result = true;
+                    }
+                }
+                return result;
+            }
+
             bool JSONGetFieldHelper::getField(const Json::Value &object, const std::string &fieldName, int &value) {
                 bool result = fieldExists(object, fieldName) && object[fieldName].isInt();
                 if (result) {

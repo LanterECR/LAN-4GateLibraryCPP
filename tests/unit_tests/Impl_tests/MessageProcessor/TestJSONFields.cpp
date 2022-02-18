@@ -1,6 +1,12 @@
 #include "gtest/gtest.h"
 
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONClassFieldsValues.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRootFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRequestFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONResponseFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONNotificationFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONInteractionFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONCommunicationFields.h"
 
 using namespace Lanter;
 using namespace Lanter::MessageProcessor;
@@ -37,7 +43,6 @@ TEST(TestJSONFields, CheckRequestFields) {
     EXPECT_FALSE(JSONRequestFields::getProviderCode().empty());
     EXPECT_FALSE(JSONRequestFields::getAdditionalInfo().empty());
     EXPECT_FALSE(JSONRequestFields::getCfgTerminalId().empty());
-    EXPECT_FALSE(JSONRequestFields::getStatus().empty());
 }
 
 TEST(TestJSONFields, CheckResponseFields) {
@@ -67,7 +72,7 @@ TEST(TestJSONFields, CheckResponseFields) {
     EXPECT_FALSE(JSONResponseFields::getSTAN().empty());
     EXPECT_FALSE(JSONResponseFields::getTransactionID().empty());
     EXPECT_FALSE(JSONResponseFields::getTerminalID().empty());
-    EXPECT_FALSE(JSONResponseFields::getCfgTerminalId().empty());
+    EXPECT_FALSE(JSONResponseFields::getCfgTerminalID().empty());
     EXPECT_FALSE(JSONResponseFields::getCardEmvAid().empty());
     EXPECT_FALSE(JSONResponseFields::getCardAppName().empty());
     EXPECT_FALSE(JSONResponseFields::getCardInputMethod().empty());
@@ -91,7 +96,7 @@ TEST(TestJSONFields, CheckResponseFields) {
     EXPECT_FALSE(JSONResponseFields::getSalesAmount().empty());
     EXPECT_FALSE(JSONResponseFields::getVoidAmount().empty());
     EXPECT_FALSE(JSONResponseFields::getRefundAmount().empty());
-    EXPECT_FALSE(JSONResponseFields::getCardPanHash().empty());
+    EXPECT_FALSE(JSONResponseFields::getCardPANHash().empty());
     EXPECT_FALSE(JSONResponseFields::getReceiptLine1().empty());
     EXPECT_FALSE(JSONResponseFields::getReceiptLine2().empty());
     EXPECT_FALSE(JSONResponseFields::getReceiptLine3().empty());

@@ -6,9 +6,9 @@
 
 #include "Lanter/Message/Notification/NotificationData.h"
 
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONNotificationFields.h"
 
-#include "Lanter/MessageProcessor/JSONFieldExists.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONFieldExists.h"
 
 using namespace Lanter;
 using namespace Lanter::Notification;

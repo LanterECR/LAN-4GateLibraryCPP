@@ -2,6 +2,7 @@
 
 //Sale operations
 #include "Lanter/Message/Request/Validators/Operations/Sale/AliPay.h"
+#include "Lanter/Message/Request/Validators/Operations/Sale/Payment.h"
 #include "Lanter/Message/Request/Validators/Operations/Sale/FastTrack.h"
 #include "Lanter/Message/Request/Validators/Operations/Sale/MOTO.h"
 #include "Lanter/Message/Request/Validators/Operations/Sale/PreAuth.h"
@@ -62,6 +63,9 @@ namespace Lanter {
                         break;
                     case OperationCode::AliPay:
                         validator = std::make_shared<AliPay>();
+                        break;
+                    case OperationCode::Payment:
+                        validator = std::make_shared<Payment>();
                         break;
                     case OperationCode::PreAuth:
                         validator = std::make_shared<PreAuth>();

@@ -301,6 +301,106 @@ namespace Lanter {
                 /// и удаляет из списка установленных полей
                 /// \return true, если успешно удалено.
                 virtual bool resetAdditionalInfo() = 0;
+
+                /// \brief Возвращает баланс бонусного счета
+                /// \return Если поле установлено - баланс бонусного счета в диапазоне [0, 999999999999]. Иначе -1.
+                virtual int64_t getBonusBalance() const = 0;
+
+                /// \brief Устанавливает баланс бонусного счета
+                /// \param balance Значение в диапазоне [0, 999999999999]
+                /// \return true, если поле успешно установлено
+                virtual bool setBonusBalance(int64_t balance) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля BonusBalance
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetBonusBalance() = 0;
+
+                /// \brief Возвращает сумму бонусов, которые должны быть использованы в операции
+                /// \return Если поле установлено - количество бонусов в диапазоне [0, 999999999999]. Иначе -1.
+                virtual int64_t getBonusAmount() const = 0;
+
+                /// \brief Устанавливает сумму бонусов, которая должна быть использована в операции
+                /// \param amount Количество бонусов в диапазоне [0, 999999999999].
+                /// \return true, если поле успешно установлено
+                virtual bool setBonusAmount(int64_t amount) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля BonusAmount
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetBonusAmount() = 0;
+
+                /// \brief Возвращает кэшированный PAN карты, используемый в операции
+                /// \return Строка, содержащая кэшированный PAN карты, использованный в операции
+                virtual const std::string & getHashCardTrack2() const = 0;
+
+                /// \brief Устанавливает кэшированный PAN карты, используемый в операции
+                /// \param hashTrack2 Строка, содержащая кэшированный PAN карты
+                /// \return true, если поле успешно установлено
+                virtual bool setHashCardTrack2(const std::string & cardTrack2) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля HashCardTrack2
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetHashCardTrack2() = 0;
+
+                /// \brief Возвращает код провайдера оплаты. Например, ID оператора связи
+                /// Используется для операции Payment
+                /// \return
+                virtual const std::string & getPaymentProviderCode() const = 0;
+
+                /// \brief Устанавливает код провайдера оплаты. Например, ID оператора связи
+                /// Используется для операции Payment
+                /// \param code строка, содержащая код провайдера оплаты
+                /// \return true, если поле успешно установлено
+                virtual bool setPaymentProviderCode(const std::string & code) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля HashCardTrack2
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetPaymentProviderCode() = 0;
+
+                /// \brief Возвращает первый параметр оплаты
+                /// \return Строка, содержащая первый параметр оплаты
+                virtual const std::string & getPaymentParam1() const = 0;
+
+                /// \brief Устанавливает первый параметр оплаты
+                /// \param param Строка, содержащая первый параметр оплаты
+                /// \return true, если поле успешно установлено
+                virtual bool setPaymentParam1(const std::string & param) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля PaymentParam1
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetPaymentParam1() = 0;
+
+                /// \brief Возвращает второй параметр оплаты
+                /// \return Строка, содержащая второй параметр оплаты
+                virtual const std::string & getPaymentParam2() const = 0;
+
+                /// \brief Устанавливает второй параметр оплаты
+                /// \param param Строка, содержащая второй параметр оплаты
+                /// \return true, если поле успешно установлено
+                virtual bool setPaymentParam2(const std::string & param) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля PaymentParam2
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetPaymentParam2() = 0;
+
+                /// \brief Возвращает третий параметр оплаты
+                /// \return Строка, содержащая третий параметр оплаты
+                virtual const std::string & getPaymentParam3() const = 0;
+
+                /// \brief Устанавливает третий параметр оплаты
+                /// \param param Строка, содержащая третий параметр оплаты
+                /// \return true, если поле успешно установлено
+                virtual bool setPaymentParam3(const std::string & param) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля PaymentParam3
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetPaymentParam3() = 0;
             };//class IRequestData
         }//namespace Request
     }//namespace Message

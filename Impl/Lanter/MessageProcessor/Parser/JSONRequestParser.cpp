@@ -1,7 +1,7 @@
 #include "JSONRequestParser.h"
 
 #include "JSONGetFieldHelper.h"
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRequestFields.h"
 #include "Lanter/Message/Request/RequestDataFactory.h"
 
 namespace Lanter {
@@ -189,40 +189,109 @@ namespace Lanter {
                 return result;
             }
 
+            bool JSONRequestParser::getFieldBonusBalance(const Json::Value &object, IRequestData &requestData) {
+                int64_t bonusBalance;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getBonusBalance(),
+                                                           bonusBalance);
+                bool result = exists && requestData.setBonusBalance(bonusBalance);
+
+                return result;
+            }
+
+            bool JSONRequestParser::getFieldBonusAmount(const Json::Value &object, IRequestData &requestData) {
+                int64_t bonusAmount;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getBonusAmount(),
+                                                           bonusAmount);
+                bool result = exists && requestData.setBonusAmount(bonusAmount);
+
+                return result;
+            }
+
+            bool JSONRequestParser::getFieldHashCardTrack2(const Json::Value &object, IRequestData &requestData) {
+                std::string hashCardTrack2;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getHashCardTrack2(),
+                                                           hashCardTrack2);
+                bool result = exists && requestData.setHashCardTrack2(hashCardTrack2);
+
+                return result;
+            }
+
+            bool JSONRequestParser::getFieldPaymentProviderCode(const Json::Value &object, IRequestData &requestData) {
+                std::string paymentProviderCode;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getPaymentProviderCode(),
+                                                           paymentProviderCode);
+                bool result = exists && requestData.setPaymentProviderCode(paymentProviderCode);
+
+                return result;
+            }
+
+            bool JSONRequestParser::getFieldPaymentParam1(const Json::Value &object, IRequestData &requestData) {
+                std::string paymentParam;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getPaymentParam1(),
+                                                           paymentParam);
+                bool result = exists && requestData.setPaymentParam1(paymentParam);
+
+                return result;
+            }
+
+            bool JSONRequestParser::getFieldPaymentParam2(const Json::Value &object, IRequestData &requestData) {
+                std::string paymentParam;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getPaymentParam2(),
+                                                           paymentParam);
+                bool result = exists && requestData.setPaymentParam2(paymentParam);
+
+                return result;
+            }
+
+            bool JSONRequestParser::getFieldPaymentParam3(const Json::Value &object, IRequestData &requestData) {
+                std::string paymentParam;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getPaymentParam3(),
+                                                           paymentParam);
+                bool result = exists && requestData.setPaymentParam3(paymentParam);
+
+                return result;
+            }
+
             void JSONRequestParser::initFunctionsMap() {
 
-                m_ExtractFunctions[RequestField::EcrNumber] = std::bind(&JSONRequestParser::getFieldEcrNumber, this, _1,
-                                                                        _2);
-                m_ExtractFunctions[RequestField::EcrMerchantNumber] = std::bind(
-                        &JSONRequestParser::getFieldEcrMerchantNumber, this, _1, _2);
-                m_ExtractFunctions[RequestField::OperationCode] = std::bind(&JSONRequestParser::getFieldOperationCode,
-                                                                            this, _1, _2);
-                m_ExtractFunctions[RequestField::Amount] = std::bind(&JSONRequestParser::getFieldAmount, this, _1, _2);
-                m_ExtractFunctions[RequestField::PartialAmount] = std::bind(&JSONRequestParser::getFieldPartialAmount,
-                                                                            this, _1, _2);
-                m_ExtractFunctions[RequestField::TipsAmount] = std::bind(&JSONRequestParser::getFieldTipsAmount, this,
-                                                                         _1, _2);
-                m_ExtractFunctions[RequestField::CashbackAmount] = std::bind(&JSONRequestParser::getFieldCashbackAmount,
-                                                                             this, _1, _2);
-                m_ExtractFunctions[RequestField::CurrencyCode] = std::bind(&JSONRequestParser::getFieldCurrencyCode,
-                                                                           this, _1, _2);
-                m_ExtractFunctions[RequestField::RRN] = std::bind(&JSONRequestParser::getFieldRRN, this, _1, _2);
-                m_ExtractFunctions[RequestField::AuthCode] = std::bind(&JSONRequestParser::getFieldAuthCode, this, _1,
-                                                                       _2);
-                m_ExtractFunctions[RequestField::ReceiptReference] = std::bind(
-                        &JSONRequestParser::getFieldReceiptReference, this, _1, _2);
-                m_ExtractFunctions[RequestField::TransactionID] = std::bind(&JSONRequestParser::getFieldTransactionID,
-                                                                            this, _1, _2);
-                m_ExtractFunctions[RequestField::CardDataEnc] = std::bind(&JSONRequestParser::getFieldCardDataEnc, this,
-                                                                          _1, _2);
-                m_ExtractFunctions[RequestField::OpenTags] = std::bind(&JSONRequestParser::getFieldOpenTags, this, _1,
-                                                                       _2);
-                m_ExtractFunctions[RequestField::EncTags] = std::bind(&JSONRequestParser::getFieldEncTags, this, _1,
-                                                                      _2);
-                m_ExtractFunctions[RequestField::ProviderCode] = std::bind(&JSONRequestParser::getFieldProviderCode,
-                                                                           this, _1, _2);
-                m_ExtractFunctions[RequestField::AdditionalInfo] = std::bind(&JSONRequestParser::getFieldAdditionalInfo,
-                                                                             this, _1, _2);
+                m_ExtractFunctions[RequestField::EcrNumber] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldEcrNumber(object, requestData); };
+                m_ExtractFunctions[RequestField::EcrMerchantNumber] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldEcrMerchantNumber(object, requestData); };
+                m_ExtractFunctions[RequestField::OperationCode] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldOperationCode(object, requestData); };
+                m_ExtractFunctions[RequestField::Amount] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldAmount(object, requestData); };
+                m_ExtractFunctions[RequestField::PartialAmount] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldPartialAmount(object, requestData); };
+                m_ExtractFunctions[RequestField::TipsAmount] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldTipsAmount(object, requestData); };
+                m_ExtractFunctions[RequestField::CashbackAmount] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldCashbackAmount(object, requestData); };
+                m_ExtractFunctions[RequestField::CurrencyCode] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldCurrencyCode(object, requestData); };
+                m_ExtractFunctions[RequestField::RRN] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldRRN(object, requestData); };
+                m_ExtractFunctions[RequestField::AuthCode] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldAuthCode(object, requestData); };
+                m_ExtractFunctions[RequestField::ReceiptReference] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldReceiptReference(object, requestData); };
+                m_ExtractFunctions[RequestField::TransactionID] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldTransactionID(object, requestData); };
+                m_ExtractFunctions[RequestField::CardDataEnc] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldCardDataEnc(object, requestData); };
+                m_ExtractFunctions[RequestField::OpenTags] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldOpenTags(object, requestData); };
+                m_ExtractFunctions[RequestField::EncTags] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldEncTags(object, requestData); };
+                m_ExtractFunctions[RequestField::ProviderCode] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldProviderCode(object, requestData); };
+                m_ExtractFunctions[RequestField::AdditionalInfo] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldAdditionalInfo(object, requestData); };
+                m_ExtractFunctions[RequestField::BonusBalance] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldBonusBalance(
+                        object, requestData); };
+                m_ExtractFunctions[RequestField::BonusAmount] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldBonusAmount(
+                        object, requestData); };
+                m_ExtractFunctions[RequestField::HashCardTrack2] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldHashCardTrack2(
+                        object, requestData); };
+                m_ExtractFunctions[RequestField::PaymentProviderCode] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldPaymentProviderCode(
+                        object, requestData); };
+                m_ExtractFunctions[RequestField::PaymentParam1] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldPaymentParam1(
+                        object, requestData); };
+                m_ExtractFunctions[RequestField::PaymentParam2] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldPaymentParam2(
+                        object, requestData); };
+                m_ExtractFunctions[RequestField::PaymentParam3] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldPaymentParam3(
+                        object, requestData); };
             }
 
             bool JSONRequestParser::getFields(const Json::Value &object, IRequestData &requestData) {

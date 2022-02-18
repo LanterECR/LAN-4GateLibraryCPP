@@ -5,7 +5,7 @@
 ![Сборка macOS](../..//workflows/macOS/badge.svg) 
 ![Сборка Windows](../..//workflows/Windows/badge.svg)
 
-[![Release](https://img.shields.io/badge/release-v0.9.5-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibraryCPP/releases/tag/v0.9.5)
+[![Release](https://img.shields.io/badge/release-v0.9.6-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibraryCPP/releases/tag/v0.9.6)
 [![badge](https://img.shields.io/badge/document-doxygen-blue)](https://LanterECR.github.io/LAN-4GateLibraryCPP/doxygen/index.html)
 
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/LanterECR/LAN-4GateLibraryCPP.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/LanterECR/LAN-4GateLibraryCPP/alerts/)
@@ -39,8 +39,9 @@
    2. [Другие системы сборки](#Другие-системы-сборки)
    3. [Использование совместно с языками, отличными от C++](#Использование-совместно-с-языками,-отличными-от-C++)
 7. [Использование](#Использование)
-   1. [C++](#C++)
-   2. [C#](#C#)
+   1. [CPP](#CPP)
+   2. [CSHARP](#CSHARP)
+   3. [Java](#Java)
 
 
 Описание
@@ -125,7 +126,10 @@ cmake -DL4G_BUILD_SWIG=[ON|OFF] [прочие опции...]
 ### L4G_SWIG_TARGET_LANGUAGE
 Указывает целевой язык для генерации обертки с помощью SWIG. Имеет действие только при включенной опции L4G_BUILD_SWIG
 
-В текущей версии поддерживается генерация оберток только для языка C# 
+В текущей версии поддерживается генерация оберток для C# и Java
+
+- ```-DL4G_SWIG_TARGET_LANGUAGE=csharp``` - генерация обертки для C#
+- ```-DL4G_SWIG_TARGET_LANGUAGE=java``` - генерация обертки для Java
 
 Значение по умолчанию - csharp
 
@@ -309,7 +313,7 @@ target_link_libraries(Example L4G::l4g_shared)
 Использование
 -------
 
-### C++
+### CPP
 Для использования функционала библиотеки с языком C++ необходимо подключить заголовочный файл Lanter/Lan4GateInclude.h
 
 Данный файл подключает фабрику соединений, фабрику менеджера ILan4Gate и функцию получения версии библиотеки.
@@ -410,7 +414,7 @@ int main(int argc, char* argv[])
 }
 ```
 
-### C#
+### CSHARP
 Для использования функционала библиотеки с языком C# необходимо подключить файл Lan4gateInterface.cs, 
 содержащий интерфейс доступа, к проекту, а библиотеку Lan4Gate.dll добавить в зависимости проекта. Библиотека должна находиться в одном каталоге с исполняемым файлом
 
@@ -503,6 +507,137 @@ namespace Lan4GateExample
                 manager.sendMessage(manager.getPreparedRequest(Lanter.Lan4Gate.OperationCode.FinalizeTransaction));
             }
         }
+    }
+}
+```
+
+### Java
+Для использования функционала библиотеки с языком Java необходимо подключить файл Lan4gateInterface.jar,
+содержащий интерфейс доступа, к проекту, а библиотеку Lan4Gate.dll добавить в зависимости проекта.
+
+Интерфейс доступа находится в пакете org.lanter.lan4gate
+
+ВНИМАНИЕ: SWIG не генерирует interface для Java. Вместо interface генерируются полноценные классы.
+
+В следующем примере создается менеджер ILan4Gate с логическим идентификатором 1. Ему передается TCP клиент на 127.0.0.1, который стучится на порт 20501.
+
+Менеджер запускает отдельный поток.
+```java
+import org.lanter.lan4gate.CommunicationFactory;
+import org.lanter.lan4gate.IConnectionCallback;
+import org.lanter.lan4gate.IRequestCallback;
+import org.lanter.lan4gate.IRequestData;
+import org.lanter.lan4gate.RequestField;
+import org.lanter.lan4gate.ILan4Gate;
+import org.lanter.lan4gate.Lan4GateFactory;
+
+public class Main {
+static {
+System.loadLibrary("Lan4Gate");
+}
+public static void main(String[] args) {
+try {
+
+        } catch (UnsatisfiedLinkError ex) {
+            System.out.println(ex.getMessage());
+        }
+        short num = 1;
+        ILan4Gate gate = Lan4GateFactory.getLan4Gate(num, CommunicationFactory.getTcpClient(20501));
+
+        gate.addConnectionCallback(new IConnectionCallback(){
+            public void newState(boolean state) {
+                System.out.println("New state " + state);
+            }
+        });
+
+        gate.addRequestCallback(new IRequestCallback(){
+            public void newData(IRequestData data) {
+                System.out.println("=======REQUEST========");
+                for(RequestField field : data.getFieldsSet()) {
+                    System.out.print("\t-" + field + ": ");
+
+                    switch (field) {
+
+                        case EcrNumber:
+                            System.out.println(data.getEcrNumber());
+                            break;
+                        case EcrMerchantNumber:
+                            System.out.println(data.getEcrMerchantNumber());
+                            break;
+                        case OperationCode:
+                            System.out.println(data.getOperationCode());
+                            break;
+                        case Amount:
+                            System.out.println(data.getAmount());
+                            break;
+                        case PartialAmount:
+                            System.out.println(data.getPartialAmount());
+                            break;
+                        case TipsAmount:
+                            System.out.println(data.getTipsAmount());
+                            break;
+                        case CashbackAmount:
+                            System.out.println(data.getCashbackAmount());
+                            break;
+                        case CurrencyCode:
+                            System.out.println(data.getCurrencyCode());
+                            break;
+                        case RRN:
+                            System.out.println(data.getRRN());
+                            break;
+                        case AuthCode:
+                            System.out.println(data.getAuthCode());
+                            break;
+                        case ReceiptReference:
+                            System.out.println(data.getReceiptReference());
+                            break;
+                        case TransactionID:
+                            System.out.println(data.getTransactionID());
+                            break;
+                        case CardDataEnc:
+                            System.out.println(data.getCardDataEnc());
+                            break;
+                        case OpenTags:
+                            System.out.println(data.getOpenTags());
+                            break;
+                        case EncTags:
+                            System.out.println(data.getEncTags());
+                            break;
+                        case ProviderCode:
+                            System.out.println(data.getProviderCode());
+                            break;
+                        case AdditionalInfo:
+                            System.out.println(data.getAdditionalInfo());
+                            break;
+                        case BonusBalance:
+                            System.out.println(data.getBonusBalance());
+                            break;
+                        case BonusAmount:
+                            System.out.println(data.getBonusAmount());
+                            break;
+                        case HashCardTrack2:
+                            System.out.println(data.getHashCardTrack2());
+                            break;
+                        case PaymentProviderCode:
+                            System.out.println(data.getPaymentProviderCode());
+                            break;
+                        case PaymentParam1:
+                            System.out.println(data.getPaymentParam1());
+                            break;
+                        case PaymentParam2:
+                            System.out.println(data.getPaymentParam2());
+                            break;
+                        case PaymentParam3:
+                            System.out.println(data.getPaymentParam3());
+                            break;
+                    }
+                }
+                System.out.println();
+            }});
+
+        gate.runOnThread();
+
+        while(true);
     }
 }
 ```

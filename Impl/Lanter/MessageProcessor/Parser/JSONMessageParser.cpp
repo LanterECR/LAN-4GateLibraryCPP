@@ -7,7 +7,7 @@
 
 #include "Lanter/Utils/StringConverter.h"
 
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRootFields.h"
 
 #include "JSONRequestParser.h"
 #include "JSONResponseParser.h"

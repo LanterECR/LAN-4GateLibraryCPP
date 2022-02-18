@@ -1,7 +1,7 @@
 #include "JSONRequestBuilder.h"
 
-#include "Lanter/MessageProcessor/JSONFieldExists.h"
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONFieldExists.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRequestFields.h"
 
 #include "Lanter/MessageProcessor/Builder/JSONAddFieldHelper.h"
 
@@ -151,39 +151,87 @@ namespace Lanter {
                 return fieldExists(object, JSONRequestFields::getAdditionalInfo());
             }
 
+            bool JSONRequestBuilder::addFieldBonusBalance(const IRequestData &requestData, Json::Value &object) {
+                if (requestData.isFieldSet(RequestField::BonusBalance)) {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getBonusBalance(),
+                                              requestData.getBonusBalance());
+                }
+                return fieldExists(object, JSONRequestFields::getBonusBalance());
+            }
+
+            bool JSONRequestBuilder::addFieldBonusAmount(const IRequestData &requestData, Json::Value &object) {
+                if (requestData.isFieldSet(RequestField::BonusAmount)) {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getBonusAmount(),
+                                              requestData.getBonusAmount());
+                }
+                return fieldExists(object, JSONRequestFields::getBonusAmount());
+            }
+
+            bool JSONRequestBuilder::addFieldHashCardTrack2(const IRequestData &requestData, Json::Value &object) {
+                if (requestData.isFieldSet(RequestField::HashCardTrack2)) {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getHashCardTrack2(),
+                                              requestData.getHashCardTrack2());
+                }
+                return fieldExists(object, JSONRequestFields::getHashCardTrack2());
+            }
+
+            bool JSONRequestBuilder::addFieldPaymentProviderCode(const IRequestData &requestData, Json::Value &object) {
+                if (requestData.isFieldSet(RequestField::HashCardTrack2)) {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getHashCardTrack2(),
+                                              requestData.getHashCardTrack2());
+                }
+                return fieldExists(object, JSONRequestFields::getHashCardTrack2());
+            }
+
+            bool JSONRequestBuilder::addFieldPaymentParam1(const IRequestData &requestData, Json::Value &object) {
+                if (requestData.isFieldSet(RequestField::PaymentParam1)) {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getPaymentParam1(),
+                                              requestData.getPaymentParam1());
+                }
+                return fieldExists(object, JSONRequestFields::getPaymentParam1());
+            }
+
+            bool JSONRequestBuilder::addFieldPaymentParam2(const IRequestData &requestData, Json::Value &object) {
+                if (requestData.isFieldSet(RequestField::PaymentParam2)) {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getPaymentParam2(),
+                                              requestData.getPaymentParam2());
+                }
+                return fieldExists(object, JSONRequestFields::getPaymentParam2());
+            }
+
+            bool JSONRequestBuilder::addFieldPaymentParam3(const IRequestData &requestData, Json::Value &object) {
+                if (requestData.isFieldSet(RequestField::PaymentParam3)) {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getPaymentParam3(),
+                                              requestData.getPaymentParam3());
+                }
+                return fieldExists(object, JSONRequestFields::getPaymentParam3());
+            }
+
             void JSONRequestBuilder::initFunctionsMap() {
-                m_InsertFunctions[RequestField::EcrNumber] = std::bind(&JSONRequestBuilder::addFieldEcrNumber, this, _1,
-                                                                       _2);
-                m_InsertFunctions[RequestField::EcrMerchantNumber] = std::bind(
-                        &JSONRequestBuilder::addFieldEcrMerchantNumber, this, _1, _2);
-                m_InsertFunctions[RequestField::OperationCode] = std::bind(&JSONRequestBuilder::addFieldOperationCode,
-                                                                           this, _1, _2);
-                m_InsertFunctions[RequestField::Amount] = std::bind(&JSONRequestBuilder::addFieldAmount, this, _1, _2);
-                m_InsertFunctions[RequestField::PartialAmount] = std::bind(&JSONRequestBuilder::addFieldPartialAmount,
-                                                                           this, _1, _2);
-                m_InsertFunctions[RequestField::TipsAmount] = std::bind(&JSONRequestBuilder::addFieldTipsAmount, this,
-                                                                        _1, _2);
-                m_InsertFunctions[RequestField::CashbackAmount] = std::bind(&JSONRequestBuilder::addFieldCashbackAmount,
-                                                                            this, _1, _2);
-                m_InsertFunctions[RequestField::CurrencyCode] = std::bind(&JSONRequestBuilder::addFieldCurrencyCode,
-                                                                          this, _1, _2);
-                m_InsertFunctions[RequestField::RRN] = std::bind(&JSONRequestBuilder::addFieldRRN, this, _1, _2);
-                m_InsertFunctions[RequestField::AuthCode] = std::bind(&JSONRequestBuilder::addFieldAuthCode, this, _1,
-                                                                      _2);
-                m_InsertFunctions[RequestField::ReceiptReference] = std::bind(
-                        &JSONRequestBuilder::addFieldReceiptReference, this, _1, _2);
-                m_InsertFunctions[RequestField::TransactionID] = std::bind(&JSONRequestBuilder::addFieldTransactionID,
-                                                                           this, _1, _2);
-                m_InsertFunctions[RequestField::CardDataEnc] = std::bind(&JSONRequestBuilder::addFieldCardDataEnc, this,
-                                                                         _1, _2);
-                m_InsertFunctions[RequestField::OpenTags] = std::bind(&JSONRequestBuilder::addFieldOpenTags, this, _1,
-                                                                      _2);
-                m_InsertFunctions[RequestField::EncTags] = std::bind(&JSONRequestBuilder::addFieldEncTags, this, _1,
-                                                                     _2);
-                m_InsertFunctions[RequestField::ProviderCode] = std::bind(&JSONRequestBuilder::addFieldProviderCode,
-                                                                          this, _1, _2);
-                m_InsertFunctions[RequestField::AdditionalInfo] = std::bind(&JSONRequestBuilder::addFieldAdditionalInfo,
-                                                                            this, _1, _2);
+                m_InsertFunctions[RequestField::EcrNumber] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldEcrNumber(requestData, object); };
+                m_InsertFunctions[RequestField::EcrMerchantNumber] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldEcrMerchantNumber(requestData, object); };
+                m_InsertFunctions[RequestField::OperationCode] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldOperationCode(requestData, object); };
+                m_InsertFunctions[RequestField::Amount] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldAmount(requestData, object); };
+                m_InsertFunctions[RequestField::PartialAmount] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPartialAmount(requestData, object); };
+                m_InsertFunctions[RequestField::TipsAmount] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldTipsAmount(requestData, object); };
+                m_InsertFunctions[RequestField::CashbackAmount] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldCashbackAmount(requestData, object); };
+                m_InsertFunctions[RequestField::CurrencyCode] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldCurrencyCode(requestData, object); };
+                m_InsertFunctions[RequestField::RRN] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldRRN(requestData, object); };
+                m_InsertFunctions[RequestField::AuthCode] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldAuthCode(requestData, object); };
+                m_InsertFunctions[RequestField::ReceiptReference] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldReceiptReference(requestData, object); };
+                m_InsertFunctions[RequestField::TransactionID] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldTransactionID(requestData, object); };
+                m_InsertFunctions[RequestField::CardDataEnc] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldCardDataEnc(requestData, object); };
+                m_InsertFunctions[RequestField::OpenTags] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldOpenTags(requestData, object); };
+                m_InsertFunctions[RequestField::EncTags] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldEncTags(requestData, object); };
+                m_InsertFunctions[RequestField::ProviderCode] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldProviderCode(requestData, object); };
+                m_InsertFunctions[RequestField::AdditionalInfo] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldAdditionalInfo(requestData, object); };
+                m_InsertFunctions[RequestField::BonusBalance] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldBonusBalance(requestData, object); };
+                m_InsertFunctions[RequestField::BonusAmount] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldBonusAmount(requestData, object); };
+                m_InsertFunctions[RequestField::HashCardTrack2] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldHashCardTrack2(requestData, object); };
+                m_InsertFunctions[RequestField::PaymentProviderCode] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPaymentProviderCode(requestData, object); };
+                m_InsertFunctions[RequestField::PaymentParam1] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPaymentParam1(requestData, object); };
+                m_InsertFunctions[RequestField::PaymentParam2] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPaymentParam2(requestData, object); };
+                m_InsertFunctions[RequestField::PaymentParam3] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPaymentParam3(requestData, object); };
             }
 
             //TODO переделать нормально

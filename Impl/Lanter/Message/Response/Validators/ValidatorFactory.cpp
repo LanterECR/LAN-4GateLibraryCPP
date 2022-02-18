@@ -8,6 +8,7 @@
 #include "Lanter/Message/Response/Validators/Operations/Refund/RefundWithoutRRN.h"
 
 #include "Lanter/Message/Response/Validators/Operations/Sale/AliPay.h"
+#include "Lanter/Message/Response/Validators/Operations/Sale/Payment.h"
 #include "Lanter/Message/Response/Validators/Operations/Sale/FastTrack.h"
 #include "Lanter/Message/Response/Validators/Operations/Sale/MOTO.h"
 #include "Lanter/Message/Response/Validators/Operations/Sale/PreAuth.h"
@@ -62,6 +63,9 @@ namespace Lanter {
                         break;
                     case OperationCode::AliPay:
                         validator = std::make_shared<AliPay>();
+                        break;
+                    case OperationCode::Payment:
+                        validator = std::make_shared<Payment>();
                         break;
                     case OperationCode::PreAuth:
                         validator = std::make_shared<PreAuth>();
@@ -161,8 +165,6 @@ namespace Lanter {
                         break;
                     default:
                         validator = std::make_shared<BasicValidator>();
-                        break;
-                    case OperationCode::NoOperation:
                         break;
                 }
                 if (validator) {

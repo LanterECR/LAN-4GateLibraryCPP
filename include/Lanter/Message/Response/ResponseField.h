@@ -12,8 +12,8 @@ namespace Lanter {
                 EcrMerchantNumber, ///< Логический номер мерчанта в кассовом ПО
                 OperationCode, ///< Код запрашиваемой операции
                 OriginalOperationCode, ///< Номер оригинальной операции
-                TotalAmount, ///< Общая сумма операции
                 PartialAmount, ///< Часть оригинальной суммы. Используется в операциях отмены и возврата
+                TotalAmount, ///< Общая сумма операции
                 AcquirerFeeAmount, ///< Комиссия эквайера
                 TerminalFeeAmount, ///< Комиссия терминала
                 TipsAmount, ///< Сумма чаевых
@@ -34,6 +34,7 @@ namespace Lanter {
                 STAN, ///< Идентификатор транзакции в финансовом ПО LAN-4Tap
                 TransactionID, ///< Идентификатор транзакции на хосте, полученный в ответ на предыдущую операцию
                 TerminalID, ///< Идентификатор терминала на хосте
+                CfgTerminalID, ///< Идентификатор терминала в системе параметризации
                 CardEmvAid, ///< Идентификатор приложения карты
                 CardAppName, ///< Название приложения карты
                 CardInputMethod, ///< Метод обработки карты
@@ -56,7 +57,18 @@ namespace Lanter {
                 RefundCount, ///< Количество операций возврата, выполненных с момента последней сверки итогов
                 SaleArray, ///< Массив, содержащий краткие сведения операций оплаты
                 VoidArray, ///< Массив, содержащий краткие сведения операций отмены
-                RefundArray ///< Массив, содержащий краткие сведения операций возврата
+                RefundArray, ///< Массив, содержащий краткие сведения операций возврата
+                CardPANHash, ///< Кэш, рассчитанный на основе PAN карты
+                ReceiptLine1, ///< Первая строка заголовка чека
+                ReceiptLine2, ///< Вторая строка заголовка чека
+                ReceiptLine3, ///< Третья строка заголовка чека
+                ReceiptLine4, ///< Четвертая строка заголовка чека
+                ReceiptLine5, ///< Пятая строка заголовка чека
+                ApplicationLabel, ///< Название приложения карты, которое использовалось в операции
+                BonusBalance, ///< Баланс бонусного счета
+                BonusAmount, ///< Сумма бонусов
+                HashCardTrack2, ///< Кэшированный Track 2
+                FinalizationRequired, ///< Флаг, обозначающий необходимость финализации транзакции
             };//enum ResponseField
 
             /// Функция, возвращающая первый значимый элемент перечисления ResponseField
@@ -68,7 +80,7 @@ namespace Lanter {
             /// Функция, возвращающая последний значимый элемент перечисления ResponseField
             /// \return Последний элемент значимый перечисления ResponseField
             constexpr ResponseField getLastResponseField() {
-                return ResponseField::RefundArray;
+                return ResponseField::FinalizationRequired;
             }
         }//namespace Response
     }//namespace Message

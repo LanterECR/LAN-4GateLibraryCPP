@@ -11,6 +11,7 @@ namespace Lanter {
             MOTO, ///< Mail order/Telephone order - оплата заказа через e-mail или телефон
             QuickPayment, ///< Оплата через систему быстрых платежей ЦБ РФ
             AliPay, ///< Оплата через систему AliPay
+            Payment, ///< Операция оплаты счета
 
             PreAuth = 200, ///< Преавторизация
             SalesCompletion, ///< Завершение преавторизации

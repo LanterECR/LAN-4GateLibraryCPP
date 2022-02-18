@@ -423,6 +423,20 @@ namespace Lanter {
                 /// \return true, если успешно удалено.
                 virtual bool resetTerminalID() = 0;
 
+                /// \brief Возвращает ID терминала в системе параметризации
+                /// \return Строка, содержащая ID терминала в системе параметризации
+                virtual const std::string &getCfgTerminalID() const = 0;
+
+                /// \brief Устанавливает ID терминала в системе параметризации
+                /// \param[in] terminalId Строка, содержащая ID терминала в системе параметризации
+                /// \return true, если поле успешно установлено
+                virtual bool setCfgTerminalID(const std::string &terminalId) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля CfgTerminalID
+                /// и удаляет из списка установленных полей
+                /// \return true, если успешно удалено.
+                virtual bool resetCfgTerminalID() = 0;
+
                 /// \brief Возвращает EMV AID карты
                 /// \return Строка, содержащая EMV AID
                 virtual const std::string &getCardEmvAid() const = 0;
@@ -754,6 +768,160 @@ namespace Lanter {
                 /// и удаляет из списка установленных полей
                 /// \return true, если успешно удалено.
                 virtual bool resetRefundArray() = 0;
+
+                /// \brief Возвращает кэшированный PAN карты, полученный при выполнении операции
+                /// \return Кэшированный PAN карты, если поле принято от терминала
+                virtual const std::string & getCardPANHash() const = 0;
+
+                /// \brief Устанавливает кэшированный PAN карты
+                /// \param pan Кэшированный PAN карты
+                /// \return true, если поле успешно установлено
+                virtual bool setCardPANHash(const std::string & pan) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля CardPANHash
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetCardPANHash() = 0;
+
+                /// \brief Возвращает первую строку заголовка чека
+                /// \return Первая строка заголовка чека
+                virtual const std::string & getReceiptLine1() const = 0;
+
+                /// \brief Устанавливает первую строку чека
+                /// \param text Текст первой строки
+                /// \return true, если поле успешно установлено
+                virtual bool setReceiptLine1(const std::string & text) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля ReceiptLine1
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetReceiptLine1() = 0;
+
+                /// \brief Возвращает вторую строку заголовка чека
+                /// \return Вторая строка заголовка чека
+                virtual const std::string & getReceiptLine2() const = 0;
+
+                /// \brief Устанавливает вторую строку чека
+                /// \param text Текст второй строки
+                /// \return true, если поле успешно установлено
+                virtual bool setReceiptLine2(const std::string & text) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля ReceiptLine2
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetReceiptLine2() = 0;
+
+                /// \brief Возвращает третью строку заголовка чека
+                /// \return Третья строка заголовка чека
+                virtual const std::string & getReceiptLine3() const = 0;
+
+                /// \brief Устанавливает третью строку чека
+                /// \param text Текст третьей строки
+                /// \return true, если поле успешно установлено
+                virtual bool setReceiptLine3(const std::string & text) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля ReceiptLine3
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetReceiptLine3() = 0;
+
+                /// \brief Возвращает четвертую строку заголовка чека
+                /// \return Четвертая строка заголовка чека
+                virtual const std::string & getReceiptLine4() const = 0;
+
+                /// \brief Устанавливает четвертую строку чека
+                /// \param text Текст четвертой строки
+                /// \return true, если поле успешно установлено
+                virtual bool setReceiptLine4(const std::string & text) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля ReceiptLine4
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetReceiptLine4() = 0;
+
+                /// \brief Возвращает пятую строку заголовка чека
+                /// \return Пятая строка заголовка чека
+                virtual const std::string & getReceiptLine5() const = 0;
+
+                /// \brief Устанавливает пятую строку чека
+                /// \param text Текст пятой строки
+                /// \return true, если поле успешно установлено
+                virtual bool setReceiptLine5(const std::string & text) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля ReceiptLine5
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetReceiptLine5() = 0;
+
+                /// \brief Возвращает название приложения карты, которое использовалось для проведения
+                /// \return Название приложения карты
+                virtual const std::string & getApplicationLabel() const = 0;
+
+                /// \brief Устанавливает название приложения карты, которое использовалось для проведения операции
+                /// \param label Название приложения карты
+                /// \return true, если поле успешно установлено
+                virtual bool setApplicationLabel(const std::string & label) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля ApplicationLabel
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetApplicationLabel() = 0;
+
+                /// \brief Возвращает баланс бонусного счета
+                /// \return Если поле установлено - баланс бонусного счета в диапазоне [0, 999999999999]. Иначе -1.
+                virtual int64_t getBonusBalance() const = 0;
+
+                /// \brief Устанавливает баланс бонусного счета
+                /// \param balance Значение в диапазоне [0, 999999999999]
+                /// \return true, если поле успешно установлено
+                virtual bool setBonusBalance(int64_t balance) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля BonusBalance
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetBonusBalance() = 0;
+
+                /// \brief Возвращает сумму бонусов, использованных в операции
+                /// \return Если поле установлено - количество бонусов в диапазоне [0, 999999999999]. Иначе -1.
+                virtual int64_t getBonusAmount() const = 0;
+
+                /// \brief Устанавливает сумму бонусов, использованных в операции
+                /// \param amount Количество бонусов в диапазоне [0, 999999999999].
+                /// \return true, если поле успешно установлено
+                virtual bool setBonusAmount(int64_t amount) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля BonusAmount
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetBonusAmount() = 0;
+
+                /// \brief Возвращает кэшированный PAN карты, использованной в операции
+                /// \return Строка, содержащая кэшированный PAN карты, использованный в операции
+                virtual const std::string & getHashCardTrack2() const = 0;
+
+                /// \brief Устанавливает кэшированный PAN карты, использованной в операции
+                /// \param hashTrack2 Строка, содержащая кэшированный PAN карты
+                /// \return true, если поле успешно установлено
+                virtual bool setHashCardTrack2(const std::string & hashTrack2) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля HashCardTrack2
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetHashCardTrack2() = 0;
+
+                /// \brief Возвращает флаг необходимости проведения финализации операции
+                /// \return Если поле установлено, то значение флага. По умолчанию - false
+                virtual bool getFinalizationRequired() const = 0;
+
+                /// \brief Устанавливает флаг необходимости проведения финализации операции
+                /// \param required true, если финализация требуется
+                /// \return true, если поле успешно установлено
+                virtual bool setFinalizationRequired(bool required) = 0;
+
+                /// \brief Устанавливает значение по умолчанию для поля FinalizationRequired
+                /// и удаляет из списка установленных полей
+                /// \return true, если поле успешно удалено
+                virtual bool resetFinalizationRequired() = 0;
             };//class IResponseData
         }//namespace Response
     }//namespace Message

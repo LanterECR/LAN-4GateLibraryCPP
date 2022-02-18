@@ -20,6 +20,7 @@ namespace Lanter {
         bool checkCardDataEncRange(const std::string & cardDataEnc);
         bool checkOpenTagsRange(const std::string & openTags);
         bool checkEncTagsRange(const std::string & encTags);
+        bool checkHashCardTrack2(const std::string &hashCardTrack2);
         bool checkProviderCodeRange(const std::string & providerCode);
         bool checkAdditionalInfoRange(const std::string & additionalInfo);
         bool checkStatusRange(int32_t status);

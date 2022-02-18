@@ -6,9 +6,9 @@
 
 #include "Lanter/Message/Interaction/InteractionData.h"
 
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONInteractionFields.h"
 
-#include "Lanter/MessageProcessor/JSONFieldExists.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONFieldExists.h"
 
 using namespace Lanter;
 using namespace Lanter::Interaction;

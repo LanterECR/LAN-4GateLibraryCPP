@@ -157,6 +157,28 @@ TEST(TestRequestData, CheckAllAmounts) {
     EXPECT_EQ(data.getCashbackAmount(), MAXIMUM_AMOUNT);
     EXPECT_NE(data.getFieldsSet().find(RequestField::CashbackAmount), data.getFieldsSet().end());
 
+    //BonusBalance
+    EXPECT_EQ(data.getBonusBalance(), -1);
+    ++fieldsCount;
+    EXPECT_TRUE(data.setBonusBalance(MINIMUM_AMOUNT));
+    EXPECT_EQ(data.getFieldsSet().size(), fieldsCount);
+    EXPECT_EQ(data.getBonusBalance(), MINIMUM_AMOUNT);
+    EXPECT_TRUE(data.setBonusBalance(MAXIMUM_AMOUNT));
+    EXPECT_EQ(data.getFieldsSet().size(), fieldsCount);
+    EXPECT_EQ(data.getBonusBalance(), MAXIMUM_AMOUNT);
+    EXPECT_NE(data.getFieldsSet().find(RequestField::BonusBalance), data.getFieldsSet().end());
+
+    //BonusAmount
+    EXPECT_EQ(data.getBonusAmount(), -1);
+    ++fieldsCount;
+    EXPECT_TRUE(data.setBonusAmount(MINIMUM_AMOUNT));
+    EXPECT_EQ(data.getFieldsSet().size(), fieldsCount);
+    EXPECT_EQ(data.getBonusAmount(), MINIMUM_AMOUNT);
+    EXPECT_TRUE(data.setBonusAmount(MAXIMUM_AMOUNT));
+    EXPECT_EQ(data.getFieldsSet().size(), fieldsCount);
+    EXPECT_EQ(data.getBonusAmount(), MAXIMUM_AMOUNT);
+    EXPECT_NE(data.getFieldsSet().find(RequestField::BonusAmount), data.getFieldsSet().end());
+
     EXPECT_TRUE(data.resetAmount());
     EXPECT_EQ(data.getAmount(), -1);
 
@@ -168,6 +190,12 @@ TEST(TestRequestData, CheckAllAmounts) {
 
     EXPECT_TRUE(data.resetCashbackAmount());
     EXPECT_EQ(data.getCashbackAmount(), -1);
+
+    EXPECT_TRUE(data.resetBonusBalance());
+    EXPECT_EQ(data.getBonusBalance(), -1);
+
+    EXPECT_TRUE(data.resetBonusAmount());
+    EXPECT_EQ(data.getBonusAmount(), -1);
 
     EXPECT_TRUE(data.getFieldsSet().empty());
 }
@@ -431,5 +459,134 @@ TEST(TestRequestData, CheckAdditionalInfo) {
 
     EXPECT_TRUE(data.resetAdditionalInfo());
     EXPECT_TRUE(data.getAdditionalInfo().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
+}
+
+TEST(TestRequestData, CheckHashCardTrack2) {
+    RequestData data;
+
+    //empty value
+    std::string emptyValue;
+    EXPECT_FALSE(data.setHashCardTrack2(emptyValue));
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
+    EXPECT_TRUE(data.getHashCardTrack2().empty());
+
+    std::string value(512, '0');
+    EXPECT_TRUE(data.setHashCardTrack2(value));
+    EXPECT_STRCASEEQ(data.getHashCardTrack2().c_str(), value.c_str());
+
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_NE(data.getFieldsSet().find(RequestField::HashCardTrack2), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetHashCardTrack2());
+    EXPECT_TRUE(data.getHashCardTrack2().empty());
+
+    EXPECT_TRUE(data.resetHashCardTrack2());
+    EXPECT_TRUE(data.getHashCardTrack2().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
+}
+
+TEST(TestRequestData, CheckPaymentProviderCode) {
+    RequestData data;
+
+    //empty value
+    std::string emptyValue;
+    EXPECT_FALSE(data.setPaymentProviderCode(emptyValue));
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
+    EXPECT_TRUE(data.getPaymentProviderCode().empty());
+
+    std::string oversize(MAXIMUM_PROVIDER_CODE_LENGTH + 1, '0');
+    EXPECT_FALSE(data.setPaymentProviderCode(oversize));
+
+    std::string minimumSize(MINIMUM_PROVIDER_CODE_LENGTH, '0');
+    EXPECT_TRUE(data.setPaymentProviderCode(minimumSize));
+    EXPECT_STREQ(data.getPaymentProviderCode().c_str(), minimumSize.c_str());
+
+    std::string maximumSize(MAXIMUM_PROVIDER_CODE_LENGTH, '0');
+    EXPECT_TRUE(data.setPaymentProviderCode(maximumSize));
+    EXPECT_STREQ(data.getPaymentProviderCode().c_str(), maximumSize.c_str());
+
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_NE(data.getFieldsSet().find(RequestField::PaymentProviderCode), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetPaymentProviderCode());
+    EXPECT_TRUE(data.getPaymentProviderCode().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
+}
+
+TEST(TestRequestData, CheckPaymentParam1) {
+    RequestData data;
+
+    //empty value
+    std::string emptyValue;
+    EXPECT_FALSE(data.setPaymentParam1(emptyValue));
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
+    EXPECT_TRUE(data.getPaymentParam1().empty());
+
+    std::string value(512, '0');
+    EXPECT_TRUE(data.setPaymentParam1(value));
+    EXPECT_STRCASEEQ(data.getPaymentParam1().c_str(), value.c_str());
+
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_NE(data.getFieldsSet().find(RequestField::PaymentParam1), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetPaymentParam1());
+    EXPECT_TRUE(data.getPaymentParam1().empty());
+
+    EXPECT_TRUE(data.resetPaymentParam1());
+    EXPECT_TRUE(data.getPaymentParam1().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
+}
+
+TEST(TestRequestData, CheckPaymentParam2) {
+    RequestData data;
+
+    //empty value
+    std::string emptyValue;
+    EXPECT_FALSE(data.setPaymentParam2(emptyValue));
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
+    EXPECT_TRUE(data.getPaymentParam2().empty());
+
+    std::string value(512, '0');
+    EXPECT_TRUE(data.setPaymentParam2(value));
+    EXPECT_STRCASEEQ(data.getPaymentParam2().c_str(), value.c_str());
+
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_NE(data.getFieldsSet().find(RequestField::PaymentParam2), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetPaymentParam2());
+    EXPECT_TRUE(data.getPaymentParam2().empty());
+
+    EXPECT_TRUE(data.resetPaymentParam2());
+    EXPECT_TRUE(data.getPaymentParam2().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
+}
+
+TEST(TestRequestData, CheckPaymentParam3) {
+    RequestData data;
+
+    //empty value
+    std::string emptyValue;
+    EXPECT_FALSE(data.setPaymentParam3(emptyValue));
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
+    EXPECT_TRUE(data.getPaymentParam3().empty());
+
+    std::string value(512, '0');
+    EXPECT_TRUE(data.setPaymentParam3(value));
+    EXPECT_STRCASEEQ(data.getPaymentParam3().c_str(), value.c_str());
+
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_NE(data.getFieldsSet().find(RequestField::PaymentParam3), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetPaymentParam3());
+    EXPECT_TRUE(data.getPaymentParam3().empty());
+
+    EXPECT_TRUE(data.resetPaymentParam3());
+    EXPECT_TRUE(data.getPaymentParam3().empty());
     EXPECT_TRUE(data.getFieldsSet().empty());
 }

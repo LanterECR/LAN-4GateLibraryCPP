@@ -6,7 +6,7 @@
 #include "Lanter/MessageProcessor/Parser/JSONResponseParser.h"
 
 #include "Lanter/MessageProcessor/Builder/JSONAddFieldHelper.h"
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONResponseFields.h"
 
 using namespace Lanter;
 using namespace Lanter::Message;
@@ -1233,3 +1233,244 @@ TEST(TestJSONResponseParser, CheckParseData) {
 
     EXPECT_EQ(data->getFieldsSet().find(ResponseField::OpenTags), data->getFieldsSet().end());*/
 }
+
+TEST(TestJSONResponseParser, CheckGetBonusBalance) {
+    JSONResponseParser parser;
+
+    Json::Value object;
+
+    ResponseData data;
+
+    EXPECT_FALSE(parser.getFieldBonusBalance(object, data));
+
+    auto lessMinimum = MINIMUM_AMOUNT - 1;
+    AddFieldsHelper::addField(object, JSONResponseFields::getBonusBalance(), lessMinimum);
+    EXPECT_FALSE(parser.getFieldBonusBalance(object, data));
+
+    auto greatMaximum = MAXIMUM_AMOUNT + 1;
+    AddFieldsHelper::addField(object, JSONResponseFields::getBonusBalance(), greatMaximum);
+    EXPECT_FALSE(parser.getFieldBonusBalance(object, data));
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getBonusBalance(), MINIMUM_AMOUNT);
+    EXPECT_TRUE(parser.getFieldBonusBalance(object, data));
+    EXPECT_EQ(data.getBonusBalance(), MINIMUM_AMOUNT);
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getBonusBalance(), MAXIMUM_AMOUNT);
+    EXPECT_TRUE(parser.getFieldBonusBalance(object, data));
+    EXPECT_EQ(data.getBonusBalance(), MAXIMUM_AMOUNT);
+}
+
+TEST(TestJSONResponseParser, CheckGetBonusAmount) {
+    JSONResponseParser parser;
+
+    Json::Value object;
+
+    ResponseData data;
+
+    EXPECT_FALSE(parser.getFieldBonusAmount(object, data));
+
+    auto lessMinimum = MINIMUM_AMOUNT - 1;
+    AddFieldsHelper::addField(object, JSONResponseFields::getBonusAmount(), lessMinimum);
+    EXPECT_FALSE(parser.getFieldBonusAmount(object, data));
+
+    auto greatMaximum = MAXIMUM_AMOUNT + 1;
+    AddFieldsHelper::addField(object, JSONResponseFields::getBonusAmount(), greatMaximum);
+    EXPECT_FALSE(parser.getFieldBonusAmount(object, data));
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getBonusAmount(), MINIMUM_AMOUNT);
+    EXPECT_TRUE(parser.getFieldBonusAmount(object, data));
+    EXPECT_EQ(data.getBonusAmount(), MINIMUM_AMOUNT);
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getBonusAmount(), MAXIMUM_AMOUNT);
+    EXPECT_TRUE(parser.getFieldBonusAmount(object, data));
+    EXPECT_EQ(data.getBonusAmount(), MAXIMUM_AMOUNT);
+}
+
+TEST(TestJSONResponseParser, CheckGetCardPANHash) {
+    JSONResponseParser parser;
+
+    Json::Value object;
+
+    ResponseData data;
+
+    EXPECT_FALSE(parser.getFieldCardPANHash(object, data));
+
+    std::string empty;
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getCardPANHash(), empty);
+    EXPECT_FALSE(parser.getFieldCardPANHash(object, data));
+
+    std::string maxSize(16+1024, 'a');
+    AddFieldsHelper::addField(object, JSONResponseFields::getCardPANHash(), maxSize);
+    EXPECT_TRUE(parser.getFieldCardPANHash(object, data));
+    EXPECT_STREQ(data.getCardPANHash().c_str(), maxSize.c_str());
+}
+
+TEST(TestJSONResponseParser, CheckGetReceiptLine1) {
+    JSONResponseParser parser;
+
+    Json::Value object;
+
+    ResponseData data;
+
+    EXPECT_FALSE(parser.getFieldReceiptLine1(object, data));
+
+    std::string empty;
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine1(), empty);
+    EXPECT_FALSE(parser.getFieldReceiptLine1(object, data));
+
+    std::string maxSize(16+1024, 'a');
+    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine1(), maxSize);
+    EXPECT_TRUE(parser.getFieldReceiptLine1(object, data));
+    EXPECT_STREQ(data.getReceiptLine1().c_str(), maxSize.c_str());
+}
+
+TEST(TestJSONResponseParser, CheckGetReceiptLine2) {
+    JSONResponseParser parser;
+
+    Json::Value object;
+
+    ResponseData data;
+
+    EXPECT_FALSE(parser.getFieldReceiptLine2(object, data));
+
+    std::string empty;
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine2(), empty);
+    EXPECT_FALSE(parser.getFieldReceiptLine2(object, data));
+
+    std::string maxSize(16+1024, 'a');
+    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine2(), maxSize);
+    EXPECT_TRUE(parser.getFieldReceiptLine2(object, data));
+    EXPECT_STREQ(data.getReceiptLine2().c_str(), maxSize.c_str());
+}
+
+TEST(TestJSONResponseParser, CheckGetReceiptLine3) {
+    JSONResponseParser parser;
+
+    Json::Value object;
+
+    ResponseData data;
+
+    EXPECT_FALSE(parser.getFieldReceiptLine3(object, data));
+
+    std::string empty;
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine3(), empty);
+    EXPECT_FALSE(parser.getFieldReceiptLine3(object, data));
+
+    std::string maxSize(16+1024, 'a');
+    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine3(), maxSize);
+    EXPECT_TRUE(parser.getFieldReceiptLine3(object, data));
+    EXPECT_STREQ(data.getReceiptLine3().c_str(), maxSize.c_str());
+}
+
+TEST(TestJSONResponseParser, CheckGetReceiptLine4) {
+    JSONResponseParser parser;
+
+    Json::Value object;
+
+    ResponseData data;
+
+    EXPECT_FALSE(parser.getFieldReceiptLine4(object, data));
+
+    std::string empty;
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine4(), empty);
+    EXPECT_FALSE(parser.getFieldReceiptLine4(object, data));
+
+    std::string maxSize(16+1024, 'a');
+    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine4(), maxSize);
+    EXPECT_TRUE(parser.getFieldReceiptLine4(object, data));
+    EXPECT_STREQ(data.getReceiptLine4().c_str(), maxSize.c_str());
+}
+
+TEST(TestJSONResponseParser, CheckGetReceiptLine5) {
+    JSONResponseParser parser;
+
+    Json::Value object;
+
+    ResponseData data;
+
+    EXPECT_FALSE(parser.getFieldReceiptLine5(object, data));
+
+    std::string empty;
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine5(), empty);
+    EXPECT_FALSE(parser.getFieldReceiptLine5(object, data));
+
+    std::string maxSize(16+1024, 'a');
+    AddFieldsHelper::addField(object, JSONResponseFields::getReceiptLine5(), maxSize);
+    EXPECT_TRUE(parser.getFieldReceiptLine5(object, data));
+    EXPECT_STREQ(data.getReceiptLine5().c_str(), maxSize.c_str());
+}
+
+TEST(TestJSONResponseParser, CheckGetApplicationLabel) {
+    JSONResponseParser parser;
+
+    Json::Value object;
+
+    ResponseData data;
+
+    EXPECT_FALSE(parser.getFieldApplicationLabel(object, data));
+
+    std::string empty;
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getApplicationLabel(), empty);
+    EXPECT_FALSE(parser.getFieldApplicationLabel(object, data));
+
+    std::string maxSize(16+1024, 'a');
+    AddFieldsHelper::addField(object, JSONResponseFields::getApplicationLabel(), maxSize);
+    EXPECT_TRUE(parser.getFieldApplicationLabel(object, data));
+    EXPECT_STREQ(data.getApplicationLabel().c_str(), maxSize.c_str());
+}
+
+TEST(TestJSONResponseParser, CheckGetHashCardTrack2) {
+    JSONResponseParser parser;
+
+    Json::Value object;
+
+    ResponseData data;
+
+    EXPECT_FALSE(parser.getFieldHashCardTrack2(object, data));
+
+    std::string empty;
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getHashCardTrack2(), empty);
+    EXPECT_FALSE(parser.getFieldHashCardTrack2(object, data));
+
+    std::string maxSize(16+1024, 'a');
+    AddFieldsHelper::addField(object, JSONResponseFields::getHashCardTrack2(), maxSize);
+    EXPECT_TRUE(parser.getFieldHashCardTrack2(object, data));
+    EXPECT_STREQ(data.getHashCardTrack2().c_str(), maxSize.c_str());
+}
+
+TEST(TestJSONResponseParser, CheckGetFinalizationRequired) {
+    JSONResponseParser parser;
+
+    Json::Value object;
+
+    ResponseData data;
+
+    EXPECT_FALSE(parser.getFieldFinalizationRequired(object, data));
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getFinalizationRequired(), true);
+    EXPECT_TRUE(parser.getFieldFinalizationRequired(object, data));
+    EXPECT_TRUE(data.getFinalizationRequired());
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getFinalizationRequired(), 1);
+    EXPECT_TRUE(parser.getFieldFinalizationRequired(object, data));
+    EXPECT_TRUE(data.getFinalizationRequired());
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getFinalizationRequired(), false);
+    EXPECT_TRUE(parser.getFieldFinalizationRequired(object, data));
+    EXPECT_FALSE(data.getFinalizationRequired());
+
+    AddFieldsHelper::addField(object, JSONResponseFields::getFinalizationRequired(), 0);
+    EXPECT_TRUE(parser.getFieldFinalizationRequired(object, data));
+    EXPECT_FALSE(data.getFinalizationRequired());
+}
+
+/*
+FinalizationRequired*/

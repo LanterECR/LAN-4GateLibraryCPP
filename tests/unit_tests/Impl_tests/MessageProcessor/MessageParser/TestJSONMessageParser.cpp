@@ -4,7 +4,12 @@
 
 #include "Lanter/MessageProcessor/Builder/JSONAddFieldHelper.h"
 #include "Lanter/MessageProcessor/Parser/JSONMessageParser.h"
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRootFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONClassFieldsValues.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRequestFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONResponseFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONNotificationFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONInteractionFields.h"
 
 #include "Lanter/Utils/Constants.h"
 

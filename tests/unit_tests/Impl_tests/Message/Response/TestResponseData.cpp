@@ -194,6 +194,28 @@ TEST(TestResponseData, CheckAllAmount) {
     EXPECT_EQ(data.getTerminalFeeAmount(), MAXIMUM_AMOUNT);
     EXPECT_NE(data.getFieldsSet().find(ResponseField::TerminalFeeAmount), data.getFieldsSet().end());
 
+    //BonusBalance
+    EXPECT_EQ(data.getBonusBalance(), -1);
+    ++fieldsCount;
+    EXPECT_TRUE(data.setBonusBalance(MINIMUM_AMOUNT));
+    EXPECT_EQ(data.getFieldsSet().size(), fieldsCount);
+    EXPECT_EQ(data.getBonusBalance(), MINIMUM_AMOUNT);
+    EXPECT_TRUE(data.setBonusBalance(MAXIMUM_AMOUNT));
+    EXPECT_EQ(data.getFieldsSet().size(), fieldsCount);
+    EXPECT_EQ(data.getBonusBalance(), MAXIMUM_AMOUNT);
+    EXPECT_NE(data.getFieldsSet().find(ResponseField::BonusBalance), data.getFieldsSet().end());
+
+    //BonusAmount
+    EXPECT_EQ(data.getBonusAmount(), -1);
+    ++fieldsCount;
+    EXPECT_TRUE(data.setBonusAmount(MINIMUM_AMOUNT));
+    EXPECT_EQ(data.getFieldsSet().size(), fieldsCount);
+    EXPECT_EQ(data.getBonusAmount(), MINIMUM_AMOUNT);
+    EXPECT_TRUE(data.setBonusAmount(MAXIMUM_AMOUNT));
+    EXPECT_EQ(data.getFieldsSet().size(), fieldsCount);
+    EXPECT_EQ(data.getBonusAmount(), MAXIMUM_AMOUNT);
+    EXPECT_NE(data.getFieldsSet().find(ResponseField::BonusAmount), data.getFieldsSet().end());
+    
     EXPECT_TRUE(data.resetTotalAmount());
     EXPECT_EQ(data.getTotalAmount(), -1);
 
@@ -208,6 +230,12 @@ TEST(TestResponseData, CheckAllAmount) {
 
     EXPECT_TRUE(data.resetTerminalFeeAmount());
     EXPECT_EQ(data.getTerminalFeeAmount(), -1);
+
+    EXPECT_TRUE(data.resetBonusBalance());
+    EXPECT_EQ(data.getBonusBalance(), -1);
+
+    EXPECT_TRUE(data.resetBonusAmount());
+    EXPECT_EQ(data.getBonusAmount(), -1);
 
     EXPECT_TRUE(data.getFieldsSet().empty());
 }
@@ -1201,3 +1229,199 @@ TEST(TestResponseData, CheckRefundArray) {
     EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
+TEST(TestResponseData, CheckCardPANHash) {
+    ResponseData data;
+
+    //empty value
+    std::string emptyValue;
+    EXPECT_FALSE(data.setCardPANHash(emptyValue));
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
+    EXPECT_TRUE(data.getCardPANHash().empty());
+
+    std::string value(512, '0');
+    EXPECT_TRUE(data.setCardPANHash(value));
+    EXPECT_STRCASEEQ(data.getCardPANHash().c_str(), value.c_str());
+
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_NE(data.getFieldsSet().find(ResponseField::CardPANHash), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetCardPANHash());
+    EXPECT_TRUE(data.getCardPANHash().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
+}
+
+TEST(TestResponseData, CheckReceiptLine1) {
+    ResponseData data;
+
+    //empty value
+    std::string emptyValue;
+    EXPECT_FALSE(data.setReceiptLine1(emptyValue));
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
+    EXPECT_TRUE(data.getReceiptLine1().empty());
+
+    std::string value(512, '0');
+    EXPECT_TRUE(data.setReceiptLine1(value));
+    EXPECT_STRCASEEQ(data.getReceiptLine1().c_str(), value.c_str());
+
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_NE(data.getFieldsSet().find(ResponseField::ReceiptLine1), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetReceiptLine1());
+    EXPECT_TRUE(data.getReceiptLine1().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
+}
+
+TEST(TestResponseData, CheckReceiptLine2) {
+    ResponseData data;
+
+    //empty value
+    std::string emptyValue;
+    EXPECT_FALSE(data.setReceiptLine2(emptyValue));
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
+    EXPECT_TRUE(data.getReceiptLine2().empty());
+
+    std::string value(512, '0');
+    EXPECT_TRUE(data.setReceiptLine2(value));
+    EXPECT_STRCASEEQ(data.getReceiptLine2().c_str(), value.c_str());
+
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_NE(data.getFieldsSet().find(ResponseField::ReceiptLine2), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetReceiptLine2());
+    EXPECT_TRUE(data.getReceiptLine2().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
+}
+
+TEST(TestResponseData, CheckReceiptLine3) {
+    ResponseData data;
+
+    //empty value
+    std::string emptyValue;
+    EXPECT_FALSE(data.setReceiptLine3(emptyValue));
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
+    EXPECT_TRUE(data.getReceiptLine3().empty());
+
+    std::string value(512, '0');
+    EXPECT_TRUE(data.setReceiptLine3(value));
+    EXPECT_STRCASEEQ(data.getReceiptLine3().c_str(), value.c_str());
+
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_NE(data.getFieldsSet().find(ResponseField::ReceiptLine3), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetReceiptLine3());
+    EXPECT_TRUE(data.getReceiptLine3().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
+}
+
+TEST(TestResponseData, CheckReceiptLine4) {
+    ResponseData data;
+
+    //empty value
+    std::string emptyValue;
+    EXPECT_FALSE(data.setReceiptLine4(emptyValue));
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
+    EXPECT_TRUE(data.getReceiptLine4().empty());
+
+    std::string value(512, '0');
+    EXPECT_TRUE(data.setReceiptLine4(value));
+    EXPECT_STRCASEEQ(data.getReceiptLine4().c_str(), value.c_str());
+
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_NE(data.getFieldsSet().find(ResponseField::ReceiptLine4), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetReceiptLine4());
+    EXPECT_TRUE(data.getReceiptLine4().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
+}
+
+TEST(TestResponseData, CheckReceiptLine5) {
+    ResponseData data;
+
+    //empty value
+    std::string emptyValue;
+    EXPECT_FALSE(data.setReceiptLine5(emptyValue));
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
+    EXPECT_TRUE(data.getReceiptLine5().empty());
+
+    std::string value(512, '0');
+    EXPECT_TRUE(data.setReceiptLine5(value));
+    EXPECT_STRCASEEQ(data.getReceiptLine5().c_str(), value.c_str());
+
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_NE(data.getFieldsSet().find(ResponseField::ReceiptLine5), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetReceiptLine5());
+    EXPECT_TRUE(data.getReceiptLine5().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
+}
+
+TEST(TestResponseData, CheckApplicationLabel) {
+    ResponseData data;
+
+    //empty value
+    std::string emptyValue;
+    EXPECT_FALSE(data.setApplicationLabel(emptyValue));
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
+    EXPECT_TRUE(data.getApplicationLabel().empty());
+
+    std::string value(512, '0');
+    EXPECT_TRUE(data.setApplicationLabel(value));
+    EXPECT_STRCASEEQ(data.getApplicationLabel().c_str(), value.c_str());
+
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_NE(data.getFieldsSet().find(ResponseField::ApplicationLabel), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetApplicationLabel());
+    EXPECT_TRUE(data.getApplicationLabel().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
+}
+
+TEST(TestResponseData, CheckHashCardTrack2) {
+    ResponseData data;
+
+    //empty value
+    std::string emptyValue;
+    EXPECT_FALSE(data.setHashCardTrack2(emptyValue));
+
+    EXPECT_TRUE(data.getFieldsSet().empty());
+    EXPECT_TRUE(data.getHashCardTrack2().empty());
+
+    std::string value(512, '0');
+    EXPECT_TRUE(data.setHashCardTrack2(value));
+    EXPECT_STRCASEEQ(data.getHashCardTrack2().c_str(), value.c_str());
+
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_NE(data.getFieldsSet().find(ResponseField::HashCardTrack2), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetHashCardTrack2());
+    EXPECT_TRUE(data.getHashCardTrack2().empty());
+    EXPECT_TRUE(data.getFieldsSet().empty());
+}
+
+TEST(TestResponseData, CheckFinalizationRequired) {
+    ResponseData data;
+
+    EXPECT_TRUE(data.setFinalizationRequired(false));
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_FALSE(data.getFinalizationRequired());
+
+    EXPECT_TRUE(data.setFinalizationRequired(true));
+    EXPECT_EQ(data.getFieldsSet().size(), 1);
+    EXPECT_TRUE(data.getFinalizationRequired());
+
+    EXPECT_NE(data.getFieldsSet().find(ResponseField::FinalizationRequired), data.getFieldsSet().end());
+
+    EXPECT_TRUE(data.resetFinalizationRequired());
+    EXPECT_FALSE(data.getFinalizationRequired());
+    EXPECT_TRUE(data.getFieldsSet().empty());
+}
+/*
+FinalizationRequired
+ */

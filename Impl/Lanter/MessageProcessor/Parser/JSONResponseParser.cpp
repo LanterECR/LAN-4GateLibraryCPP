@@ -1,7 +1,7 @@
 #include "JSONResponseParser.h"
 
 #include "JSONGetFieldHelper.h"
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONResponseFields.h"
 #include "Lanter/Message/Response/ResponseDataFactory.h"
 
 namespace Lanter {
@@ -282,6 +282,15 @@ namespace Lanter {
                 return result;
             }
 
+            bool JSONResponseParser::getFieldCfgTerminalID(const Json::Value &object, IResponseData &responseData) {
+                std::string terminalID;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCfgTerminalID(), terminalID);
+                bool result = exists && responseData.setCfgTerminalID(terminalID);
+
+                return result;
+            }
+
             bool JSONResponseParser::getFieldCardEmvAid(const Json::Value &object, IResponseData &responseData) {
                 std::string cardEmvAid;
 
@@ -539,98 +548,169 @@ namespace Lanter {
                 return result;
             }
 
+            bool JSONResponseParser::getFieldCardPANHash(const Json::Value &object, IResponseData &responseData) {
+                std::string cardPanHash;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCardPANHash(), cardPanHash);
+                bool result = exists && responseData.setCardPANHash(cardPanHash);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldReceiptLine1(const Json::Value &object, IResponseData &responseData) {
+                std::string receiptLine;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getReceiptLine1(), receiptLine);
+                bool result = exists && responseData.setReceiptLine1(receiptLine);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldReceiptLine2(const Json::Value &object, IResponseData &responseData) {
+                std::string receiptLine;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getReceiptLine2(), receiptLine);
+                bool result = exists && responseData.setReceiptLine2(receiptLine);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldReceiptLine3(const Json::Value &object, IResponseData &responseData) {
+                std::string receiptLine;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getReceiptLine3(), receiptLine);
+                bool result = exists && responseData.setReceiptLine3(receiptLine);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldReceiptLine4(const Json::Value &object, IResponseData &responseData) {
+                std::string receiptLine;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getReceiptLine4(), receiptLine);
+                bool result = exists && responseData.setReceiptLine4(receiptLine);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldReceiptLine5(const Json::Value &object, IResponseData &responseData) {
+                std::string receiptLine;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getReceiptLine5(), receiptLine);
+                bool result = exists && responseData.setReceiptLine5(receiptLine);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldApplicationLabel(const Json::Value &object, IResponseData &responseData) {
+                std::string applicationLabel;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getApplicationLabel(), applicationLabel);
+                bool result = exists && responseData.setApplicationLabel(applicationLabel);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldBonusBalance(const Json::Value &object, IResponseData &responseData) {
+                int64_t bonusBalance;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getBonusBalance(), bonusBalance);
+                bool result = exists && responseData.setBonusBalance(bonusBalance);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldBonusAmount(const Json::Value &object, IResponseData &responseData) {
+                int64_t bonusAmount;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getBonusAmount(), bonusAmount);
+                bool result = exists && responseData.setBonusAmount(bonusAmount);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldHashCardTrack2(const Json::Value &object, IResponseData &responseData) {
+                std::string hashCardTrack2;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getHashCardTrack2(), hashCardTrack2);
+                bool result = exists && responseData.setHashCardTrack2(hashCardTrack2);
+
+                return result;
+            }
+
+            bool
+            JSONResponseParser::getFieldFinalizationRequired(const Json::Value &object, IResponseData &responseData) {
+                bool finalizationRequired;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getFinalizationRequired(), finalizationRequired);
+                bool result = exists && responseData.setFinalizationRequired(finalizationRequired);
+
+                return result;
+            }
+
             void JSONResponseParser::initFunctionsMap() {
-                m_ExtractFunctions[ResponseField::EcrNumber] = std::bind(&JSONResponseParser::getFieldEcrNumber, this,
-                                                                         _1, _2);
-                m_ExtractFunctions[ResponseField::EcrMerchantNumber] = std::bind(
-                        &JSONResponseParser::getFieldEcrMerchantNumber, this, _1, _2);
-                m_ExtractFunctions[ResponseField::OperationCode] = std::bind(&JSONResponseParser::getFieldOperationCode,
-                                                                             this, _1, _2);
-                m_ExtractFunctions[ResponseField::OriginalOperationCode] = std::bind(
-                        &JSONResponseParser::getFieldOriginalOperationCode, this, _1, _2);
-                m_ExtractFunctions[ResponseField::TotalAmount] = std::bind(&JSONResponseParser::getFieldTotalAmount,
-                                                                           this, _1, _2);
-                m_ExtractFunctions[ResponseField::PartialAmount] = std::bind(&JSONResponseParser::getFieldPartialAmount,
-                                                                             this, _1, _2);
-                m_ExtractFunctions[ResponseField::AcquirerFeeAmount] = std::bind(
-                        &JSONResponseParser::getFieldAcquirerFeeAmount, this, _1, _2);
-                m_ExtractFunctions[ResponseField::TerminalFeeAmount] = std::bind(
-                        &JSONResponseParser::getFieldTerminalFeeAmount, this, _1, _2);
-                m_ExtractFunctions[ResponseField::TipsAmount] = std::bind(&JSONResponseParser::getFieldTipsAmount, this,
-                                                                          _1, _2);
-                m_ExtractFunctions[ResponseField::CurrencyCode] = std::bind(&JSONResponseParser::getFieldCurrencyCode,
-                                                                            this, _1, _2);
-                m_ExtractFunctions[ResponseField::ReceiptReference] = std::bind(
-                        &JSONResponseParser::getFieldReceiptReference, this, _1, _2);
-                m_ExtractFunctions[ResponseField::RRN] = std::bind(&JSONResponseParser::getFieldRRN, this, _1, _2);
-                m_ExtractFunctions[ResponseField::Status] = std::bind(&JSONResponseParser::getFieldStatus, this, _1,
-                                                                      _2);
-                m_ExtractFunctions[ResponseField::OriginalOperationStatus] = std::bind(
-                        &JSONResponseParser::getFieldOriginalOperationStatus, this, _1, _2);
-                m_ExtractFunctions[ResponseField::TransDateTime] = std::bind(&JSONResponseParser::getFieldTransDateTime,
-                                                                             this, _1, _2);
-                m_ExtractFunctions[ResponseField::TerminalDateTime] = std::bind(
-                        &JSONResponseParser::getFieldTerminalDateTime, this, _1, _2);
-                m_ExtractFunctions[ResponseField::CardPAN] = std::bind(&JSONResponseParser::getFieldCardPAN, this, _1,
-                                                                       _2);
-                m_ExtractFunctions[ResponseField::ExpireDate] = std::bind(&JSONResponseParser::getFieldExpireDate, this,
-                                                                          _1, _2);
-                m_ExtractFunctions[ResponseField::CardholderName] = std::bind(
-                        &JSONResponseParser::getFieldCardholderName, this, _1, _2);
-                m_ExtractFunctions[ResponseField::CardholderAuthMethod] = std::bind(
-                        &JSONResponseParser::getFieldCardholderAuthMethod, this, _1, _2);
-                m_ExtractFunctions[ResponseField::AuthCode] = std::bind(&JSONResponseParser::getFieldAuthCode, this, _1,
-                                                                        _2);
-                m_ExtractFunctions[ResponseField::ResponseCode] = std::bind(&JSONResponseParser::getFieldResponseCode,
-                                                                            this, _1, _2);
-                m_ExtractFunctions[ResponseField::ResponseText] = std::bind(&JSONResponseParser::getFieldResponseText,
-                                                                            this, _1, _2);
-                m_ExtractFunctions[ResponseField::STAN] = std::bind(&JSONResponseParser::getFieldSTAN, this, _1, _2);
-                m_ExtractFunctions[ResponseField::TransactionID] = std::bind(&JSONResponseParser::getFieldTransactionID,
-                                                                             this, _1, _2);
-                m_ExtractFunctions[ResponseField::TerminalID] = std::bind(&JSONResponseParser::getFieldTerminalID, this,
-                                                                          _1, _2);
-                m_ExtractFunctions[ResponseField::CardEmvAid] = std::bind(&JSONResponseParser::getFieldCardEmvAid, this,
-                                                                          _1, _2);
-                m_ExtractFunctions[ResponseField::CardAppName] = std::bind(&JSONResponseParser::getFieldCardAppName,
-                                                                           this, _1, _2);
-                m_ExtractFunctions[ResponseField::CardInputMethod] = std::bind(
-                        &JSONResponseParser::getFieldCardInputMethod, this, _1, _2);
-                m_ExtractFunctions[ResponseField::IssuerName] = std::bind(&JSONResponseParser::getFieldIssuerName, this,
-                                                                          _1, _2);
-                m_ExtractFunctions[ResponseField::AdditionalInfo] = std::bind(
-                        &JSONResponseParser::getFieldAdditionalInfo, this, _1, _2);
-                m_ExtractFunctions[ResponseField::CardData] = std::bind(&JSONResponseParser::getFieldCardData, this, _1,
-                                                                        _2);
-                m_ExtractFunctions[ResponseField::CardDataEnc] = std::bind(&JSONResponseParser::getFieldCardDataEnc,
-                                                                           this, _1, _2);
-                m_ExtractFunctions[ResponseField::MerchantID] = std::bind(&JSONResponseParser::getFieldMerchantID, this,
-                                                                          _1, _2);
-                m_ExtractFunctions[ResponseField::TVR] = std::bind(&JSONResponseParser::getFieldTVR, this, _1, _2);
-                m_ExtractFunctions[ResponseField::TSI] = std::bind(&JSONResponseParser::getFieldTSI, this, _1, _2);
-                m_ExtractFunctions[ResponseField::TC] = std::bind(&JSONResponseParser::getFieldTC, this, _1, _2);
-                m_ExtractFunctions[ResponseField::CID] = std::bind(&JSONResponseParser::getFieldCID, this, _1, _2);
-                m_ExtractFunctions[ResponseField::KVR] = std::bind(&JSONResponseParser::getFieldKVR, this, _1, _2);
-                m_ExtractFunctions[ResponseField::CDAResult] = std::bind(&JSONResponseParser::getFieldCDAResult, this,
-                                                                         _1, _2);
-                m_ExtractFunctions[ResponseField::SalesAmount] = std::bind(&JSONResponseParser::getFieldSalesAmount, this,
-                                                                         _1, _2);
-                m_ExtractFunctions[ResponseField::SaleCount] = std::bind(&JSONResponseParser::getFieldSalesCount, this,
-                                                                         _1, _2);
-                m_ExtractFunctions[ResponseField::VoidAmount] = std::bind(&JSONResponseParser::getFieldVoidAmount, this,
-                                                                           _1, _2);
-                m_ExtractFunctions[ResponseField::VoidCount] = std::bind(&JSONResponseParser::getFieldVoidCount, this,
-                                                                         _1, _2);
-                m_ExtractFunctions[ResponseField::RefundAmount] = std::bind(&JSONResponseParser::getFieldRefundAmount, this,
-                                                                           _1, _2);
-                m_ExtractFunctions[ResponseField::RefundCount] = std::bind(&JSONResponseParser::getFieldRefundCount,
-                                                                           this, _1, _2);
-                m_ExtractFunctions[ResponseField::SaleArray] = std::bind(&JSONResponseParser::getFieldSaleArray, this,
-                                                                         _1, _2);
-                m_ExtractFunctions[ResponseField::VoidArray] = std::bind(&JSONResponseParser::getFieldVoidArray, this,
-                                                                         _1, _2);
-                m_ExtractFunctions[ResponseField::RefundArray] = std::bind(&JSONResponseParser::getFieldRefundArray,
-                                                                           this, _1, _2);
+                m_ExtractFunctions[ResponseField::EcrNumber] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldEcrNumber(object, responseData); };
+                m_ExtractFunctions[ResponseField::EcrMerchantNumber] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldEcrMerchantNumber(object, responseData); };
+                m_ExtractFunctions[ResponseField::OperationCode] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldOperationCode(object, responseData); };
+                m_ExtractFunctions[ResponseField::OriginalOperationCode] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldOriginalOperationCode(object, responseData); };
+                m_ExtractFunctions[ResponseField::TotalAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldTotalAmount(object, responseData); };
+                m_ExtractFunctions[ResponseField::PartialAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldPartialAmount(object, responseData); };
+                m_ExtractFunctions[ResponseField::AcquirerFeeAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldAcquirerFeeAmount(object, responseData); };
+                m_ExtractFunctions[ResponseField::TerminalFeeAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldTerminalFeeAmount(object, responseData); };
+                m_ExtractFunctions[ResponseField::TipsAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldTipsAmount(object, responseData); };
+                m_ExtractFunctions[ResponseField::CurrencyCode] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldCurrencyCode(object, responseData); };
+                m_ExtractFunctions[ResponseField::ReceiptReference] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldReceiptReference(object, responseData); };
+                m_ExtractFunctions[ResponseField::RRN] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldRRN(object, responseData); };
+                m_ExtractFunctions[ResponseField::Status] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldStatus(object, responseData); };
+                m_ExtractFunctions[ResponseField::OriginalOperationStatus] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldOriginalOperationStatus(object, responseData); };
+                m_ExtractFunctions[ResponseField::TransDateTime] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldTransDateTime(object, responseData); };
+                m_ExtractFunctions[ResponseField::TerminalDateTime] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldTerminalDateTime(object, responseData); };
+                m_ExtractFunctions[ResponseField::CardPAN] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldCardPAN(object, responseData); };
+                m_ExtractFunctions[ResponseField::ExpireDate] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldExpireDate(object, responseData); };
+                m_ExtractFunctions[ResponseField::CardholderName] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldCardholderName(object, responseData); };
+                m_ExtractFunctions[ResponseField::CardholderAuthMethod] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldCardholderAuthMethod(object, responseData); };
+                m_ExtractFunctions[ResponseField::AuthCode] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldAuthCode(object, responseData); };
+                m_ExtractFunctions[ResponseField::ResponseCode] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldResponseCode(object, responseData); };
+                m_ExtractFunctions[ResponseField::ResponseText] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldResponseText(object, responseData); };
+                m_ExtractFunctions[ResponseField::STAN] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldSTAN(object, responseData); };
+                m_ExtractFunctions[ResponseField::TransactionID] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldTransactionID(object, responseData); };
+                m_ExtractFunctions[ResponseField::TerminalID] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldTerminalID(object, responseData); };
+                m_ExtractFunctions[ResponseField::CfgTerminalID] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldCfgTerminalID(object, responseData); };
+                m_ExtractFunctions[ResponseField::CardEmvAid] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldCardEmvAid(object, responseData); };
+                m_ExtractFunctions[ResponseField::CardAppName] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldCardAppName(object, responseData); };
+                m_ExtractFunctions[ResponseField::CardInputMethod] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldCardInputMethod(object, responseData); };
+                m_ExtractFunctions[ResponseField::IssuerName] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldIssuerName(object, responseData); };
+                m_ExtractFunctions[ResponseField::AdditionalInfo] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldAdditionalInfo(object, responseData); };
+                m_ExtractFunctions[ResponseField::CardData] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldCardData(object, responseData); };
+                m_ExtractFunctions[ResponseField::CardDataEnc] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldCardDataEnc(object, responseData); };
+                m_ExtractFunctions[ResponseField::MerchantID] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldMerchantID(object, responseData); };
+                m_ExtractFunctions[ResponseField::TVR] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldTVR(object, responseData); };
+                m_ExtractFunctions[ResponseField::TSI] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldTSI(object, responseData); };
+                m_ExtractFunctions[ResponseField::TC] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldTC(object, responseData); };
+                m_ExtractFunctions[ResponseField::CID] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldCID(object, responseData); };
+                m_ExtractFunctions[ResponseField::KVR] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldKVR(object, responseData); };
+                m_ExtractFunctions[ResponseField::CDAResult] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldCDAResult(object, responseData); };
+                m_ExtractFunctions[ResponseField::SalesAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldSalesAmount(object, responseData); };
+                m_ExtractFunctions[ResponseField::SaleCount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldSalesCount(object, responseData); };
+                m_ExtractFunctions[ResponseField::VoidAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldVoidAmount(object, responseData); };
+                m_ExtractFunctions[ResponseField::VoidCount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldVoidCount(object, responseData); };
+                m_ExtractFunctions[ResponseField::RefundAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldRefundAmount(object, responseData); };
+                m_ExtractFunctions[ResponseField::RefundCount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldRefundCount(object, responseData); };
+                m_ExtractFunctions[ResponseField::SaleArray] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldSaleArray(object, responseData); };
+                m_ExtractFunctions[ResponseField::VoidArray] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldVoidArray(object, responseData); };
+                m_ExtractFunctions[ResponseField::RefundArray] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldRefundArray(object, responseData); };
+
+                m_ExtractFunctions[ResponseField::CardPANHash] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldCardPANHash(object, responseData); };
+                m_ExtractFunctions[ResponseField::ReceiptLine1] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldReceiptLine1(object, responseData); };
+                m_ExtractFunctions[ResponseField::ReceiptLine2] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldReceiptLine2(object, responseData); };
+                m_ExtractFunctions[ResponseField::ReceiptLine3] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldReceiptLine3(object, responseData); };
+                m_ExtractFunctions[ResponseField::ReceiptLine4] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldReceiptLine4(object, responseData); };
+                m_ExtractFunctions[ResponseField::ReceiptLine5] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldReceiptLine5(object, responseData); };
+                m_ExtractFunctions[ResponseField::ApplicationLabel] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldApplicationLabel(object, responseData); };
+                m_ExtractFunctions[ResponseField::BonusBalance] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldBonusBalance(object, responseData); };
+                m_ExtractFunctions[ResponseField::BonusAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldBonusAmount(object, responseData); };
+                m_ExtractFunctions[ResponseField::HashCardTrack2] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldHashCardTrack2(object, responseData); };
+                m_ExtractFunctions[ResponseField::FinalizationRequired] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldFinalizationRequired(object, responseData); };
             }
 
             bool JSONResponseParser::getFields(const Json::Value &object, IResponseData &responseData) {

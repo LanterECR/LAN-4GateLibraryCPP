@@ -132,6 +132,48 @@ namespace Lanter {
 
                 bool setAdditionalInfo(const std::string &additionalInfo) override;
 
+                int64_t getBonusBalance() const override;
+
+                bool setBonusBalance(int64_t balance) override;
+
+                bool resetBonusBalance() override;
+
+                int64_t getBonusAmount() const override;
+
+                bool setBonusAmount(int64_t amount) override;
+
+                bool resetBonusAmount() override;
+
+                const std::string &getHashCardTrack2() const override;
+
+                bool setHashCardTrack2(const std::string &cardTrack2) override;
+
+                bool resetHashCardTrack2() override;
+
+                const std::string &getPaymentProviderCode() const override;
+
+                bool setPaymentProviderCode(const std::string &code) override;
+
+                bool resetPaymentProviderCode() override;
+
+                const std::string &getPaymentParam1() const override;
+
+                bool setPaymentParam1(const std::string &param) override;
+
+                bool resetPaymentParam1() override;
+
+                const std::string &getPaymentParam2() const override;
+
+                bool setPaymentParam2(const std::string &param) override;
+
+                bool resetPaymentParam2() override;
+
+                const std::string &getPaymentParam3() const override;
+
+                bool setPaymentParam3(const std::string &param) override;
+
+                bool resetPaymentParam3() override;
+
             private:
                 void initValidator();
                 void deinitValidator();
@@ -157,6 +199,13 @@ namespace Lanter {
                 std::string m_EncTags; ///< Теги, которые необходимо получить в зашифрованном виде в операции FastTrack
                 std::string m_ProviderCode; ///< Код вендора платежа
                 std::string m_AdditionalInfo; ///< Дополнительные данные операции
+                int64_t m_BonusBalance = -1;
+                int64_t m_BonusAmount = -1;
+                std::string m_HashCardTrack2;
+                std::string m_PaymentProviderCode;
+                std::string m_PaymentParam1;
+                std::string m_PaymentParam2;
+                std::string m_PaymentParam3;
 
                 std::set<RequestField> m_EmptyFieldsPlaceholder; ///< Пустая коллекция для полей при отсутствии валидатора
 

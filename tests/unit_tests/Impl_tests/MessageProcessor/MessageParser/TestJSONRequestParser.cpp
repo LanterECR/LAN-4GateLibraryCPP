@@ -5,7 +5,7 @@
 #include "gtest/gtest.h"
 
 #include "Lanter/MessageProcessor/Parser/JSONRequestParser.h"
-#include "Lanter/MessageProcessor/JSONMessageFields.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRequestFields.h"
 #include "Lanter/Message/Request/RequestData.h"
 
 using namespace Lanter;
@@ -406,6 +406,162 @@ TEST(TestJSONRequestParser, CheckGetFieldAdditionalInfo) {
 
 }
 
+TEST(TestJSONRequestParser, CheckGetFieldBonusBalance) {
+    JSONRequestParser parser;
+
+    int64_t badValueLess = -1;
+    int64_t badValueGreat = 1000000000000;
+    int64_t goodValue = 999999999999;
+
+    RequestData data;
+
+    Json::Value object;
+
+    object[JSONRequestFields::getBonusBalance()] = badValueLess;
+
+    EXPECT_FALSE(parser.getFieldBonusBalance(object, data));
+
+    object[JSONRequestFields::getBonusBalance()] = badValueGreat;
+
+    EXPECT_FALSE(parser.getFieldBonusBalance(object, data));
+
+    object[JSONRequestFields::getBonusBalance()] = goodValue;
+
+    EXPECT_TRUE(parser.getFieldBonusBalance(object, data));
+
+    EXPECT_EQ(data.getBonusBalance(), goodValue);
+}
+
+TEST(TestJSONRequestParser, CheckGetFieldBonusAmount) {
+    JSONRequestParser parser;
+
+    int64_t badValueLess = -1;
+    int64_t badValueGreat = 1000000000000;
+    int64_t goodValue = 999999999999;
+
+    RequestData data;
+
+    Json::Value object;
+
+    object[JSONRequestFields::getBonusAmount()] = badValueLess;
+
+    EXPECT_FALSE(parser.getFieldBonusAmount(object, data));
+
+    object[JSONRequestFields::getBonusAmount()] = badValueGreat;
+
+    EXPECT_FALSE(parser.getFieldBonusAmount(object, data));
+
+    object[JSONRequestFields::getBonusAmount()] = goodValue;
+
+    EXPECT_TRUE(parser.getFieldBonusAmount(object, data));
+
+    EXPECT_EQ(data.getBonusAmount(), goodValue);
+}
+
+TEST(TestJSONRequestParser, CheckGetFieldHashCardTrack2) {
+    JSONRequestParser parser;
+
+    auto badValue = "";
+    auto goodValue = "Тестовое значение";
+
+    RequestData data;
+
+    Json::Value object;
+    object[JSONRequestFields::getHashCardTrack2()] = badValue;
+
+    EXPECT_FALSE(parser.getFieldHashCardTrack2(object, data));
+
+    object[JSONRequestFields::getHashCardTrack2()] = goodValue;
+
+    EXPECT_TRUE(parser.getFieldHashCardTrack2(object, data));
+
+    EXPECT_STREQ(data.getHashCardTrack2().c_str(), goodValue);
+
+}
+
+TEST(TestJSONRequestParser, CheckGetFieldPaymentProviderCode) {
+    JSONRequestParser parser;
+
+    auto badValue = "";
+    auto goodValue = "Тестовое значение";
+
+    RequestData data;
+
+    Json::Value object;
+    object[JSONRequestFields::getPaymentProviderCode()] = badValue;
+
+    EXPECT_FALSE(parser.getFieldPaymentProviderCode(object, data));
+
+    object[JSONRequestFields::getPaymentProviderCode()] = goodValue;
+
+    EXPECT_TRUE(parser.getFieldPaymentProviderCode(object, data));
+
+    EXPECT_STREQ(data.getPaymentProviderCode().c_str(), goodValue);
+
+}
+
+TEST(TestJSONRequestParser, CheckGetFieldPaymentParam1) {
+    JSONRequestParser parser;
+
+    auto badValue = "";
+    auto goodValue = "Тестовое значение";
+
+    RequestData data;
+
+    Json::Value object;
+    object[JSONRequestFields::getPaymentParam1()] = badValue;
+
+    EXPECT_FALSE(parser.getFieldPaymentParam1(object, data));
+
+    object[JSONRequestFields::getPaymentParam1()] = goodValue;
+
+    EXPECT_TRUE(parser.getFieldPaymentParam1(object, data));
+
+    EXPECT_STREQ(data.getPaymentParam1().c_str(), goodValue);
+
+}
+
+TEST(TestJSONRequestParser, CheckGetFieldPaymentParam2) {
+    JSONRequestParser parser;
+
+    auto badValue = "";
+    auto goodValue = "Тестовое значение";
+
+    RequestData data;
+
+    Json::Value object;
+    object[JSONRequestFields::getPaymentParam2()] = badValue;
+
+    EXPECT_FALSE(parser.getFieldPaymentParam2(object, data));
+
+    object[JSONRequestFields::getPaymentParam2()] = goodValue;
+
+    EXPECT_TRUE(parser.getFieldPaymentParam2(object, data));
+
+    EXPECT_STREQ(data.getPaymentParam2().c_str(), goodValue);
+
+}
+
+TEST(TestJSONRequestParser, CheckGetFieldPaymentParam3) {
+    JSONRequestParser parser;
+
+    auto badValue = "";
+    auto goodValue = "Тестовое значение";
+
+    RequestData data;
+
+    Json::Value object;
+    object[JSONRequestFields::getPaymentParam3()] = badValue;
+
+    EXPECT_FALSE(parser.getFieldPaymentParam3(object, data));
+
+    object[JSONRequestFields::getPaymentParam3()] = goodValue;
+
+    EXPECT_TRUE(parser.getFieldPaymentParam3(object, data));
+
+    EXPECT_STREQ(data.getPaymentParam3().c_str(), goodValue);
+
+}
 TEST(TestJSONRequestParser, CheckParseData) {
     JSONRequestParser parser;
 

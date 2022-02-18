@@ -29,7 +29,8 @@ TEST(TestResponseBasicValidator, CheckAppendMandatory) {
 TEST(TestResponseBasicValidator, CheckAppendOptional) {
     BasicValidator validator;
 
-    EXPECT_TRUE(validator.getOptionalFields().empty());
+    auto size = validator.getOptionalFields().size();
+    EXPECT_FALSE(validator.getOptionalFields().empty());
 
     auto lessMinimum = (ResponseField)((int)getFirstResponseField() - 1);
     auto greatMaximum = (ResponseField)((int)getLastResponseField() + 1);
@@ -40,7 +41,7 @@ TEST(TestResponseBasicValidator, CheckAppendOptional) {
     EXPECT_NO_THROW(validator.appendOptionalField(getLastResponseField()));
 
     EXPECT_FALSE(validator.getOptionalFields().empty());
-    EXPECT_EQ(validator.getOptionalFields().size(), 2);
+    EXPECT_GE(validator.getOptionalFields().size(), size);
 
     EXPECT_NE(validator.getOptionalFields().find(getFirstResponseField()), validator.getOptionalFields().end());
     EXPECT_NE(validator.getOptionalFields().find(getLastResponseField()), validator.getOptionalFields().end());

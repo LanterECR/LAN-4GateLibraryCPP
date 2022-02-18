@@ -54,6 +54,7 @@ namespace Lanter {
 
             if(m_MainThread != nullptr) {
                 m_MainThread->join();
+                m_MainThread.reset();
             }
 
             closeConnection();

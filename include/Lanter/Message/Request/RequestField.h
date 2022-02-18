@@ -24,7 +24,15 @@ namespace Lanter {
                 OpenTags, ///< Теги, которые необходимо получить в открытом виде (формат TLV) в операции FastTrack
                 EncTags, ///< Теги, которые необходимо получить в зашифрованном виде в операции FastTrack
                 ProviderCode, ///< Код вендора платежа
-                AdditionalInfo ///< Дополнительные данные операции
+                AdditionalInfo, ///< Дополнительные данные операции
+                BonusBalance, ///< Баланс бонусного счета
+                BonusAmount, ///< Сумма бонусов к оплате
+                HashCardTrack2, ///< Кэшированный Track2
+                PaymentProviderCode, ///< Код провайдера платежа
+                PaymentParam1, ///< Первый параметр платежа
+                PaymentParam2, ///< Второй параметр платежа
+                PaymentParam3 ///< Третий параметр платежа
+
             };//enum RequestField
 
             /// Функция, возвращающая первый значимый элемент перечисления RequestField
@@ -36,7 +44,7 @@ namespace Lanter {
             /// Функция, возвращающая последний значимый элемент перечисления RequestField
             /// \return Последний элемент значимый перечисления RequestField
             constexpr RequestField getLastRequestField() {
-                return RequestField::AdditionalInfo;
+                return RequestField::PaymentParam3;
             }
         }//namespace Request
     }//namespace Message

@@ -24,7 +24,7 @@ if(NOT IS_SUBPROJECT)
     )
 endif()
 
-project(LAN_4GateLib VERSION 0.9.5 LANGUAGES CXX)
+project(LAN_4GateLib VERSION 0.9.6 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -42,7 +42,6 @@ set(L4G_SWIG_TARGET_LANGUAGE "csharp" CACHE STRING  "Target language for SWIG" )
 if(NOT L4G_BUILD_SHARED AND NOT L4G_BUILD_STATIC AND NOT L4G_BUILD_MODULE AND NOT L4G_BUILD_SWIG)
     message(FATAL_ERROR "This library must be static or shared. Enable L4G_BUILD_STATIC, L4G_BUILD_SHARED or L4G_BUILD_MODULE flag")
 endif()
-
 
 
 hunter_add_package(asio)
@@ -63,6 +62,7 @@ file(GLOB_RECURSE IMPL_INCLUDE_FILES Impl/*.h)
 #поиск исходников имплементации
 file(GLOB_RECURSE IMPL_SOURCE_FILES Impl/*.cpp)
 
+
 add_compile_definitions(L4G_VERSION="${PROJECT_VERSION}")
 #список зависимостей библиотеки
 set(DEPENDENCIES_LIST jsoncpp_object asio::asio_headeronly)
@@ -70,28 +70,40 @@ set(DEPENDENCIES_LIST jsoncpp_object asio::asio_headeronly)
 set(INSTALLATION_TARGETS "")
 
 if(L4G_BUILD_SWIG)
-    if(NOT "${L4G_SWIG_TARGET_LANGUAGE}" STREQUAL "csharp")
+    if(NOT "${L4G_SWIG_TARGET_LANGUAGE}" STREQUAL "csharp" AND NOT "${L4G_SWIG_TARGET_LANGUAGE}" STREQUAL "java")
         message(FATAL_ERROR "${L4G_SWIG_TARGET_LANGUAGE} doesn`t support yet")
     endif()
 
     if("${L4G_SWIG_TARGET_LANGUAGE}" STREQUAL "csharp")
-        set(SWIG_LANG_PARAMS -${L4G_SWIG_TARGET_LANGUAGE} -namespace Lanter.Lan4Gate)
         set(SWIG_IFACE_RESULT_SUFFUX "cs")
+        set(SWIG_LANG_PARAMS -${L4G_SWIG_TARGET_LANGUAGE} -namespace Lanter.Lan4Gate -outfile Lan4gateInterface.${SWIG_IFACE_RESULT_SUFFUX})
+        set(L4G_SWIG_INTERFACE_OUTDIR ${L4G_SWIG_TARGET_LANGUAGE})
+    elseif("${L4G_SWIG_TARGET_LANGUAGE}" STREQUAL "java")
+        set(SWIG_IFACE_RESULT_SUFFUX "jar")
+        set(SWIG_LANG_PARAMS -${L4G_SWIG_TARGET_LANGUAGE} -package org.lanter.lan4gate)
+
+        find_package(JNI)
+        include_directories(${JAVA_INCLUDE_PATH})
+
+        if(JAVA_INCLUDE_PATH2)
+            include_directories(${JAVA_INCLUDE_PATH2})
+        endif()
+
+        set(L4G_SWIG_INTERFACE_OUTDIR ${L4G_SWIG_TARGET_LANGUAGE}/org/lanter/lan4gate)
     endif()
 
     FIND_PACKAGE(SWIG REQUIRED)
 
     add_custom_command(OUTPUT "Lan4GateSwig_wrap.cxx"
-            COMMAND ${CMAKE_COMMAND} -E make_directory ${L4G_SWIG_TARGET_LANGUAGE}
-            COMMAND ${SWIG_EXECUTABLE} -outdir ${L4G_SWIG_TARGET_LANGUAGE}
+            COMMAND ${CMAKE_COMMAND} -E make_directory ${L4G_SWIG_INTERFACE_OUTDIR}
+            COMMAND ${SWIG_EXECUTABLE} -outdir ${L4G_SWIG_INTERFACE_OUTDIR}
             -c++
             ${SWIG_LANG_PARAMS}
             -outcurrentdir
-            -outfile Lan4gateInterface.${SWIG_IFACE_RESULT_SUFFUX}
             -I${CMAKE_SOURCE_DIR}/include
             ${CMAKE_SOURCE_DIR}/include/Lan4GateSwig.i)
 
-    add_library(l4g_swig SHARED ${INCLUDE_FILES} ${SOURCE_FILES} ${IMPL_INCLUDE_FILES} ${IMPL_SOURCE_FILES} Lan4GateSwig_wrap.cxx)
+    add_library(l4g_swig MODULE ${INCLUDE_FILES} ${SOURCE_FILES} ${IMPL_INCLUDE_FILES} ${IMPL_SOURCE_FILES} Lan4GateSwig_wrap.cxx)
 
     target_include_directories(l4g_swig INTERFACE
             $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -103,8 +115,53 @@ if(L4G_BUILD_SWIG)
 
     target_compile_definitions(l4g_swig PUBLIC LANTER_BUILD_SHARED)
 
-    set_target_properties(l4g_swig PROPERTIES PREFIX "")
     set_target_properties(l4g_swig PROPERTIES OUTPUT_NAME "Lan4Gate")
+    if("${L4G_SWIG_TARGET_LANGUAGE}" STREQUAL "java")
+        find_package(Java COMPONENTS Development)
+
+        #расскоментировать для создания списка классов. Результат вставить в JAVA_SRC
+        #[[file(GLOB_RECURSE FOUND_JAVA_SRC ${L4G_SWIG_INTERFACE_OUTDIR}/*.java)
+        message("!!!!!!!!!!!!!${FOUND_JAVA_SRC}")]]
+
+        set(JAVA_SRC ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/ByteVector.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/CardInputMethod.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/CardholderAuthMethod.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/CommunicationFactory.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/ICommunication.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/IConnectionCallback.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/IInteractionCallback.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/IInteractionData.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/ILan4Gate.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/INotificationCallback.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/INotificationData.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/IRequestCallback.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/IRequestData.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/IResponseCallback.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/IResponseData.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/InteractionCode.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4Gate.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4GateFactory.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4GateJNI.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/NotificationCode.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/OperationCode.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/RequestField.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/RequestFieldsArray.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/ResponseArray.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/ResponseField.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/ResponseFieldsArray.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/SWIGTYPE_p_p_char.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Status.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Version.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/imaxdiv_t.java)
+        include(UseJava)
+        add_jar(Lan4gateInterface
+                SOURCES ${JAVA_SRC}
+                OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/java)
+
+        add_custom_command(TARGET l4g_swig POST_BUILD
+                COMMAND ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR} --target Lan4gateInterface)
+    endif()
+
 
     install(FILES ${CMAKE_BINARY_DIR}/${L4G_SWIG_TARGET_LANGUAGE}/Lan4gateInterface.${SWIG_IFACE_RESULT_SUFFUX} DESTINATION ${L4G_SWIG_TARGET_LANGUAGE})
 
