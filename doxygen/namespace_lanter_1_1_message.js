@@ -10,6 +10,7 @@ var namespace_lanter_1_1_message =
       [ "MOTO", "namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a463487e5572994f6b26776e023850ad9", null ],
       [ "QuickPayment", "namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a754cc6415e4fa046463be142244ac51d", null ],
       [ "AliPay", "namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a91e40c69ca45fe7bd498e4050eea4625", null ],
+      [ "Payment", "namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597ac453a4b8e8d98e82f35b67f433e3b4da", null ],
       [ "PreAuth", "namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a22a06f72a2c618c46401004ea2dc614d", null ],
       [ "SalesCompletion", "namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a8aecca05bc2bf4cdb5522df57ee355a5", null ],
       [ "QuickPaymentStatus", "namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a6467fe91d04fbbe0bc07e4f29cb1b500", null ],

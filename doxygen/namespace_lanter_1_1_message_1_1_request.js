@@ -19,7 +19,14 @@ var namespace_lanter_1_1_message_1_1_request =
       [ "OpenTags", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0ae0677efeed15e347bb8f9366ccd45004", null ],
       [ "EncTags", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a3ec1aaf1494bbe1e4c946aec64d96397", null ],
       [ "ProviderCode", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a435b96d0f2bd8802e06a81940574f81d", null ],
-      [ "AdditionalInfo", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a509dce9f08fe15e12f857e209f92cb14", null ]
+      [ "AdditionalInfo", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a509dce9f08fe15e12f857e209f92cb14", null ],
+      [ "BonusBalance", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a90f1d48aa8ebfd9d78ddbac3c6d24471", null ],
+      [ "BonusAmount", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0aa62ec3539f33cd44e4b2e0fc1afbfa47", null ],
+      [ "HashCardTrack2", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a53efdd666278d3d162026ac8faee3275", null ],
+      [ "PaymentProviderCode", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0aacea5852b55a971d548eb36a824124a2", null ],
+      [ "PaymentParam1", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a6bab2614fd305d574195f2703e9f2ade", null ],
+      [ "PaymentParam2", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a1430cfed1745d7980a25409613018735", null ],
+      [ "PaymentParam3", "namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a0b7e39bfa7bc011c8dbb446ec20aff8f", null ]
     ] ],
     [ "getFirstRequestField", "namespace_lanter_1_1_message_1_1_request.html#a0a3a4fb14069821a085f5bab3161ccf2", null ],
     [ "getLastRequestField", "namespace_lanter_1_1_message_1_1_request.html#a57f7ff3d2edbfeb3b6ec1ebd5dd140d5", null ]

@@ -11,7 +11,8 @@ var searchData=
   ['addresponsecallback_8',['addResponseCallback',['../class_lanter_1_1_manager_1_1_i_lan4_gate.html#a09eac4ef6f3131a2e8ede18e273015b8',1,'Lanter::Manager::ILan4Gate']]],
   ['alipay_9',['AliPay',['../namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a91e40c69ca45fe7bd498e4050eea4625',1,'Lanter::Message']]],
   ['amount_10',['Amount',['../namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0ab2f40690858b404ed10e62bdf422c704',1,'Lanter::Message::Request']]],
-  ['arrayelement_11',['ArrayElement',['../namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a10ea5989757cbd075a6bf67002daee9b',1,'Lanter::Message']]],
-  ['async_12',['Async',['../class_lanter_1_1_manager_1_1_i_lan4_gate.html#a5a45fe271268f033eef88693b8b32789a24aa4117da86c41684ad25742832dfa6',1,'Lanter::Manager::ILan4Gate']]],
-  ['authcode_13',['AuthCode',['../namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a543fd7578846f4d5089c4198b3b883d9',1,'Lanter::Message::Request::AuthCode()'],['../namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a543fd7578846f4d5089c4198b3b883d9',1,'Lanter::Message::Response::AuthCode()']]]
+  ['applicationlabel_11',['ApplicationLabel',['../namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a2ab013786a388e57fe5bab2420d457d7',1,'Lanter::Message::Response']]],
+  ['arrayelement_12',['ArrayElement',['../namespace_lanter_1_1_message.html#ac71d410b44a029d19e6fc3008bc42597a10ea5989757cbd075a6bf67002daee9b',1,'Lanter::Message']]],
+  ['async_13',['Async',['../class_lanter_1_1_manager_1_1_i_lan4_gate.html#a5a45fe271268f033eef88693b8b32789a24aa4117da86c41684ad25742832dfa6',1,'Lanter::Manager::ILan4Gate']]],
+  ['authcode_14',['AuthCode',['../namespace_lanter_1_1_message_1_1_request.html#ac5f8f0b27bf536c9fe08aed2a9fd08a0a543fd7578846f4d5089c4198b3b883d9',1,'Lanter::Message::Request::AuthCode()'],['../namespace_lanter_1_1_message_1_1_response.html#ab92cdd52172d3e9ae313e969a1700ef7a543fd7578846f4d5089c4198b3b883d9',1,'Lanter::Message::Response::AuthCode()']]]
 ];
