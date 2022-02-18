@@ -620,7 +620,7 @@ TEST(TestResponseOperationValidators, CheckDisplayQR) {
     EXPECT_TRUE(validator->validate(fields));
 
     EXPECT_FALSE(validator->getMandatoryFields().empty());
-    EXPECT_TRUE(validator->getOptionalFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
 
     std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
@@ -643,7 +643,7 @@ TEST(TestResponseOperationValidators, CheckFinalizeTransaction) {
     EXPECT_TRUE(validator->validate(fields));
 
     EXPECT_FALSE(validator->getMandatoryFields().empty());
-    EXPECT_TRUE(validator->getOptionalFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
 
     std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
@@ -737,7 +737,7 @@ TEST(TestResponseOperationValidators, CheckInitialization) {
     EXPECT_TRUE(validator->validate(fields));
 
     EXPECT_FALSE(validator->getMandatoryFields().empty());
-    EXPECT_TRUE(validator->getOptionalFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
 
     std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
@@ -760,7 +760,7 @@ TEST(TestResponseOperationValidators, CheckKeyDownload) {
     EXPECT_TRUE(validator->validate(fields));
 
     EXPECT_FALSE(validator->getMandatoryFields().empty());
-    EXPECT_TRUE(validator->getOptionalFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
 
     std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
@@ -886,7 +886,7 @@ TEST(TestResponseOperationValidators, CheckPrintSoftInfo) {
     EXPECT_TRUE(validator->validate(fields));
 
     EXPECT_FALSE(validator->getMandatoryFields().empty());
-    EXPECT_TRUE(validator->getOptionalFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
 
     std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
@@ -932,7 +932,7 @@ TEST(TestResponseOperationValidators, CheckRegistration) {
     EXPECT_TRUE(validator->validate(fields));
 
     EXPECT_FALSE(validator->getMandatoryFields().empty());
-    EXPECT_TRUE(validator->getOptionalFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
 
     std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
@@ -955,7 +955,7 @@ TEST(TestResponseOperationValidators, CheckSelfTest) {
     EXPECT_TRUE(validator->validate(fields));
 
     EXPECT_FALSE(validator->getMandatoryFields().empty());
-    EXPECT_TRUE(validator->getOptionalFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
 
     std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
@@ -1025,7 +1025,7 @@ TEST(TestResponseOperationValidators, CheckTest) {
     EXPECT_TRUE(validator->validate(fields));
 
     EXPECT_FALSE(validator->getMandatoryFields().empty());
-    EXPECT_TRUE(validator->getOptionalFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
 
     std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
@@ -1048,7 +1048,7 @@ TEST(TestResponseOperationValidators, CheckTestCommunication) {
     EXPECT_TRUE(validator->validate(fields));
 
     EXPECT_FALSE(validator->getMandatoryFields().empty());
-    EXPECT_TRUE(validator->getOptionalFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
 
     std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
@@ -1071,7 +1071,7 @@ TEST(TestResponseOperationValidators, CheckUpdateSW) {
     EXPECT_TRUE(validator->validate(fields));
 
     EXPECT_FALSE(validator->getMandatoryFields().empty());
-    EXPECT_TRUE(validator->getOptionalFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
 
     std::set<ResponseField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
