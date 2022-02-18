@@ -5,7 +5,7 @@
 ![Сборка macOS](../..//workflows/macOS/badge.svg) 
 ![Сборка Windows](../..//workflows/Windows/badge.svg)
 
-[![Release](https://img.shields.io/badge/release-v0.9.5-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibraryCPP/releases/tag/v0.9.5)
+[![Release](https://img.shields.io/badge/release-v0.9.6-blue.svg?style=flat)](https://github.com/LanterECR/LAN-4GateLibraryCPP/releases/tag/v0.9.6)
 [![badge](https://img.shields.io/badge/document-doxygen-blue)](https://LanterECR.github.io/LAN-4GateLibraryCPP/doxygen/index.html)
 
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/LanterECR/LAN-4GateLibraryCPP.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/LanterECR/LAN-4GateLibraryCPP/alerts/)
