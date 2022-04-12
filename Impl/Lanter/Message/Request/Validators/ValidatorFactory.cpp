@@ -43,6 +43,7 @@
 #include "Lanter/Message/Request/Validators/Operations/Service/Test.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/TestCommunication.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/UpdateSW.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/SendLogs.h"
 
 namespace Lanter {
     namespace Message {
@@ -165,6 +166,9 @@ namespace Lanter {
                         break;
                     case OperationCode::DisplayQR:
                         validator = std::make_shared<DisplayQR>();
+                        break;
+                    case OperationCode::SendLogs:
+                        validator = std::make_shared<SendLogs>();
                         break;
                     default:
                         validator = std::make_shared<BasicValidator>();
