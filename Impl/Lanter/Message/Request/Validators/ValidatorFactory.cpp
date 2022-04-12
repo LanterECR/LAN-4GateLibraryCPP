@@ -43,6 +43,19 @@
 #include "Lanter/Message/Request/Validators/Operations/Service/Test.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/TestCommunication.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/UpdateSW.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/SendLogs.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/SetLogLevel.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/LicenseActivationFile.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/LicenseActivationServer.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/ClearReversal.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/ClearAllJournals.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/TakeLockCard.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/EjectCard.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/EjectWaitCard.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/IsCardPresent.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/UploadPending.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/BonusBalance.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/GrabEjectCard.h"
 
 namespace Lanter {
     namespace Message {
@@ -165,6 +178,45 @@ namespace Lanter {
                         break;
                     case OperationCode::DisplayQR:
                         validator = std::make_shared<DisplayQR>();
+                        break;
+                    case OperationCode::SendLogs:
+                        validator = std::make_shared<SendLogs>();
+                        break;
+                    case OperationCode::SetLogLevel:
+                        validator = std::make_shared<SetLogLevel>();
+                        break;
+                    case OperationCode::LicenseActivationFile:
+                        validator = std::make_shared<LicenseActivationFile>();
+                        break;
+                    case OperationCode::LicenseActivationServer:
+                        validator = std::make_shared<LicenseActivationServer>();
+                        break;
+                    case OperationCode::ClearReversal:
+                        validator = std::make_shared<ClearReversal>();
+                        break;
+                    case OperationCode::ClearAllJournals:
+                        validator = std::make_shared<ClearAllJournals>();
+                        break;
+                    case OperationCode::TakeLockCard:
+                        validator = std::make_shared<TakeLockCard>();
+                        break;
+                    case OperationCode::EjectCard:
+                        validator = std::make_shared<EjectCard>();
+                        break;
+                    case OperationCode::EjectWaitCard:
+                        validator = std::make_shared<EjectWaitCard>();
+                        break;
+                    case OperationCode::IsCardPresent:
+                        validator = std::make_shared<IsCardPresent>();
+                        break;
+                    case OperationCode::UploadPending:
+                        validator = std::make_shared<UploadPending>();
+                        break;
+                    case OperationCode::BonusBalance:
+                        validator = std::make_shared<BonusBalance>();
+                        break;
+                    case OperationCode::GrabEjectCard:
+                        validator = std::make_shared<GrabEjectCard>();
                         break;
                     default:
                         validator = std::make_shared<BasicValidator>();

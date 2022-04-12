@@ -776,3 +776,294 @@ TEST(TestRequestOperationValidators, CheckUpdateSW) {
         EXPECT_TRUE(allFields.find(i) != allFields.end());
     }
 }
+
+TEST(TestRequestOperationValidators, CheckSendLogs) {
+    std::set<RequestField> fields;
+
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::SendLogs);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_TRUE(validator->getOptionalFields().empty());
+
+    std::set<RequestField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+
+TEST(TestRequestOperationValidators, CheckSetLogLevel) {
+    std::set<RequestField> fields;
+
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::SetLogLevel);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_TRUE(validator->getOptionalFields().empty());
+
+    std::set<RequestField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+
+TEST(TestRequestOperationValidators, CheckLicenseActivationFile) {
+    std::set<RequestField> fields;
+
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::LicenseActivationFile);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_TRUE(validator->getOptionalFields().empty());
+
+    std::set<RequestField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+
+TEST(TestRequestOperationValidators, CheckLicenseActivationServer) {
+    std::set<RequestField> fields;
+
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::LicenseActivationServer);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_TRUE(validator->getOptionalFields().empty());
+
+    std::set<RequestField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+
+TEST(TestRequestOperationValidators, CheckClearReversal) {
+    std::set<RequestField> fields;
+
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::ClearReversal);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_TRUE(validator->getOptionalFields().empty());
+
+    std::set<RequestField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+
+TEST(TestRequestOperationValidators, CheckClearAllJournals) {
+    std::set<RequestField> fields;
+
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::ClearAllJournals);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_TRUE(validator->getOptionalFields().empty());
+
+    std::set<RequestField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+TEST(TestRequestOperationValidators, CheckTakeLockCard) {
+    std::set<RequestField> fields;
+
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::TakeLockCard);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_TRUE(validator->getOptionalFields().empty());
+
+    std::set<RequestField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+
+TEST(TestRequestOperationValidators, CheckEjectCard) {
+    std::set<RequestField> fields;
+
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::EjectCard);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_TRUE(validator->getOptionalFields().empty());
+
+    std::set<RequestField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+
+TEST(TestRequestOperationValidators, CheckEjectWaitCard) {
+    std::set<RequestField> fields;
+
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::EjectWaitCard);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_TRUE(validator->getOptionalFields().empty());
+
+    std::set<RequestField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+
+TEST(TestRequestOperationValidators, CheckIsCardPresent) {
+    std::set<RequestField> fields;
+
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::IsCardPresent);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_TRUE(validator->getOptionalFields().empty());
+
+    std::set<RequestField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+TEST(TestRequestOperationValidators, CheckUploadPending) {
+    std::set<RequestField> fields;
+
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::ReceiptReference);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::UploadPending);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
+
+    std::set<RequestField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+
+TEST(TestRequestOperationValidators, CheckBonusBalance) {
+    std::set<RequestField> fields;
+
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+
+    fields.insert(RequestField::EcrMerchantNumber);
+    fields.insert(RequestField::Amount);
+    fields.insert(RequestField::CurrencyCode);
+    fields.insert(RequestField::AdditionalChoice);
+    fields.insert(RequestField::AdditionalInfo);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::BonusBalance);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
+
+    std::set<RequestField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+TEST(TestRequestOperationValidators, CheckGrabEjectCard) {
+    std::set<RequestField> fields;
+
+    fields.insert(RequestField::OperationCode);
+    fields.insert(RequestField::EcrNumber);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::GrabEjectCard);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_TRUE(validator->getOptionalFields().empty());
+
+    std::set<RequestField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
