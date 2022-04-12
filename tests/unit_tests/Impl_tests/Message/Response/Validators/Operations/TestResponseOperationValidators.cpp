@@ -1219,3 +1219,99 @@ TEST(TestResponseOperationValidators, CheckClearAllJournals) {
         EXPECT_TRUE(allFields.find(i) != allFields.end());
     }
 }
+
+TEST(TestResponseOperationValidators, CheckTakeLockCard) {
+    std::set<ResponseField> fields;
+
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::TakeLockCard);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
+
+    std::set<ResponseField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+
+TEST(TestResponseOperationValidators, CheckEjectCard) {
+    std::set<ResponseField> fields;
+
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::EjectCard);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
+
+    std::set<ResponseField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+
+TEST(TestResponseOperationValidators, CheckEjectWaitCard) {
+    std::set<ResponseField> fields;
+
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::EjectWaitCard);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
+
+    std::set<ResponseField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}
+
+TEST(TestResponseOperationValidators, CheckIsCardPresent) {
+    std::set<ResponseField> fields;
+
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+
+    fields.insert(ResponseField::AdditionalInfo);
+    fields.insert(ResponseField::CardPAN);
+    fields.insert(ResponseField::ExpireDate);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::IsCardPresent);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
+
+    std::set<ResponseField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}

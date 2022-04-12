@@ -49,6 +49,10 @@
 #include "Lanter/Message/Request/Validators/Operations/Service/LicenseActivationServer.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/ClearReversal.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/ClearAllJournals.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/TakeLockCard.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/EjectCard.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/EjectWaitCard.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/IsCardPresent.h"
 
 namespace Lanter {
     namespace Message {
@@ -189,6 +193,18 @@ namespace Lanter {
                         break;
                     case OperationCode::ClearAllJournals:
                         validator = std::make_shared<ClearAllJournals>();
+                        break;
+                    case OperationCode::TakeLockCard:
+                        validator = std::make_shared<TakeLockCard>();
+                        break;
+                    case OperationCode::EjectCard:
+                        validator = std::make_shared<EjectCard>();
+                        break;
+                    case OperationCode::EjectWaitCard:
+                        validator = std::make_shared<EjectWaitCard>();
+                        break;
+                    case OperationCode::IsCardPresent:
+                        validator = std::make_shared<IsCardPresent>();
                         break;
                     default:
                         validator = std::make_shared<BasicValidator>();
