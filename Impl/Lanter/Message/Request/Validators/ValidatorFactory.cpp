@@ -45,6 +45,8 @@
 #include "Lanter/Message/Request/Validators/Operations/Service/UpdateSW.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/SendLogs.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/SetLogLevel.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/LicenseActivationFile.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/LicenseActivationServer.h"
 
 namespace Lanter {
     namespace Message {
@@ -173,6 +175,12 @@ namespace Lanter {
                         break;
                     case OperationCode::SetLogLevel:
                         validator = std::make_shared<SetLogLevel>();
+                        break;
+                    case OperationCode::LicenseActivationFile:
+                        validator = std::make_shared<LicenseActivationFile>();
+                        break;
+                    case OperationCode::LicenseActivationServer:
+                        validator = std::make_shared<LicenseActivationServer>();
                         break;
                     default:
                         validator = std::make_shared<BasicValidator>();
