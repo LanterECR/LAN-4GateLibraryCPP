@@ -1435,6 +1435,25 @@ namespace Lanter {
                 m_FieldsSet.erase(ResponseField::CfgTerminalID);
                 return !isFieldSet(ResponseField::CfgTerminalID);
             }
+            int64_t ResponseData::getAdditionalChoiceResult() const {
+                return m_ChoiceResult;
+            }
+
+            bool ResponseData::setAdditionalChoiceResult(int64_t additionalChoiceResult) {
+                bool result = false;
+                if (checkAmountRange(additionalChoiceResult)) {
+                    m_ChoiceResult = additionalChoiceResult;
+                    m_FieldsSet.insert(ResponseField::AdditionalChoiceResult);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetAdditionalChoiceResult() {
+                m_ChoiceResult = -1;
+                m_FieldsSet.erase(ResponseField::AdditionalChoiceResult);
+                return !isFieldSet(ResponseField::AdditionalChoiceResult);
+            }
         }
     }
 }

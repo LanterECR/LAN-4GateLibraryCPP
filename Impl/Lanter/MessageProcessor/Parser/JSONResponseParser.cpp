@@ -648,6 +648,16 @@ namespace Lanter {
                 return result;
             }
 
+            bool
+            JSONResponseParser::getFieldAdditionalChoiceResult(const Json::Value &object, IResponseData &responseData) {
+                int64_t choiceResult;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getAdditionalChoiceResult(), choiceResult);
+                bool result = exists && responseData.setFinalizationRequired(choiceResult);
+
+                return result;
+            }
+
             void JSONResponseParser::initFunctionsMap() {
                 m_ExtractFunctions[ResponseField::EcrNumber] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldEcrNumber(object, responseData); };
                 m_ExtractFunctions[ResponseField::EcrMerchantNumber] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldEcrMerchantNumber(object, responseData); };
@@ -711,6 +721,7 @@ namespace Lanter {
                 m_ExtractFunctions[ResponseField::BonusAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldBonusAmount(object, responseData); };
                 m_ExtractFunctions[ResponseField::HashCardTrack2] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldHashCardTrack2(object, responseData); };
                 m_ExtractFunctions[ResponseField::FinalizationRequired] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldFinalizationRequired(object, responseData); };
+                m_ExtractFunctions[ResponseField::AdditionalChoiceResult] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldAdditionalChoiceResult(object, responseData); };
             }
 
             bool JSONResponseParser::getFields(const Json::Value &object, IResponseData &responseData) {

@@ -69,6 +69,7 @@ namespace Lanter {
                 BonusAmount, ///< Сумма бонусов
                 HashCardTrack2, ///< Кэшированный Track 2
                 FinalizationRequired, ///< Флаг, обозначающий необходимость финализации транзакции
+                AdditionalChoiceResult, ///< Номер выбранного пункта меню на терминале
             };//enum ResponseField
 
             /// Функция, возвращающая первый значимый элемент перечисления ResponseField
@@ -80,7 +81,7 @@ namespace Lanter {
             /// Функция, возвращающая последний значимый элемент перечисления ResponseField
             /// \return Последний элемент значимый перечисления ResponseField
             constexpr ResponseField getLastResponseField() {
-                return ResponseField::FinalizationRequired;
+                return ResponseField::AdditionalChoiceResult;
             }
         }//namespace Response
     }//namespace Message
