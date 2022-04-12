@@ -174,6 +174,12 @@ namespace Lanter {
 
                 bool resetPaymentParam3() override;
 
+                const std::string &getAdditionalChoice() const override;
+
+                bool resetAdditionalChoice() override;
+
+                bool setAdditionalChoice(const std::string &additionalChoice) override;
+
             private:
                 void initValidator();
                 void deinitValidator();
@@ -206,6 +212,7 @@ namespace Lanter {
                 std::string m_PaymentParam1;
                 std::string m_PaymentParam2;
                 std::string m_PaymentParam3;
+                std::string m_AdditionalChoice; ///< Параметры операции на экране терминала
 
                 std::set<RequestField> m_EmptyFieldsPlaceholder; ///< Пустая коллекция для полей при отсутствии валидатора
 

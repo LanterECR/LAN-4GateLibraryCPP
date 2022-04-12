@@ -401,6 +401,22 @@ namespace Lanter {
                 /// и удаляет из списка установленных полей
                 /// \return true, если поле успешно удалено
                 virtual bool resetPaymentParam3() = 0;
+
+
+                /// \brief Возвращает установленные параметры операции на экране терминала
+                /// \return Строка, содержащая установленные параметры операции на экране терминала
+                virtual const std::string &getAdditionalChoice() const = 0;
+
+                /// \brief Устанавливает параметры операции на экране терминала
+                /// \param[in] additionalChoice Строка, содержащая установленные параметры операции на экране терминала
+                /// \return true, если поле успешно установлено
+                virtual bool setAdditionalChoice(const std::string &additionalInfo) = 0;
+
+                /// \brief Устанавливает параметры операции на экране терминала для поля AdditionalChoice
+                /// и удаляет из списка установленных полей
+                /// \return true, если успешно удалено.
+                virtual bool resetAdditionalChoice() = 0;
+
             };//class IRequestData
         }//namespace Request
     }//namespace Message

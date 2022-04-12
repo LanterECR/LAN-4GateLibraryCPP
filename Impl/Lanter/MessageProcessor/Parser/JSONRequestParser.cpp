@@ -259,6 +259,15 @@ namespace Lanter {
                 return result;
             }
 
+            bool JSONRequestParser::getFieldAdditionalChoice(const Json::Value &object, IRequestData &requestData) {
+                std::string AdditionalChoice;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getAdditionalChoice(), AdditionalChoice);
+                bool result = exists && requestData.setAdditionalChoice(AdditionalChoice);
+
+                return result;
+            }
+
             void JSONRequestParser::initFunctionsMap() {
 
                 m_ExtractFunctions[RequestField::EcrNumber] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldEcrNumber(object, requestData); };
@@ -291,6 +300,8 @@ namespace Lanter {
                 m_ExtractFunctions[RequestField::PaymentParam2] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldPaymentParam2(
                         object, requestData); };
                 m_ExtractFunctions[RequestField::PaymentParam3] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldPaymentParam3(
+                        object, requestData); };
+                m_ExtractFunctions[RequestField::AdditionalChoice] = [this](const Json::Value& object, IRequestData& requestData) { return getFieldAdditionalChoice(
                         object, requestData); };
             }
 

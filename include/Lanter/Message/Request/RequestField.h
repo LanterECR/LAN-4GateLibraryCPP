@@ -31,7 +31,8 @@ namespace Lanter {
                 PaymentProviderCode, ///< Код провайдера платежа
                 PaymentParam1, ///< Первый параметр платежа
                 PaymentParam2, ///< Второй параметр платежа
-                PaymentParam3 ///< Третий параметр платежа
+                PaymentParam3, ///< Третий параметр платежа
+                AdditionalChoice ///< Выбор опции на экране
 
             };//enum RequestField
 
@@ -44,7 +45,7 @@ namespace Lanter {
             /// Функция, возвращающая последний значимый элемент перечисления RequestField
             /// \return Последний элемент значимый перечисления RequestField
             constexpr RequestField getLastRequestField() {
-                return RequestField::PaymentParam3;
+                return RequestField::AdditionalChoice;
             }
         }//namespace Request
     }//namespace Message

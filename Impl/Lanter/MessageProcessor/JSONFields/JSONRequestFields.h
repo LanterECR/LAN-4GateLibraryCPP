@@ -32,6 +32,7 @@ namespace Lanter {
             static inline std::string getPaymentParam1() { return "PaymentParam1"; }
             static inline std::string getPaymentParam2() { return "PaymentParam2"; }
             static inline std::string getPaymentParam3() { return "PaymentParam3"; }
+            static inline std::string getAdditionalChoice() { return "additionalChoice"; }
         };
     }
 }
