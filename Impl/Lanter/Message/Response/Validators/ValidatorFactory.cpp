@@ -49,6 +49,7 @@
 #include "Lanter/Message/Response/Validators/Operations/Service/IsCardPresent.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/UploadPending.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/BonusBalance.h"
+#include "Lanter/Message/Response/Validators/Operations/Service/GrabEjectCard.h"
 
 #include "Lanter/Message/Response/Validators/Operations/Void/Void.h"
 #include "Lanter/Message/Response/Validators/Operations/Void/VoidPartialSale.h"
@@ -210,6 +211,9 @@ namespace Lanter {
                         break;
                     case OperationCode::BonusBalance:
                         validator = std::make_shared<BonusBalance>();
+                        break;
+                    case OperationCode::GrabEjectCard:
+                        validator = std::make_shared<GrabEjectCard>();
                         break;
                     default:
                         validator = std::make_shared<BasicValidator>();
