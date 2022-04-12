@@ -145,6 +145,8 @@ namespace Lanter {
 
                 bool addFieldFinalizationRequired(const IResponseData &responseData, Json::Value &object);
 
+                bool addFieldAdditionalChoiceResult(const IResponseData &responseData, Json::Value &object);
+
             private:
                 void initFunctionsMap();
 

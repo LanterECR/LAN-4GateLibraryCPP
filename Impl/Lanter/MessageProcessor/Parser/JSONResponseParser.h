@@ -144,6 +144,9 @@ namespace Lanter {
                 bool getFieldHashCardTrack2(const Json::Value &object, IResponseData &responseData);
 
                 bool getFieldFinalizationRequired(const Json::Value &object, IResponseData &responseData);
+
+                bool getFieldAdditionalChoiceResult(const Json::Value &object, IResponseData &responseData);
+
             private:
                 void initFunctionsMap();
 

@@ -393,6 +393,12 @@ namespace Lanter {
 
                 bool resetCfgTerminalID() override;
 
+                int64_t getAdditionalChoiceResult() const override;
+
+                bool setAdditionalChoiceResult(int64_t additionalChoiceResult) override;
+
+                bool resetAdditionalChoiceResult() override;
+
             private:
                 void initValidator();
                 void deinitValidator();
@@ -464,6 +470,7 @@ namespace Lanter {
                 int64_t m_BonusAmount = -1;
                 std::string m_HashCardTrack2;
                 bool m_FinalizationRequired = false;
+                int64_t m_ChoiceResult = -1;
 
                 std::vector<std::shared_ptr<IResponseData> > m_SalesArray;
                 std::vector<std::shared_ptr<IResponseData> > m_VoidArray;

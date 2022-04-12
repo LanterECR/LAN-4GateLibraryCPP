@@ -922,6 +922,21 @@ namespace Lanter {
                 /// и удаляет из списка установленных полей
                 /// \return true, если поле успешно удалено
                 virtual bool resetFinalizationRequired() = 0;
+
+                /// \brief Возвращает число, номер выбранного пункта меню
+                /// \return std::int64_t, содержащий число в диапазоне [0, 999999999999]
+                virtual int64_t getAdditionalChoiceResult() const = 0;
+
+                /// \brief Устанавливает число, номер выбранного пункта меню
+                /// \param[in] AdditionalChoiceResult std::int64_t, содержащий число в диапазоне [0, 999999999999]
+                /// \return true, если поле успешно установлено
+                virtual bool setAdditionalChoiceResult(int64_t additionalChoiceResult) = 0;
+
+                /// \brief Устанавливает число, номер выбранного пункта меню
+                /// и удаляет из списка установленных полей
+                /// \return true, если успешно удалено.
+                virtual bool resetAdditionalChoiceResult() = 0;
+
             };//class IResponseData
         }//namespace Response
     }//namespace Message
