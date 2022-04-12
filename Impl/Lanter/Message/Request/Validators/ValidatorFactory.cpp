@@ -53,6 +53,7 @@
 #include "Lanter/Message/Request/Validators/Operations/Service/EjectCard.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/EjectWaitCard.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/IsCardPresent.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/UploadPending.h"
 
 namespace Lanter {
     namespace Message {
@@ -205,6 +206,9 @@ namespace Lanter {
                         break;
                     case OperationCode::IsCardPresent:
                         validator = std::make_shared<IsCardPresent>();
+                        break;
+                    case OperationCode::UploadPending:
+                        validator = std::make_shared<UploadPending>();
                         break;
                     default:
                         validator = std::make_shared<BasicValidator>();
