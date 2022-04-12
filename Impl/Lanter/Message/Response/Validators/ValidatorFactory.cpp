@@ -41,6 +41,7 @@
 #include "Lanter/Message/Response/Validators/Operations/Service/SetLogLevel.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/LicenseActivationFile.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/LicenseActivationServer.h"
+#include "Lanter/Message/Response/Validators/Operations/Service/ClearReversal.h"
 
 #include "Lanter/Message/Response/Validators/Operations/Void/Void.h"
 #include "Lanter/Message/Response/Validators/Operations/Void/VoidPartialSale.h"
@@ -178,6 +179,9 @@ namespace Lanter {
                         break;
                     case OperationCode::LicenseActivationServer:
                         validator = std::make_shared<LicenseActivationServer>();
+                        break;
+                    case OperationCode::ClearReversal:
+                        validator = std::make_shared<ClearReversal>();
                         break;
                     default:
                         validator = std::make_shared<BasicValidator>();
