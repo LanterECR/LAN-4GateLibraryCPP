@@ -207,6 +207,14 @@ namespace Lanter {
                 return fieldExists(object, JSONRequestFields::getPaymentParam3());
             }
 
+            bool JSONRequestBuilder::addFieldAdditionalChoice(const IRequestData &requestData, Json::Value &object) {
+                if (requestData.isFieldSet(RequestField::AdditionalChoice)) {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getAdditionalChoice(),
+                                              requestData.getAdditionalChoice());
+                }
+                return fieldExists(object, JSONRequestFields::getAdditionalChoice());
+            }
+
             void JSONRequestBuilder::initFunctionsMap() {
                 m_InsertFunctions[RequestField::EcrNumber] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldEcrNumber(requestData, object); };
                 m_InsertFunctions[RequestField::EcrMerchantNumber] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldEcrMerchantNumber(requestData, object); };
@@ -232,6 +240,7 @@ namespace Lanter {
                 m_InsertFunctions[RequestField::PaymentParam1] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPaymentParam1(requestData, object); };
                 m_InsertFunctions[RequestField::PaymentParam2] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPaymentParam2(requestData, object); };
                 m_InsertFunctions[RequestField::PaymentParam3] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPaymentParam3(requestData, object); };
+                m_InsertFunctions[RequestField::AdditionalChoice] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldAdditionalChoice(requestData, object); };
             }
 
             //TODO переделать нормально

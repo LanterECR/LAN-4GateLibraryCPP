@@ -84,6 +84,10 @@ namespace Lanter {
             return !additionalInfo.empty();
         }
 
+        bool checkAdditionalChoiceRange(const std::string & additionalChoice) {
+            return !additionalChoice.empty();
+        }
+
         bool checkStatusRange(int32_t status) {
             return checkValueRange(status,
                                  static_cast<int64_t>(Response::getFirstStatus()),

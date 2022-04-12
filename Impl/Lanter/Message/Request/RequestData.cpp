@@ -571,6 +571,29 @@ namespace Lanter {
                 return !isFieldSet(RequestField::PaymentParam3);
             }
 
+            const std::string &RequestData::getAdditionalChoice() const {
+                return m_AdditionalChoice;
+            }//getAdditionalChoice()
+
+            bool RequestData::setAdditionalChoice(const std::string &additionalChoice) {
+                bool result = false;
+
+                if (checkAdditionalChoiceRange(additionalChoice)) {
+                    m_AdditionalChoice = additionalChoice;
+                    m_FieldsSet.insert(RequestField::AdditionalChoice);
+                    result = true;
+                }//if check additional choice
+
+                return result;
+            }//setAdditionalChoice()
+
+            bool RequestData::resetAdditionalChoice() {
+                m_AdditionalChoice.clear();
+                m_FieldsSet.erase(RequestField::AdditionalChoice);
+                return !isFieldSet(RequestField::AdditionalChoice);
+            }//resetAdditionalChoice()
+
+
             const std::set<RequestField> &RequestData::getFieldsSet() const {
                 return m_FieldsSet;
             }//getFieldsSet()
@@ -655,6 +678,9 @@ namespace Lanter {
                         break;
                     case RequestField::PaymentParam3:
                         result = resetPaymentParam3();
+                        break;
+                    case RequestField::AdditionalChoice:
+                        result = resetAdditionalChoice();
                         break;
                 }//switch fields
 

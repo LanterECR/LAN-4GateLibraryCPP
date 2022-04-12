@@ -70,6 +70,9 @@ namespace Lanter {
                 bool getFieldPaymentParam2(const Json::Value &object, IRequestData &requestData);
 
                 bool getFieldPaymentParam3(const Json::Value &object, IRequestData &requestData);
+
+                bool getFieldAdditionalChoice(const Json::Value &object, IRequestData &requestData);
+
             private:
                 void initFunctionsMap();
 
