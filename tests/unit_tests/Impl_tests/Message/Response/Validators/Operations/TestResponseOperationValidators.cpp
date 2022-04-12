@@ -1104,3 +1104,26 @@ TEST(TestResponseOperationValidators, CheckSendLogs) {
         EXPECT_TRUE(allFields.find(i) != allFields.end());
     }
 }
+
+TEST(TestResponseOperationValidators, CheckSetLogLevel) {
+    std::set<ResponseField> fields;
+
+    fields.insert(ResponseField::OperationCode);
+    fields.insert(ResponseField::EcrNumber);
+    fields.insert(ResponseField::Status);
+
+    auto validator = ValidatorFactory::getValidator(OperationCode::SetLogLevel);
+
+    EXPECT_TRUE(validator->validate(fields));
+
+    EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
+
+    std::set<ResponseField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
+
+    for(auto i : fields) {
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
+    }
+}

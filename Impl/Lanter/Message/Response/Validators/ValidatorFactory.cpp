@@ -38,6 +38,7 @@
 #include "Lanter/Message/Response/Validators/Operations/Service/TestCommunication.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/UpdateSW.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/SendLogs.h"
+#include "Lanter/Message/Response/Validators/Operations/Service/SetLogLevel.h"
 
 #include "Lanter/Message/Response/Validators/Operations/Void/Void.h"
 #include "Lanter/Message/Response/Validators/Operations/Void/VoidPartialSale.h"
@@ -166,6 +167,9 @@ namespace Lanter {
                         break;
                     case OperationCode::SendLogs:
                         validator = std::make_shared<SendLogs>();
+                        break;
+                    case OperationCode::SetLogLevel:
+                        validator = std::make_shared<SetLogLevel>();
                         break;
                     default:
                         validator = std::make_shared<BasicValidator>();
