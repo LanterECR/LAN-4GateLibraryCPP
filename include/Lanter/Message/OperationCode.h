@@ -55,6 +55,7 @@ namespace Lanter {
             LicenseActivationFile, ///< Лицензирование ПО LAN-4Tap с помощью файла активации
             LicenseActivationServer, ///< Лицензирование ПО LAN-4Tap с помощью сервера активации
             ClearReversal, ///< Удаление реверса в финансовом ПО LAN-4Tap
+            ClearAllJournals, ///< Очистка всех журналов в финансовом ПО LAN-4Tap
 
             //Отдельный тип операции для представления массивов операции DetailReport
             ArrayElement = 1000 ///< Фиктивный код операции для создания элементов массива
