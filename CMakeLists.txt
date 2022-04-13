@@ -141,6 +141,7 @@ if(L4G_BUILD_SWIG)
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/InteractionCode.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4Gate.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4GateFactory.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4GateLogger.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4GateJNI.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/NotificationCode.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/OperationCode.java
@@ -154,6 +155,7 @@ if(L4G_BUILD_SWIG)
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Version.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/imaxdiv_t.java)
         include(UseJava)
+        #SET(CMAKE_JAVA_COMPILE_FLAGS "-source" "1.6" "-target" "1.6")
         add_jar(Lan4gateInterface
                 SOURCES ${JAVA_SRC}
                 OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/java)

@@ -17,6 +17,7 @@ TEST(TestRequestOperationValidators, CheckRefund) {
     fields.insert(RequestField::CurrencyCode);
     fields.insert(RequestField::RRN);
     fields.insert(RequestField::TransactionID);
+    fields.insert(RequestField::AdditionalInfo);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Refund);
 
@@ -42,13 +43,14 @@ TEST(TestRequestOperationValidators, CheckRefundWithoutRRN) {
     fields.insert(RequestField::EcrMerchantNumber);
     fields.insert(RequestField::Amount);
     fields.insert(RequestField::CurrencyCode);
+    fields.insert(RequestField::AdditionalInfo);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::RefundWithoutRRN);
 
     EXPECT_TRUE(validator->validate(fields));
 
     EXPECT_FALSE(validator->getMandatoryFields().empty());
-    EXPECT_TRUE(validator->getOptionalFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
 
     std::set<RequestField> allFields;
     allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
@@ -209,15 +211,21 @@ TEST(TestRequestOperationValidators, CheckSale) {
     fields.insert(RequestField::EcrMerchantNumber);
     fields.insert(RequestField::Amount);
     fields.insert(RequestField::CurrencyCode);
+    fields.insert(RequestField::AdditionalInfo);
 
     auto validator = ValidatorFactory::getValidator(OperationCode::Sale);
 
     EXPECT_TRUE(validator->validate(fields));
 
     EXPECT_FALSE(validator->getMandatoryFields().empty());
+    EXPECT_FALSE(validator->getOptionalFields().empty());
+
+    std::set<RequestField> allFields;
+    allFields.insert(validator->getMandatoryFields().begin(), validator->getMandatoryFields().end());
+    allFields.insert(validator->getOptionalFields().begin(), validator->getOptionalFields().end());
 
     for(auto i : fields) {
-        EXPECT_TRUE(validator->getMandatoryFields().find(i) != validator->getMandatoryFields().end());
+        EXPECT_TRUE(allFields.find(i) != allFields.end());
     }
 }
 

@@ -7,6 +7,7 @@
 %feature("director") INotificationCallback;
 %feature("director") IInteractionCallback;
 %feature("director") IConnectionCallback;
+%feature("director") ILoggerCallback;
 
 %include "windows.i"
 %include "inttypes.i"
@@ -53,8 +54,10 @@
 #include "Lanter/Manager/Callback/INotificationCallback.h"
 #include "Lanter/Manager/Callback/IInteractionCallback.h"
 #include "Lanter/Manager/Callback/IConnectionCallback.h"
+#include "Lanter/Manager/Callback/ILoggerCallback.h"
 
 #include "Lanter/Manager/ILan4Gate.h"
+#include "Lanter/Manager/Lan4GateLogger.h"
 #include "Lanter/Manager/Lan4GateFactory.h"
 
 #include "Lanter/Utils/Version.h"
@@ -94,8 +97,10 @@ namespace std {
 %include "Lanter/Manager/Callback/INotificationCallback.h"
 %include "Lanter/Manager/Callback/IInteractionCallback.h"
 %include "Lanter/Manager/Callback/IConnectionCallback.h"
+%include "Lanter/Manager/Callback/ILoggerCallback.h"
 
 %include "Lanter/Manager/ILan4Gate.h"
+%include "Lanter/Manager/Lan4GateLogger.h"
 %include "Lanter/Manager/Lan4GateFactory.h"
 
 %include "Lanter/Utils/Version.h"
