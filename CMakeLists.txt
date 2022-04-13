@@ -24,7 +24,7 @@ if(NOT IS_SUBPROJECT)
     )
 endif()
 
-project(LAN_4GateLib VERSION 0.9.6 LANGUAGES CXX)
+project(LAN_4GateLib VERSION 0.9.7 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 
