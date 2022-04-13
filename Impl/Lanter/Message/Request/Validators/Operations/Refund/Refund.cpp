@@ -10,6 +10,7 @@ namespace Lanter {
                 appendMandatoryField(RequestField::RRN);
 
                 appendOptionalField(RequestField::TransactionID);
+                appendOptionalField(RequestField::AdditionalInfo);
             }
         }
     }
