@@ -27,6 +27,20 @@ TEST(TestJSONResponseParser, CheckInitMap) {
     EXPECT_EQ(count, parser.getFunctions().size());
 }
 
+TEST(TestJSONResponseParser, CheckBasicResponse) {
+    JSONResponseParser parser;
+
+    std::string text = "{\"ApplicationLabel\":\"MIR Classic DBT\",\"CID\":\"00\",\"CardEmvAid\":\"A0000006581010\",\"CardInputMethod\":5,\"CardPAN\":\"************3968\",\"CardholderAuthMethod\":1,\"CardholderName\":\"MK TKK  DVL/TEST\",\"CurrencyCode\":643,\"EcrMerchantNumber\":1,\"EcrNumber\":1,\"ExpireDate\":\"2303\",\"IssuerName\":\"qwe\",\"MerchantId\":\"01000154\",\"OperationCode\":1,\"RRN\":\"209811337140\",\"ReceiptLine1\":\"11\",\"ReceiptLine2\":\"11\",\"ReceiptLine3\":\"ww\",\"ReceiptLine4\":\"qq\",\"ReceiptReference\":\"000046\",\"ResponseCode\":\"908\",\"ResponseText\":\"908\",\"Status\":2,\"TSI\":\"E800\",\"TVR\":\"0000048000\",\"TerminalDateTime\":\"20220408111205\",\"TerminalID\":\"01000154\",\"TotalAmount\":100,\"TransDateTime\":\"20220408111205\"}";
+    Json::Value object;
+    Json::Reader reader;
+    EXPECT_TRUE(reader.parse( text, object ));
+
+    ResponseData data;
+
+    EXPECT_TRUE(parser.getFieldCurrencyCode(object, data));
+    EXPECT_EQ(data.getCurrencyCode(),"643");
+}
+
 TEST(TestJSONResponseParser, CheckGetEcrNumber) {
     JSONResponseParser parser;
 
