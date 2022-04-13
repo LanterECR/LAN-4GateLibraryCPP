@@ -141,6 +141,7 @@ if(L4G_BUILD_SWIG)
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/InteractionCode.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4Gate.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4GateFactory.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4GateLogger.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4GateJNI.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/NotificationCode.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/OperationCode.java

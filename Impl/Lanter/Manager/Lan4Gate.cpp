@@ -13,6 +13,9 @@
 #include "Lanter/MessageProcessor/Parser/MessageParserFactory.h"
 #include "Lanter/MessageProcessor/Builder/MessageBuilderFactory.h"
 
+#include "Lanter/Manager/Lan4GateLogger.h"
+
+
 namespace Lanter {
     namespace Manager {
         Lan4Gate::Lan4Gate() : m_IsStarted(false) {}
@@ -464,8 +467,12 @@ namespace Lanter {
 
                 auto request = m_MessageParser->nextRequestData();
 
-                for(const auto& callback : m_RequestCallbacks) {
-                    callback.second.newData(request);
+                if (request)
+                {
+                    for (const auto &callback: m_RequestCallbacks)
+                    {
+                        callback.second.newData(request);
+                    }
                 }
             }
         }
@@ -475,8 +482,12 @@ namespace Lanter {
 
                 auto response = m_MessageParser->nextResponseData();
 
-                for(const auto& callback : m_ResponseCallbacks) {
-                    callback.second.newData(response);
+                if (response)
+                {
+                    for (const auto &callback: m_ResponseCallbacks)
+                    {
+                        callback.second.newData(response);
+                    }
                 }
             }
         }
@@ -486,8 +497,12 @@ namespace Lanter {
 
                 auto notification = m_MessageParser->nextNotificationData();
 
-                for(const auto& callback : m_NotificationCallbacks) {
-                    callback.second.newData(notification);
+                if (notification)
+                {
+                    for (const auto &callback: m_NotificationCallbacks)
+                    {
+                        callback.second.newData(notification);
+                    }
                 }
             }
         }
@@ -497,8 +512,12 @@ namespace Lanter {
 
                 auto interaction = m_MessageParser->nextInteractionData();
 
-                for(const auto& callback : m_InteractionCallbacks) {
-                    callback.second.newData(interaction);
+                if (interaction)
+                {
+                    for (const auto &callback: m_InteractionCallbacks)
+                    {
+                        callback.second.newData(interaction);
+                    }
                 }
             }
         }
