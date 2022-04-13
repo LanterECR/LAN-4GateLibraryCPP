@@ -119,12 +119,17 @@ namespace Lanter {
             }
 
             bool JSONResponseParser::getFieldCurrencyCode(const Json::Value &object, IResponseData &responseData) {
-                std::string currencyCode;
+                int currencyCode;
 
                 bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCurrencyCode(), currencyCode);
-                bool result = exists && responseData.setCurrencyCode(currencyCode);
+                bool result = exists && responseData.setCurrencyCode(std::to_string(currencyCode));
 
-                return result;
+                if (!result)
+                {
+                    std::string currencyCode;
+                    exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCurrencyCode(), currencyCode);
+                    result = exists && responseData.setCurrencyCode(currencyCode);
+                }
             }
 
             bool JSONResponseParser::getFieldReceiptReference(const Json::Value &object, IResponseData &responseData) {
