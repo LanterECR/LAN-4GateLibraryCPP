@@ -130,6 +130,7 @@ namespace Lanter {
                     exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCurrencyCode(), currencyCode);
                     result = exists && responseData.setCurrencyCode(currencyCode);
                 }
+                return result;
             }
 
             bool JSONResponseParser::getFieldReceiptReference(const Json::Value &object, IResponseData &responseData) {
