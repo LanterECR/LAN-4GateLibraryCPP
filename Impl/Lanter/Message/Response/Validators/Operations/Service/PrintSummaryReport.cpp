@@ -12,6 +12,9 @@ namespace Lanter {
                 appendOptionalField(ResponseField::SaleCount);
                 appendOptionalField(ResponseField::VoidCount);
                 appendOptionalField(ResponseField::RefundCount);
+                appendOptionalField(ResponseField::SalesAmount);
+                appendOptionalField(ResponseField::VoidAmount);
+                appendOptionalField(ResponseField::RefundAmount);
             }
         }
     }
