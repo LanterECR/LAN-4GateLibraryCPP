@@ -16,6 +16,10 @@ namespace Lanter {
                 appendOptionalField(ResponseField::SaleArray);
                 appendOptionalField(ResponseField::VoidArray);
                 appendOptionalField(ResponseField::RefundArray);
+                appendOptionalField(ResponseField::SalesAmount);
+                appendOptionalField(ResponseField::VoidAmount);
+                appendOptionalField(ResponseField::RefundAmount);
+                appendOptionalField(ResponseField::TransDateTime);
             }
         }
     }

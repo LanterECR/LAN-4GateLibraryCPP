@@ -5,6 +5,7 @@ namespace Lanter {
         namespace Response {
             void Response::Sale::addSpecificFields() {
                 appendOptionalField(ResponseField::EcrMerchantNumber);
+                appendOptionalField(ResponseField::ApplicationLabel);
                 appendOptionalField(ResponseField::TotalAmount);
                 appendOptionalField(ResponseField::CurrencyCode);
                 appendOptionalField(ResponseField::RRN);

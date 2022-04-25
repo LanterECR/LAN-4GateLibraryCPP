@@ -4,6 +4,7 @@ namespace Lanter {
     namespace Message {
         namespace Response {
             void PrintDetailReport::addSpecificFields() {
+                appendOptionalField(ResponseField::EcrMerchantNumber);
                 appendOptionalField(ResponseField::TotalAmount);
                 appendOptionalField(ResponseField::CurrencyCode);
                 appendOptionalField(ResponseField::TerminalID);
