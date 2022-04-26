@@ -8,6 +8,7 @@ namespace Lanter {
                 clearMandatoryFields();
                 clearOptionalFields();
 
+                appendOptionalField(ResponseField::ApplicationLabel);
                 appendOptionalField(ResponseField::TotalAmount);
                 appendOptionalField(ResponseField::CurrencyCode);
                 appendOptionalField(ResponseField::RRN);
