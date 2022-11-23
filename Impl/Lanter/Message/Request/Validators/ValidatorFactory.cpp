@@ -10,6 +10,9 @@
 #include "Lanter/Message/Request/Validators/Operations/Sale/QuickPaymentStatus.h"
 #include "Lanter/Message/Request/Validators/Operations/Sale/Sale.h"
 #include "Lanter/Message/Request/Validators/Operations/Sale/SalesCompletion.h"
+#include "Lanter/Message/Request/Validators/Operations/Sale/ECertGetRequisites.h"
+#include "Lanter/Message/Request/Validators/Operations/Sale/ECertPayment.h"
+#include "Lanter/Message/Request/Validators/Operations/Sale/ECertRefund.h"
 
 //Void operations
 #include "Lanter/Message/Request/Validators/Operations/Void/Void.h"
@@ -92,6 +95,15 @@ namespace Lanter {
                     case OperationCode::FastTrack:
                         validator = std::make_shared<FastTrack>();
                         break;
+					case OperationCode::ECertGetRequisites:
+						validator = std::make_shared<ECertGetRequisites>();
+						break;
+					case OperationCode::ECertPayment:
+						validator = std::make_shared<ECertPayment>();
+						break;
+					case OperationCode::ECertRefund:
+						validator = std::make_shared<ECertRefund>();
+						break;
 
                     //Void operations
                     case OperationCode::Void:

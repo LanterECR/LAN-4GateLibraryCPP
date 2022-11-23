@@ -24,7 +24,7 @@ if(NOT IS_SUBPROJECT)
     )
 endif()
 
-project(LAN_4GateLib VERSION 0.9.8 LANGUAGES CXX)
+project(LAN_4GateLib VERSION 0.9.9 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -93,7 +93,6 @@ if(L4G_BUILD_SWIG)
     endif()
 
     FIND_PACKAGE(SWIG REQUIRED)
-
     add_custom_command(OUTPUT "Lan4GateSwig_wrap.cxx"
             COMMAND ${CMAKE_COMMAND} -E make_directory ${L4G_SWIG_INTERFACE_OUTDIR}
             COMMAND ${SWIG_EXECUTABLE} -outdir ${L4G_SWIG_INTERFACE_OUTDIR}

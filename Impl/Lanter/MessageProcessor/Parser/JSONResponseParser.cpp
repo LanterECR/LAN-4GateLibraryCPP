@@ -79,7 +79,7 @@ namespace Lanter {
                 return result;
             }
 
-            bool JSONResponseParser::getFieldPartialAmount(const Json::Value &object, IResponseData &responseData) {
+			bool JSONResponseParser::getFieldPartialAmount(const Json::Value &object, IResponseData &responseData) {
                 int64_t partialAmount;
 
                 bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getPartialAmount(),
@@ -664,6 +664,26 @@ namespace Lanter {
                 return result;
             }
 
+			bool
+			JSONResponseParser::getFieldECertAmount(const Json::Value &object, IResponseData &responseData) {
+				int64_t amount;
+
+				bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTotalAmount(), amount);
+				bool result = exists && responseData.setECertAmount(amount);
+
+				return result;
+			}
+
+			bool
+			JSONResponseParser::getFieldBasketID(const Json::Value &object, IResponseData &responseData) {
+				std::string id;
+
+				bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getReceiptLine5(), id);
+				bool result = exists && responseData.setBasketID(id);
+
+				return result;
+			}
+
             void JSONResponseParser::initFunctionsMap() {
                 m_ExtractFunctions[ResponseField::EcrNumber] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldEcrNumber(object, responseData); };
                 m_ExtractFunctions[ResponseField::EcrMerchantNumber] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldEcrMerchantNumber(object, responseData); };
@@ -728,7 +748,9 @@ namespace Lanter {
                 m_ExtractFunctions[ResponseField::HashCardTrack2] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldHashCardTrack2(object, responseData); };
                 m_ExtractFunctions[ResponseField::FinalizationRequired] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldFinalizationRequired(object, responseData); };
                 m_ExtractFunctions[ResponseField::AdditionalChoiceResult] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldAdditionalChoiceResult(object, responseData); };
-            }
+				m_ExtractFunctions[ResponseField::ECertAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldECertAmount(object, responseData); };
+				m_ExtractFunctions[ResponseField::BasketID] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldBasketID(object, responseData); };
+			}
 
             bool JSONResponseParser::getFields(const Json::Value &object, IResponseData &responseData) {
                 if (responseData.isFieldSet(ResponseField::OperationCode) ||

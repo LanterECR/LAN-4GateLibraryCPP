@@ -106,7 +106,21 @@ namespace Lanter {
                 /// \return true, если успешно удалено.
                 virtual bool resetAmount() = 0;
 
-                /// \brief Возвращает установленную частичную сумму в минимальных единицах валюты (копейки для рублей)
+				/// \brief Возвращает установленную сумму по ЭС операции в минимальных единицах валюты (копейки для рублей)
+				/// \return Если поле установлено - значение суммы операции в диапазоне [0, 999999999999]. Иначе -1.
+				virtual int64_t getECertAmount() const = 0;
+
+				/// \brief Устанавливает сумму по ЭС в минимальных единицах валюты (копейки для рублей)
+				/// \param[in] amount Значение суммы в диапазоне [0, 999999999999]
+				/// \return true, если поле успешно установлено
+				virtual bool setECertAmount(int64_t amount) = 0;
+
+				/// \brief Устанавливает значение по умолчанию для поля ECertAmount
+				/// и удаляет из списка установленных полей
+				/// \return true, если успешно удалено.
+				virtual bool resetECertAmount() = 0;
+
+				/// \brief Возвращает установленную частичную сумму в минимальных единицах валюты (копейки для рублей)
                 /// \return Если поле установлено - значение суммы операции в диапазоне [0, 999999999999]. Иначе -1.
                 virtual int64_t getPartialAmount() const = 0;
 
@@ -417,7 +431,34 @@ namespace Lanter {
                 /// \return true, если успешно удалено.
                 virtual bool resetAdditionalChoice() = 0;
 
-            };//class IRequestData
+				/// \brief Возвращает ID корзины
+				/// \return Строка, содержащая ID корзины
+				virtual const std::string & getBasketID() const = 0;
+
+				/// \brief Устанавливает ID корзины
+				/// \param param Строка, содержащая ID корзины
+				/// \return true, если поле успешно установлено
+				virtual bool setBasketID(const std::string & id) = 0;
+
+				/// \brief Устанавливает значение по умолчанию для поля BasketID
+				/// и удаляет из списка установленных полей
+				/// \return true, если поле успешно удалено
+				virtual bool resetBasketID() = 0;
+
+				/// \brief Возвращает PAN HASH
+				/// \return Строка, содержащая HASH PAN
+				virtual const std::string & getCardPANHash() const = 0;
+
+				/// \brief Устанавливает PAN HASH
+				/// \param param Строка, содержащая HASH PAN
+				/// \return true, если поле успешно установлено
+				virtual bool setCardPANHash(const std::string & id) = 0;
+
+				/// \brief Устанавливает значение по умолчанию для поля CardPANHash
+				/// и удаляет из списка установленных полей
+				/// \return true, если поле успешно удалено
+				virtual bool resetCardPANHash() = 0;
+			};//class IRequestData
         }//namespace Request
     }//namespace Message
 }//namespace Lanter

@@ -52,9 +52,13 @@ namespace Lanter {
 
                 bool setAmount(int64_t amount) override;
 
-                bool resetAmount() override;
+				bool resetAmount() override;
 
-                int64_t getPartialAmount() const override;
+				int64_t getECertAmount() const override;
+				bool setECertAmount(int64_t amount) override;
+				bool resetECertAmount() override;
+
+				int64_t getPartialAmount() const override;
 
                 bool setPartialAmount(int64_t partialAmount) override;
 
@@ -180,7 +184,14 @@ namespace Lanter {
 
                 bool setAdditionalChoice(const std::string &additionalChoice) override;
 
-            private:
+				const std::string &getBasketID() const override;
+				bool setBasketID(const std::string &id) override;
+				bool resetBasketID() override;
+
+				const std::string &getCardPANHash() const override;
+				bool setCardPANHash(const std::string &hashPAN) override;
+				bool resetCardPANHash() override;
+			private:
                 void initValidator();
                 void deinitValidator();
 
@@ -192,7 +203,8 @@ namespace Lanter {
                 int16_t m_EcrMerchantNumber = -1; ///< Логический номер мерчанта в кассовом ПО
                 OperationCode m_OperationCode = OperationCode::NoOperation; ///< Код запрашиваемой операции
                 int64_t m_Amount = -1; ///< Сумма операции
-                int64_t m_PartialAmount = -1; ///< Часть оригинальной суммы. Используется в операциях отмены и возврата
+				int64_t m_ECertAmount = -1; ///< Сумма операции
+				int64_t m_PartialAmount = -1; ///< Часть оригинальной суммы. Используется в операциях отмены и возврата
                 int64_t m_TipsAmount = -1; ///< Сумма чаевых
                 int64_t m_CashbackAmount = -1; ///< Сумма кэшбека
                 std::string m_CurrencyCode; ///< Код валюты согласно ISO 4217
@@ -213,6 +225,8 @@ namespace Lanter {
                 std::string m_PaymentParam2;
                 std::string m_PaymentParam3;
                 std::string m_AdditionalChoice; ///< Параметры операции на экране терминала
+				std::string m_BasketID;
+				std::string m_CardPANHash;
 
                 std::set<RequestField> m_EmptyFieldsPlaceholder; ///< Пустая коллекция для полей при отсутствии валидатора
 

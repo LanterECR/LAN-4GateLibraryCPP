@@ -32,7 +32,10 @@ namespace Lanter {
                 PaymentParam1, ///< Первый параметр платежа
                 PaymentParam2, ///< Второй параметр платежа
                 PaymentParam3, ///< Третий параметр платежа
-                AdditionalChoice ///< Выбор опции на экране
+				CardPANHash,  ///< HASH PAN
+				ECertAmount, ///< Сумма по электронному сертификату
+				BasketID, ///< ID корзины(электронные сертификаты)
+				AdditionalChoice ///< Выбор опции на экране
 
             };//enum RequestField
 

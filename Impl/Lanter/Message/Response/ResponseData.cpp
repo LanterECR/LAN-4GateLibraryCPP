@@ -688,6 +688,46 @@ namespace Lanter {
                 return result;
             }
 
+			int64_t ResponseData::getECertAmount() const {
+				return m_ECertAmount;
+			}
+
+			bool ResponseData::setECertAmount(int64_t amount) {
+				bool result = false;
+				if (checkAmountRange(amount)) {
+					m_ECertAmount = amount;
+					m_FieldsSet.insert(ResponseField::ECertAmount);
+					result = true;
+				}
+				return result;
+			}
+			bool ResponseData::resetECertAmount() {
+				m_ECertAmount = -1;
+				m_FieldsSet.erase(ResponseField::ECertAmount);
+				return !isFieldSet(ResponseField::ECertAmount);
+			}
+
+			const std::string &ResponseData::getBasketID() const {
+				return m_BasketID;
+			}
+
+			bool ResponseData::setBasketID(const std::string &id) {
+				bool result = false;
+				//TODO добавить чекер
+				if (!id.empty()) {
+					m_BasketID = id;
+					m_FieldsSet.insert(ResponseField::BasketID);
+					result = true;
+				}
+				return result;
+			}
+
+			bool ResponseData::resetBasketID() {
+				m_BasketID.clear();
+				m_FieldsSet.erase(ResponseField::BasketID);
+				return !isFieldSet(ResponseField::BasketID);
+			}
+
             void ResponseData::initValidator() {
                 m_Validator = ValidatorFactory::getValidator(getOperationCode());
             }
@@ -848,7 +888,15 @@ namespace Lanter {
                     case ResponseField::RefundAmount:
                         result = resetRefundAmount();
                         break;
-                }
+					case ResponseField::ECertAmount:
+						result = resetECertAmount();
+						break;
+					case ResponseField::BasketID:
+						result = resetBasketID();
+						break;
+					default:
+						break;
+				}
 
                 return result;
             }

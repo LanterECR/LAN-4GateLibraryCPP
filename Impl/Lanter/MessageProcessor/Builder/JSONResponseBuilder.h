@@ -147,7 +147,10 @@ namespace Lanter {
 
                 bool addFieldAdditionalChoiceResult(const IResponseData &responseData, Json::Value &object);
 
-            private:
+				bool addFieldECertAmount(const IResponseData &responseData, Json::Value &object);
+
+				bool addFieldBasketID(const IResponseData &responseData, Json::Value &object);
+			private:
                 void initFunctionsMap();
 
                 bool addFields(const IResponseData &responseData, Json::Value &object);

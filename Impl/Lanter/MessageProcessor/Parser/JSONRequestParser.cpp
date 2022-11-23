@@ -268,6 +268,33 @@ namespace Lanter {
                 return result;
             }
 
+			bool JSONRequestParser::getFieldCardPANHash(const Json::Value &object, IRequestData &requestData) {
+				std::string val;
+
+				bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getCardPANHash(), val);
+				bool result = exists && requestData.setCardPANHash(val);
+
+				return result;
+			}
+
+			bool JSONRequestParser::getFieldECertAmount(const Json::Value &object, IRequestData &requestData) {
+				int64_t amount;
+
+				bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getECertAmount(), amount);
+				bool result = exists && requestData.setECertAmount(amount);
+
+				return result;
+			}
+
+			bool JSONRequestParser::getFieldBasketID(const Json::Value &object, IRequestData &requestData) {
+				std::string val;
+
+				bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getBasketID(), val);
+				bool result = exists && requestData.setBasketID(val);
+
+				return result;
+			}
+
             void JSONRequestParser::initFunctionsMap() {
 
                 m_ExtractFunctions[RequestField::EcrNumber] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldEcrNumber(object, requestData); };
@@ -303,7 +330,11 @@ namespace Lanter {
                         object, requestData); };
                 m_ExtractFunctions[RequestField::AdditionalChoice] = [this](const Json::Value& object, IRequestData& requestData) { return getFieldAdditionalChoice(
                         object, requestData); };
-            }
+
+				m_ExtractFunctions[RequestField::CardPANHash] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldCardPANHash(object, requestData); };
+				m_ExtractFunctions[RequestField::ECertAmount] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldECertAmount(object, requestData); };
+				m_ExtractFunctions[RequestField::BasketID] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldBasketID(object, requestData); };
+			}
 
             bool JSONRequestParser::getFields(const Json::Value &object, IRequestData &requestData) {
                 if (getFieldOperationCode(object, requestData)) {

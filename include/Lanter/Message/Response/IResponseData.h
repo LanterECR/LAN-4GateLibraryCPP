@@ -937,7 +937,35 @@ namespace Lanter {
                 /// \return true, если успешно удалено.
                 virtual bool resetAdditionalChoiceResult() = 0;
 
-            };//class IResponseData
+				/// \brief Возвращает суммы ЭС.
+				/// \return Если поле установлено - значение суммы операции в диапазоне [0, 999999999999]. Иначе -1.
+				virtual int64_t getECertAmount() const = 0;
+
+				/// \brief Устанавливает сумму в минимальных единицах валюты (копейки для рублей)
+				/// \param[in] Значение суммы по ЭС в диапазоне [0, 999999999999]
+				/// \return true, если поле успешно установлено
+				virtual bool setECertAmount(int64_t amount) = 0;
+
+				/// \brief Устанавливает значение по умолчанию для поля ECertAmount
+				/// и удаляет из списка установленных полей
+				/// \return true, если успешно удалено.
+				virtual bool resetECertAmount() = 0;
+
+				/// \brief Возвращает ID корзины
+				/// \return ID корзины
+				virtual const std::string & getBasketID() const = 0;
+
+				/// \brief Устанавливает ID корзины
+				/// \param ID корзины
+				/// \return true, если поле успешно установлено
+				virtual bool setBasketID(const std::string & id) = 0;
+
+				/// \brief Устанавливает значение по умолчанию для поля BasketID
+				/// и удаляет из списка установленных полей
+				/// \return true, если поле успешно удалено
+				virtual bool resetBasketID() = 0;
+
+			};//class IResponseData
         }//namespace Response
     }//namespace Message
 }//namespace Lanter

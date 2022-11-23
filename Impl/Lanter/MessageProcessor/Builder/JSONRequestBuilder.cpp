@@ -215,6 +215,27 @@ namespace Lanter {
                 return fieldExists(object, JSONRequestFields::getAdditionalChoice());
             }
 
+			bool JSONRequestBuilder::addFieldCardPANHash(const IRequestData &requestData, Json::Value &object) {
+				if (requestData.isFieldSet(RequestField::CardPANHash)) {
+					AddFieldsHelper::addField(object, JSONRequestFields::getCardPANHash(), requestData.getCardPANHash());
+				}
+				return fieldExists(object, JSONRequestFields::getCardPANHash());
+			}
+
+			bool JSONRequestBuilder::addFieldECertAmount(const IRequestData &requestData, Json::Value &object) {
+				if (requestData.isFieldSet(RequestField::ECertAmount)) {
+					AddFieldsHelper::addField(object, JSONRequestFields::getECertAmount(), requestData.getECertAmount());
+				}
+				return fieldExists(object, JSONRequestFields::getECertAmount());
+			}
+
+			bool JSONRequestBuilder::addFieldBasketID(const IRequestData &requestData, Json::Value &object) {
+				if (requestData.isFieldSet(RequestField::BasketID)) {
+					AddFieldsHelper::addField(object, JSONRequestFields::getBasketID(), requestData.getBasketID());
+				}
+				return fieldExists(object, JSONRequestFields::getBasketID());
+			}
+
             void JSONRequestBuilder::initFunctionsMap() {
                 m_InsertFunctions[RequestField::EcrNumber] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldEcrNumber(requestData, object); };
                 m_InsertFunctions[RequestField::EcrMerchantNumber] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldEcrMerchantNumber(requestData, object); };
@@ -241,7 +262,10 @@ namespace Lanter {
                 m_InsertFunctions[RequestField::PaymentParam2] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPaymentParam2(requestData, object); };
                 m_InsertFunctions[RequestField::PaymentParam3] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPaymentParam3(requestData, object); };
                 m_InsertFunctions[RequestField::AdditionalChoice] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldAdditionalChoice(requestData, object); };
-            }
+				m_InsertFunctions[RequestField::CardPANHash] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldCardPANHash(requestData, object); };
+				m_InsertFunctions[RequestField::ECertAmount] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldECertAmount(requestData, object); };
+				m_InsertFunctions[RequestField::BasketID] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldBasketID(requestData, object); };
+			}
 
             //TODO переделать нормально
             bool JSONRequestBuilder::addFields(const IRequestData &requestData, Json::Value &object) {

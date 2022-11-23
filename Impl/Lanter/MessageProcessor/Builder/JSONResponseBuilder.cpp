@@ -523,6 +523,22 @@ namespace Lanter {
                 return fieldExists(object, JSONResponseFields::getAdditionalChoiceResult());
             }
 
+			bool
+			JSONResponseBuilder::addFieldECertAmount(const IResponseData &responseData, Json::Value &object) {
+				if (responseData.isFieldSet(ResponseField::ECertAmount)) {
+					AddFieldsHelper::addField(object, JSONResponseFields::getECertAmount(),	responseData.getECertAmount());
+				}
+				return fieldExists(object, JSONResponseFields::getECertAmount());
+			}
+
+			bool
+			JSONResponseBuilder::addFieldBasketID(const IResponseData &responseData, Json::Value &object) {
+				if (responseData.isFieldSet(ResponseField::BasketID)) {
+					AddFieldsHelper::addField(object, JSONResponseFields::getBasketID(), responseData.getBasketID());
+				}
+				return fieldExists(object, JSONResponseFields::getBasketID());
+			}
+
             bool JSONResponseBuilder::addFields(const IResponseData &responseData, Json::Value &object) {
                 bool result = false;
 
@@ -609,7 +625,9 @@ namespace Lanter {
                 m_InsertFunctions[ResponseField::HashCardTrack2] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldHashCardTrack2(responseData, object); };
                 m_InsertFunctions[ResponseField::FinalizationRequired] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldFinalizationRequired(responseData, object); };
                 m_InsertFunctions[ResponseField::AdditionalChoiceResult] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldAdditionalChoiceResult(responseData, object); };
-            }
+				m_InsertFunctions[ResponseField::ECertAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldECertAmount(responseData, object); };
+				m_InsertFunctions[ResponseField::BasketID] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldBasketID(responseData, object); };
+			}
         }
     }
 }

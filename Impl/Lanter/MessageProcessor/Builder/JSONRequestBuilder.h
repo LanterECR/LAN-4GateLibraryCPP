@@ -73,7 +73,12 @@ namespace Lanter {
 
                 bool addFieldAdditionalChoice(const IRequestData &requestData, Json::Value &object);
 
-            private:
+				bool addFieldCardPANHash(const IRequestData &requestData, Json::Value &object);
+
+				bool addFieldECertAmount(const IRequestData &requestData, Json::Value &object);
+
+				bool addFieldBasketID(const IRequestData &requestData, Json::Value &object);
+			private:
                 void initFunctionsMap();
 
                 bool addFields(const IRequestData &requestData, Json::Value &object);

@@ -33,7 +33,10 @@ namespace Lanter {
             static inline std::string getPaymentParam2() { return "PaymentParam2"; }
             static inline std::string getPaymentParam3() { return "PaymentParam3"; }
             static inline std::string getAdditionalChoice() { return "additionalChoice"; }
-        };
+			static inline std::string getCardPANHash() { return "CardPANHash"; }
+			static inline std::string getECertAmount() { return "ECertAmount"; }
+			static inline std::string getBasketID() { return "BasketID"; }
+		};
     }
 }
 #endif //LAN_4GATELIB_JSONREQUESTFIELDS_H

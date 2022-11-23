@@ -69,6 +69,8 @@ namespace Lanter {
             static inline std::string getHashCardTrack2() { return "HashCardTrack2"; }
             static inline std::string getFinalizationRequired() { return "FinalizationRequired"; }
             static inline std::string getAdditionalChoiceResult() { return "AdditionalChoiceResult"; }
+			static inline std::string getECertAmount() { return "ECertAmount"; }
+			static inline std::string getBasketID() { return "BasketID"; }
 
         };
     }

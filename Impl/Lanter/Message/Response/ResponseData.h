@@ -399,7 +399,14 @@ namespace Lanter {
 
                 bool resetAdditionalChoiceResult() override;
 
-            private:
+				int64_t getECertAmount() const override;
+				bool setECertAmount(int64_t amount) override;
+				bool resetECertAmount() override;
+
+				const std::string &getBasketID() const override;
+				bool setBasketID(const std::string &id) override;
+				bool resetBasketID() override;
+			private:
                 void initValidator();
                 void deinitValidator();
 
@@ -414,7 +421,8 @@ namespace Lanter {
                 OperationCode m_OriginalOperationCode = OperationCode::NoOperation;
 
                 int64_t m_TotalAmount = -1;
-                int64_t m_PartialAmount = -1;
+				int64_t m_ECertAmount = -1;
+				int64_t m_PartialAmount = -1;
                 int64_t m_AcquirerFeeAmount = -1;
                 int64_t m_TerminalFeeAmount = -1;
                 int64_t m_TipsAmount = -1;
@@ -466,7 +474,8 @@ namespace Lanter {
                 std::string m_ReceiptLine4;
                 std::string m_ReceiptLine5;
                 std::string m_ApplicationLabel;
-                int64_t m_BonusBalance = -1;
+				std::string m_BasketID;
+				int64_t m_BonusBalance = -1;
                 int64_t m_BonusAmount = -1;
                 std::string m_HashCardTrack2;
                 bool m_FinalizationRequired = false;

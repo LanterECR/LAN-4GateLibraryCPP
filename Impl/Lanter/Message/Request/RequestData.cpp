@@ -124,13 +124,35 @@ namespace Lanter {
                 return result;
             }//setAmount()
 
-            bool RequestData::resetAmount() {
+			bool RequestData::resetAmount() {
                 m_Amount = -1;
                 m_FieldsSet.erase(RequestField::Amount);
                 return !isFieldSet(RequestField::Amount);
             }//resetAmount()
 
-            int64_t RequestData::getPartialAmount() const {
+			int64_t RequestData::getECertAmount() const {
+				return m_ECertAmount;
+			}//getECertAmount()
+
+			bool RequestData::setECertAmount(int64_t amount) {
+				bool result = false;
+
+				if (checkAmountRange(amount)) {
+					m_ECertAmount = amount;
+					m_FieldsSet.insert(RequestField::ECertAmount);
+					result = true;
+				}//if check amount
+
+				return result;
+			}//setECertAmount()
+
+			bool RequestData::resetECertAmount() {
+				m_ECertAmount = -1;
+				m_FieldsSet.erase(RequestField::ECertAmount);
+				return !isFieldSet(RequestField::ECertAmount);
+			}//resetECertAmount()
+
+			int64_t RequestData::getPartialAmount() const {
                 return m_PartialAmount;
             }//getPartialAmount()
 
@@ -483,7 +505,7 @@ namespace Lanter {
                 return !isFieldSet(RequestField::HashCardTrack2);
             }
 
-            const std::string &RequestData::getPaymentProviderCode() const {
+			const std::string &RequestData::getPaymentProviderCode() const {
                 return m_PaymentProviderCode;
             }
 
@@ -549,7 +571,51 @@ namespace Lanter {
                 return !isFieldSet(RequestField::PaymentParam2);
             }
 
-            const std::string &RequestData::getPaymentParam3() const {
+			const std::string &RequestData::getBasketID() const {
+				return m_BasketID;
+			}
+
+			bool RequestData::setBasketID(const std::string &id) {
+				bool result = false;
+
+				if (!id.empty()) {
+					m_BasketID = id;
+					m_FieldsSet.insert(RequestField::BasketID);
+					result = true;
+				}//if check tips amount
+
+				return result;
+			}
+
+			bool RequestData::resetBasketID() {
+				m_BasketID.clear();
+				m_FieldsSet.erase(RequestField::BasketID);
+				return !isFieldSet(RequestField::BasketID);
+			}
+
+			const std::string &RequestData::getCardPANHash() const {
+				return m_CardPANHash;
+			}
+
+			bool RequestData::setCardPANHash(const std::string &hashPAN) {
+				bool result = false;
+
+				if (!hashPAN.empty()) {
+					m_CardPANHash = hashPAN;
+					m_FieldsSet.insert(RequestField::CardPANHash);
+					result = true;
+				}//if check tips amount
+
+				return result;
+			}
+
+			bool RequestData::resetCardPANHash() {
+				m_CardPANHash.clear();
+				m_FieldsSet.erase(RequestField::CardPANHash);
+				return !isFieldSet(RequestField::CardPANHash);
+			}
+
+			const std::string &RequestData::getPaymentParam3() const {
                 return m_PaymentParam3;
             }
 
@@ -682,7 +748,13 @@ namespace Lanter {
                     case RequestField::AdditionalChoice:
                         result = resetAdditionalChoice();
                         break;
-                }//switch fields
+					case RequestField::ECertAmount:
+						result = resetECertAmount();
+						break;
+					case RequestField::BasketID:
+						result = resetBasketID();
+						break;
+				}//switch fields
 
                 return result;
             }//resetField(

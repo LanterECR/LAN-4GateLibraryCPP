@@ -69,8 +69,10 @@ namespace Lanter {
                 BonusAmount, ///< Сумма бонусов
                 HashCardTrack2, ///< Кэшированный Track 2
                 FinalizationRequired, ///< Флаг, обозначающий необходимость финализации транзакции
-                AdditionalChoiceResult, ///< Номер выбранного пункта меню на терминале
-            };//enum ResponseField
+				ECertAmount, ///< Сумма по электронному сертификату
+				BasketID, ///< ID корзины(электронные сертификаты)
+				AdditionalChoiceResult, ///< Номер выбранного пункта меню на терминале
+			};//enum ResponseField
 
             /// Функция, возвращающая первый значимый элемент перечисления ResponseField
             /// \return Первый элемент значимый перечисления ResponseField

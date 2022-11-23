@@ -16,6 +16,9 @@
 #include "Lanter/Message/Response/Validators/Operations/Sale/QuickPaymentStatus.h"
 #include "Lanter/Message/Response/Validators/Operations/Sale/Sale.h"
 #include "Lanter/Message/Response/Validators/Operations/Sale/SalesCompletion.h"
+#include "Lanter/Message/Response/Validators/Operations/Sale/ECertGetRequisites.h"
+#include "Lanter/Message/Response/Validators/Operations/Sale/ECertPayment.h"
+#include "Lanter/Message/Response/Validators/Operations/Sale/ECertRefund.h"
 
 #include "Lanter/Message/Response/Validators/Operations/Service/DisplayQR.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/FinalizeTransaction.h"
@@ -215,7 +218,16 @@ namespace Lanter {
                     case OperationCode::GrabEjectCard:
                         validator = std::make_shared<GrabEjectCard>();
                         break;
-                    default:
+					case OperationCode::ECertGetRequisites:
+						validator = std::make_shared<ECertGetRequisites>();
+						break;
+					case OperationCode::ECertPayment:
+						validator = std::make_shared<ECertPayment>();
+						break;
+					case OperationCode::ECertRefund:
+						validator = std::make_shared<ECertRefund>();
+						break;
+					default:
                         validator = std::make_shared<BasicValidator>();
                         break;
                 }
