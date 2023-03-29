@@ -11,6 +11,7 @@ namespace Lanter {
                 appendMandatoryField(RequestField::TransactionID);
 
                 appendOptionalField(RequestField::CardDataEnc);
+                appendOptionalField(RequestField::AdditionalInfo);
             }
         }
     }

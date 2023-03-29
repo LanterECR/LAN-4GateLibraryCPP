@@ -5,12 +5,13 @@ namespace Lanter {
         namespace Request {
             void Refund::addSpecificFields() {
                 appendMandatoryField(RequestField::EcrMerchantNumber);
-                appendMandatoryField(RequestField::Amount);
-                appendMandatoryField(RequestField::CurrencyCode);
-                appendMandatoryField(RequestField::RRN);
 
+                appendOptionalField(RequestField::Amount);
+                appendOptionalField(RequestField::CurrencyCode);
+                appendOptionalField(RequestField::RRN);
                 appendOptionalField(RequestField::TransactionID);
                 appendOptionalField(RequestField::AdditionalInfo);
+                //appendOptionalField(RequestField::QRCodeScan);
             }
         }
     }

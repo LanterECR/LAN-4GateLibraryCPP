@@ -8,6 +8,8 @@ namespace Lanter {
                 appendMandatoryField(RequestField::EcrMerchantNumber);
                 appendMandatoryField(RequestField::Amount);
                 appendMandatoryField(RequestField::CurrencyCode);
+
+                appendOptionalField(RequestField::AdditionalInfo);
             }
         }
     }
