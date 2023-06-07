@@ -5,9 +5,11 @@ namespace Lanter {
         namespace Request {
             void VoidPartialSale::addSpecificFields() {
                 appendMandatoryField(RequestField::EcrMerchantNumber);
-                appendMandatoryField(RequestField::ReceiptReference);
-                appendMandatoryField(RequestField::PartialAmount);
-                appendMandatoryField(RequestField::CurrencyCode);
+
+                appendOptionalField(RequestField::ReceiptReference);
+                appendOptionalField(RequestField::PartialAmount);
+                appendOptionalField(RequestField::CurrencyCode);
+                appendOptionalField(RequestField::AdditionalInfo);
             }
         }
     }
