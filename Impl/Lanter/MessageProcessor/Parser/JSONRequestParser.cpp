@@ -219,6 +219,36 @@ namespace Lanter {
                 return result;
             }
 
+            bool JSONRequestParser::getFieldSBP_RN(const Json::Value& object, IRequestData& requestData) {
+                std::string SBP_RN;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getSBP_RN(),
+                    SBP_RN);
+                bool result = exists && requestData.setSBP_RN(SBP_RN);
+
+                return result;
+            }
+
+            bool JSONRequestParser::getFieldSBP_ReqID(const Json::Value& object, IRequestData& requestData) {
+                std::string SBP_ReqID;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getSBP_ReqID(),
+                    SBP_ReqID);
+                bool result = exists && requestData.setSBP_ReqID(SBP_ReqID);
+
+                return result;
+            }
+
+            bool JSONRequestParser::getFieldPaymentPurpose(const Json::Value& object, IRequestData& requestData) {
+                std::string paymentPurpose;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getPaymentPurpose(),
+                    paymentPurpose);
+                bool result = exists && requestData.setPaymentPurpose(paymentPurpose);
+
+                return result;
+            }
+
             bool JSONRequestParser::getFieldPaymentProviderCode(const Json::Value &object, IRequestData &requestData) {
                 std::string paymentProviderCode;
 
@@ -260,6 +290,7 @@ namespace Lanter {
             }
 
             bool JSONRequestParser::getFieldAdditionalChoice(const Json::Value &object, IRequestData &requestData) {
+                /// здесь проблема, поле парсится как строка, а должна как Json объект
                 std::string AdditionalChoice;
 
                 bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getAdditionalChoice(), AdditionalChoice);
@@ -320,6 +351,12 @@ namespace Lanter {
                         object, requestData); };
                 m_ExtractFunctions[RequestField::HashCardTrack2] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldHashCardTrack2(
                         object, requestData); };
+                m_ExtractFunctions[RequestField::SBP_RN] = [this](const Json::Value& object, IRequestData& requestData) { return getFieldSBP_RN(
+                    object, requestData); };
+                m_ExtractFunctions[RequestField::SBP_ReqID] = [this](const Json::Value& object, IRequestData& requestData) { return getFieldSBP_ReqID(
+                    object, requestData); };
+                m_ExtractFunctions[RequestField::PaymentPurpose] = [this](const Json::Value& object, IRequestData& requestData) { return getFieldPaymentPurpose(
+                    object, requestData); };
                 m_ExtractFunctions[RequestField::PaymentProviderCode] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldPaymentProviderCode(
                         object, requestData); };
                 m_ExtractFunctions[RequestField::PaymentParam1] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldPaymentParam1(

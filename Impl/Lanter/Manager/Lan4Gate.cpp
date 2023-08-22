@@ -371,6 +371,11 @@ namespace Lanter {
             }
         }
 
+        size_t Lan4Gate::getSizeQueue()
+        {
+            return m_MessageQueue.size();
+        }
+
         bool Lan4Gate::createParser() {
             if(m_MessageParser == nullptr) {
                 m_MessageParser = MessageProcessor::Parser::MessageParserFactory::getMessageParser();

@@ -1,9 +1,13 @@
 #include "Sale.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Request {
-            void Request::Sale::addSpecificFields() {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Request
+        {
+            void Request::Sale::addSpecificFields()
+            {
                 appendMandatoryField(RequestField::EcrMerchantNumber);
 
                 appendOptionalField(RequestField::Amount);

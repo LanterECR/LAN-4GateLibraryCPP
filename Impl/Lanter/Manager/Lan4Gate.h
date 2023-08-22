@@ -93,6 +93,10 @@ namespace Lanter {
 
             bool sendMessage(std::shared_ptr<Message::Interaction::IInteractionData> interaction) override;
 
+            void popFromQueue(std::vector<uint8_t>& data);
+
+            size_t getSizeQueue();
+
         private:
             bool createParser();
             bool deleteParser();
@@ -108,7 +112,6 @@ namespace Lanter {
             void doCommunication();
 
             bool pushToQueue(const std::vector<uint8_t> & data);
-            void popFromQueue(std::vector<uint8_t> &data);
 
             void sendData();
             void receiveData();

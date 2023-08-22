@@ -3,10 +3,14 @@
 
 #include "Lanter/Message/Response/Validators/Operations/BasicValidator.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-            class SalesCompletion : public BasicValidator {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            class SalesCompletion : public BasicValidator
+            {
             public:
                 void addSpecificFields() override;
             };

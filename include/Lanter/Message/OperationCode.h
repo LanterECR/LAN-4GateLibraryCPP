@@ -16,6 +16,9 @@ namespace Lanter {
             PreAuth = 200, ///< Преавторизация
             SalesCompletion, ///< Завершение преавторизации
             QuickPaymentStatus, ///< Проверка статуса оплаты через СБП
+            RequestCS,          ///< Запрос задолжности на Cash Service
+            NotificationCS,     ///< Оповещение Cash Service об оплате
+            RepeatLastN,        ///< Повторная отправка последней NotificationCS если она была не успешной, если была успешная вернет "N"
             FastTrack = 300, ///< Получение зашифрованный и открытых тегов карты
 			ECertGetRequisites, ///< запрос реквизитов по карте
 			ECertPayment, ///< оплата электронным сертификатом
@@ -66,6 +69,7 @@ namespace Lanter {
             UploadPending = 830, ///< Выгрузка отложенной операции на финансовый хост
             BonusBalance, ///< Запрос баланса бонусов
             GrabEjectCard, ///< Протягивание карты в лоток карт
+            GetMerchantList, ///< Возвращает наименования ErcNumber
 
             //Отдельный тип операции для представления массивов операции DetailReport
             ArrayElement = 1000 ///< Фиктивный код операции для создания элементов массива

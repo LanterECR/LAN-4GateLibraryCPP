@@ -63,6 +63,12 @@ namespace Lanter {
 
                 bool getFieldHashCardTrack2(const Json::Value &object, IRequestData &requestData);
 
+                bool getFieldSBP_RN(const Json::Value& object, IRequestData& requestData);
+
+                bool getFieldSBP_ReqID(const Json::Value& object, IRequestData& requestData);
+
+                bool getFieldPaymentPurpose(const Json::Value& object, IRequestData& requestData);
+
                 bool getFieldPaymentProviderCode(const Json::Value &object, IRequestData &requestData);
 
                 bool getFieldPaymentParam1(const Json::Value &object, IRequestData &requestData);

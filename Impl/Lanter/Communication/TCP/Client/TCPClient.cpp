@@ -1,128 +1,96 @@
 #include "TCPClient.h"
+#include "ClientTCPSession.h"
 
-#include "Lanter/Manager/Lan4GateLogger.h"
-
-namespace Lanter {
-    namespace Communication {
-
-        const size_t TCP_CLIENT_BUFFER_SIZE = 16384;
-        unsigned char n_spbuffer[TCP_CLIENT_BUFFER_SIZE];
-
-        TCPClient::TCPClient(const std::string &ip, int port) {
-            m_ClientSocket = nullptr;
+namespace Lanter
+{
+    namespace Communication
+    {
+        TCPClient::TCPClient(const std::string& ip, int port)
+        {
             m_Endpoint = asio::ip::tcp::endpoint(asio::ip::address::from_string(ip), port);
         }
 
-        void TCPClient::doCommunication() {
+        void TCPClient::doCommunication()
+        {
             m_Context.poll();
         }
 
-        bool TCPClient::open() {
-            return connect();
-        }
-
-        bool TCPClient::close() {
-            return disconnect();
-        }
-
-        bool TCPClient::isOpen() {
-            return isConnected();
-        }
-
-        bool TCPClient::connect() {
-            try {
-                m_ClientSocket = std::make_shared<asio::ip::tcp::socket>(m_Context);
-
-                std::error_code ec;
-                m_ClientSocket->connect(m_Endpoint, ec);
-                if (!ec) {
-                    asyncReceive();
-                    return true;
-                }
-            }
-            catch (std::exception& e) {
-            }
-
-            disconnect();
-
-            return false;
-        }
-
-        bool TCPClient::disconnect() {
-            if (m_ClientSocket)
-            {
-                m_ClientSocket->cancel();
-                m_ClientSocket->close();
-
-                m_Context.stop();
-                m_Context.reset();
-
-                m_ClientSocket.reset();
-                m_ClientSocket = nullptr;
-            }
-
+        bool TCPClient::open()
+        {
             return true;
         }
 
-        bool TCPClient::isConnected() {
-            bool result = false;
-            if (m_ClientSocket && m_ClientSocket->is_open()) {
-                result = true;
-            }
-            return result;
-        }
-
-        size_t TCPClient::send(const std::vector<uint8_t> &in) {
-            size_t result = 0;
-            if (isConnected()) {
-                try {
-                    asio::error_code ec;
-                    result = m_ClientSocket->write_some(asio::buffer(in), ec);
-                } catch (std::exception& e) {
-                    result = 0;
-                }
-                if (result == 0) {
-                    disconnect();
-                }
-            }
-            return result;
-        }
-
-        size_t TCPClient::receive(std::vector<uint8_t> &out) {
-            out.clear();
-
-            std::lock_guard <std::mutex> lock(m_QueueMutex);
-
-            if (m_ReceiveBuffer.size() > 0) {
-                std::copy(m_ReceiveBuffer.begin(), m_ReceiveBuffer.end(), std::back_inserter(out));
-                m_ReceiveBuffer.clear();
-            }
-
-            return out.size();
-        }
-
-        void TCPClient::disconnectCallback() {
+        bool TCPClient::close()
+        {
             disconnect();
+            return m_CurrentConnection == nullptr;
         }
 
-        void TCPClient::asyncReceive() {
-            if (!m_ClientSocket) {
-                return;
+        bool TCPClient::isOpen()
+        {
+            return isConnected();
+        }
+
+        bool TCPClient::connect()
+        {
+            if (m_CurrentConnection == nullptr)
+            {
+                tcp::socket clientSocket(m_Context);
+                m_CurrentConnection = std::make_shared<ClientTCPSession>(std::move(clientSocket), [this]() {disconnectCallback(); });
             }
-
-            auto self(shared_from_this());
-            m_ClientSocket->async_read_some(asio::buffer(n_spbuffer, TCP_CLIENT_BUFFER_SIZE),
-                [this, self](std::error_code ec, std::size_t length) {
-                    if (ec) {
-                        disconnect();
-                    } else {
-                        if (length > 0) {
-                            m_ReceiveBuffer.insert(m_ReceiveBuffer.end(), n_spbuffer, n_spbuffer + length);
-                        }
-                        asyncReceive();
-                    }
-            });
+            return m_CurrentConnection->connect(m_Endpoint);
         }
 
+        bool TCPClient::disconnect()
+        {
+            if (m_CurrentConnection)
+            {
+                m_CurrentConnection->stop();
+            }
+            m_CurrentConnection.reset();
+            return true;
+        }
+
+        bool TCPClient::isConnected()
+        {
+            bool result = false;
+            if (m_CurrentConnection != nullptr)
+            {
+                result = m_CurrentConnection->isConnected();
+            }
+            return result;
+        }
+
+        size_t TCPClient::send(const std::vector<uint8_t>& in)
+        {
+            size_t result = 0;
+            if (m_CurrentConnection != nullptr)
+            {
+                result = m_CurrentConnection->send(in);
+            }
+            return result;
+        }
+
+        size_t TCPClient::receive(std::vector<uint8_t>& out)
+        {
+            size_t result = 0;
+
+            out.clear();
+            if (m_CurrentConnection != nullptr)
+            {
+                m_CurrentConnection->getData(out);
+
+                result = out.size();
+            }
+            return result;
+        }
+
+        void TCPClient::disconnectCallback()
+        {
+            if (m_CurrentConnection)
+            {
+                m_CurrentConnection->stop();
+            }
+        }
     }
 }

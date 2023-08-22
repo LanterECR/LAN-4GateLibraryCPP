@@ -18,6 +18,8 @@ if(NOT IS_SUBPROJECT)
     endif()
     include(${HUNTER_GATE_PATH})
 
+    set(HUNTER_CACHE_SERVERS "https://github.com/cpp-pm/hunter-cache")
+    set(HUNTER_CACHE_SERVER_TIMEOUT 1800)
     HunterGate(
             URL "https://github.com/cpp-pm/hunter/archive/v0.23.313.tar.gz"
             SHA1 "6c369e5aab2749a616917df3b23511535f413604"

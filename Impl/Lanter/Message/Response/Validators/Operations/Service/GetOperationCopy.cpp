@@ -1,9 +1,13 @@
 #include "GetOperationCopy.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-            void GetOperationCopy::addSpecificFields() {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            void GetOperationCopy::addSpecificFields()
+            {
                 appendOptionalField(ResponseField::EcrMerchantNumber);
                 appendOptionalField(ResponseField::OriginalOperationCode);
                 appendOptionalField(ResponseField::TotalAmount);

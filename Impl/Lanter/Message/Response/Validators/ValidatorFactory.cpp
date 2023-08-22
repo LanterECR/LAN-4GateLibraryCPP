@@ -19,12 +19,16 @@
 #include "Lanter/Message/Response/Validators/Operations/Sale/ECertGetRequisites.h"
 #include "Lanter/Message/Response/Validators/Operations/Sale/ECertPayment.h"
 #include "Lanter/Message/Response/Validators/Operations/Sale/ECertRefund.h"
+#include "Lanter/Message/Response/Validators/Operations/Sale/RequestCS.h"
+#include "Lanter/Message/Response/Validators/Operations/Sale/NotificationCS.h"
+#include "Lanter/Message/Response/Validators/Operations/Sale/RepeatLastN.h"
 
 #include "Lanter/Message/Response/Validators/Operations/Service/DisplayQR.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/FinalizeTransaction.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/GetCurrentPrinter.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/GetLastOperation.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/GetOperationCopy.h"
+#include "Lanter/Message/Response/Validators/Operations/Service/GetMerchantList.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/Initialization.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/KeyDowload.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/PrintCommsInfo.h"
@@ -91,6 +95,15 @@ namespace Lanter {
                         break;
                     case OperationCode::QuickPaymentStatus:
                         validator = std::make_shared<QuickPaymentStatus>();
+                        break;
+                    case OperationCode::RequestCS:
+                        validator = std::make_shared<RequestCS>();
+                        break;
+                    case OperationCode::NotificationCS:
+                        validator = std::make_shared<NotificationCS>();
+                        break;
+                    case OperationCode::RepeatLastN:
+                        validator = std::make_shared<RepeatLastN>();
                         break;
                     case OperationCode::FastTrack:
                         validator = std::make_shared<FastTrack>();
@@ -172,6 +185,9 @@ namespace Lanter {
                         break;
                     case OperationCode::GetOperationCopy:
                         validator = std::make_shared<GetOperationCopy>();
+                        break;
+                    case OperationCode::GetMerchantList:
+                        validator = std::make_shared<GetMerchantList>();
                         break;
                     case OperationCode::DisplayQR:
                         validator = std::make_shared<DisplayQR>();

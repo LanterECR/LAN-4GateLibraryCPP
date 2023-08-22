@@ -1,10 +1,14 @@
 #include "SalesCompletion.h"
 
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-            void Response::SalesCompletion::addSpecificFields() {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            void Response::SalesCompletion::addSpecificFields()
+            {
                 appendOptionalField(ResponseField::EcrMerchantNumber);
                 appendOptionalField(ResponseField::TotalAmount);
                 appendOptionalField(ResponseField::CurrencyCode);

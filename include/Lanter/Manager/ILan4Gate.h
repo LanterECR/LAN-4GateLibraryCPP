@@ -221,6 +221,10 @@ namespace Lanter {
             /// \param[in] interaction объект взаимодействия, который необходимо отправить
             /// \return true если сообщение отправлено
             virtual bool sendMessage(std::shared_ptr<Message::Interaction::IInteractionData> interaction) = 0;
+
+            virtual void popFromQueue(std::vector<uint8_t>& data) = 0;
+
+            virtual size_t getSizeQueue() = 0;
         };
     }
 }

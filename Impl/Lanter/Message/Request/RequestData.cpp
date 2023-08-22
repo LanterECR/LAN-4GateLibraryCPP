@@ -505,6 +505,72 @@ namespace Lanter {
                 return !isFieldSet(RequestField::HashCardTrack2);
             }
 
+            const std::string& RequestData::getSBP_RN() const {
+                return m_SBP_RN;
+            }
+
+            bool RequestData::setSBP_RN(const std::string& purpose) {
+                bool result = false;
+
+                if (checkSBP_RN(purpose)) {
+                    m_SBP_RN = purpose;
+                    m_FieldsSet.insert(RequestField::SBP_RN);
+                    result = true;
+                }//if check tips amount
+
+                return result;
+            }
+
+            bool RequestData::resetSBP_RN() {
+                m_SBP_RN.clear();
+                m_FieldsSet.erase(RequestField::SBP_RN);
+                return !isFieldSet(RequestField::SBP_RN);
+            }
+
+            const std::string& RequestData::getSBP_ReqID() const {
+                return m_SBP_ReqID;
+            }
+
+            bool RequestData::setSBP_ReqID(const std::string& purpose) {
+                bool result = false;
+
+                if (checkSBP_ReqID(purpose)) {
+                    m_SBP_ReqID = purpose;
+                    m_FieldsSet.insert(RequestField::SBP_ReqID);
+                    result = true;
+                }//if check tips amount
+
+                return result;
+            }
+
+            bool RequestData::resetSBP_ReqID() {
+                m_SBP_ReqID.clear();
+                m_FieldsSet.erase(RequestField::SBP_ReqID);
+                return !isFieldSet(RequestField::SBP_ReqID);
+            }
+
+            const std::string& RequestData::getPaymentPurpose() const {
+                return m_PaymentPurpose;
+            }
+
+            bool RequestData::setPaymentPurpose(const std::string& purpose) {
+                bool result = false;
+
+                if (checkPaymentPurpose(purpose)) {
+                    m_PaymentPurpose = purpose;
+                    m_FieldsSet.insert(RequestField::PaymentPurpose);
+                    result = true;
+                }//if check tips amount
+
+                return result;
+            }
+
+            bool RequestData::resetPaymentPurpose() {
+                m_PaymentPurpose.clear();
+                m_FieldsSet.erase(RequestField::PaymentPurpose);
+                return !isFieldSet(RequestField::PaymentPurpose);
+            }
+
 			const std::string &RequestData::getPaymentProviderCode() const {
                 return m_PaymentProviderCode;
             }
@@ -641,11 +707,11 @@ namespace Lanter {
                 return m_AdditionalChoice;
             }//getAdditionalChoice()
 
-            bool RequestData::setAdditionalChoice(const std::string &additionalChoice) {
+            bool RequestData::setAdditionalChoice(const std::string& AdditionalChoice) {
                 bool result = false;
 
-                if (checkAdditionalChoiceRange(additionalChoice)) {
-                    m_AdditionalChoice = additionalChoice;
+                if (checkAdditionalChoiceRange(AdditionalChoice)) {
+                    m_AdditionalChoice = AdditionalChoice;
                     m_FieldsSet.insert(RequestField::AdditionalChoice);
                     result = true;
                 }//if check additional choice
@@ -732,6 +798,15 @@ namespace Lanter {
                         break;
                     case RequestField::HashCardTrack2:
                         result = resetHashCardTrack2();
+                        break;
+                    case RequestField::SBP_RN:
+                        result = resetSBP_RN();
+                        break;
+                    case RequestField::SBP_ReqID:
+                        result = resetSBP_ReqID();
+                        break;
+                    case RequestField::PaymentPurpose:
+                        result = resetPaymentPurpose();
                         break;
                     case RequestField::PaymentProviderCode:
                         result = resetPaymentProviderCode();

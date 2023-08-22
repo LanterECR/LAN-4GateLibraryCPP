@@ -154,6 +154,24 @@ namespace Lanter {
 
                 bool resetHashCardTrack2() override;
 
+                const std::string& getSBP_RN() const override;
+
+                bool setSBP_RN(const std::string& purpose) override;
+
+                bool resetSBP_RN() override;
+
+                const std::string& getSBP_ReqID() const override;
+
+                bool setSBP_ReqID(const std::string& purpose) override;
+
+                bool resetSBP_ReqID() override;
+
+                const std::string& getPaymentPurpose() const override;
+
+                bool setPaymentPurpose(const std::string& purpose) override;
+
+                bool resetPaymentPurpose() override;
+
                 const std::string &getPaymentProviderCode() const override;
 
                 bool setPaymentProviderCode(const std::string &code) override;
@@ -182,7 +200,7 @@ namespace Lanter {
 
                 bool resetAdditionalChoice() override;
 
-                bool setAdditionalChoice(const std::string &additionalChoice) override;
+                bool setAdditionalChoice(const std::string& AdditionalChoice) override;
 
 				const std::string &getBasketID() const override;
 				bool setBasketID(const std::string &id) override;
@@ -191,12 +209,12 @@ namespace Lanter {
 				const std::string &getCardPANHash() const override;
 				bool setCardPANHash(const std::string &hashPAN) override;
 				bool resetCardPANHash() override;
+
 			private:
                 void initValidator();
                 void deinitValidator();
 
                 std::set<RequestField> m_FieldsSet; ///< Список установленных полей
-
                 std::shared_ptr<IValidator> m_Validator; ///< Валидатор полей операции
 
                 int16_t m_EcrNumber = -1; ///< Логический номер кассы, используемый для взаимодействия с LAN-4Tap
@@ -215,6 +233,9 @@ namespace Lanter {
                 std::string m_CardDataEnc; ///< Зашированные данные карты
                 std::string m_OpenTags; ///< Теги, которые необходимо получить в открытом виде (формат TLV) в операции FastTrack
                 std::string m_EncTags; ///< Теги, которые необходимо получить в зашифрованном виде в операции FastTrack
+                std::string m_SBP_RN; ///< Идентификатор оплаты СБП
+                std::string m_SBP_ReqID; ///< Номер телефона клиента
+                std::string m_PaymentPurpose; ///< Назначение платежа
                 std::string m_ProviderCode; ///< Код вендора платежа
                 std::string m_AdditionalInfo; ///< Дополнительные данные операции
                 int64_t m_BonusBalance = -1;
@@ -229,7 +250,6 @@ namespace Lanter {
 				std::string m_CardPANHash;
 
                 std::set<RequestField> m_EmptyFieldsPlaceholder; ///< Пустая коллекция для полей при отсутствии валидатора
-
             };//class RequestData
         }//namespace Request
     }//namespace Message
