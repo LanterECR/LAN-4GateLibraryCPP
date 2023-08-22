@@ -174,8 +174,8 @@ cmake-build-relwithdebinfo/
 #Gtest directory
 tests/lib/
 #manual building directory
+.vs/
 build/
 _build/
-.vs/
 #Test cache directory
 Testing/
