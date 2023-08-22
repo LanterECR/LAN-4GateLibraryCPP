@@ -134,6 +134,30 @@ namespace Lanter {
                 }
                 return fieldExists(object, JSONRequestFields::getEncTags());
             }
+            
+            bool JSONRequestBuilder::addFieldSBP_RN(const IRequestData& requestData, Json::Value& object) {
+                if (requestData.isFieldSet(RequestField::SBP_RN)) {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getSBP_RN(),
+                        requestData.getSBP_RN());
+                }
+                return fieldExists(object, JSONRequestFields::getSBP_RN());
+            }
+
+            bool JSONRequestBuilder::addFieldSBP_ReqID(const IRequestData& requestData, Json::Value& object) {
+                if (requestData.isFieldSet(RequestField::SBP_ReqID)) {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getSBP_ReqID(),
+                        requestData.getSBP_ReqID());
+                }
+                return fieldExists(object, JSONRequestFields::getSBP_ReqID());
+            }
+
+            bool JSONRequestBuilder::addFieldPaymentPurpose(const IRequestData& requestData, Json::Value& object) {
+                if (requestData.isFieldSet(RequestField::PaymentPurpose)) {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getPaymentPurpose(),
+                        requestData.getPaymentPurpose());
+                }
+                return fieldExists(object, JSONRequestFields::getPaymentPurpose());
+            }
 
             bool JSONRequestBuilder::addFieldProviderCode(const IRequestData &requestData, Json::Value &object) {
                 if (requestData.isFieldSet(RequestField::ProviderCode)) {
@@ -257,6 +281,9 @@ namespace Lanter {
                 m_InsertFunctions[RequestField::BonusBalance] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldBonusBalance(requestData, object); };
                 m_InsertFunctions[RequestField::BonusAmount] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldBonusAmount(requestData, object); };
                 m_InsertFunctions[RequestField::HashCardTrack2] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldHashCardTrack2(requestData, object); };
+                m_InsertFunctions[RequestField::SBP_RN] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldSBP_RN(requestData, object); };
+                m_InsertFunctions[RequestField::SBP_ReqID] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldSBP_ReqID(requestData, object); };
+                m_InsertFunctions[RequestField::PaymentPurpose] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldPaymentPurpose(requestData, object); };
                 m_InsertFunctions[RequestField::PaymentProviderCode] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPaymentProviderCode(requestData, object); };
                 m_InsertFunctions[RequestField::PaymentParam1] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPaymentParam1(requestData, object); };
                 m_InsertFunctions[RequestField::PaymentParam2] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPaymentParam2(requestData, object); };
