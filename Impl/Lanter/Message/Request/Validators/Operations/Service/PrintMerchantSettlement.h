@@ -1,5 +1,5 @@
-#ifndef LAN_4GATELIBRARYCPP_PRINTCOMMSINFO_H
-#define LAN_4GATELIBRARYCPP_PRINTCOMMSINFO_H
+#ifndef LAN_4GATELIBRARYCPP_PRINTMERCHANTSETTLEMENT_H
+#define LAN_4GATELIBRARYCPP_PRINTMERCHANTSETTLEMENT_H
 
 #include "Lanter/Message/Request/Validators/Operations/BasicValidator.h"
 
@@ -9,7 +9,7 @@ namespace Lanter
     {
         namespace Request
         {
-            class PrintCommsInfo : public BasicValidator
+            class PrintMerchantSettlement : public BasicValidator
             {
             public:
                 void addSpecificFields() override;
@@ -17,4 +17,4 @@ namespace Lanter
         }//Request
     }
 }//Lanter
-#endif //LAN_4GATELIBRARYCPP_PRINTCOMMSINFO_H
+#endif //LAN_4GATELIBRARYCPP_PRINTMERCHANTSETTLEMENT_H

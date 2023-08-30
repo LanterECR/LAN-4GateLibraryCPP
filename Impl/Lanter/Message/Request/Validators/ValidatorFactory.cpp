@@ -35,6 +35,7 @@
 #include "Lanter/Message/Request/Validators/Operations/Service/GetLastOperation.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/GetOperationCopy.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/GetMerchantList.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/PrintMerchantSettlement.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/Initialization.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/KeyDowload.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/PrintCommsInfo.h"
@@ -203,6 +204,9 @@ namespace Lanter {
                         break;
                     case OperationCode::GetMerchantList:
                         validator = std::make_shared<GetMerchantList>();
+                        break;
+                    case OperationCode::PrintMerchantSettlement:
+                        validator = std::make_shared<PrintMerchantSettlement>();
                         break;
                     case OperationCode::DisplayQR:
                         validator = std::make_shared<DisplayQR>();
