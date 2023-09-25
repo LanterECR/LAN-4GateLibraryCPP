@@ -60,7 +60,16 @@ namespace Lanter {
                 ErrorPinInput, ///< Ошибка ввода пин-кода
                 MsrDeclinedUseChip, ///< Операция по магнитной полосе отклонена. Используйте контактный интерфейс
                 PinEntryTimeout, ///< Тайм-аут ввода пин-кода
-                QrShowing ///< Отображение QR кода
+                QrShowing, ///< Отображение QR кода
+                ConfigError,  ///< Ошибка конфигурации
+                KeyEntryIsNotAllowed,  ///< Ввод ключа Запрещен
+                PinSymbolEntered,  ///< Введен символ Pin-кода
+                LookForDevice,  ///< Поиск устройства
+                DeclinedBonus,  ///< Бонусы отклонены
+                CardReadingSuccessWait,  ///< Ожидание успешного считывания карты
+                OperationResultInfo,  ///< Информация о результате операции
+                UpdatingParameters,  ///< Обновление параметров
+                SoftwareUpdate  ///< Обновление ПО
             };//enum NotificationCode
 
             /// Функция, возвращающая первый значимый элемент перечисления NotificationCode
@@ -72,7 +81,7 @@ namespace Lanter {
             /// Функция, возвращающая последний значимый элемент перечисления NotificationCode
             /// \return Последний элемент значимый перечисления NotificationCode
             constexpr NotificationCode getLastNotificationCode() {
-                return NotificationCode::QrShowing;
+                return NotificationCode::SoftwareUpdate;
             }
         }//namespace Notification
     }//namespace Message

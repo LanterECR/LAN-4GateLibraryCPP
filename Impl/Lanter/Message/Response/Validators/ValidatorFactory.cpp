@@ -25,6 +25,7 @@
 #include "Lanter/Message/Response/Validators/Operations/Service/GetCurrentPrinter.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/GetLastOperation.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/GetOperationCopy.h"
+#include "Lanter/Message/Response/Validators/Operations/Service/GetMerchantList.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/Initialization.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/KeyDowload.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/PrintCommsInfo.h"
@@ -33,6 +34,7 @@
 #include "Lanter/Message/Response/Validators/Operations/Service/PrintReceiptCopy.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/PrintSoftInfo.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/PrintSummaryReport.h"
+#include "Lanter/Message/Response/Validators/Operations/Service/PrintMerchantSettlement.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/Registration.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/SelfTest.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/SetCurrentPrinter.h"
@@ -140,6 +142,9 @@ namespace Lanter {
                     case OperationCode::PrintSummaryReport:
                         validator = std::make_shared<PrintSummaryReport>();
                         break;
+                    case OperationCode::PrintMerchantSettlement:
+                        validator = std::make_shared<PrintMerchantSettlement>();
+                        break;
                     case OperationCode::Settlement:
                         validator = std::make_shared<Settlement>();
                         break;
@@ -172,6 +177,9 @@ namespace Lanter {
                         break;
                     case OperationCode::GetOperationCopy:
                         validator = std::make_shared<GetOperationCopy>();
+                        break;
+                    case OperationCode::GetMerchantList:
+                        validator = std::make_shared<GetMerchantList>();
                         break;
                     case OperationCode::DisplayQR:
                         validator = std::make_shared<DisplayQR>();
