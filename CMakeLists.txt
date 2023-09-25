@@ -24,7 +24,7 @@ if(NOT IS_SUBPROJECT)
     )
 endif()
 
-project(LAN_4GateLib VERSION 0.9.9 LANGUAGES CXX)
+project(LAN_4GateLib VERSION 0.9.6 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -43,6 +43,7 @@ if(NOT L4G_BUILD_SHARED AND NOT L4G_BUILD_STATIC AND NOT L4G_BUILD_MODULE AND NO
     message(FATAL_ERROR "This library must be static or shared. Enable L4G_BUILD_STATIC, L4G_BUILD_SHARED or L4G_BUILD_MODULE flag")
 endif()
 
+set(CMAKE_ANDROID_ARCH_ABI armeabi-v7a)
 
 hunter_add_package(asio)
 hunter_add_package(jsoncpp)
@@ -70,6 +71,9 @@ set(DEPENDENCIES_LIST jsoncpp_object asio::asio_headeronly)
 set(INSTALLATION_TARGETS "")
 
 if(L4G_BUILD_SWIG)
+	SET(SWIG_EXECUTABLE "C:/Toolchain/swigwin-4.0.2/swig.exe")
+	SET(SWIG_DIR "C:/Toolchain/swigwin-4.0.2")
+
     if(NOT "${L4G_SWIG_TARGET_LANGUAGE}" STREQUAL "csharp" AND NOT "${L4G_SWIG_TARGET_LANGUAGE}" STREQUAL "java")
         message(FATAL_ERROR "${L4G_SWIG_TARGET_LANGUAGE} doesn`t support yet")
     endif()
@@ -93,14 +97,25 @@ if(L4G_BUILD_SWIG)
     endif()
 
     FIND_PACKAGE(SWIG REQUIRED)
-    add_custom_command(OUTPUT "Lan4GateSwig_wrap.cxx"
+
+#    add_custom_command(OUTPUT "Lan4GateSwig_wrap.cxx"
+#            COMMAND ${CMAKE_COMMAND} -E make_directory ${L4G_SWIG_INTERFACE_OUTDIR}
+#            COMMAND ${SWIG_EXECUTABLE} -outdir ${L4G_SWIG_INTERFACE_OUTDIR}
+#            -c++
+#            ${SWIG_LANG_PARAMS}
+#            -outcurrentdir
+#            -I${CMAKE_SOURCE_DIR}/include
+#            ${CMAKE_SOURCE_DIR}/include/Lan4GateSwig.i)
+			
+	execute_process(
             COMMAND ${CMAKE_COMMAND} -E make_directory ${L4G_SWIG_INTERFACE_OUTDIR}
             COMMAND ${SWIG_EXECUTABLE} -outdir ${L4G_SWIG_INTERFACE_OUTDIR}
             -c++
             ${SWIG_LANG_PARAMS}
             -outcurrentdir
             -I${CMAKE_SOURCE_DIR}/include
-            ${CMAKE_SOURCE_DIR}/include/Lan4GateSwig.i)
+            ${CMAKE_SOURCE_DIR}/include/Lan4GateSwig.i 
+			RESULT_VARIABLE res_var)
 
     add_library(l4g_swig MODULE ${INCLUDE_FILES} ${SOURCE_FILES} ${IMPL_INCLUDE_FILES} ${IMPL_SOURCE_FILES} Lan4GateSwig_wrap.cxx)
 
@@ -113,6 +128,7 @@ if(L4G_BUILD_SWIG)
     target_link_libraries(l4g_swig ${DEPENDENCIES_LIST})
 
     target_compile_definitions(l4g_swig PUBLIC LANTER_BUILD_SHARED)
+message("LANTER_BUILD_SHARED=${LANTER_BUILD_SHARED}")	
 
     set_target_properties(l4g_swig PROPERTIES OUTPUT_NAME "Lan4Gate")
     if("${L4G_SWIG_TARGET_LANGUAGE}" STREQUAL "java")
@@ -140,7 +156,6 @@ if(L4G_BUILD_SWIG)
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/InteractionCode.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4Gate.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4GateFactory.java
-                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4GateLogger.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4GateJNI.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/NotificationCode.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/OperationCode.java
@@ -154,7 +169,6 @@ if(L4G_BUILD_SWIG)
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Version.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/imaxdiv_t.java)
         include(UseJava)
-        #SET(CMAKE_JAVA_COMPILE_FLAGS "-source" "1.6" "-target" "1.6")
         add_jar(Lan4gateInterface
                 SOURCES ${JAVA_SRC}
                 OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/java)

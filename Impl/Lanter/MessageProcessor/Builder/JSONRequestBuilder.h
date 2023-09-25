@@ -53,6 +53,12 @@ namespace Lanter {
 
                 bool addFieldEncTags(const IRequestData &requestData, Json::Value &object);
 
+                bool addFieldSBP_RN(const IRequestData& requestData, Json::Value& object);
+
+                bool addFieldSBP_ReqID(const IRequestData& requestData, Json::Value& object);
+
+                bool addFieldPaymentPurpose(const IRequestData& requestData, Json::Value& object);
+
                 bool addFieldProviderCode(const IRequestData &requestData, Json::Value &object);
 
                 bool addFieldAdditionalInfo(const IRequestData &requestData, Json::Value &object);

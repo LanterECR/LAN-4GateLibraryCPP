@@ -358,6 +358,24 @@ namespace Lanter {
                 /// \return true, если поле успешно удалено
                 virtual bool resetHashCardTrack2() = 0;
 
+                virtual const std::string& getSBP_RN() const = 0;
+
+                virtual bool setSBP_RN(const std::string& SBP_RN) = 0;
+
+                virtual bool resetSBP_RN() = 0;
+
+                virtual const std::string& getSBP_ReqID() const = 0;
+
+                virtual bool setSBP_ReqID(const std::string& SBP_ReqID) = 0;
+
+                virtual bool resetSBP_ReqID() = 0;
+
+                virtual const std::string& getPaymentPurpose() const = 0;
+
+                virtual bool setPaymentPurpose(const std::string& purpose) = 0;
+
+                virtual bool resetPaymentPurpose() = 0;
+
                 /// \brief Возвращает код провайдера оплаты. Например, ID оператора связи
                 /// Используется для операции Payment
                 /// \return

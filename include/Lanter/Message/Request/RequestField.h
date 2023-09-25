@@ -28,6 +28,9 @@ namespace Lanter {
                 BonusBalance, ///< Баланс бонусного счета
                 BonusAmount, ///< Сумма бонусов к оплате
                 HashCardTrack2, ///< Кэшированный Track2
+                SBP_RN,         ///< Идентификатор оплаты СБП
+                SBP_ReqID,      ///< Номер телефона клиента
+                PaymentPurpose, ///< Назначение платежа
                 PaymentProviderCode, ///< Код провайдера платежа
                 PaymentParam1, ///< Первый параметр платежа
                 PaymentParam2, ///< Второй параметр платежа
