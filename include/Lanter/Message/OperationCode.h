@@ -68,6 +68,7 @@ namespace Lanter {
             GrabEjectCard, ///< Протягивание карты в лоток карт
             GetMerchantList, ///< Возвращает наименования ErcNumber
             PrintMerchantSettlement, ///< Запрос печати чека сверки по мерчанту, чек берётся из памяти.
+            UploadDelayed, ///< Доавторизация отложенных операций
 
             //Отдельный тип операции для представления массивов операции DetailReport
             ArrayElement = 1000 ///< Фиктивный код операции для создания элементов массива
@@ -75,13 +76,15 @@ namespace Lanter {
 
         /// Функция, возвращающая первый значимый элемент перечисления OperationCode
         /// \return Первый элемент значимый перечисления OperationCode
-        constexpr OperationCode getFirstOperationCode() {
+        constexpr OperationCode getFirstOperationCode()
+        {
             return OperationCode::Sale;
         }
 
         /// Функция, возвращающая последний значимый элемент перечисления OperationCode
         /// \return Последний элемент значимый перечисления OperationCode
-        constexpr OperationCode getLastOperationCode() {
+        constexpr OperationCode getLastOperationCode()
+        {
             return OperationCode::ArrayElement;
         }
 
