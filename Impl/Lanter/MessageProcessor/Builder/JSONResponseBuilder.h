@@ -3,18 +3,20 @@
 
 #include <map>
 #include <functional>
-
 #include "json/json.h"
-
 #include "Lanter/Message/Response/ResponseField.h"
 #include "Lanter/Message/Response/IResponseData.h"
 
-namespace Lanter {
+namespace Lanter
+{
     using namespace Message;
     using namespace Message::Response;
-    namespace MessageProcessor {
-        namespace Builder {
-            class JSONResponseBuilder {
+    namespace MessageProcessor
+    {
+        namespace Builder
+        {
+            class JSONResponseBuilder
+            {
             public:
                 JSONResponseBuilder();
 
@@ -150,6 +152,19 @@ namespace Lanter {
 				bool addFieldECertAmount(const IResponseData &responseData, Json::Value &object);
 
 				bool addFieldBasketID(const IResponseData &responseData, Json::Value &object);
+
+                bool addFieldSBP_RN(const IResponseData& responseData, Json::Value& object);
+
+                bool addFieldQRCode(const IResponseData& responseData, Json::Value& object);
+
+                bool addFieldSBP_KZO(const IResponseData& responseData, Json::Value& object);
+
+                bool addFieldSBP_ReqId(const IResponseData& responseData, Json::Value& object);
+
+                bool addFieldSBP_Code(const IResponseData& responseData, Json::Value& object);
+
+                bool addFieldSBP_Status(const IResponseData& responseData, Json::Value& object);
+
 			private:
                 void initFunctionsMap();
 
@@ -160,5 +175,4 @@ namespace Lanter {
         }
     }
 }
-
 #endif //LAN_4GATELIBRARYCPP_JSONRESPONSEBUILDER_H

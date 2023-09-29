@@ -3,9 +3,12 @@
 
 #include <cstdint>
 
-namespace Lanter {
-    namespace Utils {
-        namespace Constants {
+namespace Lanter
+{
+    namespace Utils
+    {
+        namespace Constants
+        {
             static const uint64_t MINIMUM_AMOUNT = 0;
             static const uint64_t MAXIMUM_AMOUNT = 999999999999;
 
@@ -92,6 +95,24 @@ namespace Lanter {
 
             static const uint16_t MINIMUM_ARRAY_SIZE = 0;
             static const uint16_t MAXIMUM_ARRAY_SIZE = 999;
+
+            static const uint16_t MINIMUM_SBP_RN = 1;
+            static const uint16_t MAXIMUM_SBP_RN = 8192;
+
+            static const uint16_t MINIMUM_QR_CODE = 1;
+            static const uint16_t MAXIMUM_QR_CODE = 8192;
+
+            static const uint16_t MINIMUM_SBP_KZO = 1;
+            static const uint16_t MAXIMUM_SBP_KZO = 8192;
+
+            static const uint16_t MINIMUM_SBP_REQID = 1;
+            static const uint16_t MAXIMUM_SBP_REQID = 8192;
+
+            static const uint16_t MINIMUM_SBP_CODE = 1;
+            static const uint16_t MAXIMUM_SBP_CODE = 8192;
+
+            static const uint16_t MINIMUM_SBP_STATUS = 1;
+            static const uint16_t MAXIMUM_SBP_STATUS = 8192;
         }
     }
 }

@@ -3,11 +3,12 @@
 
 #include <string>
 #include <cstdint>
-
 #include "Lanter/Message/OperationCode.h"
 
-namespace Lanter {
-    namespace Utils {
+namespace Lanter
+{
+    namespace Utils
+    {
         bool checkEcrNumberRange(int16_t ecrNumber);
         bool checkEcrMerchantNumberRange(int16_t ecrMerchantNumber);
         bool checkOperationCodeRange(int32_t operationCode);
@@ -54,11 +55,16 @@ namespace Lanter {
         bool checkVoidCountRange(int32_t voidCount);
         bool checkRefundCountRange(int32_t refundCount);
 
+        bool checkSBP_RN(const std::string& SBP_RN);
+        bool checkQRCode(const std::string& QRCode);
+        bool checkSBP_KZO(const std::string& SBP_KZO);
+        bool checkSBP_ReqId(const std::string& SBP_ReqId);
+        bool checkSBP_Code(const std::string& SBP_Code);
+        bool checkSBP_Status(const std::string& SBP_Status);
+
         bool checkNotificationsRange(int32_t notification);
 
         bool checkInteractionsRange(int32_t interaction);
     }
 }
-
-
 #endif //LAN_4GATELIBRARYCPP_FIELDRANGECHECKER_H

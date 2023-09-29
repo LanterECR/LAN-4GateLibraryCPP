@@ -437,7 +437,7 @@ namespace Lanter {
             bool JSONResponseParser::getFieldSalesCount(const Json::Value &object, IResponseData &responseData) {
                 int salesCount;
 
-                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getSaleCount(), salesCount);
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getSalesCount(), salesCount);
                 bool result = exists && responseData.setSalesCount(salesCount);
 
                 return result;
@@ -479,24 +479,30 @@ namespace Lanter {
                 return result;
             }
 
-            bool JSONResponseParser::getFieldSaleArray(const Json::Value &object, IResponseData &responseData) {
+            bool JSONResponseParser::getFieldSalesArray(const Json::Value &object, IResponseData &responseData)
+            {
                 bool result = false;
 
                 Json::Value salesArray;
 
                 std::vector<std::shared_ptr<IResponseData> > sales;
-                if (JSONGetFieldHelper::getField(object, JSONResponseFields::getSaleArray(), salesArray)) {
-                    if (salesArray.isArray()) {
-                        for (auto &i : salesArray) {
+                if (JSONGetFieldHelper::getField(object, JSONResponseFields::getSalesArray(), salesArray))
+                {
+                    if (salesArray.isArray())
+                    {
+                        for (auto &i : salesArray)
+                        {
                             auto sale = ResponseDataFactory::getResponseData(OperationCode::ArrayElement);
-                            if (sale && getFields(i, *sale)) {
+                            if (sale && getFields(i, *sale))
+                            {
                                 sale->resetOperationCode();
                                 sales.push_back(sale);
                             }
                         } //for
 
                         result = salesArray.size() == sales.size();
-                        if (result) {
+                        if (result)
+                        {
                             responseData.setSalesArray(sales);
                         }
                     }
@@ -644,8 +650,8 @@ namespace Lanter {
                 return result;
             }
 
-            bool
-            JSONResponseParser::getFieldFinalizationRequired(const Json::Value &object, IResponseData &responseData) {
+            bool JSONResponseParser::getFieldFinalizationRequired(const Json::Value &object, IResponseData &responseData)
+            {
                 bool finalizationRequired;
 
                 bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getFinalizationRequired(), finalizationRequired);
@@ -654,8 +660,8 @@ namespace Lanter {
                 return result;
             }
 
-            bool
-            JSONResponseParser::getFieldAdditionalChoiceResult(const Json::Value &object, IResponseData &responseData) {
+            bool JSONResponseParser::getFieldAdditionalChoiceResult(const Json::Value &object, IResponseData &responseData)
+            {
                 int64_t choiceResult;
 
                 bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getAdditionalChoiceResult(), choiceResult);
@@ -664,8 +670,8 @@ namespace Lanter {
                 return result;
             }
 
-			bool
-			JSONResponseParser::getFieldECertAmount(const Json::Value &object, IResponseData &responseData) {
+			bool JSONResponseParser::getFieldECertAmount(const Json::Value &object, IResponseData &responseData)
+            {
 				int64_t amount;
 
 				bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTotalAmount(), amount);
@@ -674,17 +680,78 @@ namespace Lanter {
 				return result;
 			}
 
-			bool
-			JSONResponseParser::getFieldBasketID(const Json::Value &object, IResponseData &responseData) {
+			bool JSONResponseParser::getFieldBasketID(const Json::Value &object, IResponseData &responseData)
+            {
 				std::string id;
 
-				bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getReceiptLine5(), id);
+				bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getBasketID(), id);
 				bool result = exists && responseData.setBasketID(id);
 
 				return result;
 			}
 
-            void JSONResponseParser::initFunctionsMap() {
+            bool JSONResponseParser::getFieldSBP_RN(const Json::Value& object, IResponseData& responseData)
+            {
+                std::string SBP_RN;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getSBP_RN(), SBP_RN);
+                bool result = exists && responseData.setSBP_RN(SBP_RN);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldQRCode(const Json::Value& object, IResponseData& responseData)
+            {
+                std::string QRCode;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getQRCode(), QRCode);
+                bool result = exists && responseData.setQRCode(QRCode);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldSBP_KZO(const Json::Value& object, IResponseData& responseData)
+            {
+                std::string SBP_KZO;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getSBP_KZO(), SBP_KZO);
+                bool result = exists && responseData.setSBP_KZO(SBP_KZO);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldSBP_ReqId(const Json::Value& object, IResponseData& responseData)
+            {
+                std::string SBP_ReqId;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getSBP_ReqId(), SBP_ReqId);
+                bool result = exists && responseData.setSBP_ReqId(SBP_ReqId);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldSBP_Code(const Json::Value& object, IResponseData& responseData)
+            {
+                std::string SBP_Code;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getSBP_Code(), SBP_Code);
+                bool result = exists && responseData.setSBP_Code(SBP_Code);
+
+                return result;
+            }
+
+            bool JSONResponseParser::getFieldSBP_Status(const Json::Value& object, IResponseData& responseData)
+            {
+                std::string SBP_Status;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getSBP_Status(), SBP_Status);
+                bool result = exists && responseData.setSBP_Status(SBP_Status);
+
+                return result;
+            }
+
+            void JSONResponseParser::initFunctionsMap()
+            {
                 m_ExtractFunctions[ResponseField::EcrNumber] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldEcrNumber(object, responseData); };
                 m_ExtractFunctions[ResponseField::EcrMerchantNumber] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldEcrMerchantNumber(object, responseData); };
                 m_ExtractFunctions[ResponseField::OperationCode] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldOperationCode(object, responseData); };
@@ -727,12 +794,12 @@ namespace Lanter {
                 m_ExtractFunctions[ResponseField::KVR] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldKVR(object, responseData); };
                 m_ExtractFunctions[ResponseField::CDAResult] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldCDAResult(object, responseData); };
                 m_ExtractFunctions[ResponseField::SalesAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldSalesAmount(object, responseData); };
-                m_ExtractFunctions[ResponseField::SaleCount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldSalesCount(object, responseData); };
+                m_ExtractFunctions[ResponseField::SalesCount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldSalesCount(object, responseData); };
                 m_ExtractFunctions[ResponseField::VoidAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldVoidAmount(object, responseData); };
                 m_ExtractFunctions[ResponseField::VoidCount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldVoidCount(object, responseData); };
                 m_ExtractFunctions[ResponseField::RefundAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldRefundAmount(object, responseData); };
                 m_ExtractFunctions[ResponseField::RefundCount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldRefundCount(object, responseData); };
-                m_ExtractFunctions[ResponseField::SaleArray] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldSaleArray(object, responseData); };
+                m_ExtractFunctions[ResponseField::SalesArray] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldSalesArray(object, responseData); };
                 m_ExtractFunctions[ResponseField::VoidArray] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldVoidArray(object, responseData); };
                 m_ExtractFunctions[ResponseField::RefundArray] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldRefundArray(object, responseData); };
 
@@ -750,21 +817,32 @@ namespace Lanter {
                 m_ExtractFunctions[ResponseField::AdditionalChoiceResult] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldAdditionalChoiceResult(object, responseData); };
 				m_ExtractFunctions[ResponseField::ECertAmount] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldECertAmount(object, responseData); };
 				m_ExtractFunctions[ResponseField::BasketID] = [this](const Json::Value &object, IResponseData &responseData) { return getFieldBasketID(object, responseData); };
-			}
+                
+                m_ExtractFunctions[ResponseField::SBP_RN] = [this](const Json::Value& object, IResponseData& responseData) { return getFieldSBP_RN(object, responseData); };
+                m_ExtractFunctions[ResponseField::QRCode] = [this](const Json::Value& object, IResponseData& responseData) { return getFieldQRCode(object, responseData); };
+                m_ExtractFunctions[ResponseField::SBP_KZO] = [this](const Json::Value& object, IResponseData& responseData) { return getFieldSBP_KZO(object, responseData); };
+                m_ExtractFunctions[ResponseField::SBP_ReqId] = [this](const Json::Value& object, IResponseData& responseData) { return getFieldSBP_ReqId(object, responseData); };
+                m_ExtractFunctions[ResponseField::SBP_Code] = [this](const Json::Value& object, IResponseData& responseData) { return getFieldSBP_Code(object, responseData); };
+                m_ExtractFunctions[ResponseField::SBP_Status] = [this](const Json::Value& object, IResponseData& responseData) { return getFieldSBP_Status(object, responseData); };
+            }
 
-            bool JSONResponseParser::getFields(const Json::Value &object, IResponseData &responseData) {
-                if (responseData.isFieldSet(ResponseField::OperationCode) ||
-                    getFieldOperationCode(object, responseData)) {
-                    for (auto field : responseData.getMandatoryFields()) {
+            bool JSONResponseParser::getFields(const Json::Value &object, IResponseData &responseData)
+            {
+                if (responseData.isFieldSet(ResponseField::OperationCode) || getFieldOperationCode(object, responseData))
+                {
+                    for (auto field : responseData.getMandatoryFields())
+                    {
                         auto function = m_ExtractFunctions.at(field);
                         function(object, responseData);
                     }
 
-                    for (auto field : responseData.getOptionalFields()) {
+                    for (auto field : responseData.getOptionalFields())
+                    {
                         auto function = m_ExtractFunctions.at(field);
                         function(object, responseData);
                     }
                 }
+
                 return responseData.validateMandatoryFields();
             }
         }

@@ -3,9 +3,12 @@
 
 #include <string>
 
-namespace Lanter {
-    namespace MessageProcessor {
-        class JSONResponseFields {
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
+        class JSONResponseFields
+        {
         public:
             static inline std::string getEcrNumber() { return "EcrNumber"; }
             static inline std::string getEcrMerchantNumber() { return "EcrMerchantNumber"; }
@@ -48,10 +51,10 @@ namespace Lanter {
             static inline std::string getCID() { return "CID"; }
             static inline std::string getKVR() { return "KVR"; }
             static inline std::string getCDAResult() { return "CDAResult"; }
-            static inline std::string getSaleCount() { return "SalesCount"; }
+            static inline std::string getSalesCount() { return "SalesCount"; }
             static inline std::string getVoidCount() { return "VoidCount"; }
             static inline std::string getRefundCount() { return "RefundCount"; }
-            static inline std::string getSaleArray() { return "SalesArray"; }
+            static inline std::string getSalesArray() { return "SalesArray"; }
             static inline std::string getVoidArray() { return "VoidArray"; }
             static inline std::string getRefundArray() { return "RefundArray"; }
             static inline std::string getSalesAmount() { return "SalesAmount"; }
@@ -71,7 +74,12 @@ namespace Lanter {
             static inline std::string getAdditionalChoiceResult() { return "AdditionalChoiceResult"; }
 			static inline std::string getECertAmount() { return "ECertAmount"; }
 			static inline std::string getBasketID() { return "BasketID"; }
-
+            static inline std::string getSBP_RN() { return "SBP_RN"; }
+            static inline std::string getQRCode() { return "QRCode"; }
+            static inline std::string getSBP_KZO() { return "SBP_KZO"; }
+            static inline std::string getSBP_ReqId() { return "SBP_ReqId"; }
+            static inline std::string getSBP_Code() { return "SBP_Code"; }
+            static inline std::string getSBP_Status() { return "SBP_Status"; }
         };
     }
 }

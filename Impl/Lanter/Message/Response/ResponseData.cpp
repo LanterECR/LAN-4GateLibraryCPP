@@ -1,41 +1,52 @@
 #include "ResponseData.h"
-
 #include "Lanter/Utils/FieldRangeChecker.h"
 #include "Lanter/Message/Response/Validators/ValidatorFactory.h"
 
 using namespace Lanter::Utils;
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-            ResponseData::ResponseData() {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            ResponseData::ResponseData()
+            {
                 initValidator();
             }
 
-            const std::set<ResponseField> &ResponseData::getFieldsSet() const {
+            const std::set<ResponseField> &ResponseData::getFieldsSet() const
+            {
                 return m_FieldsSet;
             }
 
-            bool ResponseData::isFieldSet(ResponseField field) const {
+            bool ResponseData::isFieldSet(ResponseField field) const
+            {
                 return m_FieldsSet.find(field) != m_FieldsSet.end();
             }
 
-            const std::set<ResponseField> &ResponseData::getMandatoryFields() const {
-                if (m_Validator) {
+            const std::set<ResponseField> &ResponseData::getMandatoryFields() const
+            {
+                if (m_Validator)
+                {
                     return m_Validator->getMandatoryFields();
                 }
                 return m_EmptyFieldsPlaceholder;
             }
 
-            const std::set<ResponseField> &ResponseData::getOptionalFields() const {
-                if (m_Validator) {
+            const std::set<ResponseField> &ResponseData::getOptionalFields() const
+            {
+                if (m_Validator)
+                {
                     return m_Validator->getOptionalFields();
                 }
                 return m_EmptyFieldsPlaceholder;
             }
 
-            bool ResponseData::validateMandatoryFields() const {
-                if (m_Validator) {
+            bool ResponseData::validateMandatoryFields() const
+            {
+                if (m_Validator)
+                {
                     return m_Validator->validate(getFieldsSet());
                 }
                 return false;
@@ -594,9 +605,11 @@ namespace Lanter {
                 return m_CDAResult;
             }
 
-            bool ResponseData::setCDAResult(const std::string &cdaResult) {
+            bool ResponseData::setCDAResult(const std::string &cdaResult)
+            {
                 bool result = false;
-                if (checkCDAResultRange(cdaResult)) {
+                if (checkCDAResultRange(cdaResult))
+                {
                     m_CDAResult = cdaResult;
                     m_FieldsSet.insert(ResponseField::CDAResult);
                     result = true;
@@ -604,27 +617,33 @@ namespace Lanter {
                 return result;
             }
 
-            int32_t ResponseData::getSaleCount() const {
+            int32_t ResponseData::getSalesCount() const
+            {
                 return m_SalesCount;
             }
 
-            bool ResponseData::setSalesCount(int32_t salesCount) {
+            bool ResponseData::setSalesCount(int32_t salesCount)
+            {
                 bool result = false;
-                if (checkSalesCountRange(salesCount)) {
+                if (checkSalesCountRange(salesCount))
+                {
                     m_SalesCount = salesCount;
-                    m_FieldsSet.insert(ResponseField::SaleCount);
+                    m_FieldsSet.insert(ResponseField::SalesCount);
                     result = true;
                 }
                 return result;
             }
 
-            int32_t ResponseData::getVoidCount() const {
+            int32_t ResponseData::getVoidCount() const
+            {
                 return m_VoidCount;
             }
 
-            bool ResponseData::setVoidCount(int32_t voidCount) {
+            bool ResponseData::setVoidCount(int32_t voidCount)
+            {
                 bool result = false;
-                if (checkVoidCountRange(voidCount)) {
+                if (checkVoidCountRange(voidCount))
+                {
                     m_VoidCount = voidCount;
                     m_FieldsSet.insert(ResponseField::VoidCount);
                     result = true;
@@ -632,13 +651,16 @@ namespace Lanter {
                 return result;
             }
 
-            int32_t ResponseData::getRefundCount() const {
+            int32_t ResponseData::getRefundCount() const
+            {
                 return m_RefundCount;
             }
 
-            bool ResponseData::setRefundCount(int32_t refundCount) {
+            bool ResponseData::setRefundCount(int32_t refundCount)
+            {
                 bool result = false;
-                if (checkRefundCountRange(refundCount)) {
+                if (checkRefundCountRange(refundCount))
+                {
                     m_RefundCount = refundCount;
                     m_FieldsSet.insert(ResponseField::RefundCount);
                     result = true;
@@ -646,27 +668,32 @@ namespace Lanter {
                 return result;
             }
 
-            const std::vector<std::shared_ptr<IResponseData> > &ResponseData::getSaleArray() const {
+            const std::vector<std::shared_ptr<IResponseData> > &ResponseData::getSalesArray() const
+            {
                 return m_SalesArray;
             }
 
-            bool ResponseData::setSalesArray(const std::vector<std::shared_ptr<IResponseData> > &salesArray) {
+            bool ResponseData::setSalesArray(const std::vector<std::shared_ptr<IResponseData> > &salesArray)
+            {
                 bool result = false;
                 if(!salesArray.empty()) {
                     m_SalesArray = salesArray;
-                    m_FieldsSet.insert(ResponseField::SaleArray);
+                    m_FieldsSet.insert(ResponseField::SalesArray);
                     result = true;
                 }
                 return result;
             }
 
-            const std::vector<std::shared_ptr<IResponseData> > &ResponseData::getVoidArray() const {
+            const std::vector<std::shared_ptr<IResponseData> > &ResponseData::getVoidArray() const
+            {
                 return m_VoidArray;
             }
 
-            bool ResponseData::setVoidArray(const std::vector<std::shared_ptr<IResponseData> > &voidArray) {
+            bool ResponseData::setVoidArray(const std::vector<std::shared_ptr<IResponseData> > &voidArray)
+            {
                 bool result = false;
-                if(!voidArray.empty()) {
+                if(!voidArray.empty())
+                {
                     m_VoidArray = voidArray;
                     m_FieldsSet.insert(ResponseField::VoidArray);
                     result = true;
@@ -861,7 +888,7 @@ namespace Lanter {
                     case ResponseField::CDAResult:
                         result = resetCDAResult();
                         break;
-                    case ResponseField::SaleCount:
+                    case ResponseField::SalesCount:
                         result = resetSalesCount();
                         break;
                     case ResponseField::VoidCount:
@@ -870,7 +897,7 @@ namespace Lanter {
                     case ResponseField::RefundCount:
                         result = resetRefundCount();
                         break;
-                    case ResponseField::SaleArray:
+                    case ResponseField::SalesArray:
                         result = resetSalesArray();
                         break;
                     case ResponseField::VoidArray:
@@ -1130,55 +1157,64 @@ namespace Lanter {
                 return !isFieldSet(ResponseField::CID);
             }
 
-            bool ResponseData::resetKVR() {
+            bool ResponseData::resetKVR()
+            {
                 m_KVR.clear();
                 m_FieldsSet.erase(ResponseField::KVR);
                 return !isFieldSet(ResponseField::KVR);
             }
 
-            bool ResponseData::resetCDAResult() {
+            bool ResponseData::resetCDAResult()
+            {
                 m_CDAResult.clear();
                 m_FieldsSet.erase(ResponseField::CDAResult);
                 return !isFieldSet(ResponseField::CDAResult);
             }
 
-            bool ResponseData::resetSalesCount() {
+            bool ResponseData::resetSalesCount()
+            {
                 m_SalesCount = -1;
-                m_FieldsSet.erase(ResponseField::SaleCount);
-                return !isFieldSet(ResponseField::SaleCount);
+                m_FieldsSet.erase(ResponseField::SalesCount);
+                return !isFieldSet(ResponseField::SalesCount);
             }
 
-            bool ResponseData::resetVoidCount() {
+            bool ResponseData::resetVoidCount()
+            {
                 m_VoidCount = -1;
                 m_FieldsSet.erase(ResponseField::VoidCount);
                 return !isFieldSet(ResponseField::VoidCount);
             }
 
-            bool ResponseData::resetRefundCount() {
+            bool ResponseData::resetRefundCount()
+            {
                 m_RefundCount = -1;
                 m_FieldsSet.erase(ResponseField::RefundCount);
                 return !isFieldSet(ResponseField::RefundCount);
             }
 
-            bool ResponseData::resetSalesArray() {
+            bool ResponseData::resetSalesArray()
+            {
                 m_SalesArray.clear();
-                m_FieldsSet.erase(ResponseField::SaleArray);
-                return !isFieldSet(ResponseField::SaleArray);
+                m_FieldsSet.erase(ResponseField::SalesArray);
+                return !isFieldSet(ResponseField::SalesArray);
             }
 
-            bool ResponseData::resetVoidArray() {
+            bool ResponseData::resetVoidArray()
+            {
                 m_VoidArray.clear();
                 m_FieldsSet.erase(ResponseField::VoidArray);
                 return !isFieldSet(ResponseField::VoidArray);
             }
 
-            bool ResponseData::resetRefundArray() {
+            bool ResponseData::resetRefundArray()
+            {
                 m_RefundArray.clear();
                 m_FieldsSet.erase(ResponseField::RefundArray);
                 return !isFieldSet(ResponseField::RefundArray);
             }
 
-            int64_t ResponseData::getSalesAmount() const {
+            int64_t ResponseData::getSalesAmount() cons
+            {
                 return m_SalesAmount;
             }
 
@@ -1450,7 +1486,8 @@ namespace Lanter {
                 return m_FinalizationRequired;
             }
 
-            bool ResponseData::setFinalizationRequired(bool required) {
+            bool ResponseData::setFinalizationRequired(bool required)
+            {
                 m_FinalizationRequired = required;
                 m_FieldsSet.insert(ResponseField::FinalizationRequired);
 
@@ -1458,19 +1495,23 @@ namespace Lanter {
                 return isFieldSet(ResponseField::FinalizationRequired);
             }
 
-            bool ResponseData::resetFinalizationRequired() {
+            bool ResponseData::resetFinalizationRequired()
+            {
                 m_FinalizationRequired = false;
                 m_FieldsSet.erase(ResponseField::FinalizationRequired);
                 return !isFieldSet(ResponseField::FinalizationRequired);
             }
 
-            const std::string &ResponseData::getCfgTerminalID() const {
+            const std::string &ResponseData::getCfgTerminalID() const
+            {
                 return m_CfgTerminalID;
             }
 
-            bool ResponseData::setCfgTerminalID(const std::string &terminalId) {
+            bool ResponseData::setCfgTerminalID(const std::string &terminalId)
+            {
                 bool result = false;
-                if (checkTerminalIDRange(terminalId)) {
+                if (checkTerminalIDRange(terminalId))
+                {
                     m_CfgTerminalID = terminalId;
                     m_FieldsSet.insert(ResponseField::CfgTerminalID);
                     result = true;
@@ -1478,18 +1519,23 @@ namespace Lanter {
                 return result;
             }
 
-            bool ResponseData::resetCfgTerminalID() {
+            bool ResponseData::resetCfgTerminalID()
+            {
                 m_CfgTerminalID.clear();
                 m_FieldsSet.erase(ResponseField::CfgTerminalID);
                 return !isFieldSet(ResponseField::CfgTerminalID);
             }
-            int64_t ResponseData::getAdditionalChoiceResult() const {
+
+            int64_t ResponseData::getAdditionalChoiceResult() const
+            {
                 return m_ChoiceResult;
             }
 
-            bool ResponseData::setAdditionalChoiceResult(int64_t additionalChoiceResult) {
+            bool ResponseData::setAdditionalChoiceResult(int64_t additionalChoiceResult)
+            {
                 bool result = false;
-                if (checkAmountRange(additionalChoiceResult)) {
+                if (checkAmountRange(additionalChoiceResult))
+                {
                     m_ChoiceResult = additionalChoiceResult;
                     m_FieldsSet.insert(ResponseField::AdditionalChoiceResult);
                     result = true;
@@ -1497,10 +1543,155 @@ namespace Lanter {
                 return result;
             }
 
-            bool ResponseData::resetAdditionalChoiceResult() {
+            bool ResponseData::resetAdditionalChoiceResult()
+            {
                 m_ChoiceResult = -1;
                 m_FieldsSet.erase(ResponseField::AdditionalChoiceResult);
                 return !isFieldSet(ResponseField::AdditionalChoiceResult);
+            }
+
+            const std::string& ResponseData::getSBP_RN() const
+            {
+                return m_SBP_RN;
+            }
+
+            bool ResponseData::setSBP_RN(const std::string& SBP_RN)
+            {
+                bool result = false;
+                if (checkSBP_RN(SBP_RN))
+                {
+                    m_SBP_RN = SBP_RN;
+                    m_FieldsSet.insert(ResponseField::SBP_RN);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetSBP_RN()
+            {
+                m_SBP_RN.clear();
+                m_FieldsSet.erase(ResponseField::SBP_RN);
+                return !isFieldSet(ResponseField::SBP_RN);
+            }
+
+            const std::string& ResponseData::getQRCode() const
+            {
+                return m_QRCode;
+            }
+
+            bool ResponseData::setQRCode(const std::string& QRCode)
+            {
+                bool result = false;
+                if (checkQRCode(QRCode))
+                {
+                    m_QRCode = QRCode;
+                    m_FieldsSet.insert(ResponseField::QRCode);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetQRCode()
+            {
+                m_QRCode.clear();
+                m_FieldsSet.erase(ResponseField::QRCode);
+                return !isFieldSet(ResponseField::QRCode);
+            }
+
+            const std::string& ResponseData::getSBP_KZO() const
+            {
+                return m_SBP_KZO;
+            }
+
+            bool ResponseData::setSBP_KZO(const std::string& SBP_KZO)
+            {
+                bool result = false;
+                if (checkSBP_KZO(SBP_KZO))
+                {
+                    m_SBP_KZO = SBP_KZO;
+                    m_FieldsSet.insert(ResponseField::SBP_KZO);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetSBP_KZO()
+            {
+                m_SBP_KZO.clear();
+                m_FieldsSet.erase(ResponseField::SBP_KZO);
+                return !isFieldSet(ResponseField::SBP_KZO);
+            }
+
+            const std::string& ResponseData::getSBP_ReqId() const
+            {
+                return m_SBP_ReqId;
+            }
+
+            bool ResponseData::setSBP_ReqId(const std::string& SBP_ReqId)
+            {
+                bool result = false;
+                if (checkSBP_ReqId(SBP_ReqId))
+                {
+                    m_SBP_ReqId = SBP_ReqId;
+                    m_FieldsSet.insert(ResponseField::SBP_ReqId);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetSBP_ReqId()
+            {
+                m_SBP_ReqId.clear();
+                m_FieldsSet.erase(ResponseField::SBP_ReqId);
+                return !isFieldSet(ResponseField::SBP_ReqId);
+            }
+
+            const std::string& ResponseData::getSBP_Code() const
+            {
+                return m_SBP_Code;
+            }
+
+            bool ResponseData::setSBP_Code(const std::string& SBP_Code)
+            {
+                bool result = false;
+                if (checkSBP_Code(SBP_Code))
+                {
+                    m_SBP_Code = SBP_Code;
+                    m_FieldsSet.insert(ResponseField::SBP_Code);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetSBP_Code()
+            {
+                m_SBP_Code.clear();
+                m_FieldsSet.erase(ResponseField::SBP_Code);
+                return !isFieldSet(ResponseField::SBP_Code);
+            }
+
+            const std::string& ResponseData::getSBP_Status() const
+            {
+                return m_SBP_Status;
+            }
+
+            bool ResponseData::setSBP_Status(const std::string& SBP_Status)
+            {
+                bool result = false;
+                if (checkSBP_Status(SBP_Status))
+                {
+                    m_SBP_Status = SBP_Status;
+                    m_FieldsSet.insert(ResponseField::SBP_Status);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetSBP_Status()
+            {
+                m_SBP_Status.clear();
+                m_FieldsSet.erase(ResponseField::SBP_Status);
+                return !isFieldSet(ResponseField::SBP_Status);
             }
         }
     }

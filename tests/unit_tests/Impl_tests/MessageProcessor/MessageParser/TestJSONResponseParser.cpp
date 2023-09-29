@@ -991,7 +991,7 @@ TEST(TestJSONResponseParser, CheckGetCDAResult) {
     EXPECT_STREQ(data.getCDAResult().c_str(), maxSize.c_str());
 }
 
-TEST(TestJSONResponseParser, CheckgetSaleCount) {
+TEST(TestJSONResponseParser, CheckgetSalesCount) {
     JSONResponseParser parser;
 
     Json::Value object;
@@ -1001,20 +1001,20 @@ TEST(TestJSONResponseParser, CheckgetSaleCount) {
     EXPECT_FALSE(parser.getFieldSalesCount(object, data));
 
     auto lessMinimum = MINIMUM_ARRAY_SIZE - 1;
-    AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), lessMinimum);
+    AddFieldsHelper::addField(object, JSONResponseFields::getSalesCount(), lessMinimum);
     EXPECT_FALSE(parser.getFieldSalesCount(object, data));
 
     auto greatMaximum = MAXIMUM_ARRAY_SIZE + 1;
-    AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), greatMaximum);
+    AddFieldsHelper::addField(object, JSONResponseFields::getSalesCount(), greatMaximum);
     EXPECT_FALSE(parser.getFieldSalesCount(object, data));
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), MINIMUM_ARRAY_SIZE);
+    AddFieldsHelper::addField(object, JSONResponseFields::getSalesCount(), MINIMUM_ARRAY_SIZE);
     EXPECT_TRUE(parser.getFieldSalesCount(object, data));
-    EXPECT_EQ(data.getSaleCount(), MINIMUM_ARRAY_SIZE);
+    EXPECT_EQ(data.getSalesCount(), MINIMUM_ARRAY_SIZE);
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), MAXIMUM_ARRAY_SIZE);
+    AddFieldsHelper::addField(object, JSONResponseFields::getSalesCount(), MAXIMUM_ARRAY_SIZE);
     EXPECT_TRUE(parser.getFieldSalesCount(object, data));
-    EXPECT_EQ(data.getSaleCount(), MAXIMUM_ARRAY_SIZE);
+    EXPECT_EQ(data.getSalesCount(), MAXIMUM_ARRAY_SIZE);
 }
 TEST(TestJSONResponseParser, CheckGetVoidCount) {
     JSONResponseParser parser;
@@ -1073,7 +1073,7 @@ TEST(TestJSONResponseParser, CheckGetSalesArray) {
     Json::Value object;
     ResponseData data;
 
-    EXPECT_FALSE(parser.getFieldSaleArray(object, data));
+    EXPECT_FALSE(parser.getFieldSalesArray(object, data));
 
     Json::Value array;
 
@@ -1091,18 +1091,20 @@ TEST(TestJSONResponseParser, CheckGetSalesArray) {
     AddFieldsHelper::addArrayElement(array, element);
     AddFieldsHelper::addArrayElement(array, element);
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getSaleArray(), array);
+    AddFieldsHelper::addField(object, JSONResponseFields::getSalesArray(), array);
 
-    EXPECT_TRUE(parser.getFieldSaleArray(object, data));
+    EXPECT_TRUE(parser.getFieldSalesArray(object, data));
 
-    EXPECT_EQ(array.size(), data.getSaleArray().size());
+    EXPECT_EQ(array.size(), data.getSalesArray().size());
 
-    for(auto i : data.getSaleArray()) {
+    for(auto i : data.getSalesArray())
+    {
         EXPECT_FALSE(i->isFieldSet(Lanter::Message::Response::ResponseField::OperationCode));
     }
 }
 
-TEST(TestJSONResponseParser, CheckGetVoidArray) {
+TEST(TestJSONResponseParser, CheckGetVoidArray)
+{
     JSONResponseParser parser;
 
     Json::Value object;
@@ -1194,7 +1196,7 @@ TEST(TestJSONResponseParser, CheckParseData) {
     std::string issuerName = "Значение";
     std::string transactionDateTime = "Значение";
     std::string cardPan = "Значение";
-    int saleCount = 2;
+    int salesCount = 2;
     int voidCount = 2;
     int refundCount = 2;
 
@@ -1214,7 +1216,7 @@ TEST(TestJSONResponseParser, CheckParseData) {
     AddFieldsHelper::addArrayElement(array, element);
     AddFieldsHelper::addArrayElement(array, element);
 
-    AddFieldsHelper::addField(object, JSONResponseFields::getSaleArray(), array);
+    AddFieldsHelper::addField(object, JSONResponseFields::getSalesArray(), array);
     AddFieldsHelper::addField(object, JSONResponseFields::getVoidArray(), array);
     AddFieldsHelper::addField(object, JSONResponseFields::getRefundArray(), array);
 
@@ -1224,10 +1226,10 @@ TEST(TestJSONResponseParser, CheckParseData) {
     AddFieldsHelper::addField(object, JSONResponseFields::getCurrencyCode(), currencyCode);
     AddFieldsHelper::addField(object, JSONResponseFields::getTerminalID(), terminalID);
     AddFieldsHelper::addField(object, JSONResponseFields::getMerchantID(), merchantID);
-    AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), saleCount);
+    AddFieldsHelper::addField(object, JSONResponseFields::getSalesCount(), salesCount);
     AddFieldsHelper::addField(object, JSONResponseFields::getVoidCount(), voidCount);
     AddFieldsHelper::addField(object, JSONResponseFields::getRefundCount(), refundCount);
-    AddFieldsHelper::addField(object, JSONResponseFields::getSaleArray(), array);
+    AddFieldsHelper::addField(object, JSONResponseFields::getSalesArray(), array);
     AddFieldsHelper::addField(object, JSONResponseFields::getVoidArray(), array);
     AddFieldsHelper::addField(object, JSONResponseFields::getRefundArray(), array);
 

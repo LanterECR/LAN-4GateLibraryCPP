@@ -1111,20 +1111,20 @@ TEST(TestResponseData, CheckSalesCount) {
     EXPECT_FALSE(data.setSalesCount(lessMinimum));
     EXPECT_FALSE(data.setSalesCount(greatMaximum));
 
-    EXPECT_EQ(data.getSaleCount(), -1);
+    EXPECT_EQ(data.getSalesCount(), -1);
 
     EXPECT_TRUE(data.setSalesCount(MINIMUM_ARRAY_SIZE));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getSaleCount(), MINIMUM_ARRAY_SIZE);
-    EXPECT_NE(data.getFieldsSet().find(ResponseField::SaleCount), data.getFieldsSet().end());
+    EXPECT_EQ(data.getSalesCount(), MINIMUM_ARRAY_SIZE);
+    EXPECT_NE(data.getFieldsSet().find(ResponseField::SalesCount), data.getFieldsSet().end());
 
     EXPECT_TRUE(data.setSalesCount(MAXIMUM_ARRAY_SIZE));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_EQ(data.getSaleCount(), MAXIMUM_ARRAY_SIZE);
-    EXPECT_NE(data.getFieldsSet().find(ResponseField::SaleCount), data.getFieldsSet().end());
+    EXPECT_EQ(data.getSalesCount(), MAXIMUM_ARRAY_SIZE);
+    EXPECT_NE(data.getFieldsSet().find(ResponseField::SalesCount), data.getFieldsSet().end());
 
     EXPECT_TRUE(data.resetSalesCount());
-    EXPECT_EQ(data.getSaleCount(), -1);
+    EXPECT_EQ(data.getSalesCount(), -1);
     EXPECT_TRUE(data.getFieldsSet().empty());
 }
 
@@ -1188,10 +1188,10 @@ TEST(TestResponseData, CheckSalesArray) {
 
     EXPECT_TRUE(data.setSalesArray(array));
     EXPECT_EQ(data.getFieldsSet().size(), 1);
-    EXPECT_NE(data.getFieldsSet().find(ResponseField::SaleArray), data.getFieldsSet().end());
+    EXPECT_NE(data.getFieldsSet().find(ResponseField::SalesArray), data.getFieldsSet().end());
 
     EXPECT_TRUE(data.resetSalesArray());
-    EXPECT_TRUE(data.getSaleArray().empty());
+    EXPECT_TRUE(data.getSalesArray().empty());
     EXPECT_TRUE(data.getFieldsSet().empty());
 }
 

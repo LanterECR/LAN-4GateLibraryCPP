@@ -806,10 +806,10 @@ TEST(TestResponseOperationValidators, CheckPrintDetailReport) {
     fields.insert(ResponseField::TerminalID);
     fields.insert(ResponseField::MerchantID);
     fields.insert(ResponseField::TerminalDateTime);
-    fields.insert(ResponseField::SaleCount);
+    fields.insert(ResponseField::SalesCount);
     fields.insert(ResponseField::VoidCount);
     fields.insert(ResponseField::RefundCount);
-    fields.insert(ResponseField::SaleArray);
+    fields.insert(ResponseField::SalesArray);
     fields.insert(ResponseField::VoidArray);
     fields.insert(ResponseField::RefundArray);
     auto validator = ValidatorFactory::getValidator(OperationCode::PrintDetailReport);
