@@ -22,8 +22,8 @@ namespace Lanter
         bool checkOpenTagsRange(const std::string & openTags);
         bool checkEncTagsRange(const std::string & encTags);
         bool checkHashCardTrack2(const std::string &hashCardTrack2);
-        bool checkSBP_RN(const std::string& SBP_RN);
-        bool checkSBP_ReqID(const std::string& SBP_ReqID);
+        //bool checkSBP_RN(const std::string& SBP_RN);
+        //bool checkSBP_ReqID(const std::string& SBP_ReqID);
         bool checkPaymentPurpose(const std::string& paymentPurpose);
         bool checkProviderCodeRange(const std::string & providerCode);
         bool checkAdditionalInfoRange(const std::string & additionalInfo);

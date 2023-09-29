@@ -76,13 +76,13 @@ namespace Lanter {
             return !hashCardTrack2.empty();
         }
 
-        bool checkSBP_RN(const std::string& SBP_RN) {
-            return !SBP_RN.empty();
-        }
+        //bool checkSBP_RN(const std::string& SBP_RN) {
+        //    return !SBP_RN.empty();
+        //}
 
-        bool checkSBP_ReqID(const std::string& SBP_ReqID) {
-            return !SBP_ReqID.empty();
-        }
+        //bool checkSBP_ReqID(const std::string& SBP_ReqID) {
+        //    return !SBP_ReqID.empty();
+        //}
 
         bool checkPaymentPurpose(const std::string& paymentPurpose) {
             return !paymentPurpose.empty();

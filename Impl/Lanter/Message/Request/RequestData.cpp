@@ -534,7 +534,7 @@ namespace Lanter {
             bool RequestData::setSBP_ReqID(const std::string& purpose) {
                 bool result = false;
 
-                if (checkSBP_ReqID(purpose)) {
+                if (checkSBP_ReqId(purpose)) {
                     m_SBP_ReqID = purpose;
                     m_FieldsSet.insert(RequestField::SBP_ReqID);
                     result = true;
@@ -756,6 +756,9 @@ namespace Lanter {
                         break;
                     case RequestField::TipsAmount:
                         result = resetTipsAmount();
+                        break;
+                    case RequestField::CardPANHash:
+                        result = resetCardPANHash();
                         break;
                     case RequestField::CashbackAmount:
                         result = resetCashbackAmount();

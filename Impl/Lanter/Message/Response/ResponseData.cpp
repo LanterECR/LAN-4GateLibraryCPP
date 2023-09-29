@@ -701,13 +701,16 @@ namespace Lanter
                 return result;
             }
 
-            const std::vector<std::shared_ptr<IResponseData> > &ResponseData::getRefundArray() const {
+            const std::vector<std::shared_ptr<IResponseData> > &ResponseData::getRefundArray() const
+            {
                 return m_RefundArray;
             }
 
-            bool ResponseData::setRefundArray(const std::vector<std::shared_ptr<IResponseData> > &refundArray) {
+            bool ResponseData::setRefundArray(const std::vector<std::shared_ptr<IResponseData> > &refundArray)
+            {
                 bool result = false;
-                if(!refundArray.empty()) {
+                if(!refundArray.empty())
+                {
                     m_RefundArray = refundArray;
                     m_FieldsSet.insert(ResponseField::RefundArray);
                     result = true;
@@ -715,30 +718,36 @@ namespace Lanter
                 return result;
             }
 
-			int64_t ResponseData::getECertAmount() const {
+			int64_t ResponseData::getECertAmount() const
+            {
 				return m_ECertAmount;
 			}
 
-			bool ResponseData::setECertAmount(int64_t amount) {
+			bool ResponseData::setECertAmount(int64_t amount)
+            {
 				bool result = false;
-				if (checkAmountRange(amount)) {
+				if (checkAmountRange(amount))
+                {
 					m_ECertAmount = amount;
 					m_FieldsSet.insert(ResponseField::ECertAmount);
 					result = true;
 				}
 				return result;
 			}
-			bool ResponseData::resetECertAmount() {
+			bool ResponseData::resetECertAmount()
+            {
 				m_ECertAmount = -1;
 				m_FieldsSet.erase(ResponseField::ECertAmount);
 				return !isFieldSet(ResponseField::ECertAmount);
 			}
 
-			const std::string &ResponseData::getBasketID() const {
+			const std::string &ResponseData::getBasketID() const
+            {
 				return m_BasketID;
 			}
 
-			bool ResponseData::setBasketID(const std::string &id) {
+			bool ResponseData::setBasketID(const std::string &id)
+            {
 				bool result = false;
 				//TODO добавить чекер
 				if (!id.empty()) {
@@ -749,25 +758,29 @@ namespace Lanter
 				return result;
 			}
 
-			bool ResponseData::resetBasketID() {
+			bool ResponseData::resetBasketID()
+            {
 				m_BasketID.clear();
 				m_FieldsSet.erase(ResponseField::BasketID);
 				return !isFieldSet(ResponseField::BasketID);
 			}
 
-            void ResponseData::initValidator() {
+            void ResponseData::initValidator()
+            {
                 m_Validator = ValidatorFactory::getValidator(getOperationCode());
             }
 
-            void ResponseData::deinitValidator() {
+            void ResponseData::deinitValidator()
+            {
                 m_Validator.reset();
             }
 
-            bool ResponseData::resetField(ResponseField field) {
+            bool ResponseData::resetField(ResponseField field)
+            {
                 bool result = false;
 
-                switch (field) {
-
+                switch (field)
+                {
                     case ResponseField::EcrNumber:
                         result = resetEcrNumber();
                         break;
@@ -915,12 +928,66 @@ namespace Lanter
                     case ResponseField::RefundAmount:
                         result = resetRefundAmount();
                         break;
+                    case ResponseField::CardPANHash:
+                        result = resetCardPANHash();
+                        break;
+                    case ResponseField::ApplicationLabel:
+                        result = resetApplicationLabel();
+                        break;
+                    case ResponseField::BonusBalance:
+                        result = resetBonusBalance();
+                        break;
+                    case ResponseField::BonusAmount:
+                        result = resetBonusAmount();
+                        break;
+                    case ResponseField::HashCardTrack2:
+                        result = resetHashCardTrack2();
+                        break;
+                    case ResponseField::FinalizationRequired:
+                        result = resetFinalizationRequired();
+                        break;
+                    case ResponseField::AdditionalChoiceResult:
+                        result = resetAdditionalChoiceResult();
+                        break;
 					case ResponseField::ECertAmount:
 						result = resetECertAmount();
 						break;
 					case ResponseField::BasketID:
 						result = resetBasketID();
 						break;
+                    case ResponseField::SBP_RN:
+                        result = resetSBP_RN();
+                        break;
+                    case ResponseField::QRCode:
+                        result = resetQRCode();
+                        break;
+                    case ResponseField::SBP_KZO:
+                        result = resetSBP_KZO();
+                        break;
+                    case ResponseField::SBP_ReqId:
+                        result = resetSBP_ReqId();
+                        break;
+                    case ResponseField::SBP_Code:
+                        result = resetSBP_Code();
+                        break;
+                    case ResponseField::SBP_Status:
+                        result = resetSBP_Status();
+                        break;
+                    case ResponseField::ReceiptLine1:
+                        result = resetReceiptLine1();
+                        break;
+                    case ResponseField::ReceiptLine2:
+                        result = resetReceiptLine2();
+                        break;
+                    case ResponseField::ReceiptLine3:
+                        result = resetReceiptLine3();
+                        break;
+                    case ResponseField::ReceiptLine4:
+                        result = resetReceiptLine4();
+                        break;
+                    case ResponseField::ReceiptLine5:
+                        result = resetReceiptLine5();
+                        break;
 					default:
 						break;
 				}
@@ -928,13 +995,15 @@ namespace Lanter
                 return result;
             }
 
-            bool ResponseData::resetEcrNumber() {
+            bool ResponseData::resetEcrNumber()
+            {
                 m_EcrNumber = -1;
                 m_FieldsSet.erase(ResponseField::EcrNumber);
                 return !isFieldSet(ResponseField::EcrNumber);
             }
 
-            bool ResponseData::resetEcrMerchantNumber() {
+            bool ResponseData::resetEcrMerchantNumber()
+            {
                 m_EcrMerchantNumber = -1;
                 m_FieldsSet.erase(ResponseField::EcrMerchantNumber);
                 return !isFieldSet(ResponseField::EcrMerchantNumber);
@@ -1285,14 +1354,17 @@ namespace Lanter
                 return !isFieldSet(ResponseField::RefundAmount);
             }
 
-            const std::string &ResponseData::getCardPANHash() const {
+            const std::string &ResponseData::getCardPANHash() const
+            {
                 return m_CardPANHash;
             }
 
-            bool ResponseData::setCardPANHash(const std::string &pan) {
+            bool ResponseData::setCardPANHash(const std::string &pan)
+            {
                 bool result = false;
                 //TODO добавить чекер
-                if (!pan.empty()) {
+                if (!pan.empty())
+                {
                     m_CardPANHash = pan;
                     m_FieldsSet.insert(ResponseField::CardPANHash);
                     result = true;
@@ -1300,20 +1372,24 @@ namespace Lanter
                 return result;
             }
 
-            bool ResponseData::resetCardPANHash() {
+            bool ResponseData::resetCardPANHash()
+            {
                 m_CardPANHash.clear();
                 m_FieldsSet.erase(ResponseField::CardPANHash);
                 return !isFieldSet(ResponseField::CardPANHash);
             }
 
-            const std::string &ResponseData::getReceiptLine1() const {
+            const std::string &ResponseData::getReceiptLine1() const
+            {
                 return m_ReceiptLine1;
             }
 
-            bool ResponseData::setReceiptLine1(const std::string &text) {
+            bool ResponseData::setReceiptLine1(const std::string &text)
+            {
                 bool result = false;
                 //TODO добавить чекер
-                if (!text.empty()) {
+                if (!text.empty())
+                {
                     m_ReceiptLine1 = text;
                     m_FieldsSet.insert(ResponseField::ReceiptLine1);
                     result = true;
@@ -1321,20 +1397,24 @@ namespace Lanter
                 return result;
             }
 
-            bool ResponseData::resetReceiptLine1() {
+            bool ResponseData::resetReceiptLine1()
+            {
                 m_ReceiptLine1.clear();
                 m_FieldsSet.erase(ResponseField::ReceiptLine1);
                 return !isFieldSet(ResponseField::ReceiptLine1);
             }
 
-            const std::string &ResponseData::getReceiptLine2() const {
+            const std::string &ResponseData::getReceiptLine2() const
+            {
                 return m_ReceiptLine2;
             }
 
-            bool ResponseData::setReceiptLine2(const std::string &text) {
+            bool ResponseData::setReceiptLine2(const std::string &text)
+            {
                 bool result = false;
                 //TODO добавить чекер
-                if (!text.empty()) {
+                if (!text.empty())
+                {
                     m_ReceiptLine2 = text;
                     m_FieldsSet.insert(ResponseField::ReceiptLine2);
                     result = true;
@@ -1342,20 +1422,24 @@ namespace Lanter
                 return result;
             }
 
-            bool ResponseData::resetReceiptLine2() {
+            bool ResponseData::resetReceiptLine2()
+            {
                 m_ReceiptLine2.clear();
                 m_FieldsSet.erase(ResponseField::ReceiptLine2);
                 return !isFieldSet(ResponseField::ReceiptLine2);
             }
 
-            const std::string &ResponseData::getReceiptLine3() const {
+            const std::string &ResponseData::getReceiptLine3() const
+            {
                 return m_ReceiptLine3;
             }
 
-            bool ResponseData::setReceiptLine3(const std::string &text) {
+            bool ResponseData::setReceiptLine3(const std::string &text)
+            {
                 bool result = false;
                 //TODO добавить чекер
-                if (!text.empty()) {
+                if (!text.empty())
+                {
                     m_ReceiptLine3 = text;
                     m_FieldsSet.insert(ResponseField::ReceiptLine3);
                     result = true;
@@ -1363,20 +1447,24 @@ namespace Lanter
                 return result;
             }
 
-            bool ResponseData::resetReceiptLine3() {
+            bool ResponseData::resetReceiptLine3()
+            {
                 m_ReceiptLine3.clear();
                 m_FieldsSet.erase(ResponseField::ReceiptLine3);
                 return !isFieldSet(ResponseField::ReceiptLine3);
             }
 
-            const std::string &ResponseData::getReceiptLine4() const {
+            const std::string &ResponseData::getReceiptLine4() const
+            {
                 return m_ReceiptLine4;
             }
 
-            bool ResponseData::setReceiptLine4(const std::string &text) {
+            bool ResponseData::setReceiptLine4(const std::string &text)
+            {
                 bool result = false;
                 //TODO добавить чекер
-                if (!text.empty()) {
+                if (!text.empty())
+                {
                     m_ReceiptLine4 = text;
                     m_FieldsSet.insert(ResponseField::ReceiptLine4);
                     result = true;
@@ -1384,20 +1472,24 @@ namespace Lanter
                 return result;
             }
 
-            bool ResponseData::resetReceiptLine4() {
+            bool ResponseData::resetReceiptLine4()
+            {
                 m_ReceiptLine4.clear();
                 m_FieldsSet.erase(ResponseField::ReceiptLine4);
                 return !isFieldSet(ResponseField::ReceiptLine4);
             }
 
-            const std::string &ResponseData::getReceiptLine5() const {
+            const std::string &ResponseData::getReceiptLine5() const
+            {
                 return m_ReceiptLine5;
             }
 
-            bool ResponseData::setReceiptLine5(const std::string &text) {
+            bool ResponseData::setReceiptLine5(const std::string &text)
+            {
                 bool result = false;
                 //TODO добавить чекер
-                if (!text.empty()) {
+                if (!text.empty())
+                {
                     m_ReceiptLine5 = text;
                     m_FieldsSet.insert(ResponseField::ReceiptLine5);
                     result = true;
@@ -1405,20 +1497,24 @@ namespace Lanter
                 return result;
             }
 
-            bool ResponseData::resetReceiptLine5() {
+            bool ResponseData::resetReceiptLine5()
+            {
                 m_ReceiptLine5.clear();
                 m_FieldsSet.erase(ResponseField::ReceiptLine5);
                 return !isFieldSet(ResponseField::ReceiptLine5);
             }
 
-            const std::string &ResponseData::getApplicationLabel() const {
+            const std::string &ResponseData::getApplicationLabel() const
+            {
                 return m_ApplicationLabel;
             }
 
-            bool ResponseData::setApplicationLabel(const std::string &label) {
+            bool ResponseData::setApplicationLabel(const std::string &label)
+            {
                 bool result = false;
                 //TODO добавить чекер
-                if (!label.empty()) {
+                if (!label.empty())
+                {
                     m_ApplicationLabel = label;
                     m_FieldsSet.insert(ResponseField::ApplicationLabel);
                     result = true;
@@ -1426,19 +1522,23 @@ namespace Lanter
                 return result;
             }
 
-            bool ResponseData::resetApplicationLabel() {
+            bool ResponseData::resetApplicationLabel()
+            {
                 m_ApplicationLabel.clear();
                 m_FieldsSet.erase(ResponseField::ApplicationLabel);
                 return !isFieldSet(ResponseField::ApplicationLabel);
             }
 
-            int64_t ResponseData::getBonusBalance() const {
+            int64_t ResponseData::getBonusBalance() const
+            {
                 return m_BonusBalance;
             }
 
-            bool ResponseData::setBonusBalance(int64_t balance) {
+            bool ResponseData::setBonusBalance(int64_t balance)
+            {
                 bool result = false;
-                if (checkAmountRange(balance)) {
+                if (checkAmountRange(balance))
+                {
                     m_BonusBalance = balance;
                     m_FieldsSet.insert(ResponseField::BonusBalance);
                     result = true;
@@ -1446,19 +1546,23 @@ namespace Lanter
                 return result;
             }
 
-            bool ResponseData::resetBonusBalance() {
+            bool ResponseData::resetBonusBalance()
+            {
                 m_BonusBalance = -1;
                 m_FieldsSet.erase(ResponseField::BonusBalance);
                 return !isFieldSet(ResponseField::BonusBalance);
             }
 
-            int64_t ResponseData::getBonusAmount() const {
+            int64_t ResponseData::getBonusAmount() const 
+            {
                 return m_BonusAmount;
             }
 
-            bool ResponseData::setBonusAmount(int64_t amount) {
+            bool ResponseData::setBonusAmount(int64_t amount)
+            {
                 bool result = false;
-                if (checkAmountRange(amount)) {
+                if (checkAmountRange(amount))
+                {
                     m_BonusAmount = amount;
                     m_FieldsSet.insert(ResponseField::BonusAmount);
                     result = true;
@@ -1466,20 +1570,24 @@ namespace Lanter
                 return result;
             }
 
-            bool ResponseData::resetBonusAmount() {
+            bool ResponseData::resetBonusAmount()
+            {
                 m_BonusAmount = -1;
                 m_FieldsSet.erase(ResponseField::BonusAmount);
                 return !isFieldSet(ResponseField::BonusAmount);
             }
 
-            const std::string &ResponseData::getHashCardTrack2() const {
+            const std::string &ResponseData::getHashCardTrack2() const
+            {
                 return m_HashCardTrack2;
             }
 
-            bool ResponseData::setHashCardTrack2(const std::string &hashTrack2) {
+            bool ResponseData::setHashCardTrack2(const std::string &hashTrack2)
+            {
                 bool result = false;
                 //TODO добавить чекер
-                if (!hashTrack2.empty()) {
+                if (!hashTrack2.empty())
+                {
                     m_HashCardTrack2 = hashTrack2;
                     m_FieldsSet.insert(ResponseField::HashCardTrack2);
                     result = true;
@@ -1493,7 +1601,8 @@ namespace Lanter
                 return !isFieldSet(ResponseField::HashCardTrack2);
             }
 
-            bool ResponseData::getFinalizationRequired() const {
+            bool ResponseData::getFinalizationRequired() const
+            {
                 return m_FinalizationRequired;
             }
 
