@@ -1213,14 +1213,16 @@ namespace Lanter
                 return !isFieldSet(ResponseField::RefundArray);
             }
 
-            int64_t ResponseData::getSalesAmount() cons
+            int64_t ResponseData::getSalesAmount() const
             {
                 return m_SalesAmount;
             }
 
-            bool ResponseData::setSalesAmount(int64_t amount) {
+            bool ResponseData::setSalesAmount(int64_t amount)
+            {
                 bool result = false;
-                if (checkAmountRange(amount)) {
+                if (checkAmountRange(amount))
+                {
                     m_SalesAmount = amount;
                     m_FieldsSet.insert(ResponseField::SalesAmount);
                     result = true;
@@ -1228,19 +1230,23 @@ namespace Lanter
                 return result;
             }
 
-            bool ResponseData::resetSalesAmount() {
+            bool ResponseData::resetSalesAmount()
+            {
                 m_SalesAmount = -1;
                 m_FieldsSet.erase(ResponseField::SalesAmount);
                 return !isFieldSet(ResponseField::SalesAmount);
             }
 
-            int64_t ResponseData::getVoidAmount() const {
+            int64_t ResponseData::getVoidAmount() const
+            {
                 return m_VoidAmount;
             }
 
-            bool ResponseData::setVoidAmount(int64_t amount) {
+            bool ResponseData::setVoidAmount(int64_t amount)
+            {
                 bool result = false;
-                if (checkAmountRange(amount)) {
+                if (checkAmountRange(amount))
+                {
                     m_VoidAmount = amount;
                     m_FieldsSet.insert(ResponseField::VoidAmount);
                     result = true;
@@ -1248,19 +1254,23 @@ namespace Lanter
                 return result;
             }
 
-            bool ResponseData::resetVoidAmount() {
+            bool ResponseData::resetVoidAmount()
+            {
                 m_VoidAmount = -1;
                 m_FieldsSet.erase(ResponseField::VoidAmount);
                 return !isFieldSet(ResponseField::VoidAmount);
             }
 
-            int64_t ResponseData::getRefundAmount() const {
+            int64_t ResponseData::getRefundAmount() const
+            {
                 return m_RefundAmount;
             }
 
-            bool ResponseData::setRefundAmount(int64_t amount) {
+            bool ResponseData::setRefundAmount(int64_t amount)
+            {
                 bool result = false;
-                if (checkAmountRange(amount)) {
+                if (checkAmountRange(amount))
+                {
                     m_RefundAmount = amount;
                     m_FieldsSet.insert(ResponseField::RefundAmount);
                     result = true;
@@ -1268,7 +1278,8 @@ namespace Lanter
                 return result;
             }
 
-            bool ResponseData::resetRefundAmount() {
+            bool ResponseData::resetRefundAmount()
+            {
                 m_RefundAmount = -1;
                 m_FieldsSet.erase(ResponseField::RefundAmount);
                 return !isFieldSet(ResponseField::RefundAmount);
