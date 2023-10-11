@@ -16,10 +16,15 @@ namespace Lanter {
             PreAuth = 200, ///< Преавторизация
             SalesCompletion, ///< Завершение преавторизации
             QuickPaymentStatus, ///< Проверка статуса оплаты через СБП
+            RequestCS, ///< Запрос задолжности на CashService
+            NotificationCS, ///< Оповещение CashService об оплате
+            RepeatLastN, ///< Запрос статуса на CashService
+
             FastTrack = 300, ///< Получение зашифрованный и открытых тегов карты
 			ECertGetRequisites, ///< запрос реквизитов по карте
 			ECertPayment, ///< оплата электронным сертификатом
 			ECertRefund, ///< возврат по электронным сертификатам
+            CardVerification, ///< Верефикация карты на хосте(для траспортного проекта)
 
             //Операции отмены
             Void = 400, ///< Отмена по номеру чека

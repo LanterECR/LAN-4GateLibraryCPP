@@ -70,66 +70,100 @@ namespace Lanter {
         }
 
 
-        void Lan4Gate::doLan4Gate() {
-            if(m_IsStarted) {
-                doCommunication();
-                if(isConnected()) {
-                    sendData();
-                    receiveData();
-                    notify();
-                } else {
-                    connect();
+        void Lan4Gate::doLan4Gate()
+        {
+            try
+            {
+                if (m_IsStarted)
+                {
+                    doCommunication();
+                    if (isConnected())
+                    {
+                        sendData();
+                        receiveData();
+                        notify();
+                    }
+                    else
+                    {
+                        connect();
+                    }
                 }
-            } else {
-                closeConnection();
+                else
+                {
+                    closeConnection();
+                }
+            }
+            catch (const std::exception& e)
+            {
+                throw;
             }
         }
 
-        ILan4Gate::Status Lan4Gate::runOnThread() {
+        ILan4Gate::Status Lan4Gate::runOnThread()
+        {
             Status result = ILan4Gate::Status::Error;
 
-            if(m_MainThread == nullptr) {
-                auto threadLoop = [this]() {
-                    while(isStarted()) {
-                        doLan4Gate();
-                        int sleepTimeout = 1; //ms
-                        std::this_thread::sleep_for(std::chrono::milliseconds(sleepTimeout));
+            try
+            {
+                if(m_MainThread == nullptr)
+                {
+                    auto threadLoop = [this]()
+                    {
+                        while(isStarted())
+                        {
+                            doLan4Gate();
+                            int sleepTimeout = 1; //ms
+                            std::this_thread::sleep_for(std::chrono::milliseconds(sleepTimeout));
+                        }
+                    };
+
+                    if(start() == ILan4Gate::Status::Success)
+                    {
+                        m_MainThread = std::make_shared<std::thread>(threadLoop);
                     }
-                };
-                if(start() == ILan4Gate::Status::Success) {
-                    m_MainThread = std::make_shared<std::thread>(threadLoop);
                 }
             }
-
-            if(m_MainThread != nullptr && m_MainThread->joinable() && isStarted()) {
-                result = ILan4Gate::Status::Success;
+            catch (const std::exception& e)
+            {
+                throw;
             }
 
+            if(m_MainThread != nullptr && m_MainThread->joinable() && isStarted())
+            {
+                result = ILan4Gate::Status::Success;
+            }
 
             return result;
         }
 
-        bool Lan4Gate::setCommunication(std::shared_ptr<Communication::ICommunication> communication) {
-            if(resetCommunication()) {
+        bool Lan4Gate::setCommunication(std::shared_ptr<Communication::ICommunication> communication)
+        {
+            if(resetCommunication())
+            {
                 m_Communication = communication;
             }
             return m_Communication == communication;
         }
 
-        bool Lan4Gate::resetCommunication() {
-            if(m_Communication) {
-                if(closeConnection()) {
+        bool Lan4Gate::resetCommunication()
+        {
+            if(m_Communication)
+            {
+                if(closeConnection())
+                {
                     m_Communication.reset();
                 }
             }
             return m_Communication == nullptr;
         }
 
-        std::shared_ptr<Communication::ICommunication> Lan4Gate::getCommunication() const {
+        std::shared_ptr<Communication::ICommunication> Lan4Gate::getCommunication() const
+        {
             return m_Communication;
         }
 
-        size_t Lan4Gate::addRequestCallback(Callback::IRequestCallback &callback) {
+        size_t Lan4Gate::addRequestCallback(Callback::IRequestCallback &callback)
+        {
             size_t id = generateID();
             while (m_RequestCallbacks.find(id) != m_RequestCallbacks.end()) {
                 id = generateID();
@@ -275,117 +309,178 @@ namespace Lanter {
             return result;
         }
 
-        size_t Lan4Gate::connectionCallbacksCount() const {
+        size_t Lan4Gate::connectionCallbacksCount() const
+        {
             return m_ConnectionCallbacks.size();
         }
 
-        std::shared_ptr<Message::Request::IRequestData> Lan4Gate::getPreparedRequest(Message::OperationCode operationCode) {
+        std::shared_ptr<Message::Request::IRequestData> Lan4Gate::getPreparedRequest(Message::OperationCode operationCode)
+        {
             return Message::Request::RequestDataFactory::getRequestData(operationCode, m_EcrNumber);
         }
 
-        std::shared_ptr<Message::Response::IResponseData> Lan4Gate::getPreparedResponse(Message::OperationCode operationCode) {
+        std::shared_ptr<Message::Response::IResponseData> Lan4Gate::getPreparedResponse(Message::OperationCode operationCode)
+        {
             return Message::Response::ResponseDataFactory::getResponseData(operationCode, m_EcrNumber);
         }
 
-        std::shared_ptr<Message::Notification::INotificationData> Lan4Gate::getPreparedNotification(Message::Notification::NotificationCode notificationCode) {
+        std::shared_ptr<Message::Notification::INotificationData> Lan4Gate::getPreparedNotification(Message::Notification::NotificationCode notificationCode)
+        {
             return Message::Notification::NotificationDataFactory::getNotificationData(notificationCode);
         }
 
         std::shared_ptr<Message::Interaction::IInteractionData>
-        Lan4Gate::getPreparedInteraction(Message::Interaction::InteractionCode interactionCode) {
+        Lan4Gate::getPreparedInteraction(Message::Interaction::InteractionCode interactionCode)
+        {
             return Message::Interaction::InteractionDataFactory::getInteractionData(interactionCode);
         }
 
         //TODO оптимизировать блокировки очереди
-        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Request::IRequestData> request) {
+        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Request::IRequestData> request)
+        {
             bool result = false;
+            try
+            {
+                if(m_MessageBuilder != nullptr)
+                {
+                    std::vector<uint8_t> message;
 
-            if(m_MessageBuilder != nullptr) {
-                std::vector<uint8_t> message;
-
-                if (m_MessageBuilder->createMessage(request, message)) {
-                    result = pushToQueue(message);
+                    if (m_MessageBuilder->createMessage(request, message))
+                    {
+                        result = pushToQueue(message);
+                    }
                 }
+            }
+            catch (const std::exception&)
+            {
+                throw;
             }
             return result;
         }
 
-        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Response::IResponseData> response) {
+        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Response::IResponseData> response)
+        {
             bool result = false;
+            try
+            {
+                if(m_MessageBuilder != nullptr)
+                {
+                    std::vector<uint8_t> message;
 
-            if(m_MessageBuilder != nullptr) {
-                std::vector<uint8_t> message;
-
-                if (m_MessageBuilder->createMessage(response, message)) {
-                    result = pushToQueue(message);
+                    if (m_MessageBuilder->createMessage(response, message))
+                    {
+                        result = pushToQueue(message);
+                    }
                 }
+            }
+            catch (const std::exception&)
+            {
+                throw;
             }
             return result;
         }
 
-        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Notification::INotificationData> notification) {
+        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Notification::INotificationData> notification)
+        {
             bool result = false;
+            try
+            {
+                if(m_MessageBuilder != nullptr)
+                {
+                    std::vector<uint8_t> message;
 
-            if(m_MessageBuilder != nullptr) {
-                std::vector<uint8_t> message;
-
-                if (m_MessageBuilder->createMessage(notification, message)) {
-                    result = pushToQueue(message);
+                    if (m_MessageBuilder->createMessage(notification, message))
+                    {
+                        result = pushToQueue(message);
+                    }
                 }
             }
-
+            catch (const std::exception&)
+            {
+                throw;
+            }
             return result;
         }
 
-        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Interaction::IInteractionData> interaction) {
+        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Interaction::IInteractionData> interaction)
+        {
             bool result = false;
+            try
+            {
+                if(m_MessageBuilder != nullptr)
+                {
+                    std::vector<uint8_t> message;
 
-            if(m_MessageBuilder != nullptr) {
-                std::vector<uint8_t> message;
-
-                if (m_MessageBuilder->createMessage(interaction, message)) {
-                    result = pushToQueue(message);
+                    if (m_MessageBuilder->createMessage(interaction, message))
+                    {
+                        result = pushToQueue(message);
+                    }
                 }
             }
-
+            catch (const std::exception&)
+            {
+                throw;
+            }
             return result;
         }
 
-        bool Lan4Gate::pushToQueue(const std::vector<uint8_t> &data) {
-            std::lock_guard<std::mutex> lock(m_QueueMutex);
+        bool Lan4Gate::pushToQueue(const std::vector<uint8_t> &data)
+        {
+            try
+            {
+                std::lock_guard<std::mutex> lock(m_QueueMutex);
 
-            auto size = m_MessageQueue.size();
+                auto size = m_MessageQueue.size();
 
-            m_MessageQueue.push(data);
+                m_MessageQueue.push(data);
 
-            //Для определения, что сообщение добавлено в очередь
-            return m_MessageQueue.size() - size;
-        }
-
-        void Lan4Gate::popFromQueue(std::vector<uint8_t> &data) {
-            std::lock_guard<std::mutex> lock(m_QueueMutex);
-
-            if(!m_MessageQueue.empty()) {
-                data = std::move(m_MessageQueue.front());
-                m_MessageQueue.pop();
+                //Для определения, что сообщение добавлено в очередь
+                return m_MessageQueue.size() - size;
+            }
+            catch (const std::exception&)
+            {
+                throw;
             }
         }
 
-        bool Lan4Gate::createParser() {
-            if(m_MessageParser == nullptr) {
+        void Lan4Gate::popFromQueue(std::vector<uint8_t> &data)
+        {
+            try
+            {
+                std::lock_guard<std::mutex> lock(m_QueueMutex);
+
+                if(!m_MessageQueue.empty())
+                {
+                    data = std::move(m_MessageQueue.front());
+                    m_MessageQueue.pop();
+                }
+            }
+            catch (const std::exception&)
+            {
+                throw;
+            }
+        }
+
+        bool Lan4Gate::createParser()
+        {
+            if (m_MessageParser == nullptr)
+            {
                 m_MessageParser = MessageProcessor::Parser::MessageParserFactory::getMessageParser();
             }
             return m_MessageParser != nullptr;
         }
 
-        bool Lan4Gate::createBuilder() {
-            if(m_MessageBuilder == nullptr) {
+        bool Lan4Gate::createBuilder()
+        {
+            if(m_MessageBuilder == nullptr)
+            {
                 m_MessageBuilder = MessageProcessor::Builder::MessageBuilderFactory::getMessageBuilder();
             }
             return m_MessageBuilder != nullptr;
         }
 
-        size_t Lan4Gate::generateID() {
+        size_t Lan4Gate::generateID()
+        {
             size_t min = 1;
             size_t max = SIZE_MAX;
 
@@ -397,163 +492,236 @@ namespace Lanter {
             return distrib(gen);
         }
 
-        bool Lan4Gate::openConnection() {
+        bool Lan4Gate::openConnection()
+        {
             bool result = m_Communication->isOpen();
 
-            if(!result){
+            if (!result)
+            {
                 result = m_Communication->open();
             }
 
             return result;
         }
 
-        bool Lan4Gate::deleteParser() {
+        bool Lan4Gate::deleteParser()
+        {
             m_MessageParser.reset();
             return m_MessageParser == nullptr;
         }
 
-        bool Lan4Gate::deleteBuilder() {
+        bool Lan4Gate::deleteBuilder()
+        {
             m_MessageBuilder.reset();
             return m_MessageBuilder == nullptr;
         }
 
-        bool Lan4Gate::closeConnection() {
+        bool Lan4Gate::closeConnection()
+        {
             bool result = true;
-            if(m_Communication != nullptr && m_Communication->isOpen()) {
+            if(m_Communication != nullptr && m_Communication->isOpen())
+            {
                 result = m_Communication->close();
             }
             return result;
         }
 
-        void Lan4Gate::sendData() {
+        void Lan4Gate::sendData()
+        {
             std::vector<uint8_t> data;
             popFromQueue(data);
 
-            if(!data.empty()) {
+            if(!data.empty())
+            {
                 m_Communication->send(data);
             }
         }
 
         //TODO исправить логику. Возможны проблемы с приемом кусков данных
-        void Lan4Gate::receiveData() {
+        void Lan4Gate::receiveData()
+        {
             std::vector<uint8_t> data;
 
-            m_Communication->receive(data);
+            try
+            {
+                m_Communication->receive(data);
 
-            if(!data.empty()) {
-                m_MessageParser->parseMessage(data);
-            }
-        }
-
-        void Lan4Gate::notify() {
-            auto notificationLambda = [&]() {
-                this->notifyRequest();
-                this->notifyResponse();
-                this->notifyNotification();
-                this->notifyInteraction();
-            };
-
-            if(m_CallbackNotificationType == CallbackNotificationType::Async) {
-                if (!m_CallbacksFuture.valid() || m_CallbacksFuture.wait_for(std::chrono::seconds(0)) == std::future_status::ready) {
-                    m_CallbacksFuture = std::async(std::launch::async, notificationLambda);
-                }
-            } else {
-                notificationLambda();
-            }
-        }
-
-        void Lan4Gate::notifyRequest() {
-            if(m_MessageParser->requestCount() > 0) {
-
-                auto request = m_MessageParser->nextRequestData();
-
-                if (request)
+                if (!data.empty())
                 {
-                    for (const auto &callback: m_RequestCallbacks)
+                    m_MessageParser->parseMessage(data);
+                }
+            }
+            catch (const std::exception& e)
+            {
+                throw;
+            }
+        }
+
+        void Lan4Gate::notify()
+        {
+            try
+            {
+                auto notificationLambda = [&]()
+                {
+                    this->notifyRequest();
+                    this->notifyResponse();
+                    this->notifyNotification();
+                    this->notifyInteraction();
+                };
+
+                if(m_CallbackNotificationType == CallbackNotificationType::Async)
+                {
+                    if (!m_CallbacksFuture.valid() || m_CallbacksFuture.wait_for(std::chrono::seconds(0)) == std::future_status::ready)
                     {
-                        callback.second.newData(request);
+                        m_CallbacksFuture = std::async(std::launch::async, notificationLambda);
+                    }
+                }
+                else
+                {
+                    notificationLambda();
+                }
+            }
+            catch (const std::exception& e)
+            {
+                throw;
+            }
+        }
+
+        void Lan4Gate::notifyRequest()
+        {
+            try
+            {
+                if(m_MessageParser->requestCount() > 0)
+                {
+                    auto request = m_MessageParser->nextRequestData();
+
+                    if (request)
+                    {
+                        for (const auto &callback: m_RequestCallbacks)
+                        {
+                            callback.second.newData(request);
+                        }
                     }
                 }
             }
-        }
-
-        void Lan4Gate::notifyResponse() {
-            if(m_MessageParser->responseCount() > 0) {
-
-                auto response = m_MessageParser->nextResponseData();
-
-                if (response)
-                {
-                    for (const auto &callback: m_ResponseCallbacks)
-                    {
-                        callback.second.newData(response);
-                    }
-                }
+            catch (const std::exception& e)
+            {
+                throw;
             }
         }
 
-        void Lan4Gate::notifyNotification() {
-            if(m_MessageParser->notificationCount() > 0) {
-
-                auto notification = m_MessageParser->nextNotificationData();
-
-                if (notification)
+        void Lan4Gate::notifyResponse()
+        {
+            try
+            {
+                if(m_MessageParser->responseCount() > 0)
                 {
-                    for (const auto &callback: m_NotificationCallbacks)
+                    auto response = m_MessageParser->nextResponseData();
+
+                    if (response)
                     {
-                        callback.second.newData(notification);
+                        for (const auto &callback: m_ResponseCallbacks)
+                        {
+                            callback.second.newData(response);
+                        }
                     }
                 }
             }
-        }
-
-        void Lan4Gate::notifyInteraction() {
-            if(m_MessageParser->interactionCount() > 0) {
-
-                auto interaction = m_MessageParser->nextInteractionData();
-
-                if (interaction)
-                {
-                    for (const auto &callback: m_InteractionCallbacks)
-                    {
-                        callback.second.newData(interaction);
-                    }
-                }
+            catch (const std::exception& e)
+            {
+                throw;
             }
         }
 
-        void Lan4Gate::notifyConnectionStatus(bool status) {
-            for(const auto & callback : m_ConnectionCallbacks) {
+        void Lan4Gate::notifyNotification()
+        {
+            try
+            {
+                if(m_MessageParser->notificationCount() > 0)
+                {
+                    auto notification = m_MessageParser->nextNotificationData();
+
+                    if (notification)
+                    {
+                        for (const auto &callback: m_NotificationCallbacks)
+                        {
+                            callback.second.newData(notification);
+                        }
+                    }
+                }
+            }
+            catch (const std::exception& e)
+            {
+                throw;
+            }
+        }
+
+        void Lan4Gate::notifyInteraction()
+        {
+            try
+            {
+                if(m_MessageParser->interactionCount() > 0)
+                {
+                    auto interaction = m_MessageParser->nextInteractionData();
+
+                    if (interaction)
+                    {
+                        for (const auto &callback: m_InteractionCallbacks)
+                        {
+                            callback.second.newData(interaction);
+                        }
+                    }
+                }
+            }
+            catch (const std::exception& e)
+            {
+                throw;
+            }
+        }
+
+        void Lan4Gate::notifyConnectionStatus(bool status)
+        {
+            for(const auto & callback : m_ConnectionCallbacks)
+            {
                 callback.second.newState(status);
             }
         }
 
-        bool Lan4Gate::waitFuture() {
+        bool Lan4Gate::waitFuture()
+        {
             bool result = true;
-            if(m_CallbacksFuture.valid()) {
+            if(m_CallbacksFuture.valid())
+            {
                 result = m_CallbacksFuture.wait_for(std::chrono::milliseconds(50)) == std::future_status::ready;
             }
             return result;
         }
 
-        bool Lan4Gate::setCallbackNotificationType(ILan4Gate::CallbackNotificationType type) {
-            if(!m_IsStarted) {
+        bool Lan4Gate::setCallbackNotificationType(ILan4Gate::CallbackNotificationType type)
+        {
+            if(!m_IsStarted)
+            {
                 m_CallbackNotificationType = type;
             }
             return m_CallbackNotificationType == type;
         }
 
-        void Lan4Gate::connect() {
-            if(m_Communication != nullptr) {
+        void Lan4Gate::connect()
+        {
+            if(m_Communication != nullptr)
+            {
                 m_Communication->connect();
             }
         }
 
-        bool Lan4Gate::isConnected() {
+        bool Lan4Gate::isConnected()
+        {
             bool result = false;
-            if(m_Communication != nullptr) {
+            if(m_Communication != nullptr)
+            {
                 result = m_Communication->isConnected();
-                if (result != m_PreviousConnectionStatus) {
+                if (result != m_PreviousConnectionStatus)
+                {
                     m_PreviousConnectionStatus = result;
                     notifyConnectionStatus(result);
                 }
@@ -561,11 +729,12 @@ namespace Lanter {
             return result;
         }
 
-        void Lan4Gate::doCommunication() {
-            if(m_Communication != nullptr) {
+        void Lan4Gate::doCommunication()
+        {
+            if(m_Communication != nullptr)
+            {
                 m_Communication->doCommunication();
             }
-
         }
     }
 }

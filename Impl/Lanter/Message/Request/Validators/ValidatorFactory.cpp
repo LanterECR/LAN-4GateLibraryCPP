@@ -13,6 +13,10 @@
 #include "Lanter/Message/Request/Validators/Operations/Sale/ECertGetRequisites.h"
 #include "Lanter/Message/Request/Validators/Operations/Sale/ECertPayment.h"
 #include "Lanter/Message/Request/Validators/Operations/Sale/ECertRefund.h"
+#include "Lanter/Message/Request/Validators/Operations/Sale/RequestCS.h"
+#include "Lanter/Message/Request/Validators/Operations/Sale/NotificationCS.h"
+#include "Lanter/Message/Request/Validators/Operations/Sale/RepeatLastN.h"
+#include "Lanter/Message/Request/Validators/Operations/Sale/CardVerification.h"
 
 //Void operations
 #include "Lanter/Message/Request/Validators/Operations/Void/Void.h"
@@ -107,6 +111,18 @@ namespace Lanter {
 					case OperationCode::ECertRefund:
 						validator = std::make_shared<ECertRefund>();
 						break;
+                    case OperationCode::CardVerification:
+                        validator = std::make_shared<CardVerification>();
+                        break;
+                    case OperationCode::RequestCS:
+                        validator = std::make_shared<RequestCS>();
+                        break;
+                    case OperationCode::NotificationCS:
+                        validator = std::make_shared<NotificationCS>();
+                        break;
+                    case OperationCode::RepeatLastN:
+                        validator = std::make_shared<RepeatLastN>();
+                        break;
 
                     //Void operations
                     case OperationCode::Void:

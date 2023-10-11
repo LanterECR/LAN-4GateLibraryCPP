@@ -19,6 +19,10 @@
 #include "Lanter/Message/Response/Validators/Operations/Sale/ECertGetRequisites.h"
 #include "Lanter/Message/Response/Validators/Operations/Sale/ECertPayment.h"
 #include "Lanter/Message/Response/Validators/Operations/Sale/ECertRefund.h"
+#include "Lanter/Message/Response/Validators/Operations/Sale/RequestCS.h"
+#include "Lanter/Message/Response/Validators/Operations/Sale/NotificationCS.h"
+#include "Lanter/Message/Response/Validators/Operations/Sale/RepeatLastN.h"
+#include "Lanter/Message/Response/Validators/Operations/Sale/CardVerification.h"
 
 #include "Lanter/Message/Response/Validators/Operations/Service/DisplayQR.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/FinalizeTransaction.h"
@@ -239,6 +243,18 @@ namespace Lanter {
 					case OperationCode::ECertRefund:
 						validator = std::make_shared<ECertRefund>();
 						break;
+                    case OperationCode::CardVerification:
+                        validator = std::make_shared<CardVerification>();
+                        break;
+                    case OperationCode::RequestCS:
+                        validator = std::make_shared<RequestCS>();
+                        break;
+                    case OperationCode::NotificationCS:
+                        validator = std::make_shared<NotificationCS>();
+                        break;
+                    case OperationCode::RepeatLastN:
+                        validator = std::make_shared<RepeatLastN>();
+                        break;
 					default:
                         validator = std::make_shared<BasicValidator>();
                         break;
