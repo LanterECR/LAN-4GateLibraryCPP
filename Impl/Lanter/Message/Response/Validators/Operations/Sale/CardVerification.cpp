@@ -6,7 +6,7 @@ namespace Lanter
 	{
         namespace Response
 		{
-            void Response::ECertRefund::addSpecificFields()
+            void Response::CardVerification::addSpecificFields()
 			{
                 appendOptionalField(ResponseField::EcrNumber);
 				appendOptionalField(ResponseField::OperationCode);
