@@ -18,6 +18,9 @@
 #include "Lanter/Message/Request/Validators/Operations/Sale/RepeatLastN.h"
 #include "Lanter/Message/Request/Validators/Operations/Sale/CardVerification.h"
 
+//Devices operations
+#include "Lanter/Message/Request/Validators/Operations/Devices/QRScannerResult.h"
+
 //Void operations
 #include "Lanter/Message/Request/Validators/Operations/Void/Void.h"
 #include "Lanter/Message/Request/Validators/Operations/Void/VoidPartialSale.h"
@@ -67,13 +70,17 @@
 #include "Lanter/Message/Request/Validators/Operations/Service/BonusBalance.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/GrabEjectCard.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Request {
-
-            std::shared_ptr<IValidator> ValidatorFactory::getValidator(OperationCode operationCode) {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Request
+        {
+            std::shared_ptr<IValidator> ValidatorFactory::getValidator(OperationCode operationCode)
+            {
                 std::shared_ptr<BasicValidator> validator;
-                switch (operationCode) {
+                switch (operationCode)
+                {
                     //Sale operations
                     case OperationCode::Sale:
                         validator = std::make_shared<Sale>();
@@ -122,6 +129,11 @@ namespace Lanter {
                         break;
                     case OperationCode::RepeatLastN:
                         validator = std::make_shared<RepeatLastN>();
+                        break;
+
+                    //Devices operations
+                    case OperationCode::QRScannerResult:
+                        validator = std::make_shared<QRScannerResult>();
                         break;
 
                     //Void operations
@@ -263,7 +275,8 @@ namespace Lanter {
                         break;
                 }//switch
 
-                if (validator) {
+                if (validator)
+                {
                     //Из конструкторов не рекомендуется вызывать виртуальные методы. Необходима инициализация валидатора
                     validator->addSpecificFields();
                 }//if validator

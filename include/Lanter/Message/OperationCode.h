@@ -1,10 +1,13 @@
 #ifndef LAN_4GATELIBRARYCPP_OPERATIONCODES_H
 #define LAN_4GATELIBRARYCPP_OPERATIONCODES_H
 
-namespace Lanter {
-    namespace Message {
+namespace Lanter
+{
+    namespace Message
+    {
         /// \brief Список поддерживаемых операций
-        enum class OperationCode {
+        enum class OperationCode
+        {
             NoOperation, ///< Значение-заглушка. Нет кода операции
             //Операции оплаты
             Sale = 1, ///< Оплата
@@ -12,6 +15,9 @@ namespace Lanter {
             QuickPayment, ///< Оплата через систему быстрых платежей ЦБ РФ
             AliPay, ///< Оплата через систему AliPay
             Payment, ///< Операция оплаты счета
+
+            //Устройства
+            QRScannerResult = 120, ///< Результат QR сканера
 
             PreAuth = 200, ///< Преавторизация
             SalesCompletion, ///< Завершение преавторизации

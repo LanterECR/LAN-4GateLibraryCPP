@@ -24,6 +24,8 @@
 #include "Lanter/Message/Response/Validators/Operations/Sale/RepeatLastN.h"
 #include "Lanter/Message/Response/Validators/Operations/Sale/CardVerification.h"
 
+#include "Lanter/Message/Response/Validators/Operations/Devices/QRScannerResult.h"
+
 #include "Lanter/Message/Response/Validators/Operations/Service/DisplayQR.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/FinalizeTransaction.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/GetCurrentPrinter.h"
@@ -68,13 +70,17 @@
 #include "Lanter/Message/Response/Validators/Operations/InternalServiceOperations/ArrayElement.h"
 
 // TODO Добавить QuickPaymentRefund
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-
-            std::shared_ptr<IValidator> ValidatorFactory::getValidator(OperationCode operationCode) {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            std::shared_ptr<IValidator> ValidatorFactory::getValidator(OperationCode operationCode)
+            {
                 std::shared_ptr<BasicValidator> validator;
-                switch (operationCode) {
+                switch (operationCode)
+                {
                     case OperationCode::Sale:
                         validator = std::make_shared<Sale>();
                         break;
@@ -255,11 +261,18 @@ namespace Lanter {
                     case OperationCode::RepeatLastN:
                         validator = std::make_shared<RepeatLastN>();
                         break;
+
+                    case OperationCode::QRScannerResult:
+                        validator = std::make_shared<QRScannerResult>();
+                        break;
+
 					default:
                         validator = std::make_shared<BasicValidator>();
                         break;
                 }
-                if (validator) {
+
+                if (validator)
+                {
                     validator->addSpecificFields();
                 }
                 return validator;
