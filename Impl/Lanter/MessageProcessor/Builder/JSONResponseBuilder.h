@@ -149,6 +149,8 @@ namespace Lanter
 
                 bool addFieldAdditionalChoiceResult(const IResponseData &responseData, Json::Value &object);
 
+                bool addFieldTransportControlDateTime(const IResponseData& responseData, Json::Value& object);
+
 				bool addFieldECertAmount(const IResponseData &responseData, Json::Value &object);
 
 				bool addFieldBasketID(const IResponseData &responseData, Json::Value &object);

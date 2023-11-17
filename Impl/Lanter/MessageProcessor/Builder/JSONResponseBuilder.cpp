@@ -544,6 +544,15 @@ namespace Lanter {
                 return fieldExists(object, JSONResponseFields::getAdditionalChoiceResult());
             }
 
+            bool JSONResponseBuilder::addFieldTransportControlDateTime(const IResponseData& responseData, Json::Value& object)
+            {
+                if (responseData.isFieldSet(ResponseField::TransportControlDateTime))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getTransportControlDateTime(), responseData.getTransportControlDateTime());
+                }
+                return fieldExists(object, JSONResponseFields::getTransportControlDateTime());
+            }
+
 			bool JSONResponseBuilder::addFieldECertAmount(const IResponseData &responseData, Json::Value &object)
             {
 				if (responseData.isFieldSet(ResponseField::ECertAmount))
@@ -709,6 +718,7 @@ namespace Lanter {
                 m_InsertFunctions[ResponseField::HashCardTrack2] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldHashCardTrack2(responseData, object); };
                 m_InsertFunctions[ResponseField::FinalizationRequired] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldFinalizationRequired(responseData, object); };
                 m_InsertFunctions[ResponseField::AdditionalChoiceResult] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldAdditionalChoiceResult(responseData, object); };
+                m_InsertFunctions[ResponseField::TransportControlDateTime] = [this](const IResponseData& responseData, Json::Value& object) { return addFieldTransportControlDateTime(responseData, object); };
 				m_InsertFunctions[ResponseField::ECertAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldECertAmount(responseData, object); };
 				m_InsertFunctions[ResponseField::BasketID] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldBasketID(responseData, object); };
                 m_InsertFunctions[ResponseField::SBP_RN] = [this](const IResponseData& responseData, Json::Value& object) { return addFieldSBP_RN(responseData, object); };

@@ -2,7 +2,6 @@
 #include <sstream>
 
 #include "FieldRangeChecker.h"
-
 #include "RangeChecker.h"
 
 #include "Lanter/Message/Response/CardholderAuthMethod.h"
@@ -15,28 +14,32 @@
 
 using namespace Lanter::Message;
 using namespace Lanter::Utils::Constants;
-namespace Lanter {
-    namespace Utils {
-
-        bool checkEcrNumberRange(int16_t ecrNumber) {
+namespace Lanter
+{
+    namespace Utils
+    {
+        bool checkEcrNumberRange(int16_t ecrNumber)
+        {
             return checkValueRange(ecrNumber, MINIMUM_ECR_NUMBER, MAXIMUM_ECR_NUMBER);
         }
 
-        bool checkEcrMerchantNumberRange(int16_t ecrMerchantNumber) {
+        bool checkEcrMerchantNumberRange(int16_t ecrMerchantNumber)
+        {
             return checkValueRange(ecrMerchantNumber, MINIMUM_ECR_MERCHANT_NUMBER, MAXIMUM_ECR_MERCHANT_NUMBER);
         }
 
-        bool checkOperationCodeRange(int32_t operationCode) {
-            return checkValueRange(operationCode,
-                                static_cast<int64_t>(getFirstOperationCode()),
-                                static_cast<int64_t>(getLastOperationCode()));
+        bool checkOperationCodeRange(int32_t operationCode)
+        {
+            return checkValueRange(operationCode, static_cast<int64_t>(getFirstOperationCode()), static_cast<int64_t>(getLastOperationCode()));
         }
 
-        bool checkAmountRange(int64_t amount) {
+        bool checkAmountRange(int64_t amount)
+        {
             return checkValueRange(amount, MINIMUM_AMOUNT, MAXIMUM_AMOUNT);
         }
 
-        bool checkCurrencyCodeRange(const std::string &currencyCode) {
+        bool checkCurrencyCodeRange(const std::string &currencyCode)
+        {
             int currencyCodeInt;
             std::stringstream ss(currencyCode);
 
@@ -84,36 +87,62 @@ namespace Lanter {
         //    return !SBP_ReqID.empty();
         //}
 
-        bool checkPaymentPurpose(const std::string& paymentPurpose) {
+        bool checkPaymentPurpose(const std::string& paymentPurpose)
+        {
             return !paymentPurpose.empty();
         }
 
-        bool checkProviderCodeRange(const std::string &providerCode) {
+        bool checkProviderCodeRange(const std::string &providerCode)
+        {
             return checkValueRange(providerCode.size(), MINIMUM_PROVIDER_CODE_LENGTH, MAXIMUM_PROVIDER_CODE_LENGTH);
         }
 
-        bool checkAdditionalInfoRange(const std::string & additionalInfo) {
+        bool checkAdditionalInfoRange(const std::string & additionalInfo)
+        {
             return !additionalInfo.empty();
         }
 
-        bool checkAdditionalChoiceRange(const std::string & additionalChoice) {
+        bool checkAdditionalChoiceRange(const std::string & additionalChoice)
+        {
             return !additionalChoice.empty();
         }
 
-        bool checkStatusRange(int32_t status) {
-            return checkValueRange(status,
-                                 static_cast<int64_t>(Response::getFirstStatus()),
-                                 static_cast<int64_t>(Response::getLastStatus()));
+        bool checkTransportControlStationRange(const std::string& transportControlStation)
+        {
+            return !transportControlStation.empty();
         }
 
-        bool checkTransDateTimeRange(const std::string &dateTime) {
+        bool checkTransportControlAreaRange(const std::string& transportControlArea)
+        {
+            return !transportControlArea.empty();
+        }
+
+        bool checkTransportControlIDRange(const std::string& transportControlID)
+        {
+            return !transportControlID.empty();
+        }
+
+        bool checkTransportControlDateTimeRange(const std::string& transportControlDateTime)
+        {
+            return !transportControlDateTime.empty();
+        }
+
+        bool checkStatusRange(int32_t status)
+        {
+            return checkValueRange(status, static_cast<int64_t>(Response::getFirstStatus()), static_cast<int64_t>(Response::getLastStatus()));
+        }
+
+        bool checkTransDateTimeRange(const std::string &dateTime)
+        {
             return checkValueRange(dateTime.size(), MINIMUM_TRANSACTION_DATETIME_LENGTH, MAXIMUM_TRANSACTION_DATETIME_LENGTH);
         }
-        bool checkTerminalDateTimeRange(const std::string &dateTime) {
+        bool checkTerminalDateTimeRange(const std::string &dateTime)
+        {
             return checkValueRange(dateTime.size(), MINIMUM_TERMINAL_DATETIME_LENGTH, MAXIMUM_TERMINAL_DATETIME_LENGTH);
         }
 
-        bool checkCardPANRange(const std::string &cardPAN) {
+        bool checkCardPANRange(const std::string &cardPAN)
+        {
             return checkValueRange(cardPAN.size(), MINIMUM_CARD_PAN_LENGTH, MAXIMUM_CARD_PAN_LENGTH);
         }
 

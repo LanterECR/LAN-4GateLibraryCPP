@@ -3,18 +3,21 @@
 
 #include <map>
 #include <functional>
-
 #include "json/json.h"
-
 #include "Lanter/Message/Request/RequestField.h"
 #include "Lanter/Message/Request/IRequestData.h"
 
-namespace Lanter {
+namespace Lanter
+{
     using namespace Message;
     using namespace Message::Request;
-    namespace MessageProcessor {
-        namespace Builder {
-            class JSONRequestBuilder {
+
+    namespace MessageProcessor
+    {
+        namespace Builder
+        {
+            class JSONRequestBuilder
+            {
             public:
                 JSONRequestBuilder();
 
@@ -79,11 +82,18 @@ namespace Lanter {
 
                 bool addFieldAdditionalChoice(const IRequestData &requestData, Json::Value &object);
 
+                bool addFieldTransportControlStation(const IRequestData& requestData, Json::Value& object);
+
+                bool addFieldTransportControlArea(const IRequestData& requestData, Json::Value& object);
+
+                bool addFieldTransportControlID(const IRequestData& requestData, Json::Value& object);
+
 				bool addFieldCardPANHash(const IRequestData &requestData, Json::Value &object);
 
 				bool addFieldECertAmount(const IRequestData &requestData, Json::Value &object);
 
 				bool addFieldBasketID(const IRequestData &requestData, Json::Value &object);
+
 			private:
                 void initFunctionsMap();
 
@@ -94,5 +104,4 @@ namespace Lanter {
         }
     }
 }
-
 #endif //LAN_4GATELIBRARYCPP_JSONREQUESTBUILDER_H

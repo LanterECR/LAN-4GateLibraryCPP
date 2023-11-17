@@ -202,6 +202,18 @@ namespace Lanter {
 
                 bool setAdditionalChoice(const std::string &additionalChoice) override;
 
+                const std::string& getTransportControlStation() const override;
+                bool setTransportControlStation(const std::string& additionalInfo) override;
+                bool resetTransportControlStation() override;
+
+                const std::string& getTransportControlArea() const override;
+                bool setTransportControlArea(const std::string& additionalInfo) override;
+                bool resetTransportControlArea() override;
+
+                const std::string& getTransportControlID() const override;
+                bool setTransportControlID(const std::string& additionalInfo) override;
+                bool resetTransportControlID() override;
+
 				const std::string &getBasketID() const override;
 				bool setBasketID(const std::string &id) override;
 				bool resetBasketID() override;
@@ -246,6 +258,9 @@ namespace Lanter {
                 std::string m_PaymentParam2;
                 std::string m_PaymentParam3;
                 std::string m_AdditionalChoice; ///< Параметры операции на экране терминала
+                std::string m_TransportControlStation;
+                std::string m_TransportControlArea;
+                std::string m_TransportControlID;
 				std::string m_BasketID;
 				std::string m_CardPANHash;
 

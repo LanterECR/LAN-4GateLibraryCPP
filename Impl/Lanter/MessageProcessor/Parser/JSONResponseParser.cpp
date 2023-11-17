@@ -670,6 +670,16 @@ namespace Lanter {
                 return result;
             }
 
+            bool JSONResponseParser::getFieldTransportControlDateTime(const Json::Value& object, IResponseData& responseData)
+            {
+                std::string transportControlDateTime;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTransportControlDateTime(), transportControlDateTime);
+                bool result = exists && responseData.setTransportControlDateTime(transportControlDateTime);
+
+                return result;
+            }
+
 			bool JSONResponseParser::getFieldECertAmount(const Json::Value &object, IResponseData &responseData)
             {
 				int64_t amount;

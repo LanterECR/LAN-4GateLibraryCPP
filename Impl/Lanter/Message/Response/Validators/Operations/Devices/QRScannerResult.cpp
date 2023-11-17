@@ -19,6 +19,7 @@ namespace Lanter
                 appendOptionalField(ResponseField::ResponseText);
                 appendOptionalField(ResponseField::Status);
                 appendOptionalField(ResponseField::TerminalID);
+                appendOptionalField(ResponseField::TransportControlDateTime);
             }
         }
     }

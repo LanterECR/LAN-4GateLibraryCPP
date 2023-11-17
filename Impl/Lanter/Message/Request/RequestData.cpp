@@ -697,20 +697,24 @@ namespace Lanter {
                 return result;
             }
 
-            bool RequestData::resetPaymentParam3() {
+            bool RequestData::resetPaymentParam3()
+            {
                 m_PaymentParam3.clear();
                 m_FieldsSet.erase(RequestField::PaymentParam3);
                 return !isFieldSet(RequestField::PaymentParam3);
             }
 
-            const std::string &RequestData::getAdditionalChoice() const {
+            const std::string &RequestData::getAdditionalChoice() const
+            {
                 return m_AdditionalChoice;
             }//getAdditionalChoice()
 
-            bool RequestData::setAdditionalChoice(const std::string &additionalChoice) {
+            bool RequestData::setAdditionalChoice(const std::string &additionalChoice)
+            {
                 bool result = false;
 
-                if (checkAdditionalChoiceRange(additionalChoice)) {
+                if (checkAdditionalChoiceRange(additionalChoice))
+                {
                     m_AdditionalChoice = additionalChoice;
                     m_FieldsSet.insert(RequestField::AdditionalChoice);
                     result = true;
@@ -719,26 +723,108 @@ namespace Lanter {
                 return result;
             }//setAdditionalChoice()
 
-            bool RequestData::resetAdditionalChoice() {
+            bool RequestData::resetAdditionalChoice()
+            {
                 m_AdditionalChoice.clear();
                 m_FieldsSet.erase(RequestField::AdditionalChoice);
                 return !isFieldSet(RequestField::AdditionalChoice);
             }//resetAdditionalChoice()
 
+            const std::string& RequestData::getTransportControlStation() const
+            {
+                return m_TransportControlStation;
+            }
 
-            const std::set<RequestField> &RequestData::getFieldsSet() const {
+            bool RequestData::setTransportControlStation(const std::string& transportControlStation)
+            {
+                bool result = false;
+
+                if (checkTransportControlStationRange(transportControlStation))
+                {
+                    m_TransportControlStation = transportControlStation;
+                    m_FieldsSet.insert(RequestField::TransportControlStation);
+                    result = true;
+                }
+
+                return result;
+            }
+
+            bool RequestData::resetTransportControlStation()
+            {
+                m_TransportControlStation.clear();
+                m_FieldsSet.erase(RequestField::TransportControlStation);
+                return !isFieldSet(RequestField::TransportControlStation);
+            }
+
+            const std::string& RequestData::getTransportControlArea() const
+            {
+                return m_TransportControlArea;
+            }
+
+            bool RequestData::setTransportControlArea(const std::string& transportControlArea)
+            {
+                bool result = false;
+
+                if (checkTransportControlAreaRange(transportControlArea))
+                {
+                    m_TransportControlArea = transportControlArea;
+                    m_FieldsSet.insert(RequestField::TransportControlArea);
+                    result = true;
+                }
+
+                return result;
+            }
+
+            bool RequestData::resetTransportControlArea()
+            {
+                m_TransportControlArea.clear();
+                m_FieldsSet.erase(RequestField::TransportControlArea);
+                return !isFieldSet(RequestField::TransportControlArea);
+            }
+
+            const std::string& RequestData::getTransportControlID() const
+            {
+                return m_TransportControlID;
+            }
+
+            bool RequestData::setTransportControlID(const std::string& transportControlID)
+            {
+                bool result = false;
+
+                if (checkTransportControlIDRange(transportControlID))
+                {
+                    m_TransportControlID = transportControlID;
+                    m_FieldsSet.insert(RequestField::TransportControlID);
+                    result = true;
+                }
+
+                return result;
+            }
+
+            bool RequestData::resetTransportControlID()
+            {
+                m_TransportControlID.clear();
+                m_FieldsSet.erase(RequestField::TransportControlID);
+                return !isFieldSet(RequestField::TransportControlID);
+            }
+
+            const std::set<RequestField> &RequestData::getFieldsSet() const
+            {
                 return m_FieldsSet;
             }//getFieldsSet()
 
-            bool RequestData::isFieldSet(RequestField field) const {
+            bool RequestData::isFieldSet(RequestField field) const
+            {
                 return m_FieldsSet.find(field) != m_FieldsSet.end();
             }//isFieldSet()
 
 
-            bool RequestData::resetField(RequestField field) {
+            bool RequestData::resetField(RequestField field)
+            {
                 bool result = false;
 
-                switch (field) {
+                switch (field)
+                {
                     case RequestField::EcrNumber:
                         result = resetEcrNumber();
                         break;
@@ -826,6 +912,15 @@ namespace Lanter {
                     case RequestField::AdditionalChoice:
                         result = resetAdditionalChoice();
                         break;
+                    case RequestField::TransportControlStation:
+                        result = resetTransportControlStation();
+                        break;
+                    case RequestField::TransportControlArea:
+                        result = resetTransportControlArea();
+                        break;
+                    case RequestField::TransportControlID:
+                        result = resetTransportControlID();
+                        break;
 					case RequestField::ECertAmount:
 						result = resetECertAmount();
 						break;
@@ -837,11 +932,13 @@ namespace Lanter {
                 return result;
             }//resetField(
 
-            void RequestData::initValidator() {
+            void RequestData::initValidator()
+            {
                 m_Validator = ValidatorFactory::getValidator(getOperationCode());
             }//initValidator()
 
-            void RequestData::deinitValidator() {
+            void RequestData::deinitValidator()
+            {
                 m_Validator.reset();
             }//deinitValidator()
         }//namespace Request

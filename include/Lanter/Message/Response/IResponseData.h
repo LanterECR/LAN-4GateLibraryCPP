@@ -989,6 +989,10 @@ namespace Lanter
                 virtual const std::string& getSBP_Status() const = 0;
                 virtual bool setSBP_Status(const std::string& SBP_Status) = 0;
                 virtual bool resetSBP_Status() = 0;
+
+                virtual const std::string& getTransportControlDateTime() const = 0;
+                virtual bool setTransportControlDateTime(const std::string& SBP_Status) = 0;
+                virtual bool resetTransportControlDateTime() = 0;
 			};//class IResponseData
         }//namespace Response
     }//namespace Message

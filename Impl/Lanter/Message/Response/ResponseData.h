@@ -408,6 +408,10 @@ namespace Lanter
                 bool setSBP_Status(const std::string& SBP_Status) override;
                 bool resetSBP_Status() override;
 
+                const std::string& getTransportControlDateTime() const override;
+                bool setTransportControlDateTime(const std::string& SBP_Status) override;
+                bool resetTransportControlDateTime() override;
+
 				int64_t getECertAmount() const override;
 				bool setECertAmount(int64_t amount) override;
 				bool resetECertAmount() override;
@@ -497,6 +501,8 @@ namespace Lanter
                 std::string m_SBP_ReqId;
                 std::string m_SBP_Code;
                 std::string m_SBP_Status;
+
+                std::string m_TransportControlDateTime;
 
                 std::vector<std::shared_ptr<IResponseData> > m_SalesArray;
                 std::vector<std::shared_ptr<IResponseData> > m_VoidArray;

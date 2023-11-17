@@ -249,17 +249,18 @@ namespace Lanter {
                 return result;
             }
 
-            bool JSONRequestParser::getFieldPaymentParam3(const Json::Value &object, IRequestData &requestData) {
+            bool JSONRequestParser::getFieldPaymentParam3(const Json::Value &object, IRequestData &requestData)
+            {
                 std::string paymentParam;
 
-                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getPaymentParam3(),
-                                                           paymentParam);
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getPaymentParam3(), paymentParam);
                 bool result = exists && requestData.setPaymentParam3(paymentParam);
 
                 return result;
             }
 
-            bool JSONRequestParser::getFieldAdditionalChoice(const Json::Value &object, IRequestData &requestData) {
+            bool JSONRequestParser::getFieldAdditionalChoice(const Json::Value &object, IRequestData &requestData)
+            {
                 std::string AdditionalChoice;
 
                 bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getAdditionalChoice(), AdditionalChoice);
@@ -268,7 +269,38 @@ namespace Lanter {
                 return result;
             }
 
-			bool JSONRequestParser::getFieldCardPANHash(const Json::Value &object, IRequestData &requestData) {
+            bool JSONRequestParser::getFieldTransportControlStation(const Json::Value& object, IRequestData& requestData)
+            {
+                std::string TransportControlStation;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getTransportControlStation(), TransportControlStation);
+                bool result = exists && requestData.setTransportControlStation(TransportControlStation);
+
+                return result;
+            }
+
+            bool JSONRequestParser::getFieldTransportControlArea(const Json::Value& object, IRequestData& requestData)
+            {
+                std::string TransportControlArea;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getTransportControlArea(), TransportControlArea);
+                bool result = exists && requestData.setTransportControlArea(TransportControlArea);
+
+                return result;
+            }
+
+            bool JSONRequestParser::getFieldTransportControlID(const Json::Value& object, IRequestData& requestData)
+            {
+                std::string TransportControlID;
+
+                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getTransportControlID(), TransportControlID);
+                bool result = exists && requestData.setTransportControlID(TransportControlID);
+
+                return result;
+            }
+
+			bool JSONRequestParser::getFieldCardPANHash(const Json::Value &object, IRequestData &requestData)
+            {
 				std::string val;
 
 				bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getCardPANHash(), val);
@@ -277,7 +309,8 @@ namespace Lanter {
 				return result;
 			}
 
-			bool JSONRequestParser::getFieldECertAmount(const Json::Value &object, IRequestData &requestData) {
+			bool JSONRequestParser::getFieldECertAmount(const Json::Value &object, IRequestData &requestData)
+            {
 				int64_t amount;
 
 				bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getECertAmount(), amount);

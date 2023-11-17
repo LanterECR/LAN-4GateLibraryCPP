@@ -82,7 +82,9 @@ namespace Lanter
                 SBP_KZO,
                 SBP_ReqId,
                 SBP_Code,
-                SBP_Status
+                SBP_Status,
+
+                TransportControlDateTime
 			};//enum ResponseField
 
             /// Функция, возвращающая первый значимый элемент перечисления ResponseField
@@ -96,7 +98,7 @@ namespace Lanter
             /// \return Последний элемент значимый перечисления ResponseField
             constexpr ResponseField getLastResponseField()
             {
-                return ResponseField::SBP_Status;
+                return ResponseField::TransportControlDateTime;
             }
         }//namespace Response
     }//namespace Message

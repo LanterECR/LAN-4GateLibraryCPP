@@ -949,6 +949,9 @@ namespace Lanter
                     case ResponseField::AdditionalChoiceResult:
                         result = resetAdditionalChoiceResult();
                         break;
+                    case ResponseField::TransportControlDateTime:
+                        result = resetTransportControlDateTime();
+                        break;
 					case ResponseField::ECertAmount:
 						result = resetECertAmount();
 						break;
@@ -1812,6 +1815,30 @@ namespace Lanter
                 m_SBP_Status.clear();
                 m_FieldsSet.erase(ResponseField::SBP_Status);
                 return !isFieldSet(ResponseField::SBP_Status);
+            }
+
+            const std::string& ResponseData::getTransportControlDateTime() const
+            {
+                return m_TransportControlDateTime;
+            }
+
+            bool ResponseData::setTransportControlDateTime(const std::string& transportControlDateTime)
+            {
+                bool result = false;
+                if (checkTransportControlDateTimeRange(transportControlDateTime))
+                {
+                    m_TransportControlDateTime = transportControlDateTime;
+                    m_FieldsSet.insert(ResponseField::TransportControlDateTime);
+                    result = true;
+                }
+                return result;
+            }
+
+            bool ResponseData::resetTransportControlDateTime()
+            {
+                m_TransportControlDateTime.clear();
+                m_FieldsSet.erase(ResponseField::TransportControlDateTime);
+                return !isFieldSet(ResponseField::TransportControlDateTime);
             }
         }
     }

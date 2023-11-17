@@ -28,6 +28,10 @@ namespace Lanter
         bool checkProviderCodeRange(const std::string & providerCode);
         bool checkAdditionalInfoRange(const std::string & additionalInfo);
         bool checkAdditionalChoiceRange(const std::string & additionalChoice);
+        bool checkTransportControlStationRange(const std::string& transportControlStation);
+        bool checkTransportControlAreaRange(const std::string& transportControlArea);
+        bool checkTransportControlIDRange(const std::string& transportControlID);
+        bool checkTransportControlDateTimeRange(const std::string& transportControlDateTime);
         bool checkStatusRange(int32_t status);
         bool checkTransDateTimeRange(const std::string & dateTime);
         bool checkTerminalDateTimeRange(const std::string & dateTime);

@@ -3,11 +3,15 @@
 
 #include "Lanter/Utils/VisibilityMacroses.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Request {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Request
+        {
             /// \brief Список полей, используемых для запроса к финансовому ПО LAN-4Tap
-            enum class RequestField {
+            enum class RequestField
+            {
                 EcrNumber, ///< Логический номер кассы, используемый для взаимодействия с LAN-4Tap
                 EcrMerchantNumber, ///< Логический номер мерчанта в кассовом ПО
                 OperationCode, ///< Код запрашиваемой операции
@@ -38,20 +42,24 @@ namespace Lanter {
 				CardPANHash,  ///< HASH PAN
 				ECertAmount, ///< Сумма по электронному сертификату
 				BasketID, ///< ID корзины(электронные сертификаты)
-				AdditionalChoice ///< Выбор опции на экране
-
+				AdditionalChoice, ///< Выбор опции на экране
+                TransportControlStation, ///< Передаваемое с кассы значение станции контроля в пути
+                TransportControlArea, ///< Передаваемое с кассы значение зоны контроля в пути
+                TransportControlID ///< Передаваемое с кассы значение ID ПТК вводимое сотрудником ЦППК
             };//enum RequestField
 
             /// Функция, возвращающая первый значимый элемент перечисления RequestField
             /// \return Первый элемент значимый перечисления RequestField
-            constexpr RequestField getFirstRequestField() {
+            constexpr RequestField getFirstRequestField()
+            {
                 return RequestField::EcrNumber;
             }
 
             /// Функция, возвращающая последний значимый элемент перечисления RequestField
             /// \return Последний элемент значимый перечисления RequestField
-            constexpr RequestField getLastRequestField() {
-                return RequestField::AdditionalChoice;
+            constexpr RequestField getLastRequestField()
+            {
+                return RequestField::TransportControlID;
             }
         }//namespace Request
     }//namespace Message

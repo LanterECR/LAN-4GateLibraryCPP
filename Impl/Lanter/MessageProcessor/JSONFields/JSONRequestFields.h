@@ -2,8 +2,10 @@
 #define LAN_4GATELIB_JSONREQUESTFIELDS_H
 #include <string>
 
-namespace Lanter {
-    namespace MessageProcessor {
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
         class JSONRequestFields
         {
         public:
@@ -36,6 +38,9 @@ namespace Lanter {
             static inline std::string getPaymentParam2() { return "PaymentParam2"; }
             static inline std::string getPaymentParam3() { return "PaymentParam3"; }
             static inline std::string getAdditionalChoice() { return "additionalChoice"; }
+            static inline std::string getTransportControlStation() { return "TransportControlStation"; }
+            static inline std::string getTransportControlArea() { return "TransportControlArea"; }
+            static inline std::string getTransportControlID() { return "TransportControlID"; }
 			static inline std::string getCardPANHash() { return "CardPANHash"; }
 			static inline std::string getECertAmount() { return "ECertAmount"; }
 			static inline std::string getBasketID() { return "BasketID"; }

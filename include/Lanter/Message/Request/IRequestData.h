@@ -434,7 +434,6 @@ namespace Lanter {
                 /// \return true, если поле успешно удалено
                 virtual bool resetPaymentParam3() = 0;
 
-
                 /// \brief Возвращает установленные параметры операции на экране терминала
                 /// \return Строка, содержащая установленные параметры операции на экране терминала
                 virtual const std::string &getAdditionalChoice() const = 0;
@@ -476,6 +475,18 @@ namespace Lanter {
 				/// и удаляет из списка установленных полей
 				/// \return true, если поле успешно удалено
 				virtual bool resetCardPANHash() = 0;
+
+                virtual const std::string& getTransportControlStation() const = 0;
+                virtual bool setTransportControlStation(const std::string& additionalInfo) = 0;
+                virtual bool resetTransportControlStation() = 0;
+
+                virtual const std::string& getTransportControlArea() const = 0;
+                virtual bool setTransportControlArea(const std::string& additionalInfo) = 0;
+                virtual bool resetTransportControlArea() = 0;
+
+                virtual const std::string& getTransportControlID() const = 0;
+                virtual bool setTransportControlID(const std::string& additionalInfo) = 0;
+                virtual bool resetTransportControlID() = 0;
 			};//class IRequestData
         }//namespace Request
     }//namespace Message

@@ -12,6 +12,9 @@ namespace Lanter
 				appendOptionalField(RequestField::EcrNumber);
 				appendOptionalField(RequestField::OperationCode);
 				appendOptionalField(RequestField::CurrencyCode);
+				appendOptionalField(RequestField::TransportControlStation);
+				appendOptionalField(RequestField::TransportControlArea);
+				appendOptionalField(RequestField::TransportControlID);
 			}
         }
     }
