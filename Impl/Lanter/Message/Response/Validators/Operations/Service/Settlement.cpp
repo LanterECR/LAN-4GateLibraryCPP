@@ -1,9 +1,13 @@
 #include "Settlement.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-            void Response::Settlement::addSpecificFields() {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            void Response::Settlement::addSpecificFields()
+            {
                 appendOptionalField(ResponseField::EcrMerchantNumber);
                 appendOptionalField(ResponseField::TotalAmount);
                 appendOptionalField(ResponseField::CurrencyCode);
@@ -20,6 +24,7 @@ namespace Lanter {
                 appendOptionalField(ResponseField::VoidAmount);
                 appendOptionalField(ResponseField::RefundAmount);
                 appendOptionalField(ResponseField::TransDateTime);
+                appendOptionalField(ResponseField::AdditionalInfo);
             }
         }
     }
