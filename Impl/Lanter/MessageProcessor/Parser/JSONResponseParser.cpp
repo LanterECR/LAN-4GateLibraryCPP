@@ -834,6 +834,8 @@ namespace Lanter {
                 m_ExtractFunctions[ResponseField::SBP_ReqId] = [this](const Json::Value& object, IResponseData& responseData) { return getFieldSBP_ReqId(object, responseData); };
                 m_ExtractFunctions[ResponseField::SBP_Code] = [this](const Json::Value& object, IResponseData& responseData) { return getFieldSBP_Code(object, responseData); };
                 m_ExtractFunctions[ResponseField::SBP_Status] = [this](const Json::Value& object, IResponseData& responseData) { return getFieldSBP_Status(object, responseData); };
+
+                m_ExtractFunctions[ResponseField::TransportControlDateTime] = [this](const Json::Value& object, IResponseData& responseData) { return getFieldTransportControlDateTime(object, responseData); };
             }
 
             bool JSONResponseParser::getFields(const Json::Value &object, IResponseData &responseData)
