@@ -8,6 +8,7 @@ namespace Lanter
         {
             void QRScannerResult::addSpecificFields()
             {
+                appendOptionalField(ResponseField::CardPANHash);
                 appendOptionalField(ResponseField::AdditionalInfo);
                 appendOptionalField(ResponseField::EcrNumber);
                 appendOptionalField(ResponseField::OperationCode);
