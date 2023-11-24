@@ -8,6 +8,7 @@ namespace Lanter
 		{
             void Response::CardVerification::addSpecificFields()
 			{
+				appendOptionalField(ResponseField::AdditionalInfo);
 				appendOptionalField(ResponseField::CardPANHash);
                 appendOptionalField(ResponseField::EcrNumber);
 				appendOptionalField(ResponseField::OperationCode);
@@ -19,6 +20,7 @@ namespace Lanter
 				appendOptionalField(ResponseField::ResponseText);
 				appendOptionalField(ResponseField::Status);
 				appendOptionalField(ResponseField::TerminalID);
+				appendOptionalField(ResponseField::TransactionID);
 				appendOptionalField(ResponseField::TransportControlDateTime);
 			}
         }

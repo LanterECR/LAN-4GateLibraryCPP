@@ -8,8 +8,8 @@ namespace Lanter
         {
             void QRScannerResult::addSpecificFields()
             {
-                appendOptionalField(ResponseField::CardPANHash);
                 appendOptionalField(ResponseField::AdditionalInfo);
+                appendOptionalField(ResponseField::CardPANHash);
                 appendOptionalField(ResponseField::EcrNumber);
                 appendOptionalField(ResponseField::OperationCode);
                 appendOptionalField(ResponseField::ReceiptLine1);
@@ -20,6 +20,7 @@ namespace Lanter
                 appendOptionalField(ResponseField::ResponseText);
                 appendOptionalField(ResponseField::Status);
                 appendOptionalField(ResponseField::TerminalID);
+                appendOptionalField(ResponseField::TransactionID);
                 appendOptionalField(ResponseField::TransportControlDateTime);
             }
         }
