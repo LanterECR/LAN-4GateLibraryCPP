@@ -11,8 +11,9 @@ namespace Lanter
                 appendMandatoryField(RequestField::EcrMerchantNumber);
                 appendMandatoryField(RequestField::Amount);
                 appendMandatoryField(RequestField::CurrencyCode);
-                appendMandatoryField(RequestField::AdditionalInfo);
-                appendMandatoryField(RequestField::PaymentPurpose);
+
+                appendOptionalField(RequestField::AdditionalInfo);
+                appendOptionalField(RequestField::PaymentPurpose);
             }
         }
     }
