@@ -15,7 +15,6 @@ namespace Lanter
                 appendOptionalField(ResponseField::CurrencyCode);
                 appendOptionalField(ResponseField::RRN);
                 appendOptionalField(ResponseField::ReceiptReference);
-                appendOptionalField(ResponseField::TransactionID);
                 appendOptionalField(ResponseField::AuthCode);
                 appendOptionalField(ResponseField::ResponseCode);
                 appendOptionalField(ResponseField::ResponseText);
@@ -23,6 +22,7 @@ namespace Lanter
                 appendOptionalField(ResponseField::MerchantID);
                 appendOptionalField(ResponseField::TransDateTime);
                 appendOptionalField(ResponseField::TerminalDateTime);
+                appendOptionalField(ResponseField::TransactionID);
                 appendOptionalField(ResponseField::SBP_RN);
             }
         }
