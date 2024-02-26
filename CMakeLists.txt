@@ -19,8 +19,8 @@ if(NOT IS_SUBPROJECT)
     include(${HUNTER_GATE_PATH})
 
     HunterGate(
-            URL "https://github.com/cpp-pm/hunter/archive/v0.23.313.tar.gz"
-            SHA1 "6c369e5aab2749a616917df3b23511535f413604"
+            URL "https://github.com/cpp-pm/hunter/archive/v0.25.5.tar.gz"
+            SHA1 "a20151e4c0740ee7d0f9994476856d813cdead29"
     )
 endif()
 

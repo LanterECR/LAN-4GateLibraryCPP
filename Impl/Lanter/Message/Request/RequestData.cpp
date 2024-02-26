@@ -487,10 +487,12 @@ namespace Lanter {
                 return m_HashCardTrack2;
             }
 
-            bool RequestData::setHashCardTrack2(const std::string &cardTrack2) {
+            bool RequestData::setHashCardTrack2(const std::string &cardTrack2)
+            {
                 bool result = false;
 
-                if (checkHashCardTrack2(cardTrack2)) {
+                if (checkHashCardTrack2(cardTrack2))
+                {
                     m_HashCardTrack2 = cardTrack2;
                     m_FieldsSet.insert(RequestField::HashCardTrack2);
                     result = true;
@@ -499,20 +501,24 @@ namespace Lanter {
                 return result;
             }
 
-            bool RequestData::resetHashCardTrack2() {
+            bool RequestData::resetHashCardTrack2()
+            {
                 m_HashCardTrack2.clear();
                 m_FieldsSet.erase(RequestField::HashCardTrack2);
                 return !isFieldSet(RequestField::HashCardTrack2);
             }
 
-            const std::string& RequestData::getSBP_RN() const {
+            const std::string& RequestData::getSBP_RN() const
+            {
                 return m_SBP_RN;
             }
 
-            bool RequestData::setSBP_RN(const std::string& purpose) {
+            bool RequestData::setSBP_RN(const std::string& purpose)
+            {
                 bool result = false;
 
-                if (checkSBP_RN(purpose)) {
+                if (checkSBP_RN(purpose))
+                {
                     m_SBP_RN = purpose;
                     m_FieldsSet.insert(RequestField::SBP_RN);
                     result = true;
@@ -521,20 +527,24 @@ namespace Lanter {
                 return result;
             }
 
-            bool RequestData::resetSBP_RN() {
+            bool RequestData::resetSBP_RN()
+            {
                 m_SBP_RN.clear();
                 m_FieldsSet.erase(RequestField::SBP_RN);
                 return !isFieldSet(RequestField::SBP_RN);
             }
 
-            const std::string& RequestData::getSBP_ReqID() const {
+            const std::string& RequestData::getSBP_ReqID() const
+            {
                 return m_SBP_ReqID;
             }
 
-            bool RequestData::setSBP_ReqID(const std::string& purpose) {
+            bool RequestData::setSBP_ReqID(const std::string& purpose)
+            {
                 bool result = false;
 
-                if (checkSBP_ReqId(purpose)) {
+                if (checkSBP_ReqId(purpose))
+                {
                     m_SBP_ReqID = purpose;
                     m_FieldsSet.insert(RequestField::SBP_ReqID);
                     result = true;
@@ -543,20 +553,24 @@ namespace Lanter {
                 return result;
             }
 
-            bool RequestData::resetSBP_ReqID() {
+            bool RequestData::resetSBP_ReqID()
+            {
                 m_SBP_ReqID.clear();
                 m_FieldsSet.erase(RequestField::SBP_ReqID);
                 return !isFieldSet(RequestField::SBP_ReqID);
             }
 
-            const std::string& RequestData::getPaymentPurpose() const {
+            const std::string& RequestData::getPaymentPurpose() const
+            {
                 return m_PaymentPurpose;
             }
 
-            bool RequestData::setPaymentPurpose(const std::string& purpose) {
+            bool RequestData::setPaymentPurpose(const std::string& purpose)
+            {
                 bool result = false;
 
-                if (checkPaymentPurpose(purpose)) {
+                if (checkPaymentPurpose(purpose))
+                {
                     m_PaymentPurpose = purpose;
                     m_FieldsSet.insert(RequestField::PaymentPurpose);
                     result = true;
@@ -565,20 +579,24 @@ namespace Lanter {
                 return result;
             }
 
-            bool RequestData::resetPaymentPurpose() {
+            bool RequestData::resetPaymentPurpose()
+            {
                 m_PaymentPurpose.clear();
                 m_FieldsSet.erase(RequestField::PaymentPurpose);
                 return !isFieldSet(RequestField::PaymentPurpose);
             }
 
-			const std::string &RequestData::getPaymentProviderCode() const {
+			const std::string &RequestData::getPaymentProviderCode() const
+            {
                 return m_PaymentProviderCode;
             }
 
-            bool RequestData::setPaymentProviderCode(const std::string &code) {
+            bool RequestData::setPaymentProviderCode(const std::string &code)
+            {
                 bool result = false;
 
-                if (checkProviderCodeRange(code)) {
+                if (checkProviderCodeRange(code))
+                {
                     m_PaymentProviderCode = code;
                     m_FieldsSet.insert(RequestField::PaymentProviderCode);
                     result = true;
@@ -587,20 +605,24 @@ namespace Lanter {
                 return result;
             }
 
-            bool RequestData::resetPaymentProviderCode() {
+            bool RequestData::resetPaymentProviderCode()
+            {
                 m_PaymentProviderCode.clear();
                 m_FieldsSet.erase(RequestField::PaymentProviderCode);
                 return !isFieldSet(RequestField::PaymentProviderCode);
             }
 
-            const std::string &RequestData::getPaymentParam1() const {
+            const std::string &RequestData::getPaymentParam1() const
+            {
                 return m_PaymentParam1;
             }
 
-            bool RequestData::setPaymentParam1(const std::string &param) {
+            bool RequestData::setPaymentParam1(const std::string &param)
+            {
                 bool result = false;
 
-                if (!param.empty()) {
+                if (!param.empty())
+                {
                     m_PaymentParam1 = param;
                     m_FieldsSet.insert(RequestField::PaymentParam1);
                     result = true;
