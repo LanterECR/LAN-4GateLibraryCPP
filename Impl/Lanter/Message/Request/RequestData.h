@@ -2,17 +2,19 @@
 #define LAN_4GATELIBRARYCPP_REQUESTDATA_H
 
 #include "Lanter/Message/Request/IRequestData.h"
+#include "Validators/IValidator.h"
 
 #include <memory>
 #include <set>
 
-#include "Validators/IValidator.h"
-
-namespace Lanter {
-    namespace Message {
-        namespace Request {
-
-            class RequestData : public IRequestData {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Request
+        {
+            class RequestData : public IRequestData
+            {
             public:
                 RequestData();
 
@@ -30,15 +32,15 @@ namespace Lanter {
 
                 bool resetField(RequestField field) override;
 
-                int16_t getEcrNumber() const override;
+                int64_t getEcrNumber() const override;
 
-                bool setEcrNumber(int16_t ecrNumber) override;
+                bool setEcrNumber(int64_t ecrNumber) override;
 
                 bool resetEcrNumber() override;
 
-                int16_t getEcrMerchantNumber() const override;
+                int64_t getEcrMerchantNumber() const override;
 
-                bool setEcrMerchantNumber(int16_t ecrMerchantNumber) override;
+                bool setEcrMerchantNumber(int64_t ecrMerchantNumber) override;
 
                 bool resetEcrMerchantNumber() override;
 
@@ -221,16 +223,16 @@ namespace Lanter {
 				const std::string &getCardPANHash() const override;
 				bool setCardPANHash(const std::string &hashPAN) override;
 				bool resetCardPANHash() override;
+
 			private:
                 void initValidator();
                 void deinitValidator();
 
                 std::set<RequestField> m_FieldsSet; ///< Список установленных полей
-
                 std::shared_ptr<IValidator> m_Validator; ///< Валидатор полей операции
 
-                int16_t m_EcrNumber = -1; ///< Логический номер кассы, используемый для взаимодействия с LAN-4Tap
-                int16_t m_EcrMerchantNumber = -1; ///< Логический номер мерчанта в кассовом ПО
+                int64_t m_EcrNumber = -1; ///< Логический номер кассы, используемый для взаимодействия с LAN-4Tap
+                int64_t m_EcrMerchantNumber = -1; ///< Логический номер мерчанта в кассовом ПО
                 OperationCode m_OperationCode = OperationCode::NoOperation; ///< Код запрашиваемой операции
                 int64_t m_Amount = -1; ///< Сумма операции
 				int64_t m_ECertAmount = -1; ///< Сумма операции
@@ -265,7 +267,6 @@ namespace Lanter {
 				std::string m_CardPANHash;
 
                 std::set<RequestField> m_EmptyFieldsPlaceholder; ///< Пустая коллекция для полей при отсутствии валидатора
-
             };//class RequestData
         }//namespace Request
     }//namespace Message

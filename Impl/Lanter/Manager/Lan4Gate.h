@@ -9,20 +9,22 @@
 #include <future>
 
 #include "Lanter/Manager/ILan4Gate.h"
-
 #include "Lanter/MessageProcessor/Builder/IMessageBuilder.h"
 #include "Lanter/MessageProcessor/Parser//IMessageParser.h"
 
-namespace Lanter {
-    namespace Manager {
-        class Lan4Gate : public ILan4Gate {
+namespace Lanter
+{
+    namespace Manager
+    {
+        class Lan4Gate : public ILan4Gate
+        {
         public:
             Lan4Gate();
             ~Lan4Gate() override;
 
-            bool setEcrNumber(int16_t ecrNumber) override;
+            bool setEcrNumber(int64_t ecrNumber) override;
 
-            int16_t getEcrNumber() const override;
+            int64_t getEcrNumber() const override;
 
             Status start() override;
 
@@ -33,7 +35,6 @@ namespace Lanter {
             void doLan4Gate() override;
 
             Status runOnThread() override;
-
 
             bool setCommunication(std::shared_ptr<Communication::ICommunication> communication) override;
 
@@ -124,7 +125,7 @@ namespace Lanter {
             void connect();
             bool isConnected();
 
-            int16_t m_EcrNumber = 1;
+            int64_t m_EcrNumber = 1;
 
             std::atomic<bool> m_IsStarted;
 
@@ -158,5 +159,4 @@ namespace Lanter {
         };
     }
 }
-
 #endif //LAN_4GATELIB_LAN4GATE_H

@@ -5,9 +5,7 @@
 #include <memory>
 
 #include "Lanter/Utils/VisibilityMacroses.h"
-
 #include "Lanter/Communication/ICommunication.h"
-
 #include "Lanter/Message/Request/IRequestData.h"
 #include "Lanter/Message/Response/IResponseData.h"
 #include "Lanter/Message/Notification/INotificationData.h"
@@ -19,20 +17,25 @@
 #include "Callback/IInteractionCallback.h"
 #include "Callback/IConnectionCallback.h"
 
-namespace Lanter {
-    namespace Manager {
+namespace Lanter
+{
+    namespace Manager
+    {
         /// \brief Предоставляет интерфейс взаимодействия с функционалом библиотеки
-        class LANTER_VISIBILITY ILan4Gate {
+        class LANTER_VISIBILITY ILan4Gate
+        {
         public:
             /// \brief Статус запуска ILan4Gate
-            enum class Status {
+            enum class Status
+            {
                 Success, //!< Успешно запущено
                 Error //!< Произошла ошибка при запуске
             };
 
             /// \brief Способ вызова колбеков
             /// Объединение Async | Sync будет интерпретировано, как Sync
-            enum class CallbackNotificationType {
+            enum class CallbackNotificationType
+            {
                 Async, //!< Все колбеки вызываются из того же потока, в котором работает метод doLan4Gate
                 Sync///< Все колбеки вызываются из нового потока
             };
@@ -42,11 +45,11 @@ namespace Lanter {
             /// \brief Устанавливает логический идентификатор кассового ПО. Значение по умолчанию 1
             /// \param[in] ecrNumber Логический идентификатор кассового ПО в диапазоне [1, 999]
             /// \return true, если поле успешно установлено
-             virtual bool setEcrNumber(int16_t ecrNumber) = 0;
+             virtual bool setEcrNumber(int64_t ecrNumber) = 0;
 
              /// \brief Возвращает логический идентификатор кассового ПО
              /// \return Логический идентификатор в диапазоне [1,999]. По умолчанию равен 1
-             virtual int16_t getEcrNumber() const = 0;
+             virtual int64_t getEcrNumber() const = 0;
 
             /// \brief Запускает цикл обработки запросов библиотеки
             /// \return Одно из значений перечисления Status

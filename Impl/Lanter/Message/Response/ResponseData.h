@@ -27,13 +27,13 @@ namespace Lanter
 
                 bool validateMandatoryFields() const override;
 
-                int16_t getEcrNumber() const override;
+                int64_t getEcrNumber() const override;
 
-                bool setEcrNumber(int16_t ecrNumber) override;
+                bool setEcrNumber(int64_t ecrNumber) override;
 
-                int16_t getEcrMerchantNumber() const override;
+                int64_t getEcrMerchantNumber() const override;
 
-                bool setEcrMerchantNumber(int16_t ecrMerchantNumber) override;
+                bool setEcrMerchantNumber(int64_t ecrMerchantNumber) override;
 
                 OperationCode getOperationCode() const override;
 
@@ -428,8 +428,8 @@ namespace Lanter
 
                 std::shared_ptr<IValidator> m_Validator; ///< Валидатор полей операц
 
-                int16_t m_EcrNumber = -1;
-                int16_t m_EcrMerchantNumber = -1;
+                int64_t m_EcrNumber = -1;
+                int64_t m_EcrMerchantNumber = -1;
 
                 OperationCode m_OperationCode = OperationCode::NoOperation;
                 OperationCode m_OriginalOperationCode = OperationCode::NoOperation;

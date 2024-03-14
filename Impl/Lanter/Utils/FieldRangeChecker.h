@@ -9,9 +9,9 @@ namespace Lanter
 {
     namespace Utils
     {
-        bool checkEcrNumberRange(int16_t ecrNumber);
-        bool checkEcrMerchantNumberRange(int16_t ecrMerchantNumber);
-        bool checkOperationCodeRange(int32_t operationCode);
+        bool checkEcrNumberRange(int64_t ecrNumber);
+        bool checkEcrMerchantNumberRange(int64_t ecrMerchantNumber);
+        bool checkOperationCodeRange(int64_t operationCode);
         bool checkAmountRange(int64_t amount);
         bool checkCurrencyCodeRange(const std::string &currencyCode);
         bool checkRRNRange(const std::string & RRN);
@@ -32,20 +32,20 @@ namespace Lanter
         bool checkTransportControlAreaRange(const std::string& transportControlArea);
         bool checkTransportControlIDRange(const std::string& transportControlID);
         bool checkTransportControlDateTimeRange(const std::string& transportControlDateTime);
-        bool checkStatusRange(int32_t status);
+        bool checkStatusRange(int64_t status);
         bool checkTransDateTimeRange(const std::string & dateTime);
         bool checkTerminalDateTimeRange(const std::string & dateTime);
         bool checkCardPANRange(const std::string & cardPAN);
         bool checkExpireDateRange(const std::string & expireDate);
         bool checkCardholderNameRange(const std::string & cardholderName);
-        bool checkCardholderAuthMethodRange(int32_t cardholderAuthMethod);
+        bool checkCardholderAuthMethodRange(int64_t cardholderAuthMethod);
         bool checkResponseCodeRange(const std::string & responseCode);
         bool checkResponseTextRange(const std::string & responseText);
         bool checkSTANRange(const std::string & STAN);
         bool checkTerminalIDRange(const std::string & terminalID);
         bool checkCardEmvAidRange(const std::string & emvAID);
         bool checkCardAppNameRange(const std::string & cardAppName);
-        bool checkCardInputMethodRange(int32_t cardInputMethod);
+        bool checkCardInputMethodRange(int64_t cardInputMethod);
         bool checkIssuerNameRange(const std::string & issuerName);
         bool checkCardDataRange(const std::string & cardData);
         bool checkMerchantIDRange(const std::string & merchantID);
@@ -66,9 +66,8 @@ namespace Lanter
         bool checkSBP_Code(const std::string& SBP_Code);
         bool checkSBP_Status(const std::string& SBP_Status);
 
-        bool checkNotificationsRange(int32_t notification);
-
-        bool checkInteractionsRange(int32_t interaction);
+        bool checkNotificationsRange(int64_t notification);
+        bool checkInteractionsRange(int64_t interaction);
     }
 }
 #endif //LAN_4GATELIBRARYCPP_FIELDRANGECHECKER_H

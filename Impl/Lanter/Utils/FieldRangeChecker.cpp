@@ -18,17 +18,17 @@ namespace Lanter
 {
     namespace Utils
     {
-        bool checkEcrNumberRange(int16_t ecrNumber)
+        bool checkEcrNumberRange(int64_t ecrNumber)
         {
             return checkValueRange(ecrNumber, MINIMUM_ECR_NUMBER, MAXIMUM_ECR_NUMBER);
         }
 
-        bool checkEcrMerchantNumberRange(int16_t ecrMerchantNumber)
+        bool checkEcrMerchantNumberRange(int64_t ecrMerchantNumber)
         {
             return checkValueRange(ecrMerchantNumber, MINIMUM_ECR_MERCHANT_NUMBER, MAXIMUM_ECR_MERCHANT_NUMBER);
         }
 
-        bool checkOperationCodeRange(int32_t operationCode)
+        bool checkOperationCodeRange(int64_t operationCode)
         {
             return checkValueRange(operationCode, static_cast<int64_t>(getFirstOperationCode()), static_cast<int64_t>(getLastOperationCode()));
         }
@@ -47,35 +47,43 @@ namespace Lanter
             return checkValueRange(currencyCodeInt, MINIMUM_CURRENCY_CODE, MAXIMUM_CURRENCY_CODE);
         }
 
-        bool checkRRNRange(const std::string &RRN) {
+        bool checkRRNRange(const std::string &RRN)
+        {
             return checkValueRange(RRN.size(), MINIMUM_RRN_LENGTH, MAXIMUM_RRN_LENGTH);
         }
 
-        bool checkAuthCodeRange(const std::string &authCode) {
+        bool checkAuthCodeRange(const std::string &authCode)
+        {
             return checkValueRange(authCode.size(), MINIMUM_AUTH_CODE_LENGTH, MAXIMUM_AUTH_CODE_LENGTH);
         }
 
-        bool checkReceiptReferenceRange(const std::string &receiptReference) {
+        bool checkReceiptReferenceRange(const std::string &receiptReference)
+        {
             return checkValueRange(receiptReference.size(), MINIMUM_RECEIPT_REFERENCE_LENGTH, MAXIMUM_RECEIPT_REFERENCE_LENGTH);
         }
 
-        bool checkTransactionIDRange(const std::string &transactionID) {
+        bool checkTransactionIDRange(const std::string &transactionID)
+        {
             return checkValueRange(transactionID.size(), MINIMUM_TRANSACTION_ID_LENGTH, MAXIMUM_TRANSACTION_ID_LENGTH);
         }
 
-        bool checkCardDataEncRange(const std::string &cardDataEnc) {
+        bool checkCardDataEncRange(const std::string &cardDataEnc)
+        {
             return !cardDataEnc.empty();
         }
 
-        bool checkOpenTagsRange(const std::string &openTags) {
+        bool checkOpenTagsRange(const std::string &openTags)
+        {
             return !openTags.empty();
         }
 
-        bool checkEncTagsRange(const std::string &encTags) {
+        bool checkEncTagsRange(const std::string &encTags)
+        {
             return !encTags.empty();
         }
 
-        bool checkHashCardTrack2(const std::string &hashCardTrack2) {
+        bool checkHashCardTrack2(const std::string &hashCardTrack2)
+        {
             return !hashCardTrack2.empty();
         }
 
@@ -127,7 +135,7 @@ namespace Lanter
             return !transportControlDateTime.empty();
         }
 
-        bool checkStatusRange(int32_t status)
+        bool checkStatusRange(int64_t status)
         {
             return checkValueRange(status, static_cast<int64_t>(Response::getFirstStatus()), static_cast<int64_t>(Response::getLastStatus()));
         }
@@ -146,15 +154,17 @@ namespace Lanter
             return checkValueRange(cardPAN.size(), MINIMUM_CARD_PAN_LENGTH, MAXIMUM_CARD_PAN_LENGTH);
         }
 
-        bool checkExpireDateRange(const std::string &expireDate) {
+        bool checkExpireDateRange(const std::string &expireDate)
+        {
             return checkValueRange(expireDate.size(), MINIMUM_EXPIRE_DATE_LENGTH, MAXIMUM_EXPIRE_DATE_LENGTH);
         }
 
-        bool checkCardholderNameRange(const std::string &cardholderName) {
+        bool checkCardholderNameRange(const std::string &cardholderName)
+        {
             return checkValueRange(cardholderName.size(), MINIMUM_CARDHOLDER_NAME_LENGTH, MAXIMUM_CARDHOLDER_NAME_LENGTH);
         }
 
-        bool checkCardholderAuthMethodRange(int32_t cardholderAuthMethod)
+        bool checkCardholderAuthMethodRange(int64_t cardholderAuthMethod)
         {
             return checkValueRange(cardholderAuthMethod,
                                 static_cast<int64_t>(Response::CardholderAuthMethod::FirstValue),
@@ -191,50 +201,60 @@ namespace Lanter
             return checkValueRange(cardAppName.size(), MINIMUM_CARD_APP_NAME_LENGTH, MAXIMUM_CARD_APP_NAME_LENGTH);
         }
 
-        bool checkCardInputMethodRange(int32_t cardInputMethod)
+        bool checkCardInputMethodRange(int64_t cardInputMethod)
         {
             return checkValueRange(cardInputMethod,
                                 static_cast<int64_t>(Response::getFirstCardInputMethod()),
                                 static_cast<int64_t>(Response::getLastCardInputMethod()));
         }
 
-        bool checkIssuerNameRange(const std::string &issuerName) {
+        bool checkIssuerNameRange(const std::string &issuerName)
+        {
             return checkValueRange(issuerName.size(), MINIMUM_ISSUER_NAME_LENGTH, MAXIMUM_ISSUER_NAME_LENGTH);
         }
 
-        bool checkCardDataRange(const std::string &cardData) {
+        bool checkCardDataRange(const std::string &cardData)
+        {
             return !cardData.empty();
         }
 
-        bool checkMerchantIDRange(const std::string &merchantID) {
+        bool checkMerchantIDRange(const std::string &merchantID)
+        {
             return checkValueRange(merchantID.size(), MINIMUM_MERCHANT_ID_LENGTH, MAXIMUM_MERCHANT_ID_LENGTH);
         }
 
-        bool checkTVRRange(const std::string &TVR) {
+        bool checkTVRRange(const std::string &TVR)
+        {
             return checkValueRange(TVR.size(), MINIMUM_TVR_LENGTH, MAXIMUM_TVR_LENGTH);
         }
 
-        bool checkTSIRange(const std::string &TSI) {
+        bool checkTSIRange(const std::string &TSI)
+        {
             return checkValueRange(TSI.size(), MINIMUM_TSI_LENGTH, MAXIMUM_TSI_LENGTH);
         }
 
-        bool checkTCRange(const std::string &TC) {
+        bool checkTCRange(const std::string &TC)
+        {
             return checkValueRange(TC.size(), MINIMUM_TC_LENGTH, MAXIMUM_TC_LENGTH);
         }
 
-        bool checkCIDRange(const std::string &CID) {
+        bool checkCIDRange(const std::string &CID)
+        {
             return checkValueRange(CID.size(), MINIMUM_CID_LENGTH, MAXIMUM_CID_LENGTH);
         }
 
-        bool checkKVRRange(const std::string &KVR) {
+        bool checkKVRRange(const std::string &KVR)
+        {
             return checkValueRange(KVR.size(), MINIMUM_KVR_LENGTH, MAXIMUM_KVR_LENGTH);
         }
 
-        bool checkCDAResultRange(const std::string &CDAResult) {
+        bool checkCDAResultRange(const std::string &CDAResult)
+        {
             return checkValueRange(CDAResult.size(), MINIMUM_CDARESULT_LENGTH, MAXIMUM_CDARESULT_LENGTH);
         }
 
-        bool checkSalesCountRange(int32_t salesCount) {
+        bool checkSalesCountRange(int32_t salesCount)
+        {
             return checkValueRange(salesCount, MINIMUM_ARRAY_SIZE, MAXIMUM_ARRAY_SIZE);
         }
 
@@ -248,14 +268,14 @@ namespace Lanter
             return checkValueRange(refundCount, MINIMUM_ARRAY_SIZE, MAXIMUM_ARRAY_SIZE);
         }
 
-        bool checkNotificationsRange(int32_t notification)
+        bool checkNotificationsRange(int64_t notification)
         {
             return checkValueRange(notification,
                                 static_cast<int64_t>(Notification::getFirstNotificationCode()),
                                 static_cast<int64_t>(Notification::getLastNotificationCode()));
         }
 
-        bool checkInteractionsRange(int32_t interaction)
+        bool checkInteractionsRange(int64_t interaction)
         {
             return checkValueRange(interaction,
                                    static_cast<int64_t>(Interaction::getFirstInteractionCode()),

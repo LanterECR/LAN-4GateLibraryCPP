@@ -4,45 +4,46 @@
 #include <chrono>
 
 #include "Lanter/Utils/FieldRangeChecker.h"
-
 #include "Lanter/Message/Request/RequestDataFactory.h"
 #include "Lanter/Message/Response/ResponseDataFactory.h"
 #include "Lanter/Message/Notification/NotificationDataFactory.h"
 #include "Lanter/Message/Interaction/InteractionDataFactory.h"
-
 #include "Lanter/MessageProcessor/Parser/MessageParserFactory.h"
 #include "Lanter/MessageProcessor/Builder/MessageBuilderFactory.h"
-
 #include "Lanter/Manager/Lan4GateLogger.h"
 
-
-namespace Lanter {
-    namespace Manager {
+namespace Lanter
+{
+    namespace Manager
+    {
         Lan4Gate::Lan4Gate() : m_IsStarted(false) {}
 
-        Lan4Gate::~Lan4Gate() {
+        Lan4Gate::~Lan4Gate()
+        {
             Lan4Gate::stop();
         }
 
-        bool Lan4Gate::setEcrNumber(int16_t ecrNumber) {
-            bool result = false;
-
-            if(!m_IsStarted) {
-                result = Utils::checkEcrNumberRange(ecrNumber);
-
-                if(result) {
+        bool Lan4Gate::setEcrNumber(int64_t ecrNumber)
+        {
+            if(!m_IsStarted)
+            {
+                if(Utils::checkEcrNumberRange(ecrNumber))
+                {
                     m_EcrNumber = ecrNumber;
+                    return true;
                 }
             }
 
-            return result;
+            return false;
         }
 
-        int16_t Lan4Gate::getEcrNumber() const {
+        int64_t Lan4Gate::getEcrNumber() const
+        {
             return m_EcrNumber;
         }
 
-        ILan4Gate::Status Lan4Gate::start() {
+        ILan4Gate::Status Lan4Gate::start()
+        {
             if(!m_IsStarted) {
                 m_IsStarted = m_Communication != nullptr;
                 m_IsStarted = m_IsStarted && createParser();
@@ -52,10 +53,12 @@ namespace Lanter {
             return m_IsStarted ? ILan4Gate::Status::Success : ILan4Gate::Status::Error;
         }
 
-        ILan4Gate::Status Lan4Gate::stop() {
+        ILan4Gate::Status Lan4Gate::stop()
+        {
             m_IsStarted = false;
 
-            if(m_MainThread != nullptr) {
+            if(m_MainThread != nullptr)
+            {
                 m_MainThread->join();
                 m_MainThread.reset();
             }
@@ -65,10 +68,10 @@ namespace Lanter {
             return m_IsStarted ? ILan4Gate::Status::Error : ILan4Gate::Status::Success;
         }
 
-        bool Lan4Gate::isStarted() const {
+        bool Lan4Gate::isStarted() const
+        {
             return m_IsStarted;
         }
-
 
         void Lan4Gate::doLan4Gate()
         {
@@ -165,7 +168,8 @@ namespace Lanter {
         size_t Lan4Gate::addRequestCallback(Callback::IRequestCallback &callback)
         {
             size_t id = generateID();
-            while (m_RequestCallbacks.find(id) != m_RequestCallbacks.end()) {
+            while (m_RequestCallbacks.find(id) != m_RequestCallbacks.end())
+            {
                 id = generateID();
             }
 
@@ -174,28 +178,30 @@ namespace Lanter {
             return id;
         }
 
-        bool Lan4Gate::removeRequestCallback(size_t id) {
-            bool result = false;
-
+        bool Lan4Gate::removeRequestCallback(size_t id)
+        {
             auto item = m_RequestCallbacks.find(id);
-            if(item != m_RequestCallbacks.end()) {
-                size_t size = m_RequestCallbacks.size();
-
+            if(item != m_RequestCallbacks.end())
+            {
+                const size_t size = m_RequestCallbacks.size();
                 m_RequestCallbacks.erase(item);
 
-                result = size - m_RequestCallbacks.size() > 0;
+                return ((size - m_RequestCallbacks.size()) > 0);
             }
 
-            return result;
+            return false;
         }
 
-        size_t Lan4Gate::requestCallbacksCount() const {
+        size_t Lan4Gate::requestCallbacksCount() const
+        {
             return m_RequestCallbacks.size();
         }
 
-        size_t Lan4Gate::addResponseCallback(Callback::IResponseCallback &callback) {
+        size_t Lan4Gate::addResponseCallback(Callback::IResponseCallback &callback)
+        {
             size_t id = generateID();
-            while (m_ResponseCallbacks.find(id) != m_ResponseCallbacks.end()) {
+            while (m_ResponseCallbacks.find(id) != m_ResponseCallbacks.end())
+            {
                 id = generateID();
             }
 
@@ -204,22 +210,22 @@ namespace Lanter {
             return id;
         }
 
-        bool Lan4Gate::removeResponseCallback(size_t id) {
-            bool result = false;
-
+        bool Lan4Gate::removeResponseCallback(size_t id)
+        {
             auto item = m_ResponseCallbacks.find(id);
-            if(item != m_ResponseCallbacks.end()) {
-                size_t size = m_ResponseCallbacks.size();
-
+            if(item != m_ResponseCallbacks.end())
+            {
+                const size_t size = m_ResponseCallbacks.size();
                 m_ResponseCallbacks.erase(item);
 
-                result = size - m_ResponseCallbacks.size() > 0;
+                return ((size - m_ResponseCallbacks.size()) > 0);
             }
 
-            return result;
+            return false;
         }
 
-        size_t Lan4Gate::responseCallbacksCount() const {
+        size_t Lan4Gate::responseCallbacksCount() const
+        {
             return m_ResponseCallbacks.size();
         }
 

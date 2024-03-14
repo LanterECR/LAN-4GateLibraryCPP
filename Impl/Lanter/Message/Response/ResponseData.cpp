@@ -52,72 +52,84 @@ namespace Lanter
                 return false;
             }
 
-            int16_t ResponseData::getEcrNumber() const {
+            int64_t ResponseData::getEcrNumber() const
+            {
                 return m_EcrNumber;
             }
 
-            bool ResponseData::setEcrNumber(int16_t ecrNumber) {
-                bool result = false;
-                if (checkEcrNumberRange(ecrNumber)) {
+            bool ResponseData::setEcrNumber(int64_t ecrNumber)
+            {
+                if (checkEcrNumberRange(ecrNumber))
+                {
                     m_EcrNumber = ecrNumber;
                     m_FieldsSet.insert(ResponseField::EcrNumber);
-                    result = true;
+                    return true;
                 }
-                return result;
+                return false;
             }
 
-            int16_t ResponseData::getEcrMerchantNumber() const {
+            int64_t ResponseData::getEcrMerchantNumber() const
+            {
                 return m_EcrMerchantNumber;
             }
 
-            bool ResponseData::setEcrMerchantNumber(int16_t ecrMerchantNumber) {
-                bool result = false;
-                if (checkEcrMerchantNumberRange(ecrMerchantNumber)) {
+            bool ResponseData::setEcrMerchantNumber(int64_t ecrMerchantNumber)
+            {
+                if (checkEcrMerchantNumberRange(ecrMerchantNumber))
+                {
                     m_EcrMerchantNumber = ecrMerchantNumber;
                     m_FieldsSet.insert(ResponseField::EcrMerchantNumber);
-                    result = true;
+                    return true;
                 }
-                return result;
+                return false;
             }
 
-            OperationCode ResponseData::getOperationCode() const {
+            OperationCode ResponseData::getOperationCode() const
+            {
                 return m_OperationCode;
             }
 
-            bool ResponseData::setOperationCode(OperationCode operationCode) {
-                bool result = false;
-                if (checkOperationCodeRange(static_cast<int32_t>(operationCode))) {
-                    if (m_OperationCode != operationCode) {
+            bool ResponseData::setOperationCode(OperationCode operationCode)
+            {
+                if (checkOperationCodeRange(static_cast<int64_t>(operationCode)))
+                {
+                    if (m_OperationCode != operationCode)
+                    {
                         m_OperationCode = operationCode;
                         m_FieldsSet.insert(ResponseField::OperationCode);
                         initValidator();
                     }
-                    result = true;
+                    return true;
                 }
-                return result;
+                return false;
             }
 
-            OperationCode ResponseData::getOriginalOperationCode() const {
+            OperationCode ResponseData::getOriginalOperationCode() const
+            {
                 return m_OriginalOperationCode;
             }
 
-            bool ResponseData::setOriginalOperationCode(OperationCode originalOperationCode) {
-                bool result = false;
-                if (checkOperationCodeRange(static_cast<uint32_t>(originalOperationCode))) {
+            bool ResponseData::setOriginalOperationCode(OperationCode originalOperationCode)
+            {
+                if (checkOperationCodeRange(static_cast<int64_t>(originalOperationCode)))
+                {
                     m_OriginalOperationCode = originalOperationCode;
                     m_FieldsSet.insert(ResponseField::OriginalOperationCode);
-                    result = true;
+                    return true;
                 }
-                return result;
+                return false;
             }
 
-            int64_t ResponseData::getTotalAmount() const {
+            int64_t ResponseData::getTotalAmount() const
+            {
                 return m_TotalAmount;
             }
 
-            bool ResponseData::setTotalAmount(int64_t totalAmount) {
+            bool ResponseData::setTotalAmount(int64_t totalAmount)
+            {
                 bool result = false;
-                if (checkAmountRange(totalAmount)) {
+                if (checkAmountRange(totalAmount))
+                {
                     m_TotalAmount = totalAmount;
                     m_FieldsSet.insert(ResponseField::TotalAmount);
                     result = true;
@@ -209,49 +221,59 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getRRN() const {
+            const std::string &ResponseData::getRRN() const
+            {
                 return m_RRN;
             }
 
-            bool ResponseData::setRRN(const std::string &rrn) {
-                bool result = false;
-                if (checkRRNRange(rrn)) {
+            bool ResponseData::setRRN(const std::string &rrn)
+            {
+                if (checkRRNRange(rrn))
+                {
                     m_RRN = rrn;
                     m_FieldsSet.insert(ResponseField::RRN);
-                    result = true;
+                    return true;
                 }
-                return result;
+
+                return false;
             }
 
-            Status ResponseData::getStatus() const {
+            Status ResponseData::getStatus() const
+            {
                 return m_Status;
             }
 
-            bool ResponseData::setStatus(Status status) {
-                bool result = false;
-                if (checkStatusRange(static_cast<int32_t>(status))) {
+            bool ResponseData::setStatus(Status status)
+            {
+                if (checkStatusRange(static_cast<int64_t>(status)))
+                {
                     m_Status = status;
                     m_FieldsSet.insert(ResponseField::Status);
-                    result = true;
+                    return true;
                 }
-                return result;
+
+                return false;
             }
 
-            Status ResponseData::getOriginalOperationStatus() const {
+            Status ResponseData::getOriginalOperationStatus() const
+            {
                 return m_OriginalOperationStatus;
             }
 
-            bool ResponseData::setOriginalOperationStatus(Status originalOperationStatus) {
-                bool result = false;
-                if (checkStatusRange(static_cast<int32_t>(originalOperationStatus))) {
+            bool ResponseData::setOriginalOperationStatus(Status originalOperationStatus)
+            {
+                if (checkStatusRange(static_cast<int64_t>(originalOperationStatus)))
+                {
                     m_OriginalOperationStatus = originalOperationStatus;
                     m_FieldsSet.insert(ResponseField::OriginalOperationStatus);
-                    result = true;
+                    return true;
                 }
-                return result;
+
+                return false;
             }
 
-            const std::string &ResponseData::getTransDateTime() const {
+            const std::string &ResponseData::getTransDateTime() const
+            {
                 return m_TransDateTime;
             }
 
@@ -307,46 +329,55 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getCardholderName() const {
+            const std::string &ResponseData::getCardholderName() const
+            {
                 return m_CardholderName;
             }
 
-            bool ResponseData::setCardholderName(const std::string &cardholderName) {
-                bool result = false;
-                if (checkCardholderNameRange(cardholderName)) {
+            bool ResponseData::setCardholderName(const std::string &cardholderName)
+            {
+                if (checkCardholderNameRange(cardholderName))
+                {
                     m_CardholderName = cardholderName;
                     m_FieldsSet.insert(ResponseField::CardholderName);
-                    result = true;
+                    result true;
                 }
-                return result;
+
+                return false;
             }
 
-            CardholderAuthMethod ResponseData::getCardholderAuthMethod() const {
+            CardholderAuthMethod ResponseData::getCardholderAuthMethod() const
+            {
                 return m_CardholderAuthMethod;
             }
 
-            bool ResponseData::setCardholderAuthMethod(CardholderAuthMethod cardholderAuthMethod) {
-                bool result = false;
-                if (checkCardholderAuthMethodRange(static_cast<int32_t>(cardholderAuthMethod))) {
+            bool ResponseData::setCardholderAuthMethod(CardholderAuthMethod cardholderAuthMethod)
+            {
+                if (checkCardholderAuthMethodRange(static_cast<int64_t>(cardholderAuthMethod)))
+                {
                     m_CardholderAuthMethod = cardholderAuthMethod;
                     m_FieldsSet.insert(ResponseField::CardholderAuthMethod);
-                    result = true;
+                    return true;
                 }
-                return result;
+
+                return false;
             }
 
-            const std::string &ResponseData::getAuthCode() const {
+            const std::string &ResponseData::getAuthCode() const
+            {
                 return m_AuthCode;
             }
 
-            bool ResponseData::setAuthCode(const std::string &authCode) {
-                bool result = false;
-                if (checkAuthCodeRange(authCode)) {
+            bool ResponseData::setAuthCode(const std::string &authCode)
+            {
+                if (checkAuthCodeRange(authCode))
+                {
                     m_AuthCode = authCode;
                     m_FieldsSet.insert(ResponseField::AuthCode);
-                    result = true;
+                    return true;
                 }
-                return result;
+
+                return false;
             }
 
             const std::string &ResponseData::getResponseCode() const {
@@ -433,49 +464,58 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getCardAppName() const {
+            const std::string &ResponseData::getCardAppName() const
+            {
                 return m_CardAppName;
             }
 
-            bool ResponseData::setCardAppName(const std::string &cardAppName) {
-                bool result = false;
-                if (checkCardAppNameRange(cardAppName)) {
+            bool ResponseData::setCardAppName(const std::string &cardAppName)
+            {
+                if (checkCardAppNameRange(cardAppName))
+                {
                     m_CardAppName = cardAppName;
                     m_FieldsSet.insert(ResponseField::CardAppName);
-                    result = true;
+                    return true;
                 }
-                return result;
+
+                return false;
             }
 
             CardInputMethod ResponseData::getCardInputMethod() const {
                 return m_CardInputMethod;
             }
 
-            bool ResponseData::setCardInputMethod(Response::CardInputMethod cardInputMethod) {
-                bool result = false;
-                if (checkCardInputMethodRange(static_cast<uint32_t>(cardInputMethod))) {
+            bool ResponseData::setCardInputMethod(Response::CardInputMethod cardInputMethod)
+            {
+                if (checkCardInputMethodRange(static_cast<int64_t>(cardInputMethod)))
+                {
                     m_CardInputMethod = cardInputMethod;
                     m_FieldsSet.insert(ResponseField::CardInputMethod);
-                    result = true;
+                    return true;
                 }
-                return result;
+
+                return false;
             }
 
-            const std::string &ResponseData::getIssuerName() const {
+            const std::string &ResponseData::getIssuerName() const
+            {
                 return m_IssuerName;
             }
 
-            bool ResponseData::setIssuerName(const std::string &issuerName) {
-                bool result = false;
-                if (checkIssuerNameRange(issuerName)) {
+            bool ResponseData::setIssuerName(const std::string &issuerName)
+            {
+                if (checkIssuerNameRange(issuerName))
+                {
                     m_IssuerName = issuerName;
                     m_FieldsSet.insert(ResponseField::IssuerName);
-                    result = true;
+                    result true;
                 }
-                return result;
+
+                return false;
             }
 
-            const std::string &ResponseData::getAdditionalInfo() const {
+            const std::string &ResponseData::getAdditionalInfo() const
+            {
                 return m_AdditionalInfo;
             }
 

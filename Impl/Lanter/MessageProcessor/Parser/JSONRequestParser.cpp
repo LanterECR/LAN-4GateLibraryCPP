@@ -1,23 +1,29 @@
 #include "JSONRequestParser.h"
-
 #include "JSONGetFieldHelper.h"
 #include "Lanter/MessageProcessor/JSONFields/JSONRequestFields.h"
 #include "Lanter/Message/Request/RequestDataFactory.h"
 
-namespace Lanter {
-    namespace MessageProcessor {
-        namespace Parser {
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
+        namespace Parser
+        {
             using namespace std::placeholders;
 
-            JSONRequestParser::JSONRequestParser() {
+            JSONRequestParser::JSONRequestParser()
+            {
                 initFunctionsMap();
             }
 
-            std::shared_ptr<IRequestData> JSONRequestParser::parseData(const Json::Value &object) {
+            std::shared_ptr<IRequestData> JSONRequestParser::parseData(const Json::Value &object)
+            {
                 std::shared_ptr<IRequestData> result = RequestDataFactory::getRequestData();
 
-                if (result) {
-                    if (!getFields(object, *result)) {
+                if (result)
+                {
+                    if (!getFields(object, *result))
+                    {
                         result.reset();
                     }
                 }
@@ -25,49 +31,45 @@ namespace Lanter {
             }
 
             const std::map<RequestField, std::function<bool(const Json::Value &, IRequestData &)> > &
-            JSONRequestParser::getFunctions() const {
+            JSONRequestParser::getFunctions() const
+            {
                 return m_ExtractFunctions;
             }
 
-            bool JSONRequestParser::getFieldEcrNumber(const Json::Value &object, IRequestData &requestData) {
-                int ecrNumber;
+            bool JSONRequestParser::getFieldEcrNumber(const Json::Value &object, IRequestData &requestData)
+            {
+                int64_t ecrNumber;
+                const bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getEcrNumber(), ecrNumber);
 
-                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getEcrNumber(), ecrNumber);
-                bool result = exists && requestData.setEcrNumber(ecrNumber);
-
-                return result;
+                return (exists && requestData.setEcrNumber(ecrNumber));
             }
 
-            bool JSONRequestParser::getFieldEcrMerchantNumber(const Json::Value &object, IRequestData &requestData) {
-                int ecrMerchantNumber;
+            bool JSONRequestParser::getFieldEcrMerchantNumber(const Json::Value &object, IRequestData &requestData)
+            {
+                int64_t ecrMerchantNumber;
+                const bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getEcrMerchantNumber(), ecrMerchantNumber);
 
-                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getEcrMerchantNumber(),
-                                                           ecrMerchantNumber);
-                bool result = exists && requestData.setEcrMerchantNumber(ecrMerchantNumber);
-
-                return result;
+                return (exists && requestData.setEcrMerchantNumber(ecrMerchantNumber));
             }
 
-            bool JSONRequestParser::getFieldOperationCode(const Json::Value &object, IRequestData &requestData) {
+            bool JSONRequestParser::getFieldOperationCode(const Json::Value &object, IRequestData &requestData)
+            {
                 int operationCode;
+                const bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getOperationCode(), operationCode);
 
-                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getOperationCode(),
-                                                           operationCode);
-                bool result = exists && requestData.setOperationCode(static_cast<OperationCode>(operationCode));
-
-                return result;
+                return (exists && requestData.setOperationCode(static_cast<OperationCode>(operationCode)));
             }
 
-            bool JSONRequestParser::getFieldAmount(const Json::Value &object, IRequestData &requestData) {
+            bool JSONRequestParser::getFieldAmount(const Json::Value &object, IRequestData &requestData)
+            {
                 int64_t amount;
+                const bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getAmount(), amount);
 
-                bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getAmount(), amount);
-                bool result = exists && requestData.setAmount(amount);
-
-                return result;
+                return (exists && requestData.setAmount(amount));
             }
 
-            bool JSONRequestParser::getFieldPartialAmount(const Json::Value &object, IRequestData &requestData) {
+            bool JSONRequestParser::getFieldPartialAmount(const Json::Value &object, IRequestData &requestData)
+            {
                 int64_t partialAmount;
 
                 bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getPartialAmount(),

@@ -1,17 +1,19 @@
 #ifndef LAN_4GATELIBRARYCPP_INOTIFICATIONDATA_H
 #define LAN_4GATELIBRARYCPP_INOTIFICATIONDATA_H
 
+#include "Lanter/Utils/VisibilityMacroses.h"
+#include "NotificationCode.h"
 #include <string>
 
-#include "Lanter/Utils/VisibilityMacroses.h"
-
-#include "NotificationCode.h"
-
-namespace Lanter {
-    namespace Message {
-        namespace Notification {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Notification
+        {
             /// \brief Базовый класс-контейнер для получения уведомлений от финансового ПО LAN-4Tap
-            class LANTER_VISIBILITY INotificationData {
+            class LANTER_VISIBILITY INotificationData
+            {
             public:
                 virtual ~INotificationData() = default;
 
@@ -58,5 +60,4 @@ namespace Lanter {
         }//namespace Notifications
     }//namespace Message
 }//namespace Lanter
-
 #endif //LAN_4GATELIBRARYCPP_INOTIFICATIONDATA_H

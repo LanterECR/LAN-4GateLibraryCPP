@@ -1,95 +1,111 @@
 #include "RequestData.h"
-
 #include "Validators/ValidatorFactory.h"
 #include "Lanter/Utils/FieldRangeChecker.h"
 
-namespace Lanter {
+namespace Lanter
+{
     using namespace Utils;
 
-    namespace Message {
-        namespace Request {
-
-            RequestData::RequestData() {
+    namespace Message
+    {
+        namespace Request
+        {
+            RequestData::RequestData()
+            {
                 initValidator();
             }//RequestData()
 
-            const std::set<RequestField> &RequestData::getMandatoryFields() const {
-                if (m_Validator) {
+            const std::set<RequestField> &RequestData::getMandatoryFields() const
+            {
+                if (m_Validator)
+                {
                     return m_Validator->getMandatoryFields();
                 }//if validator
 
                 return m_EmptyFieldsPlaceholder;
             }//getMandatoryFields()
 
-            const std::set<RequestField> &RequestData::getOptionalFields() const {
-                if (m_Validator) {
+            const std::set<RequestField> &RequestData::getOptionalFields() const
+            {
+                if (m_Validator)
+                {
                     return m_Validator->getOptionalFields();
                 }//if validator
 
                 return m_EmptyFieldsPlaceholder;
             }//getOptionalFields()
 
-            bool RequestData::validateMandatoryFields() const {
-                if (m_Validator) {
+            bool RequestData::validateMandatoryFields() const
+            {
+                if (m_Validator)
+                {
                     return m_Validator->validate(getFieldsSet());
                 }//if validator
 
                 return false;
             }//validateMandatoryFields()
 
-           int16_t RequestData::getEcrNumber() const {
+            int64_t RequestData::getEcrNumber() const
+           {
                 return m_EcrNumber;
             }//getEcrNumber()
 
-            bool RequestData::setEcrNumber(int16_t ecrNumber) {
-                bool result = false;
-
-                if (checkEcrNumberRange(ecrNumber)) {
+            bool RequestData::setEcrNumber(int64_t ecrNumber)
+            {
+                if (checkEcrNumberRange(ecrNumber))
+                {
                     m_EcrNumber = ecrNumber;
                     m_FieldsSet.insert(RequestField::EcrNumber);
-                    result = true;
+                    return true;
                 }//if check ecrNumber
 
-                return result;
+                return false;
             }//setEcrNumber()
 
-            bool RequestData::resetEcrNumber() {
+            bool RequestData::resetEcrNumber()
+            {
                 m_EcrNumber = -1;
                 m_FieldsSet.erase(RequestField::EcrNumber);
                 return !isFieldSet(RequestField::EcrNumber);
             }//resetEcrNumber()
 
-            int16_t RequestData::getEcrMerchantNumber() const {
+            int64_t RequestData::getEcrMerchantNumber() const
+            {
                 return m_EcrMerchantNumber;
             }//getEcrMerchantNumber()
 
-            bool RequestData::setEcrMerchantNumber(int16_t ecrMerchantNumber) {
-                bool result = false;
-
-                if (checkEcrMerchantNumberRange(ecrMerchantNumber)) {
+            bool RequestData::setEcrMerchantNumber(int64_t ecrMerchantNumber)
+            {
+                if (checkEcrMerchantNumberRange(ecrMerchantNumber))
+                {
                     m_EcrMerchantNumber = ecrMerchantNumber;
                     m_FieldsSet.insert(RequestField::EcrMerchantNumber);
-                    result = true;
+                    return true;
                 }//if ecrMerchantNumber
 
-                return result;
+                return false;
             }//setEcrMerchantNumber()
 
-            bool RequestData::resetEcrMerchantNumber() {
+            bool RequestData::resetEcrMerchantNumber()
+            {
                 m_EcrMerchantNumber = -1;
                 m_FieldsSet.erase(RequestField::EcrMerchantNumber);
                 return !isFieldSet(RequestField::EcrMerchantNumber);
             }//resetEcrMerchantNumber()
 
-            OperationCode RequestData::getOperationCode() const {
+            OperationCode RequestData::getOperationCode() const
+            {
                 return m_OperationCode;
             }//getOperationCode()
 
-            bool RequestData::setOperationCode(OperationCode operationCode) {
+            bool RequestData::setOperationCode(OperationCode operationCode)
+            {
                 bool result = false;
 
-                if (checkOperationCodeRange(static_cast<int32_t>(operationCode))) {
-                    if (m_OperationCode != operationCode) {
+                if (checkOperationCodeRange(static_cast<int64_t>(operationCode)))
+                {
+                    if (m_OperationCode != operationCode)
+                    {
                         m_OperationCode = operationCode;
                         m_FieldsSet.insert(RequestField::OperationCode);
                         initValidator(); //необходима инициализация нового валидатора при смене кода операции
@@ -100,7 +116,8 @@ namespace Lanter {
                 return result;
             }//setOperationCode()
 
-            bool RequestData::resetOperationCode() {
+            bool RequestData::resetOperationCode()
+            {
                 m_OperationCode = OperationCode::NoOperation;
                 m_FieldsSet.erase(RequestField::OperationCode);
                 deinitValidator();//вместе с кодом необходим сброс валидатора
@@ -108,14 +125,17 @@ namespace Lanter {
                 return !isFieldSet(RequestField::OperationCode);
             }//resetOperationCode()
 
-            int64_t RequestData::getAmount() const {
+            int64_t RequestData::getAmount() const
+            {
                 return m_Amount;
             }//getAmount()
 
-            bool RequestData::setAmount(int64_t amount) {
+            bool RequestData::setAmount(int64_t amount)
+            {
                 bool result = false;
 
-                if (checkAmountRange(amount)) {
+                if (checkAmountRange(amount))
+                {
                     m_Amount = amount;
                     m_FieldsSet.insert(RequestField::Amount);
                     result = true;
