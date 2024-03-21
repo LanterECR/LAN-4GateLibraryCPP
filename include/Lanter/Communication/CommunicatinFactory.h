@@ -5,13 +5,15 @@
 #include <string>
 
 #include "Lanter/Utils/VisibilityMacroses.h"
-
 #include "ICommunication.h"
 
-namespace Lanter {
-    namespace Communication {
+namespace Lanter
+{
+    namespace Communication
+    {
         /// \brief Фабричный класс для создания экземпляров соединения
-        class LANTER_VISIBILITY CommunicationFactory {
+        class LANTER_VISIBILITY CommunicationFactory
+        {
         public:
             /// \brief Создает экземпляр TCP сервера, который обслуживает единственное соединение
             /// \param[in] port Порт, который будет слушать сервер

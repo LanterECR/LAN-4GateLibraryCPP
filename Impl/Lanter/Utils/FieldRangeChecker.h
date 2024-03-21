@@ -68,6 +68,7 @@ namespace Lanter
 
         bool checkNotificationsRange(int64_t notification);
         bool checkInteractionsRange(int64_t interaction);
+        bool checkReceiptRange(int64_t interaction);
     }
 }
 #endif //LAN_4GATELIBRARYCPP_FIELDRANGECHECKER_H

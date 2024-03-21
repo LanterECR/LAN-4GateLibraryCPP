@@ -3,8 +3,10 @@
 
 #include <string>
 
-namespace Lanter {
-    namespace MessageProcessor {
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
         class JSONRootFields
         {
         public:
@@ -13,6 +15,4 @@ namespace Lanter {
         };
     }
 }
-
-
 #endif //LAN_4GATELIB_JSONROOTFIELDS_H

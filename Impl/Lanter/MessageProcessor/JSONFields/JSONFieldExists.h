@@ -3,10 +3,11 @@
 
 #include "json/json.h"
 
-namespace Lanter {
-    namespace MessageProcessor {
-        bool fieldExists(const Json::Value & object, const std::string & fieldName);
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
+        bool fieldExists(const Json::Value& object, const std::string& fieldName);
     }
 }
-
 #endif //LAN_4GATELIBRARYCPP_JSONFIELDEXISTS_H

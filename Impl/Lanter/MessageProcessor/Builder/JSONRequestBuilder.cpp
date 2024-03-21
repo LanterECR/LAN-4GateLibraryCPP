@@ -2,35 +2,44 @@
 
 #include "Lanter/MessageProcessor/JSONFields/JSONFieldExists.h"
 #include "Lanter/MessageProcessor/JSONFields/JSONRequestFields.h"
-
 #include "Lanter/MessageProcessor/Builder/JSONAddFieldHelper.h"
 
 using namespace std::placeholders;
-namespace Lanter {
-    namespace MessageProcessor {
-        namespace Builder {
-            JSONRequestBuilder::JSONRequestBuilder() {
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
+        namespace Builder
+        {
+            JSONRequestBuilder::JSONRequestBuilder()
+            {
                 initFunctionsMap();
             }
 
-            bool JSONRequestBuilder::createObject(const IRequestData &requestData, Json::Value &object) {
+            bool JSONRequestBuilder::createObject(const IRequestData &requestData, Json::Value &object)
+            {
                 return addFields(requestData, object);
             }
 
             const std::map<RequestField, std::function<bool(const IRequestData &, Json::Value &)>> &
-            JSONRequestBuilder::getFunctions() const {
+            JSONRequestBuilder::getFunctions() const
+            {
                 return m_InsertFunctions;
             }
 
-            bool JSONRequestBuilder::addFieldEcrNumber(const IRequestData &requestData, Json::Value &object) {
-                if (requestData.isFieldSet(RequestField::EcrNumber)) {
+            bool JSONRequestBuilder::addFieldEcrNumber(const IRequestData &requestData, Json::Value &object)
+            {
+                if (requestData.isFieldSet(RequestField::EcrNumber))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getEcrNumber(), requestData.getEcrNumber());
                 }
                 return fieldExists(object, JSONRequestFields::getEcrNumber());
             }
 
-            bool JSONRequestBuilder::addFieldEcrMerchantNumber(const IRequestData &requestData, Json::Value &object) {
-                if (requestData.isFieldSet(RequestField::EcrMerchantNumber)) {
+            bool JSONRequestBuilder::addFieldEcrMerchantNumber(const IRequestData &requestData, Json::Value &object)
+            {
+                if (requestData.isFieldSet(RequestField::EcrMerchantNumber))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getEcrMerchantNumber(),
                                               requestData.getEcrMerchantNumber());
                 }

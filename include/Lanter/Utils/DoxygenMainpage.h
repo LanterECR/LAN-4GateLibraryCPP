@@ -9,12 +9,12 @@
 /// Lanter::Utils::Version - Класс для получения версии библиотеки \n
 
 /// \brief Главное пространство имен. Содержит весь код библиотеки
-namespace Lanter {
-
+namespace Lanter
+{
     /// \brief Пространство имен сообщений.
     /// \details Содержит пространства имен конкретных сообщений и перечисление с кодами операций Message::OperationCode
-    namespace Message {
-
+    namespace Message
+    {
         /// \brief Пространство имен уведомлений от финансового ПО LAN-4Tap.
         /// \details Содержит контейнер INotificationData, его фабрику NotificationDataFactory и перечисление с кодами
         /// уведомлений Notification::NotificationCode
@@ -25,10 +25,16 @@ namespace Lanter {
         /// уведомлений Interaction::InteractionCode
         namespace Interaction { }
 
+        /// \brief Пространство имен уведомлений от финансового ПО LAN-4Tap.
+        /// \details Содержит контейнер IReceiptData, его фабрику ReceiptDataFactory и перечисление с кодами
+        /// уведомлений Receipt::ReceiptCode
+        namespace Receipt {}
+
         /// \brief Пространство имен запросов к финансовому ПО LAN-4Tap.
         /// \details Содержит контейнер IRequestData, его фабрику RequestDataFactory и перечисление с
         /// доступными полями запроса Request::RequestField
         namespace Request { }
+
         /// \brief Пространство имен ответов от финансового ПО LAN-4Tap.
         /// \details Содержит контейнер IResponseData, его фабрику ResponseDataFactory и следующие перечисления:\n
         /// Response::ResponseField - доступные поля ответа;\n
@@ -39,7 +45,8 @@ namespace Lanter {
     }
 
     /// \brief Пространство имен процессора сообщений
-    namespace MessageProcessor {
+    namespace MessageProcessor
+    {
         /// \brief Пространство имен сборщика сообщений.
         /// \details Содержит интерфейс IMessageBuilder и его фабрику MessageBuilderFactory
         namespace Builder { }

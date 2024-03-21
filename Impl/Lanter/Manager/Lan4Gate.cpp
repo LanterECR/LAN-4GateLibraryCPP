@@ -8,6 +8,7 @@
 #include "Lanter/Message/Response/ResponseDataFactory.h"
 #include "Lanter/Message/Notification/NotificationDataFactory.h"
 #include "Lanter/Message/Interaction/InteractionDataFactory.h"
+#include "Lanter/Message/Receipt/ReceiptDataFactory.h"
 #include "Lanter/MessageProcessor/Parser/MessageParserFactory.h"
 #include "Lanter/MessageProcessor/Builder/MessageBuilderFactory.h"
 #include "Lanter/Manager/Lan4GateLogger.h"
@@ -229,9 +230,11 @@ namespace Lanter
             return m_ResponseCallbacks.size();
         }
 
-        size_t Lan4Gate::addNotificationCallback(Callback::INotificationCallback &callback) {
+        size_t Lan4Gate::addNotificationCallback(Callback::INotificationCallback &callback)
+        {
             size_t id = generateID();
-            while (m_NotificationCallbacks.find(id) != m_NotificationCallbacks.end()) {
+            while (m_NotificationCallbacks.find(id) != m_NotificationCallbacks.end())
+            {
                 id = generateID();
             }
 
@@ -240,28 +243,30 @@ namespace Lanter
             return id;
         }
 
-        bool Lan4Gate::removeNotificationCallback(size_t id) {
-            bool result = false;
-
+        bool Lan4Gate::removeNotificationCallback(const size_t& id)
+        {
             auto item = m_NotificationCallbacks.find(id);
-            if(item != m_NotificationCallbacks.end()) {
-                size_t size = m_NotificationCallbacks.size();
-
+            if(item != m_NotificationCallbacks.end())
+            {
+                const size_t size = m_NotificationCallbacks.size();
                 m_NotificationCallbacks.erase(item);
 
-                result = size - m_NotificationCallbacks.size() > 0;
+                return (size - m_NotificationCallbacks.size() > 0);
             }
 
-            return result;
+            return false;
         }
 
-        size_t Lan4Gate::notificationCallbacksCount() const {
+        size_t Lan4Gate::notificationCallbacksCount() const
+        {
             return m_NotificationCallbacks.size();
         }
 
-        size_t Lan4Gate::addInteractionCallback(Callback::IInteractionCallback &callback) {
+        size_t Lan4Gate::addInteractionCallback(Callback::IInteractionCallback &callback)
+        {
             size_t id = generateID();
-            while (m_InteractionCallbacks.find(id) != m_InteractionCallbacks.end()) {
+            while (m_InteractionCallbacks.find(id) != m_InteractionCallbacks.end())
+            {
                 id = generateID();
             }
 
@@ -270,28 +275,62 @@ namespace Lanter
             return id;
         }
 
-        bool Lan4Gate::removeInteractionCallback(size_t id) {
-            bool result = false;
-
+        bool Lan4Gate::removeInteractionCallback(const size_t& id)
+        {
             auto item = m_InteractionCallbacks.find(id);
-            if(item != m_InteractionCallbacks.end()) {
-                size_t size = m_InteractionCallbacks.size();
-
+            if(item != m_InteractionCallbacks.end())
+            {
+                const size_t size = m_InteractionCallbacks.size();
                 m_InteractionCallbacks.erase(item);
 
-                result = size - m_InteractionCallbacks.size() > 0;
+                return (size - m_InteractionCallbacks.size() > 0);
             }
 
-            return result;
+            return false;
         }
 
-        size_t Lan4Gate::interactionCallbacksCount() const {
+        size_t Lan4Gate::interactionCallbacksCount() const
+        {
             return m_InteractionCallbacks.size();
         }
 
-        size_t Lan4Gate::addConnectionCallback(Callback::IConnectionCallback &callback) {
+        size_t Lan4Gate::addReceiptCallback(Callback::IReceiptCallback& callback)
+        {
             size_t id = generateID();
-            while (m_ConnectionCallbacks.find(id) != m_ConnectionCallbacks.end()) {
+            while (m_ReceiptCallbacks.find(id) != m_ReceiptCallbacks.end())
+            {
+                id = generateID();
+            }
+
+            m_ReceiptCallbacks.emplace(id, callback);
+
+            return id;
+        }
+
+        bool Lan4Gate::removeReceiptCallback(const size_t& id)
+        {
+            auto item = m_ReceiptCallbacks.find(id);
+            if (item != m_ReceiptCallbacks.end())
+            {
+                const size_t size = m_ReceiptCallbacks.size();
+                m_ReceiptCallbacks.erase(item);
+
+                return (size - m_ReceiptCallbacks.size() > 0);
+            }
+
+            return false;
+        }
+
+        size_t Lan4Gate::receiptCallbacksCount() const
+        {
+            return m_ReceiptCallbacks.size();
+        }
+
+        size_t Lan4Gate::addConnectionCallback(Callback::IConnectionCallback &callback)
+        {
+            size_t id = generateID();
+            while (m_ConnectionCallbacks.find(id) != m_ConnectionCallbacks.end())
+            {
                 id = generateID();
             }
 
@@ -300,11 +339,13 @@ namespace Lanter
             return id;
         }
 
-        bool Lan4Gate::removeConnectionCallback(size_t id) {
+        bool Lan4Gate::removeConnectionCallback(size_t id)
+        {
             bool result = false;
 
             auto item = m_ConnectionCallbacks.find(id);
-            if(item != m_ConnectionCallbacks.end()) {
+            if(item != m_ConnectionCallbacks.end())
+            {
                 size_t size = m_ConnectionCallbacks.size();
 
                 m_ConnectionCallbacks.erase(item);
@@ -335,16 +376,19 @@ namespace Lanter
             return Message::Notification::NotificationDataFactory::getNotificationData(notificationCode);
         }
 
-        std::shared_ptr<Message::Interaction::IInteractionData>
-        Lan4Gate::getPreparedInteraction(Message::Interaction::InteractionCode interactionCode)
+        std::shared_ptr<Message::Interaction::IInteractionData> Lan4Gate::getPreparedInteraction(Message::Interaction::InteractionCode interactionCode)
         {
             return Message::Interaction::InteractionDataFactory::getInteractionData(interactionCode);
+        }
+
+        std::shared_ptr<Message::Receipt::IReceiptData> Lan4Gate::getPreparedReceipt(Message::Receipt::ReceiptCode receiptCode)
+        {
+            return Message::Receipt::ReceiptDataFactory::getReceiptData(receiptCode);
         }
 
         //TODO оптимизировать блокировки очереди
         bool Lan4Gate::sendMessage(std::shared_ptr<Message::Request::IRequestData> request)
         {
-            bool result = false;
             try
             {
                 if(m_MessageBuilder != nullptr)
@@ -353,7 +397,7 @@ namespace Lanter
 
                     if (m_MessageBuilder->createMessage(request, message))
                     {
-                        result = pushToQueue(message);
+                        return pushToQueue(message);
                     }
                 }
             }
@@ -361,12 +405,11 @@ namespace Lanter
             {
                 throw;
             }
-            return result;
+            return false;
         }
 
         bool Lan4Gate::sendMessage(std::shared_ptr<Message::Response::IResponseData> response)
         {
-            bool result = false;
             try
             {
                 if(m_MessageBuilder != nullptr)
@@ -375,7 +418,7 @@ namespace Lanter
 
                     if (m_MessageBuilder->createMessage(response, message))
                     {
-                        result = pushToQueue(message);
+                        return pushToQueue(message);
                     }
                 }
             }
@@ -383,12 +426,11 @@ namespace Lanter
             {
                 throw;
             }
-            return result;
+            return false;
         }
 
         bool Lan4Gate::sendMessage(std::shared_ptr<Message::Notification::INotificationData> notification)
         {
-            bool result = false;
             try
             {
                 if(m_MessageBuilder != nullptr)
@@ -397,7 +439,7 @@ namespace Lanter
 
                     if (m_MessageBuilder->createMessage(notification, message))
                     {
-                        result = pushToQueue(message);
+                        return pushToQueue(message);
                     }
                 }
             }
@@ -405,12 +447,11 @@ namespace Lanter
             {
                 throw;
             }
-            return result;
+            return false;
         }
 
         bool Lan4Gate::sendMessage(std::shared_ptr<Message::Interaction::IInteractionData> interaction)
         {
-            bool result = false;
             try
             {
                 if(m_MessageBuilder != nullptr)
@@ -419,7 +460,7 @@ namespace Lanter
 
                     if (m_MessageBuilder->createMessage(interaction, message))
                     {
-                        result = pushToQueue(message);
+                        return pushToQueue(message);
                     }
                 }
             }
@@ -427,7 +468,28 @@ namespace Lanter
             {
                 throw;
             }
-            return result;
+            return false;
+        }
+
+        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Receipt::IReceiptData> receipt)
+        {
+            try
+            {
+                if (m_MessageBuilder != nullptr)
+                {
+                    std::vector<uint8_t> message;
+
+                    if (m_MessageBuilder->createMessage(receipt, message))
+                    {
+                        return pushToQueue(message);
+                    }
+                }
+            }
+            catch (const std::exception&)
+            {
+                throw;
+            }
+            return false;
         }
 
         bool Lan4Gate::pushToQueue(const std::vector<uint8_t> &data)
@@ -436,10 +498,8 @@ namespace Lanter
             {
                 std::lock_guard<std::mutex> lock(m_QueueMutex);
 
-                auto size = m_MessageQueue.size();
-
+                const auto size = m_MessageQueue.size();
                 m_MessageQueue.push(data);
-
                 //Для определения, что сообщение добавлено в очередь
                 return m_MessageQueue.size() - size;
             }
@@ -487,13 +547,9 @@ namespace Lanter
 
         size_t Lan4Gate::generateID()
         {
-            size_t min = 1;
-            size_t max = SIZE_MAX;
-
             std::random_device rd;
             std::mt19937 gen(rd());
-
-            std::uniform_int_distribution<size_t> distrib(min, max);
+            std::uniform_int_distribution<size_t> distrib((size_t)1, (size_t)SIZE_MAX);
 
             return distrib(gen);
         }
@@ -573,6 +629,7 @@ namespace Lanter
                     this->notifyResponse();
                     this->notifyNotification();
                     this->notifyInteraction();
+                    this->notifyReceipt();
                 };
 
                 if(m_CallbackNotificationType == CallbackNotificationType::Async)
@@ -623,7 +680,6 @@ namespace Lanter
                 if(m_MessageParser->responseCount() > 0)
                 {
                     auto response = m_MessageParser->nextResponseData();
-
                     if (response)
                     {
                         for (const auto &callback: m_ResponseCallbacks)
@@ -646,7 +702,6 @@ namespace Lanter
                 if(m_MessageParser->notificationCount() > 0)
                 {
                     auto notification = m_MessageParser->nextNotificationData();
-
                     if (notification)
                     {
                         for (const auto &callback: m_NotificationCallbacks)
@@ -669,12 +724,33 @@ namespace Lanter
                 if(m_MessageParser->interactionCount() > 0)
                 {
                     auto interaction = m_MessageParser->nextInteractionData();
-
                     if (interaction)
                     {
                         for (const auto &callback: m_InteractionCallbacks)
                         {
                             callback.second.newData(interaction);
+                        }
+                    }
+                }
+            }
+            catch (const std::exception& e)
+            {
+                throw;
+            }
+        }
+
+        void Lan4Gate::notifyReceipt()
+        {
+            try
+            {
+                if (m_MessageParser->receiptCount() > 0)
+                {
+                    auto receipt = m_MessageParser->nextReceiptData();
+                    if (receipt)
+                    {
+                        for (const auto& callback : m_ReceiptCallbacks)
+                        {
+                            callback.second.newData(receipt);
                         }
                     }
                 }

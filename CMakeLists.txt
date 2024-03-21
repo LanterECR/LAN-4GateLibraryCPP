@@ -146,6 +146,8 @@ message("LANTER_BUILD_SHARED=${LANTER_BUILD_SHARED}")
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/IConnectionCallback.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/IInteractionCallback.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/IInteractionData.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/IReceiptCallback.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/IReceiptData.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/ILan4Gate.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/INotificationCallback.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/INotificationData.java
@@ -154,6 +156,7 @@ message("LANTER_BUILD_SHARED=${LANTER_BUILD_SHARED}")
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/IResponseCallback.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/IResponseData.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/InteractionCode.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/ReceiptCode.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4Gate.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4GateFactory.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/Lan4GateJNI.java
@@ -162,6 +165,7 @@ message("LANTER_BUILD_SHARED=${LANTER_BUILD_SHARED}")
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/RequestField.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/RequestFieldsArray.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/ResponseArray.java
+                ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/ReceiptArray.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/ResponseField.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/ResponseFieldsArray.java
                 ${CMAKE_CURRENT_BINARY_DIR}/java/org/lanter/lan4gate/SWIGTYPE_p_p_char.java
@@ -267,4 +271,3 @@ else()
             )
     install(FILES "${PROJECT_BINARY_DIR}/LAN_4GateLibConfigVersion.cmake" DESTINATION share/LAN_4GateLib/cmake)
 endif()
-

@@ -5,21 +5,24 @@
 #include <memory>
 
 #include "MessageType.h"
-
 #include "Lanter/Message/Request/IRequestData.h"
 #include "Lanter/Message/Response/IResponseData.h"
 #include "Lanter/Message/Notification/INotificationData.h"
 #include "Lanter/Message/Interaction/IInteractionData.h"
-
+#include "Lanter/Message/Receipt/IReceiptData.h"
 #include "Lanter/Utils/VisibilityMacroses.h"
 
-namespace Lanter {
-    namespace MessageProcessor {
-        namespace Parser {
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
+        namespace Parser
+        {
             /// \brief Парсер сообщений.
             /// \details Если сообщение корректно, парсер помещает его в одну из внутренних очередей, а метод parseMessage
             /// возвращает тип полученного сообщения. Для получения сообщения необходимо вызвать
-            class LANTER_VISIBILITY IMessageParser {
+            class LANTER_VISIBILITY IMessageParser
+            {
             public:
                 /// \brief Разбирает полученное сообщение и возвращает тип
                 /// \param data Сообщение для разбора
@@ -58,6 +61,14 @@ namespace Lanter {
                 /// Сообщает о количестве команд взаимодействия в очереди
                 /// \return 0, если очередь пуста
                 virtual size_t interactionCount() const = 0;
+
+                /// \brief Возвращает экземпляр IReceiptData, хранящийся в очереди
+                /// \return nullptr, если очередь пуста
+                virtual std::shared_ptr<Message::Receipt::IReceiptData> nextReceiptData() = 0;
+
+                /// Сообщает о количестве команд взаимодействия в очереди
+                /// \return 0, если очередь пуста
+                virtual size_t receiptCount() const = 0;
             };//class IMessageParser
         }//namespace Parser
     }//namespace MessageProcessor

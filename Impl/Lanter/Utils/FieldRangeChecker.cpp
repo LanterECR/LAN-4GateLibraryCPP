@@ -9,6 +9,7 @@
 #include "Lanter/Message/Response/Status.h"
 #include "Lanter/Message/Notification/NotificationCode.h"
 #include "Lanter/Message/Interaction/InteractionCode.h"
+#include "Lanter/Message/Receipt/ReceiptCode.h"
 
 #include "Constants.h"
 
@@ -280,6 +281,13 @@ namespace Lanter
             return checkValueRange(interaction,
                                    static_cast<int64_t>(Interaction::getFirstInteractionCode()),
                                    static_cast<int64_t>(Interaction::getLastInteractionCode()));
+        }
+
+        bool checkReceiptRange(int64_t receipt)
+        {
+            return checkValueRange(receipt,
+                static_cast<int64_t>(Receipt::getFirstReceiptCode()),
+                static_cast<int64_t>(Receipt::getLastReceiptCode()));
         }
 
         bool checkSBP_RN(const std::string& SBP_RN)

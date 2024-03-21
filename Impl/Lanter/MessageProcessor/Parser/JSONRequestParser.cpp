@@ -321,7 +321,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONRequestParser::getFieldBasketID(const Json::Value &object, IRequestData &requestData) {
+			bool JSONRequestParser::getFieldBasketID(const Json::Value &object, IRequestData &requestData)
+            {
 				std::string val;
 
 				bool exists = JSONGetFieldHelper::getField(object, JSONRequestFields::getBasketID(), val);
@@ -330,8 +331,8 @@ namespace Lanter
 				return result;
 			}
 
-            void JSONRequestParser::initFunctionsMap() {
-
+            void JSONRequestParser::initFunctionsMap()
+            {
                 m_ExtractFunctions[RequestField::EcrNumber] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldEcrNumber(object, requestData); };
                 m_ExtractFunctions[RequestField::EcrMerchantNumber] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldEcrMerchantNumber(object, requestData); };
                 m_ExtractFunctions[RequestField::OperationCode] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldOperationCode(object, requestData); };
@@ -371,14 +372,18 @@ namespace Lanter
 				m_ExtractFunctions[RequestField::BasketID] = [this](const Json::Value &object, IRequestData &requestData) { return getFieldBasketID(object, requestData); };
 			}
 
-            bool JSONRequestParser::getFields(const Json::Value &object, IRequestData &requestData) {
-                if (getFieldOperationCode(object, requestData)) {
-                    for (auto field : requestData.getMandatoryFields()) {
+            bool JSONRequestParser::getFields(const Json::Value &object, IRequestData &requestData)
+            {
+                if (getFieldOperationCode(object, requestData))
+                {
+                    for (auto field : requestData.getMandatoryFields())
+                    {
                         auto function = m_ExtractFunctions.at(field);
                         function(object, requestData);
                     }
 
-                    for (auto field : requestData.getOptionalFields()) {
+                    for (auto field : requestData.getOptionalFields())
+                    {
                         auto function = m_ExtractFunctions.at(field);
                         function(object, requestData);
                     }

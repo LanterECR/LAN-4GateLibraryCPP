@@ -6,6 +6,7 @@
 #include "JSONResponseBuilder.h"
 #include "JSONNotificationBuilder.h"
 #include "JSONInteractionBuilder.h"
+#include "JSONReceiptBuilder.h"
 #include "Lanter/Utils/StringTrimmer.h"
 #include "Lanter/Utils/StringConverter.h"
 
@@ -30,7 +31,6 @@ namespace Lanter
 
             bool JSONMessageBuilder::createMessage(std::shared_ptr<IRequestData> data, std::vector<uint8_t> &resultData)
             {
-                bool result = false;
                 if(data != nullptr)
                 {
                     resultData.clear();
@@ -44,7 +44,7 @@ namespace Lanter
                         if (requestBuilder.createObject(*data, object))
                         {
                             root[JSONRootFields::getObjectField()] = object;
-                            result = createVector(root, resultData);
+                            return createVector(root, resultData);
                         }
                     }
                     catch (const std::exception &)
@@ -53,12 +53,11 @@ namespace Lanter
                         ///result = false;
                     }
                 }
-                return result;
+                return false;
             }
 
             bool JSONMessageBuilder::createMessage(std::shared_ptr<IResponseData> data, std::vector<uint8_t> &resultData)
             {
-                bool result = false;
                 if(data != nullptr)
                 {
                     resultData.clear();
@@ -72,7 +71,7 @@ namespace Lanter
                         if (responseBuilder.createObject(*data, object))
                         {
                             root[JSONRootFields::getObjectField()] = object;
-                            result = createVector(root, resultData);
+                            return createVector(root, resultData);
                         }
                     }
                     catch (const std::exception &)
@@ -81,12 +80,11 @@ namespace Lanter
                         ///result = false;
                     }
                 }
-                return result;
+                return false;
             }
 
             bool JSONMessageBuilder::createMessage(std::shared_ptr<INotificationData> data, std::vector<uint8_t> &resultData)
             {
-                bool result = false;
                 if(data != nullptr)
                 {
                     resultData.clear();
@@ -100,7 +98,7 @@ namespace Lanter
                         if (notificationBuilder.createObject(*data, object))
                         {
                             root[JSONRootFields::getObjectField()] = object;
-                            result = createVector(root, resultData);
+                            return createVector(root, resultData);
                         }
                     }
                     catch (const std::exception &)
@@ -109,12 +107,11 @@ namespace Lanter
                         ///result = false;
                     }
                 }
-                return result;
+                return false;
             }
 
             bool JSONMessageBuilder::createMessage(std::shared_ptr<IInteractionData> data, std::vector<uint8_t> &resultData)
             {
-                bool result = false;
                 if(data != nullptr)
                 {
                     resultData.clear();
@@ -128,7 +125,7 @@ namespace Lanter
                         if (interactionBuilder.createObject(*data, object))
                         {
                             root[JSONRootFields::getObjectField()] = object;
-                            result = createVector(root, resultData);
+                            return createVector(root, resultData);
                         }
                     }
                     catch (std::exception &)
@@ -137,8 +134,35 @@ namespace Lanter
                         ///result = false;
                     }
                 }
-                return result;
+                return false;
             }
+
+            bool JSONMessageBuilder::createMessage(std::shared_ptr<IReceiptData> data, std::vector<uint8_t>& resultData)
+            {
+                if (data != nullptr)
+                {
+                    resultData.clear();
+                    try
+                    {
+                        Json::Value root;
+                        root[JSONRootFields::getClassField()] = JSONClassFieldValues::getReceiptValue();
+
+                        Json::Value object;
+                        JSONReceiptBuilder receiptBuilder;
+                        if (receiptBuilder.createObject(*data, object))
+                        {
+                            root[JSONRootFields::getObjectField()] = object;
+                            return createVector(root, resultData);
+                        }
+                    }
+                    catch (std::exception&)
+                    {
+                        throw;
+                        ///result = false;
+                    }
+                }
+                return false;
+            }// bool JSONMessageBuilder::createMessage
         }
     }
 }

@@ -1,111 +1,128 @@
 #include "JSONResponseBuilder.h"
-
 #include "JSONAddFieldHelper.h"
 
 #include "Lanter/MessageProcessor/JSONFields/JSONResponseFields.h"
-
 #include "Lanter/MessageProcessor/JSONFields/JSONFieldExists.h"
-namespace Lanter {
-    namespace MessageProcessor {
-        namespace Builder {
+
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
+        namespace Builder
+        {
             using namespace std::placeholders;
 
-            JSONResponseBuilder::JSONResponseBuilder() {
+            JSONResponseBuilder::JSONResponseBuilder()
+            {
                 initFunctionsMap();
             }
 
-            bool JSONResponseBuilder::createObject(const IResponseData &responseData, Json::Value &object) {
+            bool JSONResponseBuilder::createObject(const IResponseData &responseData, Json::Value &object)
+            {
                 bool result = false;
-                try {
+                try
+                {
                     result = addFields(responseData, object);
-                } catch (std::exception &) {}
+                }
+                catch (std::exception &)
+                {
+                }
+
                 return result;
             }
 
             const std::map<ResponseField, std::function<bool(const IResponseData &, Json::Value &)>> &
-            JSONResponseBuilder::getFunctions() const {
+            JSONResponseBuilder::getFunctions() const
+            {
                 return m_InsertFunctions;
             }
 
-            bool JSONResponseBuilder::addFieldEcrNumber(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::EcrNumber)) {
+            bool JSONResponseBuilder::addFieldEcrNumber(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::EcrNumber))
+                {
                     AddFieldsHelper::addField(object, JSONResponseFields::getEcrNumber(), responseData.getEcrNumber());
                 }
                 return fieldExists(object, JSONResponseFields::getEcrNumber());
             }
 
-            bool
-            JSONResponseBuilder::addFieldEcrMerchantNumber(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::EcrMerchantNumber)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getEcrMerchantNumber(),
-                                              responseData.getEcrMerchantNumber());
+            bool JSONResponseBuilder::addFieldEcrMerchantNumber(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::EcrMerchantNumber))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getEcrMerchantNumber(), responseData.getEcrMerchantNumber());
                 }
                 return fieldExists(object, JSONResponseFields::getEcrMerchantNumber());
             }
 
-            bool JSONResponseBuilder::addFieldOperationCode(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::OperationCode)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getOperationCode(),
-                                              static_cast<int>(responseData.getOperationCode()));
+            bool JSONResponseBuilder::addFieldOperationCode(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::OperationCode))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getOperationCode(), static_cast<int>(responseData.getOperationCode()));
                 }
                 return fieldExists(object, JSONResponseFields::getOperationCode());
             }
 
-            bool
-            JSONResponseBuilder::addFieldOriginalOperationCode(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::OriginalOperationCode)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationCode(),
-                                              static_cast<int>(responseData.getOriginalOperationCode()));
+            bool JSONResponseBuilder::addFieldOriginalOperationCode(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::OriginalOperationCode))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationCode(), static_cast<int>(responseData.getOriginalOperationCode()));
                 }
                 return fieldExists(object, JSONResponseFields::getOriginalOperationCode());
             }
 
-            bool JSONResponseBuilder::addFieldTotalAmount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::TotalAmount)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getTotalAmount(),
-                                              responseData.getTotalAmount());
+            bool JSONResponseBuilder::addFieldTotalAmount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::TotalAmount))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getTotalAmount(), responseData.getTotalAmount());
                 }
                 return fieldExists(object, JSONResponseFields::getTotalAmount());
             }
 
-            bool JSONResponseBuilder::addFieldPartialAmount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::PartialAmount)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getPartialAmount(),
-                                              responseData.getPartialAmount());
+            bool JSONResponseBuilder::addFieldPartialAmount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::PartialAmount))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getPartialAmount(), responseData.getPartialAmount());
                 }
                 return fieldExists(object, JSONResponseFields::getPartialAmount());
             }
 
-            bool
-            JSONResponseBuilder::addFieldAcquirerFeeAmount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::AcquirerFeeAmount)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getAcquirerFeeAmount(),
-                                              responseData.getAcquirerFeeAmount());
+            bool JSONResponseBuilder::addFieldAcquirerFeeAmount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::AcquirerFeeAmount))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getAcquirerFeeAmount(), responseData.getAcquirerFeeAmount());
                 }
                 return fieldExists(object, JSONResponseFields::getAcquirerFeeAmount());
             }
 
-            bool
-            JSONResponseBuilder::addFieldTerminalFeeAmount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::TerminalFeeAmount)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getTerminalFeeAmount(),
-                                              responseData.getTerminalFeeAmount());
+            bool JSONResponseBuilder::addFieldTerminalFeeAmount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::TerminalFeeAmount))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getTerminalFeeAmount(), responseData.getTerminalFeeAmount());
                 }
                 return fieldExists(object, JSONResponseFields::getTerminalFeeAmount());
             }
 
-            bool JSONResponseBuilder::addFieldTipsAmount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::TipsAmount)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getTipsAmount(),
-                                              responseData.getTipsAmount());
+            bool JSONResponseBuilder::addFieldTipsAmount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::TipsAmount))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getTipsAmount(), responseData.getTipsAmount());
                 }
                 return fieldExists(object, JSONResponseFields::getTipsAmount());
             }
 
-            bool JSONResponseBuilder::addFieldCurrencyCode(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::CurrencyCode)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getCurrencyCode(),
-                                              responseData.getCurrencyCode());
+            bool JSONResponseBuilder::addFieldCurrencyCode(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::CurrencyCode))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getCurrencyCode(), responseData.getCurrencyCode());
                 }
                 return fieldExists(object, JSONResponseFields::getCurrencyCode());
             }

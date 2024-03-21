@@ -60,25 +60,31 @@ namespace Lanter
 
             size_t addNotificationCallback(Callback::INotificationCallback &callback) override;
 
-            bool removeNotificationCallback(size_t id) override;
+            bool removeNotificationCallback(const size_t& id) override;
 
             size_t notificationCallbacksCount() const override;
 
-            size_t addInteractionCallback(
-                    Callback::IInteractionCallback &callback) override;
+            size_t addInteractionCallback(Callback::IInteractionCallback& callback) override;
 
-            bool removeInteractionCallback(size_t id) override;
+            bool removeInteractionCallback(const size_t& id) override;
 
             size_t interactionCallbacksCount() const override;
+
+            size_t addReceiptCallback(Callback::IReceiptCallback& callback) override;
+
+            bool removeReceiptCallback(const size_t& id) override;
+
+            size_t receiptCallbacksCount() const override;
 
             std::shared_ptr<Message::Request::IRequestData> getPreparedRequest(Message::OperationCode operationCode) override;
 
             std::shared_ptr<Message::Response::IResponseData> getPreparedResponse(Message::OperationCode operationCode) override;
 
-            std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode ) override;
+            std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode) override;
 
-            std::shared_ptr<Message::Interaction::IInteractionData>
-            getPreparedInteraction(Message::Interaction::InteractionCode interactionCode) override;
+            std::shared_ptr<Message::Interaction::IInteractionData> getPreparedInteraction(Message::Interaction::InteractionCode interactionCode) override;
+
+            std::shared_ptr<Message::Receipt::IReceiptData> getPreparedReceipt(Message::Receipt::ReceiptCode receiptCode) override;
 
             size_t addConnectionCallback(Callback::IConnectionCallback &callback) override;
 
@@ -93,6 +99,8 @@ namespace Lanter
             bool sendMessage(std::shared_ptr<Message::Notification::INotificationData> notification) override;
 
             bool sendMessage(std::shared_ptr<Message::Interaction::IInteractionData> interaction) override;
+
+            bool sendMessage(std::shared_ptr<Message::Receipt::IReceiptData> receipt) override;
 
         private:
             bool createParser();
@@ -118,6 +126,7 @@ namespace Lanter
             void notifyResponse();
             void notifyNotification();
             void notifyInteraction();
+            void notifyReceipt();
             void notifyConnectionStatus(bool status);
 
             bool waitFuture();
@@ -151,7 +160,9 @@ namespace Lanter
 
             std::unordered_map<size_t, Callback::INotificationCallback&> m_NotificationCallbacks;
 
-            std::unordered_map<size_t, Callback::IInteractionCallback& > m_InteractionCallbacks;
+            std::unordered_map<size_t, Callback::IInteractionCallback&> m_InteractionCallbacks;
+
+            std::unordered_map<size_t, Callback::IReceiptCallback&> m_ReceiptCallbacks;
 
             std::unordered_map<size_t, Callback::IConnectionCallback&> m_ConnectionCallbacks;
 

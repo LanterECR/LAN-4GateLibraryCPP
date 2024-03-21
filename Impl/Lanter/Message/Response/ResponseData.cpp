@@ -340,7 +340,7 @@ namespace Lanter
                 {
                     m_CardholderName = cardholderName;
                     m_FieldsSet.insert(ResponseField::CardholderName);
-                    result true;
+                    return true;
                 }
 
                 return false;
@@ -380,13 +380,16 @@ namespace Lanter
                 return false;
             }
 
-            const std::string &ResponseData::getResponseCode() const {
+            const std::string &ResponseData::getResponseCode() const
+            {
                 return m_ResponseCode;
             }
 
-            bool ResponseData::setResponseCode(const std::string &responseCode) {
+            bool ResponseData::setResponseCode(const std::string &responseCode)
+            {
                 bool result = false;
-                if (checkResponseCodeRange(responseCode)) {
+                if (checkResponseCodeRange(responseCode))
+                {
                     m_ResponseCode = responseCode;
                     m_FieldsSet.insert(ResponseField::ResponseCode);
                     result = true;
@@ -394,13 +397,16 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getResponseText() const {
+            const std::string &ResponseData::getResponseText() const
+            {
                 return m_ResponseText;
             }
 
-            bool ResponseData::setResponseText(const std::string &responseText) {
+            bool ResponseData::setResponseText(const std::string &responseText)
+            {
                 bool result = false;
-                if (checkResponseTextRange(responseText)) {
+                if (checkResponseTextRange(responseText))
+                {
                     m_ResponseText = responseText;
                     m_FieldsSet.insert(ResponseField::ResponseText);
                     result = true;
@@ -408,13 +414,16 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getSTAN() const {
+            const std::string &ResponseData::getSTAN() const
+            {
                 return m_STAN;
             }
 
-            bool ResponseData::setSTAN(const std::string &stan) {
+            bool ResponseData::setSTAN(const std::string &stan)
+            {
                 bool result = false;
-                if (checkSTANRange(stan)) {
+                if (checkSTANRange(stan))
+                {
                     m_STAN = stan;
                     m_FieldsSet.insert(ResponseField::STAN);
                     result = true;
@@ -422,13 +431,16 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getTransactionID() const {
+            const std::string &ResponseData::getTransactionID() const
+            {
                 return m_TransactionID;
             }
 
-            bool ResponseData::setTransactionID(const std::string &transactionId) {
+            bool ResponseData::setTransactionID(const std::string &transactionId)
+            {
                 bool result = false;
-                if (checkTransactionIDRange(transactionId)) {
+                if (checkTransactionIDRange(transactionId))
+                {
                     m_TransactionID = transactionId;
                     m_FieldsSet.insert(ResponseField::TransactionID);
                     result = true;
@@ -436,13 +448,16 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getTerminalID() const {
+            const std::string &ResponseData::getTerminalID() const
+            {
                 return m_TerminalID;
             }
 
-            bool ResponseData::setTerminalID(const std::string &terminalId) {
+            bool ResponseData::setTerminalID(const std::string &terminalId)
+            {
                 bool result = false;
-                if (checkTerminalIDRange(terminalId)) {
+                if (checkTerminalIDRange(terminalId))
+                {
                     m_TerminalID = terminalId;
                     m_FieldsSet.insert(ResponseField::TerminalID);
                     result = true;
@@ -450,13 +465,16 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getCardEmvAid() const {
+            const std::string &ResponseData::getCardEmvAid() const
+            {
                 return m_CardEmvAid;
             }
 
-            bool ResponseData::setCardEmvAid(const std::string &cardEmvAid) {
+            bool ResponseData::setCardEmvAid(const std::string &cardEmvAid)
+            {
                 bool result = false;
-                if (checkCardEmvAidRange(cardEmvAid)) {
+                if (checkCardEmvAidRange(cardEmvAid))
+                {
                     m_CardEmvAid = cardEmvAid;
                     m_FieldsSet.insert(ResponseField::CardEmvAid);
                     result = true;
@@ -481,7 +499,8 @@ namespace Lanter
                 return false;
             }
 
-            CardInputMethod ResponseData::getCardInputMethod() const {
+            CardInputMethod ResponseData::getCardInputMethod() const
+            {
                 return m_CardInputMethod;
             }
 
@@ -508,7 +527,7 @@ namespace Lanter
                 {
                     m_IssuerName = issuerName;
                     m_FieldsSet.insert(ResponseField::IssuerName);
-                    result true;
+                    return true;
                 }
 
                 return false;
@@ -519,9 +538,11 @@ namespace Lanter
                 return m_AdditionalInfo;
             }
 
-            bool ResponseData::setAdditionalInfo(const std::string &additionalInfo) {
+            bool ResponseData::setAdditionalInfo(const std::string &additionalInfo)
+            {
                 bool result = false;
-                if (checkAdditionalInfoRange(additionalInfo)) {
+                if (checkAdditionalInfoRange(additionalInfo))
+                {
                     m_AdditionalInfo = additionalInfo;
                     m_FieldsSet.insert(ResponseField::AdditionalInfo);
                     result = true;
@@ -529,13 +550,16 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getCardData() const {
+            const std::string &ResponseData::getCardData() const
+            {
                 return m_CardData;
             }
 
-            bool ResponseData::setCardData(const std::string &cardData) {
+            bool ResponseData::setCardData(const std::string &cardData)
+            {
                 bool result = false;
-                if (checkCardDataRange(cardData)) {
+                if (checkCardDataRange(cardData))
+                {
                     m_CardData = cardData;
                     m_FieldsSet.insert(ResponseField::CardData);
                     result = true;
@@ -543,13 +567,16 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getCardDataEnc() const {
+            const std::string &ResponseData::getCardDataEnc() const
+            {
                 return m_CardDataEnc;
             }
 
-            bool ResponseData::setCardDataEnc(const std::string &cardDataEnc) {
+            bool ResponseData::setCardDataEnc(const std::string &cardDataEnc)
+            {
                 bool result = false;
-                if (checkCardDataEncRange(cardDataEnc)) {
+                if (checkCardDataEncRange(cardDataEnc))
+                {
                     m_CardDataEnc = cardDataEnc;
                     m_FieldsSet.insert(ResponseField::CardDataEnc);
                     result = true;
@@ -557,13 +584,16 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getMerchantID() const {
+            const std::string &ResponseData::getMerchantID() const
+            {
                 return m_MerchantID;
             }
 
-            bool ResponseData::setMerchantID(const std::string &merchantId) {
+            bool ResponseData::setMerchantID(const std::string &merchantId)
+            {
                 bool result = false;
-                if (checkMerchantIDRange(merchantId)) {
+                if (checkMerchantIDRange(merchantId))
+                {
                     m_MerchantID = merchantId;
                     m_FieldsSet.insert(ResponseField::MerchantID);
                     result = true;
@@ -571,13 +601,16 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getTVR() const {
+            const std::string &ResponseData::getTVR() const
+            {
                 return m_TVR;
             }
 
-            bool ResponseData::setTVR(const std::string &tvr) {
+            bool ResponseData::setTVR(const std::string &tvr)
+            {
                 bool result = false;
-                if (checkTVRRange(tvr)) {
+                if (checkTVRRange(tvr))
+                {
                     m_TVR = tvr;
                     m_FieldsSet.insert(ResponseField::TVR);
                     result = true;
@@ -585,13 +618,16 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getTSI() const {
+            const std::string &ResponseData::getTSI() const
+            {
                 return m_TSI;
             }
 
-            bool ResponseData::setTSI(const std::string &tsi) {
+            bool ResponseData::setTSI(const std::string &tsi)
+            {
                 bool result = false;
-                if (checkTSIRange(tsi)) {
+                if (checkTSIRange(tsi))
+                {
                     m_TSI = tsi;
                     m_FieldsSet.insert(ResponseField::TSI);
                     result = true;
@@ -599,13 +635,16 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getTC() const {
+            const std::string &ResponseData::getTC() const
+            {
                 return m_TC;
             }
 
-            bool ResponseData::setTC(const std::string &tc) {
+            bool ResponseData::setTC(const std::string &tc)
+            {
                 bool result = false;
-                if (checkTCRange(tc)) {
+                if (checkTCRange(tc))
+                {
                     m_TC = tc;
                     m_FieldsSet.insert(ResponseField::TC);
                     result = true;
@@ -613,13 +652,16 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getCID() const {
+            const std::string &ResponseData::getCID() const
+            {
                 return m_CID;
             }
 
-            bool ResponseData::setCID(const std::string &cid) {
+            bool ResponseData::setCID(const std::string &cid)
+            {
                 bool result = false;
-                if (checkCIDRange(cid)) {
+                if (checkCIDRange(cid))
+                {
                     m_CID = cid;
                     m_FieldsSet.insert(ResponseField::CID);
                     result = true;
@@ -627,13 +669,16 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getKVR() const {
+            const std::string &ResponseData::getKVR() const
+            {
                 return m_KVR;
             }
 
-            bool ResponseData::setKVR(const std::string &kvr) {
+            bool ResponseData::setKVR(const std::string &kvr)
+            {
                 bool result = false;
-                if (checkKVRRange(kvr)) {
+                if (checkKVRRange(kvr))
+                {
                     m_KVR = kvr;
                     m_FieldsSet.insert(ResponseField::KVR);
                     result = true;
@@ -641,7 +686,8 @@ namespace Lanter
                 return result;
             }
 
-            const std::string &ResponseData::getCDAResult() const {
+            const std::string &ResponseData::getCDAResult() const
+            {
                 return m_CDAResult;
             }
 
@@ -716,7 +762,8 @@ namespace Lanter
             bool ResponseData::setSalesArray(const std::vector<std::shared_ptr<IResponseData> > &salesArray)
             {
                 bool result = false;
-                if(!salesArray.empty()) {
+                if(!salesArray.empty())
+                {
                     m_SalesArray = salesArray;
                     m_FieldsSet.insert(ResponseField::SalesArray);
                     result = true;

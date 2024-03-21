@@ -14,11 +14,13 @@
 #	endif
 #endif
 
-namespace Lanter {
-    namespace Manager {
-
+namespace Lanter
+{
+    namespace Manager
+    {
         /// \brief Класс для логирования
-        class LANTER_VISIBILITY Lan4GateLogger {
+        class LANTER_VISIBILITY Lan4GateLogger
+        {
         public:
             /// \brief добавляет callback
             static void addLoggerCallback(Callback::ILoggerCallback& callback);
@@ -29,14 +31,16 @@ namespace Lanter {
         class LogTracer
         {
         public:
-            explicit LogTracer(const char* func) :
-                m_func(func)
+            explicit LogTracer(const char* func) : m_func(func)
             {
                 Lan4GateLogger::toLog(std::string("-->" + m_func).c_str());
             }
-            ~LogTracer() {
+
+            ~LogTracer()
+            {
                 Lan4GateLogger::toLog(std::string("<--" + m_func).c_str());
             }
+
         private:
             std::string m_func;
         };
@@ -44,8 +48,6 @@ namespace Lanter {
 }
 
 #define LOG_STREAM std::stringstream stream; stream
-
 #define LOG_TRACE Lanter::Manager::LogTracer    log_tracer(LIB_LOG_FUNCTION);
 #define LOG_DEBUG(arg)                          { arg; Lanter::Manager::Lan4GateLogger::toLog(stream.str().c_str()); }
-
 #endif //LAN_4GATELIB_LAN4GATELOGGER_H

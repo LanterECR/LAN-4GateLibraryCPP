@@ -6,7 +6,7 @@ namespace Lanter
     {
         bool checkValueRange(int64_t value, int64_t min, int64_t max)
         {
-            return value >= min && value <= max;
+            return (value >= min && value <= max);
         }
     }
 }

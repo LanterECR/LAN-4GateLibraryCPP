@@ -4,8 +4,10 @@
 #include <cstdint>
 #include <string>
 
-namespace Lanter {
-    namespace Utils {
+namespace Lanter
+{
+    namespace Utils
+    {
         bool checkValueRange(int64_t value, int64_t min, int64_t max);
     }
 }

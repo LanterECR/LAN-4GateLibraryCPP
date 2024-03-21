@@ -1,13 +1,15 @@
 #include "JSONMessageParser.h"
-#include <sstream>
 #include "JSONRootFieldsChecker.h"
 #include "JSONMessageTypeChecker.h"
-#include "Lanter/Utils/StringConverter.h"
-#include "Lanter/MessageProcessor/JSONFields/JSONRootFields.h"
 #include "JSONRequestParser.h"
 #include "JSONResponseParser.h"
 #include "JSONNotificationParser.h"
 #include "JSONInteractionParser.h"
+#include "JSONReceiptParser.h"
+#include "Lanter/Utils/StringConverter.h"
+#include "Lanter/MessageProcessor/JSONFields/JSONRootFields.h"
+
+#include <sstream>
 
 namespace Lanter
 {
@@ -103,6 +105,22 @@ namespace Lanter
                 return m_Interactions.size();
             }
 
+            std::shared_ptr<Message::Receipt::IReceiptData> JSONMessageParser::nextReceiptData()
+            {
+                std::shared_ptr<IReceiptData> result = nullptr;
+                if (!m_Receipt.empty())
+                {
+                    result = m_Receipt.front();
+                    m_Receipt.pop();
+                }
+                return result;
+            }
+
+            size_t JSONMessageParser::receiptCount() const
+            {
+                return m_Receipt.size();
+            }
+
             bool JSONMessageParser::readMessage(const std::string &message, Json::Value &root)
             {
                 bool result = false;
@@ -155,6 +173,13 @@ namespace Lanter
 
                         case MessageType::Interaction:
                             if(!createInteraction(object))
+                            {
+                                result = MessageType::Error;
+                            }
+                            break;
+
+                        case MessageType::Receipt:
+                            if (!createReceipt(object))
                             {
                                 result = MessageType::Error;
                             }
@@ -251,6 +276,27 @@ namespace Lanter
                     }
 
                     return result;
+                }
+                catch (const std::exception& e)
+                {
+                    throw;
+                }
+            }
+
+            bool JSONMessageParser::createReceipt(const Json::Value& object)
+            {
+                JSONReceiptParser parser;
+
+                try
+                {
+                    auto receipt = parser.parseData(object);
+                    if (receipt != nullptr)
+                    {
+                        m_Receipt.push(receipt);
+                        return true;
+                    }
+
+                    return false;
                 }
                 catch (const std::exception& e)
                 {

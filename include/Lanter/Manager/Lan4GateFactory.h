@@ -3,15 +3,17 @@
 
 #include <memory>
 
-#include "Lanter/Utils/VisibilityMacroses.h"
-
 #include "ILan4Gate.h"
+#include "Lanter/Utils/VisibilityMacroses.h"
 #include "Lanter/Communication/ICommunication.h"
 
-namespace Lanter {
-    namespace Manager {
+namespace Lanter
+{
+    namespace Manager
+    {
         /// \brief Фабричный класс для создания экземпляров менеджера ILan4Gate
-        class LANTER_VISIBILITY Lan4GateFactory {
+        class LANTER_VISIBILITY Lan4GateFactory
+        {
         public:
             /// \brief Создает экземпляр менеджера ILan4Gate
             /// \param[in] ecrNumber логический идентификатор кассы
@@ -22,5 +24,4 @@ namespace Lanter {
         };
     }
 }
-
 #endif //LAN_4GATELIB_LAN4GATEFACTORY_H

@@ -13,11 +13,15 @@ namespace Lanter
             {
                 try
                 {
-                    bool result = addCode(notificationData, object);
+                    if (!addCode(notificationData, object))
+                    {
+                        return false;
+                    }
+
                     addAdditional(notificationData, object);
                     addMessage(notificationData, object);
 
-                    return result;
+                    return true;
                 }
                 catch (const std::exception& e)
                 {
@@ -31,8 +35,10 @@ namespace Lanter
                 {
                     if (notificationData.getCode() != NotificationCode::NoNotification)
                     {
-                        AddFieldsHelper::addField(object, JSONNotificationFields::getCode(),
-                                                  static_cast<int>(notificationData.getCode()));
+                        if(!AddFieldsHelper::addField(object, JSONNotificationFields::getCode(), static_cast<int>(notificationData.getCode())))
+                        {
+                            return false;
+                        }
                     }
 
                     return fieldExists(object, JSONNotificationFields::getCode());
@@ -49,8 +55,10 @@ namespace Lanter
                 {
                     if (!notificationData.getAdditional().empty())
                     {
-                        AddFieldsHelper::addField(object, JSONNotificationFields::getAdditional(),
-                                                  notificationData.getAdditional());
+                        if(!AddFieldsHelper::addField(object, JSONNotificationFields::getAdditional(), notificationData.getAdditional()))
+                        {
+                            return false;
+                        }
                     }
 
                     return fieldExists(object, JSONNotificationFields::getAdditional());
@@ -67,8 +75,10 @@ namespace Lanter
                 {
                     if (!notificationData.getMessage().empty())
                     {
-                        AddFieldsHelper::addField(object, JSONNotificationFields::getMessage(),
-                                                  notificationData.getMessage());
+                        if(!AddFieldsHelper::addField(object, JSONNotificationFields::getMessage(), notificationData.getMessage()))
+                        {
+                            return false;
+                        }
                     }
 
                     return fieldExists(object, JSONNotificationFields::getMessage());

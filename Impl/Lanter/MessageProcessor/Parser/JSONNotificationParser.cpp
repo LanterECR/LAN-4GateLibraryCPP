@@ -36,64 +36,53 @@ namespace Lanter
 
             bool JSONNotificationParser::getCode(const Json::Value &object, INotificationData &data)
             {
-                bool result = false;
                 int code;
                 try
                 {
                     if (JSONGetFieldHelper::getField(object, JSONNotificationFields::getCode(), code))
                     {
-                        result = data.setCode(static_cast<NotificationCode>(code));
+                        return data.setCode(static_cast<NotificationCode>(code));
                     }
                 }
                 catch (const std::exception& e)
                 {
                     throw;
                 }
-                return result;
+                return false;
             }
 
             bool JSONNotificationParser::getAdditional(const Json::Value &object, INotificationData &data)
             {
-                bool result = false;
                 std::string additional;
                 try
                 {
                     if (JSONGetFieldHelper::getField(object, JSONNotificationFields::getAdditional(), additional))
                     {
-                        if (!additional.empty())
-                        {
-                            data.setAdditional(additional);
-                            result = true;
-                        }
+                        return data.setAdditional(additional);
                     }
                 }
                 catch (const std::exception& e)
                 {
                     throw;
                 }
-                return result;
+                return false;
             }
 
             bool JSONNotificationParser::getMessage(const Json::Value &object, INotificationData &data)
             {
-                bool result = false;
                 std::string message;
                 try
                 {
                     if (JSONGetFieldHelper::getField(object, JSONNotificationFields::getMessage(), message))
                     {
-                        if (!message.empty())
-                        {
-                            data.setMessage(message);
-                            result = true;
-                        }
+                        return data.setMessage(message);
                     }
                 }
                 catch (const std::exception& e)
                 {
                     throw;
                 }
-                return result;
+                return false;
             }
         }
     }

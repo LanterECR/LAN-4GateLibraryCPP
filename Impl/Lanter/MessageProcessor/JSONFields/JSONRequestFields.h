@@ -1,5 +1,6 @@
 #ifndef LAN_4GATELIB_JSONREQUESTFIELDS_H
 #define LAN_4GATELIB_JSONREQUESTFIELDS_H
+
 #include <string>
 
 namespace Lanter

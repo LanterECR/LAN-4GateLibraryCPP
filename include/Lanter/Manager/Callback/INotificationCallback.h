@@ -2,16 +2,18 @@
 #define LAN_4GATELIB_INOTIFICATIONCALLBACK_H
 
 #include <memory>
-
 #include "Lanter/Utils/VisibilityMacroses.h"
-
 #include "Lanter/Message/Notification/INotificationData.h"
 
-namespace Lanter {
-    namespace Manager {
-        namespace Callback {
+namespace Lanter
+{
+    namespace Manager
+    {
+        namespace Callback
+        {
             /// \brief Колбэк для приема данных уведомления от терминала
-            class LANTER_VISIBILITY INotificationCallback {
+            class LANTER_VISIBILITY INotificationCallback
+            {
             public:
                 virtual ~INotificationCallback() = default;
                 /// \brief Метод, в который будет переданы данные уведомления
@@ -22,5 +24,4 @@ namespace Lanter {
         }
     }
 }
-
 #endif //LAN_4GATELIB_INOTIFICATIONCALLBACK_H
