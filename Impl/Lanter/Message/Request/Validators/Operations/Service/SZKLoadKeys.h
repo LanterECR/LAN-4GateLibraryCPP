@@ -1,5 +1,5 @@
-#ifndef LAN_4GATELIBRARYCPP_BONUSBALANCE_H
-#define LAN_4GATELIBRARYCPP_BONUSBALANCE_H
+#ifndef LAN_4GATELIBRARYCPP_SZKLOADKEYS_H
+#define LAN_4GATELIBRARYCPP_SZKLOADKEYS_H
 
 #include "Lanter/Message/Request/Validators/Operations/BasicValidator.h"
 
@@ -9,7 +9,7 @@ namespace Lanter
     {
         namespace Request
         {
-            class BonusBalance : public BasicValidator
+            class SZKLoadKeys : public BasicValidator
             {
             public:
                 void addSpecificFields() override;
@@ -17,4 +17,4 @@ namespace Lanter
         }//Request
     }
 }//Lanter
-#endif //LAN_4GATELIBRARYCPP_BONUSBALANCE_H
+#endif //LAN_4GATELIBRARYCPP_SZKLOADKEYS_H

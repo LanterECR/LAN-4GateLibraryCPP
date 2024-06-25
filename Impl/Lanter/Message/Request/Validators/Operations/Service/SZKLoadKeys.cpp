@@ -1,4 +1,4 @@
-#include "KeyDowload.h"
+#include "SZKLoadKeys.h"
 
 namespace Lanter
 {
@@ -6,7 +6,7 @@ namespace Lanter
     {
         namespace Request
         {
-            void KeyDownload::addSpecificFields()
+            void SZKLoadKeys::addSpecificFields()
             {
             }
         }

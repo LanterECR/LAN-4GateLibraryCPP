@@ -1,9 +1,13 @@
 #include "BonusBalance.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Request {
-            void BonusBalance::addSpecificFields() {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Request
+        {
+            void BonusBalance::addSpecificFields()
+            {
 
                 appendOptionalField(RequestField::EcrMerchantNumber);
                 appendOptionalField(RequestField::Amount);

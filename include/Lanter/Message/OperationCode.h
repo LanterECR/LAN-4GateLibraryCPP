@@ -16,16 +16,27 @@ namespace Lanter
             AliPay, ///< Оплата через систему AliPay
             Payment, ///< Операция оплаты счета
 
+            //======nspk======
+            CashRegisterNSPK = 100,
+            ActivateCashNSPK,
+            DeleteCashNSPK,
+            QRPaymentNSPK,
+            QRPaymentStatusNSPK,
+            QRRefundNSPK,
+            QRRefundStatusNSPK,
+
             //Устройства
             QRScannerResult = 120, ///< Результат QR сканера
 
+            //======преавторизация======
             PreAuth = 200, ///< Преавторизация
             SalesCompletion, ///< Завершение преавторизации
             QuickPaymentStatus, ///< Проверка статуса оплаты через СБП
             RequestCS, ///< Запрос задолжности на CashService
             NotificationCS, ///< Оповещение CashService об оплате
             RepeatLastN, ///< Запрос статуса на CashService
-
+            
+            //======другие======
             FastTrack = 300, ///< Получение зашифрованный и открытых тегов карты
 			ECertGetRequisites, ///< запрос реквизитов по карте
 			ECertPayment, ///< оплата электронным сертификатом
@@ -80,6 +91,8 @@ namespace Lanter
             GetMerchantList, ///< Возвращает наименования ErcNumber
             PrintMerchantSettlement, ///< Запрос печати чека сверки по мерчанту, чек берётся из памяти.
             UploadDelayed, ///< Доавторизация отложенных операций
+            SZKLoadKeys,    ///< Загрузка мастер-ключей с СЗК
+            CommunicationSettings,  ///< Настройка сети
 
             //Отдельный тип операции для представления массивов операции DetailReport
             ArrayElement = 1000 ///< Фиктивный код операции для создания элементов массива

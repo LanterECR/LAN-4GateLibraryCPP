@@ -69,6 +69,8 @@
 #include "Lanter/Message/Request/Validators/Operations/Service/UploadDelayed.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/BonusBalance.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/GrabEjectCard.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/SZKLoadKeys.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/CommunicationSettings.h"
 
 namespace Lanter
 {
@@ -269,6 +271,12 @@ namespace Lanter
                         break;
                     case OperationCode::GrabEjectCard:
                         validator = std::make_shared<GrabEjectCard>();
+                        break;
+                    case OperationCode::SZKLoadKeys:
+                        validator = std::make_shared<SZKLoadKeys>();
+                        break;
+                    case OperationCode::CommunicationSettings:
+                        validator = std::make_shared<CommunicationSettings>();
                         break;
                     default:
                         validator = std::make_shared<BasicValidator>();
