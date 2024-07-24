@@ -73,7 +73,8 @@ namespace Lanter
                 CardReadingSuccessWait,  ///< Ожидание успешного считывания карты
                 OperationResultInfo,  ///< Информация о результате операции
                 UpdatingParameters,  ///< Обновление параметров
-                SoftwareUpdate  ///< Обновление ПО
+                SoftwareUpdate,  ///< Обновление ПО
+                PinClear    ///< Очистка пина
             };//enum NotificationCode
 
             /// Функция, возвращающая первый значимый элемент перечисления NotificationCode
@@ -87,7 +88,7 @@ namespace Lanter
             /// \return Последний элемент значимый перечисления NotificationCode
             constexpr NotificationCode getLastNotificationCode()
             {
-                return NotificationCode::SoftwareUpdate;
+                return NotificationCode::PinClear;
             }
         }//namespace Notification
     }//namespace Message

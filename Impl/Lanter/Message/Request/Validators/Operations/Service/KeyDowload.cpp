@@ -8,6 +8,7 @@ namespace Lanter
         {
             void KeyDownload::addSpecificFields()
             {
+                appendOptionalField(RequestField::AdditionalInfo);
             }
         }
     }

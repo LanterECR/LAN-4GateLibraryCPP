@@ -12,6 +12,7 @@ namespace Lanter
                 appendMandatoryField(RequestField::Amount);
                 appendMandatoryField(RequestField::CurrencyCode);
 
+                appendOptionalField(RequestField::AdditionalChoice);
                 appendOptionalField(RequestField::AdditionalInfo);
             }
         }

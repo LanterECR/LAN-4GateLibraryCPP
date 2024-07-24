@@ -746,12 +746,12 @@ namespace Lanter
                 return !isFieldSet(RequestField::PaymentParam3);
             }
 
-            const std::string &RequestData::getAdditionalChoice() const
+            const std::string& RequestData::getAdditionalChoice() const
             {
                 return m_AdditionalChoice;
             }//getAdditionalChoice()
 
-            bool RequestData::setAdditionalChoice(const std::string &additionalChoice)
+            bool RequestData::setAdditionalChoice(const std::string& additionalChoice)
             {
                 bool result = false;
 

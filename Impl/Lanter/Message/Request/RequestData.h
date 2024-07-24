@@ -198,11 +198,11 @@ namespace Lanter
 
                 bool resetPaymentParam3() override;
 
-                const std::string &getAdditionalChoice() const override;
+                const std::string& getAdditionalChoice() const override;
 
                 bool resetAdditionalChoice() override;
 
-                bool setAdditionalChoice(const std::string &additionalChoice) override;
+                bool setAdditionalChoice(const std::string& additionalChoice) override;
 
                 const std::string& getTransportControlStation() const override;
                 bool setTransportControlStation(const std::string& additionalInfo) override;
@@ -216,12 +216,12 @@ namespace Lanter
                 bool setTransportControlID(const std::string& additionalInfo) override;
                 bool resetTransportControlID() override;
 
-				const std::string &getBasketID() const override;
-				bool setBasketID(const std::string &id) override;
+				const std::string& getBasketID() const override;
+				bool setBasketID(const std::string& id) override;
 				bool resetBasketID() override;
 
-				const std::string &getCardPANHash() const override;
-				bool setCardPANHash(const std::string &hashPAN) override;
+				const std::string& getCardPANHash() const override;
+				bool setCardPANHash(const std::string& hashPAN) override;
 				bool resetCardPANHash() override;
 
 			private:
