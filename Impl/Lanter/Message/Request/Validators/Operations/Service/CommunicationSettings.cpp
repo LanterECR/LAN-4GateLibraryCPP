@@ -8,6 +8,8 @@ namespace Lanter
         {
             void CommunicationSettings::addSpecificFields()
             {
+                appendOptionalField(RequestField::EcrNumber);
+                appendOptionalField(RequestField::OperationCode);
                 appendMandatoryField(RequestField::AdditionalInfo);
             }
         }

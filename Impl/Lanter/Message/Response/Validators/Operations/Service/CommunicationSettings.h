@@ -1,5 +1,5 @@
-#ifndef LAN_4GATELIBRARYCPP_LICENSEACTIVATIONSERVER_H
-#define LAN_4GATELIBRARYCPP_LICENSEACTIVATIONSERVER_H
+#ifndef LAN_4GATELIBRARYCPP_COMMUNICATIONSETTINGS_H
+#define LAN_4GATELIBRARYCPP_COMMUNICATIONSETTINGS_H
 
 #include "Lanter/Message/Response/Validators/Operations/BasicValidator.h"
 
@@ -9,7 +9,7 @@ namespace Lanter
     {
         namespace Response
         {
-            class LicenseActivationServer : public BasicValidator
+            class CommunicationSettings : public BasicValidator
             {
             public:
                 void addSpecificFields() override;
@@ -17,4 +17,4 @@ namespace Lanter
         }//Response
     }
 }//Lanter
-#endif //LAN_4GATELIBRARYCPP_LICENSEACTIVATIONSERVER_H
+#endif //LAN_4GATELIBRARYCPP_COMMUNICATIONSETTINGS_H

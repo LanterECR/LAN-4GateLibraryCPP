@@ -1,4 +1,4 @@
-#include "ClearAllJournals.h"
+#include "CommunicationSettings.h"
 
 namespace Lanter
 {
@@ -6,7 +6,7 @@ namespace Lanter
     {
         namespace Response
         {
-            void ClearAllJournals::addSpecificFields()
+            void CommunicationSettings::addSpecificFields()
             {
                 appendOptionalField(ResponseField::EcrNumber);
                 appendOptionalField(ResponseField::OperationCode);
