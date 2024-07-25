@@ -63,6 +63,7 @@
 #include "Lanter/Message/Response/Validators/Operations/Service/BonusBalance.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/GrabEjectCard.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/CommunicationSettings.h"
+#include "Lanter/Message/Response/Validators/Operations/Service/CheckDeviceStatus.h"
 
 #include "Lanter/Message/Response/Validators/Operations/Void/Void.h"
 #include "Lanter/Message/Response/Validators/Operations/Void/VoidPartialSale.h"
@@ -243,6 +244,9 @@ namespace Lanter
                         break;
                     case OperationCode::CommunicationSettings:
                         validator = std::make_shared<CommunicationSettings>();
+                        break;
+                    case OperationCode::CheckDeviceStatus:
+                        validator = std::make_shared<CheckDeviceStatus>();
                         break;
 					case OperationCode::ECertGetRequisites:
 						validator = std::make_shared<ECertGetRequisites>();

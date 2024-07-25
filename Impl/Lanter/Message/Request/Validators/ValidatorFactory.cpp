@@ -71,6 +71,7 @@
 #include "Lanter/Message/Request/Validators/Operations/Service/GrabEjectCard.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/SZKLoadKeys.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/CommunicationSettings.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/CheckDeviceStatus.h"
 
 namespace Lanter
 {
@@ -277,6 +278,9 @@ namespace Lanter
                         break;
                     case OperationCode::CommunicationSettings:
                         validator = std::make_shared<CommunicationSettings>();
+                        break;
+                    case OperationCode::CheckDeviceStatus:
+                        validator = std::make_shared<CheckDeviceStatus>();
                         break;
                     default:
                         validator = std::make_shared<BasicValidator>();
