@@ -3,11 +3,15 @@
 
 #include "Lanter/Utils/VisibilityMacroses.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
             /// \brief Список возможных значений поля ResponseField::CardInputMethod в ответе финансового ПО LAN-4Tap
-            enum class CardInputMethod {
+            enum class CardInputMethod
+            {
                 NoMethod,
                 TerminalManualEntry = 1, ///< Данные карты введены вручную в финансовом ПО LAN-4Tap
                 ExternalManualEntry, ///< Данные карты введены вручную за пределами финансового ПО LAN-4Tap
@@ -21,13 +25,15 @@ namespace Lanter {
             
             /// Функция, возвращающая первый значимый элемент перечисления CardInputMethod
             /// \return Первый элемент значимый перечисления CardInputMethod
-            constexpr CardInputMethod getFirstCardInputMethod() {
+            constexpr CardInputMethod getFirstCardInputMethod()
+            {
                 return CardInputMethod::TerminalManualEntry;
             }
 
             /// Функция, возвращающая последний значимый элемент перечисления CardInputMethod
             /// \return Последний элемент значимый перечисления CardInputMethod
-            constexpr CardInputMethod getLastCardInputMethod() {
+            constexpr CardInputMethod getLastCardInputMethod()
+            {
                 return CardInputMethod::ContactlessChipMode;
             }
         }//namespace Response

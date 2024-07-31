@@ -3,11 +3,15 @@
 
 #include "Lanter/Utils/VisibilityMacroses.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
             /// \brief Список возможных значений поля ResponseField::Status в ответе финансового ПО LAN-4Tap
-            enum class Status {
+            enum class Status
+            {
                 NoStatus, ///< Значение-заглушка. Соответствует неизвестному статусу
                 Success = 1, ///< Операция успешно выполнена
                 Error, ///< Ошибка выполнения операции
@@ -26,18 +30,22 @@ namespace Lanter {
                 UnknownPaymentProvider, ///< Неизвестный платежный провайдер
                 InvalidTAK, ///< Неверный ТАК
                 LicenseAbsent, ///< Отсутствует лицензия
-                TrVoidHasCanceled ///< Транзакция отмены была отменена
+                TrVoidHasCanceled, ///< Транзакция отмены была отменена
+                CanNotUndo,
+                TrReversalError
             };//enum Status
             /// Функция, возвращающая первый значимый элемент перечисления Status
             /// \return Первый элемент значимый перечисления Status
-            constexpr Status getFirstStatus() {
+            constexpr Status getFirstStatus()
+            {
                 return Status::Success;
             }
 
             /// Функция, возвращающая последний значимый элемент перечисления Status
             /// \return Последний элемент значимый перечисления Status
-            constexpr Status getLastStatus() {
-                return Status::TrVoidHasCanceled;
+            constexpr Status getLastStatus()
+            {
+                return Status::TrReversalError;
             }
         }//namespace Response
     }//namespace Message
