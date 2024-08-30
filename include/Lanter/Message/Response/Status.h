@@ -38,7 +38,7 @@ namespace Lanter
             /// \return Первый элемент значимый перечисления Status
             constexpr Status getFirstStatus()
             {
-                return Status::Success;
+                return Status::NoStatus;
             }
 
             /// Функция, возвращающая последний значимый элемент перечисления Status

@@ -20,6 +20,7 @@ namespace Lanter
                         result.reset();
                     }
                 }
+
                 return result;
             }
 
@@ -30,6 +31,7 @@ namespace Lanter
                 {
                     return data.setCode(static_cast<InteractionCode>(code));
                 }
+
                 return false;
             }
         }

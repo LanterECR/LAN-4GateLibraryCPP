@@ -23,6 +23,7 @@ namespace Lanter
                         result = true;
                     }
                 }
+
                 return result;
             }
 
@@ -33,6 +34,7 @@ namespace Lanter
                 {
                     value = object[fieldName].asInt();
                 }
+
                 return result;
             }
 
@@ -43,6 +45,7 @@ namespace Lanter
                 {
                     value = object[fieldName].asInt64();
                 }
+
                 return result;
             }
 
@@ -53,6 +56,7 @@ namespace Lanter
                 {
                     value = object[fieldName].asString();
                 }
+
                 return result;
             }
 
@@ -63,8 +67,9 @@ namespace Lanter
                 {
                     value = object[fieldName];
                 }
+
                 return result;
-            }
+            }//bool JSONGetFieldHelper::getField
         }
     }
 }

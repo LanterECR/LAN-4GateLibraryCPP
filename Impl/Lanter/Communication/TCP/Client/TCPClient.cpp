@@ -2,45 +2,55 @@
 
 #include "Lanter/Manager/Lan4GateLogger.h"
 
-namespace Lanter {
-    namespace Communication {
-
+namespace Lanter
+{
+    namespace Communication
+    {
         const size_t TCP_CLIENT_BUFFER_SIZE = 16384;
         unsigned char n_spbuffer[TCP_CLIENT_BUFFER_SIZE];
 
-        TCPClient::TCPClient(const std::string &ip, int port) {
+        TCPClient::TCPClient(const std::string& ip, int port)
+        {
             m_ClientSocket = nullptr;
             m_Endpoint = asio::ip::tcp::endpoint(asio::ip::address::from_string(ip), port);
         }
 
-        void TCPClient::doCommunication() {
+        void TCPClient::doCommunication()
+        {
             m_Context.poll();
         }
 
-        bool TCPClient::open() {
+        bool TCPClient::open()
+        {
             return connect();
         }
 
-        bool TCPClient::close() {
+        bool TCPClient::close()
+        {
             return disconnect();
         }
 
-        bool TCPClient::isOpen() {
+        bool TCPClient::isOpen()
+        {
             return isConnected();
         }
 
-        bool TCPClient::connect() {
-            try {
+        bool TCPClient::connect()
+        {
+            try
+            {
                 m_ClientSocket = std::make_shared<asio::ip::tcp::socket>(m_Context);
-
                 std::error_code ec;
                 m_ClientSocket->connect(m_Endpoint, ec);
-                if (!ec) {
+                if (!ec)
+                {
                     asyncReceive();
                     return true;
                 }
             }
-            catch (std::exception& e) {
+            catch (std::exception& e)
+            {
+                throw e;
             }
 
             disconnect();
@@ -48,7 +58,8 @@ namespace Lanter {
             return false;
         }
 
-        bool TCPClient::disconnect() {
+        bool TCPClient::disconnect()
+        {
             if (m_ClientSocket)
             {
                 m_ClientSocket->cancel();
@@ -64,36 +75,47 @@ namespace Lanter {
             return true;
         }
 
-        bool TCPClient::isConnected() {
+        bool TCPClient::isConnected()
+        {
             bool result = false;
-            if (m_ClientSocket && m_ClientSocket->is_open()) {
+            if (m_ClientSocket && m_ClientSocket->is_open())
+            {
                 result = true;
             }
+
             return result;
         }
 
-        size_t TCPClient::send(const std::vector<uint8_t> &in) {
+        size_t TCPClient::send(const std::vector<uint8_t>& in)
+        {
             size_t result = 0;
-            if (isConnected()) {
-                try {
+            if (isConnected())
+            {
+                try
+                {
                     asio::error_code ec;
                     result = m_ClientSocket->write_some(asio::buffer(in), ec);
-                } catch (std::exception& e) {
+                }
+                catch (std::exception& e)
+                {
                     result = 0;
                 }
-                if (result == 0) {
+
+                if (result == 0)
+                {
                     disconnect();
                 }
             }
+
             return result;
         }
 
-        size_t TCPClient::receive(std::vector<uint8_t> &out) {
-            out.clear();
-
+        size_t TCPClient::receive(std::vector<uint8_t>& out)
+        {
             std::lock_guard <std::mutex> lock(m_QueueMutex);
-
-            if (m_ReceiveBuffer.size() > 0) {
+            out.clear();
+            if (m_ReceiveBuffer.size() > 0)
+            {
                 std::copy(m_ReceiveBuffer.begin(), m_ReceiveBuffer.end(), std::back_inserter(out));
                 m_ReceiveBuffer.clear();
             }
@@ -101,28 +123,35 @@ namespace Lanter {
             return out.size();
         }
 
-        void TCPClient::disconnectCallback() {
+        void TCPClient::disconnectCallback()
+        {
             disconnect();
         }
 
-        void TCPClient::asyncReceive() {
-            if (!m_ClientSocket) {
+        void TCPClient::asyncReceive()
+        {
+            if (!m_ClientSocket)
+            {
                 return;
             }
 
             auto self(shared_from_this());
-            m_ClientSocket->async_read_some(asio::buffer(n_spbuffer, TCP_CLIENT_BUFFER_SIZE),
-                [this, self](std::error_code ec, std::size_t length) {
-                    if (ec) {
-                        disconnect();
-                    } else {
-                        if (length > 0) {
-                            m_ReceiveBuffer.insert(m_ReceiveBuffer.end(), n_spbuffer, n_spbuffer + length);
-                        }
-                        asyncReceive();
+            m_ClientSocket->async_read_some(asio::buffer(n_spbuffer, TCP_CLIENT_BUFFER_SIZE), [this, self](std::error_code ec, std::size_t length)
+            {
+                if (ec)
+                {
+                    disconnect();
+                }
+                else
+                {
+                    if (length > 0)
+                    {
+                        m_ReceiveBuffer.insert(m_ReceiveBuffer.end(), n_spbuffer, n_spbuffer + length);
                     }
+
+                    asyncReceive();
+                }
             });
         }
-
     }
 }

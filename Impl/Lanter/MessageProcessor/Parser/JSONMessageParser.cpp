@@ -37,6 +37,7 @@ namespace Lanter
                 {
                     throw;
                 }
+
                 return result;
             }
 
@@ -48,6 +49,7 @@ namespace Lanter
                     result = m_Requests.front();
                     m_Requests.pop();
                 }
+
                 return result;
             }
 
@@ -64,6 +66,7 @@ namespace Lanter
                     result = m_Responses.front();
                     m_Responses.pop();
                 }
+
                 return result;
             }
 
@@ -81,6 +84,7 @@ namespace Lanter
                     result = m_Notifications.front();
                     m_Notifications.pop();
                 }
+
                 return result;
             }
 
@@ -97,6 +101,7 @@ namespace Lanter
                     result = m_Interactions.front();
                     m_Interactions.pop();
                 }
+
                 return result;
             }
 
@@ -113,6 +118,7 @@ namespace Lanter
                     result = m_Receipt.front();
                     m_Receipt.pop();
                 }
+
                 return result;
             }
 
@@ -144,7 +150,7 @@ namespace Lanter
                 {
                     MessageType result = JSONMessageTypeChecker::checkType(root);
 
-                    const Json::Value &object = root[JSONRootFields::getObjectField()];
+                    const Json::Value& object = root[JSONRootFields::getObjectField()];
                     switch (result)
                     {
                         case MessageType::Error:
