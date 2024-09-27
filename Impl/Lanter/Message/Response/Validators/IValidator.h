@@ -5,10 +5,14 @@
 
 #include "Lanter/Message/Response/ResponseField.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-            class IValidator {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            class IValidator
+            {
             public:
                 virtual ~IValidator() = default;
 
@@ -25,5 +29,4 @@ namespace Lanter {
         }
     }
 }
-
 #endif //LAN_4GATELIBRARYCPP_IVALIDATOR_H

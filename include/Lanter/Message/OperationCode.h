@@ -95,6 +95,7 @@ namespace Lanter
             SZKLoadKeys,    ///< Загрузка мастер-ключей с СЗК
             CommunicationSettings,  ///< Настройка сети
             CheckDeviceStatus,  ///< Проверка статуса устройств
+            PrintLastSettlement, ///< Печать последней успешной сверки
 
             //Отдельный тип операции для представления массивов операции DetailReport
             ArrayElement = 1000 ///< Фиктивный код операции для создания элементов массива

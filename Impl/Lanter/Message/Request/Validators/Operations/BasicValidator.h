@@ -4,14 +4,17 @@
 #include <set>
 
 #include "Lanter/Message/Request/RequestField.h"
-
 #include "Lanter/Message/Request/Validators/IValidator.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Request {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Request
+        {
             /// \brief Базовый валидатор для всех типов операций
-            class BasicValidator : public IValidator {
+            class BasicValidator : public IValidator
+            {
             public:
                 /// \brief Конструктор вызывает метод addBasicMandatoryFields
                 /// \sa addBasicMandatoryFields
@@ -26,7 +29,6 @@ namespace Lanter {
                 void appendOptionalField(RequestField field) override;
 
                 const std::set<RequestField> &getOptionalFields() const override;
-
 
                 bool validate(const std::set<RequestField> &fields) override;
 

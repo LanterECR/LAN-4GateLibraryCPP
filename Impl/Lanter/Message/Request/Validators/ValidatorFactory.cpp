@@ -72,6 +72,7 @@
 #include "Lanter/Message/Request/Validators/Operations/Service/SZKLoadKeys.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/CommunicationSettings.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/CheckDeviceStatus.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/PrintLastSettlement.h"
 
 namespace Lanter
 {
@@ -281,6 +282,9 @@ namespace Lanter
                         break;
                     case OperationCode::CheckDeviceStatus:
                         validator = std::make_shared<CheckDeviceStatus>();
+                        break;
+                    case OperationCode::PrintLastSettlement:
+                        validator = std::make_shared<PrintLastSettlement>();
                         break;
                     default:
                         validator = std::make_shared<BasicValidator>();

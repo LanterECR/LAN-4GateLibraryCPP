@@ -4,13 +4,16 @@
 #include <set>
 
 #include "Lanter/Message/Response/ResponseField.h"
-
 #include "Lanter/Message/Response/Validators/IValidator.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-            class BasicValidator : public IValidator {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            class BasicValidator : public IValidator
+            {
             public:
                 BasicValidator();
 
@@ -32,6 +35,7 @@ namespace Lanter {
             protected:
                 virtual void clearMandatoryFields();
                 virtual void clearOptionalFields();
+
             private:
                 void addBasicMandatoryFields();
 

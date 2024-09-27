@@ -5,7 +5,8 @@
 
 namespace Lanter
 {
-	namespace Communication	{
+	namespace Communication
+	{
 		SizeControlDecorator::SizeControlDecorator(std::shared_ptr<ICommunication> communication) :
 			m_Communication(communication),
 			m_SizeCharsCount(4), //Жесткая фиксация длины на 4 ASCII-HEX символа
@@ -13,60 +14,74 @@ namespace Lanter
 		{
 		}
 
-		void SizeControlDecorator::doCommunication()		{
-			if(m_Communication != nullptr)			{
+		void SizeControlDecorator::doCommunication()
+		{
+			if(m_Communication != nullptr)
+			{
 				m_Communication->doCommunication();
 			}
 		}
 
-		bool SizeControlDecorator::open()		{
+		bool SizeControlDecorator::open()
+		{
 			bool result = false;
-			if(m_Communication != nullptr)			{
+			if(m_Communication != nullptr)
+			{
 				result = m_Communication->open();
 			}
 
 			return result;
 		}
 
-		bool SizeControlDecorator::close()		{
+		bool SizeControlDecorator::close()
+		{
 			bool result = false;
-			if(m_Communication != nullptr)			{
+			if(m_Communication != nullptr)
+			{
 				result = m_Communication->close();
 			}
 
 			return result;
 		}
 
-		bool SizeControlDecorator::isOpen()		{
+		bool SizeControlDecorator::isOpen()
+		{
 			bool result = false;
-			if(m_Communication != nullptr)			{
+			if(m_Communication != nullptr)
+			{
 				result = m_Communication->isOpen();
 			}
 
 			return result;
 		}
 
-		bool SizeControlDecorator::connect()		{
+		bool SizeControlDecorator::connect()
+		{
 			bool result = false;
-			if(m_Communication != nullptr)			{
+			if(m_Communication != nullptr)
+			{
 				result = m_Communication->connect();
 			}
 
 			return result;
 		}
 
-		bool SizeControlDecorator::disconnect()		{
+		bool SizeControlDecorator::disconnect()
+		{
 			bool result = false;
-			if(m_Communication != nullptr)			{
+			if(m_Communication != nullptr)
+			{
 				result = m_Communication->disconnect();
 			}
 
 			return result;
 		}
 
-		bool SizeControlDecorator::isConnected()		{
+		bool SizeControlDecorator::isConnected()
+		{
 			bool result = false;
-			if(m_Communication != nullptr)			{
+			if(m_Communication != nullptr)
+			{
 				result = m_Communication->isConnected();
 			}
 
@@ -74,7 +89,8 @@ namespace Lanter
 		}
 
 		//TODO Переделать нормально. Большие потери памяти
-		size_t SizeControlDecorator::send(const std::vector<uint8_t>& in)		{
+		size_t SizeControlDecorator::send(const std::vector<uint8_t>& in)
+		{
 			size_t result = 0;
 			//if (m_Communication != nullptr)
 			//{
@@ -95,7 +111,8 @@ namespace Lanter
 			//		result = m_Communication->send(resultData);
 			//	}
 			//}
-			if(m_Communication != nullptr)			{
+			if(m_Communication != nullptr)
+			{
 				const size_t& inSize = in.size();
 				if (inSize > 65534)
 				{
@@ -105,7 +122,8 @@ namespace Lanter
 					ss << std::hex << in.size();
 					ss >> hexLength;
 
-					while (hexLength.size() < 8)					{
+					while (hexLength.size() < 8)
+					{
 						hexLength = "0" + hexLength;
 					}
 
@@ -123,7 +141,8 @@ namespace Lanter
 					ss << std::hex << in.size();
 					ss >> hexLength;
 
-					while (hexLength.size() < m_SizeCharsCount)					{
+					while (hexLength.size() < m_SizeCharsCount)
+					{
 						hexLength = "0" + hexLength;
 					}
 
@@ -137,17 +156,21 @@ namespace Lanter
 			return result;
 		}
 
-		size_t SizeControlDecorator::receive(std::vector<uint8_t>& out)		{
+		size_t SizeControlDecorator::receive(std::vector<uint8_t>& out)
+		{
 			size_t result = 0;
-			if (m_Communication)			{
+			if (m_Communication)
+			{
 				std::vector<uint8_t> receivedData;
 				m_Communication->receive(receivedData);
-				if (!receivedData.empty())				{
+				if (!receivedData.empty())
+				{
 					m_CurrentBuffer.insert(m_CurrentBuffer.end(), receivedData.begin(), receivedData.end());
 				}
 
 				//Эта странная логика с двойным if используется для того, чтобы за один заход получить размер и само сообщение. Как написать чисто пока не придумал.
-				if (m_MessageSize <= 0)				{
+				if (m_MessageSize <= 0)
+				{
 					m_MessageSize = getReceiveSize(m_CurrentBuffer);
 				}
 
@@ -168,7 +191,8 @@ namespace Lanter
 			return result;
 		}
 
-		bool SizeControlDecorator::checkHex(const std::string& value)		{
+		bool SizeControlDecorator::checkHex(const std::string& value)
+		{
 			static std::string hex = "0123456789abcdefABCDEF";
 			for (std::string::const_iterator i = value.begin(); i != value.end(); ++i)
 			{
@@ -181,7 +205,8 @@ namespace Lanter
 			return true;
 		}
 
-		int SizeControlDecorator::getReceiveSize(const std::vector<uint8_t>& data)		{
+		int SizeControlDecorator::getReceiveSize(const std::vector<uint8_t>& data)
+		{
 			//int result = 0;
 			//if (data.size() >= m_SizeCharsCount + 4) // Проверяем, что в data достаточно байтов
 			//{
@@ -232,7 +257,8 @@ namespace Lanter
 			return result;
 		}
 
-		bool SizeControlDecorator::getDataToQueue(std::vector<uint8_t>& data)		{
+		bool SizeControlDecorator::getDataToQueue(std::vector<uint8_t>& data)
+		{
 			bool result = false;
 			int sizeCharsCount = m_SizeCharsCount;
 			if (m_MessageSize > 65534)
@@ -255,7 +281,8 @@ namespace Lanter
 			return result;
 		}
 
-		bool SizeControlDecorator::getDataFromQueue(std::vector<uint8_t>& data)		{
+		bool SizeControlDecorator::getDataFromQueue(std::vector<uint8_t>& data)
+		{
 			bool result = false;
 			if (!m_ReceivedData.empty())
 			{
@@ -271,7 +298,8 @@ namespace Lanter
 			return result;
 		}
 
-		void SizeControlDecorator::resetState()		{
+		void SizeControlDecorator::resetState()
+		{
 			m_MessageSize = -1;
 			m_CurrentBuffer.clear();
 			m_ReceivedData.clear();

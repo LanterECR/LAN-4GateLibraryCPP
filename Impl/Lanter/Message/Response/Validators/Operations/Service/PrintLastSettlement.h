@@ -1,5 +1,5 @@
-#ifndef LAN_4GATELIBRARYCPP_SETTLEMENT_H
-#define LAN_4GATELIBRARYCPP_SETTLEMENT_H
+#ifndef LAN_4GATELIBRARYCPP_PRINTLASTSETTLEMENT_H
+#define LAN_4GATELIBRARYCPP_PRINTLASTSETTLEMENT_H
 
 #include "Lanter/Message/Response/Validators/Operations/BasicValidator.h"
 
@@ -9,7 +9,7 @@ namespace Lanter
     {
         namespace Response
         {
-            class Settlement : public BasicValidator
+            class PrintLastSettlement : public BasicValidator
             {
             public:
                 void addSpecificFields() override;
@@ -17,4 +17,4 @@ namespace Lanter
         }//Response
     }
 }//Lanter
-#endif //LAN_4GATELIBRARYCPP_SETTLEMENT_H
+#endif //LAN_4GATELIBRARYCPP_PRINTLASTSETTLEMENT_H
