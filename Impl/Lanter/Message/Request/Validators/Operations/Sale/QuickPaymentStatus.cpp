@@ -18,6 +18,7 @@ namespace Lanter
                 appendOptionalField(RequestField::ReceiptReference);
                 appendOptionalField(RequestField::PaymentPurpose);
                 appendOptionalField(RequestField::SBP_RN);
+                appendOptionalField(RequestField::AdditionalInfo);
             }
         }
     }
