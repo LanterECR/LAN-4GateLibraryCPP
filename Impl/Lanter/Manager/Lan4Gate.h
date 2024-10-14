@@ -9,20 +9,22 @@
 #include <future>
 
 #include "Lanter/Manager/ILan4Gate.h"
-
 #include "Lanter/MessageProcessor/Builder/IMessageBuilder.h"
 #include "Lanter/MessageProcessor/Parser//IMessageParser.h"
 
-namespace Lanter {
-    namespace Manager {
-        class Lan4Gate : public ILan4Gate {
+namespace Lanter
+{
+    namespace Manager
+    {
+        class Lan4Gate : public ILan4Gate
+        {
         public:
             Lan4Gate();
             ~Lan4Gate() override;
 
-            bool setEcrNumber(int16_t ecrNumber) override;
+            bool setEcrNumber(int64_t ecrNumber) override;
 
-            int16_t getEcrNumber() const override;
+            int64_t getEcrNumber() const override;
 
             Status start() override;
 
@@ -33,7 +35,6 @@ namespace Lanter {
             void doLan4Gate() override;
 
             Status runOnThread() override;
-
 
             bool setCommunication(std::shared_ptr<Communication::ICommunication> communication) override;
 
@@ -59,25 +60,31 @@ namespace Lanter {
 
             size_t addNotificationCallback(Callback::INotificationCallback &callback) override;
 
-            bool removeNotificationCallback(size_t id) override;
+            bool removeNotificationCallback(const size_t& id) override;
 
             size_t notificationCallbacksCount() const override;
 
-            size_t addInteractionCallback(
-                    Callback::IInteractionCallback &callback) override;
+            size_t addInteractionCallback(Callback::IInteractionCallback& callback) override;
 
-            bool removeInteractionCallback(size_t id) override;
+            bool removeInteractionCallback(const size_t& id) override;
 
             size_t interactionCallbacksCount() const override;
+
+            size_t addReceiptCallback(Callback::IReceiptCallback& callback) override;
+
+            bool removeReceiptCallback(const size_t& id) override;
+
+            size_t receiptCallbacksCount() const override;
 
             std::shared_ptr<Message::Request::IRequestData> getPreparedRequest(Message::OperationCode operationCode) override;
 
             std::shared_ptr<Message::Response::IResponseData> getPreparedResponse(Message::OperationCode operationCode) override;
 
-            std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode ) override;
+            std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode) override;
 
-            std::shared_ptr<Message::Interaction::IInteractionData>
-            getPreparedInteraction(Message::Interaction::InteractionCode interactionCode) override;
+            std::shared_ptr<Message::Interaction::IInteractionData> getPreparedInteraction(Message::Interaction::InteractionCode interactionCode) override;
+
+            std::shared_ptr<Message::Receipt::IReceiptData> getPreparedReceipt(Message::Receipt::ReceiptCode receiptCode) override;
 
             size_t addConnectionCallback(Callback::IConnectionCallback &callback) override;
 
@@ -93,9 +100,7 @@ namespace Lanter {
 
             bool sendMessage(std::shared_ptr<Message::Interaction::IInteractionData> interaction) override;
 
-            void popFromQueue(std::vector<uint8_t>& data);
-
-            size_t getSizeQueue();
+            bool sendMessage(std::shared_ptr<Message::Receipt::IReceiptData> receipt) override;
 
         private:
             bool createParser();
@@ -112,6 +117,7 @@ namespace Lanter {
             void doCommunication();
 
             bool pushToQueue(const std::vector<uint8_t> & data);
+            void popFromQueue(std::vector<uint8_t> &data);
 
             void sendData();
             void receiveData();
@@ -120,6 +126,7 @@ namespace Lanter {
             void notifyResponse();
             void notifyNotification();
             void notifyInteraction();
+            void notifyReceipt();
             void notifyConnectionStatus(bool status);
 
             bool waitFuture();
@@ -127,7 +134,7 @@ namespace Lanter {
             void connect();
             bool isConnected();
 
-            int16_t m_EcrNumber = 1;
+            int64_t m_EcrNumber = 1;
 
             std::atomic<bool> m_IsStarted;
 
@@ -153,7 +160,9 @@ namespace Lanter {
 
             std::unordered_map<size_t, Callback::INotificationCallback&> m_NotificationCallbacks;
 
-            std::unordered_map<size_t, Callback::IInteractionCallback& > m_InteractionCallbacks;
+            std::unordered_map<size_t, Callback::IInteractionCallback&> m_InteractionCallbacks;
+
+            std::unordered_map<size_t, Callback::IReceiptCallback&> m_ReceiptCallbacks;
 
             std::unordered_map<size_t, Callback::IConnectionCallback&> m_ConnectionCallbacks;
 
@@ -161,5 +170,4 @@ namespace Lanter {
         };
     }
 }
-
 #endif //LAN_4GATELIB_LAN4GATE_H

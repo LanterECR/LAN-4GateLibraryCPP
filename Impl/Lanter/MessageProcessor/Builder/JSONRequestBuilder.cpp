@@ -2,35 +2,44 @@
 
 #include "Lanter/MessageProcessor/JSONFields/JSONFieldExists.h"
 #include "Lanter/MessageProcessor/JSONFields/JSONRequestFields.h"
-
 #include "Lanter/MessageProcessor/Builder/JSONAddFieldHelper.h"
 
 using namespace std::placeholders;
-namespace Lanter {
-    namespace MessageProcessor {
-        namespace Builder {
-            JSONRequestBuilder::JSONRequestBuilder() {
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
+        namespace Builder
+        {
+            JSONRequestBuilder::JSONRequestBuilder()
+            {
                 initFunctionsMap();
             }
 
-            bool JSONRequestBuilder::createObject(const IRequestData &requestData, Json::Value &object) {
+            bool JSONRequestBuilder::createObject(const IRequestData &requestData, Json::Value &object)
+            {
                 return addFields(requestData, object);
             }
 
             const std::map<RequestField, std::function<bool(const IRequestData &, Json::Value &)>> &
-            JSONRequestBuilder::getFunctions() const {
+            JSONRequestBuilder::getFunctions() const
+            {
                 return m_InsertFunctions;
             }
 
-            bool JSONRequestBuilder::addFieldEcrNumber(const IRequestData &requestData, Json::Value &object) {
-                if (requestData.isFieldSet(RequestField::EcrNumber)) {
+            bool JSONRequestBuilder::addFieldEcrNumber(const IRequestData &requestData, Json::Value &object)
+            {
+                if (requestData.isFieldSet(RequestField::EcrNumber))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getEcrNumber(), requestData.getEcrNumber());
                 }
                 return fieldExists(object, JSONRequestFields::getEcrNumber());
             }
 
-            bool JSONRequestBuilder::addFieldEcrMerchantNumber(const IRequestData &requestData, Json::Value &object) {
-                if (requestData.isFieldSet(RequestField::EcrMerchantNumber)) {
+            bool JSONRequestBuilder::addFieldEcrMerchantNumber(const IRequestData &requestData, Json::Value &object)
+            {
+                if (requestData.isFieldSet(RequestField::EcrMerchantNumber))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getEcrMerchantNumber(),
                                               requestData.getEcrMerchantNumber());
                 }
@@ -105,86 +114,108 @@ namespace Lanter {
                 return fieldExists(object, JSONRequestFields::getReceiptReference());
             }
 
-            bool JSONRequestBuilder::addFieldTransactionID(const IRequestData &requestData, Json::Value &object) {
-                if (requestData.isFieldSet(RequestField::TransactionID)) {
+            bool JSONRequestBuilder::addFieldTransactionID(const IRequestData &requestData, Json::Value &object)
+            {
+                if (requestData.isFieldSet(RequestField::TransactionID))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getTransactionID(),
                                               requestData.getTransactionID());
                 }
                 return fieldExists(object, JSONRequestFields::getTransactionID());
             }
 
-            bool JSONRequestBuilder::addFieldCardDataEnc(const IRequestData &requestData, Json::Value &object) {
-                if (requestData.isFieldSet(RequestField::CardDataEnc)) {
+            bool JSONRequestBuilder::addFieldCardDataEnc(const IRequestData &requestData, Json::Value &object)
+            {
+                if (requestData.isFieldSet(RequestField::CardDataEnc))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getCardDataEnc(),
                                               requestData.getCardDataEnc());
                 }
                 return fieldExists(object, JSONRequestFields::getCardDataEnc());
             }
 
-            bool JSONRequestBuilder::addFieldOpenTags(const IRequestData &requestData, Json::Value &object) {
-                if (requestData.isFieldSet(RequestField::OpenTags)) {
+            bool JSONRequestBuilder::addFieldOpenTags(const IRequestData &requestData, Json::Value &object)
+            {
+                if (requestData.isFieldSet(RequestField::OpenTags))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getOpenTags(), requestData.getOpenTags());
                 }
                 return fieldExists(object, JSONRequestFields::getOpenTags());
             }
 
-            bool JSONRequestBuilder::addFieldEncTags(const IRequestData &requestData, Json::Value &object) {
-                if (requestData.isFieldSet(RequestField::EncTags)) {
+            bool JSONRequestBuilder::addFieldEncTags(const IRequestData &requestData, Json::Value &object)
+            {
+                if (requestData.isFieldSet(RequestField::EncTags))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getEncTags(), requestData.getEncTags());
                 }
                 return fieldExists(object, JSONRequestFields::getEncTags());
             }
             
-            bool JSONRequestBuilder::addFieldSBP_RN(const IRequestData& requestData, Json::Value& object) {
-                if (requestData.isFieldSet(RequestField::SBP_RN)) {
+            bool JSONRequestBuilder::addFieldSBP_RN(const IRequestData& requestData, Json::Value& object)
+            {
+                if (requestData.isFieldSet(RequestField::SBP_RN))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getSBP_RN(),
                         requestData.getSBP_RN());
                 }
                 return fieldExists(object, JSONRequestFields::getSBP_RN());
             }
 
-            bool JSONRequestBuilder::addFieldSBP_ReqID(const IRequestData& requestData, Json::Value& object) {
-                if (requestData.isFieldSet(RequestField::SBP_ReqID)) {
+            bool JSONRequestBuilder::addFieldSBP_ReqID(const IRequestData& requestData, Json::Value& object)
+            {
+                if (requestData.isFieldSet(RequestField::SBP_ReqID))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getSBP_ReqID(),
                         requestData.getSBP_ReqID());
                 }
                 return fieldExists(object, JSONRequestFields::getSBP_ReqID());
             }
 
-            bool JSONRequestBuilder::addFieldPaymentPurpose(const IRequestData& requestData, Json::Value& object) {
-                if (requestData.isFieldSet(RequestField::PaymentPurpose)) {
+            bool JSONRequestBuilder::addFieldPaymentPurpose(const IRequestData& requestData, Json::Value& object)
+            {
+                if (requestData.isFieldSet(RequestField::PaymentPurpose))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getPaymentPurpose(),
                         requestData.getPaymentPurpose());
                 }
                 return fieldExists(object, JSONRequestFields::getPaymentPurpose());
             }
 
-            bool JSONRequestBuilder::addFieldProviderCode(const IRequestData &requestData, Json::Value &object) {
-                if (requestData.isFieldSet(RequestField::ProviderCode)) {
+            bool JSONRequestBuilder::addFieldProviderCode(const IRequestData &requestData, Json::Value &object)
+            {
+                if (requestData.isFieldSet(RequestField::ProviderCode))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getProviderCode(),
                                               requestData.getProviderCode());
                 }
                 return fieldExists(object, JSONRequestFields::getProviderCode());
             }
 
-            bool JSONRequestBuilder::addFieldAdditionalInfo(const IRequestData &requestData, Json::Value &object) {
-                if (requestData.isFieldSet(RequestField::AdditionalInfo)) {
+            bool JSONRequestBuilder::addFieldAdditionalInfo(const IRequestData &requestData, Json::Value &object)
+            {
+                if (requestData.isFieldSet(RequestField::AdditionalInfo))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getAdditionalInfo(),
                                               requestData.getAdditionalInfo());
                 }
                 return fieldExists(object, JSONRequestFields::getAdditionalInfo());
             }
 
-            bool JSONRequestBuilder::addFieldBonusBalance(const IRequestData &requestData, Json::Value &object) {
-                if (requestData.isFieldSet(RequestField::BonusBalance)) {
+            bool JSONRequestBuilder::addFieldBonusBalance(const IRequestData &requestData, Json::Value &object)
+            {
+                if (requestData.isFieldSet(RequestField::BonusBalance))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getBonusBalance(),
                                               requestData.getBonusBalance());
                 }
                 return fieldExists(object, JSONRequestFields::getBonusBalance());
             }
 
-            bool JSONRequestBuilder::addFieldBonusAmount(const IRequestData &requestData, Json::Value &object) {
-                if (requestData.isFieldSet(RequestField::BonusAmount)) {
+            bool JSONRequestBuilder::addFieldBonusAmount(const IRequestData &requestData, Json::Value &object)
+            {
+                if (requestData.isFieldSet(RequestField::BonusAmount))
+                {
                     AddFieldsHelper::addField(object, JSONRequestFields::getBonusAmount(),
                                               requestData.getBonusAmount());
                 }
@@ -231,12 +262,40 @@ namespace Lanter {
                 return fieldExists(object, JSONRequestFields::getPaymentParam3());
             }
 
-            bool JSONRequestBuilder::addFieldAdditionalChoice(const IRequestData &requestData, Json::Value &object) {
-                if (requestData.isFieldSet(RequestField::AdditionalChoice)) {
-                    AddFieldsHelper::addField(object, JSONRequestFields::getAdditionalChoice(),
-                                              requestData.getAdditionalChoice());
+            bool JSONRequestBuilder::addFieldAdditionalChoice(const IRequestData &requestData, Json::Value &object)
+            {
+                if (requestData.isFieldSet(RequestField::AdditionalChoice))
+                {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getAdditionalChoice(), requestData.getAdditionalChoice());
                 }
                 return fieldExists(object, JSONRequestFields::getAdditionalChoice());
+            }
+
+            bool JSONRequestBuilder::addFieldTransportControlStation(const IRequestData& requestData, Json::Value& object)
+            {
+                if (requestData.isFieldSet(RequestField::TransportControlStation))
+                {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getTransportControlStation(), requestData.getTransportControlStation());
+                }
+                return fieldExists(object, JSONRequestFields::getTransportControlStation());
+            }
+
+            bool JSONRequestBuilder::addFieldTransportControlArea(const IRequestData& requestData, Json::Value& object)
+            {
+                if (requestData.isFieldSet(RequestField::TransportControlArea))
+                {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getTransportControlArea(), requestData.getTransportControlArea());
+                }
+                return fieldExists(object, JSONRequestFields::getTransportControlArea());
+            }
+
+            bool JSONRequestBuilder::addFieldTransportControlID(const IRequestData& requestData, Json::Value& object)
+            {
+                if (requestData.isFieldSet(RequestField::TransportControlID))
+                {
+                    AddFieldsHelper::addField(object, JSONRequestFields::getTransportControlID(), requestData.getTransportControlID());
+                }
+                return fieldExists(object, JSONRequestFields::getTransportControlID());
             }
 
 			bool JSONRequestBuilder::addFieldCardPANHash(const IRequestData &requestData, Json::Value &object) {
@@ -289,27 +348,36 @@ namespace Lanter {
                 m_InsertFunctions[RequestField::PaymentParam2] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPaymentParam2(requestData, object); };
                 m_InsertFunctions[RequestField::PaymentParam3] = [this](const IRequestData &requestData, Json::Value &object) { return addFieldPaymentParam3(requestData, object); };
                 m_InsertFunctions[RequestField::AdditionalChoice] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldAdditionalChoice(requestData, object); };
+                m_InsertFunctions[RequestField::TransportControlStation] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldTransportControlStation(requestData, object); };
+                m_InsertFunctions[RequestField::TransportControlArea] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldTransportControlArea(requestData, object); };
+                m_InsertFunctions[RequestField::TransportControlID] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldTransportControlID(requestData, object); };
 				m_InsertFunctions[RequestField::CardPANHash] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldCardPANHash(requestData, object); };
 				m_InsertFunctions[RequestField::ECertAmount] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldECertAmount(requestData, object); };
 				m_InsertFunctions[RequestField::BasketID] = [this](const IRequestData& requestData, Json::Value& object) { return addFieldBasketID(requestData, object); };
 			}
 
             //TODO переделать нормально
-            bool JSONRequestBuilder::addFields(const IRequestData &requestData, Json::Value &object) {
+            bool JSONRequestBuilder::addFields(const IRequestData &requestData, Json::Value &object)
+            {
                 bool result = false;
 
-                if (requestData.validateMandatoryFields()) {
+                if (requestData.validateMandatoryFields())
+                {
                     result = true;
 
-                    for (auto field : requestData.getMandatoryFields()) {
-                        if (requestData.getFieldsSet().find(field) != requestData.getFieldsSet().end()) {
+                    for (auto field : requestData.getMandatoryFields())
+                    {
+                        if (requestData.getFieldsSet().find(field) != requestData.getFieldsSet().end())
+                        {
                             auto function = m_InsertFunctions.at(field);
                             result = result && function(requestData, object);
                         }
                     }
 
-                    for (auto field : requestData.getOptionalFields()) {
-                        if (requestData.getFieldsSet().find(field) != requestData.getFieldsSet().end()) {
+                    for (auto field : requestData.getOptionalFields())
+                    {
+                        if (requestData.getFieldsSet().find(field) != requestData.getFieldsSet().end())
+                        {
                             auto function = m_InsertFunctions.at(field);
                             function(requestData, object);
                         }

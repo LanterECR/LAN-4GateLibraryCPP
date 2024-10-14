@@ -6,17 +6,21 @@
 #include <memory>
 
 #include "Lanter/Utils/VisibilityMacroses.h"
-
 #include "Lanter/Message/Request/IRequestData.h"
 #include "Lanter/Message/Response/IResponseData.h"
 #include "Lanter/Message/Notification/INotificationData.h"
 #include "Lanter/Message/Interaction/IInteractionData.h"
+#include "Lanter/Message/Receipt/IReceiptData.h"
 
-namespace Lanter {
-    namespace MessageProcessor {
-        namespace Builder {
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
+        namespace Builder
+        {
             /// \brief Интерфейс сборщика сообщений на основе заполненных контейнеров
-            class LANTER_VISIBILITY IMessageBuilder {
+            class LANTER_VISIBILITY IMessageBuilder
+            {
             public:
                 virtual ~IMessageBuilder() = default;
 
@@ -47,6 +51,13 @@ namespace Lanter {
                 /// \return true, если сборка сообщения прошла успешно.
                 /// \sa Message::Interaction::IInteractionData
                 virtual bool createMessage(std::shared_ptr<Message::Interaction::IInteractionData> data, std::vector<uint8_t> &result) = 0;
+
+                /// \brief Создает сообщение на основе контейнера IReceiptData
+                /// \param[in] data Заполненный контейнер IReceiptData
+                /// \param[out] result vector из байтов, содержащий собранное сообщение
+                /// \return true, если сборка сообщения прошла успешно.
+                /// \sa Message::Receipt::IReceiptData
+                virtual bool createMessage(std::shared_ptr<Message::Receipt::IReceiptData> data, std::vector<uint8_t>& result) = 0;
             };//class IMessageBuilder
         }//namespace Builder
     }//namespace MessageProcessor

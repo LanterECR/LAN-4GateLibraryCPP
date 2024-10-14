@@ -7,11 +7,14 @@
 
 #include "Lanter/Message/OperationCode.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Request {
-
-            class ValidatorFactory {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Request
+        {
+            class ValidatorFactory
+            {
             public:
                 /// Создает экземпляр валидатора для операции
                 /// \param operationCode Операция, для которой необходим экземпляр валидатора
@@ -21,5 +24,4 @@ namespace Lanter {
         }//namespace Request
     }//namespace Message
 }//namespace Lanter
-
 #endif //LAN_4GATELIBRARYCPP_VALIDATORFACTORY_H

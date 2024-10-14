@@ -1,95 +1,111 @@
 #include "RequestData.h"
-
 #include "Validators/ValidatorFactory.h"
 #include "Lanter/Utils/FieldRangeChecker.h"
 
-namespace Lanter {
+namespace Lanter
+{
     using namespace Utils;
 
-    namespace Message {
-        namespace Request {
-
-            RequestData::RequestData() {
+    namespace Message
+    {
+        namespace Request
+        {
+            RequestData::RequestData()
+            {
                 initValidator();
             }//RequestData()
 
-            const std::set<RequestField> &RequestData::getMandatoryFields() const {
-                if (m_Validator) {
+            const std::set<RequestField> &RequestData::getMandatoryFields() const
+            {
+                if (m_Validator)
+                {
                     return m_Validator->getMandatoryFields();
                 }//if validator
 
                 return m_EmptyFieldsPlaceholder;
             }//getMandatoryFields()
 
-            const std::set<RequestField> &RequestData::getOptionalFields() const {
-                if (m_Validator) {
+            const std::set<RequestField> &RequestData::getOptionalFields() const
+            {
+                if (m_Validator)
+                {
                     return m_Validator->getOptionalFields();
                 }//if validator
 
                 return m_EmptyFieldsPlaceholder;
             }//getOptionalFields()
 
-            bool RequestData::validateMandatoryFields() const {
-                if (m_Validator) {
+            bool RequestData::validateMandatoryFields() const
+            {
+                if (m_Validator)
+                {
                     return m_Validator->validate(getFieldsSet());
                 }//if validator
 
                 return false;
             }//validateMandatoryFields()
 
-           int16_t RequestData::getEcrNumber() const {
+            int64_t RequestData::getEcrNumber() const
+           {
                 return m_EcrNumber;
             }//getEcrNumber()
 
-            bool RequestData::setEcrNumber(int16_t ecrNumber) {
-                bool result = false;
-
-                if (checkEcrNumberRange(ecrNumber)) {
+            bool RequestData::setEcrNumber(int64_t ecrNumber)
+            {
+                if (checkEcrNumberRange(ecrNumber))
+                {
                     m_EcrNumber = ecrNumber;
                     m_FieldsSet.insert(RequestField::EcrNumber);
-                    result = true;
+                    return true;
                 }//if check ecrNumber
 
-                return result;
+                return false;
             }//setEcrNumber()
 
-            bool RequestData::resetEcrNumber() {
+            bool RequestData::resetEcrNumber()
+            {
                 m_EcrNumber = -1;
                 m_FieldsSet.erase(RequestField::EcrNumber);
                 return !isFieldSet(RequestField::EcrNumber);
             }//resetEcrNumber()
 
-            int16_t RequestData::getEcrMerchantNumber() const {
+            int64_t RequestData::getEcrMerchantNumber() const
+            {
                 return m_EcrMerchantNumber;
             }//getEcrMerchantNumber()
 
-            bool RequestData::setEcrMerchantNumber(int16_t ecrMerchantNumber) {
-                bool result = false;
-
-                if (checkEcrMerchantNumberRange(ecrMerchantNumber)) {
+            bool RequestData::setEcrMerchantNumber(int64_t ecrMerchantNumber)
+            {
+                if (checkEcrMerchantNumberRange(ecrMerchantNumber))
+                {
                     m_EcrMerchantNumber = ecrMerchantNumber;
                     m_FieldsSet.insert(RequestField::EcrMerchantNumber);
-                    result = true;
+                    return true;
                 }//if ecrMerchantNumber
 
-                return result;
+                return false;
             }//setEcrMerchantNumber()
 
-            bool RequestData::resetEcrMerchantNumber() {
+            bool RequestData::resetEcrMerchantNumber()
+            {
                 m_EcrMerchantNumber = -1;
                 m_FieldsSet.erase(RequestField::EcrMerchantNumber);
                 return !isFieldSet(RequestField::EcrMerchantNumber);
             }//resetEcrMerchantNumber()
 
-            OperationCode RequestData::getOperationCode() const {
+            OperationCode RequestData::getOperationCode() const
+            {
                 return m_OperationCode;
             }//getOperationCode()
 
-            bool RequestData::setOperationCode(OperationCode operationCode) {
+            bool RequestData::setOperationCode(OperationCode operationCode)
+            {
                 bool result = false;
 
-                if (checkOperationCodeRange(static_cast<int32_t>(operationCode))) {
-                    if (m_OperationCode != operationCode) {
+                if (checkOperationCodeRange(static_cast<int64_t>(operationCode)))
+                {
+                    if (m_OperationCode != operationCode)
+                    {
                         m_OperationCode = operationCode;
                         m_FieldsSet.insert(RequestField::OperationCode);
                         initValidator(); //необходима инициализация нового валидатора при смене кода операции
@@ -100,7 +116,8 @@ namespace Lanter {
                 return result;
             }//setOperationCode()
 
-            bool RequestData::resetOperationCode() {
+            bool RequestData::resetOperationCode()
+            {
                 m_OperationCode = OperationCode::NoOperation;
                 m_FieldsSet.erase(RequestField::OperationCode);
                 deinitValidator();//вместе с кодом необходим сброс валидатора
@@ -108,14 +125,17 @@ namespace Lanter {
                 return !isFieldSet(RequestField::OperationCode);
             }//resetOperationCode()
 
-            int64_t RequestData::getAmount() const {
+            int64_t RequestData::getAmount() const
+            {
                 return m_Amount;
             }//getAmount()
 
-            bool RequestData::setAmount(int64_t amount) {
+            bool RequestData::setAmount(int64_t amount)
+            {
                 bool result = false;
 
-                if (checkAmountRange(amount)) {
+                if (checkAmountRange(amount))
+                {
                     m_Amount = amount;
                     m_FieldsSet.insert(RequestField::Amount);
                     result = true;
@@ -487,10 +507,12 @@ namespace Lanter {
                 return m_HashCardTrack2;
             }
 
-            bool RequestData::setHashCardTrack2(const std::string &cardTrack2) {
+            bool RequestData::setHashCardTrack2(const std::string &cardTrack2)
+            {
                 bool result = false;
 
-                if (checkHashCardTrack2(cardTrack2)) {
+                if (checkHashCardTrack2(cardTrack2))
+                {
                     m_HashCardTrack2 = cardTrack2;
                     m_FieldsSet.insert(RequestField::HashCardTrack2);
                     result = true;
@@ -499,20 +521,24 @@ namespace Lanter {
                 return result;
             }
 
-            bool RequestData::resetHashCardTrack2() {
+            bool RequestData::resetHashCardTrack2()
+            {
                 m_HashCardTrack2.clear();
                 m_FieldsSet.erase(RequestField::HashCardTrack2);
                 return !isFieldSet(RequestField::HashCardTrack2);
             }
 
-            const std::string& RequestData::getSBP_RN() const {
+            const std::string& RequestData::getSBP_RN() const
+            {
                 return m_SBP_RN;
             }
 
-            bool RequestData::setSBP_RN(const std::string& purpose) {
+            bool RequestData::setSBP_RN(const std::string& purpose)
+            {
                 bool result = false;
 
-                if (checkSBP_RN(purpose)) {
+                if (checkSBP_RN(purpose))
+                {
                     m_SBP_RN = purpose;
                     m_FieldsSet.insert(RequestField::SBP_RN);
                     result = true;
@@ -521,20 +547,24 @@ namespace Lanter {
                 return result;
             }
 
-            bool RequestData::resetSBP_RN() {
+            bool RequestData::resetSBP_RN()
+            {
                 m_SBP_RN.clear();
                 m_FieldsSet.erase(RequestField::SBP_RN);
                 return !isFieldSet(RequestField::SBP_RN);
             }
 
-            const std::string& RequestData::getSBP_ReqID() const {
+            const std::string& RequestData::getSBP_ReqID() const
+            {
                 return m_SBP_ReqID;
             }
 
-            bool RequestData::setSBP_ReqID(const std::string& purpose) {
+            bool RequestData::setSBP_ReqID(const std::string& purpose)
+            {
                 bool result = false;
 
-                if (checkSBP_ReqID(purpose)) {
+                if (checkSBP_ReqId(purpose))
+                {
                     m_SBP_ReqID = purpose;
                     m_FieldsSet.insert(RequestField::SBP_ReqID);
                     result = true;
@@ -543,20 +573,24 @@ namespace Lanter {
                 return result;
             }
 
-            bool RequestData::resetSBP_ReqID() {
+            bool RequestData::resetSBP_ReqID()
+            {
                 m_SBP_ReqID.clear();
                 m_FieldsSet.erase(RequestField::SBP_ReqID);
                 return !isFieldSet(RequestField::SBP_ReqID);
             }
 
-            const std::string& RequestData::getPaymentPurpose() const {
+            const std::string& RequestData::getPaymentPurpose() const
+            {
                 return m_PaymentPurpose;
             }
 
-            bool RequestData::setPaymentPurpose(const std::string& purpose) {
+            bool RequestData::setPaymentPurpose(const std::string& purpose)
+            {
                 bool result = false;
 
-                if (checkPaymentPurpose(purpose)) {
+                if (checkPaymentPurpose(purpose))
+                {
                     m_PaymentPurpose = purpose;
                     m_FieldsSet.insert(RequestField::PaymentPurpose);
                     result = true;
@@ -565,20 +599,24 @@ namespace Lanter {
                 return result;
             }
 
-            bool RequestData::resetPaymentPurpose() {
+            bool RequestData::resetPaymentPurpose()
+            {
                 m_PaymentPurpose.clear();
                 m_FieldsSet.erase(RequestField::PaymentPurpose);
                 return !isFieldSet(RequestField::PaymentPurpose);
             }
 
-			const std::string &RequestData::getPaymentProviderCode() const {
+			const std::string &RequestData::getPaymentProviderCode() const
+            {
                 return m_PaymentProviderCode;
             }
 
-            bool RequestData::setPaymentProviderCode(const std::string &code) {
+            bool RequestData::setPaymentProviderCode(const std::string &code)
+            {
                 bool result = false;
 
-                if (checkProviderCodeRange(code)) {
+                if (checkProviderCodeRange(code))
+                {
                     m_PaymentProviderCode = code;
                     m_FieldsSet.insert(RequestField::PaymentProviderCode);
                     result = true;
@@ -587,20 +625,24 @@ namespace Lanter {
                 return result;
             }
 
-            bool RequestData::resetPaymentProviderCode() {
+            bool RequestData::resetPaymentProviderCode()
+            {
                 m_PaymentProviderCode.clear();
                 m_FieldsSet.erase(RequestField::PaymentProviderCode);
                 return !isFieldSet(RequestField::PaymentProviderCode);
             }
 
-            const std::string &RequestData::getPaymentParam1() const {
+            const std::string &RequestData::getPaymentParam1() const
+            {
                 return m_PaymentParam1;
             }
 
-            bool RequestData::setPaymentParam1(const std::string &param) {
+            bool RequestData::setPaymentParam1(const std::string &param)
+            {
                 bool result = false;
 
-                if (!param.empty()) {
+                if (!param.empty())
+                {
                     m_PaymentParam1 = param;
                     m_FieldsSet.insert(RequestField::PaymentParam1);
                     result = true;
@@ -697,21 +739,25 @@ namespace Lanter {
                 return result;
             }
 
-            bool RequestData::resetPaymentParam3() {
+            bool RequestData::resetPaymentParam3()
+            {
                 m_PaymentParam3.clear();
                 m_FieldsSet.erase(RequestField::PaymentParam3);
                 return !isFieldSet(RequestField::PaymentParam3);
             }
 
-            const std::string &RequestData::getAdditionalChoice() const {
+            const std::string& RequestData::getAdditionalChoice() const
+            {
                 return m_AdditionalChoice;
             }//getAdditionalChoice()
 
-            bool RequestData::setAdditionalChoice(const std::string& AdditionalChoice) {
+            bool RequestData::setAdditionalChoice(const std::string& additionalChoice)
+            {
                 bool result = false;
 
-                if (checkAdditionalChoiceRange(AdditionalChoice)) {
-                    m_AdditionalChoice = AdditionalChoice;
+                if (checkAdditionalChoiceRange(additionalChoice))
+                {
+                    m_AdditionalChoice = additionalChoice;
                     m_FieldsSet.insert(RequestField::AdditionalChoice);
                     result = true;
                 }//if check additional choice
@@ -719,26 +765,108 @@ namespace Lanter {
                 return result;
             }//setAdditionalChoice()
 
-            bool RequestData::resetAdditionalChoice() {
+            bool RequestData::resetAdditionalChoice()
+            {
                 m_AdditionalChoice.clear();
                 m_FieldsSet.erase(RequestField::AdditionalChoice);
                 return !isFieldSet(RequestField::AdditionalChoice);
             }//resetAdditionalChoice()
 
+            const std::string& RequestData::getTransportControlStation() const
+            {
+                return m_TransportControlStation;
+            }
 
-            const std::set<RequestField> &RequestData::getFieldsSet() const {
+            bool RequestData::setTransportControlStation(const std::string& transportControlStation)
+            {
+                bool result = false;
+
+                if (checkTransportControlStationRange(transportControlStation))
+                {
+                    m_TransportControlStation = transportControlStation;
+                    m_FieldsSet.insert(RequestField::TransportControlStation);
+                    result = true;
+                }
+
+                return result;
+            }
+
+            bool RequestData::resetTransportControlStation()
+            {
+                m_TransportControlStation.clear();
+                m_FieldsSet.erase(RequestField::TransportControlStation);
+                return !isFieldSet(RequestField::TransportControlStation);
+            }
+
+            const std::string& RequestData::getTransportControlArea() const
+            {
+                return m_TransportControlArea;
+            }
+
+            bool RequestData::setTransportControlArea(const std::string& transportControlArea)
+            {
+                bool result = false;
+
+                if (checkTransportControlAreaRange(transportControlArea))
+                {
+                    m_TransportControlArea = transportControlArea;
+                    m_FieldsSet.insert(RequestField::TransportControlArea);
+                    result = true;
+                }
+
+                return result;
+            }
+
+            bool RequestData::resetTransportControlArea()
+            {
+                m_TransportControlArea.clear();
+                m_FieldsSet.erase(RequestField::TransportControlArea);
+                return !isFieldSet(RequestField::TransportControlArea);
+            }
+
+            const std::string& RequestData::getTransportControlID() const
+            {
+                return m_TransportControlID;
+            }
+
+            bool RequestData::setTransportControlID(const std::string& transportControlID)
+            {
+                bool result = false;
+
+                if (checkTransportControlIDRange(transportControlID))
+                {
+                    m_TransportControlID = transportControlID;
+                    m_FieldsSet.insert(RequestField::TransportControlID);
+                    result = true;
+                }
+
+                return result;
+            }
+
+            bool RequestData::resetTransportControlID()
+            {
+                m_TransportControlID.clear();
+                m_FieldsSet.erase(RequestField::TransportControlID);
+                return !isFieldSet(RequestField::TransportControlID);
+            }
+
+            const std::set<RequestField> &RequestData::getFieldsSet() const
+            {
                 return m_FieldsSet;
             }//getFieldsSet()
 
-            bool RequestData::isFieldSet(RequestField field) const {
+            bool RequestData::isFieldSet(RequestField field) const
+            {
                 return m_FieldsSet.find(field) != m_FieldsSet.end();
             }//isFieldSet()
 
 
-            bool RequestData::resetField(RequestField field) {
+            bool RequestData::resetField(RequestField field)
+            {
                 bool result = false;
 
-                switch (field) {
+                switch (field)
+                {
                     case RequestField::EcrNumber:
                         result = resetEcrNumber();
                         break;
@@ -756,6 +884,9 @@ namespace Lanter {
                         break;
                     case RequestField::TipsAmount:
                         result = resetTipsAmount();
+                        break;
+                    case RequestField::CardPANHash:
+                        result = resetCardPANHash();
                         break;
                     case RequestField::CashbackAmount:
                         result = resetCashbackAmount();
@@ -823,6 +954,15 @@ namespace Lanter {
                     case RequestField::AdditionalChoice:
                         result = resetAdditionalChoice();
                         break;
+                    case RequestField::TransportControlStation:
+                        result = resetTransportControlStation();
+                        break;
+                    case RequestField::TransportControlArea:
+                        result = resetTransportControlArea();
+                        break;
+                    case RequestField::TransportControlID:
+                        result = resetTransportControlID();
+                        break;
 					case RequestField::ECertAmount:
 						result = resetECertAmount();
 						break;
@@ -834,11 +974,13 @@ namespace Lanter {
                 return result;
             }//resetField(
 
-            void RequestData::initValidator() {
+            void RequestData::initValidator()
+            {
                 m_Validator = ValidatorFactory::getValidator(getOperationCode());
             }//initValidator()
 
-            void RequestData::deinitValidator() {
+            void RequestData::deinitValidator()
+            {
                 m_Validator.reset();
             }//deinitValidator()
         }//namespace Request

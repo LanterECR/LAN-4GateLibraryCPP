@@ -1,111 +1,128 @@
 #include "JSONResponseBuilder.h"
-
 #include "JSONAddFieldHelper.h"
 
 #include "Lanter/MessageProcessor/JSONFields/JSONResponseFields.h"
-
 #include "Lanter/MessageProcessor/JSONFields/JSONFieldExists.h"
-namespace Lanter {
-    namespace MessageProcessor {
-        namespace Builder {
+
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
+        namespace Builder
+        {
             using namespace std::placeholders;
 
-            JSONResponseBuilder::JSONResponseBuilder() {
+            JSONResponseBuilder::JSONResponseBuilder()
+            {
                 initFunctionsMap();
             }
 
-            bool JSONResponseBuilder::createObject(const IResponseData &responseData, Json::Value &object) {
+            bool JSONResponseBuilder::createObject(const IResponseData &responseData, Json::Value &object)
+            {
                 bool result = false;
-                try {
+                try
+                {
                     result = addFields(responseData, object);
-                } catch (std::exception &) {}
+                }
+                catch (std::exception &)
+                {
+                }
+
                 return result;
             }
 
             const std::map<ResponseField, std::function<bool(const IResponseData &, Json::Value &)>> &
-            JSONResponseBuilder::getFunctions() const {
+            JSONResponseBuilder::getFunctions() const
+            {
                 return m_InsertFunctions;
             }
 
-            bool JSONResponseBuilder::addFieldEcrNumber(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::EcrNumber)) {
+            bool JSONResponseBuilder::addFieldEcrNumber(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::EcrNumber))
+                {
                     AddFieldsHelper::addField(object, JSONResponseFields::getEcrNumber(), responseData.getEcrNumber());
                 }
                 return fieldExists(object, JSONResponseFields::getEcrNumber());
             }
 
-            bool
-            JSONResponseBuilder::addFieldEcrMerchantNumber(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::EcrMerchantNumber)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getEcrMerchantNumber(),
-                                              responseData.getEcrMerchantNumber());
+            bool JSONResponseBuilder::addFieldEcrMerchantNumber(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::EcrMerchantNumber))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getEcrMerchantNumber(), responseData.getEcrMerchantNumber());
                 }
                 return fieldExists(object, JSONResponseFields::getEcrMerchantNumber());
             }
 
-            bool JSONResponseBuilder::addFieldOperationCode(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::OperationCode)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getOperationCode(),
-                                              static_cast<int>(responseData.getOperationCode()));
+            bool JSONResponseBuilder::addFieldOperationCode(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::OperationCode))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getOperationCode(), static_cast<int>(responseData.getOperationCode()));
                 }
                 return fieldExists(object, JSONResponseFields::getOperationCode());
             }
 
-            bool
-            JSONResponseBuilder::addFieldOriginalOperationCode(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::OriginalOperationCode)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationCode(),
-                                              static_cast<int>(responseData.getOriginalOperationCode()));
+            bool JSONResponseBuilder::addFieldOriginalOperationCode(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::OriginalOperationCode))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getOriginalOperationCode(), static_cast<int>(responseData.getOriginalOperationCode()));
                 }
                 return fieldExists(object, JSONResponseFields::getOriginalOperationCode());
             }
 
-            bool JSONResponseBuilder::addFieldTotalAmount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::TotalAmount)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getTotalAmount(),
-                                              responseData.getTotalAmount());
+            bool JSONResponseBuilder::addFieldTotalAmount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::TotalAmount))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getTotalAmount(), responseData.getTotalAmount());
                 }
                 return fieldExists(object, JSONResponseFields::getTotalAmount());
             }
 
-            bool JSONResponseBuilder::addFieldPartialAmount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::PartialAmount)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getPartialAmount(),
-                                              responseData.getPartialAmount());
+            bool JSONResponseBuilder::addFieldPartialAmount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::PartialAmount))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getPartialAmount(), responseData.getPartialAmount());
                 }
                 return fieldExists(object, JSONResponseFields::getPartialAmount());
             }
 
-            bool
-            JSONResponseBuilder::addFieldAcquirerFeeAmount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::AcquirerFeeAmount)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getAcquirerFeeAmount(),
-                                              responseData.getAcquirerFeeAmount());
+            bool JSONResponseBuilder::addFieldAcquirerFeeAmount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::AcquirerFeeAmount))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getAcquirerFeeAmount(), responseData.getAcquirerFeeAmount());
                 }
                 return fieldExists(object, JSONResponseFields::getAcquirerFeeAmount());
             }
 
-            bool
-            JSONResponseBuilder::addFieldTerminalFeeAmount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::TerminalFeeAmount)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getTerminalFeeAmount(),
-                                              responseData.getTerminalFeeAmount());
+            bool JSONResponseBuilder::addFieldTerminalFeeAmount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::TerminalFeeAmount))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getTerminalFeeAmount(), responseData.getTerminalFeeAmount());
                 }
                 return fieldExists(object, JSONResponseFields::getTerminalFeeAmount());
             }
 
-            bool JSONResponseBuilder::addFieldTipsAmount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::TipsAmount)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getTipsAmount(),
-                                              responseData.getTipsAmount());
+            bool JSONResponseBuilder::addFieldTipsAmount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::TipsAmount))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getTipsAmount(), responseData.getTipsAmount());
                 }
                 return fieldExists(object, JSONResponseFields::getTipsAmount());
             }
 
-            bool JSONResponseBuilder::addFieldCurrencyCode(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::CurrencyCode)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getCurrencyCode(),
-                                              responseData.getCurrencyCode());
+            bool JSONResponseBuilder::addFieldCurrencyCode(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::CurrencyCode))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getCurrencyCode(), responseData.getCurrencyCode());
                 }
                 return fieldExists(object, JSONResponseFields::getCurrencyCode());
             }
@@ -334,71 +351,89 @@ namespace Lanter {
                 return fieldExists(object, JSONResponseFields::getKVR());
             }
 
-            bool JSONResponseBuilder::addFieldCDAResult(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::CDAResult)) {
+            bool JSONResponseBuilder::addFieldCDAResult(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::CDAResult))
+                {
                     AddFieldsHelper::addField(object, JSONResponseFields::getCDAResult(), responseData.getCDAResult());
                 }
                 return fieldExists(object, JSONResponseFields::getCDAResult());
             }
 
-            bool JSONResponseBuilder::addFieldSalesAmount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::SalesAmount)) {
+            bool JSONResponseBuilder::addFieldSalesAmount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::SalesAmount))
+                {
                     AddFieldsHelper::addField(object, JSONResponseFields::getSalesAmount(), responseData.getSalesAmount());
                 }
                 return fieldExists(object, JSONResponseFields::getSalesAmount());
             }
 
-            bool JSONResponseBuilder::addFieldSalesCount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::SaleCount)) {
-                    AddFieldsHelper::addField(object, JSONResponseFields::getSaleCount(), responseData.getSaleCount());
+            bool JSONResponseBuilder::addFieldSalesCount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::SalesCount))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getSalesCount(), responseData.getSalesCount());
                 }
-                return fieldExists(object, JSONResponseFields::getSaleCount());
+                return fieldExists(object, JSONResponseFields::getSalesCount());
             }
 
 
-            bool JSONResponseBuilder::addFieldVoidAmount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::VoidAmount)) {
+            bool JSONResponseBuilder::addFieldVoidAmount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::VoidAmount))
+                {
                     AddFieldsHelper::addField(object, JSONResponseFields::getVoidAmount(), responseData.getVoidAmount());
                 }
                 return fieldExists(object, JSONResponseFields::getVoidAmount());
             }
 
-            bool JSONResponseBuilder::addFieldVoidCount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::VoidCount)) {
+            bool JSONResponseBuilder::addFieldVoidCount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::VoidCount))
+                {
                     AddFieldsHelper::addField(object, JSONResponseFields::getVoidCount(), responseData.getVoidCount());
                 }
                 return fieldExists(object, JSONResponseFields::getVoidCount());
             }
 
 
-            bool JSONResponseBuilder::addFieldRefundAmount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::RefundAmount)) {
+            bool JSONResponseBuilder::addFieldRefundAmount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::RefundAmount))
+                {
                     AddFieldsHelper::addField(object, JSONResponseFields::getRefundAmount(), responseData.getRefundAmount());
                 }
                 return fieldExists(object, JSONResponseFields::getRefundAmount());
             }
 
-            bool JSONResponseBuilder::addFieldRefundCount(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::RefundCount)) {
+            bool JSONResponseBuilder::addFieldRefundCount(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::RefundCount))
+                {
                     AddFieldsHelper::addField(object, JSONResponseFields::getRefundCount(),
                                               responseData.getRefundCount());
                 }
                 return fieldExists(object, JSONResponseFields::getRefundCount());
             }
 
-            bool JSONResponseBuilder::addFieldSalesArray(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::SaleArray)) {
+            bool JSONResponseBuilder::addFieldSalesArray(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::SalesArray))
+                {
                     Json::Value array;
-                    for (const auto &arrayResponseData : responseData.getSaleArray()) {
+                    for (const auto &arrayResponseData : responseData.getSalesArray())
+                    {
                         Json::Value arrayElement;
-                        if (!createObject(*arrayResponseData, arrayElement)) {
+                        if (!createObject(*arrayResponseData, arrayElement))
+                        {
                             return false;
                         }
                         AddFieldsHelper::addArrayElement(array, arrayElement);
                     } //for
-                    AddFieldsHelper::addField(object, JSONResponseFields::getSaleArray(), array);
+                    AddFieldsHelper::addField(object, JSONResponseFields::getSalesArray(), array);
                 }
-                return fieldExists(object, JSONResponseFields::getSaleArray());
+                return fieldExists(object, JSONResponseFields::getSalesArray());
             }
 
             bool JSONResponseBuilder::addFieldVoidArray(const IResponseData &responseData, Json::Value &object) {
@@ -508,52 +543,126 @@ namespace Lanter {
                 return fieldExists(object, JSONResponseFields::getHashCardTrack2());
             }
 
-            bool
-            JSONResponseBuilder::addFieldFinalizationRequired(const IResponseData &responseData, Json::Value &object) {
-                if (responseData.isFieldSet(ResponseField::FinalizationRequired)) {
+            bool JSONResponseBuilder::addFieldFinalizationRequired(const IResponseData &responseData, Json::Value &object)
+            {
+                if (responseData.isFieldSet(ResponseField::FinalizationRequired))
+                {
                     AddFieldsHelper::addField(object, JSONResponseFields::getFinalizationRequired(), responseData.getFinalizationRequired());
                 }
                 return fieldExists(object, JSONResponseFields::getFinalizationRequired());
             }
 
-            bool JSONResponseBuilder::addFieldAdditionalChoiceResult(const IResponseData& responseData, Json::Value& object) {
-                if (responseData.isFieldSet(ResponseField::AdditionalChoiceResult)) {
+            bool JSONResponseBuilder::addFieldAdditionalChoiceResult(const IResponseData& responseData, Json::Value& object)
+            {
+                if (responseData.isFieldSet(ResponseField::AdditionalChoiceResult))
+                {
                     AddFieldsHelper::addField(object, JSONResponseFields::getAdditionalChoiceResult(), responseData.getAdditionalChoiceResult());
                 }
                 return fieldExists(object, JSONResponseFields::getAdditionalChoiceResult());
             }
 
-			bool
-			JSONResponseBuilder::addFieldECertAmount(const IResponseData &responseData, Json::Value &object) {
-				if (responseData.isFieldSet(ResponseField::ECertAmount)) {
+            bool JSONResponseBuilder::addFieldTransportControlDateTime(const IResponseData& responseData, Json::Value& object)
+            {
+                if (responseData.isFieldSet(ResponseField::TransportControlDateTime))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getTransportControlDateTime(), responseData.getTransportControlDateTime());
+                }
+                return fieldExists(object, JSONResponseFields::getTransportControlDateTime());
+            }
+
+			bool JSONResponseBuilder::addFieldECertAmount(const IResponseData &responseData, Json::Value &object)
+            {
+				if (responseData.isFieldSet(ResponseField::ECertAmount))
+                {
 					AddFieldsHelper::addField(object, JSONResponseFields::getECertAmount(),	responseData.getECertAmount());
 				}
 				return fieldExists(object, JSONResponseFields::getECertAmount());
 			}
 
-			bool
-			JSONResponseBuilder::addFieldBasketID(const IResponseData &responseData, Json::Value &object) {
-				if (responseData.isFieldSet(ResponseField::BasketID)) {
+			bool JSONResponseBuilder::addFieldBasketID(const IResponseData &responseData, Json::Value &object)
+            {
+				if (responseData.isFieldSet(ResponseField::BasketID))
+                {
 					AddFieldsHelper::addField(object, JSONResponseFields::getBasketID(), responseData.getBasketID());
 				}
 				return fieldExists(object, JSONResponseFields::getBasketID());
 			}
 
-            bool JSONResponseBuilder::addFields(const IResponseData &responseData, Json::Value &object) {
+            bool JSONResponseBuilder::addFieldSBP_RN(const IResponseData& responseData, Json::Value& object)
+            {
+                if (responseData.isFieldSet(ResponseField::SBP_RN))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getSBP_RN(), responseData.getSBP_RN());
+                }
+                return fieldExists(object, JSONResponseFields::getSBP_RN());
+            }
+
+            bool JSONResponseBuilder::addFieldQRCode(const IResponseData& responseData, Json::Value& object)
+            {
+                if (responseData.isFieldSet(ResponseField::QRCode))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getQRCode(), responseData.getQRCode());
+                }
+                return fieldExists(object, JSONResponseFields::getQRCode());
+            }
+
+            bool JSONResponseBuilder::addFieldSBP_KZO(const IResponseData& responseData, Json::Value& object)
+            {
+                if (responseData.isFieldSet(ResponseField::SBP_KZO))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getSBP_KZO(), responseData.getSBP_KZO());
+                }
+                return fieldExists(object, JSONResponseFields::getSBP_KZO());
+            }
+
+            bool JSONResponseBuilder::addFieldSBP_ReqId(const IResponseData& responseData, Json::Value& object)
+            {
+                if (responseData.isFieldSet(ResponseField::SBP_ReqId))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getSBP_ReqId(), responseData.getSBP_ReqId());
+                }
+                return fieldExists(object, JSONResponseFields::getSBP_ReqId());
+            }
+
+            bool JSONResponseBuilder::addFieldSBP_Code(const IResponseData& responseData, Json::Value& object)
+            {
+                if (responseData.isFieldSet(ResponseField::SBP_Code))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getSBP_Code(), responseData.getSBP_Code());
+                }
+                return fieldExists(object, JSONResponseFields::getSBP_Code());
+            }
+
+            bool JSONResponseBuilder::addFieldSBP_Status(const IResponseData& responseData, Json::Value& object)
+            {
+                if (responseData.isFieldSet(ResponseField::SBP_Status))
+                {
+                    AddFieldsHelper::addField(object, JSONResponseFields::getSBP_Status(), responseData.getSBP_Status());
+                }
+                return fieldExists(object, JSONResponseFields::getSBP_Status());
+            }
+
+            bool JSONResponseBuilder::addFields(const IResponseData &responseData, Json::Value &object)
+            {
                 bool result = false;
 
-                if (responseData.validateMandatoryFields()) {
+                if (responseData.validateMandatoryFields())
+                {
                     result = true;
 
-                    for (auto field : responseData.getMandatoryFields()) {
-                        if (responseData.getFieldsSet().find(field) != responseData.getFieldsSet().end()) {
+                    for (auto field : responseData.getMandatoryFields())
+                    {
+                        if (responseData.getFieldsSet().find(field) != responseData.getFieldsSet().end())
+                        {
                             auto function = m_InsertFunctions.at(field);
                             result = result && function(responseData, object);
                         }
                     }
 
-                    for (auto field : responseData.getOptionalFields()) {
-                        if (responseData.getFieldsSet().find(field) != responseData.getFieldsSet().end()) {
+                    for (auto field : responseData.getOptionalFields())
+                    {
+                        if (responseData.getFieldsSet().find(field) != responseData.getFieldsSet().end())
+                        {
                             auto function = m_InsertFunctions.at(field);
                             function(responseData, object);
                         }
@@ -562,7 +671,8 @@ namespace Lanter {
                 return result;
             }
 
-            void JSONResponseBuilder::initFunctionsMap() {
+            void JSONResponseBuilder::initFunctionsMap()
+            {
                 m_InsertFunctions[ResponseField::EcrNumber] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldEcrNumber(responseData, object); };
                 m_InsertFunctions[ResponseField::EcrMerchantNumber] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldEcrMerchantNumber(responseData, object); };
                 m_InsertFunctions[ResponseField::OperationCode] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldOperationCode(responseData, object); };
@@ -604,12 +714,12 @@ namespace Lanter {
                 m_InsertFunctions[ResponseField::KVR] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldKVR(responseData, object); };
                 m_InsertFunctions[ResponseField::CDAResult] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCDAResult(responseData, object); };
                 m_InsertFunctions[ResponseField::SalesAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldSalesAmount(responseData, object); };
-                m_InsertFunctions[ResponseField::SaleCount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldSalesCount(responseData, object); };
+                m_InsertFunctions[ResponseField::SalesCount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldSalesCount(responseData, object); };
                 m_InsertFunctions[ResponseField::VoidAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldVoidAmount(responseData, object); };
                 m_InsertFunctions[ResponseField::VoidCount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldVoidCount(responseData, object); };
                 m_InsertFunctions[ResponseField::RefundAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldRefundAmount(responseData, object); };
                 m_InsertFunctions[ResponseField::RefundCount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldRefundCount(responseData, object); };
-                m_InsertFunctions[ResponseField::SaleArray] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldSalesArray(responseData, object); };
+                m_InsertFunctions[ResponseField::SalesArray] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldSalesArray(responseData, object); };
                 m_InsertFunctions[ResponseField::VoidArray] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldVoidArray(responseData, object); };
                 m_InsertFunctions[ResponseField::RefundArray] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldRefundArray(responseData, object); };
                 m_InsertFunctions[ResponseField::CfgTerminalID] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldCfgTerminalID(responseData, object); };
@@ -625,8 +735,15 @@ namespace Lanter {
                 m_InsertFunctions[ResponseField::HashCardTrack2] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldHashCardTrack2(responseData, object); };
                 m_InsertFunctions[ResponseField::FinalizationRequired] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldFinalizationRequired(responseData, object); };
                 m_InsertFunctions[ResponseField::AdditionalChoiceResult] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldAdditionalChoiceResult(responseData, object); };
+                m_InsertFunctions[ResponseField::TransportControlDateTime] = [this](const IResponseData& responseData, Json::Value& object) { return addFieldTransportControlDateTime(responseData, object); };
 				m_InsertFunctions[ResponseField::ECertAmount] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldECertAmount(responseData, object); };
 				m_InsertFunctions[ResponseField::BasketID] = [this](const IResponseData &responseData, Json::Value &object) { return addFieldBasketID(responseData, object); };
+                m_InsertFunctions[ResponseField::SBP_RN] = [this](const IResponseData& responseData, Json::Value& object) { return addFieldSBP_RN(responseData, object); };
+                m_InsertFunctions[ResponseField::QRCode] = [this](const IResponseData& responseData, Json::Value& object) { return addFieldQRCode(responseData, object); };
+                m_InsertFunctions[ResponseField::SBP_KZO] = [this](const IResponseData& responseData, Json::Value& object) { return addFieldSBP_KZO(responseData, object); };
+                m_InsertFunctions[ResponseField::SBP_ReqId] = [this](const IResponseData& responseData, Json::Value& object) { return addFieldSBP_ReqId(responseData, object); };
+                m_InsertFunctions[ResponseField::SBP_Code] = [this](const IResponseData& responseData, Json::Value& object) { return addFieldSBP_Code(responseData, object); };
+                m_InsertFunctions[ResponseField::SBP_Status] = [this](const IResponseData& responseData, Json::Value& object) { return addFieldSBP_Status(responseData, object); };
 			}
         }
     }

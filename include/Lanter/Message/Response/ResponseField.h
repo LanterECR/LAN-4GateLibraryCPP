@@ -3,11 +3,15 @@
 
 #include "Lanter/Utils/VisibilityMacroses.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
             /// \brief Перечисление содержит все поля, используемые в ответах от финансового ПО LAN-4Tap
-            enum class ResponseField {
+            enum class ResponseField
+            {
                 EcrNumber, ///< Логический номер кассы, используемый для взаимодействия с LAN-4Tap
                 EcrMerchantNumber, ///< Логический номер мерчанта в кассовом ПО
                 OperationCode, ///< Код запрашиваемой операции
@@ -50,12 +54,12 @@ namespace Lanter {
                 KVR, ///< Данные работы с картой
                 CDAResult, ///< Данные работы с картой
                 SalesAmount, ///< Общая сумма оплат
-                SaleCount, ///< Количество операций оплаты, выполненных с момента последней сверки итогов
+                SalesCount, ///< Количество операций оплаты, выполненных с момента последней сверки итогов
                 VoidAmount, ///< Общая сумма отмен
                 VoidCount, ///< Количество операций отмены, выполненных с момента последней сверки итогов
                 RefundAmount, ///< Общая сумма возвратов
                 RefundCount, ///< Количество операций возврата, выполненных с момента последней сверки итогов
-                SaleArray, ///< Массив, содержащий краткие сведения операций оплаты
+                SalesArray, ///< Массив, содержащий краткие сведения операций оплаты
                 VoidArray, ///< Массив, содержащий краткие сведения операций отмены
                 RefundArray, ///< Массив, содержащий краткие сведения операций возврата
                 CardPANHash, ///< Кэш, рассчитанный на основе PAN карты
@@ -72,21 +76,31 @@ namespace Lanter {
 				ECertAmount, ///< Сумма по электронному сертификату
 				BasketID, ///< ID корзины(электронные сертификаты)
 				AdditionalChoiceResult, ///< Номер выбранного пункта меню на терминале
+
+                SBP_RN,
+                QRCode,
+                SBP_KZO,
+                SBP_ReqId,
+                SBP_Code,
+                SBP_Status,
+
+                TransportControlDateTime
 			};//enum ResponseField
 
             /// Функция, возвращающая первый значимый элемент перечисления ResponseField
             /// \return Первый элемент значимый перечисления ResponseField
-            constexpr ResponseField getFirstResponseField() {
+            constexpr ResponseField getFirstResponseField()
+            {
                 return ResponseField::EcrNumber;
             }
 
             /// Функция, возвращающая последний значимый элемент перечисления ResponseField
             /// \return Последний элемент значимый перечисления ResponseField
-            constexpr ResponseField getLastResponseField() {
-                return ResponseField::AdditionalChoiceResult;
+            constexpr ResponseField getLastResponseField()
+            {
+                return ResponseField::TransportControlDateTime;
             }
         }//namespace Response
     }//namespace Message
 }//namespace Lanter
-
 #endif //LAN_4GATELIBRARYCPP_RESPONSEFIELDS_H

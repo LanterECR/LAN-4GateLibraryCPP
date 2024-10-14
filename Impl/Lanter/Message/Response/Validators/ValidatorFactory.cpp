@@ -22,6 +22,9 @@
 #include "Lanter/Message/Response/Validators/Operations/Sale/RequestCS.h"
 #include "Lanter/Message/Response/Validators/Operations/Sale/NotificationCS.h"
 #include "Lanter/Message/Response/Validators/Operations/Sale/RepeatLastN.h"
+#include "Lanter/Message/Response/Validators/Operations/Sale/CardVerification.h"
+
+#include "Lanter/Message/Response/Validators/Operations/Devices/QRScannerResult.h"
 
 #include "Lanter/Message/Response/Validators/Operations/Service/DisplayQR.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/FinalizeTransaction.h"
@@ -37,6 +40,7 @@
 #include "Lanter/Message/Response/Validators/Operations/Service/PrintReceiptCopy.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/PrintSoftInfo.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/PrintSummaryReport.h"
+#include "Lanter/Message/Response/Validators/Operations/Service/PrintMerchantSettlement.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/Registration.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/SelfTest.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/SetCurrentPrinter.h"
@@ -54,24 +58,33 @@
 #include "Lanter/Message/Response/Validators/Operations/Service/EjectCard.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/EjectWaitCard.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/IsCardPresent.h"
+#include "Lanter/Message/Response/Validators/Operations/Service/UploadDelayed.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/UploadPending.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/BonusBalance.h"
 #include "Lanter/Message/Response/Validators/Operations/Service/GrabEjectCard.h"
+#include "Lanter/Message/Response/Validators/Operations/Service/CommunicationSettings.h"
+#include "Lanter/Message/Response/Validators/Operations/Service/CheckDeviceStatus.h"
+#include "Lanter/Message/Response/Validators/Operations/Service/PrintLastSettlement.h"
 
 #include "Lanter/Message/Response/Validators/Operations/Void/Void.h"
+#include "Lanter/Message/Response/Validators/Operations/Void/VoidLastSale.h"
 #include "Lanter/Message/Response/Validators/Operations/Void/VoidPartialSale.h"
 #include "Lanter/Message/Response/Validators/Operations/Void/VoidPreAuth.h"
 
 #include "Lanter/Message/Response/Validators/Operations/InternalServiceOperations/ArrayElement.h"
 
 // TODO Добавить QuickPaymentRefund
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-
-            std::shared_ptr<IValidator> ValidatorFactory::getValidator(OperationCode operationCode) {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            std::shared_ptr<IValidator> ValidatorFactory::getValidator(OperationCode operationCode)
+            {
                 std::shared_ptr<BasicValidator> validator;
-                switch (operationCode) {
+                switch (operationCode)
+                {
                     case OperationCode::Sale:
                         validator = std::make_shared<Sale>();
                         break;
@@ -96,20 +109,14 @@ namespace Lanter {
                     case OperationCode::QuickPaymentStatus:
                         validator = std::make_shared<QuickPaymentStatus>();
                         break;
-                    case OperationCode::RequestCS:
-                        validator = std::make_shared<RequestCS>();
-                        break;
-                    case OperationCode::NotificationCS:
-                        validator = std::make_shared<NotificationCS>();
-                        break;
-                    case OperationCode::RepeatLastN:
-                        validator = std::make_shared<RepeatLastN>();
-                        break;
                     case OperationCode::FastTrack:
                         validator = std::make_shared<FastTrack>();
                         break;
                     case OperationCode::Void:
                         validator = std::make_shared<Void>();
+                        break;
+                    case OperationCode::VoidLastSale:
+                        validator = std::make_shared<VoidLastSale>();
                         break;
                     case OperationCode::VoidPartialSale:
                         validator = std::make_shared<VoidPartialSale>();
@@ -152,6 +159,9 @@ namespace Lanter {
                         break;
                     case OperationCode::PrintSummaryReport:
                         validator = std::make_shared<PrintSummaryReport>();
+                        break;
+                    case OperationCode::PrintMerchantSettlement:
+                        validator = std::make_shared<PrintMerchantSettlement>();
                         break;
                     case OperationCode::Settlement:
                         validator = std::make_shared<Settlement>();
@@ -225,6 +235,9 @@ namespace Lanter {
                     case OperationCode::IsCardPresent:
                         validator = std::make_shared<IsCardPresent>();
                         break;
+                    case OperationCode::UploadDelayed:
+                        validator = std::make_shared<UploadDelayed>();
+                        break;
                     case OperationCode::UploadPending:
                         validator = std::make_shared<UploadPending>();
                         break;
@@ -233,6 +246,15 @@ namespace Lanter {
                         break;
                     case OperationCode::GrabEjectCard:
                         validator = std::make_shared<GrabEjectCard>();
+                        break;
+                    case OperationCode::CommunicationSettings:
+                        validator = std::make_shared<CommunicationSettings>();
+                        break;
+                    case OperationCode::CheckDeviceStatus:
+                        validator = std::make_shared<CheckDeviceStatus>();
+                        break;
+                    case OperationCode::PrintLastSettlement:
+                        validator = std::make_shared<PrintLastSettlement>();
                         break;
 					case OperationCode::ECertGetRequisites:
 						validator = std::make_shared<ECertGetRequisites>();
@@ -243,11 +265,30 @@ namespace Lanter {
 					case OperationCode::ECertRefund:
 						validator = std::make_shared<ECertRefund>();
 						break;
+                    case OperationCode::CardVerification:
+                        validator = std::make_shared<CardVerification>();
+                        break;
+                    case OperationCode::RequestCS:
+                        validator = std::make_shared<RequestCS>();
+                        break;
+                    case OperationCode::NotificationCS:
+                        validator = std::make_shared<NotificationCS>();
+                        break;
+                    case OperationCode::RepeatLastN:
+                        validator = std::make_shared<RepeatLastN>();
+                        break;
+
+                    case OperationCode::QRScannerResult:
+                        validator = std::make_shared<QRScannerResult>();
+                        break;
+
 					default:
                         validator = std::make_shared<BasicValidator>();
                         break;
                 }
-                if (validator) {
+
+                if (validator)
+                {
                     validator->addSpecificFields();
                 }
                 return validator;

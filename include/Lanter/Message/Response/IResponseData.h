@@ -7,22 +7,23 @@
 #include <vector>
 #include <memory>
 
-
 #include "Lanter/Utils/VisibilityMacroses.h"
-
 #include "Lanter/Message/OperationCode.h"
-
 #include "ResponseField.h"
 #include "CardholderAuthMethod.h"
 #include "CardInputMethod.h"
 #include "Status.h"
 
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
             ///\brief Базовый класс-контейнер для получения уведомлений от финансового ПО LAN-4Tap
-            class LANTER_VISIBILITY IResponseData {
+            class LANTER_VISIBILITY IResponseData
+            {
             public:
                 virtual ~IResponseData() = default;
 
@@ -57,12 +58,12 @@ namespace Lanter {
 
                 /// \brief Возвращает логический идентификатор кассового ПО
                 /// \return Если поле установлено - логический идентификатор кассового ПО, иначе -1
-                virtual int16_t getEcrNumber() const = 0;
+                virtual int64_t getEcrNumber() const = 0;
 
                 /// \brief Устанавливает логический идентификатор кассового ПО
                 /// \param[in] ecrNumber Логический идентификатор кассового ПО в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
-                virtual bool setEcrNumber(int16_t ecrNumber) = 0;
+                virtual bool setEcrNumber(int64_t ecrNumber) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля EcrNumber
                 /// и удаляет из списка установленных полей
@@ -71,12 +72,12 @@ namespace Lanter {
 
                 /// \brief Возвращает логический идентификатор мерчанта в кассовом ПО
                 /// \return Если поле установлено - логический идентификатор мерчанта в кассовом ПО, иначе -1
-                virtual int16_t getEcrMerchantNumber() const = 0;
+                virtual int64_t getEcrMerchantNumber() const = 0;
 
                 /// \brief Устанавливает логический идентификатор мерчанта в кассовом ПО
                 /// \param[in] ecrMerchantNumber Логический идентификатор мерчанта в кассовом в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
-                virtual bool setEcrMerchantNumber(int16_t ecrMerchantNumber) = 0;
+                virtual bool setEcrMerchantNumber(int64_t ecrMerchantNumber) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля EcrMerchantNumber
                 /// и удаляет из списка установленных полей
@@ -659,7 +660,7 @@ namespace Lanter {
 
                 /// \brief Возвращает количество операций продажи, выполненных с последней сверки итогов
                 /// \return Количество операций продажи
-                virtual int32_t getSaleCount() const = 0;
+                virtual int32_t getSalesCount() const = 0;
 
                 /// \brief Устанавливает количество операций продажи, выполненных с последней сверки итогов
                 /// \param[in] salesCount количество операций продажи
@@ -729,7 +730,7 @@ namespace Lanter {
 
                 /// \brief Возвращает массив, содержащий краткую информацию по операциям продажи
                 /// \return std::vector, содержащий указатели std::shared_ptr на IResponseData
-                virtual const std::vector<std::shared_ptr<IResponseData> > &getSaleArray() const = 0;
+                virtual const std::vector<std::shared_ptr<IResponseData> > &getSalesArray() const = 0;
 
                 /// \brief Устанавливает массив, содержащий краткую информацию по операциям продажи
                 /// \param[in] salesArray std::vector, содержащий указатели std::shared_ptr на IResponseData
@@ -965,6 +966,33 @@ namespace Lanter {
 				/// \return true, если поле успешно удалено
 				virtual bool resetBasketID() = 0;
 
+                virtual const std::string& getSBP_RN() const = 0;
+                virtual bool setSBP_RN(const std::string& SBP_RN) = 0;
+                virtual bool resetSBP_RN() = 0;
+
+                virtual const std::string& getQRCode() const = 0;
+                virtual bool setQRCode(const std::string& QRCode) = 0;
+                virtual bool resetQRCode() = 0;
+
+                virtual const std::string& getSBP_KZO() const = 0;
+                virtual bool setSBP_KZO(const std::string& SBP_KZO) = 0;
+                virtual bool resetSBP_KZO() = 0;
+
+                virtual const std::string& getSBP_ReqId() const = 0;
+                virtual bool setSBP_ReqId(const std::string& SBP_ReqId) = 0;
+                virtual bool resetSBP_ReqId() = 0;
+
+                virtual const std::string& getSBP_Code() const = 0;
+                virtual bool setSBP_Code(const std::string& SBP_Code) = 0;
+                virtual bool resetSBP_Code() = 0;
+
+                virtual const std::string& getSBP_Status() const = 0;
+                virtual bool setSBP_Status(const std::string& SBP_Status) = 0;
+                virtual bool resetSBP_Status() = 0;
+
+                virtual const std::string& getTransportControlDateTime() const = 0;
+                virtual bool setTransportControlDateTime(const std::string& SBP_Status) = 0;
+                virtual bool resetTransportControlDateTime() = 0;
 			};//class IResponseData
         }//namespace Response
     }//namespace Message

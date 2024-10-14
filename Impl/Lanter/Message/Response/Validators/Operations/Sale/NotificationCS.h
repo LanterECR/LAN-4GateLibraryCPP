@@ -1,5 +1,5 @@
-#ifndef LAN_4GATELIBRARYCPP_NotificationCS_H
-#define LAN_4GATELIBRARYCPP_NotificationCS_H
+#ifndef LAN_4GATELIBRARYCPP_NOTIFICATIONCS_H
+#define LAN_4GATELIBRARYCPP_NOTIFICATIONCS_H
 
 #include "Lanter/Message/Response/Validators/Operations/BasicValidator.h"
 

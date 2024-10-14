@@ -3,15 +3,17 @@
 
 #include "Lanter/Message/Interaction/IInteractionData.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Interaction {
-            class InteractionData : public IInteractionData {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Interaction
+        {
+            class InteractionData : public IInteractionData
+            {
             public:
                 InteractionCode getCode() const override;
-
                 bool setCode(InteractionCode code) override;
-
                 bool resetCode() override;
 
             private:
@@ -20,5 +22,4 @@ namespace Lanter {
         }
     }
 }
-
 #endif //LAN_4GATELIB_INTERACTIONDATA_H

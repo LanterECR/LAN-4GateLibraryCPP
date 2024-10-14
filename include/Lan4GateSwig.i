@@ -6,6 +6,7 @@
 %feature("director") IResponseCallback;
 %feature("director") INotificationCallback;
 %feature("director") IInteractionCallback;
+%feature("director") IReceiptCallback;
 %feature("director") IConnectionCallback;
 %feature("director") ILoggerCallback;
 
@@ -21,6 +22,7 @@
 %shared_ptr(Lanter::Manager::ILan4Gate);
 %shared_ptr(Lanter::Communication::ICommunication);
 %shared_ptr(Lanter::Message::Interaction::IInteractionData);
+%shared_ptr(Lanter::Message::Receipt::IReceiptData);
 %shared_ptr(Lanter::Message::Notification::INotificationData);
 %shared_ptr(Lanter::Message::Request::IRequestData);
 %shared_ptr(Lanter::Message::Response::IResponseData);
@@ -49,10 +51,14 @@
 #include "Lanter/Message/Interaction/InteractionCode.h"
 #include "Lanter/Message/Interaction/IInteractionData.h"
 
+#include "Lanter/Message/Receipt/ReceiptCode.h"
+#include "Lanter/Message/Receipt/IReceiptData.h"
+
 #include "Lanter/Manager/Callback/IRequestCallback.h"
 #include "Lanter/Manager/Callback/IResponseCallback.h"
 #include "Lanter/Manager/Callback/INotificationCallback.h"
 #include "Lanter/Manager/Callback/IInteractionCallback.h"
+#include "Lanter/Manager/Callback/IReceiptCallback.h"
 #include "Lanter/Manager/Callback/IConnectionCallback.h"
 #include "Lanter/Manager/Callback/ILoggerCallback.h"
 
@@ -70,6 +76,7 @@ namespace std {
     %template(RequestFieldsArray) set<enum Lanter::Message::Request::RequestField>;
     %template(ResponseFieldsArray) set<enum Lanter::Message::Response::ResponseField>;
     %template(ResponseArray) vector< shared_ptr<Lanter::Message::Response::IResponseData> >;
+    %template(ReceiptArray) vector<string>;
 };
 
 %include "Lanter/Communication/ICommunication.h"
@@ -92,10 +99,14 @@ namespace std {
 %include "Lanter/Message/Interaction/InteractionCode.h"
 %include "Lanter/Message/Interaction/IInteractionData.h"
 
+%include "Lanter/Message/Receipt/ReceiptCode.h"
+%include "Lanter/Message/Receipt/IReceiptData.h"
+
 %include "Lanter/Manager/Callback/IRequestCallback.h"
 %include "Lanter/Manager/Callback/IResponseCallback.h"
 %include "Lanter/Manager/Callback/INotificationCallback.h"
 %include "Lanter/Manager/Callback/IInteractionCallback.h"
+%include "Lanter/Manager/Callback/IReceiptCallback.h"
 %include "Lanter/Manager/Callback/IConnectionCallback.h"
 %include "Lanter/Manager/Callback/ILoggerCallback.h"
 

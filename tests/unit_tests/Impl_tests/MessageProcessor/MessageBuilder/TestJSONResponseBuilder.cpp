@@ -914,16 +914,16 @@ TEST(TestJSONResponseBuilder, CheckAddFieldSalesCount) {
     Json::Value directObject;
 
     EXPECT_TRUE(builder.addFieldSalesCount(data, directObject));
-    EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getSaleCount()));
-    EXPECT_EQ(data.getSaleCount(), directObject[JSONResponseFields::getSaleCount()].asInt());
+    EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getSalesCount()));
+    EXPECT_EQ(data.getSalesCount(), directObject[JSONResponseFields::getSalesCount()].asInt());
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseField::SaleCount);
+    auto function = builder.getFunctions().at(ResponseField::SalesCount);
 
     EXPECT_TRUE(function(data, listObject));
-    EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getSaleCount()));
-    EXPECT_EQ(data.getSaleCount(), listObject[JSONResponseFields::getSaleCount()].asInt());
+    EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getSalesCount()));
+    EXPECT_EQ(data.getSalesCount(), listObject[JSONResponseFields::getSalesCount()].asInt());
 }
 
 TEST(TestJSONResponseBuilder, CheckAddFieldVoidCount) {
@@ -998,90 +998,90 @@ TEST(TestJSONResponseBuilder, CheckAddFieldSalesArray) {
     Json::Value directObject;
 
     EXPECT_TRUE(builder.addFieldSalesArray(data, directObject));
-    EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getSaleArray()));
+    EXPECT_TRUE(fieldExists(directObject, JSONResponseFields::getSalesArray()));
 
     EXPECT_EQ(arrayElement->getTotalAmount(),
-              directObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getTotalAmount()].asInt64());
+              directObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              directObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getCurrencyCode()].asString());
+              directObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
-                 directObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getRRN()].asString().c_str());
+                 directObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
-                 directObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getReceiptReference()].asString().c_str());
+                 directObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getReceiptReference()].asString().c_str());
     EXPECT_STREQ(arrayElement->getResponseCode().c_str(),
-                 directObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getResponseCode()].asString().c_str());
+                 directObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getResponseCode()].asString().c_str());
     EXPECT_STREQ(arrayElement->getTransactionID().c_str(),
-                 directObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getTransactionID()].asString().c_str());
+                 directObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getTransactionID()].asString().c_str());
     EXPECT_STREQ(arrayElement->getTransDateTime().c_str(),
-                 directObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getTransDateTime()].asString().c_str());
+                 directObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getTransDateTime()].asString().c_str());
     EXPECT_STREQ(arrayElement->getIssuerName().c_str(),
-                 directObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getIssuerName()].asString().c_str());
+                 directObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getIssuerName()].asString().c_str());
     EXPECT_STREQ(arrayElement->getCardPAN().c_str(),
-                 directObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getCardPAN()].asString().c_str());
+                 directObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getCardPAN()].asString().c_str());
 
     EXPECT_EQ(arrayElement->getTotalAmount(),
-              directObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getTotalAmount()].asInt64());
+              directObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              directObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getCurrencyCode()].asString());
+              directObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
-                 directObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getRRN()].asString().c_str());
+                 directObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
-                 directObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getReceiptReference()].asString().c_str());
+                 directObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getReceiptReference()].asString().c_str());
     EXPECT_STREQ(arrayElement->getResponseCode().c_str(),
-                 directObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getResponseCode()].asString().c_str());
+                 directObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getResponseCode()].asString().c_str());
     EXPECT_STREQ(arrayElement->getTransactionID().c_str(),
-                 directObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getTransactionID()].asString().c_str());
+                 directObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getTransactionID()].asString().c_str());
     EXPECT_STREQ(arrayElement->getTransDateTime().c_str(),
-                 directObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getTransDateTime()].asString().c_str());
+                 directObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getTransDateTime()].asString().c_str());
     EXPECT_STREQ(arrayElement->getIssuerName().c_str(),
-                 directObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getIssuerName()].asString().c_str());
+                 directObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getIssuerName()].asString().c_str());
     EXPECT_STREQ(arrayElement->getCardPAN().c_str(),
-                 directObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getCardPAN()].asString().c_str());
+                 directObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getCardPAN()].asString().c_str());
 
     Json::Value listObject;
 
-    auto function = builder.getFunctions().at(ResponseField::SaleArray);
+    auto function = builder.getFunctions().at(ResponseField::SalesArray);
 
     EXPECT_TRUE(function(data, listObject));
-    EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getSaleArray()));
+    EXPECT_TRUE(fieldExists(listObject, JSONResponseFields::getSalesArray()));
 
     EXPECT_EQ(arrayElement->getTotalAmount(),
-              listObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getTotalAmount()].asInt64());
+              listObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              listObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getCurrencyCode()].asString());
+              listObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
-                 listObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getRRN()].asString().c_str());
+                 listObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
-                 listObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getReceiptReference()].asString().c_str());
+                 listObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getReceiptReference()].asString().c_str());
     EXPECT_STREQ(arrayElement->getResponseCode().c_str(),
-                 listObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getResponseCode()].asString().c_str());
+                 listObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getResponseCode()].asString().c_str());
     EXPECT_STREQ(arrayElement->getTransactionID().c_str(),
-                 listObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getTransactionID()].asString().c_str());
+                 listObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getTransactionID()].asString().c_str());
     EXPECT_STREQ(arrayElement->getTransDateTime().c_str(),
-                 listObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getTransDateTime()].asString().c_str());
+                 listObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getTransDateTime()].asString().c_str());
     EXPECT_STREQ(arrayElement->getIssuerName().c_str(),
-                 listObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getIssuerName()].asString().c_str());
+                 listObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getIssuerName()].asString().c_str());
     EXPECT_STREQ(arrayElement->getCardPAN().c_str(),
-                 listObject[JSONResponseFields::getSaleArray()][0][JSONResponseFields::getCardPAN()].asString().c_str());
+                 listObject[JSONResponseFields::getSalesArray()][0][JSONResponseFields::getCardPAN()].asString().c_str());
 
     EXPECT_EQ(arrayElement->getTotalAmount(),
-              listObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getTotalAmount()].asInt64());
+              listObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getTotalAmount()].asInt64());
     EXPECT_EQ(arrayElement->getCurrencyCode(),
-              listObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getCurrencyCode()].asString());
+              listObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getCurrencyCode()].asString());
     EXPECT_STREQ(arrayElement->getRRN().c_str(),
-                 listObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getRRN()].asString().c_str());
+                 listObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getRRN()].asString().c_str());
     EXPECT_STREQ(arrayElement->getReceiptReference().c_str(),
-                 listObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getReceiptReference()].asString().c_str());
+                 listObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getReceiptReference()].asString().c_str());
     EXPECT_STREQ(arrayElement->getResponseCode().c_str(),
-                 listObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getResponseCode()].asString().c_str());
+                 listObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getResponseCode()].asString().c_str());
     EXPECT_STREQ(arrayElement->getTransactionID().c_str(),
-                 listObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getTransactionID()].asString().c_str());
+                 listObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getTransactionID()].asString().c_str());
     EXPECT_STREQ(arrayElement->getTransDateTime().c_str(),
-                 listObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getTransDateTime()].asString().c_str());
+                 listObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getTransDateTime()].asString().c_str());
     EXPECT_STREQ(arrayElement->getIssuerName().c_str(),
-                 listObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getIssuerName()].asString().c_str());
+                 listObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getIssuerName()].asString().c_str());
     EXPECT_STREQ(arrayElement->getCardPAN().c_str(),
-                 listObject[JSONResponseFields::getSaleArray()][1][JSONResponseFields::getCardPAN()].asString().c_str());
+                 listObject[JSONResponseFields::getSalesArray()][1][JSONResponseFields::getCardPAN()].asString().c_str());
 }
 
 

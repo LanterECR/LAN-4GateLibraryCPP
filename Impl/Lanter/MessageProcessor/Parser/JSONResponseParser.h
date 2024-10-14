@@ -1,21 +1,22 @@
 #ifndef LAN_4GATELIB_JSONRESPONSEPARSER_H
 #define LAN_4GATELIB_JSONRESPONSEPARSER_H
 
-
 #include <functional>
 #include <memory>
 
 #include "json/json.h"
-
 #include "Lanter/Message/Response/IResponseData.h"
 
-namespace Lanter {
-    namespace MessageProcessor {
-        namespace Parser {
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
+        namespace Parser
+        {
             using namespace Message;
             using namespace Message::Response;
-
-            class JSONResponseParser {
+            class JSONResponseParser
+            {
             public:
                 JSONResponseParser();
 
@@ -116,13 +117,14 @@ namespace Lanter {
 
                 bool getFieldRefundCount(const Json::Value &object, IResponseData &responseData);
 
-                bool getFieldSaleArray(const Json::Value &object, IResponseData &responseData);
+                bool getFieldSalesArray(const Json::Value &object, IResponseData &responseData);
 
                 bool getFieldVoidArray(const Json::Value &object, IResponseData &responseData);
 
                 bool getFieldRefundArray(const Json::Value &object, IResponseData &responseData);
 
                 bool getFieldCfgTerminalID(const Json::Value &object, IResponseData &responseData);
+
                 bool getFieldCardPANHash(const Json::Value &object, IResponseData &responseData);
 
                 bool getFieldReceiptLine1(const Json::Value &object, IResponseData &responseData);
@@ -147,9 +149,19 @@ namespace Lanter {
 
                 bool getFieldAdditionalChoiceResult(const Json::Value &object, IResponseData &responseData);
 
+                bool getFieldTransportControlDateTime(const Json::Value& object, IResponseData& responseData);
+
 				bool getFieldECertAmount(const Json::Value &object, IResponseData &responseData);
 
 				bool getFieldBasketID(const Json::Value &object, IResponseData &responseData);
+
+                bool getFieldSBP_RN(const Json::Value& object, IResponseData& responseData);
+                bool getFieldQRCode(const Json::Value& object, IResponseData& responseData);
+                bool getFieldSBP_KZO(const Json::Value& object, IResponseData& responseData);
+                bool getFieldSBP_ReqId(const Json::Value& object, IResponseData& responseData);
+                bool getFieldSBP_Code(const Json::Value& object, IResponseData& responseData);
+                bool getFieldSBP_Status(const Json::Value& object, IResponseData& responseData);
+
 			private:
                 void initFunctionsMap();
 
@@ -160,6 +172,4 @@ namespace Lanter {
         }
     }
 }
-
-
 #endif //LAN_4GATELIB_JSONRESPONSEPARSER_H

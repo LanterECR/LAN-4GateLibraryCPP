@@ -8,18 +8,14 @@ namespace Lanter
         {
             void Request::NotificationCS::addSpecificFields()
             {
-                appendMandatoryField(RequestField::AdditionalInfo);
-                appendMandatoryField(RequestField::Amount);
-
+                appendOptionalField(RequestField::AdditionalInfo);
+                appendOptionalField(RequestField::Amount);
+                appendOptionalField(RequestField::EcrMerchantNumber);
+                appendOptionalField(RequestField::EcrNumber);
                 appendOptionalField(RequestField::RRN);
                 appendOptionalField(RequestField::TransactionID);
                 appendOptionalField(RequestField::AuthCode);
-                //appendOptionalField(RequestField::CardPan);
-                //appendOptionalField(RequestField::CfgIssuerName);
-                //appendOptionalField(RequestField::TerminalID);
                 appendOptionalField(RequestField::CardPANHash);
-                //appendOptionalField(RequestField::ResponseCode);
-                //appendOptionalField(RequestField::TerminalReference);
             }
         }
     }

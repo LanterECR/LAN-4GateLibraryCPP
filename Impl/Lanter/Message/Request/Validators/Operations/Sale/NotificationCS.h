@@ -1,5 +1,5 @@
-#ifndef LAN_4GATELIBRARYCPP_NotificationCS_H
-#define LAN_4GATELIBRARYCPP_NotificationCS_H
+#ifndef LAN_4GATELIBRARYCPP_NOTIFICATIONCS_H
+#define LAN_4GATELIBRARYCPP_NOTIFICATIONCS_H
 
 #include "Lanter/Message/Request/Validators/Operations/BasicValidator.h"
 
@@ -17,4 +17,4 @@ namespace Lanter
         }//Request
     }
 }//Lanter
-#endif //LAN_4GATELIBRARYCPP_NotificationCS_H
+#endif //LAN_4GATELIBRARYCPP_NOTIFICATIONCS_H

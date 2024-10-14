@@ -1,9 +1,13 @@
 #include "Refund.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-            void Refund::addSpecificFields() {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            void Refund::addSpecificFields()
+            {
                 appendOptionalField(ResponseField::EcrMerchantNumber);
                 appendOptionalField(ResponseField::ApplicationLabel);
                 appendOptionalField(ResponseField::TotalAmount);

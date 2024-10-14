@@ -9,14 +9,10 @@ namespace Lanter
             void Request::Sale::addSpecificFields()
             {
                 appendMandatoryField(RequestField::EcrMerchantNumber);
+                appendMandatoryField(RequestField::Amount);
+                appendMandatoryField(RequestField::CurrencyCode);
 
-                appendOptionalField(RequestField::Amount);
-                appendOptionalField(RequestField::CurrencyCode);
                 appendOptionalField(RequestField::AdditionalChoice);
-                appendOptionalField(RequestField::BonusBalance);
-                appendOptionalField(RequestField::BonusAmount);
-                appendOptionalField(RequestField::HashCardTrack2);
-                //appendOptionalField(RequestField::QRCodeScan);
                 appendOptionalField(RequestField::AdditionalInfo);
             }
         }

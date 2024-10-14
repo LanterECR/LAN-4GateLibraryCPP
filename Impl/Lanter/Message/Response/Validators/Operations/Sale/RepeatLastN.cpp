@@ -8,8 +8,7 @@ namespace Lanter
         {
             void Response::RepeatLastN::addSpecificFields()
             {
-                appendMandatoryField(ResponseField::Status);
-
+                appendOptionalField(ResponseField::Status);
                 appendOptionalField(ResponseField::AdditionalInfo);
             }
         }

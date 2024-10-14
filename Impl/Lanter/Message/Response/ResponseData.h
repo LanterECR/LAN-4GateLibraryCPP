@@ -2,13 +2,16 @@
 #define LAN_4GATELIBRARYCPP_RESPONSEDATA_H
 
 #include "Lanter/Message/Response/IResponseData.h"
-
 #include "Validators/IValidator.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-            class ResponseData : public IResponseData {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            class ResponseData : public IResponseData
+            {
             public:
                 ResponseData();
 
@@ -24,13 +27,13 @@ namespace Lanter {
 
                 bool validateMandatoryFields() const override;
 
-                int16_t getEcrNumber() const override;
+                int64_t getEcrNumber() const override;
 
-                bool setEcrNumber(int16_t ecrNumber) override;
+                bool setEcrNumber(int64_t ecrNumber) override;
 
-                int16_t getEcrMerchantNumber() const override;
+                int64_t getEcrMerchantNumber() const override;
 
-                bool setEcrMerchantNumber(int16_t ecrMerchantNumber) override;
+                bool setEcrMerchantNumber(int64_t ecrMerchantNumber) override;
 
                 OperationCode getOperationCode() const override;
 
@@ -188,7 +191,7 @@ namespace Lanter {
 
                 bool setSalesAmount(int64_t amount) override;
 
-                int32_t getSaleCount() const override;
+                int32_t getSalesCount() const override;
 
                 bool setSalesCount(int32_t salesCount) override;
 
@@ -209,7 +212,7 @@ namespace Lanter {
 
                 bool setRefundCount(int32_t refundCount) override;
 
-                const std::vector<std::shared_ptr<IResponseData> > &getSaleArray() const override;
+                const std::vector<std::shared_ptr<IResponseData> > &getSalesArray() const override;
 
                 bool setSalesArray(const std::vector<std::shared_ptr<IResponseData> > &salesArray) override;
 
@@ -346,58 +349,68 @@ namespace Lanter {
                 bool resetReceiptLine3() override;
 
                 const std::string &getReceiptLine4() const override;
-
                 bool setReceiptLine4(const std::string &text) override;
-
                 bool resetReceiptLine4() override;
 
                 const std::string &getReceiptLine5() const override;
-
                 bool setReceiptLine5(const std::string &text) override;
-
                 bool resetReceiptLine5() override;
 
                 const std::string &getApplicationLabel() const override;
-
                 bool setApplicationLabel(const std::string &label) override;
-
                 bool resetApplicationLabel() override;
 
                 int64_t getBonusBalance() const override;
-
                 bool setBonusBalance(int64_t balance) override;
-
                 bool resetBonusBalance() override;
 
                 int64_t getBonusAmount() const override;
-
                 bool setBonusAmount(int64_t amount) override;
-
                 bool resetBonusAmount() override;
 
                 const std::string &getHashCardTrack2() const override;
-
                 bool setHashCardTrack2(const std::string &hashTrack2) override;
-
                 bool resetHashCardTrack2() override;
 
                 bool getFinalizationRequired() const override;
-
                 bool setFinalizationRequired(bool required) override;
-
                 bool resetFinalizationRequired() override;
 
                 const std::string &getCfgTerminalID() const override;
-
                 bool setCfgTerminalID(const std::string &terminalId) override;
-
                 bool resetCfgTerminalID() override;
 
                 int64_t getAdditionalChoiceResult() const override;
-
                 bool setAdditionalChoiceResult(int64_t additionalChoiceResult) override;
-
                 bool resetAdditionalChoiceResult() override;
+
+                const std::string& getSBP_RN() const override;
+                bool setSBP_RN(const std::string& SBP_RN) override;
+                bool resetSBP_RN() override;
+
+                const std::string& getQRCode() const override;
+                bool setQRCode(const std::string& QRCode) override;
+                bool resetQRCode() override;
+
+                const std::string& getSBP_KZO() const override;
+                bool setSBP_KZO(const std::string& SBP_KZO) override;
+                bool resetSBP_KZO() override;
+
+                const std::string& getSBP_ReqId() const override;
+                bool setSBP_ReqId(const std::string& SBP_ReqId) override;
+                bool resetSBP_ReqId() override;
+
+                const std::string& getSBP_Code() const override;
+                bool setSBP_Code(const std::string& SBP_Code) override;
+                bool resetSBP_Code() override;
+
+                const std::string& getSBP_Status() const override;
+                bool setSBP_Status(const std::string& SBP_Status) override;
+                bool resetSBP_Status() override;
+
+                const std::string& getTransportControlDateTime() const override;
+                bool setTransportControlDateTime(const std::string& SBP_Status) override;
+                bool resetTransportControlDateTime() override;
 
 				int64_t getECertAmount() const override;
 				bool setECertAmount(int64_t amount) override;
@@ -406,6 +419,7 @@ namespace Lanter {
 				const std::string &getBasketID() const override;
 				bool setBasketID(const std::string &id) override;
 				bool resetBasketID() override;
+
 			private:
                 void initValidator();
                 void deinitValidator();
@@ -414,8 +428,8 @@ namespace Lanter {
 
                 std::shared_ptr<IValidator> m_Validator; ///< Валидатор полей операц
 
-                int16_t m_EcrNumber = -1;
-                int16_t m_EcrMerchantNumber = -1;
+                int64_t m_EcrNumber = -1;
+                int64_t m_EcrMerchantNumber = -1;
 
                 OperationCode m_OperationCode = OperationCode::NoOperation;
                 OperationCode m_OriginalOperationCode = OperationCode::NoOperation;
@@ -481,6 +495,15 @@ namespace Lanter {
                 bool m_FinalizationRequired = false;
                 int64_t m_ChoiceResult = -1;
 
+                std::string m_SBP_RN;
+                std::string m_QRCode;
+                std::string m_SBP_KZO;
+                std::string m_SBP_ReqId;
+                std::string m_SBP_Code;
+                std::string m_SBP_Status;
+
+                std::string m_TransportControlDateTime;
+
                 std::vector<std::shared_ptr<IResponseData> > m_SalesArray;
                 std::vector<std::shared_ptr<IResponseData> > m_VoidArray;
                 std::vector<std::shared_ptr<IResponseData> > m_RefundArray;
@@ -490,5 +513,4 @@ namespace Lanter {
         }
     }//Message
 }
-
 #endif //LAN_4GATELIBRARYCPP_RESPONSEDATA_H

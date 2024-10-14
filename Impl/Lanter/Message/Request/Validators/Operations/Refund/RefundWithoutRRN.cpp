@@ -5,8 +5,8 @@ namespace Lanter {
         namespace Request {
             void RefundWithoutRRN::addSpecificFields() {
                 appendMandatoryField(RequestField::EcrMerchantNumber);
-                appendOptionalField(RequestField::Amount);
-                appendOptionalField(RequestField::CurrencyCode);
+                appendMandatoryField(RequestField::Amount);
+                appendMandatoryField(RequestField::CurrencyCode);
 
                 appendOptionalField(RequestField::AdditionalInfo);
             }

@@ -7,11 +7,14 @@
 
 #include "Lanter/Utils/VisibilityMacroses.h"
 
-namespace Lanter {
-    namespace Communication {
+namespace Lanter
+{
+    namespace Communication
+    {
         ///\brief Интерфейс класса коммуникаций, используемый в работе Lan4Gate
         /// \sa Lan4Gate
-        class LANTER_VISIBILITY ICommunication {
+        class LANTER_VISIBILITY ICommunication
+        {
         public:
             virtual ~ICommunication() = default;
             /// \brief Выполняет один цикл асинхронного соединения. Может быть не реализован
@@ -53,5 +56,4 @@ namespace Lanter {
         };//class ICommunication
     }//namespace Communication
 }//namespace Lanter
-
 #endif //LAN_4GATELIB_ICOMMUNICATION_H

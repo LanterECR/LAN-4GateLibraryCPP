@@ -3,15 +3,18 @@
 
 #include "Lanter/Message/Response/Validators/Operations/BasicValidator.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-            class VoidPreAuth : public BasicValidator {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            class VoidPreAuth : public BasicValidator
+            {
             public:
                 void addSpecificFields() override;
             };
         }//Response
     }
 }//Lanter
-
 #endif //LAN_4GATELIBRARYCPP_VOIDPREAUTH_H

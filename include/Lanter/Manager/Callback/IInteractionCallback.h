@@ -4,14 +4,17 @@
 #include <memory>
 
 #include "Lanter/Utils/VisibilityMacroses.h"
-
 #include "Lanter/Message/Interaction/IInteractionData.h"
 
-namespace Lanter {
-    namespace Manager {
-        namespace Callback {
+namespace Lanter
+{
+    namespace Manager
+    {
+        namespace Callback
+        {
             /// \brief Колбэк для приема данных команд взаимодействия
-            class LANTER_VISIBILITY IInteractionCallback {
+            class LANTER_VISIBILITY IInteractionCallback
+            {
             public:
                 virtual ~IInteractionCallback() = default;
                 /// \brief Метод, в который будет переданы данные команды взаимодействия
@@ -22,5 +25,4 @@ namespace Lanter {
         }
     }
 }
-
 #endif //LAN_4GATELIB_IINTERACTIONCALLBACK_H

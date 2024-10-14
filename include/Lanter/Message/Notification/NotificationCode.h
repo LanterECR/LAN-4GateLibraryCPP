@@ -3,11 +3,15 @@
 
 #include "Lanter/Utils/VisibilityMacroses.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Notification {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Notification
+        {
             /// \brief Список поддерживаемых уведомлений
-            enum class NotificationCode {
+            enum class NotificationCode
+            {
                 NoNotification, ///< Значение по умолчанию. Уведомления нет
                 ReversalUploadingError, ///< Ошибка выгрузки реверса
                 IncorrectVoidAmount, ///< Некорректная сумма отмены
@@ -60,19 +64,31 @@ namespace Lanter {
                 ErrorPinInput, ///< Ошибка ввода пин-кода
                 MsrDeclinedUseChip, ///< Операция по магнитной полосе отклонена. Используйте контактный интерфейс
                 PinEntryTimeout, ///< Тайм-аут ввода пин-кода
-                QrShowing ///< Отображение QR кода
+                QrShowing, ///< Отображение QR кода
+                ConfigError,  ///< Ошибка конфигурации
+                KeyEntryIsNotAllowed,  ///< Ввод ключа Запрещен
+                PinSymbolEntered,  ///< Введен символ Pin-кода
+                LookForDevice,  ///< Поиск устройства
+                DeclinedBonus,  ///< Бонусы отклонены
+                CardReadingSuccessWait,  ///< Ожидание успешного считывания карты
+                OperationResultInfo,  ///< Информация о результате операции
+                UpdatingParameters,  ///< Обновление параметров
+                SoftwareUpdate,  ///< Обновление ПО
+                PinClear    ///< Очистка пина
             };//enum NotificationCode
 
             /// Функция, возвращающая первый значимый элемент перечисления NotificationCode
             /// \return Первый элемент значимый перечисления NotificationCode
-            constexpr NotificationCode getFirstNotificationCode() {
+            constexpr NotificationCode getFirstNotificationCode()
+            {
                 return NotificationCode::ReversalUploadingError;
             }
 
             /// Функция, возвращающая последний значимый элемент перечисления NotificationCode
             /// \return Последний элемент значимый перечисления NotificationCode
-            constexpr NotificationCode getLastNotificationCode() {
-                return NotificationCode::QrShowing;
+            constexpr NotificationCode getLastNotificationCode()
+            {
+                return NotificationCode::PinClear;
             }
         }//namespace Notification
     }//namespace Message

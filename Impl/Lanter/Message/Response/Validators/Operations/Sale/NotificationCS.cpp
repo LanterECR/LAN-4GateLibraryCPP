@@ -8,7 +8,7 @@ namespace Lanter
         {
             void Response::NotificationCS::addSpecificFields()
             {
-                appendMandatoryField(ResponseField::AdditionalInfo);
+                appendOptionalField(ResponseField::AdditionalInfo);
             }
         }
     }

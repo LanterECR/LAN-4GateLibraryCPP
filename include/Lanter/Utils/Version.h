@@ -2,13 +2,15 @@
 #define LAN_4GATELIB_VERSION_H
 
 #include "string"
-
 #include "Lanter/Utils/VisibilityMacroses.h"
 
-namespace Lanter {
-    namespace Utils {
+namespace Lanter
+{
+    namespace Utils
+    {
         /// \brief Класс для получения информации о версии библиотеки
-        class LANTER_VISIBILITY Version {
+        class LANTER_VISIBILITY Version
+        {
         public:
             /// \brief Возвращает текущую версию библиотеки
             /// \return версия библиотеки
@@ -16,5 +18,4 @@ namespace Lanter {
         };
     }
 }
-
 #endif //LAN_4GATELIB_VERSION_H

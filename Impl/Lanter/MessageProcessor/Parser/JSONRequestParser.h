@@ -3,18 +3,20 @@
 
 #include <functional>
 #include <memory>
-
 #include "json/json.h"
-
 #include "Lanter/Message/Request/IRequestData.h"
 
-namespace Lanter {
-    namespace MessageProcessor {
-        namespace Parser {
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
+        namespace Parser
+        {
             using namespace Message;
             using namespace Message::Request;
 
-            class JSONRequestParser {
+            class JSONRequestParser
+            {
             public:
                 JSONRequestParser();
 
@@ -63,12 +65,6 @@ namespace Lanter {
 
                 bool getFieldHashCardTrack2(const Json::Value &object, IRequestData &requestData);
 
-                bool getFieldSBP_RN(const Json::Value& object, IRequestData& requestData);
-
-                bool getFieldSBP_ReqID(const Json::Value& object, IRequestData& requestData);
-
-                bool getFieldPaymentPurpose(const Json::Value& object, IRequestData& requestData);
-
                 bool getFieldPaymentProviderCode(const Json::Value &object, IRequestData &requestData);
 
                 bool getFieldPaymentParam1(const Json::Value &object, IRequestData &requestData);
@@ -78,6 +74,12 @@ namespace Lanter {
                 bool getFieldPaymentParam3(const Json::Value &object, IRequestData &requestData);
 
                 bool getFieldAdditionalChoice(const Json::Value &object, IRequestData &requestData);
+
+                bool getFieldTransportControlStation(const Json::Value& object, IRequestData& requestData);
+
+                bool getFieldTransportControlArea(const Json::Value& object, IRequestData& requestData);
+
+                bool getFieldTransportControlID(const Json::Value& object, IRequestData& requestData);
 
 				bool getFieldCardPANHash(const Json::Value &object, IRequestData &requestData);
 

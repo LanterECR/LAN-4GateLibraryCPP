@@ -16,9 +16,14 @@
 #include "Lanter/Message/Request/Validators/Operations/Sale/RequestCS.h"
 #include "Lanter/Message/Request/Validators/Operations/Sale/NotificationCS.h"
 #include "Lanter/Message/Request/Validators/Operations/Sale/RepeatLastN.h"
+#include "Lanter/Message/Request/Validators/Operations/Sale/CardVerification.h"
+
+//Devices operations
+#include "Lanter/Message/Request/Validators/Operations/Devices/QRScannerResult.h"
 
 //Void operations
 #include "Lanter/Message/Request/Validators/Operations/Void/Void.h"
+#include "Lanter/Message/Request/Validators/Operations/Void/VoidLastSale.h"
 #include "Lanter/Message/Request/Validators/Operations/Void/VoidPartialSale.h"
 #include "Lanter/Message/Request/Validators/Operations/Void/VoidPreAuth.h"
 
@@ -39,6 +44,7 @@
 #include "Lanter/Message/Request/Validators/Operations/Service/KeyDowload.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/PrintCommsInfo.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/PrintDetailReport.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/PrintMerchantSettlement.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/PrintLastReceipt.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/PrintReceiptCopy.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/PrintSoftInfo.h"
@@ -61,16 +67,25 @@
 #include "Lanter/Message/Request/Validators/Operations/Service/EjectWaitCard.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/IsCardPresent.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/UploadPending.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/UploadDelayed.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/BonusBalance.h"
 #include "Lanter/Message/Request/Validators/Operations/Service/GrabEjectCard.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/SZKLoadKeys.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/CommunicationSettings.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/CheckDeviceStatus.h"
+#include "Lanter/Message/Request/Validators/Operations/Service/PrintLastSettlement.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Request {
-
-            std::shared_ptr<IValidator> ValidatorFactory::getValidator(OperationCode operationCode) {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Request
+        {
+            std::shared_ptr<IValidator> ValidatorFactory::getValidator(OperationCode operationCode)
+            {
                 std::shared_ptr<BasicValidator> validator;
-                switch (operationCode) {
+                switch (operationCode)
+                {
                     //Sale operations
                     case OperationCode::Sale:
                         validator = std::make_shared<Sale>();
@@ -96,15 +111,6 @@ namespace Lanter {
                     case OperationCode::QuickPaymentStatus:
                         validator = std::make_shared<QuickPaymentStatus>();
                         break;
-                    case OperationCode::RequestCS:
-                        validator = std::make_shared<RequestCS>();
-                        break;
-                    case OperationCode::NotificationCS:
-                        validator = std::make_shared<NotificationCS>();
-                        break;
-                    case OperationCode::RepeatLastN:
-                        validator = std::make_shared<RepeatLastN>();
-                        break;
                     case OperationCode::FastTrack:
                         validator = std::make_shared<FastTrack>();
                         break;
@@ -117,10 +123,30 @@ namespace Lanter {
 					case OperationCode::ECertRefund:
 						validator = std::make_shared<ECertRefund>();
 						break;
+                    case OperationCode::CardVerification:
+                        validator = std::make_shared<CardVerification>();
+                        break;
+                    case OperationCode::RequestCS:
+                        validator = std::make_shared<RequestCS>();
+                        break;
+                    case OperationCode::NotificationCS:
+                        validator = std::make_shared<NotificationCS>();
+                        break;
+                    case OperationCode::RepeatLastN:
+                        validator = std::make_shared<RepeatLastN>();
+                        break;
+
+                    //Devices operations
+                    case OperationCode::QRScannerResult:
+                        validator = std::make_shared<QRScannerResult>();
+                        break;
 
                     //Void operations
                     case OperationCode::Void:
                         validator = std::make_shared<Void>();
+                        break;
+                    case OperationCode::VoidLastSale:
+                        validator = std::make_shared<VoidLastSale>();
                         break;
                     case OperationCode::VoidPartialSale:
                         validator = std::make_shared<VoidPartialSale>();
@@ -183,6 +209,9 @@ namespace Lanter {
                     case OperationCode::PrintCommsInfo:
                         validator = std::make_shared<PrintCommsInfo>();
                         break;
+                    case OperationCode::PrintMerchantSettlement:
+                        validator = std::make_shared<PrintMerchantSettlement>();
+                        break;
                     case OperationCode::PrintSoftInfo:
                         validator = std::make_shared<PrintSoftInfo>();
                         break;
@@ -240,18 +269,34 @@ namespace Lanter {
                     case OperationCode::UploadPending:
                         validator = std::make_shared<UploadPending>();
                         break;
+                    case OperationCode::UploadDelayed:
+                        validator = std::make_shared<UploadDelayed>();
+                        break;
                     case OperationCode::BonusBalance:
                         validator = std::make_shared<BonusBalance>();
                         break;
                     case OperationCode::GrabEjectCard:
                         validator = std::make_shared<GrabEjectCard>();
                         break;
+                    case OperationCode::SZKLoadKeys:
+                        validator = std::make_shared<SZKLoadKeys>();
+                        break;
+                    case OperationCode::CommunicationSettings:
+                        validator = std::make_shared<CommunicationSettings>();
+                        break;
+                    case OperationCode::CheckDeviceStatus:
+                        validator = std::make_shared<CheckDeviceStatus>();
+                        break;
+                    case OperationCode::PrintLastSettlement:
+                        validator = std::make_shared<PrintLastSettlement>();
+                        break;
                     default:
                         validator = std::make_shared<BasicValidator>();
                         break;
                 }//switch
 
-                if (validator) {
+                if (validator)
+                {
                     //Из конструкторов не рекомендуется вызывать виртуальные методы. Необходима инициализация валидатора
                     validator->addSpecificFields();
                 }//if validator

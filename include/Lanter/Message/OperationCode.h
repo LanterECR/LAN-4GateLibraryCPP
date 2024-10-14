@@ -1,10 +1,13 @@
 #ifndef LAN_4GATELIBRARYCPP_OPERATIONCODES_H
 #define LAN_4GATELIBRARYCPP_OPERATIONCODES_H
 
-namespace Lanter {
-    namespace Message {
+namespace Lanter
+{
+    namespace Message
+    {
         /// \brief Список поддерживаемых операций
-        enum class OperationCode {
+        enum class OperationCode
+        {
             NoOperation, ///< Значение-заглушка. Нет кода операции
             //Операции оплаты
             Sale = 1, ///< Оплата
@@ -13,21 +16,38 @@ namespace Lanter {
             AliPay, ///< Оплата через систему AliPay
             Payment, ///< Операция оплаты счета
 
+            //======nspk======
+            CashRegisterNSPK = 100,
+            ActivateCashNSPK,
+            DeleteCashNSPK,
+            QRPaymentNSPK,
+            QRPaymentStatusNSPK,
+            QRRefundNSPK,
+            QRRefundStatusNSPK,
+
+            //Устройства
+            QRScannerResult = 120, ///< Результат QR сканера
+
+            //======преавторизация======
             PreAuth = 200, ///< Преавторизация
             SalesCompletion, ///< Завершение преавторизации
             QuickPaymentStatus, ///< Проверка статуса оплаты через СБП
-            RequestCS,          ///< Запрос задолжности на Cash Service
-            NotificationCS,     ///< Оповещение Cash Service об оплате
-            RepeatLastN,        ///< Повторная отправка последней NotificationCS если она была не успешной, если была успешная вернет "N"
+            RequestCS, ///< Запрос задолжности на CashService
+            NotificationCS, ///< Оповещение CashService об оплате
+            RepeatLastN, ///< Запрос статуса на CashService
+            
+            //======другие======
             FastTrack = 300, ///< Получение зашифрованный и открытых тегов карты
 			ECertGetRequisites, ///< запрос реквизитов по карте
 			ECertPayment, ///< оплата электронным сертификатом
 			ECertRefund, ///< возврат по электронным сертификатам
+            CardVerification, ///< Верефикация карты на хосте(для траспортного проекта)
 
             //Операции отмены
             Void = 400, ///< Отмена по номеру чека
             VoidPartialSale, ///< Частичная отмена по номеру чека
             VoidPreAuth, ///< Отмена преавторизации
+            VoidLastSale, ///< Отмена последней (успешной?) операции
 
             //Операции возврата
             Refund = 500, ///< Возврат с m_RRN
@@ -66,10 +86,17 @@ namespace Lanter {
             EjectCard,  ///< Возврат карты из внешнего ридера с возвратом ответа на кассу без ожидания изъятия карты
             EjectWaitCard, ///< Возврат карты из внешнего ридера с возвратом ответа на кассу с ожиданием изъятия карты
             IsCardPresent, ///< Статус наличия карты во внешнем ридере
+
             UploadPending = 830, ///< Выгрузка отложенной операции на финансовый хост
             BonusBalance, ///< Запрос баланса бонусов
             GrabEjectCard, ///< Протягивание карты в лоток карт
             GetMerchantList, ///< Возвращает наименования ErcNumber
+            PrintMerchantSettlement, ///< Запрос печати чека сверки по мерчанту, чек берётся из памяти.
+            UploadDelayed, ///< Доавторизация отложенных операций
+            SZKLoadKeys,    ///< Загрузка мастер-ключей с СЗК
+            CommunicationSettings,  ///< Настройка сети
+            CheckDeviceStatus,  ///< Проверка статуса устройств
+            PrintLastSettlement, ///< Печать последней успешной сверки
 
             //Отдельный тип операции для представления массивов операции DetailReport
             ArrayElement = 1000 ///< Фиктивный код операции для создания элементов массива
@@ -77,13 +104,15 @@ namespace Lanter {
 
         /// Функция, возвращающая первый значимый элемент перечисления OperationCode
         /// \return Первый элемент значимый перечисления OperationCode
-        constexpr OperationCode getFirstOperationCode() {
+        constexpr OperationCode getFirstOperationCode()
+        {
             return OperationCode::Sale;
         }
 
         /// Функция, возвращающая последний значимый элемент перечисления OperationCode
         /// \return Последний элемент значимый перечисления OperationCode
-        constexpr OperationCode getLastOperationCode() {
+        constexpr OperationCode getLastOperationCode()
+        {
             return OperationCode::ArrayElement;
         }
 

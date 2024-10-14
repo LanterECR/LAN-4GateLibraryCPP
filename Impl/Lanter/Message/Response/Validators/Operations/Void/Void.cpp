@@ -1,10 +1,16 @@
 #include "Void.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-            void Response::Void::addSpecificFields() {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            void Response::Void::addSpecificFields()
+            {
+                appendOptionalField(ResponseField::EcrNumber);
                 appendOptionalField(ResponseField::EcrMerchantNumber);
+                appendOptionalField(ResponseField::OperationCode);
                 appendOptionalField(ResponseField::ApplicationLabel);
                 appendOptionalField(ResponseField::TotalAmount);
                 appendOptionalField(ResponseField::CurrencyCode);
@@ -33,6 +39,9 @@ namespace Lanter {
                 appendOptionalField(ResponseField::CDAResult);
                 appendOptionalField(ResponseField::CardholderName);
                 appendOptionalField(ResponseField::CardholderAuthMethod);
+                appendOptionalField(ResponseField::ReceiptLine1);
+                appendOptionalField(ResponseField::ReceiptLine2);
+                appendOptionalField(ResponseField::ReceiptLine3);
             }
         }
     }

@@ -6,13 +6,13 @@ namespace Lanter {
             void Request::ECertRefund::addSpecificFields() {
                 appendMandatoryField(RequestField::EcrMerchantNumber);
 
-				appendOptionalField(RequestField::CurrencyCode);
-				appendOptionalField(RequestField::Amount);
-				appendOptionalField(RequestField::ECertAmount);
-				appendOptionalField(RequestField::BasketID);
+				appendMandatoryField(RequestField::CurrencyCode);
+				appendMandatoryField(RequestField::Amount);
+				appendMandatoryField(RequestField::ECertAmount);
+				appendMandatoryField(RequestField::BasketID);
+
 				appendOptionalField(RequestField::TransactionID);
 				appendOptionalField(RequestField::RRN);
-				appendOptionalField(RequestField::AdditionalInfo);
 			}
         }
     }

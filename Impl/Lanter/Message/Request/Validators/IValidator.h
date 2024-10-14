@@ -5,11 +5,15 @@
 
 #include "Lanter/Message/Request/RequestField.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Request {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Request
+        {
             ///\brief Интерфейсный класс для валидатора полей запроса
-            class IValidator {
+            class IValidator
+            {
             public:
                 virtual ~IValidator() = default;
 
@@ -41,5 +45,4 @@ namespace Lanter {
         }//namespace Request
     }//namespace Message
 }//namespace Lanter
-
 #endif //LAN_4GATELIBRARYCPP_IVALIDATOR_H

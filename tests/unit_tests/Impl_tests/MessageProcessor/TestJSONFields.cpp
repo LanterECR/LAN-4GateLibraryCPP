@@ -87,10 +87,10 @@ TEST(TestJSONFields, CheckResponseFields) {
     EXPECT_FALSE(JSONResponseFields::getCID().empty());
     EXPECT_FALSE(JSONResponseFields::getKVR().empty());
     EXPECT_FALSE(JSONResponseFields::getCDAResult().empty());
-    EXPECT_FALSE(JSONResponseFields::getSaleCount().empty());
+    EXPECT_FALSE(JSONResponseFields::getSalesCount().empty());
     EXPECT_FALSE(JSONResponseFields::getVoidCount().empty());
     EXPECT_FALSE(JSONResponseFields::getRefundCount().empty());
-    EXPECT_FALSE(JSONResponseFields::getSaleArray().empty());
+    EXPECT_FALSE(JSONResponseFields::getSalesArray().empty());
     EXPECT_FALSE(JSONResponseFields::getVoidArray().empty());
     EXPECT_FALSE(JSONResponseFields::getRefundArray().empty());
     EXPECT_FALSE(JSONResponseFields::getSalesAmount().empty());

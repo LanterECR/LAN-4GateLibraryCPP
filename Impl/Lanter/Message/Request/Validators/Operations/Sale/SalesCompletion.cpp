@@ -13,7 +13,6 @@ namespace Lanter {
                 appendOptionalField(RequestField::AuthCode);
                 appendOptionalField(RequestField::RRN);
                 appendOptionalField(RequestField::CardDataEnc);
-                appendOptionalField(RequestField::AdditionalInfo);
             }
         }
     }

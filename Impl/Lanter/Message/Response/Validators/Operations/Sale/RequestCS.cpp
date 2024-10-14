@@ -8,8 +8,7 @@ namespace Lanter
         {
             void Response::RequestCS::addSpecificFields()
             {
-                appendMandatoryField(ResponseField::Status);
-
+                appendOptionalField(ResponseField::Status);
                 appendOptionalField(ResponseField::AdditionalInfo);
                 appendOptionalField(ResponseField::TotalAmount);
                 appendOptionalField(ResponseField::TransDateTime);

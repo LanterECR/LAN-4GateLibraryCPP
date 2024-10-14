@@ -8,7 +8,9 @@ namespace Lanter
         {
             void Request::RequestCS::addSpecificFields()
             {
-                appendMandatoryField(RequestField::AdditionalInfo);
+                appendOptionalField(RequestField::EcrMerchantNumber);
+                appendOptionalField(RequestField::EcrNumber);
+                appendOptionalField(RequestField::AdditionalInfo);
             }
         }
     }

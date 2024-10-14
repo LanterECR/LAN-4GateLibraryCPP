@@ -37,6 +37,8 @@ namespace Lanter
                 appendOptionalField(ResponseField::CDAResult);
                 appendOptionalField(ResponseField::CardholderName);
                 appendOptionalField(ResponseField::CardholderAuthMethod);
+                appendOptionalField(ResponseField::AdditionalChoiceResult);
+                appendOptionalField(ResponseField::AdditionalInfo);
             }
         }
     }

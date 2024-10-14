@@ -617,7 +617,8 @@ TEST(TestFieldsRangeChecker, CheckVoidCountRange){
     EXPECT_TRUE(checkVoidCountRange(MINIMUM_ARRAY_SIZE + 1));
     EXPECT_TRUE(checkVoidCountRange(MAXIMUM_ARRAY_SIZE - 1));
 }
-TEST(TestFieldsRangeChecker, CheckRefundCountRange){
+TEST(TestFieldsRangeChecker, CheckRefundCountRange)
+{
     int64_t lessMinimum = MINIMUM_ARRAY_SIZE - 1;
     int64_t greatMaximum = MAXIMUM_ARRAY_SIZE + 1;
 
@@ -630,7 +631,8 @@ TEST(TestFieldsRangeChecker, CheckRefundCountRange){
     EXPECT_TRUE(checkRefundCountRange(MINIMUM_ARRAY_SIZE + 1));
     EXPECT_TRUE(checkRefundCountRange(MAXIMUM_ARRAY_SIZE - 1));
 }
-TEST(TestFieldsRangeChecker, CheckNotiticationCodes){
+TEST(TestFieldsRangeChecker, CheckNotiticationCodes)
+{
     auto lessMinimum =  (int32_t)getFirstNotificationCode() - 1;
     auto greatMaximum = (int32_t)getLastNotificationCode() + 1;
 
@@ -647,13 +649,14 @@ TEST(TestFieldsRangeChecker, CheckNotiticationCodes){
     EXPECT_TRUE(checkNotificationsRange(lessMaximum));
 }
 
-TEST(TestFieldsRangeChecker, CheckInteractionCodes){
+TEST(TestFieldsRangeChecker, CheckInteractionCodes)
+{
     auto lessMinimum =  (int32_t)getFirstInteractionCode() - 1;
     auto greatMaximum = (int32_t)getLastInteractionCode() + 1;
 
     EXPECT_FALSE(checkInteractionsRange(lessMinimum));
     EXPECT_FALSE(checkInteractionsRange(greatMaximum));
 
-    EXPECT_TRUE(checkInteractionsRange((int32_t)getFirstInteractionCode()));
-    EXPECT_TRUE(checkInteractionsRange((int32_t)getLastInteractionCode()));
+    EXPECT_TRUE(checkInteractionsRange((int64_t)getFirstInteractionCode()));
+    EXPECT_TRUE(checkInteractionsRange((int64_t)getLastInteractionCode()));
 }

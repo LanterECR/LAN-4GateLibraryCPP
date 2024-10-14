@@ -1,9 +1,13 @@
 #include "VoidPreAuth.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-            void VoidPreAuth::addSpecificFields() {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            void VoidPreAuth::addSpecificFields()
+            {
                 appendOptionalField(ResponseField::EcrMerchantNumber);
                 appendOptionalField(ResponseField::TotalAmount);
                 appendOptionalField(ResponseField::PartialAmount);

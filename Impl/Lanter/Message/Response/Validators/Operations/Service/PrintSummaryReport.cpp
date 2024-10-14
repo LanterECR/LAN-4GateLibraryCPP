@@ -10,7 +10,7 @@ namespace Lanter {
                 appendOptionalField(ResponseField::TerminalID);
                 appendOptionalField(ResponseField::MerchantID);
                 appendOptionalField(ResponseField::TerminalDateTime);
-                appendOptionalField(ResponseField::SaleCount);
+                appendOptionalField(ResponseField::SalesCount);
                 appendOptionalField(ResponseField::VoidCount);
                 appendOptionalField(ResponseField::RefundCount);
                 appendOptionalField(ResponseField::SalesAmount);

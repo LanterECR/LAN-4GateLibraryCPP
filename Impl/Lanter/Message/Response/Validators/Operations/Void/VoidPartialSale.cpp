@@ -1,9 +1,13 @@
 #include "VoidPartialSale.h"
 
-namespace Lanter {
-    namespace Message {
-        namespace Response {
-            void VoidPartialSale::addSpecificFields() {
+namespace Lanter
+{
+    namespace Message
+    {
+        namespace Response
+        {
+            void VoidPartialSale::addSpecificFields()
+            {
                 appendOptionalField(ResponseField::EcrMerchantNumber);
                 appendOptionalField(ResponseField::TotalAmount);
                 appendOptionalField(ResponseField::PartialAmount);

@@ -50,12 +50,12 @@ namespace Lanter {
 
                 /// \brief Возвращает логический идентификатор кассового ПО
                 /// \return Если поле установлено - логический идентификатор кассового ПО, иначе -1
-                virtual int16_t getEcrNumber() const = 0;
+                virtual int64_t getEcrNumber() const = 0;
 
                 /// \brief Устанавливает логический идентификатор кассового ПО
                 /// \param[in] ecrNumber Логический идентификатор кассового ПО в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
-                virtual bool setEcrNumber(int16_t ecrNumber) = 0;
+                virtual bool setEcrNumber(int64_t ecrNumber) = 0;
 
                 /// \brief Устанавливает значение по умолчанию для поля EcrNumber
                 /// и удаляет из списка установленных полей
@@ -64,12 +64,12 @@ namespace Lanter {
 
                 /// \brief Возвращает логический идентификатор мерчанта в кассовом ПО
                 /// \return Если поле установлено - логический идентификатор мерчанта в кассовом ПО, иначе -1
-                virtual int16_t getEcrMerchantNumber() const = 0;
+                virtual int64_t getEcrMerchantNumber() const = 0;
 
                 /// \brief Устанавливает логический идентификатор мерчанта в кассовом ПО
                 /// \param[in] ecrMerchantNumber Логический идентификатор мерчанта в кассовом в диапазоне [1, 999]
                 /// \return true, если поле успешно установлено
-                virtual bool setEcrMerchantNumber(int16_t ecrMerchantNumber) = 0;
+                virtual bool setEcrMerchantNumber(int64_t ecrMerchantNumber) = 0;
 
 
                 /// \brief Устанавливает значение по умолчанию для поля EcrMerchantNumber
@@ -434,7 +434,6 @@ namespace Lanter {
                 /// \return true, если поле успешно удалено
                 virtual bool resetPaymentParam3() = 0;
 
-
                 /// \brief Возвращает установленные параметры операции на экране терминала
                 /// \return Строка, содержащая установленные параметры операции на экране терминала
                 virtual const std::string &getAdditionalChoice() const = 0;
@@ -476,6 +475,18 @@ namespace Lanter {
 				/// и удаляет из списка установленных полей
 				/// \return true, если поле успешно удалено
 				virtual bool resetCardPANHash() = 0;
+
+                virtual const std::string& getTransportControlStation() const = 0;
+                virtual bool setTransportControlStation(const std::string& additionalInfo) = 0;
+                virtual bool resetTransportControlStation() = 0;
+
+                virtual const std::string& getTransportControlArea() const = 0;
+                virtual bool setTransportControlArea(const std::string& additionalInfo) = 0;
+                virtual bool resetTransportControlArea() = 0;
+
+                virtual const std::string& getTransportControlID() const = 0;
+                virtual bool setTransportControlID(const std::string& additionalInfo) = 0;
+                virtual bool resetTransportControlID() = 0;
 			};//class IRequestData
         }//namespace Request
     }//namespace Message

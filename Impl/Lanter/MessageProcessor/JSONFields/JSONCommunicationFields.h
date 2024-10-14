@@ -1,9 +1,12 @@
 #ifndef LAN_4GATELIB_JSONCOMMUNICATIONFIELDS_H
 #define LAN_4GATELIB_JSONCOMMUNICATIONFIELDS_H
+
 #include <string>
 
-namespace Lanter {
-    namespace MessageProcessor {
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
         class JSONCommunicationFields
         {
         public:

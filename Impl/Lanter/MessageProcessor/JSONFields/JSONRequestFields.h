@@ -1,9 +1,12 @@
 #ifndef LAN_4GATELIB_JSONREQUESTFIELDS_H
 #define LAN_4GATELIB_JSONREQUESTFIELDS_H
+
 #include <string>
 
-namespace Lanter {
-    namespace MessageProcessor {
+namespace Lanter
+{
+    namespace MessageProcessor
+    {
         class JSONRequestFields
         {
         public:
@@ -29,13 +32,16 @@ namespace Lanter {
             static inline std::string getBonusAmount() { return "BonusAmount"; }
             static inline std::string getHashCardTrack2() { return "HashCardTrack2"; }
             static inline std::string getSBP_RN() { return "SBP_RN"; }
-            static inline std::string getSBP_ReqID() { return "SBP_ReqID"; }
+            static inline std::string getSBP_ReqID() { return "SBP_ReqId"; }
             static inline std::string getPaymentPurpose() { return "PaymentPurpose"; }
             static inline std::string getPaymentProviderCode() { return "PaymentProviderCode"; }
             static inline std::string getPaymentParam1() { return "PaymentParam1"; }
             static inline std::string getPaymentParam2() { return "PaymentParam2"; }
             static inline std::string getPaymentParam3() { return "PaymentParam3"; }
             static inline std::string getAdditionalChoice() { return "AdditionalChoice"; }
+            static inline std::string getTransportControlStation() { return "TransportControlStation"; }
+            static inline std::string getTransportControlArea() { return "TransportControlArea"; }
+            static inline std::string getTransportControlID() { return "TransportControlID"; }
 			static inline std::string getCardPANHash() { return "CardPANHash"; }
 			static inline std::string getECertAmount() { return "ECertAmount"; }
 			static inline std::string getBasketID() { return "BasketID"; }

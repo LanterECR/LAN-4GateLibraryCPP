@@ -5,34 +5,39 @@
 #include <memory>
 
 #include "Lanter/Utils/VisibilityMacroses.h"
-
 #include "Lanter/Communication/ICommunication.h"
-
 #include "Lanter/Message/Request/IRequestData.h"
 #include "Lanter/Message/Response/IResponseData.h"
 #include "Lanter/Message/Notification/INotificationData.h"
 #include "Lanter/Message/Interaction/IInteractionData.h"
+#include "Lanter/Message/Receipt/IReceiptData.h"
 
 #include "Callback/IRequestCallback.h"
 #include "Callback/IResponseCallback.h"
 #include "Callback/INotificationCallback.h"
 #include "Callback/IInteractionCallback.h"
+#include "Callback/IReceiptCallback.h"
 #include "Callback/IConnectionCallback.h"
 
-namespace Lanter {
-    namespace Manager {
+namespace Lanter
+{
+    namespace Manager
+    {
         /// \brief Предоставляет интерфейс взаимодействия с функционалом библиотеки
-        class LANTER_VISIBILITY ILan4Gate {
+        class LANTER_VISIBILITY ILan4Gate
+        {
         public:
             /// \brief Статус запуска ILan4Gate
-            enum class Status {
+            enum class Status
+            {
                 Success, //!< Успешно запущено
                 Error //!< Произошла ошибка при запуске
             };
 
             /// \brief Способ вызова колбеков
             /// Объединение Async | Sync будет интерпретировано, как Sync
-            enum class CallbackNotificationType {
+            enum class CallbackNotificationType
+            {
                 Async, //!< Все колбеки вызываются из того же потока, в котором работает метод doLan4Gate
                 Sync///< Все колбеки вызываются из нового потока
             };
@@ -42,11 +47,11 @@ namespace Lanter {
             /// \brief Устанавливает логический идентификатор кассового ПО. Значение по умолчанию 1
             /// \param[in] ecrNumber Логический идентификатор кассового ПО в диапазоне [1, 999]
             /// \return true, если поле успешно установлено
-             virtual bool setEcrNumber(int16_t ecrNumber) = 0;
+             virtual bool setEcrNumber(int64_t ecrNumber) = 0;
 
              /// \brief Возвращает логический идентификатор кассового ПО
              /// \return Логический идентификатор в диапазоне [1,999]. По умолчанию равен 1
-             virtual int16_t getEcrNumber() const = 0;
+             virtual int64_t getEcrNumber() const = 0;
 
             /// \brief Запускает цикл обработки запросов библиотеки
             /// \return Одно из значений перечисления Status
@@ -140,7 +145,7 @@ namespace Lanter {
             /// \brief Удаляет колбек уведомления из списка
             /// \param[in] id идентификатор колбека
             /// \return true, если успешно удалено
-            virtual bool removeNotificationCallback(size_t id) = 0;
+            virtual bool removeNotificationCallback(const size_t& id) = 0;
 
             /// \brief Возвращает количество зарегистрированных колбеков для получения данных уведомления
             /// \return количество зарегистрированных колбеков
@@ -151,22 +156,38 @@ namespace Lanter {
             /// \return id зарегистрированного колбека
             /// \sa Message::Interaction::IInteractionData
             /// \sa Callback::InteractionCallback
-            virtual size_t addInteractionCallback(Callback::IInteractionCallback &callback) = 0;
+            virtual size_t addInteractionCallback(Callback::IInteractionCallback& callback) = 0;
 
             /// \brief Удаляет колбек команд взаимодействия из списка
             /// \param[in] id идентификатор колбека
             /// \return true, если успешно удалено
-            virtual bool removeInteractionCallback(size_t id) = 0;
+            virtual bool removeInteractionCallback(const size_t& id) = 0;
 
             /// \brief Возвращает количество зарегистрированных колбеков для получения данных команд взаимодействия
             /// \return количество зарегистрированных колбеков
             virtual size_t interactionCallbacksCount() const = 0;
 
+            /// \brief Добавляет колбек в список слушателей для получения данных команд взаимодействия
+            /// \param[in] callback имплементация интерфейса Callback::ReceiptCallback
+            /// \return id зарегистрированного колбека
+            /// \sa Message::Receipt::IReceiptData
+            /// \sa Callback::ReceiptCallback
+            virtual size_t addReceiptCallback(Callback::IReceiptCallback& callback) = 0;
+
+            /// \brief Удаляет колбек команд взаимодействия из списка
+            /// \param[in] id идентификатор колбека
+            /// \return true, если успешно удалено
+            virtual bool removeReceiptCallback(const size_t& id) = 0;
+
+            /// \brief Возвращает количество зарегистрированных колбеков для получения данных команд взаимодействия
+            /// \return количество зарегистрированных колбеков
+            virtual size_t receiptCallbacksCount() const = 0;
+
             /// \brief Добавляет колбек в список слушателей для получения уведомления о подключении
             /// \param[in] callback имплементация интерфейса Callback::ConnectionCallback
             /// \return id зарегистрированного колбека
             /// \sa Callback::ConnectionCallback
-            virtual size_t addConnectionCallback(Callback::IConnectionCallback &callback) = 0;
+            virtual size_t addConnectionCallback(Callback::IConnectionCallback& callback) = 0;
 
             /// \brief Удаляет колбек уведомления из списка
             /// \param[in] id идентификатор колбека
@@ -202,6 +223,12 @@ namespace Lanter {
             /// \sa Message::Interaction::InteractionDataFactory
             virtual std::shared_ptr<Message::Interaction::IInteractionData> getPreparedInteraction(Message::Interaction::InteractionCode interactionCode) = 0;
 
+            /// \brief Возвращает подготовленный объект взаимодействия с заполненным полем ReceiptCode
+            /// \param[in] ReceiptCode Код взаимодействия, для которого необходимо создать объект. По умолчанию NoReceipt
+            /// \return nullptr, если не удалось создать объект
+            /// \sa Message::Receipt::ReceiptDataFactory
+            virtual std::shared_ptr<Message::Receipt::IReceiptData> getPreparedReceipt(Message::Receipt::ReceiptCode receiptCode) = 0;
+
             /// \brief Отправляет сообщение запроса
             /// \param[in] request объект запроса, который необходимо отправить
             /// \return true если сообщение отправлено
@@ -222,11 +249,11 @@ namespace Lanter {
             /// \return true если сообщение отправлено
             virtual bool sendMessage(std::shared_ptr<Message::Interaction::IInteractionData> interaction) = 0;
 
-            virtual void popFromQueue(std::vector<uint8_t>& data) = 0;
-
-            virtual size_t getSizeQueue() = 0;
+            /// \brief Отправляет сообщение взаимодействия
+            /// \param[in] Receipt объект взаимодействия, который необходимо отправить
+            /// \return true если сообщение отправлено
+            virtual bool sendMessage(std::shared_ptr<Message::Receipt::IReceiptData> receipt) = 0;
         };
     }
 }
-
 #endif //LAN_4GATELIB_ILAN4GATE_H
