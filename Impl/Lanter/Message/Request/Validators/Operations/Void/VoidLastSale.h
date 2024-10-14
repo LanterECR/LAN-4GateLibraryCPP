@@ -1,5 +1,5 @@
-#ifndef LAN_4GATELIBRARYCPP_VOID_H
-#define LAN_4GATELIBRARYCPP_VOID_H
+#ifndef LAN_4GATELIBRARYCPP_VOIDLASTSALE_H
+#define LAN_4GATELIBRARYCPP_VOIDLASTSALE_H
 
 #include "Lanter/Message/Request/Validators/Operations/BasicValidator.h"
 
@@ -9,7 +9,7 @@ namespace Lanter
     {
         namespace Request
         {
-            class Void : public BasicValidator
+            class VoidLastSale : public BasicValidator
             {
             public:
                 void addSpecificFields() override;
@@ -17,4 +17,4 @@ namespace Lanter
         }//Request
     }//Message
 }//Lanter
-#endif //LAN_4GATELIBRARYCPP_VOID_H
+#endif //LAN_4GATELIBRARYCPP_VOIDLASTSALE_H

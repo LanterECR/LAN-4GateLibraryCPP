@@ -1,4 +1,4 @@
-#include "VoidPartialSale.h"
+#include "VoidLastSale.h"
 
 namespace Lanter
 {
@@ -6,11 +6,13 @@ namespace Lanter
     {
         namespace Response
         {
-            void VoidPartialSale::addSpecificFields()
+            void Response::VoidLastSale::addSpecificFields()
             {
+                appendOptionalField(ResponseField::EcrNumber);
                 appendOptionalField(ResponseField::EcrMerchantNumber);
+                appendOptionalField(ResponseField::OperationCode);
+                appendOptionalField(ResponseField::ApplicationLabel);
                 appendOptionalField(ResponseField::TotalAmount);
-                appendOptionalField(ResponseField::PartialAmount);
                 appendOptionalField(ResponseField::CurrencyCode);
                 appendOptionalField(ResponseField::RRN);
                 appendOptionalField(ResponseField::ReceiptReference);
@@ -37,6 +39,9 @@ namespace Lanter
                 appendOptionalField(ResponseField::CDAResult);
                 appendOptionalField(ResponseField::CardholderName);
                 appendOptionalField(ResponseField::CardholderAuthMethod);
+                appendOptionalField(ResponseField::ReceiptLine1);
+                appendOptionalField(ResponseField::ReceiptLine2);
+                appendOptionalField(ResponseField::ReceiptLine3);
             }
         }
     }

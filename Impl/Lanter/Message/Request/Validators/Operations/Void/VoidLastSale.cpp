@@ -1,4 +1,4 @@
-#include "VoidPreAuth.h"
+#include "VoidLastSale.h"
 
 namespace Lanter
 {
@@ -6,14 +6,12 @@ namespace Lanter
     {
         namespace Request
         {
-            void VoidPreAuth::addSpecificFields()
+            void Request::VoidLastSale::addSpecificFields()
             {
                 appendOptionalField(RequestField::EcrNumber);
                 appendOptionalField(RequestField::EcrMerchantNumber);
                 appendOptionalField(RequestField::OperationCode);
-                appendOptionalField(RequestField::TransactionID);
                 appendOptionalField(RequestField::AdditionalInfo);
-                appendOptionalField(RequestField::CardDataEnc);
             }
         }
     }

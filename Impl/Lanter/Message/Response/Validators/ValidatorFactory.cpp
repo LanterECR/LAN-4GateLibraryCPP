@@ -67,6 +67,7 @@
 #include "Lanter/Message/Response/Validators/Operations/Service/PrintLastSettlement.h"
 
 #include "Lanter/Message/Response/Validators/Operations/Void/Void.h"
+#include "Lanter/Message/Response/Validators/Operations/Void/VoidLastSale.h"
 #include "Lanter/Message/Response/Validators/Operations/Void/VoidPartialSale.h"
 #include "Lanter/Message/Response/Validators/Operations/Void/VoidPreAuth.h"
 
@@ -113,6 +114,9 @@ namespace Lanter
                         break;
                     case OperationCode::Void:
                         validator = std::make_shared<Void>();
+                        break;
+                    case OperationCode::VoidLastSale:
+                        validator = std::make_shared<VoidLastSale>();
                         break;
                     case OperationCode::VoidPartialSale:
                         validator = std::make_shared<VoidPartialSale>();
