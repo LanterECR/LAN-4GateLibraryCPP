@@ -24,6 +24,7 @@ namespace Lanter
                 appendOptionalField(ResponseField::TerminalDateTime);
                 appendOptionalField(ResponseField::TransactionID);
                 appendOptionalField(ResponseField::SBP_RN);
+                appendOptionalField(ResponseField::AdditionalInfo);
             }
         }
     }
