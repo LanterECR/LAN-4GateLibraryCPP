@@ -8,6 +8,8 @@ namespace Lanter
         {
             void Response::Settlement::addSpecificFields()
             {
+                appendOptionalField(ResponseField::OperationCode);
+                appendOptionalField(ResponseField::EcrNumber);
                 appendOptionalField(ResponseField::EcrMerchantNumber);
                 appendOptionalField(ResponseField::TotalAmount);
                 appendOptionalField(ResponseField::CurrencyCode);
@@ -24,6 +26,8 @@ namespace Lanter
                 appendOptionalField(ResponseField::VoidAmount);
                 appendOptionalField(ResponseField::RefundAmount);
                 appendOptionalField(ResponseField::TransDateTime);
+                appendOptionalField(ResponseField::ResponseCode);
+                appendOptionalField(ResponseField::ResponseText);
                 appendOptionalField(ResponseField::AdditionalInfo);
             }
         }

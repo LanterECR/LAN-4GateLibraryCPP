@@ -177,5 +177,6 @@ tests/lib/
 .vs/
 build/
 _build/
+.build/
 #Test cache directory
 Testing/
