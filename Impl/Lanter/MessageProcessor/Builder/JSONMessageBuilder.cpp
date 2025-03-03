@@ -5,8 +5,10 @@
 #include "JSONRequestBuilder.h"
 #include "JSONResponseBuilder.h"
 #include "JSONNotificationBuilder.h"
+#include "JSONInterfaceBuilder.h"
 #include "JSONInteractionBuilder.h"
 #include "JSONReceiptBuilder.h"
+#include "JSONGatewayBuilder.h"
 #include "Lanter/Utils/StringTrimmer.h"
 #include "Lanter/Utils/StringConverter.h"
 
@@ -102,6 +104,60 @@ namespace Lanter
                         }
                     }
                     catch (const std::exception &)
+                    {
+                        throw;
+                        ///result = false;
+                    }
+                }
+                return false;
+            }
+
+            bool JSONMessageBuilder::createMessage(std::shared_ptr<IInterfaceData> data, std::vector<uint8_t>& resultData)
+            {
+                if (data != nullptr)
+                {
+                    resultData.clear();
+                    try
+                    {
+                        Json::Value root;
+                        root[JSONRootFields::getClassField()] = JSONClassFieldValues::getInterfaceValue();
+
+                        Json::Value object;
+                        JSONInterfaceBuilder uiBuilder;
+                        if (uiBuilder.createObject(*data, object))
+                        {
+                            root[JSONRootFields::getObjectField()] = object;
+                            return createVector(root, resultData);
+                        }
+                    }
+                    catch (const std::exception&)
+                    {
+                        throw;
+                        ///result = false;
+                    }
+                }
+                return false;
+            }
+
+            bool JSONMessageBuilder::createMessage(std::shared_ptr<IGatewayData> data, std::vector<uint8_t>& resultData)
+            {
+                if (data != nullptr)
+                {
+                    resultData.clear();
+                    try
+                    {
+                        Json::Value root;
+                        root[JSONRootFields::getClassField()] = JSONClassFieldValues::getGatewayValue();
+
+                        Json::Value object;
+                        JSONGatewayBuilder uiBuilder;
+                        if (uiBuilder.createObject(*data, object))
+                        {
+                            root[JSONRootFields::getObjectField()] = object;
+                            return createVector(root, resultData);
+                        }
+                    }
+                    catch (const std::exception&)
                     {
                         throw;
                         ///result = false;

@@ -71,8 +71,12 @@ set(DEPENDENCIES_LIST jsoncpp_object asio::asio_headeronly)
 set(INSTALLATION_TARGETS "")
 
 if(L4G_BUILD_SWIG)
-	SET(SWIG_EXECUTABLE "C:/Toolchain/swigwin-4.0.2/swig.exe")
-	SET(SWIG_DIR "C:/Toolchain/swigwin-4.0.2")
+	if(DEFINED ENV{SWIG_ROOT})
+		SET(SWIG_DIR $ENV{SWIG_ROOT})
+	else()
+		SET(SWIG_DIR "C:/Toolchain/swigwin-4.0.2")
+	endif()
+	SET(SWIG_EXECUTABLE ${SWIG_DIR}/swig.exe)
 
     if(NOT "${L4G_SWIG_TARGET_LANGUAGE}" STREQUAL "csharp" AND NOT "${L4G_SWIG_TARGET_LANGUAGE}" STREQUAL "java")
         message(FATAL_ERROR "${L4G_SWIG_TARGET_LANGUAGE} doesn`t support yet")
@@ -97,25 +101,27 @@ if(L4G_BUILD_SWIG)
     endif()
 
     FIND_PACKAGE(SWIG REQUIRED)
-
 #    add_custom_command(OUTPUT "Lan4GateSwig_wrap.cxx"
-#            COMMAND ${CMAKE_COMMAND} -E make_directory ${L4G_SWIG_INTERFACE_OUTDIR}
-#            COMMAND ${SWIG_EXECUTABLE} -outdir ${L4G_SWIG_INTERFACE_OUTDIR}
-#            -c++
-#            ${SWIG_LANG_PARAMS}
-#            -outcurrentdir
-#            -I${CMAKE_SOURCE_DIR}/include
-#            ${CMAKE_SOURCE_DIR}/include/Lan4GateSwig.i)
+#			COMMAND ${CMAKE_COMMAND} -E make_directory ${L4G_SWIG_INTERFACE_OUTDIR}
+#			COMMAND ${SWIG_EXECUTABLE} -outdir ${L4G_SWIG_INTERFACE_OUTDIR}
+#			-c++
+#			${SWIG_LANG_PARAMS}
+#			-outcurrentdir
+#			-I${CMAKE_SOURCE_DIR}/include
+#			${CMAKE_SOURCE_DIR}/include/Lan4GateSwig.i)
 			
 	execute_process(
-            COMMAND ${CMAKE_COMMAND} -E make_directory ${L4G_SWIG_INTERFACE_OUTDIR}
-            COMMAND ${SWIG_EXECUTABLE} -outdir ${L4G_SWIG_INTERFACE_OUTDIR}
-            -c++
-            ${SWIG_LANG_PARAMS}
-            -outcurrentdir
-            -I${CMAKE_SOURCE_DIR}/include
-            ${CMAKE_SOURCE_DIR}/include/Lan4GateSwig.i 
+			COMMAND ${CMAKE_COMMAND} -E make_directory ${L4G_SWIG_INTERFACE_OUTDIR}
+			COMMAND ${SWIG_EXECUTABLE} -outdir ${L4G_SWIG_INTERFACE_OUTDIR}
+			-c++
+			${SWIG_LANG_PARAMS}
+			-outcurrentdir
+			-I${CMAKE_SOURCE_DIR}/include
+			${CMAKE_SOURCE_DIR}/include/Lan4GateSwig.i 
 			RESULT_VARIABLE res_var)
+	if(NOT "${res_var}" STREQUAL "0")
+        message(FATAL_ERROR "res_var=[${res_var}]")
+	endif()
 
     add_library(l4g_swig MODULE ${INCLUDE_FILES} ${SOURCE_FILES} ${IMPL_INCLUDE_FILES} ${IMPL_SOURCE_FILES} Lan4GateSwig_wrap.cxx)
 
@@ -128,7 +134,6 @@ if(L4G_BUILD_SWIG)
     target_link_libraries(l4g_swig ${DEPENDENCIES_LIST})
 
     target_compile_definitions(l4g_swig PUBLIC LANTER_BUILD_SHARED)
-message("LANTER_BUILD_SHARED=${LANTER_BUILD_SHARED}")	
 
     set_target_properties(l4g_swig PROPERTIES OUTPUT_NAME "Lan4Gate")
     if("${L4G_SWIG_TARGET_LANGUAGE}" STREQUAL "java")

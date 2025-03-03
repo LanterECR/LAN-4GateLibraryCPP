@@ -9,6 +9,8 @@
 #include "Lanter/Message/Request/IRequestData.h"
 #include "Lanter/Message/Response/IResponseData.h"
 #include "Lanter/Message/Notification/INotificationData.h"
+#include "Lanter/Message/Interface/IInterfaceData.h"
+#include "Lanter/Message/Gateway/IGatewayData.h"
 #include "Lanter/Message/Interaction/IInteractionData.h"
 #include "Lanter/Message/Receipt/IReceiptData.h"
 
@@ -44,6 +46,20 @@ namespace Lanter
                 /// \return true, если сборка сообщения прошла успешно.
                 /// \sa Message::Notification::INotificationData
                 virtual bool createMessage(std::shared_ptr<Message::Notification::INotificationData> data, std::vector<uint8_t> &result) = 0;
+
+                /// \brief Создает сообщение на основе контейнера IInterfaceData
+                /// \param[in] data Заполненный контейнер IInterfaceData
+                /// \param[out] result vector из байтов, содержащий собранное сообщение
+                /// \return true, если сборка сообщения прошла успешно.
+                /// \sa Message::Interface::IInterfaceData
+                virtual bool createMessage(std::shared_ptr<Message::Interface::IInterfaceData> data, std::vector<uint8_t>& result) = 0;
+
+                /// \brief Создает сообщение на основе контейнера IGatewayData
+                /// \param[in] data Заполненный контейнер IGatewayData
+                /// \param[out] result vector из байтов, содержащий собранное сообщение
+                /// \return true, если сборка сообщения прошла успешно.
+                /// \sa Message::Gateway::IGatewayData
+                virtual bool createMessage(std::shared_ptr<Message::Gateway::IGatewayData> data, std::vector<uint8_t>& resultData) = 0;
 
                 /// \brief Создает сообщение на основе контейнера IInteractionData
                 /// \param[in] data Заполненный контейнер IInteractionData

@@ -1,5 +1,6 @@
 #include "JSONGetFieldHelper.h"
 #include "Lanter/MessageProcessor/JSONFields/JSONFieldExists.h"
+#include "Lanter/Utils/Converter.h"
 
 namespace Lanter
 {
@@ -55,6 +56,18 @@ namespace Lanter
                 if (result)
                 {
                     value = object[fieldName].asString();
+                }
+
+                return result;
+            }
+
+            bool JSONGetFieldHelper::getField(const Json::Value& object, const std::string& fieldName, std::vector<int8_t>& value)
+            {
+                const bool result = fieldExists(object, fieldName) && object[fieldName].isString();
+                if (result)
+                {
+                    const std::string& valueBase64 = object[fieldName].asString();
+                    value = Utils::Conveter::bytesFromBase64(valueBase64);
                 }
 
                 return result;

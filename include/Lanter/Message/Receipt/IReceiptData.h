@@ -3,7 +3,7 @@
 
 #include "ReceiptCode.h"
 #include "Lanter/Utils/VisibilityMacroses.h"
-#include "json/json.h"
+#include <string>
 #include <vector>
 
 namespace Lanter

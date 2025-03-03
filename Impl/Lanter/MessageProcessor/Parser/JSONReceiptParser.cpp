@@ -25,7 +25,7 @@ namespace Lanter
                             result.reset();
                         }
                     }
-                    catch (const std::exception& e)
+                    catch (const std::exception&)
                     {
                         throw;
                     }
@@ -43,7 +43,7 @@ namespace Lanter
                         return data.setCode(static_cast<ReceiptCode>(code));
                     }
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }
@@ -69,7 +69,7 @@ namespace Lanter
                         }
                     }
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }

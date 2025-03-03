@@ -18,6 +18,8 @@
 #include "Callback/IInteractionCallback.h"
 #include "Callback/IReceiptCallback.h"
 #include "Callback/IConnectionCallback.h"
+#include "Callback/IInterfaceCallback.h"
+#include "Callback/IGatewayCallback.h"
 
 namespace Lanter
 {
@@ -151,6 +153,38 @@ namespace Lanter
             /// \return количество зарегистрированных колбеков
             virtual size_t notificationCallbacksCount() const = 0;
 
+            /// \brief Добавляет колбек в список слушателей для получения данных экрана
+            /// \param[in] callback имплементация интерфейса Callback::InterfaceCallback
+            /// \return id зарегистрированного колбека
+            /// \sa Message::Interface::IInterfaceData
+            /// \sa Callback::InterfaceCallback
+            virtual size_t addInterfaceCallback(Callback::IInterfaceCallback& callback) = 0;
+
+            /// \brief Удаляет колбек для экранов из списка
+            /// \param[in] id идентификатор колбека
+            /// \return true, если успешно удалено
+            virtual bool removeInterfaceCallback(const size_t& id) = 0;
+
+            /// \brief Возвращает количество зарегистрированных колбеков для получения данных экрана
+            /// \return количество зарегистрированных колбеков
+            virtual size_t interfaceCallbacksCount() const = 0;
+
+            /// \brief Добавляет колбек в список слушателей для получения шлюза
+            /// \param[in] callback имплементация интерфейса Callback::GatewayCallback
+            /// \return id зарегистрированного колбека
+            /// \sa Message::Gateway::IGatewayData
+            /// \sa Callback::GatewayCallback
+            virtual size_t addGatewayCallback(Callback::IGatewayCallback& callback) = 0;
+
+            /// \brief Удаляет колбек для шлюза из списка
+            /// \param[in] id идентификатор колбека
+            /// \return true, если успешно удалено
+            virtual bool removeGatewayCallback(const size_t& id) = 0;
+
+            /// \brief Возвращает количество зарегистрированных колбеков для шлюза
+            /// \return количество зарегистрированных колбеков
+            virtual size_t gatewayCallbacksCount() const = 0;
+
             /// \brief Добавляет колбек в список слушателей для получения данных команд взаимодействия
             /// \param[in] callback имплементация интерфейса Callback::InteractionCallback
             /// \return id зарегистрированного колбека
@@ -217,6 +251,18 @@ namespace Lanter
             /// \sa Message::Notification::NotificationDataFactory
             virtual std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode) = 0;
 
+            /// \brief Возвращает подготовленный объект экрана с заполненным полем InterfaceType
+            /// \param[in] uiType Код экрана, для которого необходимо создать объект. По умолчанию Unknown
+            /// \return nullptr, если не удалось создать объект
+            /// \sa Message::Interface::InterfaceDataFactory
+            virtual std::shared_ptr<Message::Interface::IInterfaceData> getPreparedInterface(Message::Interface::InterfaceType uiType) = 0;
+
+            /// \brief Возвращает подготовленный объект для шлюза с заполненным полем GatewayCode
+            /// \param[in] gatewayCode Код команды. По умолчанию Unknown
+            /// \return nullptr, если не удалось создать объект
+            /// \sa Message::Gateway::GatewayDataFactory
+            virtual std::shared_ptr<Message::Gateway::IGatewayData> getPreparedGateway(Message::Gateway::GatewayCode gatewayCode) = 0;
+
             /// \brief Возвращает подготовленный объект взаимодействия с заполненным полем InteractionCode
             /// \param[in] interactionCode Код взаимодействия, для которого необходимо создать объект. По умолчанию NoInteraction
             /// \return nullptr, если не удалось создать объект
@@ -243,6 +289,16 @@ namespace Lanter
             /// \param[in] notification объект уведомления, который необходимо отправить
             /// \return true если сообщение отправлено
             virtual bool sendMessage(std::shared_ptr<Message::Notification::INotificationData> notification) = 0;
+
+            /// \brief Отправляет сообщение экрана
+            /// \param[in] ui объект экрана, который необходимо отправить
+            /// \return true если сообщение отправлено
+            virtual bool sendMessage(std::shared_ptr<Message::Interface::IInterfaceData> ui) = 0;
+
+            /// \brief Отправляет сообщение шлюза
+            /// \param[in] gateway объект шлюза, который необходимо отправить
+            /// \return true если сообщение отправлено
+            virtual bool sendMessage(std::shared_ptr<Message::Gateway::IGatewayData> ui) = 0;
 
             /// \brief Отправляет сообщение взаимодействия
             /// \param[in] interaction объект взаимодействия, который необходимо отправить

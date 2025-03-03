@@ -12,8 +12,9 @@ namespace Lanter
         public:
             static inline std::string getRequestValue() { return "LANTER::Request"; }
             static inline std::string getResponseValue() { return "LANTER::Response";}
-            static inline std::string getCommunicationValue() { return "Com"; }
             static inline std::string getNotificationValue() { return "LANTER::Notification";}
+            static inline std::string getInterfaceValue() { return "LANTER::Interface"; }
+            static inline std::string getGatewayValue() { return "Com"; }
             static inline std::string getInteractionValue() { return "LANTER::Interaction";}
             static inline std::string getReceiptValue() { return "LANTER::Receipt"; }
         };

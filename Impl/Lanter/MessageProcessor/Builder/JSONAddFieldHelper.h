@@ -15,6 +15,7 @@ namespace Lanter
                 static bool addField(Json::Value &object, const std::string &name, int64_t value);
                 static bool addField(Json::Value &object, const std::string &name, const std::string &value);
                 static bool addField(Json::Value &object, const std::string &name, const Json::Value &value);
+                static bool addField(Json::Value& object, const std::string& name, const std::vector<int8_t>& value);
                 static bool addArrayElement(Json::Value &array, const Json::Value &element);
 
             private:

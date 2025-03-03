@@ -64,6 +64,18 @@ namespace Lanter
 
             size_t notificationCallbacksCount() const override;
 
+            size_t addInterfaceCallback(Callback::IInterfaceCallback& callback) override;
+
+            bool removeInterfaceCallback(const size_t& id) override;
+
+            size_t interfaceCallbacksCount() const override;
+
+            size_t addGatewayCallback(Callback::IGatewayCallback& callback) override;
+
+            bool removeGatewayCallback(const size_t& id) override;
+
+            size_t gatewayCallbacksCount() const override;
+
             size_t addInteractionCallback(Callback::IInteractionCallback& callback) override;
 
             bool removeInteractionCallback(const size_t& id) override;
@@ -82,6 +94,10 @@ namespace Lanter
 
             std::shared_ptr<Message::Notification::INotificationData> getPreparedNotification(Message::Notification::NotificationCode notificationCode) override;
 
+            std::shared_ptr<Message::Interface::IInterfaceData> getPreparedInterface(Message::Interface::InterfaceType uiType) override;
+
+            std::shared_ptr<Message::Gateway::IGatewayData> getPreparedGateway(Message::Gateway::GatewayCode gatewayCode) override;
+
             std::shared_ptr<Message::Interaction::IInteractionData> getPreparedInteraction(Message::Interaction::InteractionCode interactionCode) override;
 
             std::shared_ptr<Message::Receipt::IReceiptData> getPreparedReceipt(Message::Receipt::ReceiptCode receiptCode) override;
@@ -97,6 +113,10 @@ namespace Lanter
             bool sendMessage(std::shared_ptr<Message::Response::IResponseData> response) override;
 
             bool sendMessage(std::shared_ptr<Message::Notification::INotificationData> notification) override;
+
+            bool sendMessage(std::shared_ptr<Message::Interface::IInterfaceData> ui) override;
+
+            bool sendMessage(std::shared_ptr<Message::Gateway::IGatewayData> gateway) override;
 
             bool sendMessage(std::shared_ptr<Message::Interaction::IInteractionData> interaction) override;
 
@@ -125,6 +145,8 @@ namespace Lanter
             void notifyRequest();
             void notifyResponse();
             void notifyNotification();
+            void notifyInterface();
+            void notifyGateway();
             void notifyInteraction();
             void notifyReceipt();
             void notifyConnectionStatus(bool status);
@@ -159,6 +181,10 @@ namespace Lanter
             std::unordered_map<size_t, Callback::IResponseCallback&> m_ResponseCallbacks;
 
             std::unordered_map<size_t, Callback::INotificationCallback&> m_NotificationCallbacks;
+
+            std::unordered_map<size_t, Callback::IInterfaceCallback&> m_InterfaceCallbacks;
+
+            std::unordered_map<size_t, Callback::IGatewayCallback&> m_GatewayCallbacks;
 
             std::unordered_map<size_t, Callback::IInteractionCallback&> m_InteractionCallbacks;
 

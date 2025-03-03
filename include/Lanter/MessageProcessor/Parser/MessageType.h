@@ -18,6 +18,8 @@ namespace Lanter
                 Communication,  ///< Коммуникационное сообщение от финансового ПО LAN-4Tap
                 Interaction,    ///< Сообщение взаимодействия
                 Receipt,    ///< Передача чека
+                Interface,    ///< Передача чека
+                Gateway,    ///< Шлюз
                 //Границы
                 FirstValue = Unknown,   ///< Ссылка на первый элемент перечисления
                 LastValue = Receipt ///< Ссылка на последний элемент перечисления

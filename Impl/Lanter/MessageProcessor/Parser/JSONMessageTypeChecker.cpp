@@ -29,9 +29,13 @@ namespace Lanter
                     {
                         result = MessageType::Notification;
                     }
-                    else if (JSONClassFieldValues::getCommunicationValue() == classType)
+                    else if (JSONClassFieldValues::getInterfaceValue() == classType)
                     {
-                        result = MessageType::Communication;
+                        result = MessageType::Interface;
+                    }
+                    else if (JSONClassFieldValues::getGatewayValue() == classType)
+                    {
+                        result = MessageType::Gateway;
                     }
                     else if (JSONClassFieldValues::getInteractionValue() == classType)
                     {

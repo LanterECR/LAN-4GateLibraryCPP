@@ -4,6 +4,8 @@
 #include "JSONRequestParser.h"
 #include "JSONResponseParser.h"
 #include "JSONNotificationParser.h"
+#include "JSONInterfaceParser.h"
+#include "JSONGatewayParser.h"
 #include "JSONInteractionParser.h"
 #include "JSONReceiptParser.h"
 #include "Lanter/Utils/StringConverter.h"
@@ -33,7 +35,7 @@ namespace Lanter
                         }
                     }
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }
@@ -91,6 +93,40 @@ namespace Lanter
             size_t JSONMessageParser::notificationCount() const
             {
                 return m_Notifications.size();
+            }
+
+            std::shared_ptr<IInterfaceData> JSONMessageParser::nextInterfaceData()
+            {
+                std::shared_ptr<IInterfaceData> result = nullptr;
+                if (!m_Interfaces.empty())
+                {
+                    result = m_Interfaces.front();
+                    m_Interfaces.pop();
+                }
+
+                return result;
+            }
+
+            size_t JSONMessageParser::interfaceCount() const
+            {
+                return m_Interfaces.size();
+            }
+
+            std::shared_ptr<IGatewayData> JSONMessageParser::nextGatewayData()
+            {
+                std::shared_ptr<IGatewayData> result = nullptr;
+                if (!m_Gateways.empty())
+                {
+                    result = m_Gateways.front();
+                    m_Gateways.pop();
+                }
+
+                return result;
+            }
+
+            size_t JSONMessageParser::gatewayCount() const
+            {
+                return m_Gateways.size();
             }
 
             std::shared_ptr<Message::Interaction::IInteractionData> JSONMessageParser::nextInteractionData()
@@ -177,6 +213,20 @@ namespace Lanter
                             }
                             break;
 
+                        case MessageType::Interface:
+                            if (!createInterface(object))
+                            {
+                                result = MessageType::Error;
+                            }
+                            break;
+
+                        case MessageType::Gateway:
+                            if (!createGateway(object))
+                            {
+                                result = MessageType::Error;
+                            }
+                            break;
+
                         case MessageType::Interaction:
                             if(!createInteraction(object))
                             {
@@ -191,7 +241,6 @@ namespace Lanter
                             }
                             break;
 
-                        case MessageType::Communication:
                         default:
                             result = MessageType::Unknown;
                             break;
@@ -199,7 +248,7 @@ namespace Lanter
 
                     return result;
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }
@@ -220,7 +269,7 @@ namespace Lanter
 
                     return result;
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }
@@ -241,7 +290,7 @@ namespace Lanter
 
                     return result;
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }
@@ -262,7 +311,49 @@ namespace Lanter
 
                     return result;
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
+                {
+                    throw;
+                }
+            }
+
+            bool JSONMessageParser::createInterface(const Json::Value& object)
+            {
+                JSONInterfaceParser parser;
+
+                try
+                {
+                    auto interface = parser.parseData(object);
+                    bool result = interface != nullptr;
+                    if (result)
+                    {
+                        m_Interfaces.push(interface);
+                    }
+
+                    return result;
+                }
+                catch (const std::exception&)
+                {
+                    throw;
+                }
+            }
+
+            bool JSONMessageParser::createGateway(const Json::Value& object)
+            {
+                JSONGatewayParser parser;
+
+                try
+                {
+                    auto gateway = parser.parseData(object);
+                    bool result = gateway != nullptr;
+                    if (result)
+                    {
+                        m_Gateways.push(gateway);
+                    }
+
+                    return result;
+                }
+                catch (const std::exception&)
                 {
                     throw;
                 }
@@ -283,7 +374,7 @@ namespace Lanter
 
                     return result;
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }
@@ -304,7 +395,7 @@ namespace Lanter
 
                     return false;
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }

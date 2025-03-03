@@ -5,6 +5,8 @@
 %feature("director") IRequestCallback;
 %feature("director") IResponseCallback;
 %feature("director") INotificationCallback;
+%feature("director") IInterfaceCallback;
+%feature("director") IGatewayCallback;
 %feature("director") IInteractionCallback;
 %feature("director") IReceiptCallback;
 %feature("director") IConnectionCallback;
@@ -24,6 +26,8 @@
 %shared_ptr(Lanter::Message::Interaction::IInteractionData);
 %shared_ptr(Lanter::Message::Receipt::IReceiptData);
 %shared_ptr(Lanter::Message::Notification::INotificationData);
+%shared_ptr(Lanter::Message::Interface::IInterfaceData);
+%shared_ptr(Lanter::Message::Gateway::IGatewayData);
 %shared_ptr(Lanter::Message::Request::IRequestData);
 %shared_ptr(Lanter::Message::Response::IResponseData);
 
@@ -48,6 +52,12 @@
 #include "Lanter/Message/Notification/NotificationCode.h"
 #include "Lanter/Message/Notification/INotificationData.h"
 
+#include "Lanter/Message/Interface/InterfaceType.h"
+#include "Lanter/Message/Interface/IInterfaceData.h"
+
+#include "Lanter/Message/Gateway/GatewayCode.h"
+#include "Lanter/Message/Gateway/IGatewayData.h"
+
 #include "Lanter/Message/Interaction/InteractionCode.h"
 #include "Lanter/Message/Interaction/IInteractionData.h"
 
@@ -57,6 +67,8 @@
 #include "Lanter/Manager/Callback/IRequestCallback.h"
 #include "Lanter/Manager/Callback/IResponseCallback.h"
 #include "Lanter/Manager/Callback/INotificationCallback.h"
+#include "Lanter/Manager/Callback/IInterfaceCallback.h"
+#include "Lanter/Manager/Callback/IGatewayCallback.h"
 #include "Lanter/Manager/Callback/IInteractionCallback.h"
 #include "Lanter/Manager/Callback/IReceiptCallback.h"
 #include "Lanter/Manager/Callback/IConnectionCallback.h"
@@ -71,7 +83,9 @@
 
 namespace std {
     //Определение векторов и сетов для классов
-    %template(ByteVector) vector<uint8_t>;
+    //В Java тип byte имеет диапазон от -128 до 127, а uint8_t в C++ имеет диапазон от 0 до 255. Поэтому при преобразовании byte будет в short
+    //Используем int8_t
+    %template(ByteVector) vector<int8_t>;
     //В шаблоне используется полная спецификация enum т.к. SWIG не может самостоятельно разрешить данную фишку
     %template(RequestFieldsArray) set<enum Lanter::Message::Request::RequestField>;
     %template(ResponseFieldsArray) set<enum Lanter::Message::Response::ResponseField>;
@@ -96,6 +110,12 @@ namespace std {
 %include "Lanter/Message/Notification/NotificationCode.h"
 %include "Lanter/Message/Notification/INotificationData.h"
 
+%include "Lanter/Message/Interface/InterfaceType.h"
+%include "Lanter/Message/Interface/IInterfaceData.h"
+
+%include "Lanter/Message/Gateway/GatewayCode.h"
+%include "Lanter/Message/Gateway/IGatewayData.h"
+
 %include "Lanter/Message/Interaction/InteractionCode.h"
 %include "Lanter/Message/Interaction/IInteractionData.h"
 
@@ -105,6 +125,8 @@ namespace std {
 %include "Lanter/Manager/Callback/IRequestCallback.h"
 %include "Lanter/Manager/Callback/IResponseCallback.h"
 %include "Lanter/Manager/Callback/INotificationCallback.h"
+%include "Lanter/Manager/Callback/IInterfaceCallback.h"
+%include "Lanter/Manager/Callback/IGatewayCallback.h"
 %include "Lanter/Manager/Callback/IInteractionCallback.h"
 %include "Lanter/Manager/Callback/IReceiptCallback.h"
 %include "Lanter/Manager/Callback/IConnectionCallback.h"

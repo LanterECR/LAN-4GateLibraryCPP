@@ -13,4 +13,4 @@ namespace Lanter {
         }//Response
     }
 }//Lanter
-#endif //LAN_4GATELIBRARYCPP_QUICKPAYMENTREFUND_H
+#endif //LAN_4GATELIBRARYCPP_QUICKPAYMENT_H

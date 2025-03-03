@@ -26,7 +26,7 @@ namespace Lanter
                             result.reset();
                         }
                     }
-                    catch (const std::exception& e)
+                    catch (const std::exception&)
                     {
                         throw;
                     }
@@ -44,7 +44,7 @@ namespace Lanter
                         return data.setCode(static_cast<NotificationCode>(code));
                     }
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }
@@ -61,7 +61,7 @@ namespace Lanter
                         return data.setAdditional(additional);
                     }
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }
@@ -78,7 +78,7 @@ namespace Lanter
                         return data.setMessage(message);
                     }
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }

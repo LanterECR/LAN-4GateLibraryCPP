@@ -8,6 +8,8 @@
 #include "Lanter/Message/Request/IRequestData.h"
 #include "Lanter/Message/Response/IResponseData.h"
 #include "Lanter/Message/Notification/INotificationData.h"
+#include "Lanter/Message/Interface/IInterfaceData.h"
+#include "Lanter/Message/Gateway/IGatewayData.h"
 #include "Lanter/Message/Interaction/IInteractionData.h"
 #include "Lanter/Message/Receipt/IReceiptData.h"
 #include "Lanter/Utils/VisibilityMacroses.h"
@@ -53,6 +55,22 @@ namespace Lanter
                 /// Сообщает о количестве уведомлений в очереди
                 /// \return 0, если очередь пуста
                 virtual size_t notificationCount() const = 0;
+
+                /// \brief Возвращает экземпляр IInterfaceData, хранящийся в очереди
+                /// \return nullptr, если очередь пуста
+                virtual std::shared_ptr<Message::Interface::IInterfaceData> nextInterfaceData() = 0;
+
+                /// Сообщает о количестве экранов в очереди
+                /// \return 0, если очередь пуста
+                virtual size_t interfaceCount() const = 0;
+
+                /// \brief Возвращает экземпляр IGatewayData, хранящийся в очереди
+                /// \return nullptr, если очередь пуста
+                virtual std::shared_ptr<Message::Gateway::IGatewayData> nextGatewayData() = 0;
+
+                /// Сообщает о количестве шлюзов в очереди
+                /// \return 0, если очередь пуста
+                virtual size_t gatewayCount() const = 0;
 
                 /// \brief Возвращает экземпляр IInteractionData, хранящийся в очереди
                 /// \return nullptr, если очередь пуста

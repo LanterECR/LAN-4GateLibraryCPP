@@ -23,7 +23,7 @@ namespace Lanter
 
                     return true;
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }
@@ -43,7 +43,7 @@ namespace Lanter
 
                     return fieldExists(object, JSONNotificationFields::getCode());
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }
@@ -63,7 +63,7 @@ namespace Lanter
 
                     return fieldExists(object, JSONNotificationFields::getAdditional());
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }
@@ -83,7 +83,7 @@ namespace Lanter
 
                     return fieldExists(object, JSONNotificationFields::getMessage());
                 }
-                catch (const std::exception& e)
+                catch (const std::exception&)
                 {
                     throw;
                 }

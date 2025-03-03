@@ -7,6 +7,8 @@
 #include "Lanter/Message/Request/RequestDataFactory.h"
 #include "Lanter/Message/Response/ResponseDataFactory.h"
 #include "Lanter/Message/Notification/NotificationDataFactory.h"
+#include "Lanter/Message/Interface/InterfaceDataFactory.h"
+#include "Lanter/Message/Gateway/GatewayDataFactory.h"
 #include "Lanter/Message/Interaction/InteractionDataFactory.h"
 #include "Lanter/Message/Receipt/ReceiptDataFactory.h"
 #include "Lanter/MessageProcessor/Parser/MessageParserFactory.h"
@@ -97,7 +99,7 @@ namespace Lanter
                     closeConnection();
                 }
             }
-            catch (const std::exception& e)
+            catch (const std::exception&)
             {
                 throw;
             }
@@ -127,7 +129,7 @@ namespace Lanter
                     }
                 }
             }
-            catch (const std::exception& e)
+            catch (const std::exception&)
             {
                 throw;
             }
@@ -262,6 +264,70 @@ namespace Lanter
             return m_NotificationCallbacks.size();
         }
 
+        size_t Lan4Gate::addInterfaceCallback(Callback::IInterfaceCallback& callback)
+        {
+            size_t id = generateID();
+            while (m_InterfaceCallbacks.find(id) != m_InterfaceCallbacks.end())
+            {
+                id = generateID();
+            }
+
+            m_InterfaceCallbacks.emplace(id, callback);
+
+            return id;
+        }
+
+        bool Lan4Gate::removeInterfaceCallback(const size_t& id)
+        {
+            auto item = m_InterfaceCallbacks.find(id);
+            if (item != m_InterfaceCallbacks.end())
+            {
+                const size_t size = m_InterfaceCallbacks.size();
+                m_InterfaceCallbacks.erase(item);
+
+                return (size - m_InterfaceCallbacks.size() > 0);
+            }
+
+            return false;
+        }
+
+        size_t Lan4Gate::interfaceCallbacksCount() const
+        {
+            return m_InterfaceCallbacks.size();
+        }
+
+        size_t Lan4Gate::addGatewayCallback(Callback::IGatewayCallback& callback)
+        {
+            size_t id = generateID();
+            while (m_GatewayCallbacks.find(id) != m_GatewayCallbacks.end())
+            {
+                id = generateID();
+            }
+
+            m_GatewayCallbacks.emplace(id, callback);
+
+            return id;
+        }
+
+        bool Lan4Gate::removeGatewayCallback(const size_t& id)
+        {
+            auto item = m_GatewayCallbacks.find(id);
+            if (item != m_GatewayCallbacks.end())
+            {
+                const size_t size = m_GatewayCallbacks.size();
+                m_GatewayCallbacks.erase(item);
+
+                return (size - m_GatewayCallbacks.size() > 0);
+            }
+
+            return false;
+        }
+
+        size_t Lan4Gate::gatewayCallbacksCount() const
+        {
+            return m_GatewayCallbacks.size();
+        }
+
         size_t Lan4Gate::addInteractionCallback(Callback::IInteractionCallback &callback)
         {
             size_t id = generateID();
@@ -363,17 +429,27 @@ namespace Lanter
 
         std::shared_ptr<Message::Request::IRequestData> Lan4Gate::getPreparedRequest(Message::OperationCode operationCode)
         {
-            return Message::Request::RequestDataFactory::getRequestData(operationCode, m_EcrNumber);
+            return Message::Request::RequestDataFactory::getRequestData(operationCode, (int16_t)m_EcrNumber);
         }
 
         std::shared_ptr<Message::Response::IResponseData> Lan4Gate::getPreparedResponse(Message::OperationCode operationCode)
         {
-            return Message::Response::ResponseDataFactory::getResponseData(operationCode, m_EcrNumber);
+            return Message::Response::ResponseDataFactory::getResponseData(operationCode, (int16_t)m_EcrNumber);
         }
 
         std::shared_ptr<Message::Notification::INotificationData> Lan4Gate::getPreparedNotification(Message::Notification::NotificationCode notificationCode)
         {
             return Message::Notification::NotificationDataFactory::getNotificationData(notificationCode);
+        }
+
+        std::shared_ptr<Message::Interface::IInterfaceData> Lan4Gate::getPreparedInterface(Message::Interface::InterfaceType uiType)
+        {
+            return Message::Interface::InterfaceDataFactory::getInterfaceData(uiType);
+        }
+
+        std::shared_ptr<Message::Gateway::IGatewayData> Lan4Gate::getPreparedGateway(Message::Gateway::GatewayCode gatewayCode)
+        {
+            return Message::Gateway::GatewayDataFactory::getGatewayData(gatewayCode);
         }
 
         std::shared_ptr<Message::Interaction::IInteractionData> Lan4Gate::getPreparedInteraction(Message::Interaction::InteractionCode interactionCode)
@@ -438,6 +514,48 @@ namespace Lanter
                     std::vector<uint8_t> message;
 
                     if (m_MessageBuilder->createMessage(notification, message))
+                    {
+                        return pushToQueue(message);
+                    }
+                }
+            }
+            catch (const std::exception&)
+            {
+                throw;
+            }
+            return false;
+        }
+
+        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Interface::IInterfaceData> ui)
+        {
+            try
+            {
+                if (m_MessageBuilder != nullptr)
+                {
+                    std::vector<uint8_t> message;
+
+                    if (m_MessageBuilder->createMessage(ui, message))
+                    {
+                        return pushToQueue(message);
+                    }
+                }
+            }
+            catch (const std::exception&)
+            {
+                throw;
+            }
+            return false;
+        }
+
+        bool Lan4Gate::sendMessage(std::shared_ptr<Message::Gateway::IGatewayData> gateway)
+        {
+            try
+            {
+                if (m_MessageBuilder != nullptr)
+                {
+                    std::vector<uint8_t> message;
+
+                    if (m_MessageBuilder->createMessage(gateway, message))
                     {
                         return pushToQueue(message);
                     }
@@ -613,7 +731,7 @@ namespace Lanter
                     m_MessageParser->parseMessage(data);
                 }
             }
-            catch (const std::exception& e)
+            catch (const std::exception&)
             {
                 throw;
             }
@@ -628,6 +746,8 @@ namespace Lanter
                     this->notifyRequest();
                     this->notifyResponse();
                     this->notifyNotification();
+                    this->notifyInterface();
+                    this->notifyGateway();
                     this->notifyInteraction();
                     this->notifyReceipt();
                 };
@@ -644,7 +764,7 @@ namespace Lanter
                     notificationLambda();
                 }
             }
-            catch (const std::exception& e)
+            catch (const std::exception&)
             {
                 throw;
             }
@@ -667,7 +787,7 @@ namespace Lanter
                     }
                 }
             }
-            catch (const std::exception& e)
+            catch (const std::exception&)
             {
                 throw;
             }
@@ -689,7 +809,7 @@ namespace Lanter
                     }
                 }
             }
-            catch (const std::exception& e)
+            catch (const std::exception&)
             {
                 throw;
             }
@@ -711,7 +831,91 @@ namespace Lanter
                     }
                 }
             }
-            catch (const std::exception& e)
+            catch (const std::exception&)
+            {
+                throw;
+            }
+        }
+
+        void Lan4Gate::notifyInterface()
+        {
+            try
+            {
+                if (m_MessageParser->interfaceCount() > 0)
+                {
+                    auto interface = m_MessageParser->nextInterfaceData();
+                    if (interface)
+                    {
+                        for (const auto& callback : m_InterfaceCallbacks)
+                        {
+                            const std::string result = callback.second.newData(interface);
+                            try
+                            {
+                                auto response = Message::Interface::InterfaceDataFactory::getInterfaceData(interface->getType());
+                                if (m_MessageBuilder != nullptr && response != nullptr)
+                                {
+                                    response->setResult(result);
+
+                                    std::vector<uint8_t> message;
+                                    if (m_MessageBuilder->createMessage(response, message))
+                                    {
+                                        pushToQueue(message);
+                                    }
+                                }
+                            }
+                            catch (const std::exception&)
+                            {
+                                throw;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (const std::exception&)
+            {
+                throw;
+            }
+        }
+
+        void Lan4Gate::notifyGateway()
+        {
+            try
+            {
+                if (m_MessageParser->gatewayCount() > 0)
+                {
+                    auto gateway = m_MessageParser->nextGatewayData();
+                    if (gateway)
+                    {
+                        for (const auto& callback : m_GatewayCallbacks)
+                        {
+                            const int status = callback.second.newData(gateway);
+                            try
+                            {
+                                Message::Gateway::GatewayCode code = gateway->getCode();
+                                auto response = Message::Gateway::GatewayDataFactory::getGatewayData(code);
+                                // отсылаем только по 1(open) и по 2(close)
+                                const bool isConnectOrDisconnet = code == Message::Gateway::GatewayCode::Connect || code == Message::Gateway::GatewayCode::Disconnect;
+                                if (m_MessageBuilder != nullptr && response != nullptr && isConnectOrDisconnet)
+                                {
+                                    response->setStatus(status);
+                                    response->setLink(gateway->getLink());
+
+                                    std::vector<uint8_t> message;
+                                    if (m_MessageBuilder->createMessage(response, message))
+                                    {
+                                        pushToQueue(message);
+                                    }
+                                }
+                            }
+                            catch (const std::exception&)
+                            {
+                                throw;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (const std::exception&)
             {
                 throw;
             }
@@ -733,7 +937,7 @@ namespace Lanter
                     }
                 }
             }
-            catch (const std::exception& e)
+            catch (const std::exception&)
             {
                 throw;
             }
@@ -755,7 +959,7 @@ namespace Lanter
                     }
                 }
             }
-            catch (const std::exception& e)
+            catch (const std::exception&)
             {
                 throw;
             }

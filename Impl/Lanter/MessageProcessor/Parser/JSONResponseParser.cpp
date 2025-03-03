@@ -109,7 +109,7 @@ namespace Lanter
 			bool JSONResponseParser::getFieldTipsAmount(const Json::Value& object, IResponseData& responseData)
 			{
 				int64_t tipsAmount;
-				const const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTipsAmount(), tipsAmount);
+				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTipsAmount(), tipsAmount);
 				const bool result = exists && responseData.setTipsAmount(tipsAmount);
 
 				return result;
@@ -319,7 +319,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldAdditionalInfo(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldAdditionalInfo(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string additionalInfo;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getAdditionalInfo(), additionalInfo);
 				const bool result = exists && responseData.setAdditionalInfo(additionalInfo);
@@ -327,7 +328,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldCardData(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldCardData(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string cardData;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCardData(), cardData);
 				const bool result = exists && responseData.setCardData(cardData);
@@ -335,7 +337,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldCardDataEnc(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldCardDataEnc(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string cardDataEnc;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCardDataEnc(), cardDataEnc);
 				const bool result = exists && responseData.setCardDataEnc(cardDataEnc);
@@ -343,7 +346,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldMerchantID(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldMerchantID(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string merchantId;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getMerchantID(), merchantId);
 				const bool result = exists && responseData.setMerchantID(merchantId);
@@ -351,7 +355,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldTVR(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldTVR(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string TVR;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTVR(), TVR);
 				const bool result = exists && responseData.setTVR(TVR);
@@ -359,7 +364,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldTSI(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldTSI(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string TSI;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTSI(), TSI);
 				const bool result = exists && responseData.setTSI(TSI);
@@ -367,7 +373,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldTC(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldTC(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string TC;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getTC(), TC);
 				const bool result = exists && responseData.setTC(TC);
@@ -375,7 +382,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldCID(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldCID(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string CID;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCID(), CID);
 				const bool result = exists && responseData.setCID(CID);
@@ -383,7 +391,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldKVR(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldKVR(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string KVR;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getKVR(), KVR);
 				const bool result = exists && responseData.setKVR(KVR);
@@ -391,7 +400,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldCDAResult(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldCDAResult(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string CDAResult;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCDAResult(), CDAResult);
 				const bool result = exists && responseData.setCDAResult(CDAResult);
@@ -399,7 +409,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldSalesAmount(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldSalesAmount(const Json::Value& object, IResponseData& responseData)
+			{
 				int64_t salesAmount;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getSalesAmount(), salesAmount);
 				const bool result = exists && responseData.setSalesAmount(salesAmount);
@@ -407,7 +418,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldSalesCount(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldSalesCount(const Json::Value& object, IResponseData& responseData)
+			{
 				int salesCount;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getSalesCount(), salesCount);
 				const bool result = exists && responseData.setSalesCount(salesCount);
@@ -415,7 +427,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldVoidAmount(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldVoidAmount(const Json::Value& object, IResponseData& responseData)
+			{
 				int64_t voidAmount;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getVoidAmount(), voidAmount);
 				const bool result = exists && responseData.setVoidAmount(voidAmount);
@@ -423,7 +436,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldVoidCount(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldVoidCount(const Json::Value& object, IResponseData& responseData)
+			{
 				int voidCount;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getVoidCount(), voidCount);
 				const bool result = exists && responseData.setVoidCount(voidCount);
@@ -431,7 +445,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldRefundAmount(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldRefundAmount(const Json::Value& object, IResponseData& responseData)
+			{
 				int64_t refundAmount;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getRefundAmount(), refundAmount);
 				const bool result = exists && responseData.setRefundAmount(refundAmount);
@@ -439,7 +454,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldRefundCount(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldRefundCount(const Json::Value& object, IResponseData& responseData)
+			{
 				int refundCount;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getRefundCount(), refundCount);
 				const bool result = exists && responseData.setRefundCount(refundCount);
@@ -478,23 +494,29 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldVoidArray(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldVoidArray(const Json::Value& object, IResponseData& responseData)
+			{
 				bool result = false;
 				Json::Value voidArray;
 
 				std::vector<std::shared_ptr<IResponseData> > voids;
-				if (JSONGetFieldHelper::getField(object, JSONResponseFields::getVoidArray(), voidArray))				{
-					if (voidArray.isArray())					{
-						for (auto& i : voidArray)						{
+				if (JSONGetFieldHelper::getField(object, JSONResponseFields::getVoidArray(), voidArray))
+				{
+					if (voidArray.isArray())
+					{
+						for (auto& i : voidArray)
+						{
 							auto sale = ResponseDataFactory::getResponseData(OperationCode::ArrayElement);
-							if (sale && getFields(i, *sale))							{
+							if (sale && getFields(i, *sale))
+							{
 								sale->resetOperationCode();
 								voids.push_back(sale);
 							}
 						} //for
 
 						result = voidArray.size() == voids.size();
-						if (result)						{
+						if (result)
+						{
 							responseData.setVoidArray(voids);
 						}
 					}
@@ -503,23 +525,29 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldRefundArray(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldRefundArray(const Json::Value& object, IResponseData& responseData)
+			{
 				bool result = false;
 				Json::Value refundArray;
 
 				std::vector<std::shared_ptr<IResponseData> > refunds;
-				if (JSONGetFieldHelper::getField(object, JSONResponseFields::getRefundArray(), refundArray))				{
-					if (refundArray.isArray())					{
-						for (auto& i : refundArray)						{
+				if (JSONGetFieldHelper::getField(object, JSONResponseFields::getRefundArray(), refundArray))
+				{
+					if (refundArray.isArray())
+					{
+						for (auto& i : refundArray)
+						{
 							auto sale = ResponseDataFactory::getResponseData(OperationCode::ArrayElement);
-							if (sale && getFields(i, *sale))							{
+							if (sale && getFields(i, *sale))
+							{
 								sale->resetOperationCode();
 								refunds.push_back(sale);
 							}
 						} //for
 
 						result = refundArray.size() == refunds.size();
-						if (result)						{
+						if (result)
+						{
 							responseData.setRefundArray(refunds);
 						}
 					}
@@ -528,7 +556,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldCardPANHash(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldCardPANHash(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string cardPanHash;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getCardPANHash(), cardPanHash);
 				const bool result = exists && responseData.setCardPANHash(cardPanHash);
@@ -536,7 +565,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldReceiptLine1(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldReceiptLine1(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string receiptLine;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getReceiptLine1(), receiptLine);
 				const bool result = exists && responseData.setReceiptLine1(receiptLine);
@@ -544,7 +574,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldReceiptLine2(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldReceiptLine2(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string receiptLine;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getReceiptLine2(), receiptLine);
 				const bool result = exists && responseData.setReceiptLine2(receiptLine);
@@ -552,7 +583,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldReceiptLine3(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldReceiptLine3(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string receiptLine;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getReceiptLine3(), receiptLine);
 				const bool result = exists && responseData.setReceiptLine3(receiptLine);
@@ -560,7 +592,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldReceiptLine4(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldReceiptLine4(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string receiptLine;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getReceiptLine4(), receiptLine);
 				const bool result = exists && responseData.setReceiptLine4(receiptLine);
@@ -568,7 +601,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldReceiptLine5(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldReceiptLine5(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string receiptLine;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getReceiptLine5(), receiptLine);
 				const bool result = exists && responseData.setReceiptLine5(receiptLine);
@@ -576,7 +610,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldApplicationLabel(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldApplicationLabel(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string applicationLabel;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getApplicationLabel(), applicationLabel);
 				const bool result = exists && responseData.setApplicationLabel(applicationLabel);
@@ -584,7 +619,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldBonusBalance(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldBonusBalance(const Json::Value& object, IResponseData& responseData)
+			{
 				int64_t bonusBalance;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getBonusBalance(), bonusBalance);
 				const bool result = exists && responseData.setBonusBalance(bonusBalance);
@@ -592,7 +628,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldBonusAmount(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldBonusAmount(const Json::Value& object, IResponseData& responseData)
+			{
 				int64_t bonusAmount;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getBonusAmount(), bonusAmount);
 				const bool result = exists && responseData.setBonusAmount(bonusAmount);
@@ -600,7 +637,8 @@ namespace Lanter
 				return result;
 			}
 
-			bool JSONResponseParser::getFieldHashCardTrack2(const Json::Value& object, IResponseData& responseData)			{
+			bool JSONResponseParser::getFieldHashCardTrack2(const Json::Value& object, IResponseData& responseData)
+			{
 				std::string hashCardTrack2;
 				const bool exists = JSONGetFieldHelper::getField(object, JSONResponseFields::getHashCardTrack2(), hashCardTrack2);
 				const bool result = exists && responseData.setHashCardTrack2(hashCardTrack2);

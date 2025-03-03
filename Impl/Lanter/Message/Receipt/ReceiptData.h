@@ -15,9 +15,9 @@ namespace Lanter
                 ReceiptCode getCode() const override;
                 bool setCode(const ReceiptCode& code) override;
                 bool resetCode() override;
-                const std::vector<std::string>& getMessage() const;
-                bool setMessage(const std::vector<std::string>& receiptMessage);
-                bool resetMessage();
+                const std::vector<std::string>& getMessage() const override;
+                bool setMessage(const std::vector<std::string>& receiptMessage) override;
+                bool resetMessage() override;
 
             private:
                 ReceiptCode m_Code = ReceiptCode::NoReceipt;
